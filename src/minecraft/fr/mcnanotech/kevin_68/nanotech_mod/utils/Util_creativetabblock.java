@@ -15,6 +15,6 @@ public class Util_creativetabblock extends CreativeTabs
 	@SideOnly(Side.CLIENT)
 	public int getTabIconItemIndex()
 	{
-		return NanotechBlock.BlockBooster.blockID;
+		return NanotechBlock.BlockSpeed.blockID;
 	}
 }

@@ -19,6 +19,11 @@ public class BlockFalling extends BlockSand
 		setRequiresSelfNotify();
 	}
 	
+    public int damageDropped(int metadata)
+    {
+        return metadata;
+    }
+	
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(int blockid, CreativeTabs creativeTabs, List list)
     {

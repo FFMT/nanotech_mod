@@ -29,22 +29,22 @@ public class World_generation implements IWorldGenerator
 		int Xcoord2 = blockX + random.nextInt(1);
 		int Ycoord2 = random.nextInt(100);
 		int Zcoord2 = blockZ + random.nextInt(1);
-		(new WorldGenMinable(NanotechBlock.BlockSiliconore.blockID, 10)).generate(world, random, Xcoord2, Ycoord2, Zcoord2);
+		(new WorldGenMinable(NanotechBlock.BlockNanoOre.blockID, 0, 10)).generate(world, random, Xcoord2, Ycoord2, Zcoord2);
 
 		int Xcoord3 = blockX + random.nextInt(16);
 		int Ycoord3 = random.nextInt(100);
 		int Zcoord3 = blockZ + random.nextInt(16);
-		(new WorldGenMinable(NanotechBlock.BlockStonedecrease.blockID, 7)).generate(world, random, Xcoord3, Ycoord3, Zcoord3);
+		(new WorldGenMinable(NanotechBlock.BlockNanoOre.blockID, 1, 7)).generate(world, random, Xcoord3, Ycoord3, Zcoord3);
 		
 		int Xcoord4 = blockX + random.nextInt(16);
 		int Ycoord4 = random.nextInt(32);
 		int Zcoord4 = blockZ + random.nextInt(16);
-		(new WorldGenMinable(NanotechBlock.BlockFakeGold.blockID, 6)).generate(world, random, Xcoord4, Ycoord4, Zcoord4);
+		(new WorldGenMinable(NanotechBlock.BlockFakeOre.blockID, 0, 6)).generate(world, random, Xcoord4, Ycoord4, Zcoord4);
 
 		int Xcoord5 = blockX + random.nextInt(16);
 		int Ycoord5 = random.nextInt(16);
 		int Zcoord5 = blockZ + random.nextInt(16);
-		(new WorldGenMinable(NanotechBlock.BlockFakeDiamond.blockID, 4)).generate(world, random, Xcoord5, Ycoord5, Zcoord5);
+		(new WorldGenMinable(NanotechBlock.BlockFakeOre.blockID, 1, 4)).generate(world, random, Xcoord5, Ycoord5, Zcoord5);
 		
 		int Xcoord6 = blockX + random.nextInt(256);
 		int Ycoord6 = random.nextInt(100);

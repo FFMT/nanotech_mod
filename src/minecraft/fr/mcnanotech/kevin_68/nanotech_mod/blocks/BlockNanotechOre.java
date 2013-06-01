@@ -2,28 +2,24 @@ package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
 
 import java.util.List;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockNotFalling extends Block
+public class BlockNanotechOre extends Block
 {
-	public static String[] type = new String[] {"gravel", "sand"};
-    
-	public BlockNotFalling(int id, int texture, Material material)
+	public static String[] type = new String[]{"silicon", "decrease"};
+
+	public BlockNanotechOre(int id, int texture)
 	{
-		super(id, texture, material);
+		super(id, texture, Material.rock);
+        setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		setRequiresSelfNotify();
 	}
-	
-    public int damageDropped(int metadata)
-    {
-        return metadata;
-    }
 	
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(int blockid, CreativeTabs creativeTabs, List list)
@@ -33,17 +29,20 @@ public class BlockNotFalling extends Block
             list.add(new ItemStack(blockid, 1, metadatanumber));
     	}
     }
+	
+    public int damageDropped(int metadata)
+    {
+        return metadata;
+    }
     
 	public int getBlockTextureFromSideAndMetadata(int side, int damage) 
 	{
-    	switch(damage)
-    	{
-    	case 0:
-    		return 19;
-    	case 1:
-    		return 18;
-    	default:
-    		return 19;
-    	}
+		return blockIndexInTexture + damage;
 	}
+    
+	public String getTextureFile()
+    {
+		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png";
+    }
+
 }
