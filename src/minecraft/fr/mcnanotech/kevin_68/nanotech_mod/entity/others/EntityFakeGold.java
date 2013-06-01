@@ -6,11 +6,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-public class Entity_fakegold extends Entity
+public class EntityFakeGold extends Entity
 {
     public int fuse;
 
-    public Entity_fakegold(World par1World)
+    public EntityFakeGold(World par1World)
     {
         super(par1World);
         this.fuse = 0;
@@ -19,7 +19,7 @@ public class Entity_fakegold extends Entity
         this.yOffset = this.height / 2.0F;
     }
 
-    public Entity_fakegold(World par1World, double par2, double par4, double par6)
+    public EntityFakeGold(World par1World, double par2, double par4, double par6)
     {
         this(par1World);
         this.setPosition(par2, par4, par6);
