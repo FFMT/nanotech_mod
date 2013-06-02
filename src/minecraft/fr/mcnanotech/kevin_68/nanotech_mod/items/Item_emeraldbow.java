@@ -1,6 +1,5 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.items;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,7 +24,7 @@ public class Item_emeraldbow extends ItemBow
     public int getIconIndex(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
     {
         
-        if (usingItem != null && usingItem.getItem().itemID == Nanotech_mod.Item_emeraldbow.itemID)
+        if (usingItem != null && usingItem.getItem().itemID == NanotechItem.Emeraldbow.itemID)
         {
             int k = usingItem.getMaxItemUseDuration() - useRemaining;
             if (k >= 18) return 39;

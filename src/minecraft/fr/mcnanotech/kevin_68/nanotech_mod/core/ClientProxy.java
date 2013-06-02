@@ -2,10 +2,10 @@ package fr.mcnanotech.kevin_68.nanotech_mod.core;
 
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.MinecraftForgeClient;
+
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
 import fr.mcnanotech.kevin_68.nanotech_mod.client.model.Model_Mob_creeperforreur;
 import fr.mcnanotech.kevin_68.nanotech_mod.client.model.Model_Mob_fastzombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.client.model.Model_Mob_fly;
@@ -40,7 +40,6 @@ public class ClientProxy extends CommonProxy
 	public static int renderBlockID;
 	public static Minecraft mc = FMLClientHandler.instance().getClient();
 	
-	@SideOnly(Side.CLIENT)
 	public void registerRenderThings()
 	{
 		MinecraftForgeClient.preloadTexture("/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png");
@@ -56,15 +55,5 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(Mob_fastzombie.class, new Render_Mob_fastzombie(new Model_Mob_fastzombie(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(Mob_fly.class, new Render_Mob_fly(new Model_Mob_fly(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(Mob_flyingcreeper.class, new Render_Mob_flyingcreeper(new Model_Mob_flyingcreeper(), 0.5F));
-	}
-
-	public int addTerrainOverride(String path)
-	{
-		return RenderingRegistry.addTextureOverride("/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png", path);
-	}
-	
-	public boolean isClient()
-	{
-		return true;
 	}
 }

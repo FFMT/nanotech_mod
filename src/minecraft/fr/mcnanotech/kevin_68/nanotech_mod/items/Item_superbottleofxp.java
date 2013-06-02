@@ -1,6 +1,5 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.items;
 
-import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

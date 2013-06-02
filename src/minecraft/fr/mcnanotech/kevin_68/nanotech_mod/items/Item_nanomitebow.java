@@ -1,6 +1,5 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.items;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,9 +15,9 @@ import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
 public class Item_nanomitebow extends ItemBow
 {
-    public Item_nanomitebow(int par1)
+    public Item_nanomitebow(int id)
     {
-        super(par1);
+        super(id);
         this.maxStackSize = 1;
         this.setMaxDamage(300000);
     }
@@ -26,7 +25,7 @@ public class Item_nanomitebow extends ItemBow
     public int getIconIndex(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
     {
         
-        if (usingItem != null && usingItem.getItem().itemID == Nanotech_mod.Item_diamondbow.itemID)
+        if (usingItem != null && usingItem.getItem().itemID == NanotechItem.Diamondbow.itemID)
         {
             int k = usingItem.getMaxItemUseDuration() - useRemaining;
             if (k >= 18) return 40;

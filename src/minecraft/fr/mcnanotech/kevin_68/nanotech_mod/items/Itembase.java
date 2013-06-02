@@ -2,16 +2,16 @@ package fr.mcnanotech.kevin_68.nanotech_mod.items;
 
 import java.util.List;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
 
-public class Item_itembase extends Item
+public class Itembase extends Item
 {
-    public Item_itembase(int i)
+    public Itembase(int i)
     {
         super(i);
         maxStackSize = 64;
@@ -27,7 +27,7 @@ public class Item_itembase extends Item
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
     {
-    	if (stack.itemID == Nanotech_mod.Item_vide.itemID)
+    	if (stack.itemID == NanotechItem.Vide.itemID)
     	{
             list.add("Item pour barrel vide");
             list.add("100% cobblestone");

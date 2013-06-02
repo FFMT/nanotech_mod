@@ -583,7 +583,6 @@ public class World_chunkprovider implements IChunkProvider
 
             if ((new WorldGenDungeons()).generate(this.worldObj, this.rand, var13, var14, var15))
             {
-                ;
             }
         }
 
