@@ -12,11 +12,11 @@ import net.minecraftforge.event.entity.living.LivingFallEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
  
-public class Item_mysteriousarmor extends ItemArmor implements IArmorTextureProvider
+public class ItemMysteriousArmor extends ItemArmor implements IArmorTextureProvider
 {
-	public Item_mysteriousarmor(int id, EnumArmorMaterial par2EnumArmorMaterial, int par3, int par4) 
+	public ItemMysteriousArmor(int id, EnumArmorMaterial enumArmorMaterial, int par3, int par4) 
 	{
-		super(id, par2EnumArmorMaterial, par3, par4);
+		super(id, enumArmorMaterial, par3, par4);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
         
@@ -33,15 +33,14 @@ public class Item_mysteriousarmor extends ItemArmor implements IArmorTextureProv
  
 	public String getArmorTextureFile(ItemStack stack)
 	{
-		if(stack.itemID == NanotechItem.Mysterioushelmet.itemID|| stack.itemID == NanotechItem.Mysteriouschestplate.itemID|| stack.itemID == NanotechItem.Mysteriousboots.itemID)
-		{
-			return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/armor/Mysteriousarmor.png";
-		}
-		if(stack.itemID == NanotechItem.Mysteriousleggins.itemID)
+		if(stack.itemID == NanotechItem.Mysteriousleggings.itemID)
 		{
 			return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/armor/Mysteriousarmor2.png";
 		}
-		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/armor/Mysteriousarmor.png";
+		else
+		{
+			return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/armor/Mysteriousarmor.png";
+		}
 	}      
 	
 	@ForgeSubscribe
@@ -62,4 +61,9 @@ public class Item_mysteriousarmor extends ItemArmor implements IArmorTextureProv
         	}
         }
 	}
+	
+    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+    {
+        return true;
+    }
 }

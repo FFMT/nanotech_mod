@@ -9,9 +9,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.entity.others.Entity_superbottleofxp;
 
-public class Item_superbottleofxp extends Item
+public class ItemSuperbottleofxp extends Item
 {
-    public Item_superbottleofxp(int par1)
+    public ItemSuperbottleofxp(int par1)
     {
         super(par1);
         this.setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
@@ -19,7 +19,7 @@ public class Item_superbottleofxp extends Item
     
 	public String getTextureFile()
     {
-            return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/item.png";
+            return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/items.png";
     }
 
     @SideOnly(Side.CLIENT)

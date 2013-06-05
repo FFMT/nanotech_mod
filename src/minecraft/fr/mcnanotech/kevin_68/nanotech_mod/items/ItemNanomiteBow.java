@@ -13,23 +13,24 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
-public class Item_emeraldbow extends ItemBow
+public class ItemNanomiteBow extends ItemBow
 {
-    public Item_emeraldbow(int par1)
+    public ItemNanomiteBow(int id)
     {
-        super(par1);
+        super(id);
         this.maxStackSize = 1;
-        this.setMaxDamage(5000);
+        this.setMaxDamage(300000);
     }
+    
     public int getIconIndex(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
     {
         
-        if (usingItem != null && usingItem.getItem().itemID == NanotechItem.Emeraldbow.itemID)
+        if (usingItem != null && usingItem.getItem().itemID == NanotechItem.Diamondbow.itemID)
         {
             int k = usingItem.getMaxItemUseDuration() - useRemaining;
-            if (k >= 18) return 39;
-            if (k >  13) return 23;
-            if (k >   0) return 7;
+            if (k >= 18) return 40;
+            if (k >  13) return 24;
+            if (k >   0) return 8;
         }
          
         return getIconIndex(stack);
@@ -64,7 +65,7 @@ public class Item_emeraldbow extends ItemBow
                 var7 = 1.0F;
             }
 
-            EntityArrow var8 = new EntityArrow(par2World, par3EntityPlayer, var7 * 6.0F);
+            EntityArrow var8 = new EntityArrow(par2World, par3EntityPlayer, var7 * 16.0F);
 
             if (var7 == 1.0F)
             {
@@ -116,7 +117,7 @@ public class Item_emeraldbow extends ItemBow
 
     public int getMaxItemUseDuration(ItemStack par1ItemStack)
     {
-        return 200000;
+        return 144000;
     }
 
     public EnumAction getItemUseAction(ItemStack par1ItemStack)

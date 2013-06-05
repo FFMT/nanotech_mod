@@ -2,10 +2,11 @@ package fr.mcnanotech.kevin_68.nanotech_mod.items;
 
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemPickaxe;
+import net.minecraft.item.ItemStack;
 
-public class Item_nanomitepickaxe extends ItemPickaxe
+public class ItemNanomitePickaxe extends ItemPickaxe
 {
-	public Item_nanomitepickaxe(int itemID, EnumToolMaterial toolMaterial)
+	public ItemNanomitePickaxe(int itemID, EnumToolMaterial toolMaterial)
 	{
 		super(itemID, toolMaterial);
 	}
@@ -14,4 +15,9 @@ public class Item_nanomitepickaxe extends ItemPickaxe
 	{
 		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/items.png";
 	}
+	
+    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+    {
+        return true;
+    }
 }

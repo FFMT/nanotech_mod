@@ -13,13 +13,13 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
-public class Item_nanomitebow extends ItemBow
+public class ItemDiamondBow extends ItemBow
 {
-    public Item_nanomitebow(int id)
+    public ItemDiamondBow(int id)
     {
         super(id);
         this.maxStackSize = 1;
-        this.setMaxDamage(300000);
+        this.setMaxDamage(1000);
     }
     
     public int getIconIndex(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
@@ -28,9 +28,9 @@ public class Item_nanomitebow extends ItemBow
         if (usingItem != null && usingItem.getItem().itemID == NanotechItem.Diamondbow.itemID)
         {
             int k = usingItem.getMaxItemUseDuration() - useRemaining;
-            if (k >= 18) return 40;
-            if (k >  13) return 24;
-            if (k >   0) return 8;
+            if (k >= 18) return 38;
+            if (k >  13) return 22;
+            if (k >   0) return 6;
         }
          
         return getIconIndex(stack);
@@ -38,7 +38,7 @@ public class Item_nanomitebow extends ItemBow
 
     public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, int par4)
     {
-        int var6 = this.getMaxItemUseDuration(par1ItemStack) - par4 - 3000;
+        int var6 = this.getMaxItemUseDuration(par1ItemStack) - par4;
         
         ArrowLooseEvent event = new ArrowLooseEvent(par3EntityPlayer, par1ItemStack, var6);
         MinecraftForge.EVENT_BUS.post(event);
@@ -65,7 +65,7 @@ public class Item_nanomitebow extends ItemBow
                 var7 = 1.0F;
             }
 
-            EntityArrow var8 = new EntityArrow(par2World, par3EntityPlayer, var7 * 16.0F);
+            EntityArrow var8 = new EntityArrow(par2World, par3EntityPlayer, var7 * 4.0F);
 
             if (var7 == 1.0F)
             {

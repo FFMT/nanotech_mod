@@ -13,24 +13,23 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
-public class Item_diamondbow extends ItemBow
+public class ItemEmeraldBow extends ItemBow
 {
-    public Item_diamondbow(int par1)
+    public ItemEmeraldBow(int id)
     {
-        super(par1);
+        super(id);
         this.maxStackSize = 1;
-        this.setMaxDamage(1000);
+        this.setMaxDamage(5000);
     }
-    
     public int getIconIndex(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
     {
         
-        if (usingItem != null && usingItem.getItem().itemID == NanotechItem.Diamondbow.itemID)
+        if (usingItem != null && usingItem.getItem().itemID == NanotechItem.Emeraldbow.itemID)
         {
             int k = usingItem.getMaxItemUseDuration() - useRemaining;
-            if (k >= 18) return 38;
-            if (k >  13) return 22;
-            if (k >   0) return 6;
+            if (k >= 18) return 39;
+            if (k >  13) return 23;
+            if (k >   0) return 7;
         }
          
         return getIconIndex(stack);
@@ -38,7 +37,7 @@ public class Item_diamondbow extends ItemBow
 
     public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, int par4)
     {
-        int var6 = this.getMaxItemUseDuration(par1ItemStack) - par4;
+        int var6 = this.getMaxItemUseDuration(par1ItemStack) - par4 - 3000;
         
         ArrowLooseEvent event = new ArrowLooseEvent(par3EntityPlayer, par1ItemStack, var6);
         MinecraftForge.EVENT_BUS.post(event);
@@ -65,7 +64,7 @@ public class Item_diamondbow extends ItemBow
                 var7 = 1.0F;
             }
 
-            EntityArrow var8 = new EntityArrow(par2World, par3EntityPlayer, var7 * 4.0F);
+            EntityArrow var8 = new EntityArrow(par2World, par3EntityPlayer, var7 * 6.0F);
 
             if (var7 == 1.0F)
             {
@@ -117,7 +116,7 @@ public class Item_diamondbow extends ItemBow
 
     public int getMaxItemUseDuration(ItemStack par1ItemStack)
     {
-        return 144000;
+        return 200000;
     }
 
     public EnumAction getItemUseAction(ItemStack par1ItemStack)
