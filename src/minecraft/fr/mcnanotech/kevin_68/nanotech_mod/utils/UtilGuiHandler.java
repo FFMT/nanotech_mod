@@ -14,7 +14,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_jumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_multiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_smoker;
 
-    public class Util_GuiHandler implements IGuiHandler
+    public class UtilGuiHandler implements IGuiHandler
     {
             @Override
             public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)

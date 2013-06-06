@@ -5,9 +5,9 @@ import net.minecraft.item.Item;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class Util_creativetabitems extends CreativeTabs	
+public class UtilCreativetabItems extends CreativeTabs	
 {
-	public Util_creativetabitems(String par1)
+	public UtilCreativetabItems(String par1)
 	{
 		super(par1);
 	}

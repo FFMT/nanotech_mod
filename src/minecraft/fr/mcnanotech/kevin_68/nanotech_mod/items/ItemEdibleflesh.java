@@ -1,11 +1,6 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.items;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.world.World;
 
 
 public class ItemEdibleflesh extends ItemFood

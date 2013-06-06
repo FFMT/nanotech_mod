@@ -1,9 +1,9 @@
 
 package fr.mcnanotech.kevin_68.nanotech_mod.entity.ai;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.Mob_supercreeper;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
+import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.Mob_supercreeper;
 
 public class AI_supercreeper extends EntityAIBase
 {

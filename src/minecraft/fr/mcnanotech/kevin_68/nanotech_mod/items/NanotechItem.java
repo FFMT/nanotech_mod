@@ -5,6 +5,7 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.EnumHelper;
 import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilDiskInfo;
 
 public class NanotechItem
 {
@@ -42,23 +43,23 @@ public class NanotechItem
 		Mysteriouschestplate = new ItemMysteriousArmor(Nanotech_mod.Item_mysteriouschestplateID, EnumArmorMaterialMysterious,1 ,1).setIconIndex(34).setItemName("MysteriousChestPlate").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		Mysteriousleggings = new ItemMysteriousArmor(Nanotech_mod.Item_mysteriouslegginsID, EnumArmorMaterialMysterious,1 ,2).setIconIndex(50).setItemName("MysteriousLeggings").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		Mysteriousboots = new ItemMysteriousArmor(Nanotech_mod.Item_mysteriousbootsID, EnumArmorMaterialMysterious, 1, 3).setIconIndex(66).setItemName("MysteriousBoots").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Nanodisc = new ItemDisc(Nanotech_mod.Item_nanodiscID, "Nanodisk").setIconIndex(239).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc = new ItemDisc(Nanotech_mod.Item_nanodiscID +1, "YourSound1").setIconIndex(240).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc2 = new ItemDisc(Nanotech_mod.Item_nanodiscID +2, "YourSound2").setIconIndex(241).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc3 = new ItemDisc(Nanotech_mod.Item_nanodiscID +3, "YourSound3").setIconIndex(242).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc4 = new ItemDisc(Nanotech_mod.Item_nanodiscID +4, "YourSound4").setIconIndex(243).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc5 = new ItemDisc(Nanotech_mod.Item_nanodiscID +5, "YourSound5").setIconIndex(244).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc6 = new ItemDisc(Nanotech_mod.Item_nanodiscID +6, "YourSound6").setIconIndex(245).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc7 = new ItemDisc(Nanotech_mod.Item_nanodiscID +7, "YourSound7").setIconIndex(246).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc8 = new ItemDisc(Nanotech_mod.Item_nanodiscID +8, "YourSound8").setIconIndex(247).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc9 = new ItemDisc(Nanotech_mod.Item_nanodiscID +9, "YourSound9").setIconIndex(248).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc10 = new ItemDisc(Nanotech_mod.Item_nanodiscID +10, "YourSound10").setIconIndex(249).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc11 = new ItemDisc(Nanotech_mod.Item_nanodiscID +11, "YourSound11").setIconIndex(250).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc12 = new ItemDisc(Nanotech_mod.Item_nanodiscID +12, "YourSound12").setIconIndex(251).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc13 = new ItemDisc(Nanotech_mod.Item_nanodiscID +13, "YourSound13").setIconIndex(252).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc14 = new ItemDisc(Nanotech_mod.Item_nanodiscID +14, "YourSound14").setIconIndex(253).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc15 = new ItemDisc(Nanotech_mod.Item_nanodiscID +15, "YourSound15").setIconIndex(254).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I); 
-		Yourmusicdisc16 = new ItemDisc(Nanotech_mod.Item_nanodiscID +16, "YourSound16").setIconIndex(255).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I); 
+		Nanodisc = new ItemDisk(Nanotech_mod.Item_nanodiscID, "nanodisk", "JedBorg - Surprise").setIconIndex(239).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		Yourmusicdisc = new ItemDisk(Nanotech_mod.Item_nanodiscID +1, "YourSound1", UtilDiskInfo.cdInfo[0]).setIconIndex(240).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		Yourmusicdisc2 = new ItemDisk(Nanotech_mod.Item_nanodiscID +2, "YourSound2", UtilDiskInfo.cdInfo[1]).setIconIndex(241).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		Yourmusicdisc3 = new ItemDisk(Nanotech_mod.Item_nanodiscID +3, "YourSound3", UtilDiskInfo.cdInfo[2]).setIconIndex(242).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		Yourmusicdisc4 = new ItemDisk(Nanotech_mod.Item_nanodiscID +4, "YourSound4", UtilDiskInfo.cdInfo[3]).setIconIndex(243).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		Yourmusicdisc5 = new ItemDisk(Nanotech_mod.Item_nanodiscID +5, "YourSound5", UtilDiskInfo.cdInfo[4]).setIconIndex(244).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		Yourmusicdisc6 = new ItemDisk(Nanotech_mod.Item_nanodiscID +6, "YourSound6", UtilDiskInfo.cdInfo[5]).setIconIndex(245).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		Yourmusicdisc7 = new ItemDisk(Nanotech_mod.Item_nanodiscID +7, "YourSound7", UtilDiskInfo.cdInfo[6]).setIconIndex(246).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		Yourmusicdisc8 = new ItemDisk(Nanotech_mod.Item_nanodiscID +8, "YourSound8", UtilDiskInfo.cdInfo[7]).setIconIndex(247).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		Yourmusicdisc9 = new ItemDisk(Nanotech_mod.Item_nanodiscID +9, "YourSound9", UtilDiskInfo.cdInfo[8]).setIconIndex(248).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		Yourmusicdisc10 = new ItemDisk(Nanotech_mod.Item_nanodiscID +10, "YourSound10", UtilDiskInfo.cdInfo[9]).setIconIndex(249).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		Yourmusicdisc11 = new ItemDisk(Nanotech_mod.Item_nanodiscID +11, "YourSound11", UtilDiskInfo.cdInfo[10]).setIconIndex(250).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		Yourmusicdisc12 = new ItemDisk(Nanotech_mod.Item_nanodiscID +12, "YourSound12", UtilDiskInfo.cdInfo[11]).setIconIndex(251).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		Yourmusicdisc13 = new ItemDisk(Nanotech_mod.Item_nanodiscID +13, "YourSound13", UtilDiskInfo.cdInfo[12]).setIconIndex(252).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		Yourmusicdisc14 = new ItemDisk(Nanotech_mod.Item_nanodiscID +14, "YourSound14", UtilDiskInfo.cdInfo[13]).setIconIndex(253).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		Yourmusicdisc15 = new ItemDisk(Nanotech_mod.Item_nanodiscID +15, "YourSound15", UtilDiskInfo.cdInfo[14]).setIconIndex(254).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I); 
+		Yourmusicdisc16 = new ItemDisk(Nanotech_mod.Item_nanodiscID +16, "YourSound16", UtilDiskInfo.cdInfo[15]).setIconIndex(255).setItemName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I); 
 		Edibleflesh = new ItemEdibleflesh(Nanotech_mod.Item_ediblefleshID, 3, 0.6F, true).setIconIndex(15).setItemName("EdibleFlesh").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		Rottenchunk = new ItemEdibleflesh(Nanotech_mod.Item_rottenchunkID, 1, 0.6F, true).setIconIndex(19).setItemName("RottenChunk").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 	}

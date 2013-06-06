@@ -1,7 +1,6 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.entity.others;
 
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.MovingObjectPosition;

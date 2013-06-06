@@ -1,5 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.core;
 
+import java.util.logging.Logger;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
@@ -43,32 +45,28 @@ import fr.mcnanotech.kevin_68.nanotech_mod.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_jumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_multiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_smoker;
-import fr.mcnanotech.kevin_68.nanotech_mod.utils.Util_GuiHandler;
-import fr.mcnanotech.kevin_68.nanotech_mod.utils.Util_creativetabblock;
-import fr.mcnanotech.kevin_68.nanotech_mod.utils.Util_creativetabitems;
+import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilCreativetabBlock;
+import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilCreativetabItems;
+import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilDiskInfo;
+import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilGuiHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.world.World_generation;
 import fr.mcnanotech.kevin_68.nanotech_mod.world.World_nanotechbiome;
 import fr.mcnanotech.kevin_68.nanotech_mod.world.World_worldprovider;
 
-
 @Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "2.0.2")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
+
 public class Nanotech_mod 
 {
-	//Instance
+	// Instance
 	@Instance("Nanotech_mod")
 	public static Nanotech_mod modInstance;
-	 
-	/**
-	 * Proxy
-	 */
+	// Proxy
 	@SidedProxy(clientSide="fr.mcnanotech.kevin_68.nanotech_mod.core.ClientProxy", serverSide="fr.mcnanotech.kevin_68.nanotech_mod.core.CommonProxy")
 	public static CommonProxy proxy;
 	
-	/**
-	 * GUI
-	 */
-	private Util_GuiHandler guiHandler = new Util_GuiHandler();
+	// GUI
+	private UtilGuiHandler guiHandler = new UtilGuiHandler();
 	public static int Block_smokepower = 5;
 	
 	/**
@@ -120,25 +118,16 @@ public class Nanotech_mod
 	public static int Item_ediblefleshID;
 	public static int Item_rottenchunkID;
 
-	
-	/**
-	 * Dimension ID
-	 */
+	// Dimension ID
 	public static int dimension = 19;
 	
-	/**
-	 * Biome statement
-	 */
+	// Biome statement
 	public static BiomeGenBase Nanotechbiome;
 	
-	/**
-	 *Configuration
-	 */
+	//Configuration
 	public static boolean Config_hardrecipe;
 	
-	/**
-	 * Mobs configuration
-	 */
+	// Mobs configuration
 	public static boolean Config_creeperdrillermultiexplosion;
 	public static int Config_supercreeperexplosionradius;
 	public static int Config_timeuntilnextarrow_superskeleton;
@@ -177,48 +166,28 @@ public class Nanotech_mod
 	public static int Flyingcreepermin;
 	public static int Flyingcreepermax;
 	
-	/**
-	 * Discs name
-	 */
-	public static String Yourdiscname;
-	public static String Yourdiscname2;
-	public static String Yourdiscname3;
-	public static String Yourdiscname4;
-	public static String Yourdiscname5;
-	public static String Yourdiscname6;
-	public static String Yourdiscname7;
-	public static String Yourdiscname8;
-	public static String Yourdiscname9;
-	public static String Yourdiscname10;
-	public static String Yourdiscname11;
-	public static String Yourdiscname12;
-	public static String Yourdiscname13;
-	public static String Yourdiscname14;
-	public static String Yourdiscname15;
-	public static String Yourdiscname16;
-	
-	/**
-	 * Configuration Category
-	 */
-	public static final String CATEGORY_BlocksID = "Blocks ID";
+	// Configuration Category
 	public static final String CATEGORY_ItemsID = "Items ID";
 	public static final String CATEGORY_Other = "Other configs";
 	public static final String CATEGORY_Mobsconfig = "Mobs configs";
 	public static final String CATEGORY_Mobspawn = "Mobs spawn";
 	
-	/**
-	 * Creative tabs
-	 */
-	public static Util_creativetabblock CREATIVE_TAB_B = new Util_creativetabblock("Nanotech mod Blocks");
-	public static Util_creativetabitems CREATIVE_TAB_I = new Util_creativetabitems("Nanotech mod Items");
+	// Creative tabs
+	public static UtilCreativetabBlock CREATIVE_TAB_B = new UtilCreativetabBlock("Nanotech mod Blocks");
+	public static UtilCreativetabItems CREATIVE_TAB_I = new UtilCreativetabItems("Nanotech mod Items");
+	
+	//log
+	public static Logger NanoLog;
 	
 	@PreInit
 	public void PreInitnanotech_mod(FMLPreInitializationEvent event) 
 	{
+		NanoLog = event.getModLog();
 		Side side = FMLCommonHandler.instance().getEffectiveSide();
 		if(side == Side.CLIENT)
 		{
 			MinecraftForge.EVENT_BUS.register(new Event_sound());
+			UtilDiskInfo.readInfo();
 		}
 		
 		//Configuration
@@ -315,7 +284,6 @@ public class Nanotech_mod
 	
 	/**
 	 * Initialization
-	 * @param event
 	 */
 	@Init
 	public void Initnanotech_mod(FMLInitializationEvent event)
@@ -704,9 +672,7 @@ public class Nanotech_mod
 		}
 	}
 
-	/**
-	 * Forge dictionary
-	 */
+	// Forge dictionary
 	public void forgeDictionary()
 	{
 		OreDictionary.registerOre("logWood", new ItemStack(NanotechBlock.BlockNanowood));
@@ -715,12 +681,13 @@ public class Nanotech_mod
 		OreDictionary.registerOre("treeLeaves", new ItemStack(NanotechBlock.BlockNanoleaves));
 	}
 	
-	/**
+	/*
 	 * Other code
 	 * -Shovel on grass
 	 */
 	public void other()
 	{
 		MinecraftForge.setBlockHarvestLevel(NanotechBlock.BlockGrass, "shovel", 2);
+		MinecraftForge.setBlockHarvestLevel(NanotechBlock.Blocknotfalling, "shovel", 2);
 	}
 }

@@ -2,7 +2,6 @@ package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 
 public class Blockbase extends Block
 {

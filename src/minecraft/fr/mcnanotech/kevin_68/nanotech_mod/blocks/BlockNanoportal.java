@@ -2,18 +2,12 @@ package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
 
 import java.util.Random;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
-import fr.mcnanotech.kevin_68.nanotech_mod.utils.Util_teleport;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
 
 public class BlockNanoportal extends Block
 {
@@ -67,21 +61,17 @@ public class BlockNanoportal extends Block
 
 	 }
 	 
-	 public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
+	 public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity entity)
 	 {
-		 if (par5Entity.ridingEntity == null && par5Entity.riddenByEntity == null)
+		 if (entity.ridingEntity == null && entity.riddenByEntity == null)
 		 {
-			 if (par5Entity instanceof EntityPlayerMP)
+			 if(entity.dimension != 19)
 			 {
-				 EntityPlayerMP thePlayer = (EntityPlayerMP) par5Entity;
-				 if (par5Entity.dimension != Nanotech_mod.dimension)
-				 {
-					 thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, Nanotech_mod.dimension, new Util_teleport(thePlayer.mcServer.worldServerForDimension(Nanotech_mod.dimension)));
-				 }
-				 else
-				 {
-					 thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0, new Util_teleport(thePlayer.mcServer.worldServerForDimension(0)));
-				 }
+				 entity.travelToDimension(19);
+			 }
+			 else
+			 {
+				 entity.travelToDimension(0);
 			 }
 		 }
 	 }

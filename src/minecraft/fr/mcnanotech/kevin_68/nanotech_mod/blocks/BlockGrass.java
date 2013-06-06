@@ -1,16 +1,9 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
-
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.world.ColorizerGrass;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockGrass extends Block

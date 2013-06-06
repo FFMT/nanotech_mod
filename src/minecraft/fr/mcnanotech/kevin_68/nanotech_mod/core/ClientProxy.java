@@ -2,10 +2,8 @@ package fr.mcnanotech.kevin_68.nanotech_mod.core;
 
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.MinecraftForgeClient;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-
 import fr.mcnanotech.kevin_68.nanotech_mod.client.model.Model_Mob_creeperforreur;
 import fr.mcnanotech.kevin_68.nanotech_mod.client.model.Model_Mob_fastzombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.client.model.Model_Mob_fly;

@@ -1,12 +1,12 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_multiplier;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_multiplier;
 
 public class BlockMultiplier extends BlockContainer
 { 		

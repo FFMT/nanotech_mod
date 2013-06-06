@@ -8,12 +8,10 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
-
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.StringUtils;
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.event.ForgeSubscribe;
+import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
 
 public class Event_sound
 {

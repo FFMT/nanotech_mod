@@ -11,22 +11,24 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
 
-public class ItemDisc extends ItemRecord
+public class ItemDisk extends ItemRecord
 {
 	public final String recordName;
+	public final String recordinfo;
 	
-    public ItemDisc(int id, String par2Str)
+    public ItemDisk(int id, String name, String info)
     {
-        super(id, par2Str);
-        this.recordName = par2Str;
-        this.maxStackSize = 1;
+        super(id, name);
+        recordName = name;
+        maxStackSize = 1;
+        recordinfo = info;
     }
     public String getTextureFile()
     {
             return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/items.png";
     }
+    
     public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
     {
         if (par3World.getBlockId(par4, par5, par6) == Block.jukebox.blockID && par3World.getBlockMetadata(par4, par5, par6) == 0)
@@ -52,10 +54,14 @@ public class ItemDisc extends ItemRecord
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
     {
-    	if(stack.itemID == NanotechItem.Nanodisc.itemID)
-    		list.add("JedBorg - Surprise");
-    	else if(stack.itemID == NanotechItem.Yourmusicdisc.itemID)
-    		list.add(Nanotech_mod.Yourdiscname);
+    	list.add(getRecordTitle());
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public String getRecordTitle()
+    {
+     return recordinfo;
+    
     }
     
     @SideOnly(Side.CLIENT)
