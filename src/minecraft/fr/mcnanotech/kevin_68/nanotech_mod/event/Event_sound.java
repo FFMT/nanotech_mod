@@ -11,6 +11,7 @@ import java.net.URLConnection;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.event.ForgeSubscribe;
+
 import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
 
 public class Event_sound
@@ -32,11 +33,11 @@ public class Event_sound
             
             if (!fich.exists())
             {
-            getsounds("https://dl.dropbox.com/u/76684272/Nanotech_mod/streaming/nanodisk.ogg");
+            	getFile("https://dl.dropbox.com/u/76684272/Nanotech_mod/streaming/nanodisk.ogg", "nanodisk.ogg");
             }
             if (!fich2.exists() && !txt2.exists())
             {
-            gettxt("https://dl.dropbox.com/u/76684272/Nanotech_mod/streaming/YourSound.txt");
+            	getFile("https://dl.dropbox.com/u/76684272/Nanotech_mod/streaming/YourSound.txt", "YourSound.txt");
             }
             
         }
@@ -46,79 +47,45 @@ public class Event_sound
         }
     }
     
-    private void getsounds(String path) throws Exception
+    private void getFile(String path, String fileName) throws Exception
     {
-    String fAddress = path;
-    String localFileName = "nanodisk.ogg";
-    String destinationDir = Minecraft.getMinecraftDir() + "/resources/mod/streaming";
-    OutputStream outStream = null;
-    URLConnection uCon = null;
-    InputStream is = null;
-    File tmp = new File(destinationDir);
+    	String fAddress = path;
+    	String localFileName = fileName;
+    	String destinationDir = Minecraft.getMinecraftDir() + "/resources/mod/streaming";
+    	OutputStream outStream = null;
+    	URLConnection uCon = null;
+    	InputStream is = null;
+    	File tmp = new File(destinationDir);
 
-    if(!tmp.exists())
-    {
-    tmp.mkdir();
-    }
+    	if(!tmp.exists())
+    	{
+    		tmp.mkdir();
+    	}
 
-    try
-    {
-    URL Url;
-    byte[] buf;
-    int ByteRead,ByteWritten=0;
-    Url = new URL(fAddress);
-    outStream = new BufferedOutputStream(new FileOutputStream(destinationDir+"/"+localFileName));
+    	try
+    	{
+    		URL Url;
+    		byte[] buf;
+    		int ByteRead,ByteWritten=0;
+    		Url = new URL(fAddress);
+    		outStream = new BufferedOutputStream(new FileOutputStream(destinationDir+"/"+localFileName));
 
-    uCon = Url.openConnection();
-    is = uCon.getInputStream();
-    buf = new byte[1024]; while ((ByteRead = is.read(buf)) != -1)
-    {
-    outStream.write(buf, 0, ByteRead);
-    ByteWritten += ByteRead;
-    }
+    		uCon = Url.openConnection();
+    		is = uCon.getInputStream();
+    		buf = new byte[1024];
+    		while ((ByteRead = is.read(buf)) != -1)
+    		{
+    			outStream.write(buf, 0, ByteRead);
+    			ByteWritten += ByteRead;
+    		}
 
-    System.out.println("File name: \""+localFileName+ "\"\nNo ofbytes: " + ByteWritten);
-    System.out.println(destinationDir); is.close();
-    outStream.close();
-    }
-    catch (Exception e) { e.printStackTrace(); }
-    }
-    
-    private void gettxt(String path) throws Exception
-    {
-    String fAddress = path;
-    String localFileName = "YourSound.txt";
-    String destinationDir = Minecraft.getMinecraftDir() + "/resources/mod/streaming";
-    OutputStream outStream = null;
-    URLConnection uCon = null;
-    InputStream is = null;
-    File tmp = new File(destinationDir);
-
-    if(!tmp.exists())
-    {
-    tmp.mkdir();
-    }
-
-    try
-    {
-    URL Url;
-    byte[] buf;
-    int ByteRead,ByteWritten=0;
-    Url = new URL(fAddress);
-    outStream = new BufferedOutputStream(new FileOutputStream(destinationDir+"/"+localFileName));
-
-    uCon = Url.openConnection();
-    is = uCon.getInputStream();
-    buf = new byte[1024]; while ((ByteRead = is.read(buf)) != -1)
-    {
-    outStream.write(buf, 0, ByteRead);
-    ByteWritten += ByteRead;
-    }
-
-    System.out.println("File name: \""+localFileName+ "\"\nNo ofbytes: " + ByteWritten);
-    System.out.println(destinationDir); is.close();
-    outStream.close();
-    }
-    catch (Exception e) { e.printStackTrace(); }
+    		System.out.println("File name: \""+localFileName+ "\"\nNo ofbytes: " + ByteWritten);
+    		System.out.println(destinationDir); is.close();
+    		outStream.close();
+    	}
+    	catch (Exception e) 
+    	{
+    		e.printStackTrace();
+    	}
     }
 }
