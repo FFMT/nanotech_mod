@@ -42,9 +42,9 @@ import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.Mob_thedeath;
 import fr.mcnanotech.kevin_68.nanotech_mod.event.Event_bonemeal;
 import fr.mcnanotech.kevin_68.nanotech_mod.event.Event_sound;
 import fr.mcnanotech.kevin_68.nanotech_mod.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntitySmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_jumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_multiplier;
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_smoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilCreativetabBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilCreativetabItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilDiskInfo;
@@ -67,11 +67,8 @@ public class Nanotech_mod
 	
 	// GUI
 	private UtilGuiHandler guiHandler = new UtilGuiHandler();
-	public static int Block_smokepower = 5;
 	
-	/**
-	 * Block IDs
-	 */
+	// Block IDs
 	public static int BlockPortalID;
 	public static int BlockPortalframeID;
 	public static int BlockGrassID;
@@ -529,7 +526,7 @@ public class Nanotech_mod
 		NetworkRegistry.instance().registerGuiHandler(this, guiHandler);
 
 		GameRegistry.registerTileEntity(TileEntity_block_jumper.class, "TileEntity_block_jumper");
-		GameRegistry.registerTileEntity(TileEntity_block_smoker.class, "TileEntity_block_smoker");
+		GameRegistry.registerTileEntity(TileEntitySmoker.class, "TileEntity_block_smoker");
 		GameRegistry.registerTileEntity(TileEntity_block_multiplier.class, "TileEntity_block_multiplier");
 	}
 	

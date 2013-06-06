@@ -24,6 +24,7 @@ public class ItemDisk extends ItemRecord
         maxStackSize = 1;
         recordinfo = info;
     }
+    
     public String getTextureFile()
     {
             return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/items.png";
@@ -54,14 +55,7 @@ public class ItemDisk extends ItemRecord
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
     {
-    	list.add(getRecordTitle());
-    }
-    
-    @SideOnly(Side.CLIENT)
-    public String getRecordTitle()
-    {
-     return recordinfo;
-    
+    	list.add(recordinfo);
     }
     
     @SideOnly(Side.CLIENT)
