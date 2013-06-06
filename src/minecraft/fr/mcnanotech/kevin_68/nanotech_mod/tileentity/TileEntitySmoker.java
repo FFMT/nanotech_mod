@@ -10,11 +10,11 @@ import net.minecraft.tileentity.TileEntity;
 public class TileEntitySmoker extends TileEntity implements IInventory
 {
 	private ItemStack[] inventory;
-	public static byte Smokepower;
+	public static int Smokepower;
            
 	public TileEntitySmoker()
 	{
-		inventory = new ItemStack[1];
+		inventory = new ItemStack[0];
 		if(Smokepower > 15)
 		{
 			Smokepower = 15;
@@ -25,7 +25,7 @@ public class TileEntitySmoker extends TileEntity implements IInventory
 		}
 	}
 	
-	public byte getSmokePower()
+	public int getSmokePower()
 	{
 		return Smokepower;
 	}
@@ -75,45 +75,14 @@ public class TileEntitySmoker extends TileEntity implements IInventory
 	public void readFromNBT(NBTTagCompound tagCompound)
 	{
 		super.readFromNBT(tagCompound);
-		Smokepower = tagCompound.getByte("power");
-		
-		NBTTagList tagList = tagCompound.getTagList("Inventory");
-		
-		for(int i = 0; i < tagList.tagCount(); i++)
-		{
-			NBTTagCompound tag = (NBTTagCompound) tagList.tagAt(i);
-			byte slot = tag.getByte("Slot");
-           
-			if(slot >= 0 && slot < inventory.length)
-			{
-				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
-			}
-		}
+		Smokepower = tagCompound.getInteger("power");
 	}
            
 	@Override
 	public void writeToNBT(NBTTagCompound tagCompound)
 	{
 		super.writeToNBT(tagCompound);
-		tagCompound.setByte("Smokepower", Smokepower);
-		
-		NBTTagList itemList = new NBTTagList();
-		
-		for(int j = 0; j < inventory.length; j++)
-		{
-			ItemStack stack = inventory[j];
-           
-			if(stack != null)
-			{
-				NBTTagCompound tag = new NBTTagCompound();
-           
-				tag.setByte("Slot", (byte) j);
-				stack.writeToNBT(tag);
-				itemList.appendTag(tag);
-			}
-		}
-           
-		tagCompound.setTag("Inventory", itemList);
+		tagCompound.setInteger("Smokepower", Smokepower);
 	}
 	
 	@Override

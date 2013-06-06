@@ -10,6 +10,7 @@ import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.container.ContainerSmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntitySmoker;
+import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_jumper;
 
 public class GuiSmoker extends GuiContainer
 {
@@ -35,13 +36,13 @@ public class GuiSmoker extends GuiContainer
 	{
 		if (guibutton.id == 1)
 		{
-			TileEntitySmoker.Smokepower += 1;
+			tilesmoker.Smokepower += 1;
 		}
 		if (guibutton.id == 2)
 		{
-			TileEntitySmoker.Smokepower -= 1;
+			tilesmoker.Smokepower -= 1;
 		}
-	}          
+	}
 	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int i, int j)

@@ -142,16 +142,16 @@ public class BlockSmoker extends BlockContainer
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t)
 	{
-	        TileEntity tileentity = world.getBlockTileEntity(x, y, z);
+		TileEntity tileentity = world.getBlockTileEntity(x, y, z);
 
-	        if(tileentity == null || player.isSneaking())
-	        {
-	                return false;
-	        }
+		if(tileentity == null || player.isSneaking())
+		{
+			return false;
+		}
 
-	        player.openGui(Nanotech_mod.modInstance, 1, world, x, y, z);
+		player.openGui(Nanotech_mod.modInstance, 1, world, x, y, z);
 
-	        return true;
+		return true;
 	}
 	
 	@Override
