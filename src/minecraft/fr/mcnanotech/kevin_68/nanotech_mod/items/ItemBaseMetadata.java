@@ -6,6 +6,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
@@ -97,9 +98,9 @@ public class ItemBaseMetadata extends Item
     {
     	if (stack.getItemDamage() == 15)
     	{
-            list.add("Item pour barrel vide");
-            list.add("100% cobblestone");
-            list.add("100% recyclable");
+            list.add(StatCollector.translateToLocal("info.void.1"));
+            list.add(StatCollector.translateToLocal("info.void.2"));
+            list.add(StatCollector.translateToLocal("info.void.3"));
     	}
     }
 

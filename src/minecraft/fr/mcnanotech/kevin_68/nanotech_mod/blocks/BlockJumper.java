@@ -8,11 +8,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_jumper;
+import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntityJumper;
 
 public class BlockJumper extends BlockContainer
 {
-	
 	public BlockJumper(int par1, int par2)
     {
         super(par1, par2, Material.rock);
@@ -25,7 +24,7 @@ public class BlockJumper extends BlockContainer
 	
 	public String getTextureFile()
     {
-            return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png";
+		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png";
     }
 
     public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
@@ -36,7 +35,7 @@ public class BlockJumper extends BlockContainer
     
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
     {
-        par5Entity.motionY += TileEntity_block_jumper.jumpheight;
+        par5Entity.motionY += TileEntityJumper.jumpheight;
     }
 	
 	@Override
@@ -53,15 +52,11 @@ public class BlockJumper extends BlockContainer
 
 	        return true;
 	}
-	@Override
-	public void breakBlock(World world, int x, int y, int z, int i, int j)
-	{
-	        super.breakBlock(world, x, y, z, i, j);
-	}
+	
 	@Override
 	public TileEntity createNewTileEntity(World world)
 	{
-	        return new TileEntity_block_jumper();
+		return new TileEntityJumper();
 	}
 
 }

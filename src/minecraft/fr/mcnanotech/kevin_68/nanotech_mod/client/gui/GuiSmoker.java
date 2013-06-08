@@ -10,7 +10,6 @@ import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.container.ContainerSmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntitySmoker;
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_jumper;
 
 public class GuiSmoker extends GuiContainer
 {

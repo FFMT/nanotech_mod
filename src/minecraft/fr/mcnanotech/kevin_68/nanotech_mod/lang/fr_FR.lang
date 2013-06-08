@@ -71,6 +71,6 @@ item.EdibleFlesh.name = Edible Flesh
 item.RottenChunk.name = Chunk of Rotten flesh
 
 #Other
-info.void.1 = Item for emply barrel
-info.void.2 = 100 % cobblestone
-info.void.3 = 100 % recyclable
+info.void.1 = Item pour barrel vide
+info.void.2 = 100% cobblestone
+info.void.3 = 100% recyclable

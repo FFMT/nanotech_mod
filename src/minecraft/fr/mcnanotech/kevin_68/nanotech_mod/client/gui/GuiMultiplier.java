@@ -6,14 +6,14 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.container.Container_block_multiplier;
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_multiplier;
+import fr.mcnanotech.kevin_68.nanotech_mod.container.ContainerMultiplier;
+import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntityMultiplier;
 
 public class GuiMultiplier extends GuiContainer
 {
-	public GuiMultiplier (InventoryPlayer inventoryPlayer,TileEntity_block_multiplier tileEntity, World world)
+	public GuiMultiplier(InventoryPlayer inventoryPlayer,TileEntityMultiplier tileEntity, World world)
 	{
-		super(new Container_block_multiplier(tileEntity, inventoryPlayer, world));
+		super(new ContainerMultiplier(tileEntity, inventoryPlayer, world));
 	}
 	
 	@Override

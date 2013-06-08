@@ -6,4 +6,8 @@ public class CommonProxy
 	public void registerRenderThings()
 	{
 	}
+
+	public void registerModRenders() 
+	{	
+	}
 }

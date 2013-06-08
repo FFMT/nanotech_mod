@@ -3,7 +3,6 @@ package fr.mcnanotech.kevin_68.nanotech_mod.core;
 import java.util.logging.Logger;
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
@@ -25,26 +24,17 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import fr.mcnanotech.kevin_68.nanotech_mod.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.Mob_creeperforreur;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.Mob_fastzombie;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.Mob_fly;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.Mob_flyingcreeper;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.Mob_supercreeper;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.Mob_superenderman;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.Mob_superskeleton;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.Mob_superzombie;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.Mob_thedeath;
-import fr.mcnanotech.kevin_68.nanotech_mod.event.Event_bonemeal;
-import fr.mcnanotech.kevin_68.nanotech_mod.event.Event_sound;
+import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.NanotechMobs;
+import fr.mcnanotech.kevin_68.nanotech_mod.event.EventBonemeal;
+import fr.mcnanotech.kevin_68.nanotech_mod.event.EventSound;
 import fr.mcnanotech.kevin_68.nanotech_mod.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntityJumper;
+import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntitySmoker;
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_jumper;
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_multiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilCreativetabBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilCreativetabItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilDiskInfo;
@@ -128,16 +118,8 @@ public class Nanotech_mod
 	public static boolean Config_creeperdrillermultiexplosion;
 	public static int Config_supercreeperexplosionradius;
 	public static int Config_timeuntilnextarrow_superskeleton;
-	public boolean MobSpawn;
-	public boolean Creeperdriller;
-	public boolean Fastzombie;
-	public boolean Fly;
-	public boolean Supercreeper;
-	public boolean Superenderman;
-	public boolean Superskeleton;
-	public boolean Superzombie;
-	public boolean TheDeath;
-	public boolean Flyingcreeper;
+	public static boolean MobSpawn, Creeperdriller, Fastzombie, Fly, Supercreeper, Superenderman, Superskeleton, Superzombie,
+	TheDeath, Flyingcreeper;
 	public static int Superzombiechance;
 	public static int Superzombiemin;
 	public static int Superzombiemax;
@@ -177,13 +159,13 @@ public class Nanotech_mod
 	public static Logger NanoLog;
 	
 	@PreInit
-	public void PreInitnanotech_mod(FMLPreInitializationEvent event) 
+	public void PreInitNanotech_mod(FMLPreInitializationEvent event) 
 	{
 		NanoLog = event.getModLog();
 		Side side = FMLCommonHandler.instance().getEffectiveSide();
 		if(side == Side.CLIENT)
 		{
-			MinecraftForge.EVENT_BUS.register(new Event_sound());
+			MinecraftForge.EVENT_BUS.register(new EventSound());
 			UtilDiskInfo.readInfo();
 		}
 		
@@ -278,12 +260,9 @@ public class Nanotech_mod
 		config.save();
 	}
 	
-	
-	/**
-	 * Initialization
-	 */
+	// Initialization
 	@Init
-	public void Initnanotech_mod(FMLInitializationEvent event)
+	public void InitNanotech_mod(FMLInitializationEvent event)
 	{
 		proxy.registerRenderThings();
 		NanotechBlock.initBlock();
@@ -292,14 +271,15 @@ public class Nanotech_mod
 		this.dimensionAndBiomeAndGeneration();
 		this.guiAndTileEntity();
 		this.creativeTab();
-		this.mobs();
+		NanotechMobs.mobs();
+		proxy.registerModRenders();
 		this.forgeDictionary();
 		this.other();
-		MinecraftForge.EVENT_BUS.register(new Event_bonemeal());
+		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
 	}
 	
 	@PostInit
-	public void PostInitnanotech_mod(FMLPostInitializationEvent event)
+	public void PostInitNanotech_mod(FMLPostInitializationEvent event)
 	{
 		if(Config_hardrecipe)
 		{
@@ -312,6 +292,7 @@ public class Nanotech_mod
 		
 		//Localization
 		LanguageRegistry.instance().loadLocalization("/fr/mcnanotech/kevin_68/nanotech_mod/lang/en_US.lang", "en_US", false);
+		LanguageRegistry.instance().loadLocalization("/fr/mcnanotech/kevin_68/nanotech_mod/lang/fr_FR.lang", "fr_FR", false);
 	}
 	
 	/**
@@ -525,9 +506,9 @@ public class Nanotech_mod
 	{
 		NetworkRegistry.instance().registerGuiHandler(this, guiHandler);
 
-		GameRegistry.registerTileEntity(TileEntity_block_jumper.class, "TileEntity_block_jumper");
-		GameRegistry.registerTileEntity(TileEntitySmoker.class, "TileEntity_block_smoker");
-		GameRegistry.registerTileEntity(TileEntity_block_multiplier.class, "TileEntity_block_multiplier");
+		GameRegistry.registerTileEntity(TileEntityJumper.class, "TileEntityJumper");
+		GameRegistry.registerTileEntity(TileEntitySmoker.class, "TileEntitySmoker");
+		GameRegistry.registerTileEntity(TileEntityMultiplier.class, "TileEntityMultiplier");
 	}
 	
 	/**
@@ -538,135 +519,6 @@ public class Nanotech_mod
 		LanguageRegistry.instance().addStringLocalization("itemGroup.Nanotech mod Blocks", "en_US", "Nanotech mod Blocks");
 		LanguageRegistry.instance().addStringLocalization("itemGroup.Nanotech mod Items", "en_US", "Nanotech mod Items");
 		
-	}
-
-	/**
-	 * Eggs spawner color
-	 */
-	public static int eggColorRed = 16711680;
-	public static int eggColorGreen = 652820;
-	public static int eggColorBlue = 255;
-	public static int eggColorLightBlue = 65535;
-	public static int eggColorWhite = 16777215;
-	public static int eggColorYellow = 16776960;
-	public static int eggColorOrange = 16744448;
-	public static int eggColorBrown = 8404992;
-	public static int eggColorBlack = 0;
-	public static int eggColorPink = 16711808;
-	public static int eggColorGray = 8421504;
-	public static int eggColorLightGreen = 8454052;
-	public static int eggColorBlueGreen = 46220;
-	
-	
-	/**
-	 * Mobs
-	 */
-	public void mobs()
-	{
-		if (Superzombie == true)
-		{
-			EntityRegistry.registerGlobalEntityID(Mob_superzombie.class, "Superzombie", EntityRegistry.findGlobalUniqueEntityId(), eggColorBlueGreen, eggColorRed);
-			EntityRegistry.registerModEntity(Mob_superzombie.class, "Superzombie", 0, this, 100, 1, true);
-			LanguageRegistry.instance().addStringLocalization("entity.Superzombie.name", "en_US", "Superzombie");
-			if(MobSpawn == true)
-			{
-				EntityRegistry.addSpawn(Mob_superzombie.class, Superzombiechance, Superzombiemin, Superzombiemax, EnumCreatureType.monster, Nanotechbiome);
-			}
-		}
-
-
-		if (Fastzombie == true)
-		{
-			EntityRegistry.registerGlobalEntityID(Mob_fastzombie.class, "Fastzombie", EntityRegistry.findGlobalUniqueEntityId(), eggColorBlue, eggColorRed);
-			EntityRegistry.registerModEntity(Mob_fastzombie.class, "Fastzombie", 1, this, 100, 1, true);
-			LanguageRegistry.instance().addStringLocalization("entity.Fastzombie.name", "en_US", "Fastzombie");
-			if(MobSpawn == true)
-			{
-				EntityRegistry.addSpawn(Mob_fastzombie.class, Fastzombiechance, Fastzombiemin, Fastzombiemax, EnumCreatureType.monster, Nanotechbiome);
-			}
-		}
-
-		if (Superskeleton == true)
-		{
-			EntityRegistry.registerGlobalEntityID(Mob_superskeleton.class, "Superskeleton", EntityRegistry.findGlobalUniqueEntityId(), eggColorWhite, eggColorYellow);
-			EntityRegistry.registerModEntity(Mob_superskeleton.class, "Superskeleton", 2, this, 100, 1, true);
-			LanguageRegistry.instance().addStringLocalization("entity.Superskeleton.name", "en_US", "Superskeleton");
-			if(MobSpawn == true)
-			{
-				EntityRegistry.addSpawn(Mob_superskeleton.class, Superskeletonchance, Superskeletonmin, Superskeletonmax, EnumCreatureType.monster, Nanotechbiome);
-			}
-		}
-
-
-		if (Supercreeper == true)
-		{
-			EntityRegistry.registerGlobalEntityID(Mob_supercreeper.class, "Supercreeper", EntityRegistry.findGlobalUniqueEntityId(), eggColorGreen, eggColorRed);
-			EntityRegistry.registerModEntity(Mob_supercreeper.class, "Supercreeper", 4, this, 100, 1, true);
-			LanguageRegistry.instance().addStringLocalization("entity.Supercreeper.name", "en_US", "Supercreeper");
-			if(MobSpawn == true)
-			{
-				EntityRegistry.addSpawn(Mob_supercreeper.class, Supercreeperchance, Supercreepermin, Supercreepermax, EnumCreatureType.monster, Nanotechbiome);
-			}
-		}
-
-
-		if (Superenderman == true)
-		{
-			EntityRegistry.registerGlobalEntityID(Mob_superenderman.class, "Superenderman", EntityRegistry.findGlobalUniqueEntityId(), eggColorBlack, eggColorGray);
-			EntityRegistry.registerModEntity(Mob_superenderman.class, "Superenderman", 5, this, 100, 1, true);
-			LanguageRegistry.instance().addStringLocalization("entity.Superenderman.name", "en_US", "Superenderman");
-			if(MobSpawn == true)
-			{
-				EntityRegistry.addSpawn(Mob_superenderman.class, Superendermanchance, Superendermanmin, Superendermanmax, EnumCreatureType.monster, Nanotechbiome);
-			}
-		}
-
-
-		if (Creeperdriller == true)
-		{
-			EntityRegistry.registerGlobalEntityID(Mob_creeperforreur.class, "Creeperforreur", EntityRegistry.findGlobalUniqueEntityId(), eggColorOrange, eggColorRed);
-			EntityRegistry.registerModEntity(Mob_creeperforreur.class, "Creeperdriller", 6, this, 100, 1, true);
-			LanguageRegistry.instance().addStringLocalization("entity.Creeperforreur.name", "en_US", "Creeperdriller");
-			if(MobSpawn == true)
-			{
-				EntityRegistry.addSpawn(Mob_creeperforreur.class, Creeperdrillerchance, Creeperdrillermin, Creeperdrillermax, EnumCreatureType.monster, Nanotechbiome);
-			}	
-		}
-
-
-		if (TheDeath == true)
-		{
-			EntityRegistry.registerGlobalEntityID(Mob_thedeath.class, "TheDeath", EntityRegistry.findGlobalUniqueEntityId(), eggColorBlack, eggColorWhite);
-			EntityRegistry.registerModEntity(Mob_thedeath.class, "TheDeath", 7, this, 100, 1, true);
-			LanguageRegistry.instance().addStringLocalization("entity.TheDeath.name", "en_US", "TheDeath");
-			if(MobSpawn == true)
-			{
-				EntityRegistry.addSpawn(Mob_thedeath.class, 0, 0, 0, EnumCreatureType.monster);
-			}
-		}
-
-
-		if (Fly == true)
-		{
-			EntityRegistry.registerGlobalEntityID(Mob_fly.class, "Fly", EntityRegistry.findGlobalUniqueEntityId(), eggColorGray, eggColorBlack);
-			EntityRegistry.registerModEntity(Mob_fly.class, "Fly", 8, this, 100, 1, true);
-			LanguageRegistry.instance().addStringLocalization("entity.Fly.name", "en_US", "Fly");
-			if(MobSpawn == true)
-			{
-				EntityRegistry.addSpawn(Mob_fly.class, Flychance, Flymin, Flymax, EnumCreatureType.monster, BiomeGenBase.plains, BiomeGenBase.extremeHills, BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.icePlains, BiomeGenBase.jungle, BiomeGenBase.beach, BiomeGenBase.desertHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forestHills, BiomeGenBase.iceMountains, BiomeGenBase.jungleHills, BiomeGenBase.taigaHills, Nanotechbiome);
-			}
-		}	
-		
-		if (Flyingcreeper == true)
-		{
-			EntityRegistry.registerGlobalEntityID(Mob_flyingcreeper.class, "Flying Creeper", EntityRegistry.findGlobalUniqueEntityId(), eggColorGreen, eggColorRed);
-			EntityRegistry.registerModEntity(Mob_flyingcreeper.class, "Flying Creeper", 9, this, 100, 1, true);
-			LanguageRegistry.instance().addStringLocalization("entity.Flying Creeper.name", "en_US", "Flying Creeper");
-			if(MobSpawn == true)
-			{
-				EntityRegistry.addSpawn(Mob_flyingcreeper.class, Flyingcreeperchance, Flyingcreepermin, Flyingcreepermax, EnumCreatureType.monster, Nanotechbiome);
-			}
-		}
 	}
 
 	// Forge dictionary

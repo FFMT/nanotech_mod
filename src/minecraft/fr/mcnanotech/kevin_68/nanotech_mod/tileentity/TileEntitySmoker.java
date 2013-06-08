@@ -4,17 +4,17 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.INetworkManager;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntitySmoker extends TileEntity implements IInventory
+public class TileEntitySmoker extends TileEntity
 {
-	private ItemStack[] inventory;
 	public static int Smokepower;
            
 	public TileEntitySmoker()
 	{
-		inventory = new ItemStack[0];
 		if(Smokepower > 15)
 		{
 			Smokepower = 15;
@@ -29,46 +29,10 @@ public class TileEntitySmoker extends TileEntity implements IInventory
 	{
 		return Smokepower;
 	}
-           
-	@Override
-	public String getInvName()
-	{
-		return "TileEntitySmoker";
-	}
-           
-	@Override
-	public int getSizeInventory()
-	{
-		return inventory.length;
-	}
-           
-	@Override
-	public ItemStack getStackInSlot(int slotIndex)
-	{
-		return inventory[slotIndex];
-	}
-           
-	@Override
-	public int getInventoryStackLimit()
-	{
-		return 64;
-	}
-           
-	@Override
+
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
 		return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) == this && player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
-	}
-           
-	@Override
-	public void setInventorySlotContents(int slot, ItemStack stack)
-	{
-		inventory[slot] = stack;
-                   
-		if(stack != null && stack.stackSize > getInventoryStackLimit())
-		{
-			stack.stackSize = getInventoryStackLimit();
-		}
 	}
 
 	@Override
@@ -84,49 +48,19 @@ public class TileEntitySmoker extends TileEntity implements IInventory
 		super.writeToNBT(tagCompound);
 		tagCompound.setInteger("Smokepower", Smokepower);
 	}
+
+	@Override
+	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
+	{
+		NBTTagCompound tag = pkt.customParam1;
+		this.readFromNBT(tag);
+	}
 	
 	@Override
-	public ItemStack decrStackSize(int slotIndex, int amount)
+	public Packet getDescriptionPacket()
 	{
-		ItemStack stack = getStackInSlot(slotIndex);
-		if(stack != null)
-		{
-			if(stack.stackSize <= amount)
-			{
-				setInventorySlotContents(slotIndex, null);
-			}
-			else
-			{
-				stack = stack.splitStack(amount);
-				if(stack.stackSize == 0)
-				{
-					setInventorySlotContents(slotIndex, null);
-				}
-			}
-		}
-		
-		return stack;
-	}
-
-	@Override
-	public ItemStack getStackInSlotOnClosing(int slotIndex)
-	{
-		ItemStack stack = getStackInSlot(slotIndex);
-		if(stack != null)
-		{
-			setInventorySlotContents(slotIndex, null);
-		}
-
-		return stack;
-	}
-
-	@Override
-	public void openChest() 
-	{
-	}
-
-	@Override
-	public void closeChest()
-	{
+		NBTTagCompound tag = new NBTTagCompound();
+		this.writeToNBT(tag);
+		return new Packet132TileEntityData(xCoord, yCoord, zCoord, 0, tag);
 	}
 }

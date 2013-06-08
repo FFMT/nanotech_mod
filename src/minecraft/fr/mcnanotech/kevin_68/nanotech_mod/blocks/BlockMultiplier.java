@@ -6,7 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntity_block_multiplier;
+import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntityMultiplier;
 
 public class BlockMultiplier extends BlockContainer
 { 		
@@ -47,6 +47,6 @@ public class BlockMultiplier extends BlockContainer
 	@Override
 	public TileEntity createNewTileEntity(World world)
 	{
-		return new TileEntity_block_multiplier();
+		return new TileEntityMultiplier();
 	}
 }
