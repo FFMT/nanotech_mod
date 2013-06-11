@@ -28,7 +28,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.others.Entity_thedeathball;
+import fr.mcnanotech.kevin_68.nanotech_mod.entity.others.EntityTheDeathBall;
 import fr.mcnanotech.kevin_68.nanotech_mod.items.NanotechItem;
 
 public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedAttackMob
@@ -509,7 +509,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
         double var15 = par2 - var9;
         double var17 = par4 - var11;
         double var19 = par6 - var13;
-        Entity_thedeathball var21 = new Entity_thedeathball(this.worldObj, this, var15, var17, var19);
+        EntityTheDeathBall var21 = new EntityTheDeathBall(this.worldObj, this, var15, var17, var19);
 
         if (par8)
         {

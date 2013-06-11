@@ -7,9 +7,8 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import cpw.mods.fml.common.IWorldGenerator;
 import fr.mcnanotech.kevin_68.nanotech_mod.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
 
-public class World_generation implements IWorldGenerator 
+public class WorldGeneration implements IWorldGenerator 
 {
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
@@ -46,10 +45,10 @@ public class World_generation implements IWorldGenerator
 		int Zcoord5 = blockZ + random.nextInt(16);
 		(new WorldGenMinable(NanotechBlock.BlockFakeOre.blockID, 1, 4)).generate(world, random, Xcoord5, Ycoord5, Zcoord5);
 		
-		int Xcoord6 = blockX + random.nextInt(256);
-		int Ycoord6 = random.nextInt(100);
-		int Zcoord6 = blockZ + random.nextInt(256);
-		(new World_gennanotree(true)).generate(world, random, Xcoord1, Ycoord1, Zcoord1);
+		int Xcoord6 = blockX + random.nextInt(64);
+		int Ycoord6 = random.nextInt(150);
+		int Zcoord6 = blockZ + random.nextInt(64);
+		(new WorldGenNanoTree(true)).generate(world, random, Xcoord6, Ycoord6, Zcoord6);
 		
 		int Xcoord7 = blockX + random.nextInt(1024);
 		int Ycoord7 = random.nextInt(100);
@@ -60,7 +59,7 @@ public class World_generation implements IWorldGenerator
 		int Ycoord8 = random.nextInt(100);
 		int Zcoord8 = blockZ + random.nextInt(512);
 		(new World_model3()).generate(world, random, Xcoord8, Ycoord8, Zcoord8);
-		/**
+		/*
 		int Xcoord9 = blockX + random.nextInt(512);
 		int Ycoord9 = random.nextInt(100);
 		int Zcoord9 = blockZ + random.nextInt(512);
@@ -75,7 +74,7 @@ public class World_generation implements IWorldGenerator
 		int Ycoord11 = random.nextInt(100);
 		int Zcoord11 = blockZ + random.nextInt(512);
 		(new World_model6()).generate(world, random, Xcoord11, Ycoord11, Zcoord11);
-		**/
+		*/
 		int Xcoord12 = blockX + random.nextInt(512);
 		int Ycoord12 = random.nextInt(100);
 		int Zcoord12 = blockZ + random.nextInt(512);

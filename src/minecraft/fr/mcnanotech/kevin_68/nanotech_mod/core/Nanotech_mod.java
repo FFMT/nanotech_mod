@@ -41,7 +41,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilDiskInfo;
 import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilGuiHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.world.NanotechBiome;
 import fr.mcnanotech.kevin_68.nanotech_mod.world.NanotechWorldProvider;
-import fr.mcnanotech.kevin_68.nanotech_mod.world.World_generation;
+import fr.mcnanotech.kevin_68.nanotech_mod.world.WorldGeneration;
 
 @Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "2.0.2")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
@@ -174,7 +174,7 @@ public class Nanotech_mod
 		config.load();
 		BlockPortalID = config.getBlock("Portal", 1000).getInt();
 		BlockPortalframeID = config.getBlock("Portal frame", 1001).getInt();
-		BlockGrassID = config.getBlock("Grass", 250).getInt();
+		BlockGrassID = config.get("block","Grass", 250).getInt();
         Property BlockGrass = config.get("block", "Grass", "Grass");
         BlockGrass.comment = "Grass is used in terrain gen, ID must be less than 256";
 		BlockFakeOreID = config.getBlock("Fake diamond", 1002).getInt();
@@ -195,27 +195,27 @@ public class Nanotech_mod
 		BlockSodiumID = config.getBlock("Sodium", 1023).getInt();
 		BlockMossystoneID = config.getBlock("Mossy stone", 1024).getInt();
 
-		Item_NanotechID = config.get(CATEGORY_ItemsID, "Main Nanotech ID", 5000).getInt();
-		Item_superbottleofxpID = config.get(CATEGORY_ItemsID, "Super Bottle of xp", 5005).getInt();
-		Item_diamondbowID = config.get(CATEGORY_ItemsID, "Diamond bow", 5006).getInt();
-		Item_emeraldbowID = config.get(CATEGORY_ItemsID, "Emerald bow", 5007).getInt();
-		Item_nanomitebowID = config.get(CATEGORY_ItemsID, "Nanomite bow", 5008).getInt();
-		Item_nanomiteaxeID = config.get(CATEGORY_ItemsID, "Nanomite Axe", 5019).getInt();
-		Item_nanomitepickaxeID = config.get(CATEGORY_ItemsID, "Nanomite Pickaxe", 5020).getInt();
-		Item_nanomiteshovelID = config.get(CATEGORY_ItemsID, "Nanomite Shovel", 5021).getInt();
-		Item_nanomitehoeID = config.get(CATEGORY_ItemsID, "Nanomite Hoe", 5022).getInt();
-		Item_nanomiteswordID = config.get(CATEGORY_ItemsID, "Nanomite Sword", 5023).getInt();
-		Item_nanomitehelmetID = config.get(CATEGORY_ItemsID, "Nanomite Helmet", 5024).getInt();
-		Item_nanomitechestplateID = config.get(CATEGORY_ItemsID, "Nanomite Chestplate", 5025).getInt();
-		Item_nanomitelegginsID = config.get(CATEGORY_ItemsID, "Nanomite Leggins", 5026).getInt();
-		Item_nanomitebootsID = config.get(CATEGORY_ItemsID, "Nanomite Boots", 5027).getInt();
-		Item_mysterioushelmetID = config.get(CATEGORY_ItemsID, "Mysterious Helmet", 5028).getInt();
-		Item_mysteriouschestplateID = config.get(CATEGORY_ItemsID, "Mysterious Chestplate", 5029).getInt();
-		Item_mysteriouslegginsID = config.get(CATEGORY_ItemsID, "Mysterious Leggins", 5030).getInt();
-		Item_mysteriousbootsID = config.get(CATEGORY_ItemsID, "Mysterious Boots", 5031).getInt();
+		Item_NanotechID = config.getItem("Main Nanotech ID", 5000).getInt();
+		Item_superbottleofxpID = config.getItem("Super Bottle of xp", 5005).getInt();
+		Item_diamondbowID = config.getItem("Diamond bow", 5006).getInt();
+		Item_emeraldbowID = config.getItem("Emerald bow", 5007).getInt();
+		Item_nanomitebowID = config.getItem("Nanomite bow", 5008).getInt();
+		Item_nanomiteaxeID = config.getItem("Nanomite Axe", 5019).getInt();
+		Item_nanomitepickaxeID = config.getItem("Nanomite Pickaxe", 5020).getInt();
+		Item_nanomiteshovelID = config.getItem("Nanomite Shovel", 5021).getInt();
+		Item_nanomitehoeID = config.getItem("Nanomite Hoe", 5022).getInt();
+		Item_nanomiteswordID = config.getItem("Nanomite Sword", 5023).getInt();
+		Item_nanomitehelmetID = config.getItem("Nanomite Helmet", 5024).getInt();
+		Item_nanomitechestplateID = config.getItem("Nanomite Chestplate", 5025).getInt();
+		Item_nanomitelegginsID = config.getItem("Nanomite Leggins", 5026).getInt();
+		Item_nanomitebootsID = config.getItem("Nanomite Boots", 5027).getInt();
+		Item_mysterioushelmetID = config.getItem("Mysterious Helmet", 5028).getInt();
+		Item_mysteriouschestplateID = config.getItem("Mysterious Chestplate", 5029).getInt();
+		Item_mysteriouslegginsID = config.getItem("Mysterious Leggins", 5030).getInt();
+		Item_mysteriousbootsID = config.getItem("Mysterious Boots", 5031).getInt();
 		Item_nanodiscID = config.get(CATEGORY_ItemsID,"Nanodisk (warning he use 18 ID)", 5100).getInt();
-		Item_ediblefleshID = config.get(CATEGORY_ItemsID, "Edible Flesh", 5032).getInt();
-		Item_rottenchunkID = config.get(CATEGORY_ItemsID, "Chunk of rottenflesh", 5033).getInt();
+		Item_ediblefleshID = config.getItem("Edible Flesh", 5032).getInt();
+		Item_rottenchunkID = config.getItem("Chunk of rottenflesh", 5033).getInt();
 		
 		Config_hardrecipe = config.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
 		
@@ -275,7 +275,7 @@ public class Nanotech_mod
 		DimensionManager.registerProviderType(dimension, NanotechWorldProvider.class, false);
 		DimensionManager.registerDimension(dimension, dimension);
 		
-		GameRegistry.registerWorldGenerator(new World_generation());
+		GameRegistry.registerWorldGenerator(new WorldGeneration());
 		
 		this.guiAndTileEntity();
 		this.creativeTab();

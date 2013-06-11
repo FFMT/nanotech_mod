@@ -6,19 +6,19 @@ import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-public class Entity_superbottleofxp extends EntityThrowable
+public class EntitySuperBottleOfXp extends EntityThrowable
 {
-    public Entity_superbottleofxp(World par1World)
+    public EntitySuperBottleOfXp(World world)
     {
-        super(par1World);
+        super(world);
     }
 
-    public Entity_superbottleofxp(World par1World, EntityLiving par2EntityLiving)
+    public EntitySuperBottleOfXp(World par1World, EntityLiving par2EntityLiving)
     {
         super(par1World, par2EntityLiving);
     }
 
-    public Entity_superbottleofxp(World par1World, double par2, double par4, double par6)
+    public EntitySuperBottleOfXp(World par1World, double par2, double par4, double par6)
     {
         super(par1World, par2, par4, par6);
     }

@@ -1,8 +1,5 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.world;
 
-import java.util.List;
-import java.util.Random;
-
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.CAVE;
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.MINESHAFT;
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.RAVINE;
@@ -13,6 +10,10 @@ import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.Ev
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.ICE;
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE;
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAVA;
+
+import java.util.List;
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
@@ -553,7 +554,8 @@ public class NanotechChunkProvider implements IChunkProvider
         int var13;
         int var14;
 
-        if (TerrainGen.populate(par1IChunkProvider, worldObj, rand, par2, par3, var11, LAKE) && !var11 && this.rand.nextInt(4) == 0)
+        if (TerrainGen.populate(par1IChunkProvider, worldObj, rand, par2, par3, var11, LAKE) && 
+                !var11 && this.rand.nextInt(4) == 0)
         {
             var12 = var4 + this.rand.nextInt(16) + 8;
             var13 = this.rand.nextInt(128);
@@ -561,7 +563,8 @@ public class NanotechChunkProvider implements IChunkProvider
             (new WorldGenLakes(Block.waterStill.blockID)).generate(this.worldObj, this.rand, var12, var13, var14);
         }
 
-        if (TerrainGen.populate(par1IChunkProvider, worldObj, rand, par2, par3, var11, LAVA) && !var11 && this.rand.nextInt(8) == 0)
+        if (TerrainGen.populate(par1IChunkProvider, worldObj, rand, par2, par3, var11, LAVA) &&
+                !var11 && this.rand.nextInt(8) == 0)
         {
             var12 = var4 + this.rand.nextInt(16) + 8;
             var13 = this.rand.nextInt(this.rand.nextInt(120) + 8);
@@ -579,6 +582,10 @@ public class NanotechChunkProvider implements IChunkProvider
             var13 = var4 + this.rand.nextInt(16) + 8;
             var14 = this.rand.nextInt(128);
             int var15 = var5 + this.rand.nextInt(16) + 8;
+
+            if ((new WorldGenDungeons()).generate(this.worldObj, this.rand, var13, var14, var15))
+            {
+            }
         }
 
         var6.decorate(this.worldObj, this.rand, var4, var5);
@@ -672,6 +679,7 @@ public class NanotechChunkProvider implements IChunkProvider
         {
             this.mineshaftGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
             this.villageGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
+            this.strongholdGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
             this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
         }
     }

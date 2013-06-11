@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.others.Entity_superbottleofxp;
+import fr.mcnanotech.kevin_68.nanotech_mod.entity.others.EntitySuperBottleOfXp;
 
 public class ItemSuperbottleofxp extends Item
 {
@@ -41,7 +41,7 @@ public class ItemSuperbottleofxp extends Item
 
         	if (!par2World.isRemote)
         	{
-        		par2World.spawnEntityInWorld(new Entity_superbottleofxp(par2World, par3EntityPlayer));
+        		par2World.spawnEntityInWorld(new EntitySuperBottleOfXp(par2World, par3EntityPlayer));
         	}
     	}
         return par1ItemStack;

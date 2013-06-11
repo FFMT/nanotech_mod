@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.world.World_gennanotree;
+import fr.mcnanotech.kevin_68.nanotech_mod.world.WorldGenNanoTree;
 
 public class BlockNanosaplings extends BlockSapling
 {
@@ -29,10 +29,10 @@ public class BlockNanosaplings extends BlockSapling
              int l = world.getBlockMetadata(i, j, k) & 3;
              world.setBlock(i, j, k, 0);
              Object obj = null;
-             obj = new World_gennanotree(false);
+             obj = new WorldGenNanoTree(false);
              if(!((WorldGenerator) (obj)).generate(world, random, i, j, k))
              {
-                     world.setBlockAndMetadata(i, j, k, blockID, l);
+            	 world.setBlockAndMetadata(i, j, k, blockID, l);
              }
      }
      
