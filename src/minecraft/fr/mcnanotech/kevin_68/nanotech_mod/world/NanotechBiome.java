@@ -13,17 +13,15 @@ import net.minecraft.world.biome.BiomeEndDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.SpawnListEntry;
 
-public class World_nanotechbiome extends BiomeGenBase
+public class NanotechBiome extends BiomeGenBase
 {
-
-	public World_nanotechbiome(int par1) 
+	public NanotechBiome(int id) 
 	{
-		super(par1);
+		super(id);
         this.spawnableMonsterList.clear();
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();
         this.field_82914_M.clear();
-       // this.spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 10, 4, 4));
         this.topBlock = (byte)NanotechBlock.BlockGrass.blockID;
         this.fillerBlock = (byte)Block.dirt.blockID;
         this.theBiomeDecorator.treesPerChunk = 0;

@@ -7,7 +7,7 @@ import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
 
-public class World_worldprovider extends WorldProvider
+public class NanotechWorldProvider extends WorldProvider
 {
 	public void registerWorldChunkManager()
 	{
@@ -27,12 +27,12 @@ public class World_worldprovider extends WorldProvider
 	
 	public String getSaveFolder()
     {
-        return "Nanotech dimension";
+        return "DIMNanotech";
     }
 
 	@Override
 	public IChunkProvider createChunkGenerator()
 	{
-		return new World_chunkprovider(worldObj, worldObj.getSeed(), true);
+		return new NanotechChunkProvider(worldObj, worldObj.getSeed(), true);
 	}
 }

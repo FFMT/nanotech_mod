@@ -39,9 +39,9 @@ import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilCreativetabBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilCreativetabItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilDiskInfo;
 import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilGuiHandler;
+import fr.mcnanotech.kevin_68.nanotech_mod.world.NanotechBiome;
+import fr.mcnanotech.kevin_68.nanotech_mod.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.world.World_generation;
-import fr.mcnanotech.kevin_68.nanotech_mod.world.World_nanotechbiome;
-import fr.mcnanotech.kevin_68.nanotech_mod.world.World_worldprovider;
 
 @Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "2.0.2")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
@@ -258,6 +258,10 @@ public class Nanotech_mod
 	    Flyingcreepermax = config.get(CATEGORY_Mobspawn, "Flyingcreepermax", 2).getInt();
 	    
 		config.save();
+		
+		NanotechBlock.initBlock();
+		NanotechBlock.blockRegistry();
+		NanotechItem.initItem();
 	}
 	
 	// Initialization
@@ -265,10 +269,14 @@ public class Nanotech_mod
 	public void InitNanotech_mod(FMLInitializationEvent event)
 	{
 		proxy.registerRenderThings();
-		NanotechBlock.initBlock();
-		NanotechBlock.blockRegistry();
-		NanotechItem.initItem();
-		this.dimensionAndBiomeAndGeneration();
+		
+		Nanotechbiome = new NanotechBiome(100).setBiomeName("Nanotechbiome").setTemperatureRainfall(1.2F, 0.9F);
+		
+		DimensionManager.registerProviderType(dimension, NanotechWorldProvider.class, false);
+		DimensionManager.registerDimension(dimension, dimension);
+		
+		GameRegistry.registerWorldGenerator(new World_generation());
+		
 		this.guiAndTileEntity();
 		this.creativeTab();
 		NanotechMobs.mobs();
@@ -293,19 +301,6 @@ public class Nanotech_mod
 		//Localization
 		LanguageRegistry.instance().loadLocalization("/fr/mcnanotech/kevin_68/nanotech_mod/lang/en_US.lang", "en_US", false);
 		LanguageRegistry.instance().loadLocalization("/fr/mcnanotech/kevin_68/nanotech_mod/lang/fr_FR.lang", "fr_FR", false);
-	}
-	
-	/**
-	 * Dimension and biome registry
-	 */
-	public void dimensionAndBiomeAndGeneration()
-	{
-		DimensionManager.registerProviderType(dimension, World_worldprovider.class, false);
-		DimensionManager.registerDimension(dimension, dimension);
-		
-		Nanotechbiome = new World_nanotechbiome(50).setBiomeName("Nanotechbiome").setTemperatureRainfall(1.2F, 0.9F);
-		
-		GameRegistry.registerWorldGenerator(new World_generation());
 	}
 	
 	/**
