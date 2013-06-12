@@ -25,10 +25,10 @@ public class NanotechBlock
 		BlockSmoker = new BlockSmoker(Nanotech_mod.BlockSmokerID, 8).setHardness(0.5F).setStepSound(Block.soundStoneFootstep).setBlockName("smoker").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockTrashcan = new BlockTrashcan(Nanotech_mod.BlockTrashcanID).setHardness(0.5F).setStepSound(Block.soundStoneFootstep).setBlockName("trashcan").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B); 
 		BlockBarbedwire = new BlockBarbedWire(Nanotech_mod.BlockBarbedwireID, 16).setHardness(3.0F).setResistance(5F).setBlockName("barbedwire").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
-		BlockNanowood = new BlockNanowood(Nanotech_mod.BlockNanowoodID).setHardness(1.0F).setResistance(5F).setBlockName("nanowood").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
-		BlockNanoleaves = new BlockNanoleaves(Nanotech_mod.BlockNanoleavesID, 13).setHardness(0.5F).setResistance(5F).setBlockName("nanoleaves").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
-		BlockNanosaplings = new BlockNanosaplings(Nanotech_mod.BlockNanosaplingsID, 12).setHardness(0.0F).setResistance(5F).setBlockName("nanosaplings").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
-		BlockNanoplanks = new BlockNanoplanks(Nanotech_mod.BlockNanoplanksID, 31).setHardness(1.0F).setResistance(5F).setBlockName("nanoplanks").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
+		BlockNanowood = new BlockNanowood(Nanotech_mod.BlockNanowoodID).setHardness(1.0F).setResistance(5F).setStepSound(Block.soundWoodFootstep).setBlockName("nanowood").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
+		BlockNanoleaves = new BlockNanoleaves(Nanotech_mod.BlockNanoleavesID, 13).setHardness(0.5F).setResistance(5F).setStepSound(Block.soundGrassFootstep).setBlockName("nanoleaves").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
+		BlockNanosaplings = new BlockNanosaplings(Nanotech_mod.BlockNanosaplingsID, 12).setHardness(0.0F).setResistance(5F).setStepSound(Block.soundGrassFootstep).setBlockName("nanosaplings").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
+		BlockNanoplanks = new BlockNanoplanks(Nanotech_mod.BlockNanoplanksID, 31).setHardness(1.0F).setResistance(5F).setStepSound(Block.soundWoodFootstep).setBlockName("nanoplanks").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockNanoOre = new BlockNanotechOre(Nanotech_mod.BlockNanoOreID, 38).setHardness(1.0F).setResistance(5F).setStepSound(Block.soundStoneFootstep).setBlockName("ore");
 		BlockConfusion = new BlockConfusion(Nanotech_mod.BlockConfusionID, 40).setHardness(5.0F).setStepSound(Block.soundStoneFootstep).setBlockName("confusion").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockFalling = new BlockFalling(Nanotech_mod.BlockFallingID, 1, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setBlockName("falling").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
@@ -58,8 +58,8 @@ public class NanotechBlock
 		GameRegistry.registerBlock(BlockConfusion, "BlockConfusion");
 		GameRegistry.registerBlock(BlockFalling, ItemBlockFalling.class, "BlockFalling");
 		GameRegistry.registerBlock(Blocknotfalling, ItemBlockNotFalling.class, "Blocknotfalling");
-		GameRegistry.registerBlock(BlockSodium, "Block_sodium");
-		GameRegistry.registerBlock(BlockMossystone, "Block_mossystone");
+		GameRegistry.registerBlock(BlockSodium, "BlockSodium");
+		GameRegistry.registerBlock(BlockMossystone, "BlockMossyStone");
 	}
 
 }

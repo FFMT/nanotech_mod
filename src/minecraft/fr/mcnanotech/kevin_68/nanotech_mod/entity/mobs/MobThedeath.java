@@ -90,24 +90,17 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
     protected String getLivingSound()
     {
-        return "monster";
+        return "nanotech.monster";
     }
 
     protected String getHurtSound()
     {
-        return "monsterhurt";
+        return "nanotech.monsterhurt";
     }
 
     protected String getDeathSound()
     {
-        return "monsterdeath";
-    }
-
-    @SideOnly(Side.CLIENT)
-    public String getTexture()
-    {
-        int var1 = this.func_82212_n();
-        return var1 > 0 && (var1 > 80 || var1 / 5 % 2 != 1) ? "/Nanotech_mod/client/textures/mob/thedeath.png" : "/Nanotech_mod/client/textures/mob/thedeath.png";
+        return "nanotech.monsterdeath";
     }
 
     public void onLivingUpdate()

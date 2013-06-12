@@ -40,7 +40,7 @@ public class MobFly extends EntityAmbientCreature
 
     protected String getLivingSound()
     {
-        return "fly";
+        return "nanotech.fly";
     }
 
     public int getMaxHealth()

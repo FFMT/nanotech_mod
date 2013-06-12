@@ -146,14 +146,13 @@ public class Nanotech_mod
 	public static int Flyingcreepermax;
 	
 	// Configuration Category
-	public static final String CATEGORY_ItemsID = "Items ID";
 	public static final String CATEGORY_Other = "Other configs";
 	public static final String CATEGORY_Mobsconfig = "Mobs configs";
 	public static final String CATEGORY_Mobspawn = "Mobs spawn";
 	
 	// Creative tabs
-	public static UtilCreativetabBlock CREATIVE_TAB_B = new UtilCreativetabBlock("Nanotech mod Blocks");
-	public static UtilCreativetabItems CREATIVE_TAB_I = new UtilCreativetabItems("Nanotech mod Items");
+	public static UtilCreativetabBlock CREATIVE_TAB_B = new UtilCreativetabBlock("NanotechModBlocks");
+	public static UtilCreativetabItems CREATIVE_TAB_I = new UtilCreativetabItems("NanotechModItems");
 	
 	//log
 	public static Logger NanoLog;
@@ -213,7 +212,7 @@ public class Nanotech_mod
 		Item_mysteriouschestplateID = config.getItem("Mysterious Chestplate", 5029).getInt();
 		Item_mysteriouslegginsID = config.getItem("Mysterious Leggins", 5030).getInt();
 		Item_mysteriousbootsID = config.getItem("Mysterious Boots", 5031).getInt();
-		Item_nanodiscID = config.get(CATEGORY_ItemsID,"Nanodisk (warning he use 18 ID)", 5100).getInt();
+		Item_nanodiscID = config.getItem("Nanodisk (warning he use 18 ID)", 5100).getInt();
 		Item_ediblefleshID = config.getItem("Edible Flesh", 5032).getInt();
 		Item_rottenchunkID = config.getItem("Chunk of rottenflesh", 5033).getInt();
 		
@@ -278,7 +277,6 @@ public class Nanotech_mod
 		GameRegistry.registerWorldGenerator(new WorldGeneration());
 		
 		this.guiAndTileEntity();
-		this.creativeTab();
 		NanotechMobs.mobs();
 		proxy.registerModRenders();
 		this.forgeDictionary();
@@ -454,7 +452,7 @@ public class Nanotech_mod
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Emeraldbow, 1), "WX ", "WCX", "WX ", 'X', Item.emerald, 'W', Item.silk, 'C', NanotechItem.Diamondbow);
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitebow, 1), " XW", "XCW", " XW", 'X', new ItemStack(NanotechItem.ItemBase, 1, 14), 'W', Item.silk, 'C', NanotechItem.Emeraldbow);
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitebow, 1), "WX ", "WCX", "WX ", 'X', new ItemStack(NanotechItem.ItemBase, 1, 14), 'W', Item.silk, 'C', NanotechItem.Emeraldbow);
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockConfusion, 1), "XXX", "WCV", "XXX", 'X', Block.stone, 'W', Item.spiderEye, 'C', Item.rottenFlesh, 'V', Item.bone);
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockConfusion, 1), "WRV", "XYX", "WCV", 'X', Block.stone, 'W', Item.fermentedSpiderEye, 'R', Item.rottenFlesh, 'V', Item.bone, 'Y', Block.slowSand, "C", Block.cactus);
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockFalling, 4, 0), "XZX", "ZXZ", "XZX", 'X', Block.stone, 'Z', Block.gravel);
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockFalling, 4, 0), "XZX", "ZXZ", "XZX", 'X', Block.stone, 'Z', Block.sand);
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockFalling, 4, 1), "XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 0), 'Z', Block.gravel);
@@ -479,12 +477,12 @@ public class Nanotech_mod
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.Blocknotfalling, 4, 1), "XZX", "ZXZ", "XZX", 'X', Block.sand, 'Z', Block.cobblestoneMossy);
 
 		
-		GameRegistry.addShapelessRecipe(new ItemStack(NanotechBlock.BlockNanoplanks, 4), new Object[] {NanotechBlock.BlockNanowood});
-		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.Rottenchunk), new Object[] {Item.rottenFlesh, Item.rottenFlesh, Item.rottenFlesh, Item.rottenFlesh});
-		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.ItemBase, 1, 14), new Object[] {new ItemStack(NanotechItem.ItemBase, 1, 12), new ItemStack(NanotechItem.ItemBase, 1, 1)});
-		GameRegistry.addShapelessRecipe(new ItemStack(NanotechBlock.BlockMossystone, 1), new Object[] {Block.cobblestoneMossy, Block.stone});
-		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.ItemBase, 1, 15), new Object[] {Block.cobblestone});
-		GameRegistry.addShapelessRecipe(new ItemStack(Block.cobblestone), new Object [] {new ItemStack(NanotechItem.ItemBase, 1, 15)});
+		GameRegistry.addShapelessRecipe(new ItemStack(NanotechBlock.BlockNanoplanks, 4), new Object[]{NanotechBlock.BlockNanowood});
+		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.Rottenchunk), new Object[]{Item.rottenFlesh, Item.rottenFlesh, Item.rottenFlesh, Item.rottenFlesh});
+		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.ItemBase, 1, 14), new Object[]{new ItemStack(NanotechItem.ItemBase, 1, 12), new ItemStack(NanotechItem.ItemBase, 1, 1)});
+		GameRegistry.addShapelessRecipe(new ItemStack(NanotechBlock.BlockMossystone, 1), new Object[]{Block.cobblestoneMossy, Block.stone});
+		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.ItemBase, 1, 15), new Object[]{Block.cobblestone});
+		GameRegistry.addShapelessRecipe(new ItemStack(Block.cobblestone), new Object[]{new ItemStack(NanotechItem.ItemBase, 1, 15)});
 		
 		GameRegistry.addSmelting(NanotechBlock.BlockNanowood.blockID, new ItemStack(Item.coal, 1, 1), 0.0F);
 		FurnaceRecipes.smelting().addSmelting(NanotechBlock.BlockNanoOre.blockID, 0, new ItemStack(NanotechItem.ItemBase, 1, 0), 0.1F);
@@ -504,16 +502,6 @@ public class Nanotech_mod
 		GameRegistry.registerTileEntity(TileEntityJumper.class, "TileEntityJumper");
 		GameRegistry.registerTileEntity(TileEntitySmoker.class, "TileEntitySmoker");
 		GameRegistry.registerTileEntity(TileEntityMultiplier.class, "TileEntityMultiplier");
-	}
-	
-	/**
-	 * CreativeTabs (Names)
-	 */
-	public void creativeTab()
-	{
-		LanguageRegistry.instance().addStringLocalization("itemGroup.Nanotech mod Blocks", "en_US", "Nanotech mod Blocks");
-		LanguageRegistry.instance().addStringLocalization("itemGroup.Nanotech mod Items", "en_US", "Nanotech mod Items");
-		
 	}
 
 	// Forge dictionary

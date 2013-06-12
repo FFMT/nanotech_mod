@@ -21,11 +21,11 @@ public class EventSound
     {
         try
         {
-            event.manager.soundPoolSounds.addSound("monster1.ogg", Nanotech_mod.class.getResource("/Nanotech_mod/client/Sounds/monster1.ogg"));
-            event.manager.soundPoolSounds.addSound("monster3.ogg", Nanotech_mod.class.getResource("/Nanotech_mod/client/Sounds/monster3.ogg"));
-            event.manager.soundPoolSounds.addSound("monsterhurt.ogg", Nanotech_mod.class.getResource("/Nanotech_mod/client/Sounds/monsterhurt.ogg"));
-            event.manager.soundPoolSounds.addSound("monsterdead.ogg", Nanotech_mod.class.getResource("/Nanotech_mod/client/Sounds/monsterdead.ogg"));
-            event.manager.soundPoolSounds.addSound("fly.ogg", Nanotech_mod.class.getResource("/Nanotech_mod/client/Sounds/fly.ogg"));
+            event.manager.soundPoolSounds.addSound("nanotech/monster1.ogg", Nanotech_mod.class.getResource("/fr/mcnanotech/kevin_68/nanotech_mod/client/Sounds/monster1.ogg"));
+            event.manager.soundPoolSounds.addSound("nanotech/monster3.ogg", Nanotech_mod.class.getResource("/fr/mcnanotech/kevin_68/nanotech_mod/client/Sounds/monster3.ogg"));
+            event.manager.soundPoolSounds.addSound("nanotech/monsterhurt.ogg", Nanotech_mod.class.getResource("/fr/mcnanotech/kevin_68/nanotech_mod/client/Sounds/monsterhurt.ogg"));
+            event.manager.soundPoolSounds.addSound("nanotech/monsterdead.ogg", Nanotech_mod.class.getResource("/fr/mcnanotech/kevin_68/nanotech_mod/client/Sounds/monsterdead.ogg"));
+            event.manager.soundPoolSounds.addSound("nanotech/fly.ogg", Nanotech_mod.class.getResource("/fr/mcnanotech/kevin_68/nanotech_mod/client/Sounds/fly.ogg"));
             
             File fich = new File(Minecraft.getMinecraftDir() + "/resources/mod/streaming/nanodisk.ogg");
             File fich2 = new File(Minecraft.getMinecraftDir() + "/resources/mod/streaming/YourSound.ogg");
@@ -33,11 +33,11 @@ public class EventSound
             
             if (!fich.exists())
             {
-            	getFile("https://dl.dropbox.com/u/76684272/Nanotech_mod/streaming/nanodisk.ogg", "nanodisk.ogg");
+            	getFile("http://dl.mcnanotech.fr/kevin_68/Nanotech_mod/Disk/nanodisk.ogg", "nanodisk.ogg");
             }
             if (!fich2.exists() && !txt2.exists())
             {
-            	getFile("https://dl.dropbox.com/u/76684272/Nanotech_mod/streaming/YourSound.txt", "YourSound.txt");
+            	getFile("http://dl.mcnanotech.fr/kevin_68/Nanotech_mod/Disk/YourSound.txt", "YourSound.txt");
             }
             
         }

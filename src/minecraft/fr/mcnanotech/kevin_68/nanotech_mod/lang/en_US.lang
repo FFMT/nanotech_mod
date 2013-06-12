@@ -16,8 +16,8 @@ tile.trashcan.name = Trash can
 tile.barbedwire.name = Barbed wire
 tile.nanowood.name = Nano wood
 tile.nanoleaves.name = Nano leaves
-tile.nanoplanks.name = Nano saplings
-tile.nanosaplings.name = Nano plank
+tile.nanoplanks.name = Nano planks
+tile.nanosaplings.name = Nano saplings
 tile.ore.silicon.name = Silicon ore
 tile.ore.decrease.name = Stone of decrease
 tile.confusion.name = Block of confusion
@@ -74,3 +74,6 @@ item.RottenChunk.name = Chunk of Rotten flesh
 info.void.1 = Item for emply barrel
 info.void.2 = 100 % cobblestone
 info.void.3 = 100 % recyclable
+
+itemGroup.NanotechModBlocks = Nanotech mod Blocks
+itemGroup.NanotechModItems = Nanotech mod Items
