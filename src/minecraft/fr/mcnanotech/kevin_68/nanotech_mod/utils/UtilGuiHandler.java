@@ -20,40 +20,40 @@ public class UtilGuiHandler implements IGuiHandler
 	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
 	{
 		TileEntity tileentity = world.getBlockTileEntity(x, y, z);
-		if(tileentity instanceof TileEntityJumper)
+		if (tileentity instanceof TileEntityJumper)
 		{
 			return new ContainerJumper((TileEntityJumper) tileentity, player.inventory, world);
 		}
-		if(tileentity instanceof TileEntitySmoker)
+		if (tileentity instanceof TileEntitySmoker)
 		{
 			return new ContainerSmoker((TileEntitySmoker) tileentity, player.inventory, world);
 		}
-		if(tileentity instanceof TileEntityMultiplier)
+		if (tileentity instanceof TileEntityMultiplier)
 		{
 			return new ContainerMultiplier((TileEntityMultiplier) tileentity, player.inventory, world);
 		}
-                   
+
 		return null;
-		}
-           
+	}
+
 	@Override
 	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
 	{
 		TileEntity tileentity = world.getBlockTileEntity(x, y, z);
-                   
-		if(tileentity instanceof TileEntityJumper)
+
+		if (tileentity instanceof TileEntityJumper)
 		{
 			return new GuiJumper(player.inventory, (TileEntityJumper) tileentity, world);
 		}
-		if(tileentity instanceof TileEntitySmoker)
+		if (tileentity instanceof TileEntitySmoker)
 		{
 			return new GuiSmoker(player.inventory, (TileEntitySmoker) tileentity, world);
 		}
-		if(tileentity instanceof TileEntityMultiplier)
+		if (tileentity instanceof TileEntityMultiplier)
 		{
 			return new GuiMultiplier(player.inventory, (TileEntityMultiplier) tileentity, world);
 		}
-           
+
 		return null;
 	}
 }

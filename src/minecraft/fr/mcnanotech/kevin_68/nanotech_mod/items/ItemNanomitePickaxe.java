@@ -15,9 +15,9 @@ public class ItemNanomitePickaxe extends ItemPickaxe
 	{
 		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/items.png";
 	}
-	
-    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
-    {
-        return true;
-    }
+
+	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+	{
+		return true;
+	}
 }

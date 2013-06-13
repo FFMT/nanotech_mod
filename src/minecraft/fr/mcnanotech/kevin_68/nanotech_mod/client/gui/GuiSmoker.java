@@ -14,13 +14,13 @@ import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntitySmoker;
 public class GuiSmoker extends GuiContainer
 {
 	TileEntitySmoker tilesmoker;
-	
+
 	public GuiSmoker(InventoryPlayer playerinventory, TileEntitySmoker tileentity, World world)
 	{
 		super(new ContainerSmoker(tileentity, playerinventory, world));
 		tilesmoker = tileentity;
 	}
-            
+
 	@Override
 	public void initGui()
 	{
@@ -31,7 +31,7 @@ public class GuiSmoker extends GuiContainer
 		controlList.add(new GuiButton(2, x + 75, y + 45, 20, 20, "-"));
 	}
 
-	protected void actionPerformed(GuiButton guibutton) 
+	protected void actionPerformed(GuiButton guibutton)
 	{
 		if (guibutton.id == 1)
 		{
@@ -42,7 +42,7 @@ public class GuiSmoker extends GuiContainer
 			tilesmoker.Smokepower -= 1;
 		}
 	}
-	
+
 	@Override
 	protected void drawGuiContainerForegroundLayer(int i, int j)
 	{
@@ -52,7 +52,7 @@ public class GuiSmoker extends GuiContainer
 		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 6, ySize - 96 + 2, 4210752);
 		fontRenderer.drawString(String.valueOf(tilesmoker.getSmokePower()), x, y, 4210752);
 	}
-           
+
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
@@ -61,7 +61,7 @@ public class GuiSmoker extends GuiContainer
 		this.mc.renderEngine.bindTexture(picture);
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-                   
+
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 	}
 }

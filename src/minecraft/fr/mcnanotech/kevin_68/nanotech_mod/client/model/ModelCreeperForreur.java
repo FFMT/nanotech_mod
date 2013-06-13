@@ -5,7 +5,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
-public class ModelCreeperForreur extends ModelBase 
+public class ModelCreeperForreur extends ModelBase
 {
 	ModelRenderer leg23;
 	ModelRenderer leg13;
@@ -28,7 +28,7 @@ public class ModelCreeperForreur extends ModelBase
 	ModelRenderer liaison1;
 	ModelRenderer liaison2;
 
-	public ModelCreeperForreur() 
+	public ModelCreeperForreur()
 	{
 		this(0.0F);
 	}
@@ -160,7 +160,7 @@ public class ModelCreeperForreur extends ModelBase
 		setRotation(liaison2, 0F, 0F, 0F);
 	}
 
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) 
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
 	{
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
@@ -186,7 +186,7 @@ public class ModelCreeperForreur extends ModelBase
 		liaison2.render(f5);
 	}
 
-	private void setRotation(ModelRenderer model, float x, float y, float z) 
+	private void setRotation(ModelRenderer model, float x, float y, float z)
 	{
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;

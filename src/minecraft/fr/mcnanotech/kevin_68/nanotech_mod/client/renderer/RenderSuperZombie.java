@@ -6,10 +6,10 @@ import fr.mcnanotech.kevin_68.nanotech_mod.client.model.ModelSuperZombie;
 
 public class RenderSuperZombie extends RenderLiving
 {
-    private ModelBase SuperzombieModel = new ModelSuperZombie();
+	private ModelBase SuperzombieModel = new ModelSuperZombie();
 
-    public RenderSuperZombie(ModelSuperZombie modelsuperzombie, float f)
-    {
-        super(new ModelSuperZombie(), 0.5F);
-    }
+	public RenderSuperZombie(ModelSuperZombie modelsuperzombie, float f)
+	{
+		super(new ModelSuperZombie(), 0.5F);
+	}
 }

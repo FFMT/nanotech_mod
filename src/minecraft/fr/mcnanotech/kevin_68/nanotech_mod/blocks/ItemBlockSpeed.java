@@ -6,20 +6,20 @@ import net.minecraft.item.ItemStack;
 public class ItemBlockSpeed extends ItemBlock
 {
 
-	public ItemBlockSpeed(int id) 
+	public ItemBlockSpeed(int id)
 	{
 		super(id);
 		setHasSubtypes(true);
 	}
-	
+
 	public int getMetadata(int metadata)
-    {
-        return metadata;
-    }
-	
-	public String getItemNameIS(ItemStack stack) 
 	{
-		if(stack.getItemDamage() < BlockSpeed.type.length)
+		return metadata;
+	}
+
+	public String getItemNameIS(ItemStack stack)
+	{
+		if (stack.getItemDamage() < BlockSpeed.type.length)
 		{
 			return "tile." + BlockSpeed.type[stack.getItemDamage()];
 		}

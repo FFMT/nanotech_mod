@@ -15,7 +15,7 @@ public class EventBonemeal
 		{
 			if (!event.world.isRemote)
 			{
-				((BlockNanosaplings)NanotechBlock.BlockNanosaplings).growTree(event.world, event.X, event.Y, event.Z, event.world.rand);
+				((BlockNanosaplings) NanotechBlock.BlockNanosaplings).growTree(event.world, event.X, event.Y, event.Z, event.world.rand);
 				event.setResult(Result.ALLOW);
 			}
 		}

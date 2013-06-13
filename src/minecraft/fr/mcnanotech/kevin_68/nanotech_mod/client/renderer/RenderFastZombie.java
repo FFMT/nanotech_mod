@@ -8,10 +8,10 @@ import fr.mcnanotech.kevin_68.nanotech_mod.client.model.ModelMobFastZombie;
 
 public class RenderFastZombie extends RenderLiving
 {
-    private ModelBase SuperzombieModel = new ModelMobFastZombie();
+	private ModelBase SuperzombieModel = new ModelMobFastZombie();
 
-    public RenderFastZombie(ModelMobFastZombie modelfastzombie, float f)
-    {
-        super(new ModelMobFastZombie(), 0.5F);
-    }
+	public RenderFastZombie(ModelMobFastZombie modelfastzombie, float f)
+	{
+		super(new ModelMobFastZombie(), 0.5F);
+	}
 }

@@ -5,10 +5,10 @@ import fr.mcnanotech.kevin_68.nanotech_mod.client.model.ModelSuperSkeleton;
 
 public class RenderMobSuperSkeleton extends RenderLiving
 {
-    private ModelSuperSkeleton SuperskeletonModel = new ModelSuperSkeleton();
+	private ModelSuperSkeleton SuperskeletonModel = new ModelSuperSkeleton();
 
-    public RenderMobSuperSkeleton(ModelSuperSkeleton modelsuperskeleton, float f)
-    {
-        super(new ModelSuperSkeleton(), 0.5F);
-    }
+	public RenderMobSuperSkeleton(ModelSuperSkeleton modelsuperskeleton, float f)
+	{
+		super(new ModelSuperSkeleton(), 0.5F);
+	}
 }

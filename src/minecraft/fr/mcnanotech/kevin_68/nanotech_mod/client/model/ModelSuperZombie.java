@@ -5,7 +5,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
-public class ModelSuperZombie extends ModelBase 
+public class ModelSuperZombie extends ModelBase
 {
 	// fields
 	ModelRenderer head;
@@ -86,7 +86,7 @@ public class ModelSuperZombie extends ModelBase
 		leftarm2.render(f5);
 	}
 
-	private void setRotation(ModelRenderer model, float x, float y, float z) 
+	private void setRotation(ModelRenderer model, float x, float y, float z)
 	{
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;

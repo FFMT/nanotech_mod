@@ -6,9 +6,9 @@ import net.minecraft.util.MathHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ModelMobFastZombie extends ModelBiped 
+public class ModelMobFastZombie extends ModelBiped
 {
-	public ModelMobFastZombie() 
+	public ModelMobFastZombie()
 	{
 		this(0.0F, false);
 	}
@@ -29,7 +29,7 @@ public class ModelMobFastZombie extends ModelBiped
 	 * the time(so that arms and legs swing back and forth) and par2 represents
 	 * how "far" arms and legs can swing at most.
 	 */
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) 
+	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
 	{
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
 		float var8 = MathHelper.sin(this.onGround * (float) Math.PI);

@@ -12,19 +12,19 @@ import net.minecraft.tileentity.TileEntity;
 public class TileEntitySmoker extends TileEntity
 {
 	public static int Smokepower;
-           
+
 	public TileEntitySmoker()
 	{
-		if(Smokepower > 15)
+		if (Smokepower > 15)
 		{
 			Smokepower = 15;
 		}
-		if(Smokepower < 0)
+		if (Smokepower < 0)
 		{
 			Smokepower = 0;
 		}
 	}
-	
+
 	public int getSmokePower()
 	{
 		return Smokepower;
@@ -41,7 +41,7 @@ public class TileEntitySmoker extends TileEntity
 		super.readFromNBT(tagCompound);
 		Smokepower = tagCompound.getInteger("power");
 	}
-           
+
 	@Override
 	public void writeToNBT(NBTTagCompound tagCompound)
 	{
@@ -55,7 +55,7 @@ public class TileEntitySmoker extends TileEntity
 		NBTTagCompound tag = pkt.customParam1;
 		this.readFromNBT(tag);
 	}
-	
+
 	@Override
 	public Packet getDescriptionPacket()
 	{

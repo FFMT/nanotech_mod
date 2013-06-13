@@ -11,15 +11,15 @@ public class ItemBlockFakeOre extends ItemBlock
 		super(id);
 		setHasSubtypes(true);
 	}
-	
+
 	public int getMetadata(int metadata)
-    {
-        return metadata;
-    }
-	
-	public String getItemNameIS(ItemStack stack) 
 	{
-		if(stack.getItemDamage() < BlockFakeOre.type.length)
+		return metadata;
+	}
+
+	public String getItemNameIS(ItemStack stack)
+	{
+		if (stack.getItemDamage() < BlockFakeOre.type.length)
 		{
 			return "tile." + BlockFakeOre.type[stack.getItemDamage()];
 		}

@@ -8,10 +8,10 @@ import fr.mcnanotech.kevin_68.nanotech_mod.client.model.ModelTheDeath;
 
 public class RenderTheDeath extends RenderLiving
 {
-    private ModelBase thedeathModel = new ModelTheDeath();
+	private ModelBase thedeathModel = new ModelTheDeath();
 
-    public RenderTheDeath(ModelTheDeath modelTheDeath, float f)
-    {
-        super(new ModelTheDeath(), 0.5F);
-    }
+	public RenderTheDeath(ModelTheDeath modelTheDeath, float f)
+	{
+		super(new ModelTheDeath(), 0.5F);
+	}
 }

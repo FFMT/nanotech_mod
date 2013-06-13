@@ -15,7 +15,7 @@ public class ModelFlyingCreeper extends ModelBase
 	ModelRenderer leg2;
 	ModelRenderer Shape1;
 
-	public ModelFlyingCreeper() 
+	public ModelFlyingCreeper()
 	{
 		textureWidth = 64;
 		textureHeight = 32;
@@ -77,7 +77,7 @@ public class ModelFlyingCreeper extends ModelBase
 		Shape1.render(f5);
 	}
 
-	private void setRotation(ModelRenderer model, float x, float y, float z) 
+	private void setRotation(ModelRenderer model, float x, float y, float z)
 	{
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;

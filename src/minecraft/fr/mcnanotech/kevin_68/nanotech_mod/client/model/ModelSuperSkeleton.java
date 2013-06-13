@@ -95,7 +95,7 @@ public class ModelSuperSkeleton extends ModelBase
 		setRotation(minigun5, 0F, 0F, 0F);
 	}
 
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) 
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
 	{
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
@@ -112,14 +112,14 @@ public class ModelSuperSkeleton extends ModelBase
 		minigun5.render(f5);
 	}
 
-	private void setRotation(ModelRenderer model, float x, float y, float z) 
+	private void setRotation(ModelRenderer model, float x, float y, float z)
 	{
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
 
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) 
+	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
 	{
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
 		this.head.rotateAngleY = par4 / (180F / (float) Math.PI);
@@ -131,7 +131,7 @@ public class ModelSuperSkeleton extends ModelBase
 		this.rightleg.rotateAngleY = 0.0F;
 		this.leftleg.rotateAngleY = 0.0F;
 
-		if (this.isRiding) 
+		if (this.isRiding)
 		{
 			this.rightarm.rotateAngleX += -((float) Math.PI / 5F);
 			this.leftarm.rotateAngleX += -((float) Math.PI / 5F);

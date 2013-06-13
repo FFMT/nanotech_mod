@@ -15,7 +15,7 @@ public class NanotechWorldProvider extends WorldProvider
 		this.dimensionId = Nanotech_mod.dimension;
 	}
 
-	public String getDimensionName() 
+	public String getDimensionName()
 	{
 		return "Nanotech";
 	}
@@ -24,11 +24,11 @@ public class NanotechWorldProvider extends WorldProvider
 	{
 		return true;
 	}
-	
+
 	public String getSaveFolder()
-    {
-        return "DIMNanotech";
-    }
+	{
+		return "DIMNanotech";
+	}
 
 	@Override
 	public IChunkProvider createChunkGenerator()

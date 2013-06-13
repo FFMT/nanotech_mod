@@ -11,15 +11,15 @@ public class ItemBlockNotFalling extends ItemBlock
 		super(par1);
 		setHasSubtypes(true);
 	}
-	
+
 	public int getMetadata(int metadata)
-    {
-        return metadata;
-    }
-	
-	public String getItemNameIS(ItemStack stack) 
 	{
-		if(stack.getItemDamage() < BlockNotFalling.type.length)
+		return metadata;
+	}
+
+	public String getItemNameIS(ItemStack stack)
+	{
+		if (stack.getItemDamage() < BlockNotFalling.type.length)
 		{
 			return getItemName() + BlockNotFalling.type[stack.getItemDamage()];
 		}

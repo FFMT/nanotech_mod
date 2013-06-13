@@ -11,38 +11,38 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockNotFalling extends Block
 {
-	public static String[] type = new String[] {"gravel", "sand"};
-    
+	public static String[] type = new String[] { "gravel", "sand" };
+
 	public BlockNotFalling(int id, int texture, Material material)
 	{
 		super(id, texture, material);
 		setRequiresSelfNotify();
 	}
-	
-    public int damageDropped(int metadata)
-    {
-        return metadata;
-    }
-	
-    @SideOnly(Side.CLIENT)
-    public void getSubBlocks(int blockid, CreativeTabs creativeTabs, List list)
-    {
-    	for(int metadatanumber = 0; metadatanumber < type.length; metadatanumber ++)
-    	{
-            list.add(new ItemStack(blockid, 1, metadatanumber));
-    	}
-    }
-    
-	public int getBlockTextureFromSideAndMetadata(int side, int damage) 
+
+	public int damageDropped(int metadata)
 	{
-    	switch(damage)
-    	{
-    	case 0:
-    		return 19;
-    	case 1:
-    		return 18;
-    	default:
-    		return 19;
-    	}
+		return metadata;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(int blockid, CreativeTabs creativeTabs, List list)
+	{
+		for (int metadatanumber = 0; metadatanumber < type.length; metadatanumber++)
+		{
+			list.add(new ItemStack(blockid, 1, metadatanumber));
+		}
+	}
+
+	public int getBlockTextureFromSideAndMetadata(int side, int damage)
+	{
+		switch (damage)
+		{
+		case 0:
+			return 19;
+		case 1:
+			return 18;
+		default:
+			return 19;
+		}
 	}
 }

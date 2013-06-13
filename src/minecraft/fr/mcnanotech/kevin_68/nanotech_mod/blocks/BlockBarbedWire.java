@@ -11,43 +11,44 @@ import net.minecraft.world.World;
 
 public class BlockBarbedWire extends Block
 {
-    public BlockBarbedWire(int id, int texture)
-    {
-        super(id, texture, Material.iron);
-    }
+	public BlockBarbedWire(int id, int texture)
+	{
+		super(id, texture, Material.iron);
+	}
+
 	public String getTextureFile()
-    {
-            return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png";
-    }
+	{
+		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png";
+	}
 
-    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
-    {
-        par5Entity.setInWeb();
-        par5Entity.attackEntityFrom(DamageSource.cactus, 2);
-    }
+	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
+	{
+		par5Entity.setInWeb();
+		par5Entity.attackEntityFrom(DamageSource.cactus, 2);
+	}
 
-    public boolean isOpaqueCube()
-    {
-        return false;
-    }
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
 
-    public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
-    {
-        return null;
-    }
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
+	{
+		return null;
+	}
 
-    public int getRenderType()
-    {
-        return 1;
-    }
+	public int getRenderType()
+	{
+		return 1;
+	}
 
-    public boolean renderAsNormalBlock()
-    {
-        return false;
-    }
+	public boolean renderAsNormalBlock()
+	{
+		return false;
+	}
 
-    public int idDropped(int par1, Random par2Random, int par3)
-    {
-        return this.blockID;
-    }
+	public int idDropped(int par1, Random par2Random, int par3)
+	{
+		return this.blockID;
+	}
 }

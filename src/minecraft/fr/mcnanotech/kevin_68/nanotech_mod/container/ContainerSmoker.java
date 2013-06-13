@@ -15,26 +15,26 @@ public class ContainerSmoker extends Container
 {
 	public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
 	public IInventory craftResult = new InventoryCraftResult();
-       
+
 	protected TileEntitySmoker tileentity;
 	private World worldObj;
-           
+
 	public ContainerSmoker(TileEntitySmoker tileentity, InventoryPlayer playerinventory, World world)
 	{
 		this.worldObj = world;
 		this.tileentity = tileentity;
-		
+
 		bindPlayerInventory(playerinventory);
 	}
-           
+
 	@Override
 	public boolean canInteractWith(EntityPlayer player)
 	{
 		return tileentity.isUseableByPlayer(player);
 	}
-	
+
 	protected void bindPlayerInventory(InventoryPlayer player_inventory)
-	{              
+	{
 		int var6;
 		int var7;
 		for (var6 = 0; var6 < 3; ++var6)
@@ -49,8 +49,7 @@ public class ContainerSmoker extends Container
 		{
 			this.addSlotToContainer(new Slot(player_inventory, var6, 8 + var6 * 18, 142));
 		}
-		
+
 		this.onCraftMatrixChanged(this.craftMatrix);
 	}
 }
-     

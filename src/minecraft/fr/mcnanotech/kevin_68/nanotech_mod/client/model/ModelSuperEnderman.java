@@ -6,7 +6,7 @@ import net.minecraft.entity.Entity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ModelSuperEnderman extends ModelBiped 
+public class ModelSuperEnderman extends ModelBiped
 {
 	/** Is the enderman carrying a block? */
 	public boolean isCarrying = false;
@@ -14,7 +14,7 @@ public class ModelSuperEnderman extends ModelBiped
 	/** Is the enderman attacking an entity? */
 	public boolean isAttacking = false;
 
-	public ModelSuperEnderman() 
+	public ModelSuperEnderman()
 	{
 		super(0.0F, -14.0F, 64, 32);
 		float var1 = -14.0F;
@@ -44,7 +44,7 @@ public class ModelSuperEnderman extends ModelBiped
 	/**
 	 * Sets the models various rotation angles.
 	 */
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) 
+	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
 	{
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
 		this.bipedHead.showModel = true;
@@ -65,7 +65,7 @@ public class ModelSuperEnderman extends ModelBiped
 			this.bipedRightArm.rotateAngleX = var8;
 		}
 
-		if (this.bipedLeftArm.rotateAngleX > var8) 
+		if (this.bipedLeftArm.rotateAngleX > var8)
 		{
 			this.bipedLeftArm.rotateAngleX = var8;
 		}
@@ -80,7 +80,7 @@ public class ModelSuperEnderman extends ModelBiped
 			this.bipedLeftArm.rotateAngleX = -var8;
 		}
 
-		if (this.bipedRightLeg.rotateAngleX > var8) 
+		if (this.bipedRightLeg.rotateAngleX > var8)
 		{
 			this.bipedRightLeg.rotateAngleX = var8;
 		}
@@ -95,12 +95,12 @@ public class ModelSuperEnderman extends ModelBiped
 			this.bipedRightLeg.rotateAngleX = -var8;
 		}
 
-		if (this.bipedLeftLeg.rotateAngleX < -var8) 
+		if (this.bipedLeftLeg.rotateAngleX < -var8)
 		{
 			this.bipedLeftLeg.rotateAngleX = -var8;
 		}
 
-		if (this.isCarrying) 
+		if (this.isCarrying)
 		{
 			this.bipedRightArm.rotateAngleX = -0.5F;
 			this.bipedLeftArm.rotateAngleX = -0.5F;
@@ -123,7 +123,7 @@ public class ModelSuperEnderman extends ModelBiped
 		this.bipedHeadwear.rotateAngleY = this.bipedHead.rotateAngleY;
 		this.bipedHeadwear.rotateAngleZ = this.bipedHead.rotateAngleZ;
 
-		if (this.isAttacking) 
+		if (this.isAttacking)
 		{
 			float var9 = 1.0F;
 			this.bipedHead.rotationPointY -= var9 * 5.0F;

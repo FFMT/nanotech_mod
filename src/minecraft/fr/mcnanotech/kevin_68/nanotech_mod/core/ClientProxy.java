@@ -42,7 +42,7 @@ public class ClientProxy extends CommonProxy
 		MinecraftForgeClient.preloadTexture("/Nanotech_mod/client/textures/GUI_blockjump.png");
 		MinecraftForgeClient.preloadTexture("/Nanotech_mod/client/textures/GUI_blocksmoke.png");
 	}
-	
+
 	@Override
 	public void registerModRenders()
 	{
