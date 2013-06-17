@@ -13,7 +13,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntitySmoker;
 
 public class GuiSmoker extends GuiContainer
 {
-	TileEntitySmoker tilesmoker;
+	protected TileEntitySmoker tilesmoker;
 
 	public GuiSmoker(InventoryPlayer playerinventory, TileEntitySmoker tileentity, World world)
 	{

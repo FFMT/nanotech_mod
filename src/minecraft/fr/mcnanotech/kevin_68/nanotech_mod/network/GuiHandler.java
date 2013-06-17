@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.utils;
+package fr.mcnanotech.kevin_68.nanotech_mod.network;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -14,7 +14,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntitySmoker;
 
-public class UtilGuiHandler implements IGuiHandler
+public class GuiHandler implements IGuiHandler
 {
 	@Override
 	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)

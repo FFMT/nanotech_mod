@@ -28,17 +28,18 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import fr.mcnanotech.kevin_68.nanotech_mod.blocks.NanotechBlock;
+import fr.mcnanotech.kevin_68.nanotech_mod.creativetab.CreativetabBlock;
+import fr.mcnanotech.kevin_68.nanotech_mod.creativetab.CreativetabItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.NanotechMobs;
 import fr.mcnanotech.kevin_68.nanotech_mod.event.EventBonemeal;
 import fr.mcnanotech.kevin_68.nanotech_mod.event.EventSound;
 import fr.mcnanotech.kevin_68.nanotech_mod.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotech_mod.network.GuiHandler;
+import fr.mcnanotech.kevin_68.nanotech_mod.network.PacketHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntitySmoker;
-import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilCreativetabBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilCreativetabItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilDiskInfo;
-import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilGuiHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.world.NanotechBiome;
 import fr.mcnanotech.kevin_68.nanotech_mod.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.world.WorldGeneration;
@@ -55,7 +56,7 @@ public class Nanotech_mod
 	public static CommonProxy proxy;
 
 	// GUI
-	private UtilGuiHandler guiHandler = new UtilGuiHandler();
+	private GuiHandler guiHandler = new GuiHandler();
 
 	// Block IDs
 	public static int BlockPortalID;
@@ -79,9 +80,7 @@ public class Nanotech_mod
 	public static int BlockSodiumID;
 	public static int BlockMossystoneID;
 
-	/**
-	 * Item IDs
-	 */
+	// Item IDs
 	public static int Item_NanotechID;
 	public static int Item_superbottleofxpID;
 	public static int Item_diamondbowID;
@@ -151,8 +150,8 @@ public class Nanotech_mod
 	public static final String CATEGORY_Mobspawn = "Mobs spawn";
 
 	// Creative tabs
-	public static UtilCreativetabBlock CREATIVE_TAB_B = new UtilCreativetabBlock("NanotechModBlocks");
-	public static UtilCreativetabItems CREATIVE_TAB_I = new UtilCreativetabItems("NanotechModItems");
+	public static CreativetabBlock CREATIVE_TAB_B = new CreativetabBlock("NanotechModBlocks");
+	public static CreativetabItems CREATIVE_TAB_I = new CreativetabItems("NanotechModItems");
 
 	// log
 	public static Logger NanoLog;
@@ -448,7 +447,7 @@ public class Nanotech_mod
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Emeraldbow, 1), new Object[] { "WX ", "WCX", "WX ", 'X', Item.emerald, 'W', Item.silk, 'C', NanotechItem.Diamondbow });
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitebow, 1), new Object[] { " XW", "XCW", " XW", 'X', new ItemStack(NanotechItem.ItemBase, 1, 14), 'W', Item.silk, 'C', NanotechItem.Emeraldbow });
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitebow, 1), new Object[] { "WX ", "WCX", "WX ", 'X', new ItemStack(NanotechItem.ItemBase, 1, 14), 'W', Item.silk, 'C', NanotechItem.Emeraldbow });
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockConfusion, 1), new Object[] { "WRV", "XYX", "WCV", 'X', Block.stone, 'W', Item.fermentedSpiderEye, 'R', Item.rottenFlesh, 'V', Item.bone, 'Y', Block.slowSand, "C", Block.cactus });
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockConfusion, 1), new Object[] { "WRV", "XYX", "WCV", 'X', Block.stone, 'W', Item.fermentedSpiderEye, 'R', Item.rottenFlesh, 'V', Item.bone, 'Y', Block.slowSand, 'C', Block.cactus });
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockFalling, 4, 0), new Object[] { "XZX", "ZXZ", "XZX", 'X', Block.stone, 'Z', Block.gravel });
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockFalling, 4, 0), new Object[] { "XZX", "ZXZ", "XZX", 'X', Block.stone, 'Z', Block.sand });
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockFalling, 4, 1), new Object[] { "XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 0), 'Z', Block.gravel });
@@ -487,12 +486,11 @@ public class Nanotech_mod
 		FurnaceRecipes.smelting().addSmelting(NanotechItem.ItemBase.itemID, 2, new ItemStack(NanotechItem.ItemBase, 1, 4), 0.5F);
 	}
 
-	/**
-	 * Gui and TileEntity
-	 */
+	// Gui and TileEntity
 	public void guiAndTileEntity()
 	{
 		NetworkRegistry.instance().registerGuiHandler(this, guiHandler);
+		NetworkRegistry.instance().registerChannel(new PacketHandler(), "nanotechmod");
 
 		GameRegistry.registerTileEntity(TileEntityJumper.class, "TileEntityJumper");
 		GameRegistry.registerTileEntity(TileEntitySmoker.class, "TileEntitySmoker");
@@ -508,9 +506,7 @@ public class Nanotech_mod
 		OreDictionary.registerOre("treeLeaves", new ItemStack(NanotechBlock.BlockNanoleaves));
 	}
 
-	/*
-	 * Other code -Shovel on grass
-	 */
+	// Other code -Shovel on grass
 	public void other()
 	{
 		MinecraftForge.setBlockHarvestLevel(NanotechBlock.BlockGrass, "shovel", 2);

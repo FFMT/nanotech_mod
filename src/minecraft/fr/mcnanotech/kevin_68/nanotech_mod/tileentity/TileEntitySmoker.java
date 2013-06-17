@@ -39,14 +39,21 @@ public class TileEntitySmoker extends TileEntity
 	public void readFromNBT(NBTTagCompound tagCompound)
 	{
 		super.readFromNBT(tagCompound);
-		Smokepower = tagCompound.getInteger("power");
+	    if (tagCompound.hasKey("Power"))
+	    {
+			Smokepower = tagCompound.getInteger("Power");
+	    }
+	    else
+	    {
+	    	Smokepower = 0;
+	    }
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound tagCompound)
 	{
 		super.writeToNBT(tagCompound);
-		tagCompound.setInteger("Smokepower", Smokepower);
+		tagCompound.setInteger("Smokepower", 0);
 	}
 
 	@Override
@@ -61,6 +68,7 @@ public class TileEntitySmoker extends TileEntity
 	{
 		NBTTagCompound tag = new NBTTagCompound();
 		this.writeToNBT(tag);
+		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		return new Packet132TileEntityData(xCoord, yCoord, zCoord, 0, tag);
 	}
 }

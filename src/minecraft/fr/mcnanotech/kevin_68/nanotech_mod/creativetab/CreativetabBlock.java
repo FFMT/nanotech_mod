@@ -1,13 +1,13 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.utils;
+package fr.mcnanotech.kevin_68.nanotech_mod.creativetab;
 
 import net.minecraft.creativetab.CreativeTabs;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.blocks.NanotechBlock;
 
-public class UtilCreativetabBlock extends CreativeTabs
+public class CreativetabBlock extends CreativeTabs
 {
-	public UtilCreativetabBlock(String par1)
+	public CreativetabBlock(String par1)
 	{
 		super(par1);
 	}
