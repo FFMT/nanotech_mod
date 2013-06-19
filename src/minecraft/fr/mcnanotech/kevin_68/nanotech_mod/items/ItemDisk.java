@@ -57,6 +57,12 @@ public class ItemDisk extends ItemRecord
 	{
 		list.add(recordinfo);
 	}
+	
+    @SideOnly(Side.CLIENT)
+    public String getRecordTitle()
+    {
+        return this.recordinfo;
+    }
 
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack par1ItemStack)

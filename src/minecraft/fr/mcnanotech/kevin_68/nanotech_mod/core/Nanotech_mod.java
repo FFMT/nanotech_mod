@@ -44,7 +44,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.world.NanotechBiome;
 import fr.mcnanotech.kevin_68.nanotech_mod.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.world.WorldGeneration;
 
-@Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "2.0.2")
+@Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "2.0.3")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class Nanotech_mod
 {
