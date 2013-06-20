@@ -22,7 +22,7 @@ public class BlockBarbedWire extends Block
 		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png";
 	}
 
-	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity entity)
+	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
 		if (entity instanceof EntityLiving)
 		{
@@ -36,7 +36,7 @@ public class BlockBarbedWire extends Block
 		return false;
 	}
 
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
 	{
 		return null;
 	}
