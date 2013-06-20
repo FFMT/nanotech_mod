@@ -172,9 +172,7 @@ public class Nanotech_mod
 		config.load();
 		BlockPortalID = config.getBlock("Portal", 1000).getInt();
 		BlockPortalframeID = config.getBlock("Portal frame", 1001).getInt();
-		BlockGrassID = config.get("block", "Grass", 250).getInt();
-		Property BlockGrass = config.get("block", "Grass", "Grass");
-		BlockGrass.comment = "Grass is used in terrain gen, ID must be less than 256";
+		BlockGrassID = config.getTerrainBlock("block", "Grass", 250, "Grass is used in terrain gen, ID must be less than 256").getInt();
 		BlockFakeOreID = config.getBlock("Fake diamond", 1002).getInt();
 		BlockSpeedID = config.getBlock("Booster and Retarder", 1003).getInt();
 		BlockJumperID = config.getBlock("Jumper", 1004).getInt();
@@ -441,6 +439,7 @@ public class Nanotech_mod
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitepickaxe, 1), new Object[] { "XXX", " W ", " W ", 'X', new ItemStack(NanotechItem.ItemBase, 1, 14), 'W', Item.stick });
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomiteshovel, 1), new Object[] { "X", "W", "W", 'X', new ItemStack(NanotechItem.ItemBase, 1, 14), 'W', Item.stick });
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitesword, 1), new Object[] { "X", "X", "W", 'X', new ItemStack(NanotechItem.ItemBase, 1, 14), 'W', Item.stick });
+		GameRegistry.addRecipe(new ItemStack(NanotechItem.ItemBase, 1, 13), "X", "XWX", "X", 'X', Item.ingotIron, 'W', new ItemStack(NanotechBlock.BlockSpeed, 1, 0));
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Diamondbow, 1), new Object[] { " XW", "XCW", " XW", 'X', Item.diamond, 'W', Item.silk, 'C', new ItemStack(NanotechBlock.BlockSpeed, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Diamondbow, 1), new Object[] { "WX ", "WCX", "WX ", 'X', Item.diamond, 'W', Item.silk, 'C', new ItemStack(NanotechBlock.BlockSpeed, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Emeraldbow, 1), new Object[] { " XW", "XCW", " XW", 'X', Item.emerald, 'W', Item.silk, 'C', NanotechItem.Diamondbow });
@@ -473,6 +472,7 @@ public class Nanotech_mod
 
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechBlock.BlockNanoplanks, 4), new Object[] { NanotechBlock.BlockNanowood });
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.Rottenchunk), new Object[] { Item.rottenFlesh, Item.rottenFlesh, Item.rottenFlesh, Item.rottenFlesh });
+		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.ItemBase, 1, 8), new Object[] { new ItemStack(NanotechItem.ItemBase, 1, 7), new ItemStack(NanotechItem.ItemBase, 1, 1) });
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.ItemBase, 1, 14), new Object[] { new ItemStack(NanotechItem.ItemBase, 1, 12), new ItemStack(NanotechItem.ItemBase, 1, 1) });
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechBlock.BlockMossystone, 1), new Object[] { Block.cobblestoneMossy, Block.stone });
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.ItemBase, 1, 15), new Object[] { Block.cobblestone });
