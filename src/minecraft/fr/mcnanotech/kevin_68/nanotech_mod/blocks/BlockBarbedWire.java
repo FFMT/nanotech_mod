@@ -5,6 +5,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
@@ -21,13 +22,12 @@ public class BlockBarbedWire extends Block
 		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png";
 	}
 
-	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
+	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity entity)
 	{
-		//need test
-		if (par5Entity instanceof EntityLiving)
+		if (entity instanceof EntityLiving)
 		{
-			par5Entity.setInWeb();
-			par5Entity.attackEntityFrom(DamageSource.cactus, 2);
+			entity.setInWeb();
+			entity.attackEntityFrom(DamageSource.cactus, 2);
 		}
 	}
 
