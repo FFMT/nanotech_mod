@@ -11,17 +11,9 @@
 /1_4_7/runtime/*
 /1_4_7/temp/*
 
-/1_4_7/src/minecraft/cpw/*
-/1_4_7/src/minecraft/net/*
-/1_4_7/src/minecraft/ibxm/*
-/1_4_7/src/minecraft/paulscode/*
-/1_4_7/src/minecraft/*.cfg
-/1_4_7/src/minecraft/fmlversion.properties
-/1_4_7/src/minecraft/*.png
-/1_4_7/src/minecraft/Start.java
-/1_4_7/src/minecraft/mcpmod.info
-/1_4_7/src/minecraft/gfx/*
-/1_4_7/src/minecraft/lang/*
+/1_4_7/src/minecraft/*
+!/1_4_7/src/minecraft/fr/
+!/1_4_7/src/minecraft/mcmod.info
 
 /1_5_2/bin/*
 /1_5_2/conf/*
@@ -35,6 +27,9 @@
 /1_5_2/reobf/*
 /1_5_2/runtime/*
 /1_5_2/temp/*
+/1_5_2/src/minecraft/*
+!/1_5_2/src/minecraft/fr/
+!/1_5_2/src/minecraft/mods/
 
 *.bat
 *.sh
