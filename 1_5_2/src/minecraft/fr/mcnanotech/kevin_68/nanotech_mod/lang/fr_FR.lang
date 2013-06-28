@@ -1,0 +1,79 @@
+#fr_FR
+#French language file
+
+#Blocks
+tile.nanograss.name = Bloc d'herbe
+tile.portal.name = Portail
+tile.portalframe.name = Structure de portail
+tile.fakediamond.name = Faux minerai de diamand
+tile.fakegold.name = Faux minerai d'or
+tile.booster.name = Accélérateur
+tile.retarder.name = Ralentisseur
+tile.jumper.name = Trampoline
+tile.multiplier.name = Multiplicateur
+tile.smoker.name = Bloc qui fume
+tile.trashcan.name = Poubelle
+tile.barbedwire.name = Barbelé
+tile.nanowood.name = Bois nano
+tile.nanoleaves.name = Feuilles nano
+tile.nanoplanks.name = Planches nano
+tile.nanosaplings.name = Pousse d'arbre nano
+tile.ore.silicon.name = Minerais de silicium
+tile.ore.decrease.name = Pierre de réduction
+tile.confusion.name = Bloc de confusion
+tile.fallingstone.name = Roche tombante
+tile.fallingstonebrick.name = Pierres taillées tombantes
+tile.fallingcrackedstonebrick.name = Pierres taillées tombantes craquelées
+tile.fallingmossystonebrick.name = Pierres taillées tombantes moussues
+tile.fallingchiseledstonebrick.name = Pierres scultpées tombantes
+tile.fallingcobblestone.name = Pierres tombantes
+tile.fallingmossycobblestone.name = Pierres tombantes moussues
+tile.notfallinggravel.name = Gravier qui ne tombe pas
+tile.notfallingsand.name = Sable qui ne tombe pas
+tile.sodium.name = Bloc de sodium
+tile.mossystone.name = Roche moussue
+
+#Items
+item.Siliconore.name = Minerai de silicium
+item.Stoneofdecrease.name = Pierre de reduction
+item.Mysteriousmaterial.name = Matière mystérieuse
+item.Siliconplate.name = Plaque de silicium
+item.Mysteriousingot.name = Lingot mystérieux
+item.Circuit.name = Circuit
+item.Advencedcircuit.name = Circuit avancé
+item.Processor.name = Processeur
+item.Microprocessor.name = Micro-processeur
+item.Camera.name = Caméra
+item.Detector.name = Détecteur
+item.Engine.name = Moteur
+item.Nanomite.name = Nanomite
+item.Nanomiteframe.name = Structure de Nanomite
+item.Smallnanomite.name = Petite Nanomite
+item.Vide.name = Vide
+item.Superbottleofxp.name = Super fiole d'expérience
+item.Diamondbow.name = Arc en diamant
+item.Emeraldbow.name = Arc en émeraude
+item.Nanomitebow.name = Arc en nanomite
+item.NanomiteHelmet.name = Casque en nanomite
+item.NanomiteChestPlate.name = Plastron en nanomite
+item.NanomiteLegs.name = Jambières en nanomite
+item.NanomiteBoots.name = Bottes en nanomite
+item.NanomiteSword.name = Épée en nanomite
+item.NanomiteShovel.name = Pelle en nanomite
+item.NanomitePickaxe.name = Pioche en nanomite
+item.NanomiteAxe.name = Hache en nanomite
+item.NanomiteHoe.name = Houe en nanomite
+item.MysteriousHelmet.name = Casque mystérieux
+item.MysteriousChestPlate.name = Plastron mystérieux
+item.MysteriousLeggings.name = Jambières mystérieuses
+item.MysteriousBoots.name = Bottes mystérieuses
+item.EdibleFlesh.name = Chaire commestible
+item.RottenChunk.name = Gros morceau de chaire putréfié
+
+#Other
+info.void.1 = Item pour barrel vide
+info.void.2 = 100% cobblestone
+info.void.3 = 100% recyclable
+
+itemGroup.NanotechModBlocks = Blocs de Nanotech mod
+itemGroup.NanotechModItems = Items de Nanotech mod
