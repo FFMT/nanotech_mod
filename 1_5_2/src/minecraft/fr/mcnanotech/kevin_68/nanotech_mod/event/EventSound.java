@@ -21,11 +21,11 @@ public class EventSound
 	{
 		try
 		{
-			event.manager.soundPoolSounds.addSound("nanotech/monster1.ogg", Nanotech_mod.class.getResource("/fr/mcnanotech/kevin_68/nanotech_mod/client/Sounds/monster1.ogg"));
-			event.manager.soundPoolSounds.addSound("nanotech/monster3.ogg", Nanotech_mod.class.getResource("/fr/mcnanotech/kevin_68/nanotech_mod/client/Sounds/monster3.ogg"));
-			event.manager.soundPoolSounds.addSound("nanotech/monsterhurt.ogg", Nanotech_mod.class.getResource("/fr/mcnanotech/kevin_68/nanotech_mod/client/Sounds/monsterhurt.ogg"));
-			event.manager.soundPoolSounds.addSound("nanotech/monsterdead.ogg", Nanotech_mod.class.getResource("/fr/mcnanotech/kevin_68/nanotech_mod/client/Sounds/monsterdead.ogg"));
-			event.manager.soundPoolSounds.addSound("nanotech/fly.ogg", Nanotech_mod.class.getResource("/fr/mcnanotech/kevin_68/nanotech_mod/client/Sounds/fly.ogg"));
+			event.manager.soundPoolSounds.addSound("nanotech/monster1.ogg", Nanotech_mod.class.getResource("/mods/Nanotech_mod/sounds/monster1.ogg"));
+			event.manager.soundPoolSounds.addSound("nanotech/monster3.ogg", Nanotech_mod.class.getResource("/mods/Nanotech_mod/sounds/monster3.ogg"));
+			event.manager.soundPoolSounds.addSound("nanotech/monsterhurt.ogg", Nanotech_mod.class.getResource("/mods/Nanotech_mod/sounds/monsterhurt.ogg"));
+			event.manager.soundPoolSounds.addSound("nanotech/monsterdead.ogg", Nanotech_mod.class.getResource("/mods/Nanotech_mod/sounds/monsterdead.ogg"));
+			event.manager.soundPoolSounds.addSound("nanotech/fly.ogg", Nanotech_mod.class.getResource("/mods/Nanotech_mod/sounds/fly.ogg"));
 
 			File fich = new File(Minecraft.getMinecraftDir() + "/resources/mod/streaming/nanodisk.ogg");
 			File fich2 = new File(Minecraft.getMinecraftDir() + "/resources/mod/streaming/YourSound.ogg");

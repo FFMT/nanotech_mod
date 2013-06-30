@@ -130,10 +130,10 @@ public class World_model2 extends WorldGenerator
 		world.setBlock(i + 1, j + 1, k + 0, Block.cobblestone.blockID);
 		world.setBlock(i + 1, j + 1, k + 1, Block.cobblestone.blockID);
 		world.setBlock(i + 1, j + 1, k + 2, Block.cobblestone.blockID);
-		world.setBlockAndMetadata(i + 1, j + 1, k + 3, Block.stairCompactCobblestone.blockID, 3);
+		world.setBlock(i + 1, j + 1, k + 3, Block.stairsCobblestone.blockID, 3, 3);
 		world.setBlock(i + 1, j + 1, k + 8, Block.cobblestoneMossy.blockID);
 		world.setBlock(i + 1, j + 2, k + 0, Block.cobblestone.blockID);
-		world.setBlockAndMetadata(i + 1, j + 2, k + 1, Block.stairCompactCobblestone.blockID, 1);
+		world.setBlock(i + 1, j + 2, k + 1, Block.stairsCobblestone.blockID, 1, 3);
 		world.setBlock(i + 1, j + 2, k + 8, Block.cobblestone.blockID);
 		world.setBlock(i + 1, j + 3, k + 0, Block.cobblestone.blockID);
 		world.setBlock(i + 1, j + 3, k + 8, Block.cobblestone.blockID);
@@ -171,7 +171,7 @@ public class World_model2 extends WorldGenerator
 		world.setBlock(i + 2, j + 0, k + 7, Block.cobblestone.blockID);
 		world.setBlock(i + 2, j + 0, k + 8, Block.cobblestoneMossy.blockID);
 		world.setBlock(i + 2, j + 1, k + 1, Block.cobblestone.blockID);
-		world.setBlockAndMetadata(i + 2, j + 1, k + 2, Block.stairCompactCobblestone.blockID, 3);
+		world.setBlock(i + 2, j + 1, k + 2, Block.stairsCobblestone.blockID, 3, 3);
 		world.setBlock(i + 2, j + 3, k + 8, Block.cobblestone.blockID);
 		world.setBlock(i + 2, j + 4, k + 0, Block.cobblestone.blockID);
 		world.setBlock(i + 2, j + 4, k + 4, Block.cobblestone.blockID);
@@ -260,19 +260,19 @@ public class World_model2 extends WorldGenerator
 		world.setBlock(i + 4, j + 9, k + 5, Block.cobblestone.blockID);
 		world.setBlock(i + 4, j + 9, k + 6, Block.cobblestone.blockID);
 		world.setBlock(i + 4, j + 10, k + 5, Block.cobblestone.blockID);
-		world.setBlockAndMetadataWithNotify(i + 1, j + 4, k + 2, Block.torchWood.blockID, 1);
-		world.setBlockAndMetadataWithNotify(i + 2, j + 4, k + 1, Block.torchWood.blockID, 3);
-		world.setBlockAndMetadataWithNotify(i + 2, j + 4, k + 3, Block.torchWood.blockID, 4);
-		world.setBlockAndMetadataWithNotify(i + 3, j + 1, k + 5, Block.ladder.blockID, 4);
-		world.setBlockAndMetadataWithNotify(i + 3, j + 2, k + 5, Block.ladder.blockID, 4);
-		world.setBlockAndMetadataWithNotify(i + 3, j + 3, k + 5, Block.ladder.blockID, 4);
-		world.setBlockAndMetadataWithNotify(i + 3, j + 4, k + 2, Block.torchWood.blockID, 2);
-		world.setBlockAndMetadataWithNotify(i + 3, j + 4, k + 5, Block.ladder.blockID, 4);
-		world.setBlockAndMetadataWithNotify(i + 3, j + 5, k + 5, Block.ladder.blockID, 4);
-		world.setBlockAndMetadataWithNotify(i + 3, j + 6, k + 5, Block.ladder.blockID, 4);
-		world.setBlockAndMetadataWithNotify(i + 3, j + 7, k + 5, Block.ladder.blockID, 4);
-		world.setBlockAndMetadataWithNotify(i + 3, j + 8, k + 5, Block.ladder.blockID, 4);
-		world.setBlockAndMetadataWithNotify(i + 3, j + 9, k + 5, Block.ladder.blockID, 4);
+		world.setBlock(i + 1, j + 4, k + 2, Block.torchWood.blockID, 1, 3);
+		world.setBlock(i + 2, j + 4, k + 1, Block.torchWood.blockID, 3, 3);
+		world.setBlock(i + 2, j + 4, k + 3, Block.torchWood.blockID, 4, 3);
+		world.setBlock(i + 3, j + 1, k + 5, Block.ladder.blockID, 4, 3);
+		world.setBlock(i + 3, j + 2, k + 5, Block.ladder.blockID, 4, 3);
+		world.setBlock(i + 3, j + 3, k + 5, Block.ladder.blockID, 4, 3);
+		world.setBlock(i + 3, j + 4, k + 2, Block.torchWood.blockID, 2, 3);
+		world.setBlock(i + 3, j + 4, k + 5, Block.ladder.blockID, 4, 3);
+		world.setBlock(i + 3, j + 5, k + 5, Block.ladder.blockID, 4, 3);
+		world.setBlock(i + 3, j + 6, k + 5, Block.ladder.blockID, 4, 3);
+		world.setBlock(i + 3, j + 7, k + 5, Block.ladder.blockID, 4, 3);
+		world.setBlock(i + 3, j + 8, k + 5, Block.ladder.blockID, 4, 3);
+		world.setBlock(i + 3, j + 9, k + 5, Block.ladder.blockID, 4, 3);
 
 		return true;
 	}

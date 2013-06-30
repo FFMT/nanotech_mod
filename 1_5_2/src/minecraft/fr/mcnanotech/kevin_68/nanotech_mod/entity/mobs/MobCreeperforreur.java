@@ -33,7 +33,7 @@ public class MobCreeperforreur extends EntityMob
 	public MobCreeperforreur(World par1World)
 	{
 		super(par1World);
-		this.texture = "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/mob/creeperforreur.png";
+		this.texture = "/mods/Nanotech_mod/textures/mob/creeperforreur.png";
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(2, new AiCreeperforreur(this));
 		this.tasks.addTask(3, new EntityAIAvoidEntity(this, MobThedeath.class, 6.0F, 0.25F, 0.5F));

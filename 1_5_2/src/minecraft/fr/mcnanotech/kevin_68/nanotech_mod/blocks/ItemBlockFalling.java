@@ -17,15 +17,15 @@ public class ItemBlockFalling extends ItemBlock
 		return metadata;
 	}
 
-	public String getItemNameIS(ItemStack stack)
+	public String getUnlocalizedName(ItemStack stack)
 	{
 		if (stack.getItemDamage() < BlockFalling.type.length)
 		{
-			return getItemName() + BlockFalling.type[stack.getItemDamage()];
+			return getUnlocalizedName() + BlockFalling.type[stack.getItemDamage()];
 		}
 		else
 		{
-			return getItemName();
+			return getUnlocalizedName();
 		}
 	}
 

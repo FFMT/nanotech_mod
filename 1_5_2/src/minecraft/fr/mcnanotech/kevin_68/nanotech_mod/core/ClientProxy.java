@@ -1,6 +1,5 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.core;
 
-import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import fr.mcnanotech.kevin_68.nanotech_mod.client.model.ModelCreeperForreur;
 import fr.mcnanotech.kevin_68.nanotech_mod.client.model.ModelFly;
@@ -32,17 +31,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.MobThedeath;
 
 public class ClientProxy extends CommonProxy
 {
-	public static int renderBlockID;
-
-	@Override
-	public void registerRenderThings()
-	{
-		MinecraftForgeClient.preloadTexture("/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png");
-		MinecraftForgeClient.preloadTexture("/Nanotech_mod/client/textures/items.png");
-		MinecraftForgeClient.preloadTexture("/Nanotech_mod/client/textures/GUI_blockjump.png");
-		MinecraftForgeClient.preloadTexture("/Nanotech_mod/client/textures/GUI_blocksmoke.png");
-	}
-
 	@Override
 	public void registerModRenders()
 	{

@@ -1,5 +1,6 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.items;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.ItemFood;
 
 public class ItemEdibleflesh extends ItemFood
@@ -10,9 +11,9 @@ public class ItemEdibleflesh extends ItemFood
 		super(id, healAmount, saturation, wolf);
 	}
 
-	public String getTextureFile()
-	{
-		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/items.png";
-	}
+    public void registerIcons(IconRegister iconregister)
+    {
+        itemIcon = iconregister.registerIcon("Nanotech_mod:"+getUnlocalizedName().substring(5));
+    }
 
 }

@@ -1,5 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.items;
 
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumRarity;
@@ -12,34 +14,34 @@ import net.minecraftforge.event.entity.living.LivingFallEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemMysteriousArmor extends ItemArmor implements IArmorTextureProvider
+public class ItemMysteriousArmor extends ItemArmor
 {
 	public ItemMysteriousArmor(int id, EnumArmorMaterial enumArmorMaterial, int par3, int par4)
 	{
 		super(id, enumArmorMaterial, par3, par4);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
+	
+    public void registerIcons(IconRegister iconregister)
+    {
+        itemIcon = iconregister.registerIcon("Nanotech_mod:"+getUnlocalizedName().substring(5));
+    }
 
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack)
+	public EnumRarity getRarity(ItemStack stack)
 	{
 		return EnumRarity.epic;
 	}
 
-	public String getTextureFile()
-	{
-		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/items.png";
-	}
-
-	public String getArmorTextureFile(ItemStack stack)
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
 	{
 		if (stack.itemID == NanotechItem.Mysteriousleggings.itemID)
 		{
-			return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/armor/Mysteriousarmor2.png";
+			return "/mods/Nanotech_mod/textures/armor/Mysteriousarmor2.png";
 		}
 		else
 		{
-			return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/armor/Mysteriousarmor.png";
+			return "/mods/Nanotech_mod/textures/armor/Mysteriousarmor.png";
 		}
 	}
 

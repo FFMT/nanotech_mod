@@ -17,7 +17,7 @@ public class ItemBlockFakeOre extends ItemBlock
 		return metadata;
 	}
 
-	public String getItemNameIS(ItemStack stack)
+	public String getUnlocalizedName(ItemStack stack)
 	{
 		if (stack.getItemDamage() < BlockFakeOre.type.length)
 		{
@@ -25,7 +25,7 @@ public class ItemBlockFakeOre extends ItemBlock
 		}
 		else
 		{
-			return getItemName();
+			return getUnlocalizedName();
 		}
 	}
 

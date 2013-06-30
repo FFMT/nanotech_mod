@@ -1,41 +1,83 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
 
+import java.util.List;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntityJumper;
 
 public class BlockJumper extends BlockContainer
 {
-	public BlockJumper(int par1, int par2)
+	public static String[] type = new String[]{"basic", "advanced"};
+	public Icon[] iconbuffer;
+	
+	public BlockJumper(int id)
 	{
-		super(par1, par2, Material.rock);
+		super(id, Material.rock);
+	}
+	
+	public int damageDropped(int damage)
+	{
+		return damage;
+	}
+	
+    public void registerIcons(IconRegister iconregister)
+    {
+    	iconbuffer = new Icon[5];
+    	iconbuffer[0] = iconregister.registerIcon("Nanotech_mod:jumpbottom");
+    	iconbuffer[1] = iconregister.registerIcon("Nanotech_mod:jumptop");
+    	iconbuffer[2] = iconregister.registerIcon("Nanotech_mod:jumpside");
+    	iconbuffer[3] = iconregister.registerIcon("Nanotech_mod:jumptop_advanced");
+    	iconbuffer[4] = iconregister.registerIcon("Nanotech_mod:jumpside_advanced");
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public Icon getIcon(int side, int damage)
+    {
+    	if(damage == 0)
+    	{
+    		return (side == 0) ? iconbuffer[0] : (side == 1) ? iconbuffer[1] : iconbuffer[2];
+    	}
+    	else
+    	{
+    		return (side == 0) ? iconbuffer[0] : (side == 1) ? iconbuffer[3] : iconbuffer[4];
+    	}	
+    }
+    
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(int blockid, CreativeTabs creativeTabs, List list)
+	{
+		for (int metadatanumber = 0; metadatanumber < type.length; metadatanumber++)
+		{
+			list.add(new ItemStack(blockid, 1, metadatanumber));
+		}
 	}
 
-	public int getBlockTextureFromSide(int par1)
-	{
-		return par1 == 0 ? this.blockIndexInTexture - 1 : (par1 == 1 ? this.blockIndexInTexture - 1 : this.blockIndexInTexture);
-	}
-
-	public String getTextureFile()
-	{
-		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png";
-	}
-
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
 	{
 		float var5 = 0.125F;
-		return AxisAlignedBB.getAABBPool().addOrModifyAABBInPool((double) par2, (double) par3, (double) par4, (double) (par2 + 1), (double) ((float) (par3 + 1) - var5), (double) (par4 + 1));
+		return AxisAlignedBB.getAABBPool().getAABB((double)x, (double)y, (double)z, (double) (x + 1), (double) ((float)(y + 1) - var5), (double)(z + 1));
 	}
 
-	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
+	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		par5Entity.motionY += TileEntityJumper.jumpheight;
+		entity.motionY += TileEntityJumper.jumpheight;
+		if(world.getBlockMetadata(x, y, z) == 1)
+		{
+			entity.fallDistance = 0.0F;
+		}
 	}
 
 	@Override

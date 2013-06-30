@@ -110,7 +110,7 @@ public class MobFastzombie extends EntityMob
 		switch (this.rand.nextInt(4))
 		{
 		case 0:
-			this.dropItem(Item.swordSteel.itemID, 1);
+			this.dropItem(Item.swordIron.itemID, 1);
 			break;
 		case 1:
 			this.dropItem(Item.helmetDiamond.itemID, 1);

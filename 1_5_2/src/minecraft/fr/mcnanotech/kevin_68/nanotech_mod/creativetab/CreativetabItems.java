@@ -1,20 +1,20 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.creativetab;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotech_mod.items.NanotechItem;
 
 public class CreativetabItems extends CreativeTabs
 {
-	public CreativetabItems(String par1)
+	public CreativetabItems(String name)
 	{
-		super(par1);
+		super(name);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public int getTabIconItemIndex()
 	{
-		return Item.redstone.itemID;
+		return NanotechItem.Nanomitebow.itemID;
 	}
 }

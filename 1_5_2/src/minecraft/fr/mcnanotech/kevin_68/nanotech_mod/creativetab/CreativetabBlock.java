@@ -7,9 +7,9 @@ import fr.mcnanotech.kevin_68.nanotech_mod.blocks.NanotechBlock;
 
 public class CreativetabBlock extends CreativeTabs
 {
-	public CreativetabBlock(String par1)
+	public CreativetabBlock(String name)
 	{
-		super(par1);
+		super(name);
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -1,5 +1,6 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.items;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,10 +18,10 @@ public class ItemSuperbottleofxp extends Item
 		this.setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 	}
 
-	public String getTextureFile()
-	{
-		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/items.png";
-	}
+    public void registerIcons(IconRegister iconregister)
+    {
+        itemIcon = iconregister.registerIcon("expBottle");
+    }
 
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack par1ItemStack)

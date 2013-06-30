@@ -4,20 +4,42 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockNotFalling extends Block
 {
-	public static String[] type = new String[] { "gravel", "sand" };
+	public static String[] type = new String[]{"gravel", "sand"};
+	private Icon[] iconbuffer;
 
-	public BlockNotFalling(int id, int texture, Material material)
+	public BlockNotFalling(int id, Material material)
 	{
-		super(id, texture, material);
-		setRequiresSelfNotify();
+		super(id, material);
 	}
+	
+    public void registerIcons(IconRegister iconregister)
+    {
+    	iconbuffer = new Icon[type.length];
+    	iconbuffer[0] = iconregister.registerIcon("gravel");
+    	iconbuffer[1] = iconregister.registerIcon("sand");
+    }
+	
+    @SideOnly(Side.CLIENT)
+    public Icon getIcon(int side, int damage)
+    {
+    	if(damage == 1)
+    	{
+        	return iconbuffer[1];
+    	}
+    	else 
+    	{
+    		return iconbuffer[0];
+    	}
+    }
 
 	public int damageDropped(int metadata)
 	{
@@ -30,19 +52,6 @@ public class BlockNotFalling extends Block
 		for (int metadatanumber = 0; metadatanumber < type.length; metadatanumber++)
 		{
 			list.add(new ItemStack(blockid, 1, metadatanumber));
-		}
-	}
-
-	public int getBlockTextureFromSideAndMetadata(int side, int damage)
-	{
-		switch (damage)
-		{
-		case 0:
-			return 19;
-		case 1:
-			return 18;
-		default:
-			return 19;
 		}
 	}
 }

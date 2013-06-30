@@ -12,6 +12,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -20,15 +21,15 @@ import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntitySmoker;
 
 public class BlockSmoker extends BlockContainer
 {
-	public BlockSmoker(int id, int texture)
+	public BlockSmoker(int id)
 	{
-		super(id, texture, Material.rock);
+		super(id, Material.rock);
 	}
-
-	public String getTextureFile()
-	{
-		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png";
-	}
+	
+    public void registerIcons(IconRegister iconregister)
+    {
+        blockIcon = iconregister.registerIcon("Nanotech_mod:smoker");
+    }
 
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
 	{
@@ -102,69 +103,68 @@ public class BlockSmoker extends BlockContainer
 				var7 = (float) par2 + par5Random.nextFloat();
 				var8 = (float) par3 + par5Random.nextFloat() * 0.1F;
 				var9 = (float) par4 + par5Random.nextFloat();
-				if (tilesmoker.getSmokePower() >= 1)
+				if(tilesmoker.getSmokePower() == 1)
 				{
 					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.1D, 0.0D);
-					if (tilesmoker.getSmokePower() >= 2)
-					{
-						par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.1D, 0.1D, 0.0D);
-						if (tilesmoker.getSmokePower() >= 3)
-						{
-							par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, -0.1D, 0.1D, 0.0D);
-							if (tilesmoker.getSmokePower() >= 4)
-							{
-								par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.1D, 0.1D);
-								if (tilesmoker.getSmokePower() >= 5)
-								{
-									par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.1D, -0.1D);
-									if (tilesmoker.getSmokePower() >= 6)
-									{
-										par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.1D, 0.1D, 0.1D);
-										if (tilesmoker.getSmokePower() >= 7)
-										{
-											par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, -0.1D, 0.1D, -0.1D);
-											if (tilesmoker.getSmokePower() >= 8)
-											{
-												par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, -0.1D, 0.1D, 0.1D);
-												if (tilesmoker.getSmokePower() >= 9)
-												{
-													par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.1D, 0.1D, -0.1D);
-													if (tilesmoker.getSmokePower() >= 10)
-													{
-														par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.15D, 0.0D);
-														if (tilesmoker.getSmokePower() >= 11)
-														{
-															par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.17D, 0.0D);
-															if (tilesmoker.getSmokePower() >= 12)
-															{
-																par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.2D, 0.0D);
-																if (tilesmoker.getSmokePower() >= 13)
-																{
-																	par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.25D, 0.0D);
-																	if (tilesmoker.getSmokePower() >= 14)
-																	{
-																		par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.3D, 0.0D);
-																		if (tilesmoker.getSmokePower() >= 15)
-																		{
-																			par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.35D, 0.0D);
-																		}
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
+				}
+				else if(tilesmoker.getSmokePower() == 2)
+				{
+					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.1D, 0.1D, 0.0D);
+				}
+				else if(tilesmoker.getSmokePower() == 3)
+				{
+					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, -0.1D, 0.1D, 0.0D);
+				}
+				else if(tilesmoker.getSmokePower() == 4)
+				{
+					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.1D, 0.1D);
+				}
+				else if(tilesmoker.getSmokePower() == 5)
+				{
+					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.1D, -0.1D);
+				}
+				else if(tilesmoker.getSmokePower() == 6)
+				{
+					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.1D, 0.1D, 0.1D);
+				}
+				else if(tilesmoker.getSmokePower() == 7)
+				{
+					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, -0.1D, 0.1D, -0.1D);
+				}
+				else if(tilesmoker.getSmokePower() == 8)
+				{
+					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, -0.1D, 0.1D, 0.1D);
+				}
+				else if(tilesmoker.getSmokePower() == 9)
+				{
+					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.1D, 0.1D, -0.1D);
+				}
+				else if(tilesmoker.getSmokePower() == 10)
+				{
+					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.15D, 0.0D);
+				}
+				else if(tilesmoker.getSmokePower() == 11)
+				{
+					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.17D, 0.0D);
+				}
+				else if(tilesmoker.getSmokePower() == 12)
+				{
+					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.2D, 0.0D);
+				}
+				else if(tilesmoker.getSmokePower() == 13)
+				{
+					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.25D, 0.0D);
+				}
+				else if (tilesmoker.getSmokePower() >= 14)
+				{
+					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.3D, 0.0D);
+				}
+				else if (tilesmoker.getSmokePower() >= 15)
+				{
+					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.35D, 0.0D);
 				}
 			}
 		}
-
 	}
 
 	@Override

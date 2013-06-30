@@ -27,8 +27,8 @@ public class GuiSmoker extends GuiContainer
 		super.initGui();
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		controlList.add(new GuiButton(1, x + 75, y + 15, 20, 20, "+"));
-		controlList.add(new GuiButton(2, x + 75, y + 45, 20, 20, "-"));
+		buttonList.add(new GuiButton(1, x + 75, y + 15, 20, 20, "+"));
+		buttonList.add(new GuiButton(2, x + 75, y + 45, 20, 20, "-"));
 	}
 
 	protected void actionPerformed(GuiButton guibutton)
@@ -56,9 +56,8 @@ public class GuiSmoker extends GuiContainer
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
-		int picture = mc.renderEngine.getTexture("/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/GUI/Blocksmoker.png");
 		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		this.mc.renderEngine.bindTexture(picture);
+		this.mc.renderEngine.bindTexture("/mods/Nanotech_mod/textures/gui/Blocksmoker.png");
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 

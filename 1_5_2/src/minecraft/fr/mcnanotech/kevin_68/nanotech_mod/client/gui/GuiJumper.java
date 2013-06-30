@@ -27,8 +27,8 @@ public class GuiJumper extends GuiContainer
 		super.initGui();
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		controlList.add(new GuiButton(1, x + 75, y + 15, 20, 20, "+"));
-		controlList.add(new GuiButton(2, x + 75, y + 45, 20, 20, "-"));
+		buttonList.add(new GuiButton(1, x + 75, y + 15, 20, 20, "+"));
+		buttonList.add(new GuiButton(2, x + 75, y + 45, 20, 20, "-"));
 	}
 
 	protected void actionPerformed(GuiButton guibutton)
@@ -55,9 +55,8 @@ public class GuiJumper extends GuiContainer
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
-		int picture = mc.renderEngine.getTexture("/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/GUI/Blockjumper.png");
 		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		this.mc.renderEngine.bindTexture(picture);
+		this.mc.renderEngine.bindTexture("/mods/Nanotech_mod/textures/gui/Blockjumper.png");
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 
@@ -96,7 +95,7 @@ public class GuiJumper extends GuiContainer
 		}
 		if (TileEntityJumper.jumpheight == 3)
 		{
-			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Block.blockSteel), x + 140, y + 35);
+			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Block.blockIron), x + 140, y + 35);
 		}
 		if (TileEntityJumper.jumpheight == 2)
 		{

@@ -1,36 +1,43 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntityMultiplier;
 
 public class BlockMultiplier extends BlockContainer
 {
-	public BlockMultiplier(int i, int j)
+	public Icon topbottomIcon;
+	public BlockMultiplier(int id)
 	{
-		super(i, j, Material.rock);
+		super(id, Material.rock);
 	}
-
-	public String getTextureFile()
-	{
-		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png";
-	}
-
-	public int getBlockTextureFromSide(int par1)
-	{
-		return par1 == 0 ? this.blockIndexInTexture : (par1 == 1 ? this.blockIndexInTexture : this.blockIndexInTexture + 16);
-	}
+	
+    public void registerIcons(IconRegister iconregister)
+    {
+    	topbottomIcon = iconregister.registerIcon("Nanotech_mod:multiplierside");
+    	blockIcon = iconregister.registerIcon("Nanotech_mod:multiplier");
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public Icon getIcon(int side, int damage)
+    {
+		return side == 0 ? blockIcon : (side == 1 ? blockIcon : topbottomIcon);
+    }
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t)
 	{
-		TileEntity tile_entity = world.getBlockTileEntity(x, y, z);
+		TileEntity tileentity = world.getBlockTileEntity(x, y, z);
 
-		if (tile_entity == null || player.isSneaking())
+		if (tileentity == null || player.isSneaking())
 		{
 			return false;
 		}
@@ -38,12 +45,6 @@ public class BlockMultiplier extends BlockContainer
 		player.openGui(Nanotech_mod.modInstance, 0, world, x, y, z);
 
 		return true;
-	}
-
-	@Override
-	public void breakBlock(World world, int x, int y, int z, int i, int j)
-	{
-		super.breakBlock(world, x, y, z, i, j);
 	}
 
 	@Override

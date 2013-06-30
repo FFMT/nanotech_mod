@@ -4,32 +4,51 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockSpeed extends Block
 {
-	public static String[] type = new String[] { "booster", "retarder" };
-
-	public BlockSpeed(int id, int par2)
+	public static String[] type = new String[]{"booster", "retarder"};
+	public Icon[] iconbuffer;
+	
+	public BlockSpeed(int id)
 	{
-		super(id, par2, Material.rock);
-		setRequiresSelfNotify();
+		super(id, Material.rock);
 	}
+	
+    public void registerIcons(IconRegister iconregister)
+    {
+    	iconbuffer = new Icon[type.length];
+    	for(int i = 0; i < type.length; i++)
+    	{
+    		iconbuffer[i] = iconregister.registerIcon("Nanotech_mod:"+ type[i]);
+    	}
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public Icon getIcon(int side, int damage)
+    {
+    	if(damage < type.length)
+    	{
+        	return iconbuffer[damage];
+    	}
+    	else 
+    	{
+    		return iconbuffer[0];
+    	}
+    }
 
 	public int damageDropped(int metadata)
 	{
 		return metadata;
-	}
-
-	public String getTextureFile()
-	{
-		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png";
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -41,26 +60,10 @@ public class BlockSpeed extends Block
 		}
 	}
 
-	public int getBlockTextureFromSideAndMetadata(int side, int damage)
-	{
-		if (damage == 0)
-		{
-			return blockIndexInTexture;
-		}
-		else if (damage == 1)
-		{
-			return blockIndexInTexture + 2;
-		}
-		else
-		{
-			return blockIndexInTexture;
-		}
-	}
-
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
 	{
 		float var5 = 0.025F;
-		return AxisAlignedBB.getAABBPool().addOrModifyAABBInPool((double) par2, (double) par3, (double) par4, (double) (par2 + 1), (double) ((float) (par3 + 1) - var5), (double) (par4 + 1));
+		return AxisAlignedBB.getAABBPool().getAABB((double) par2, (double) par3, (double) par4, (double) (par2 + 1), (double) ((float) (par3 + 1) - var5), (double) (par4 + 1));
 	}
 
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)

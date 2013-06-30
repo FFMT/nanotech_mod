@@ -17,15 +17,15 @@ public class ItemBlockNanotechOre extends ItemBlock
 		return metadata;
 	}
 
-	public String getItemNameIS(ItemStack stack)
+	public String getUnlocalizedName(ItemStack stack)
 	{
 		if (stack.getItemDamage() < BlockNanotechOre.type.length)
 		{
-			return getItemName() + "." + BlockNanotechOre.type[stack.getItemDamage()];
+			return getUnlocalizedName() + "." + BlockNanotechOre.type[stack.getItemDamage()];
 		}
 		else
 		{
-			return getItemName();
+			return getUnlocalizedName();
 		}
 	}
 

@@ -17,15 +17,15 @@ public class ItemBlockNotFalling extends ItemBlock
 		return metadata;
 	}
 
-	public String getItemNameIS(ItemStack stack)
+	public String getUnlocalizedName(ItemStack stack)
 	{
 		if (stack.getItemDamage() < BlockNotFalling.type.length)
 		{
-			return getItemName() + BlockNotFalling.type[stack.getItemDamage()];
+			return getUnlocalizedName() + BlockNotFalling.type[stack.getItemDamage()];
 		}
 		else
 		{
-			return getItemName();
+			return getUnlocalizedName();
 		}
 	}
 }

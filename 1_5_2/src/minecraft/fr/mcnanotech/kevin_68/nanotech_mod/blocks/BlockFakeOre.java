@@ -6,10 +6,12 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityFallingSand;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -18,29 +20,29 @@ import fr.mcnanotech.kevin_68.nanotech_mod.entity.others.EntityFakeGold;
 
 public class BlockFakeOre extends Block
 {
-	public static String[] type = new String[] { "fakegold", "fakediamond" };
+	public static String[] type = new String[]{"fakegold", "fakediamond"};
 
 	public BlockFakeOre(int id)
 	{
 		super(id, Material.rock);
-		setRequiresSelfNotify();
 	}
+    
+    @SideOnly(Side.CLIENT)
+    public Icon getIcon(int side, int damage)
+    {
+    	if(damage == 0)
+    	{
+    		return Block.oreGold.getIcon(0, 0);
+    	}
+    	else
+    	{
+    		return Block.oreDiamond.getIcon(0, 0);
+    	}
+    }
 
 	public int damageDropped(int metadata)
 	{
 		return metadata;
-	}
-
-	public int getBlockTextureFromSideAndMetadata(int side, int damage)
-	{
-		if (damage == 0)
-		{
-			return 32;
-		}
-		else
-		{
-			return 50;
-		}
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -119,7 +121,7 @@ public class BlockFakeOre extends Block
 			}
 			else
 			{
-				world.setBlockWithNotify(x, y, z, 0);
+				world.setBlockToAir(x, y, z);
 
 				while (BlockSand.canFallBelow(world, x, y - 1, z) && y > 0)
 				{
@@ -128,7 +130,7 @@ public class BlockFakeOre extends Block
 
 				if (y > 0)
 				{
-					world.setBlockAndMetadataWithNotify(x, y, z, blockID, 1);
+					world.setBlock(x, y, z, blockID, 1, 3);
 				}
 			}
 		}
@@ -148,14 +150,12 @@ public class BlockFakeOre extends Block
 				{
 					if (!world.isRemote)
 					{
-						world.setBlockAndMetadataWithNotify(var6, var7, var8, blockID, 1);
-						world.setBlockWithNotify(x, y, z, 0);
+						world.setBlock(var6, var7, var8, blockID, 1, 3);
+						world.setBlockToAir(x, y, z);
 					}
 					else
 					{
-						short var9 = 128;
-
-						for (int var10 = 0; var10 < var9; ++var10)
+						for (int var10 = 0; var10 < 128; ++var10)
 						{
 							double var11 = world.rand.nextDouble();
 							float var13 = (world.rand.nextFloat() - 0.5F) * 0.2F;

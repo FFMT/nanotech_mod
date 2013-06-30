@@ -4,42 +4,47 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 public class BlockTrashcan extends Block
 {
+	public Icon topIcon;
+	public Icon bottomIcon;
 	public BlockTrashcan(int id)
 	{
 		super(id, Material.iron);
-		this.blockIndexInTexture = 9;
 	}
+	
+    public void registerIcons(IconRegister iconregister)
+    {
+        blockIcon = iconregister.registerIcon("Nanotech_mod:trash_can_side");
+        topIcon = iconregister.registerIcon("Nanotech_mod:trash_can_top");
+        bottomIcon = iconregister.registerIcon("Nanotech_mod:trash_can_bottom");
+    }
 
-	public String getTextureFile()
+	public Icon getIcon(int side, int damage)
 	{
-		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png";
+		return side == 1 ? topIcon : (side == 0 ?  bottomIcon : blockIcon);
 	}
 
-	public int getBlockTextureFromSideAndMetadata(int par1, int par2)
-	{
-		return par1 == 1 ? 9 : (par1 == 0 ? 11 : 10);
-	}
-
-	public void addCollidingBlockToList(World world, int x, int y, int z, AxisAlignedBB par5AxisAlignedBB, List par6List, Entity par7Entity)
+	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB par5AxisAlignedBB, List par6List, Entity par7Entity)
 	{
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.3125F, 1.0F);
-		super.addCollidingBlockToList(world, x, y, z, par5AxisAlignedBB, par6List, par7Entity);
+		super.addCollisionBoxesToList(world, x, y, z, par5AxisAlignedBB, par6List, par7Entity);
 		float var8 = 0.125F;
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, var8, 1.0F, 1.0F);
-		super.addCollidingBlockToList(world, x, y, z, par5AxisAlignedBB, par6List, par7Entity);
+		super.addCollisionBoxesToList(world, x, y, z, par5AxisAlignedBB, par6List, par7Entity);
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, var8);
-		super.addCollidingBlockToList(world, x, y, z, par5AxisAlignedBB, par6List, par7Entity);
+		super.addCollisionBoxesToList(world, x, y, z, par5AxisAlignedBB, par6List, par7Entity);
 		this.setBlockBounds(1.0F - var8, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		super.addCollidingBlockToList(world, x, y, z, par5AxisAlignedBB, par6List, par7Entity);
+		super.addCollisionBoxesToList(world, x, y, z, par5AxisAlignedBB, par6List, par7Entity);
 		this.setBlockBounds(0.0F, 0.0F, 1.0F - var8, 1.0F, 1.0F, 1.0F);
-		super.addCollidingBlockToList(world, x, y, z, par5AxisAlignedBB, par6List, par7Entity);
+		super.addCollisionBoxesToList(world, x, y, z, par5AxisAlignedBB, par6List, par7Entity);
 		this.setBlockBoundsForItemRender();
 	}
 

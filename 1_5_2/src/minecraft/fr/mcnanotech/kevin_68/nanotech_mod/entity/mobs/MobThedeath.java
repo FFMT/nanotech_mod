@@ -44,7 +44,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	public MobThedeath(World world)
 	{
 		super(world);
-		this.texture = "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/mob/thedeath.png";
+		this.texture = "/mods/Nanotech_mod/textures/mob/thedeath.png";
 		this.setSize(0.9F, 4.0F);
 		this.isImmuneToFire = true;
 		this.moveSpeed = 0.6F;
@@ -403,7 +403,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 									int var12 = this.worldObj.getBlockMetadata(var21, var9, var10);
 									this.worldObj.playAuxSFX(2001, var21, var9, var10, var11 + (var12 << 12));
 									Block.blocksList[var11].dropBlockAsItem(this.worldObj, var21, var9, var10, var12, 0);
-									this.worldObj.setBlockWithNotify(var21, var9, var10, 0);
+									this.worldObj.setBlockToAir(var21, var9, var10);
 									var19 = true;
 								}
 							}
@@ -660,6 +660,18 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	public EnumCreatureAttribute getCreatureAttribute()
 	{
 		return EnumCreatureAttribute.UNDEAD;
+	}
+
+	@Override
+	public void attackEntityWithRangedAttack(EntityLiving entityliving, float f)
+	{
+		
+	}
+
+	@Override
+	public int getBossHealth()
+	{
+		return this.health;
 	}
 
 }

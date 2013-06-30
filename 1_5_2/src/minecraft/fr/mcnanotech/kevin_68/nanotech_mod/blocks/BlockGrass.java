@@ -2,28 +2,57 @@ package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
 
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.util.Icon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockGrass extends Block
 {
-	public BlockGrass(int par1)
+    private Icon iconTop;
+    private Icon iconSnowSide;
+    
+	public BlockGrass(int id)
 	{
-		super(par1, Material.grass);
-		this.blockIndexInTexture = 3;
+		super(id, Material.grass);
 		this.setTickRandomly(true);
 	}
-
-	public int getBlockTextureFromSideAndMetadata(int par1, int par2)
-	{
-		return par1 == 1 ? 0 : (par1 == 0 ? 64 : 1);
-	}
-
-	public String getTextureFile()
-	{
-		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png";
-	}
+    
+    public void registerIcons(IconRegister par1IconRegister)
+    {
+        blockIcon = par1IconRegister.registerIcon("Nanotech_mod:grass_side");
+        iconTop = par1IconRegister.registerIcon("Nanotech_mod:grass_top");
+        iconSnowSide = par1IconRegister.registerIcon("Nanotech_mod:grass_side_snow");
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public Icon getIcon(int side, int damage)
+    {
+        return side == 1 ? iconTop : (side == 0 ? Block.dirt.getBlockTextureFromSide(side) : this.blockIcon);
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public Icon getBlockTexture(IBlockAccess par1IBlockAccess, int x, int y, int z, int side)
+    {
+        if (side == 1)
+        {
+            return iconTop;
+        }
+        else if (side == 0)
+        {
+            return Block.dirt.getBlockTextureFromSide(side);
+        }
+        else
+        {
+            Material material = par1IBlockAccess.getBlockMaterial(x, y + 1, z);
+            return material != Material.snow && material != Material.craftedSnow ? blockIcon : iconSnowSide;
+        }
+    }
 
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
 	{
@@ -31,7 +60,7 @@ public class BlockGrass extends Block
 		{
 			if (par1World.getBlockLightValue(par2, par3 + 1, par4) < 4 && par1World.getBlockLightOpacity(par2, par3 + 1, par4) > 2)
 			{
-				par1World.setBlockWithNotify(par2, par3, par4, Block.dirt.blockID);
+				par1World.setBlock(par2, par3, par4, Block.dirt.blockID, 0, 3);
 			}
 			else if (par1World.getBlockLightValue(par2, par3 + 1, par4) >= 9)
 			{
@@ -44,7 +73,7 @@ public class BlockGrass extends Block
 
 					if ((par1World.getBlockId(var7, var8, var9) == Block.dirt.blockID && par1World.getBlockLightValue(var7, var8 + 1, var9) >= 4 && par1World.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (par1World.getBlockId(var7, var8, var9) == Block.grass.blockID && par1World.getBlockLightValue(var7, var8 + 1, var9) >= 4 && par1World.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (par1World.getBlockId(var7, var8, var9) == Block.mycelium.blockID && par1World.getBlockLightValue(var7, var8 + 1, var9) >= 4 && par1World.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (par1World.getBlockId(var7, var8, var9) == Block.tilledField.blockID && par1World.getBlockLightValue(var7, var8 + 1, var9) >= 4 && par1World.getBlockLightOpacity(var7, var8 + 1, var9) <= 2))
 					{
-						par1World.setBlockWithNotify(var7, var8, var9, NanotechBlock.BlockGrass.blockID);
+						par1World.setBlock(var7, var8, var9, NanotechBlock.BlockGrass.blockID, 0, 3);
 					}
 				}
 			}

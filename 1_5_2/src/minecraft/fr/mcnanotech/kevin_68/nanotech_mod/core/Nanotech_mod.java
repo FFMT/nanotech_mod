@@ -104,7 +104,7 @@ public class Nanotech_mod
 	public static int Item_rottenchunkID;
 
 	// Dimension ID
-	public static int dimension = 19;
+	public static int dimensionID = 19;
 
 	// Biome statement
 	public static BiomeGenBase Nanotechbiome;
@@ -264,12 +264,10 @@ public class Nanotech_mod
 	@Init
 	public void InitNanotech_mod(FMLInitializationEvent event)
 	{
-		proxy.registerRenderThings();
-
 		Nanotechbiome = new NanotechBiome(100).setBiomeName("Nanotechbiome").setTemperatureRainfall(1.2F, 0.9F);
 
-		DimensionManager.registerProviderType(dimension, NanotechWorldProvider.class, false);
-		DimensionManager.registerDimension(dimension, dimension);
+		DimensionManager.registerProviderType(dimensionID, NanotechWorldProvider.class, false);
+		DimensionManager.registerDimension(dimensionID, dimensionID);
 
 		GameRegistry.registerWorldGenerator(new WorldGeneration());
 
@@ -297,8 +295,8 @@ public class Nanotech_mod
 		}
 
 		// Localization
-		LanguageRegistry.instance().loadLocalization("/fr/mcnanotech/kevin_68/nanotech_mod/lang/en_US.lang", "en_US", false);
-		LanguageRegistry.instance().loadLocalization("/fr/mcnanotech/kevin_68/nanotech_mod/lang/fr_FR.lang", "fr_FR", false);
+		LanguageRegistry.instance().loadLocalization("/mods/Nanotech_mod/lang/en_US.lang", "en_US", false);
+		LanguageRegistry.instance().loadLocalization("/mods/Nanotech_mod/lang/fr_FR.lang", "fr_FR", false);
 	}
 
 	// Gui and TileEntity

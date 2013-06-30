@@ -5,7 +5,6 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockSpeed extends ItemBlock
 {
-
 	public ItemBlockSpeed(int id)
 	{
 		super(id);
@@ -17,7 +16,7 @@ public class ItemBlockSpeed extends ItemBlock
 		return metadata;
 	}
 
-	public String getItemNameIS(ItemStack stack)
+	public String getUnlocalizedName(ItemStack stack)
 	{
 		if (stack.getItemDamage() < BlockSpeed.type.length)
 		{
@@ -25,7 +24,7 @@ public class ItemBlockSpeed extends ItemBlock
 		}
 		else
 		{
-			return getItemName();
+			return getUnlocalizedName();
 		}
 	}
 

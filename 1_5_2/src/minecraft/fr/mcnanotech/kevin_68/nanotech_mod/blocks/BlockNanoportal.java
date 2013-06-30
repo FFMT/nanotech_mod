@@ -3,36 +3,66 @@ package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockPortal;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
 
-public class BlockNanoportal extends BlockPortal
+public class BlockNanoPortal extends Block
 {
-	public BlockNanoportal(int id, int texture)
+	public BlockNanoPortal(int id)
 	{
-		super(id, texture);
+		super(id, Material.portal);
 		this.setTickRandomly(true);
+		this.setStepSound(soundGlassFootstep);
+		this.setLightValue(0.75F);
+		this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setBlockBounds(0.0F, 0.40F, 0.0F, 1.0F, 0.60F, 1.0F);
 	}
 
-	public String getTextureFile()
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
 	{
-		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png";
+		return null;
+	}
+	
+	public void onNeighborBlockChange(World world, int x, int y, int z, int par5)
+	{
+		super.onNeighborBlockChange(world, x, y, z, par5);
+		if(world.getBlockId(x - 1, y, z) != NanotechBlock.BlockPortalframe.blockID && world.getBlockId(x + 1, y, z) != NanotechBlock.BlockPortalframe.blockID && world.getBlockId(x, y - 1, z) != NanotechBlock.BlockPortalframe.blockID && world.getBlockId(x, y + 1, z) != NanotechBlock.BlockPortalframe.blockID)
+		{
+			world.setBlockToAir(x, y, z);
+		}
 	}
 
-	public void updateTick(World world, int x, int y, int z, Random rand)
+	public boolean isOpaqueCube()
 	{
-		super.updateTick(world, x, y, z, rand);
+		return false;
+	}
+
+	@Override
+	public boolean renderAsNormalBlock()
+	{
+		return false;
+	}
+
+	public int quantityDropped(Random par1Random)
+	{
+		return 0;
 	}
 
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		if (entity.ridingEntity == null && entity.riddenByEntity == null)
+		if((entity.ridingEntity == null) && (entity.riddenByEntity == null))
 		{
-			if (entity.dimension != Nanotech_mod.dimension)
+			if(entity.dimension != Nanotech_mod.dimensionID)
 			{
-				entity.travelToDimension(Nanotech_mod.dimension);
+				entity.travelToDimension(Nanotech_mod.dimensionID);
 			}
 			else
 			{
@@ -41,128 +71,52 @@ public class BlockNanoportal extends BlockPortal
 		}
 	}
 
-	public boolean tryToCreatePortal(World world, int x, int y, int z)
+	@SideOnly(Side.CLIENT)
+	public int getRenderBlockPass()
 	{
-		byte var5 = 0;
-		byte var6 = 0;
-
-		if (world.getBlockId(x - 1, y, z) == NanotechBlock.BlockPortalframe.blockID || world.getBlockId(x + 1, y, z) == NanotechBlock.BlockPortalframe.blockID)
-		{
-			var5 = 1;
-		}
-
-		if (world.getBlockId(x, y, z - 1) == NanotechBlock.BlockPortalframe.blockID || world.getBlockId(x, y, z + 1) == NanotechBlock.BlockPortalframe.blockID)
-		{
-			var6 = 1;
-		}
-
-		if (var5 == var6)
-		{
-			return false;
-		}
-		else
-		{
-			if (world.getBlockId(x - var5, y, z - var6) == 0)
-			{
-				x -= var5;
-				z -= var6;
-			}
-
-			int var7;
-			int var8;
-
-			for (var7 = -1; var7 <= 2; ++var7)
-			{
-				for (var8 = -1; var8 <= 3; ++var8)
-				{
-					boolean var9 = var7 == -1 || var7 == 2 || var8 == -1 || var8 == 3;
-
-					if (var7 != -1 && var7 != 2 || var8 != -1 && var8 != 3)
-					{
-						int var10 = world.getBlockId(x + var5 * var7, y + var8, z + var6 * var7);
-
-						if (var9)
-						{
-							if (var10 != NanotechBlock.BlockPortalframe.blockID)
-							{
-								return false;
-							}
-						}
-						else if (var10 != 0 && var10 != Block.fire.blockID)
-						{
-							return false;
-						}
-					}
-				}
-			}
-
-			world.editingBlocks = true;
-
-			for (var7 = 0; var7 < 2; ++var7)
-			{
-				for (var8 = 0; var8 < 3; ++var8)
-				{
-					world.setBlockWithNotify(x + var5 * var7, y + var8, z + var6 * var7, NanotechBlock.BlockPortal.blockID);
-				}
-			}
-
-			world.editingBlocks = false;
-			return true;
-		}
+		return 1;
 	}
 
-	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5)
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(World world, int x, int y, int z, Random par5Random)
 	{
-		byte var6 = 0;
-		byte var7 = 1;
-
-		if (par1World.getBlockId(par2 - 1, par3, par4) == this.blockID || par1World.getBlockId(par2 + 1, par3, par4) == this.blockID)
+		if(par5Random.nextInt(100) == 0)
 		{
-			var6 = 1;
-			var7 = 0;
+			world.playSound((double) x + 0.5D, (double) y + 0.5D, (double) z + 0.5D, "portal.portal", 0.5F, par5Random.nextFloat() * 0.4F + 0.8F, false);
 		}
-
-		int var8;
-
-		for (var8 = par3; par1World.getBlockId(par2, var8 - 1, par4) == this.blockID; --var8)
+		for(int l = 0; l < 4; ++l)
 		{
-			;
-		}
-
-		if (par1World.getBlockId(par2, var8 - 1, par4) != NanotechBlock.BlockPortalframe.blockID)
-		{
-			par1World.setBlockWithNotify(par2, par3, par4, 0);
-		}
-		else
-		{
-			int var9;
-
-			for (var9 = 1; var9 < 4 && par1World.getBlockId(par2, var8 + var9, par4) == this.blockID; ++var9)
+			double d0 = (double) ((float) x + par5Random.nextFloat());
+			double d1 = (double) ((float) y + par5Random.nextFloat());
+			double d2 = (double) ((float) z + par5Random.nextFloat());
+			double d3 = 0.0D;
+			double d4 = 0.0D;
+			double d5 = 0.0D;
+			int i1 = par5Random.nextInt(2) * 2 - 1;
+			d3 = ((double) par5Random.nextFloat() - 0.5D) * 0.5D;
+			d4 = ((double) par5Random.nextFloat() - 0.5D) * 0.5D;
+			d5 = ((double) par5Random.nextFloat() - 0.5D) * 0.5D;
+			if(world.getBlockId(x - 1, y, z) != this.blockID && world.getBlockId(x + 1, y, z) != this.blockID)
 			{
-				;
-			}
-
-			if (var9 == 3 && par1World.getBlockId(par2, var8 + var9, par4) == NanotechBlock.BlockPortalframe.blockID)
+				d0 = (double) x + 0.5D + 0.25D * (double) i1;
+				d3 = (double) (par5Random.nextFloat() * 2.0F * (float) i1);
+			} else
 			{
-				boolean var10 = par1World.getBlockId(par2 - 1, par3, par4) == this.blockID || par1World.getBlockId(par2 + 1, par3, par4) == this.blockID;
-				boolean var11 = par1World.getBlockId(par2, par3, par4 - 1) == this.blockID || par1World.getBlockId(par2, par3, par4 + 1) == this.blockID;
-
-				if (var10 && var11)
-				{
-					par1World.setBlockWithNotify(par2, par3, par4, 0);
-				}
-				else
-				{
-					if ((par1World.getBlockId(par2 + var6, par3, par4 + var7) != NanotechBlock.BlockPortalframe.blockID || par1World.getBlockId(par2 - var6, par3, par4 - var7) != this.blockID) && (par1World.getBlockId(par2 - var6, par3, par4 - var7) != NanotechBlock.BlockPortalframe.blockID || par1World.getBlockId(par2 + var6, par3, par4 + var7) != this.blockID))
-					{
-						par1World.setBlockWithNotify(par2, par3, par4, 0);
-					}
-				}
+				d2 = (double) z + 0.5D + 0.25D * (double) i1;
+				d5 = (double) (par5Random.nextFloat() * 2.0F * (float) i1);
 			}
-			else
-			{
-				par1World.setBlockWithNotify(par2, par3, par4, 0);
-			}
+			world.spawnParticle("portal", d0, d1, d2, d3, d4, d5);
 		}
+	}
+	
+    public void registerIcons(IconRegister iconRegister)
+    {
+        this.blockIcon = iconRegister.registerIcon("Nanotech_mod:nanoportal");
+    }
+
+	@SideOnly(Side.CLIENT)
+	public int idPicked(World world, int x, int y, int z)
+	{
+		return 0;
 	}
 }

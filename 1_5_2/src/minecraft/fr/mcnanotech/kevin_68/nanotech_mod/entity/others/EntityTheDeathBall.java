@@ -1,6 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.entity.others;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.util.DamageSource;
@@ -44,18 +45,17 @@ public class EntityTheDeathBall extends EntityFireball
 	{
 		return false;
 	}
-
-	public float func_82146_a(Explosion par1Explosion, Block par2Block, int par3, int par4, int par5)
+	
+	public float func_82146_a(Explosion explosion, World world, int x, int y, int z, Block block)
 	{
-		float var6 = super.func_82146_a(par1Explosion, par2Block, par3, par4, par5);
-
-		if (this.isInvulnerable() && par2Block != Block.bedrock && par2Block != Block.endPortal && par2Block != Block.endPortalFrame)
+		float var6 = super.func_82146_a(explosion, world, x, y, z, block);
+		if (this.isInvulnerable() && block != Block.bedrock && block != Block.endPortal && block != Block.endPortalFrame)
 		{
 			var6 = Math.min(0.8F, var6);
 		}
-
 		return var6;
 	}
+
 
 	protected void onImpact(MovingObjectPosition par1MovingObjectPosition)
 	{

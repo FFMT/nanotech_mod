@@ -43,7 +43,7 @@ public class MobFlyingCreeper extends EntityMob
 	public MobFlyingCreeper(World world)
 	{
 		super(world);
-		this.texture = "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/mob/flyingcreeper.png";
+		this.texture = "/mods/Nanotech_mod/textures/mob/flyingcreeper.png";
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(2, new AiFlyingCreeper(this));
 		this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityOcelot.class, 6.0F, 0.25F, 0.3F));

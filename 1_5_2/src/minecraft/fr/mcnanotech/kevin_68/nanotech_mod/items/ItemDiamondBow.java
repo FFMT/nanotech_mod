@@ -1,5 +1,6 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.items;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -8,6 +9,7 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
@@ -15,35 +17,45 @@ import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
 public class ItemDiamondBow extends ItemBow
 {
+	private Icon[] iconbuffer;
+	private static String[] bowpullname = new String[]{"diamondbow_pull1", "diamondbow_pull2", "diamondbow_pull3"};
 	public ItemDiamondBow(int id)
 	{
 		super(id);
 		this.maxStackSize = 1;
 		this.setMaxDamage(1000);
 	}
+	
+    public void registerIcons(IconRegister iconregister)
+    {
+    	iconbuffer = new Icon[bowpullname.length];
+    	for(int i = 0; i < bowpullname.length; i++)
+    	{
+    		iconbuffer[i] = iconregister.registerIcon("Nanotech_mod:" + bowpullname[i]);
+    	}
+    	itemIcon = iconregister.registerIcon("Nanotech_mod:diamondbow");
+    }
 
-	public int getIconIndex(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
-	{
-
+    public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
+    {
 		if (usingItem != null && usingItem.getItem().itemID == NanotechItem.Diamondbow.itemID)
 		{
 			int k = usingItem.getMaxItemUseDuration() - useRemaining;
 			if (k >= 18)
-				return 38;
+				return iconbuffer[2];
 			if (k > 13)
-				return 22;
+				return iconbuffer[1];
 			if (k > 0)
-				return 6;
+				return iconbuffer[0];
 		}
-
 		return getIconIndex(stack);
-	}
+    }
 
-	public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, int par4)
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int par4)
 	{
-		int var6 = this.getMaxItemUseDuration(par1ItemStack) - par4;
+		int var6 = this.getMaxItemUseDuration(stack) - par4;
 
-		ArrowLooseEvent event = new ArrowLooseEvent(par3EntityPlayer, par1ItemStack, var6);
+		ArrowLooseEvent event = new ArrowLooseEvent(player, stack, var6);
 		MinecraftForge.EVENT_BUS.post(event);
 		if (event.isCanceled())
 		{
@@ -51,9 +63,9 @@ public class ItemDiamondBow extends ItemBow
 		}
 		var6 = event.charge;
 
-		boolean var5 = par3EntityPlayer.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0;
+		boolean var5 = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, stack) > 0;
 
-		if (var5 || par3EntityPlayer.inventory.hasItem(Item.arrow.itemID))
+		if (var5 || player.inventory.hasItem(Item.arrow.itemID))
 		{
 			float var7 = (float) var6 / 20.0F;
 			var7 = (var7 * var7 + var7 * 2.0F) / 3.0F;
@@ -68,34 +80,34 @@ public class ItemDiamondBow extends ItemBow
 				var7 = 1.0F;
 			}
 
-			EntityArrow var8 = new EntityArrow(par2World, par3EntityPlayer, var7 * 4.0F);
+			EntityArrow var8 = new EntityArrow(world, player, var7 * 4.0F);
 
 			if (var7 == 1.0F)
 			{
 				var8.setIsCritical(true);
 			}
 
-			int var9 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
+			int var9 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, stack);
 
 			if (var9 > 0)
 			{
 				var8.setDamage(var8.getDamage() + (double) var9 * 0.5D + 0.5D);
 			}
 
-			int var10 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, par1ItemStack);
+			int var10 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, stack);
 
 			if (var10 > 0)
 			{
 				var8.setKnockbackStrength(var10);
 			}
 
-			if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, par1ItemStack) > 0)
+			if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, stack) > 0)
 			{
 				var8.setFire(100);
 			}
 
-			par1ItemStack.damageItem(1, par3EntityPlayer);
-			par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + var7 * 0.5F);
+			stack.damageItem(1, player);
+			world.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + var7 * 0.5F);
 
 			if (var5)
 			{
@@ -103,51 +115,46 @@ public class ItemDiamondBow extends ItemBow
 			}
 			else
 			{
-				par3EntityPlayer.inventory.consumeInventoryItem(Item.arrow.itemID);
+				player.inventory.consumeInventoryItem(Item.arrow.itemID);
 			}
 
-			if (!par2World.isRemote)
+			if (!world.isRemote)
 			{
-				par2World.spawnEntityInWorld(var8);
+				world.spawnEntityInWorld(var8);
 			}
 		}
 	}
 
-	public ItemStack onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+	public ItemStack onFoodEaten(ItemStack stack, World world, EntityPlayer player)
 	{
-		return par1ItemStack;
+		return stack;
 	}
 
-	public int getMaxItemUseDuration(ItemStack par1ItemStack)
+	public int getMaxItemUseDuration(ItemStack stack)
 	{
 		return 144000;
 	}
 
-	public EnumAction getItemUseAction(ItemStack par1ItemStack)
+	public EnumAction getItemUseAction(ItemStack stack)
 	{
 		return EnumAction.bow;
 	}
 
-	public String getTextureFile()
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/items.png";
-	}
-
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
-	{
-		ArrowNockEvent event = new ArrowNockEvent(par3EntityPlayer, par1ItemStack);
+		ArrowNockEvent event = new ArrowNockEvent(player, stack);
 		MinecraftForge.EVENT_BUS.post(event);
 		if (event.isCanceled())
 		{
 			return event.result;
 		}
 
-		if (par3EntityPlayer.capabilities.isCreativeMode || par3EntityPlayer.inventory.hasItem(Item.arrow.itemID))
+		if (player.capabilities.isCreativeMode || player.inventory.hasItem(Item.arrow.itemID))
 		{
-			par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
+			player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
 		}
 
-		return par1ItemStack;
+		return stack;
 	}
 
 	public int getItemEnchantability()

@@ -73,10 +73,10 @@ public class NanotechRecipe
 
 	public static void InitNormalRecipes()
 	{
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockPortalframe, 4), new Object[]{ " X ", "XZX", " X ", 'X', Block.blockSteel, 'Z', Block.obsidian });
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockPortalframe, 4), new Object[]{ " X ", "XZX", " X ", 'X', Block.blockIron, 'Z', Block.obsidian });
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockSpeed, 2, 0), new Object[]{ " X ", "XZX", " X ", 'X', Item.redstone, 'Z', Block.slowSand });
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockSpeed, 2, 1), new Object[]{ " X ", "XZX", " X ", 'X', Item.snowball, 'Z', Block.slowSand });
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockJumper, 2), new Object[]{ " X ", "XZX", " X ", 'X', Item.redstone, 'Z', Block.blockSteel });
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockJumper, 2), new Object[]{ " X ", "XZX", " X ", 'X', Item.redstone, 'Z', Block.blockIron });
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockSmoker, 2), new Object[]{ " X ", "XZX", " X ", 'X', Item.flintAndSteel, 'Z', Block.stone });
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockBarbedwire, 4), new Object[]{ "XXX", " X ", "XXX", 'X', Block.fenceIron });
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockConfusion, 1), new Object[]{ "XXX", "WCV", "XXX", 'X', Block.stone, 'W', Item.spiderEye, 'C', Item.rottenFlesh, 'V', Item.bone });
@@ -94,10 +94,10 @@ public class NanotechRecipe
 
 	public static void InitHardRecipes()
 	{
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockPortalframe, 1), new Object[]{ " X ", "XZX", " X ", 'X', Block.blockSteel, 'Z', Block.obsidian });
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockPortalframe, 1), new Object[]{ " X ", "XZX", " X ", 'X', Block.blockIron, 'Z', Block.obsidian });
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockSpeed, 1, 0), new Object[]{ " X ", "XZX", " X ", 'X', Item.redstone, 'Z', Block.slowSand });
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockSpeed, 1, 1), new Object[]{ " X ", "XZX", " X ", 'X', Item.snowball, 'Z', Block.slowSand });
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockJumper, 1), new Object[]{ " X ", "XZX", " X ", 'X', Item.redstone, 'Z', Block.blockSteel });
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockJumper, 1), new Object[]{ " X ", "XZX", " X ", 'X', Item.redstone, 'Z', Block.blockIron });
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockSmoker, 1), new Object[]{ " X ", "XZX", " X ", 'X', Item.flintAndSteel, 'Z', Block.stone });
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockBarbedwire, 1), new Object[]{ "X X", " X ", "X X", 'X', Block.fenceIron });
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockConfusion, 1), new Object[]{ "WRV", "XYX", "WCV", 'X', Block.stone, 'W', Item.fermentedSpiderEye, 'R', Item.rottenFlesh, 'V', Item.bone, 'Y', Block.slowSand, 'C', Block.cactus });

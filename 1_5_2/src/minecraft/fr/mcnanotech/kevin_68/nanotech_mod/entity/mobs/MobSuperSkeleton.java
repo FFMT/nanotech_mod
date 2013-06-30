@@ -39,13 +39,13 @@ import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
 
 public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 {
-	private EntityAIArrowAttack field_85037_d = new EntityAIArrowAttack(this, 0.25F, Nanotech_mod.Config_timeuntilnextarrow_superskeleton, 10.0F);
-	private EntityAIAttackOnCollide field_85038_e = new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.31F, false);
+	private EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 0.25F, Nanotech_mod.Config_timeuntilnextarrow_superskeleton, 10.0F);
+	private EntityAIAttackOnCollide aiAttackOnCollide = new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.31F, false);
 
 	public MobSuperSkeleton(World world)
 	{
 		super(world);
-		this.texture = "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/mob/superskeleton.png";
+		this.texture = "/mods/Nanotech_mod/textures/mob/superskeleton.png";
 		this.moveSpeed = 0.25F;
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(2, new EntityAIRestrictSun(this));
@@ -59,7 +59,7 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 
 		if (world != null && !world.isRemote)
 		{
-			this.func_85036_m();
+			this.setCombatTask();
 		}
 	}
 
@@ -240,9 +240,9 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		}
 	}
 
-	protected void func_82164_bB()
-	{
-		super.func_82164_bB();
+    protected void addRandomArmor()
+    {
+        super.addRandomArmor();
 		this.setCurrentItemOrArmor(0, new ItemStack(Item.bow));
 	}
 
@@ -256,14 +256,14 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 	{
 		if (this.worldObj.provider instanceof WorldProviderHell && this.getRNG().nextInt(5) > 0)
 		{
-			this.tasks.addTask(4, this.field_85038_e);
+			this.tasks.addTask(4, this.aiAttackOnCollide);
 			this.setSkeletonType(1);
 			this.setCurrentItemOrArmor(0, new ItemStack(Item.swordStone));
 		}
 		else
 		{
-			this.tasks.addTask(4, this.field_85037_d);
-			this.func_82164_bB();
+			this.tasks.addTask(4, this.aiArrowAttack);
+			this.addRandomArmor();
 			this.func_82162_bC();
 		}
 
@@ -271,8 +271,6 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		{
 			;
 		}
-
-		this.canPickUpLoot = true;
 
 		if (this.getCurrentItemOrArmor(4) == null)
 		{
@@ -286,19 +284,19 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		}
 	}
 
-	public void func_85036_m()
+	public void setCombatTask()
 	{
-		this.tasks.func_85156_a(this.field_85038_e);
-		this.tasks.func_85156_a(this.field_85037_d);
-		ItemStack var1 = this.getHeldItem();
+		this.tasks.removeTask(this.aiAttackOnCollide);
+		this.tasks.removeTask(this.aiArrowAttack);
+		ItemStack stack = this.getHeldItem();
 
-		if (var1 != null && var1.itemID == Item.bow.itemID)
+		if (stack != null && stack.itemID == Item.bow.itemID)
 		{
-			this.tasks.addTask(4, this.field_85037_d);
+			this.tasks.addTask(4, this.aiArrowAttack);
 		}
 		else
 		{
-			this.tasks.addTask(4, this.field_85038_e);
+			this.tasks.addTask(4, this.aiAttackOnCollide);
 		}
 	}
 
@@ -357,7 +355,7 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 			this.setSkeletonType(var2);
 		}
 
-		this.func_85036_m();
+		this.setCombatTask();
 	}
 
 	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
@@ -372,8 +370,36 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 
 		if (!this.worldObj.isRemote && par1 == 0)
 		{
-			this.func_85036_m();
+			this.setCombatTask();
 		}
+	}
+
+	@Override
+	public void attackEntityWithRangedAttack(EntityLiving entityliving, float f)
+	{
+        EntityArrow entityarrow = new EntityArrow(this.worldObj, this, entityliving, 1.6F, (float)(14 - this.worldObj.difficultySetting * 4));
+        int i = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, this.getHeldItem());
+        int j = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, this.getHeldItem());
+        entityarrow.setDamage((double)(f * 2.0F) + this.rand.nextGaussian() * 0.25D + (double)((float)this.worldObj.difficultySetting * 0.11F));
+
+        if (i > 0)
+        {
+            entityarrow.setDamage(entityarrow.getDamage() + (double)i * 0.5D + 0.5D);
+        }
+
+        if (j > 0)
+        {
+            entityarrow.setKnockbackStrength(j);
+        }
+
+        if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, this.getHeldItem()) > 0 || this.getSkeletonType() == 1)
+        {
+            entityarrow.setFire(100);
+        }
+
+        this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
+        this.worldObj.spawnEntityInWorld(entityarrow);
+		
 	}
 
 }

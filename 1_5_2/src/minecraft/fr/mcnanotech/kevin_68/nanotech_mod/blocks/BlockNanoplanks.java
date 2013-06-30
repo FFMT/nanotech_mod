@@ -2,16 +2,17 @@ package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 
 public class BlockNanoplanks extends Block
 {
-	public BlockNanoplanks(int id, int texture)
+	public BlockNanoplanks(int id)
 	{
-		super(id, texture, Material.wood);
+		super(id, Material.wood);
 	}
-
-	public String getTextureFile()
+	
+	public void registerIcons(IconRegister iconregister)
 	{
-		return "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/terrain.png";
+		blockIcon = iconregister.registerIcon("Nanotech_mod:nanoplank");
 	}
 }

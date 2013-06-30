@@ -24,7 +24,7 @@ public class MobSuperZombie extends EntityMob
 	public MobSuperZombie(World world)
 	{
 		super(world);
-		this.texture = "/fr/mcnanotech/kevin_68/nanotech_mod/client/textures/mob/superzombie.png";
+		this.texture = "/mods/Nanotech_mod/textures/mob/superzombie.png";
 		this.moveSpeed = 0.50F;
 		this.getNavigator().setBreakDoors(true);
 		this.tasks.addTask(0, new EntityAISwimming(this));
