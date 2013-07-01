@@ -9,7 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class World_model5 extends WorldGenerator
+public class WorldModel5 extends WorldGenerator
 {
 	protected int[] GetValidSpawnBlocks()
 	{
@@ -54,7 +54,7 @@ public class World_model5 extends WorldGenerator
 		return false;
 	}
 
-	public World_model5()
+	public WorldModel5()
 	{}
 
 	public boolean generate(World world, Random rand, int i, int j, int k)

@@ -1,5 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
 
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -10,6 +12,7 @@ public class BlockPortalFrame extends Block
 	public BlockPortalFrame(int id, Material material)
 	{
 		super(id, material);
+		this.setTickRandomly(true);
 	}
 	
     public void registerIcons(IconRegister iconregister)
@@ -27,6 +30,16 @@ public class BlockPortalFrame extends Block
 		super.onNeighborBlockChange(world, x, y, z, par5);
     	this.checkDoCreatePortal(world, x, y, z);
 	}
+	
+    public void updateTick(World world, int x, int y, int z, Random rand)
+    {
+    	this.checkDoCreatePortal(world, x, y, z);
+    }
+    
+    public int tickRate(World world)
+    {
+        return 120;
+    }
 	
 	public void checkDoCreatePortal(World world, int x, int y, int z)
 	{

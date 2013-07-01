@@ -9,7 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class World_model7 extends WorldGenerator
+public class WorldModel7 extends WorldGenerator
 {
 	protected int[] GetValidSpawnBlocks()
 	{
@@ -54,8 +54,9 @@ public class World_model7 extends WorldGenerator
 		return false;
 	}
 
-	public World_model7()
-	{}
+	public WorldModel7()
+	{
+	}
 
 	public boolean generate(World world, Random rand, int i, int j, int k)
 	{
@@ -420,7 +421,7 @@ public class World_model7 extends WorldGenerator
 		world.setBlock(i + 10, j + 0, k + 10, NanotechBlock.BlockGrass.blockID);
 		world.setBlock(i + 10, j + 0, k + 11, NanotechBlock.BlockGrass.blockID);
 		world.setBlock(i + 10, j + 0, k + 12, NanotechBlock.BlockGrass.blockID);
-		world.setBlockMetadataWithNotify(i + 3, j + 3, k + 10, Block.torchWood.blockID, 4);
+		world.setBlock(i + 3, j + 3, k + 10, Block.torchWood.blockID, 4, 3);
 
 		return true;
 	}

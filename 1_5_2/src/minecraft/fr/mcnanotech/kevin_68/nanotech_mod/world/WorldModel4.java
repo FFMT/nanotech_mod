@@ -9,11 +9,11 @@ import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class World_model4 extends WorldGenerator
+public class WorldModel4 extends WorldGenerator
 {
 	protected int[] GetValidSpawnBlocks()
 	{
-		return new int[] { Block.stone.blockID, Block.dirt.blockID, NanotechBlock.BlockGrass.blockID };
+		return new int[]{Block.stone.blockID, Block.dirt.blockID, NanotechBlock.BlockGrass.blockID};
 	}
 
 	public boolean LocationIsValidSpawn(World world, int i, int j, int k)
@@ -54,7 +54,7 @@ public class World_model4 extends WorldGenerator
 		return false;
 	}
 
-	public World_model4()
+	public WorldModel4()
 	{}
 
 	public boolean generate(World world, Random rand, int i, int j, int k)

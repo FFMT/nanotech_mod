@@ -9,7 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class World_model3 extends WorldGenerator
+public class WorldModel3 extends WorldGenerator
 {
 	protected int[] GetValidSpawnBlocks()
 	{
@@ -54,7 +54,7 @@ public class World_model3 extends WorldGenerator
 		return false;
 	}
 
-	public World_model3()
+	public WorldModel3()
 	{}
 
 	public boolean generate(World world, Random rand, int i, int j, int k)
@@ -464,12 +464,12 @@ public class World_model3 extends WorldGenerator
 		world.setBlock(i + 11, j + 6, k + 5, Block.planks.blockID);
 		world.setBlock(i + 11, j + 6, k + 6, Block.stairsWoodOak.blockID, 3, 3);
 		world.setBlock(i + 1, j + 1, k + 2, Block.doorIron.blockID);
-		world.setBlockMetadataWithNotify(i + 1, j + 2, k + 2, Block.doorIron.blockID, 8);
-		world.setBlockMetadataWithNotify(i + 2, j + 3, k + 2, Block.torchWood.blockID, 1);
+		world.setBlock(i + 1, j + 2, k + 2, Block.doorIron.blockID, 8, 3);
+		world.setBlock(i + 2, j + 3, k + 2, Block.torchWood.blockID, 1, 3);
 		world.setBlock(i + 3, j + 1, k + 7, Block.redstoneWire.blockID);
 		world.setBlock(i + 4, j + 1, k + 7, Block.redstoneWire.blockID);
 		world.setBlock(i + 6, j + 2, k + 7, Block.waterStill.blockID);
-		world.setBlockMetadataWithNotify(i + 7, j + 3, k + 7, Block.torchWood.blockID, 5);
+		world.setBlock(i + 7, j + 3, k + 7, Block.torchWood.blockID, 5, 3);
 
 		return true;
 	}

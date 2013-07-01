@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import fr.mcnanotech.kevin_68.nanotech_mod.blocks.NanotechBlock;
 
-public class World_model2 extends WorldGenerator
+public class WorldModel2 extends WorldGenerator
 {
 	protected int[] GetValidSpawnBlocks()
 	{
@@ -52,7 +52,7 @@ public class World_model2 extends WorldGenerator
 		return false;
 	}
 
-	public World_model2()
+	public WorldModel2()
 	{}
 
 	public boolean generate(World world, Random rand, int i, int j, int k)

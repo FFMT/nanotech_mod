@@ -7,6 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -62,10 +63,20 @@ public class BlockNanoPortal extends Block
 		{
 			if(entity.dimension != Nanotech_mod.dimensionID)
 			{
+				if(entity instanceof EntityPlayerMP)
+				{
+			         EntityPlayerMP thePlayer = (EntityPlayerMP)entity;
+	                 thePlayer.timeUntilPortal = 10;
+				}
 				entity.travelToDimension(Nanotech_mod.dimensionID);
 			}
 			else
 			{
+				if(entity instanceof EntityPlayerMP)
+				{
+			         EntityPlayerMP thePlayer = (EntityPlayerMP)entity;
+	                 thePlayer.timeUntilPortal = 10;
+				}
 				entity.travelToDimension(0);
 			}
 		}
@@ -111,7 +122,7 @@ public class BlockNanoPortal extends Block
 	
     public void registerIcons(IconRegister iconRegister)
     {
-        this.blockIcon = iconRegister.registerIcon("Nanotech_mod:nanoportal");
+        blockIcon = iconRegister.registerIcon("Nanotech_mod:nanoportal");
     }
 
 	@SideOnly(Side.CLIENT)
