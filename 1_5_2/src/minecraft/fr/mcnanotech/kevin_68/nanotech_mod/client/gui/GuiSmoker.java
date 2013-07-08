@@ -35,11 +35,11 @@ public class GuiSmoker extends GuiContainer
 	{
 		if (guibutton.id == 1)
 		{
-			tilesmoker.Smokepower += 1;
+			//tilesmoker.Smokepower ++;
 		}
 		if (guibutton.id == 2)
 		{
-			tilesmoker.Smokepower -= 1;
+			//tilesmoker.Smokepower --;
 		}
 	}
 
@@ -50,7 +50,7 @@ public class GuiSmoker extends GuiContainer
 		int y = (height - ySize) / 2;
 		fontRenderer.drawString("Smoke Block", 6, 6, 4210752);
 		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 6, ySize - 96 + 2, 4210752);
-		fontRenderer.drawString(String.valueOf(tilesmoker.getSmokePower()), x, y, 4210752);
+		fontRenderer.drawString(String.valueOf(tilesmoker.Smokepower), x, y, 4210752);
 	}
 
 	@Override

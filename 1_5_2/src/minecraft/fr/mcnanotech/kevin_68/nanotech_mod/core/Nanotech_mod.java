@@ -45,7 +45,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.world.WorldGeneration;
 
 @Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "2.0.3")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false)
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NanotechMod"}, packetHandler = PacketHandler.class)
 public class Nanotech_mod
 {
 	// Instance
