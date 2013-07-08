@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.items;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.items;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.util.StatCollector;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class ItemBaseMetadata extends Item
 {

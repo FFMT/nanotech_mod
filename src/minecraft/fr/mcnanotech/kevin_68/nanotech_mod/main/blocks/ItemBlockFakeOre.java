@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;

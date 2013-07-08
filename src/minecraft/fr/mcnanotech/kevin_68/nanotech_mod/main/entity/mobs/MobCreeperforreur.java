@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -19,8 +19,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.ai.AiCreeperforreur;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.ai.AiCreeperforreur;
 
 public class MobCreeperforreur extends EntityMob
 {

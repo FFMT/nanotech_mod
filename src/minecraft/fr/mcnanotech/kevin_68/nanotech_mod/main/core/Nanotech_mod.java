@@ -1,16 +1,12 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.core;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 
 import java.util.logging.Logger;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.Property;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -27,22 +23,22 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
-import fr.mcnanotech.kevin_68.nanotech_mod.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.creativetab.CreativetabBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.creativetab.CreativetabItems;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.NanotechMobs;
-import fr.mcnanotech.kevin_68.nanotech_mod.event.EventBonemeal;
-import fr.mcnanotech.kevin_68.nanotech_mod.event.EventSound;
-import fr.mcnanotech.kevin_68.nanotech_mod.items.NanotechItem;
-import fr.mcnanotech.kevin_68.nanotech_mod.network.GuiHandler;
-import fr.mcnanotech.kevin_68.nanotech_mod.network.PacketHandler;
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntityJumper;
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntityMultiplier;
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntitySmoker;
-import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilDiskInfo;
-import fr.mcnanotech.kevin_68.nanotech_mod.world.NanotechBiome;
-import fr.mcnanotech.kevin_68.nanotech_mod.world.NanotechWorldProvider;
-import fr.mcnanotech.kevin_68.nanotech_mod.world.WorldGeneration;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabBlock;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabItems;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.NanotechMobs;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventBonemeal;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventSound;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.network.GuiHandler;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.network.PacketHandler;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.UtilDiskInfo;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechBiome;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechWorldProvider;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGeneration;
 
 @Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "2.0.3")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NanotechMod"}, packetHandler = PacketHandler.class)

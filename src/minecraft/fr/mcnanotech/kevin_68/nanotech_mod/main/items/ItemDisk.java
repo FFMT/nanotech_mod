@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.items;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.items;
 
 import java.util.List;
 

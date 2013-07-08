@@ -1,12 +1,12 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.core;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
-import fr.mcnanotech.kevin_68.nanotech_mod.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
 public class NanotechRecipe
 {

@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -7,7 +7,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 public class BlockConfusion extends Block

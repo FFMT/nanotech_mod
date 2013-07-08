@@ -1,10 +1,10 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.world;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.world;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.biome.BiomeGenBase;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.blocks.NanotechBlock;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 
 public class NanotechBiome extends BiomeGenBase
 {

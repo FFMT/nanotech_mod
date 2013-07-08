@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.container;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -6,7 +6,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntityMultiplier;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
 
 public class ContainerMultiplier extends Container
 {

@@ -1,9 +1,7 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
 import java.util.List;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -15,8 +13,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntityJumper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 
 public class BlockJumper extends BlockContainer
 {

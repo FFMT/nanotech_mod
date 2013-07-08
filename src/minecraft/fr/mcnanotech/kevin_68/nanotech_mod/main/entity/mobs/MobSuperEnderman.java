@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;

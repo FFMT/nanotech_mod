@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.client.gui;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -6,8 +6,8 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.container.ContainerMultiplier;
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntityMultiplier;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerMultiplier;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
 
 public class GuiMultiplier extends GuiContainer
 {

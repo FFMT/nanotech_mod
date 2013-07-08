@@ -1,7 +1,6 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.entity.others;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others;
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.util.DamageSource;

@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.event;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.event;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -11,8 +11,7 @@ import java.net.URLConnection;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.event.ForgeSubscribe;
-
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class EventSound
 {

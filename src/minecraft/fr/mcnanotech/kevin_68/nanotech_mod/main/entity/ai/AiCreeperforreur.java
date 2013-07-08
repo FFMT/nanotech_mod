@@ -1,8 +1,8 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.entity.ai;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.ai;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.MobCreeperforreur;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCreeperforreur;
 
 public class AiCreeperforreur extends EntityAIBase
 {

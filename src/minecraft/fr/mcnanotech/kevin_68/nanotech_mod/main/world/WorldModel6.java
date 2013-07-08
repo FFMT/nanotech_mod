@@ -1,13 +1,11 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.world;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.world;
 
 import java.util.Random;
-
-import fr.mcnanotech.kevin_68.nanotech_mod.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 
 public class WorldModel6 extends WorldGenerator
 {

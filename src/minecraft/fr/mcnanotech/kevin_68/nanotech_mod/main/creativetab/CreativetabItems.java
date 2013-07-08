@@ -1,9 +1,9 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.creativetab;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab;
 
 import net.minecraft.creativetab.CreativeTabs;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
 public class CreativetabItems extends CreativeTabs
 {

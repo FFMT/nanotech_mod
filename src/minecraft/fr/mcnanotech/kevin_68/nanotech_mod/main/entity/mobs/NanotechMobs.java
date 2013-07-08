@@ -1,10 +1,10 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs;
 
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class NanotechMobs
 {

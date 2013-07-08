@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.client.renderer;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer;
 
 import java.util.Random;
 
@@ -11,8 +11,8 @@ import net.minecraft.entity.EntityLiving;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.client.model.ModelSuperEnderman;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.MobSuperEnderman;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelSuperEnderman;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperEnderman;
 
 public class RenderSuperEnderman extends RenderLiving
 {

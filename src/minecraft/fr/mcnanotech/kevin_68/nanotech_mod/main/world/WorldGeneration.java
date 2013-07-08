@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.world;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.world;
 
 import java.util.Random;
 
@@ -6,7 +6,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import cpw.mods.fml.common.IWorldGenerator;
-import fr.mcnanotech.kevin_68.nanotech_mod.blocks.NanotechBlock;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 
 public class WorldGeneration implements IWorldGenerator
 {

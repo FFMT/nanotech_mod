@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.entity.others;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityXPOrb;

@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs;
 
 import java.util.Calendar;
 
@@ -35,7 +35,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldProviderHell;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 {

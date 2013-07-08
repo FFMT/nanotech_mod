@@ -1,7 +1,5 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;

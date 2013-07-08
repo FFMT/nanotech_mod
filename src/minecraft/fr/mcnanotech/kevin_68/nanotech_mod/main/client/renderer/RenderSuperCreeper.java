@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.client.renderer;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -7,10 +7,8 @@ import net.minecraft.util.MathHelper;
 
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.client.model.ModelSuperCreeper;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs.MobSuperCreeper;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelSuperCreeper;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperCreeper;
 
 public class RenderSuperCreeper extends RenderLiving
 {

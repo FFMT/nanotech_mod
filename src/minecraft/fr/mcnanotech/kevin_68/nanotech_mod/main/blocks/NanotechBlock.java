@@ -1,9 +1,9 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import cpw.mods.fml.common.registry.GameRegistry;
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class NanotechBlock
 {

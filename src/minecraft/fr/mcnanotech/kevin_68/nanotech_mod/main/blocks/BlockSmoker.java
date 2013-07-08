@@ -1,23 +1,15 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
-
-import static net.minecraftforge.common.ForgeDirection.DOWN;
-import static net.minecraftforge.common.ForgeDirection.EAST;
-import static net.minecraftforge.common.ForgeDirection.NORTH;
-import static net.minecraftforge.common.ForgeDirection.SOUTH;
-import static net.minecraftforge.common.ForgeDirection.UP;
-import static net.minecraftforge.common.ForgeDirection.WEST;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntitySmoker;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 
 public class BlockSmoker extends BlockContainer
 {

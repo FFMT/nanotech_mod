@@ -1,11 +1,9 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.world;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.world;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
 import net.minecraft.world.WorldProvider;
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class NanotechWorldProvider extends WorldProvider
 {

@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.items;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.items;
 
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -7,8 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.others.EntitySuperBottleOfXp;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntitySuperBottleOfXp;
 
 public class ItemSuperbottleofxp extends Item
 {

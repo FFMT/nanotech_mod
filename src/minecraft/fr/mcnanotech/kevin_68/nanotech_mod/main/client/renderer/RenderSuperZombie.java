@@ -1,8 +1,8 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.client.renderer;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
-import fr.mcnanotech.kevin_68.nanotech_mod.client.model.ModelSuperZombie;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelSuperZombie;
 
 public class RenderSuperZombie extends RenderLiving
 {

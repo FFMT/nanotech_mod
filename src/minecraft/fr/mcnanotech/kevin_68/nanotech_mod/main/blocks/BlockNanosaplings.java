@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.blocks;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
 import java.util.List;
 import java.util.Random;
@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.world.WorldGenNanoTree;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGenNanoTree;
 
 public class BlockNanosaplings extends BlockSapling
 {

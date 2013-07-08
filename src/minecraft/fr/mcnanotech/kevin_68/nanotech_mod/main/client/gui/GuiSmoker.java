@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.client.gui;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -8,8 +8,8 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.container.ContainerSmoker;
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntitySmoker;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSmoker;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 
 public class GuiSmoker extends GuiContainer
 {

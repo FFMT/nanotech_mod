@@ -1,9 +1,7 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.client.renderer;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer;
 
 import net.minecraft.client.renderer.entity.RenderLiving;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.client.model.ModelFly;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelFly;
 
 public class RenderMobFly extends RenderLiving
 {

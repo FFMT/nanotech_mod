@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs;
 
 import java.util.List;
 
@@ -28,8 +28,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.others.EntityTheDeathBall;
-import fr.mcnanotech.kevin_68.nanotech_mod.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntityTheDeathBall;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
 public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedAttackMob
 {

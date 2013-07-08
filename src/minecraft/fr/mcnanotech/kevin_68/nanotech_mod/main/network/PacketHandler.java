@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.network;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.network;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;

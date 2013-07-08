@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.client.gui;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiButton;
@@ -11,8 +11,8 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.container.ContainerJumper;
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntityJumper;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerJumper;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 
 public class GuiJumper extends GuiContainer
 {

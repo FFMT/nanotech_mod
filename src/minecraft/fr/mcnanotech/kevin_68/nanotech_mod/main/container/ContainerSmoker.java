@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.container;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -8,8 +8,7 @@ import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.world.World;
-
-import fr.mcnanotech.kevin_68.nanotech_mod.tileentity.TileEntitySmoker;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 
 public class ContainerSmoker extends Container
 {

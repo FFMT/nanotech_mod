@@ -1,11 +1,11 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.items;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.items;
 
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.EnumHelper;
-import fr.mcnanotech.kevin_68.nanotech_mod.core.Nanotech_mod;
-import fr.mcnanotech.kevin_68.nanotech_mod.utils.UtilDiskInfo;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.UtilDiskInfo;
 
 public class NanotechItem
 {

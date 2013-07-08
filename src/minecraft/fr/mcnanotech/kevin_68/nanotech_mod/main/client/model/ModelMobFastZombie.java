@@ -1,10 +1,8 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.client.model;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.client.model;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ModelMobFastZombie extends ModelBiped
 {

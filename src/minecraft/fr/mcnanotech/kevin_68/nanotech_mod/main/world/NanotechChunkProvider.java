@@ -1,11 +1,9 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.world;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.world;
 
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.CAVE;
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.MINESHAFT;
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.RAVINE;
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.SCATTERED_FEATURE;
-import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.STRONGHOLD;
-import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.VILLAGE;
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.DUNGEON;
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.ICE;
 import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE;
@@ -13,8 +11,6 @@ import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.Ev
 
 import java.util.List;
 import java.util.Random;
-
-import fr.mcnanotech.kevin_68.nanotech_mod.blocks.NanotechBlock;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
@@ -35,8 +31,6 @@ import net.minecraft.world.gen.feature.MapGenScatteredFeature;
 import net.minecraft.world.gen.feature.WorldGenDungeons;
 import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraft.world.gen.structure.MapGenMineshaft;
-import net.minecraft.world.gen.structure.MapGenStronghold;
-import net.minecraft.world.gen.structure.MapGenVillage;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.Event.Result;
 import net.minecraftforge.event.terraingen.ChunkProviderEvent;

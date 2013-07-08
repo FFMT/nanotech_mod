@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.entity.mobs;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -20,7 +20,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.entity.ai.AiFlyingCreeper;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.ai.AiFlyingCreeper;
 
 public class MobFlyingCreeper extends EntityMob
 {
