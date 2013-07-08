@@ -1,7 +1,11 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core;
 
+import ic2.api.item.Items;
+
 import java.util.Random;
 import java.util.logging.Level;
+
+import advsolar.AdvancedSolarPanel;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumArmorMaterial;
@@ -9,14 +13,18 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.Configuration;
+import cpw.mods.compactsolars.CompactSolarType;
+import cpw.mods.compactsolars.CompactSolars;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -30,6 +38,8 @@ import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.network.ClientPack
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.network.ClientTickHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.network.ServerPacketHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.network.ServerTickHandler;
+import gravisuite.GraviSuite;
+import gregtechmod.api.GregTech_API;
 
 @Mod(modid = "UltimateGraviSuite", name = "Ultimate Gravitation Suite", dependencies = "", version = "1.6")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, clientPacketHandlerSpec = @NetworkMod.SidedPacketHandler(channels = {"gravisuite"}, packetHandler = ClientPacketHandler.class), serverPacketHandlerSpec = @NetworkMod.SidedPacketHandler(channels = {"gravisuite"}, packetHandler = ServerPacketHandler.class))
@@ -198,13 +208,39 @@ public class UltimateGraviSuite
         {
             hudPos = 1;
         }
-        	//Ic2Recipes.addCraftingRecipe(new ItemStack(ultimatecircuit, 1), new Object[] {"ABC", "BDB", "CBA", 'A', "craftingCircuitTier08", 'B', Items.getItem("advancedCircuit"), 'C', "craftingCircuitTier07", 'D', GregTech_API.getGregTechBlock(1, 1, 4)});
-        	//Ic2Recipes.addCraftingRecipe(new ItemStack(ultimategraviChestPlate, 1), new Object[] {"SIS", "XGX", "SYS", 'I', GregTech_API.getGregTechItem(38, 1, 1), 'G', GraviSuite.graviChestPlate, 'S', "itemSuperconductor", 'Y', GregTech_API.getGregTechBlock(1, 1, 4), 'X', ultimatecircuit});
-        	//Ic2Recipes.addCraftingRecipe(new ItemStack(GraviSuite.ultimateSolarHelmet, 1), new Object[] {" P ", "ACA", "STS", 'P', new ItemStack(CompactSolars.compactSolarBlock, 1, 2), 'A', Items.getItem("advancedCircuit"), 'C', Items.getItem("quantumHelmet"), 'S', "itemSuperconductor", 'T', Items.getItem("hvTransformer")});
-        	//Ic2Recipes.addCraftingRecipe(new ItemStack(theultimateSolarHelmet, 1), new Object[] {"SPS", "XUX", "SYS", 'P', new ItemStack(CompactSolars.compactSolarBlock, 1, 2), 'X', ultimatecircuit, 'S', "itemSuperconductor", 'U', GraviSuite.ultimateSolarHelmet, 'Y', GregTech_API.getGregTechBlock(1, 1, 4)});
-        	//Ic2Recipes.addCraftingRecipe(new ItemStack(ultimateLeggins, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumLeggings"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimatecircuit});
-        	//Ic2Recipes.addCraftingRecipe(new ItemStack(ultimateBoots, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumBoots"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimatecircuit});
-        	//Ic2Recipes.addCraftingRecipe(new ItemStack(electricHandSaw, 1), new Object[] {"SSS", "CAC", "III", 'A', "craftingCircuitTier08", 'I', Items.getItem("iridiumPlate"), 'C', ultimatecircuit, 'S', "itemSuperconductor"});
+        
+        if(Loader.isModLoaded("CompactSolars"))
+        {
+            if(Loader.isModLoaded("GregTech_Addon"))
+            {
+            	GameRegistry.addRecipe(new ItemStack(ultimatecircuit, 1), new Object[] {"ABC", "BDB", "CBA", 'A', "craftingCircuitTier08", 'B', Items.getItem("advancedCircuit"), 'C', "craftingCircuitTier07", 'D', GregTech_API.getGregTechBlock(1, 1, 4)});
+            	GameRegistry.addRecipe(new ItemStack(ultimategraviChestPlate, 1), new Object[] {"SIS", "XGX", "SYS", 'I', GregTech_API.getGregTechItem(38, 1, 1), 'G', GraviSuite.graviChestPlate, 'S', "itemSuperconductor", 'Y', GregTech_API.getGregTechBlock(1, 1, 4), 'X', ultimatecircuit});
+            	GameRegistry.addRecipe(new ItemStack(theultimateSolarHelmet, 1), new Object[] {"SPS", "XUX", "SYS", 'P', new ItemStack(CompactSolars.compactSolarBlock, 1, 2), 'X', ultimatecircuit, 'S', "itemSuperconductor", 'U', /*SolarHat here*/Item.redstone, 'Y', GregTech_API.getGregTechBlock(1, 1, 4)});
+            	GameRegistry.addRecipe(new ItemStack(ultimateLeggings, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumLeggings"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimatecircuit});
+            	GameRegistry.addRecipe(new ItemStack(ultimateBoots, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumBoots"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimatecircuit});
+            }
+            else
+            {
+            	//add compactSolars non-gregtech recipes 
+            }
+        }
+        
+        if(Loader.isModLoaded("AdvancedSolarPanel") && !Loader.isModLoaded("CompactSolars"))
+        {
+        	 if(Loader.isModLoaded("GregTech_Addon"))
+             {
+             	GameRegistry.addRecipe(new ItemStack(ultimatecircuit, 1), new Object[] {"ABC", "BDB", "CBA", 'A', "craftingCircuitTier08", 'B', Items.getItem("advancedCircuit"), 'C', "craftingCircuitTier07", 'D', GregTech_API.getGregTechBlock(1, 1, 4)});
+             	GameRegistry.addRecipe(new ItemStack(ultimategraviChestPlate, 1), new Object[] {"SIS", "XGX", "SYS", 'I', GregTech_API.getGregTechItem(38, 1, 1), 'G', GraviSuite.graviChestPlate, 'S', "itemSuperconductor", 'Y', GregTech_API.getGregTechBlock(1, 1, 4), 'X', ultimatecircuit});
+             	GameRegistry.addRecipe(new ItemStack(AdvancedSolarPanel.ultimateSolarHelmet, 1), new Object[] {" P ", "ACA", "STS", 'P', new ItemStack(AdvancedSolarPanel.blockAdvSolarPanel, 1, 2), 'A', Items.getItem("advancedCircuit"), 'C', Items.getItem("quantumHelmet"), 'S', "itemSuperconductor", 'T', Items.getItem("hvTransformer")});
+             	GameRegistry.addRecipe(new ItemStack(theultimateSolarHelmet, 1), new Object[] {"SPS", "XUX", "SYS", 'P', new ItemStack(AdvancedSolarPanel.blockAdvSolarPanel, 1, 2), 'X', ultimatecircuit, 'S', "itemSuperconductor", 'U', AdvancedSolarPanel.ultimateSolarHelmet, 'Y', GregTech_API.getGregTechBlock(1, 1, 4)});
+             	GameRegistry.addRecipe(new ItemStack(ultimateLeggings, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumLeggings"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimatecircuit});
+             	GameRegistry.addRecipe(new ItemStack(ultimateBoots, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumBoots"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimatecircuit});
+             }
+             else
+             {
+             	//add AdvancedSolarPanel non-gregtech recipes
+             }
+        }
     }
        
     /**
