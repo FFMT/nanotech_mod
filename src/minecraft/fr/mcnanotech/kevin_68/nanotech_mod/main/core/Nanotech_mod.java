@@ -48,7 +48,7 @@ public class Nanotech_mod
 	@Instance("Nanotech_mod")
 	public static Nanotech_mod modInstance;
 	// Proxy
-	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotech_mod.core.ClientProxy", serverSide = "fr.mcnanotech.kevin_68.nanotech_mod.core.CommonProxy")
+	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotech_mod.main.core.ClientProxy", serverSide = "fr.mcnanotech.kevin_68.nanotech_mod.main.core.CommonProxy")
 	public static CommonProxy proxy;
 
 	// GUI
