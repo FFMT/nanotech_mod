@@ -8,6 +8,7 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
+import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.BlockSmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 
@@ -35,11 +36,11 @@ public class GuiSmoker extends GuiContainer
 	{
 		if (guibutton.id == 1)
 		{
-			//tilesmoker.Smokepower ++;
+			BlockSmoker.addSmokeInt();
 		}
 		if (guibutton.id == 2)
 		{
-			//tilesmoker.Smokepower --;
+			BlockSmoker.dimSmokeInt();
 		}
 	}
 

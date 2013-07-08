@@ -6,10 +6,13 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
+import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
 
 public class BlockSmoker extends BlockContainer
 {
@@ -105,7 +108,6 @@ public class BlockSmoker extends BlockContainer
 		if(!world.isRemote)
 		{
 			TileEntitySmoker tileentitysmoker = (TileEntitySmoker) world.getBlockTileEntity(x, y, z);
-			tileentitysmoker.processActivate(player, world);
 		}
 
 		TileEntity tileentity = world.getBlockTileEntity(x, y, z);
@@ -131,5 +133,34 @@ public class BlockSmoker extends BlockContainer
 	{
 		return new TileEntitySmoker();
 	}
+	
+	public void addSmokeInt()
+	{
+		if (this.readSmokeInt(new ItemStack(this, 1)) != 16)
+		{
+			this.saveSmokeInt(new ItemStack(this, 1), this.readSmokeInt(new ItemStack(this, 1))+1);
+		}
+	}
+	
+	public void dimSmokeInt()
+	{
+		if (this.readSmokeInt(new ItemStack(this, 1)) != 0)
+		{
+			this.saveSmokeInt(new ItemStack(this, 1), this.readSmokeInt(new ItemStack(this, 1))-1);
+		}
+	}
+	
+    public static int readSmokeInt(ItemStack var0)
+    {
+        NBTTagCompound var1 = UltimateGraviSuite.getOrCreateNbtData(var0);
+        return var1.getInteger("smokeInt");
+    }
+
+    public static int saveSmokeInt(ItemStack var0, int var1)
+    {
+        NBTTagCompound var2 = UltimateGraviSuite.getOrCreateNbtData(var0);
+        var2.setInteger("smokeInt", var1);
+        return 0;
+    }
 
 }

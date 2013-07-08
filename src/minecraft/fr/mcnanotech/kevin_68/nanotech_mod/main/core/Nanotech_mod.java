@@ -3,6 +3,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 import java.util.logging.Logger;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
@@ -321,4 +322,17 @@ public class Nanotech_mod
 		MinecraftForge.setBlockHarvestLevel(NanotechBlock.BlockGrass, "shovel", 2);
 		MinecraftForge.setBlockHarvestLevel(NanotechBlock.Blocknotfalling, "shovel", 2);
 	}
+	
+    public static NBTTagCompound getOrCreateNbtData(ItemStack var0)
+    {
+        NBTTagCompound var1 = var0.getTagCompound();
+
+        if (var1 == null)
+        {
+            var1 = new NBTTagCompound();
+            var0.setTagCompound(var1);
+        }
+
+        return var1;
+    }
 }
