@@ -15,9 +15,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGenNanoTree;
 
-public class BlockNanosaplings extends BlockSapling
+public class BlockNanoSaplings extends BlockSapling
 {
-	public BlockNanosaplings(int id)
+	public BlockNanoSaplings(int id)
 	{
 		super(id);
 		float f = 0.4F;

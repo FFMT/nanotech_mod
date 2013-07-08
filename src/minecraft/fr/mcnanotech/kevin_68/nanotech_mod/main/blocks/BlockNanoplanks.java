@@ -4,9 +4,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 
-public class BlockNanoplanks extends Block
+public class BlockNanoPlanks extends Block
 {
-	public BlockNanoplanks(int id)
+	public BlockNanoPlanks(int id)
 	{
 		super(id, Material.wood);
 	}

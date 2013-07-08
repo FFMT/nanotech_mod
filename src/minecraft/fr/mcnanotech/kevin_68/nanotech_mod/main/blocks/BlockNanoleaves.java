@@ -15,10 +15,10 @@ import net.minecraftforge.common.IShearable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockNanoleaves extends BlockLeaves implements IShearable
+public class BlockNanoLeaves extends BlockLeaves implements IShearable
 {
 	private Icon fastIcon;
-	public BlockNanoleaves(int id)
+	public BlockNanoLeaves(int id)
 	{
 		super(id);
 		this.setTickRandomly(true);

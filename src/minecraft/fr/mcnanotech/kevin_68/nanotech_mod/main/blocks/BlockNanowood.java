@@ -10,11 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
-public class BlockNanowood extends BlockLog
+public class BlockNanoWood extends BlockLog
 {
 	private Icon topIcon;
 
-	public BlockNanowood(int id)
+	public BlockNanoWood(int id)
 	{
 		super(id);
 	}
