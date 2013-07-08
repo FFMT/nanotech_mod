@@ -36,11 +36,11 @@ public class GuiSmoker extends GuiContainer
 	{
 		if (guibutton.id == 1)
 		{
-			BlockSmoker.addSmokeInt();
+			tilesmoker.addSmokeInt();
 		}
 		if (guibutton.id == 2)
 		{
-			BlockSmoker.dimSmokeInt();
+			tilesmoker.dimSmokeInt();
 		}
 	}
 
