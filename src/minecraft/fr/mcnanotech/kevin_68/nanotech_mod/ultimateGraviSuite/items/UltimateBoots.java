@@ -48,6 +48,7 @@ public class UltimateBoots extends ItemArmor implements IElectricItem, IMetalArm
         MinecraftForge.EVENT_BUS.register(this);
 	}
 	
+	@SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister iconregister)
     {
         itemIcon = iconregister.registerIcon("UltimateGraviSuite:ultimateBoots");

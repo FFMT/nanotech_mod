@@ -322,17 +322,4 @@ public class Nanotech_mod
 		MinecraftForge.setBlockHarvestLevel(NanotechBlock.BlockGrass, "shovel", 2);
 		MinecraftForge.setBlockHarvestLevel(NanotechBlock.Blocknotfalling, "shovel", 2);
 	}
-	
-    public static NBTTagCompound getOrCreateNbtData(ItemStack var0)
-    {
-        NBTTagCompound var1 = var0.getTagCompound();
-
-        if (var1 == null)
-        {
-            var1 = new NBTTagCompound();
-            var0.setTagCompound(var1);
-        }
-
-        return var1;
-    }
 }

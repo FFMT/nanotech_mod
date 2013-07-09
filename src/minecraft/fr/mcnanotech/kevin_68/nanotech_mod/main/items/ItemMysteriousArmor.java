@@ -21,6 +21,7 @@ public class ItemMysteriousArmor extends ItemArmor
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
+	@SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister iconregister)
     {
         itemIcon = iconregister.registerIcon("Nanotech_mod:"+getUnlocalizedName().substring(5));

@@ -22,7 +22,6 @@ public class BlockNanoPortal extends Block
 		this.setTickRandomly(true);
 		this.setStepSound(soundGlassFootstep);
 		this.setLightValue(0.75F);
-		this.setCreativeTab(CreativeTabs.tabBlock);
         this.setBlockBounds(0.0F, 0.40F, 0.0F, 1.0F, 0.60F, 1.0F);
 	}
 

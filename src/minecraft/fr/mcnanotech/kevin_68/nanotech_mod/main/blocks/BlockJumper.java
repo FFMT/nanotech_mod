@@ -53,7 +53,7 @@ public class BlockJumper extends BlockContainer
     	else
     	{
     		return (side == 0) ? iconbuffer[0] : (side == 1) ? iconbuffer[3] : iconbuffer[4];
-    	}	
+    	}
     }
     
 	@SideOnly(Side.CLIENT)
@@ -67,8 +67,8 @@ public class BlockJumper extends BlockContainer
 
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
 	{
-		float var5 = 0.125F;
-		return AxisAlignedBB.getAABBPool().getAABB((double)x, (double)y, (double)z, (double) (x + 1), (double) ((float)(y + 1) - var5), (double)(z + 1));
+		float var5 = 0.050F;
+		return AxisAlignedBB.getAABBPool().getAABB((double)x, (double)y, (double)z, (double) (x + 1), (double)((float)(y + 1) - var5), (double)(z + 1));
 	}
 
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
