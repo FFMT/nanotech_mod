@@ -10,11 +10,9 @@
 /reobf/*
 /runtime/*
 /temp/*
-/src/minecraft/mods/advsolar/
-/src/minecraft/mods/compactsolars/
 /src/minecraft/*
 !/src/minecraft/fr/
-!/src/minecraft/mods/
+!/src/minecraft/mods/Nanotech_mod
 
 
 *.bat
