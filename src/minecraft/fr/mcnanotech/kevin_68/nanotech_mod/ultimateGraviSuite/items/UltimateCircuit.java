@@ -1,21 +1,20 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items;
 
+import ic2.core.IC2;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
-import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
 
 public class UltimateCircuit extends Item
 {
-
-	public UltimateCircuit(int par1) 
+	public UltimateCircuit(int id)
 	{
-		super(par1);
-		this.setCreativeTab(UltimateGraviSuite.ic2Tab);
+		super(id);
+		this.setCreativeTab(IC2.tabIC2);
 	}
-    
-    public void registerIcons(IconRegister iconregister)
-    {
-        itemIcon = iconregister.registerIcon("UltimateGraviSuite:ultimateCircuit");
-    }
+
+	public void registerIcons(IconRegister iconregister)
+	{
+		itemIcon = iconregister.registerIcon("UltimateGraviSuite:ultimateCircuit");
+	}
 
 }

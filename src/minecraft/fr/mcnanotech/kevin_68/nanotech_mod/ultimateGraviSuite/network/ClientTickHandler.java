@@ -10,8 +10,8 @@ import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviChestPlateClientProxy;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
+import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateGraviChestPlate;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateQuantumHelmet;
-import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.ultimategraviChestPlate;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.keyboard.KeyboardClient;
 
 public class ClientTickHandler implements ITickHandler
@@ -113,12 +113,12 @@ public class ClientTickHandler implements ITickHandler
 
                 if (var6 != null && var6.getItem() == UltimateGraviSuite.ultimategraviChestPlate)
                 {
-                    var4 = ultimategraviChestPlate.getCharge(var6);
-                    var5 = var4 * 100 / ultimategraviChestPlate.maxCharge;
+                    var4 = UltimateGraviChestPlate.getCharge(var6);
+                    var5 = var4 * 100 / UltimateGraviChestPlate.maxCharge;
                     var16 = "Energy level: " + this.GetTextEnergyStatus(var5);
                     var13 = mc.fontRenderer.getStringWidth("Energy level: " + Integer.toString(var5) + "%");
 
-                    if (isFlyActiveByMod && ultimategraviChestPlate.readFlyStatus(var6))
+                    if (isFlyActiveByMod && UltimateGraviChestPlate.readFlyStatus(var6))
                     {
                         var15 = "\u00a7aGravitation engine ON";
                         var12 = mc.fontRenderer.getStringWidth("Gravitation engine ON");
