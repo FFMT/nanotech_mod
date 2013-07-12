@@ -4,6 +4,8 @@ import ic2.api.item.Items;
 
 import java.util.Random;
 
+import advsolar.AdvancedSolarPanel;
+
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

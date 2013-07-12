@@ -8,6 +8,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.Property;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -113,7 +114,7 @@ public class Nanotech_mod
 	public static boolean Config_creeperdrillermultiexplosion;
 	public static int Config_supercreeperexplosionradius;
 	public static int Config_timeuntilnextarrow_superskeleton;
-	public static boolean MobSpawn, Creeperdriller, Fastzombie, Fly,
+	public static boolean Creeperdriller, Fastzombie, Fly,
 			Supercreeper, Superenderman, Superskeleton, Superzombie, TheDeath,
 			Flyingcreeper;
 	public static int Superzombiechance;
@@ -212,7 +213,8 @@ public class Nanotech_mod
 
 		Config_hardrecipe = config.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
 
-		MobSpawn = config.get(CATEGORY_Mobsconfig, "MobSpawn", true).getBoolean(true);
+		Property info = config.get(CATEGORY_Mobspawn, "", "");
+		info.comment = "Set to 0 for disable mob spawning";
 		Creeperdriller = config.get(CATEGORY_Mobsconfig, "Creeperdriller", true).getBoolean(true);
 		Config_creeperdrillermultiexplosion = config.get(CATEGORY_Mobsconfig, "Creeperdriller multi-explosion", true).getBoolean(true);
 		Config_supercreeperexplosionradius = config.get(CATEGORY_Mobsconfig, "Supercreeper explosion radius", 5).getInt();
