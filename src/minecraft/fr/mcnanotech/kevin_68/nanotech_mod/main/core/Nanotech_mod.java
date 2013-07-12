@@ -212,9 +212,9 @@ public class Nanotech_mod
 		Item_rottenchunkID = config.getItem("Chunk of rottenflesh", 5033).getInt();
 
 		Config_hardrecipe = config.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
-
-		Property info = config.get(CATEGORY_Mobspawn, "", "");
-		info.comment = "Set to 0 for disable mob spawning";
+		
+		//Property info = config.get(CATEGORY_Mobspawn, "", "");
+		//info.comment = "Set to 0 for disable mob spawning";
 		Creeperdriller = config.get(CATEGORY_Mobsconfig, "Creeperdriller", true).getBoolean(true);
 		Config_creeperdrillermultiexplosion = config.get(CATEGORY_Mobsconfig, "Creeperdriller multi-explosion", true).getBoolean(true);
 		Config_supercreeperexplosionradius = config.get(CATEGORY_Mobsconfig, "Supercreeper explosion radius", 5).getInt();

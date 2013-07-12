@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
+import fr.mcnanotech.FFMT.FFMTAPI.FFMTRegistry;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
@@ -85,11 +86,11 @@ public class NanotechRecipe
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.Rottenchunk), new Object[]{ Item.rottenFlesh, Item.rottenFlesh });
 
 		GameRegistry.addSmelting(NanotechBlock.BlockNanowood.blockID, new ItemStack(Item.coal, 1, 1), 1.0F);
-		FurnaceRecipes.smelting().addSmelting(NanotechBlock.BlockNanoOre.blockID, 0, new ItemStack(NanotechItem.ItemBase, 1, 0), 1.0F);
-		FurnaceRecipes.smelting().addSmelting(NanotechBlock.BlockNanoOre.blockID, 1, new ItemStack(NanotechItem.ItemBase, 1, 1), 1.0F);
-		FurnaceRecipes.smelting().addSmelting(NanotechItem.ItemBase.itemID, 0, new ItemStack(NanotechItem.ItemBase, 1, 3), 1.0F);
+		FFMTRegistry.addSmeltingWithMetadata(NanotechBlock.BlockNanoOre.blockID, 0, new ItemStack(NanotechItem.ItemBase, 1, 0), 1.0F);
+		FFMTRegistry.addSmeltingWithMetadata(NanotechBlock.BlockNanoOre.blockID, 1, new ItemStack(NanotechItem.ItemBase, 1, 1), 1.0F);
+		FFMTRegistry.addSmeltingWithMetadata(NanotechItem.ItemBase.itemID, 0, new ItemStack(NanotechItem.ItemBase, 1, 3), 1.0F);
 		GameRegistry.addSmelting(NanotechItem.Rottenchunk.itemID, new ItemStack(NanotechItem.Edibleflesh), 0.5F);
-		FurnaceRecipes.smelting().addSmelting(NanotechItem.ItemBase.itemID, 2, new ItemStack(NanotechItem.ItemBase, 1, 4), 1.5F);
+		FFMTRegistry.addSmeltingWithMetadata(NanotechItem.ItemBase.itemID, 2, new ItemStack(NanotechItem.ItemBase, 1, 4), 1.5F);
 	}
 
 	public static void InitHardRecipes()
@@ -106,11 +107,11 @@ public class NanotechRecipe
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.Rottenchunk), new Object[]{ Item.rottenFlesh, Item.rottenFlesh, Item.rottenFlesh, Item.rottenFlesh });
 
 		GameRegistry.addSmelting(NanotechBlock.BlockNanowood.blockID, new ItemStack(Item.coal, 1, 1), 0.0F);
-		FurnaceRecipes.smelting().addSmelting(NanotechBlock.BlockNanoOre.blockID, 0, new ItemStack(NanotechItem.ItemBase, 1, 0), 0.1F);
-		FurnaceRecipes.smelting().addSmelting(NanotechBlock.BlockNanoOre.blockID, 1, new ItemStack(NanotechItem.ItemBase, 1, 1), 0.1F);
-		FurnaceRecipes.smelting().addSmelting(NanotechItem.ItemBase.itemID, 0, new ItemStack(NanotechItem.ItemBase, 1, 3), 0.0F);
+		FFMTRegistry.addSmeltingWithMetadata(NanotechBlock.BlockNanoOre.blockID, 0, new ItemStack(NanotechItem.ItemBase, 1, 0), 0.1F);
+		FFMTRegistry.addSmeltingWithMetadata(NanotechBlock.BlockNanoOre.blockID, 1, new ItemStack(NanotechItem.ItemBase, 1, 1), 0.1F);
+		FFMTRegistry.addSmeltingWithMetadata(NanotechItem.ItemBase.itemID, 0, new ItemStack(NanotechItem.ItemBase, 1, 3), 0.0F);
 		GameRegistry.addSmelting(NanotechItem.Rottenchunk.itemID, new ItemStack(NanotechItem.Edibleflesh), 0.0F);
-		FurnaceRecipes.smelting().addSmelting(NanotechItem.ItemBase.itemID, 2, new ItemStack(NanotechItem.ItemBase, 1, 4), 0.5F);
+		FFMTRegistry.addSmeltingWithMetadata(NanotechItem.ItemBase.itemID, 2, new ItemStack(NanotechItem.ItemBase, 1, 4), 0.5F);
 	}
 
 	public static void InitFallingBlockRecipes(int output)

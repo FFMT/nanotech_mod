@@ -20,9 +20,9 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.ai.AiCreeperforreur;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.ai.AiCreeperDriller;
 
-public class MobCreeperforreur extends EntityMob
+public class MobCreeperDriller extends EntityMob
 {
 	private int lastActiveTime;
 
@@ -30,12 +30,12 @@ public class MobCreeperforreur extends EntityMob
 	private int field_82225_f = 20;
 	private int field_82226_g = 3;
 
-	public MobCreeperforreur(World par1World)
+	public MobCreeperDriller(World par1World)
 	{
 		super(par1World);
 		this.texture = "/mods/Nanotech_mod/textures/mob/creeperforreur.png";
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, new AiCreeperforreur(this));
+		this.tasks.addTask(2, new AiCreeperDriller(this));
 		this.tasks.addTask(3, new EntityAIAvoidEntity(this, MobThedeath.class, 6.0F, 0.25F, 0.5F));
 		this.tasks.addTask(4, new EntityAIAttackOnCollide(this, 0.25F, false));
 		this.tasks.addTask(5, new EntityAIWander(this, 0.2F));

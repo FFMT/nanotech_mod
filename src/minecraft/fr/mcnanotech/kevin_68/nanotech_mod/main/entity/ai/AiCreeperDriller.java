@@ -2,16 +2,16 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.ai;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCreeperforreur;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCreeperDriller;
 
-public class AiCreeperforreur extends EntityAIBase
+public class AiCreeperDriller extends EntityAIBase
 {
-	MobCreeperforreur swellingCreeper;
+	MobCreeperDriller swellingCreeper;
 	EntityLiving creeperAttackTarget;
 
-	public AiCreeperforreur(MobCreeperforreur mobcreeperforreur)
+	public AiCreeperDriller(MobCreeperDriller mobcreeperDriller)
 	{
-		swellingCreeper = mobcreeperforreur;
+		swellingCreeper = mobcreeperDriller;
 		setMutexBits(1);
 	}
 
