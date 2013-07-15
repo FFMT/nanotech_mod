@@ -11,8 +11,10 @@
 /runtime/*
 /temp/*
 /src/minecraft/*
-!/src/minecraft/fr/
+/src/minecraft/fr/mcnanotech/*
+!/src/minecraft/fr/mcnanotech/kevin_68
 !/src/minecraft/mods/Nanotech_mod
+!/src/minecraft/mods/UltimateGraviSuite
 
 
 *.bat

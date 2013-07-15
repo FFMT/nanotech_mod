@@ -1,144 +1,206 @@
 package fr.mcnanotech.FFMT.FFMTAPI;
 
 /**
- * @author elias54
+ * @author elias54, kevin_68
  */
-public class FFMTColor {
+public class FFMTColor
+{
 
-	/** RED **/
-	public static int redInt;
-	public static String red;
+	/** BLACK **/
+	public static int blackInt;
+	public static String black;
+
+	/** DARK BLUE **/
+	public static int darkBlueInt;
+	public static String darkBlue;
+
+	/** DARK GREEN **/
+	public static int darkGreenInt;
+	public static String darkGreen;
+
+	/** DARK AQUA **/
+	public static int darkAquaInt;
+	public static String darkAqua;
+
+	/** DARK RED **/
+	public static int darkRedInt;
+	public static String darkRed;
 	
-	/** LIGHT RED **/
-	public static int redLightInt;
-	public static String redLight;
-	
-	/** WHITE **/
-	public static int whiteInt;
-	public static String white;
-	
+	/** DARK PURPLE **/
+	public static int darkPurpleInt;
+
+	/** PURPLE **/
+	public static int purpleInt;
+	public static String purple;
+
+	/** GOLD **/
+	public static int goldInt;
+	public static String gold;
+
+	/** GRAY **/
+	public static int grayInt;
+	public static String gray;
+
+	/** DARK GRAY **/
+	public static int darkGrayInt;
+	public static String darkGray;
+
+	/** BLUE **/
+	public static int blueInt;
+	public static String blue;
+
 	/** GREEN **/
 	public static int greenInt;
 	public static String green;
 
-	/** LIGHT GREEN **/
-	public static int greenLightInt;
-	public static String greenLight;
+	/** AQUA **/
+	public static int aquaInt;
+	public static String aqua;
+
+	/** RED **/
+	public static int redInt;
+	public static String red;
+
+	/** LIGHT PURPLE **/
+	public static int lightPurpleInt;
+	public static String lightPurple;
 	
-	/** BLUE **/
-	public static int blueInt;
-	public static String blue;
+	/** LIGHT RED **/
+	public static int lightRedInt;
+	
+	/** LIGHT GREEN **/
+	public static int lightGreenInt;
 	
 	/** LIGHT BLUE **/
-	public static int blueLightInt;
-	public static String blueLight;
-	
-	/** DARK BLUE **/
-	public static int blueDarkInt;
-	public static String blueDark;
-	
-	/** BLUE-GREEN **/
-	public static int blueGreenInt;
-	public static String blueGreen;
-	
-	/** GRAY **/
-	public static int grayGuiInt;
-	public static String gray;
-	
-	/** BLACK **/
-	public static int blackInt;
-	public static String black;
-	
+	public static int lightBlueInt;
+
 	/** YELLOW **/
 	public static int yellowInt;
 	public static String yellow;
-	
-	/** BRIGHT YELLOW **/
-	public static int yellowBrightInt;
-	public static String yellowBright;
-	
-	/** ORANGE **/
-	public static int orangeInt;
-	public static String orange;
-	
-	/** BROWN **/
-	public static int brownInt;
-	public static String brown;
+
+	/** WHITE **/
+	public static int whiteInt;
+	public static String white;
 	
 	/** PINK **/
 	public static int pinkInt;
-	public static String pink;
 	
+	/** ORANGE **/
+	public static int orangeInt;
+	
+	/** DARK ORANGE **/
+	public static int darkOrangeInt;
+	
+	/** SPECIALS **/
+	public static String obfuscated;
+	public static String bold;
+	public static String strike;
+	public static String underline;
+	public static String italic;
+
 	public FFMTColor()
 	{
-		/** RED **/
-		red = "\247c";
-		redInt = 16711680;
-		
-		/** LIGHT RED **/
-		redLight = "/247c";
-		redLightInt = 0;
-		
-		/** WHITE **/
-		whiteInt = 16777215;
-		white = "\247f";
-		
-		/** GREEN **/
-		greenInt = 652820;
-		green = "o";
-		
-		/** LIGHT GREEN **/
-		greenLightInt = 0x00FF08;
-		greenLight = "\247a";
-		
-		/** BLUE **/
-		blueInt = 255;
-		blue = "o";
-		
-		/** LIGHT BLUE **/
-		blueLightInt = 65535;
-		blueLight = "\247b";
-		
-		/** DARK BLUE **/
-		blueDarkInt = 0;
-		blueDark = "\2471";
-		
-		/** BLUE-GREEN **/
-		blueGreenInt = 46220;
-		blueGreen = "o";
-		
-		/** GRAY (GUI) **/
-		grayGuiInt = 0x404040;
-		gray = "\2477";
-		
 		/** BLACK **/
 		blackInt = 0;
-		black = "\2478";
+		black = "\2470";
+
+		/** DARK BLUE **/
+		darkBlueInt = 170;
+		darkBlue = "\2471";
+
+		/** DARK GREEN **/
+		darkGreenInt = 170000;
+		darkGreen = "\2472";
+
+		/** DARK AQUA **/
+		darkAquaInt = 170170;
+		darkAqua = "\2473";
+
+		/** DARK RED **/
+		darkRedInt = 170000000;
+		darkRed = "\2474";
+
+		/** PURPLE **/
+		purpleInt = 170000170;
+		purple = "\2475";
 		
+		/** DARK PURPLE **/
+		darkPurpleInt = 122055139;
+
+		/** GOLD **/
+		goldInt = 255170000;
+		gold = "\2476";
+
+		/** GRAY **/
+		grayInt = 170170170;
+		gray = "\2477";
+
+		/** DARK GRAY **/
+		darkGrayInt = 85085085;
+		darkGray = "\2478";
+
+		/** BLUE **/
+		blueInt = 85085255;
+		blue = "\2479";
+
+		/** GREEN **/
+		greenInt = 85255085;
+		green = "\247a";
+
+		/** AQUA **/
+		aquaInt = 85255255;
+		aqua = "\247b";
+
+		/** RED **/
+		redInt = 255085085;
+		red = "\247c";
+
+		/** LIGHT PURPLE **/
+		lightPurpleInt = 255085255;
+		lightPurple = "\247d";
+		
+		/** LIGHT RED **/
+		lightRedInt = 255099071;
+
+		/** LIGHT GREEN **/
+		lightGreenInt = 124252000;
+
+		/** LIGHT BLUE **/
+		lightBlueInt = 	135206250;
+
 		/** YELLOW **/
-		yellowInt = 16776960;
-		yellow = "o";
-		
-		/** YELLOW BRIGHT**/
-		yellowBrightInt = 0;
-		yellowBright = "/247e";
-		
-		/** ORANGE **/
-		orangeInt = 16744448;
-		orange = "o";
-		
-		/** BROWN **/
-		brownInt = 8404992;
-		brown = "o";
+		yellowInt = 255255085;
+		yellow = "\247e";
+
+		/** WHITE **/
+		whiteInt = 255255255;
+		white = "\247f";
 		
 		/** PINK **/
-		pinkInt = 16711808;
-		pink = "/247d";
+		pinkInt = 255192203;
+		
+		/** ORANGE **/
+		orangeInt = 255165000;
+		
+		/** DARK ORANGE **/
+		darkOrangeInt = 205102000;
+
+		/** SPECIALS **/
+		obfuscated = "\247k";
+		bold = "\247l";
+		strike = "\247m";
+		underline = "\247n";
+		italic = "\247o";
 	}
-	
+
 	public static FFMTColor instance()
 	{
-		return new FFMTColor();
+		return new FFMTColor(); 
 	}
 	
+	public static String test()
+	{
+		return black + "Black " + darkBlue + "Dark Blue " + darkGreen + "Dark Green " + darkAqua + "Dark Aqua " + darkRed + "Dark Red " + purple + "Purple " + gold + "Gold " + gray + "Gray " + darkGray + "Dark Gray " + blue + "Blue " + green + "Green " + aqua + "Aqua " + red + "Red " + lightPurple + "Light Purple " + yellow + "Yellow " + white + "White ";
+	}
+
 }
