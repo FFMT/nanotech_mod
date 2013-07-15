@@ -58,7 +58,7 @@ public class Nanotech_mod
 
 	// Block IDs
 	public static int BlockPortalID;
-	public static int BlockPortalframeID;
+	public static int BlockPortalFrameID;
 	public static int BlockGrassID;
 	public static int BlockFakeOreID;
 	public static int BlockSpeedID;
@@ -66,40 +66,40 @@ public class Nanotech_mod
 	public static int BlockMultiplierID;
 	public static int BlockSmokerID;
 	public static int BlockTrashcanID;
-	public static int BlockBarbedwireID;
-	public static int BlockNanowoodID;
-	public static int BlockNanoleavesID;
-	public static int BlockNanosaplingsID;
-	public static int BlockNanoplanksID;
+	public static int BlockBarbedWireID;
+	public static int BlockNanoWoodID;
+	public static int BlockNanoLeavesID;
+	public static int BlockNanoSaplingsID;
+	public static int BlockNanoPlanksID;
 	public static int BlockNanoOreID;
 	public static int BlockConfusionID;
 	public static int BlockFallingID;
-	public static int BlockNotfallingID;
+	public static int BlockNotFallingID;
 	public static int BlockSodiumID;
-	public static int BlockMossystoneID;
+	public static int BlockMossyStoneID;
 
 	// Item IDs
-	public static int Item_NanotechID;
-	public static int Item_superbottleofxpID;
-	public static int Item_diamondbowID;
-	public static int Item_emeraldbowID;
-	public static int Item_nanomitebowID;
-	public static int Item_nanomiteaxeID;
-	public static int Item_nanomitepickaxeID;
-	public static int Item_nanomiteshovelID;
-	public static int Item_nanomitehoeID;
-	public static int Item_nanomiteswordID;
-	public static int Item_nanomitehelmetID;
-	public static int Item_nanomitechestplateID;
-	public static int Item_nanomitelegginsID;
-	public static int Item_nanomitebootsID;
-	public static int Item_mysterioushelmetID;
-	public static int Item_mysteriouschestplateID;
-	public static int Item_mysteriouslegginsID;
-	public static int Item_mysteriousbootsID;
-	public static int Item_nanodiscID;
-	public static int Item_ediblefleshID;
-	public static int Item_rottenchunkID;
+	public static int ItemNanotechID;
+	public static int ItemSuperBottleOfXpID;
+	public static int ItemDiamondBowID;
+	public static int ItemEmeraldBowID;
+	public static int ItemNanomiteBowID;
+	public static int ItemNanomiteAxeID;
+	public static int ItemNanomitePickaxeID;
+	public static int ItemNanomiteShovelID;
+	public static int ItemNanomiteHoeID;
+	public static int ItemNanomiteSwordID;
+	public static int ItemNanomiteHelmetID;
+	public static int ItemNanomiteChestPlateID;
+	public static int ItemNanomiteLegginsID;
+	public static int ItemNanomiteBootsID;
+	public static int ItemMysteriousHelmetID;
+	public static int ItemMysteriousChestPlateID;
+	public static int ItemMysteriousLegginsID;
+	public static int ItemMysteriousBootsID;
+	public static int ItemNanoDiscID;
+	public static int ItemEdibleFleshID;
+	public static int ItemRottenChunkID;
 
 	// Dimension ID
 	public static int dimensionID = 19;
@@ -108,39 +108,41 @@ public class Nanotech_mod
 	public static BiomeGenBase Nanotechbiome;
 
 	// Configuration
-	public static boolean Config_hardrecipe;
+	public static boolean HardRecipe;
 
 	// Mobs configuration
-	public static boolean Config_creeperdrillermultiexplosion;
-	public static int Config_supercreeperexplosionradius;
-	public static int Config_timeuntilnextarrow_superskeleton;
-	public static boolean Creeperdriller, Fastzombie, Fly,
-			Supercreeper, Superenderman, Superskeleton, Superzombie, TheDeath,
-			Flyingcreeper;
-	public static int Superzombiechance;
-	public static int Superzombiemin;
-	public static int Superzombiemax;
-	public static int Superskeletonchance;
-	public static int Superskeletonmin;
-	public static int Superskeletonmax;
-	public static int Supercreeperchance;
-	public static int Supercreepermin;
-	public static int Supercreepermax;
-	public static int Superendermanchance;
-	public static int Superendermanmin;
-	public static int Superendermanmax;
-	public static int Fastzombiechance;
-	public static int Fastzombiemin;
-	public static int Fastzombiemax;
-	public static int Flychance;
-	public static int Flymin;
-	public static int Flymax;
-	public static int Creeperdrillerchance;
-	public static int Creeperdrillermin;
-	public static int Creeperdrillermax;
-	public static int Flyingcreeperchance;
-	public static int Flyingcreepermin;
-	public static int Flyingcreepermax;
+	public static boolean MultipleExplosion;
+	public static int ExplosionRadius;
+	public static int TimeUntilNextArrow;
+	public static boolean CreeperDriller, FastZombie, Fly, SuperCreeper, SuperEnderman, 
+						  SuperSkeleton, SuperZombie, TheDeath, FlyingCreeper, CrazyGuy;
+	public static int SuperZombieProb;
+	public static int SuperZombieMin;
+	public static int SuperZombieMax;
+	public static int SuperSkeletonProb;
+	public static int SuperSkeletonMin;
+	public static int SuperSkeletonMax;
+	public static int SuperCreeperProb;
+	public static int SuperCreeperMin;
+	public static int SuperCreeperMax;
+	public static int SuperEndermanProb;
+	public static int SuperEndermanMin;
+	public static int SuperEndermanMax;
+	public static int FastZombieProb;
+	public static int FastZombieMin;
+	public static int FastZombieMax;
+	public static int FlyProb;
+	public static int FlyMin;
+	public static int FlyMax;
+	public static int CreeperDrillerProb;
+	public static int CreeperDrillerMin;
+	public static int CreeperDrillerMax;
+	public static int FlyingCreeperProb;
+	public static int FlyingCreeperMin;
+	public static int FlyingCreeperMax;
+	public static int CrazyGuyProb;
+	public static int CrazyGuyMin;
+	public static int CrazyGuyMax;
 
 	// Configuration Category
 	public static final String CATEGORY_Other = "Other configs";
@@ -169,7 +171,7 @@ public class Nanotech_mod
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		config.load();
 		BlockPortalID = config.getBlock("Portal", 1000).getInt();
-		BlockPortalframeID = config.getBlock("Portal frame", 1001).getInt();
+		BlockPortalFrameID = config.getBlock("Portal Frame", 1001).getInt();
 		BlockGrassID = config.getTerrainBlock("block", "Grass", 250, "Grass is used in terrain gen, ID must be less than 256").getInt();
 		BlockFakeOreID = config.getBlock("Fake diamond", 1002).getInt();
 		BlockSpeedID = config.getBlock("Booster and Retarder", 1003).getInt();
@@ -177,80 +179,84 @@ public class Nanotech_mod
 		BlockMultiplierID = config.getBlock("Multiplier", 1005).getInt();
 		BlockSmokerID = config.getBlock("Smoker", 1006).getInt();
 		BlockTrashcanID = config.getBlock("Trash can", 1007).getInt();
-		BlockBarbedwireID = config.getBlock("Barbed wire", 1014).getInt();
-		BlockNanowoodID = config.getBlock("Nano Wood", 1015).getInt();
-		BlockNanoleavesID = config.getBlock("Nano Leaves", 1016).getInt();
-		BlockNanosaplingsID = config.getBlock("Nano Saplings", 1017).getInt();
-		BlockNanoplanksID = config.getBlock("Nano Planks", 1018).getInt();
+		BlockBarbedWireID = config.getBlock("Barbed Wire", 1014).getInt();
+		BlockNanoWoodID = config.getBlock("Nano Wood", 1015).getInt();
+		BlockNanoLeavesID = config.getBlock("Nano Leaves", 1016).getInt();
+		BlockNanoSaplingsID = config.getBlock("Nano Saplings", 1017).getInt();
+		BlockNanoPlanksID = config.getBlock("Nano Planks", 1018).getInt();
 		BlockNanoOreID = config.getBlock("Ore", 1019).getInt();
 		BlockConfusionID = config.getBlock("Confusion", 1020).getInt();
-		BlockFallingID = config.getBlock("Falling block", 1021).getInt();
-		BlockNotfallingID = config.getBlock("Not falling sand", 1022).getInt();
+		BlockFallingID = config.getBlock("Falling Blocks", 1021).getInt();
+		BlockNotFallingID = config.getBlock("Not Falling Blocks", 1022).getInt();
 		BlockSodiumID = config.getBlock("Sodium", 1023).getInt();
-		BlockMossystoneID = config.getBlock("Mossy stone", 1024).getInt();
+		BlockMossyStoneID = config.getBlock("Mossy Stone", 1024).getInt();
 
-		Item_NanotechID = config.getItem("Main Nanotech ID", 5000).getInt();
-		Item_superbottleofxpID = config.getItem("Super Bottle of xp", 5005).getInt();
-		Item_diamondbowID = config.getItem("Diamond bow", 5006).getInt();
-		Item_emeraldbowID = config.getItem("Emerald bow", 5007).getInt();
-		Item_nanomitebowID = config.getItem("Nanomite bow", 5008).getInt();
-		Item_nanomiteaxeID = config.getItem("Nanomite Axe", 5019).getInt();
-		Item_nanomitepickaxeID = config.getItem("Nanomite Pickaxe", 5020).getInt();
-		Item_nanomiteshovelID = config.getItem("Nanomite Shovel", 5021).getInt();
-		Item_nanomitehoeID = config.getItem("Nanomite Hoe", 5022).getInt();
-		Item_nanomiteswordID = config.getItem("Nanomite Sword", 5023).getInt();
-		Item_nanomitehelmetID = config.getItem("Nanomite Helmet", 5024).getInt();
-		Item_nanomitechestplateID = config.getItem("Nanomite Chestplate", 5025).getInt();
-		Item_nanomitelegginsID = config.getItem("Nanomite Leggins", 5026).getInt();
-		Item_nanomitebootsID = config.getItem("Nanomite Boots", 5027).getInt();
-		Item_mysterioushelmetID = config.getItem("Mysterious Helmet", 5028).getInt();
-		Item_mysteriouschestplateID = config.getItem("Mysterious Chestplate", 5029).getInt();
-		Item_mysteriouslegginsID = config.getItem("Mysterious Leggins", 5030).getInt();
-		Item_mysteriousbootsID = config.getItem("Mysterious Boots", 5031).getInt();
-		Item_nanodiscID = config.getItem("Nanodisk (warning he use 18 ID)", 5100).getInt();
-		Item_ediblefleshID = config.getItem("Edible Flesh", 5032).getInt();
-		Item_rottenchunkID = config.getItem("Chunk of rottenflesh", 5033).getInt();
+		ItemNanotechID = config.getItem("Main Nanotech ID", 5000).getInt();
+		ItemSuperBottleOfXpID = config.getItem("Super Bottle of xp", 5005).getInt();
+		ItemDiamondBowID = config.getItem("Diamond bow", 5006).getInt();
+		ItemEmeraldBowID = config.getItem("Emerald bow", 5007).getInt();
+		ItemNanomiteBowID = config.getItem("Nanomite bow", 5008).getInt();
+		ItemNanomiteAxeID = config.getItem("Nanomite Axe", 5019).getInt();
+		ItemNanomitePickaxeID = config.getItem("Nanomite Pickaxe", 5020).getInt();
+		ItemNanomiteShovelID = config.getItem("Nanomite Shovel", 5021).getInt();
+		ItemNanomiteHoeID = config.getItem("Nanomite Hoe", 5022).getInt();
+		ItemNanomiteSwordID = config.getItem("Nanomite Sword", 5023).getInt();
+		ItemNanomiteHelmetID = config.getItem("Nanomite Helmet", 5024).getInt();
+		ItemNanomiteChestPlateID = config.getItem("Nanomite Chestplate", 5025).getInt();
+		ItemNanomiteLegginsID = config.getItem("Nanomite Leggins", 5026).getInt();
+		ItemNanomiteBootsID = config.getItem("Nanomite Boots", 5027).getInt();
+		ItemMysteriousHelmetID = config.getItem("Mysterious Helmet", 5028).getInt();
+		ItemMysteriousChestPlateID = config.getItem("Mysterious Chestplate", 5029).getInt();
+		ItemMysteriousLegginsID = config.getItem("Mysterious Leggins", 5030).getInt();
+		ItemMysteriousBootsID = config.getItem("Mysterious Boots", 5031).getInt();
+		ItemNanoDiscID = config.getItem("Nanodisk (warning he use 18 ID)", 5100).getInt();
+		ItemEdibleFleshID = config.getItem("Edible Flesh", 5032).getInt();
+		ItemRottenChunkID = config.getItem("Chunk of rottenflesh", 5033).getInt();
 
-		Config_hardrecipe = config.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
+		HardRecipe = config.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
 		
 		//Property info = config.get(CATEGORY_Mobspawn, "", "");
 		//info.comment = "Set to 0 for disable mob spawning";
-		Creeperdriller = config.get(CATEGORY_Mobsconfig, "Creeperdriller", true).getBoolean(true);
-		Config_creeperdrillermultiexplosion = config.get(CATEGORY_Mobsconfig, "Creeperdriller multi-explosion", true).getBoolean(true);
-		Config_supercreeperexplosionradius = config.get(CATEGORY_Mobsconfig, "Supercreeper explosion radius", 5).getInt();
-		Config_timeuntilnextarrow_superskeleton = config.get(CATEGORY_Mobsconfig, "Supercreeper explosion radius", 3).getInt();
-		Fastzombie = config.get(CATEGORY_Mobsconfig, "Fastzombie", true).getBoolean(true);
+		CreeperDriller = config.get(CATEGORY_Mobsconfig, "CreeperDriller", true).getBoolean(true);
+		MultipleExplosion = config.get(CATEGORY_Mobsconfig, "Multiple Explosion (CreeperDriller)", true).getBoolean(true);
+		ExplosionRadius = config.get(CATEGORY_Mobsconfig, "Explosion Radius (SuperCreeper)", 5).getInt();
+		TimeUntilNextArrow = config.get(CATEGORY_Mobsconfig, "Time Until New Arrow (SuperSkeleton)", 3).getInt();
+		FastZombie = config.get(CATEGORY_Mobsconfig, "Fastzombie", true).getBoolean(true);
 		Fly = config.get(CATEGORY_Mobsconfig, "Fly", true).getBoolean(true);
-		Supercreeper = config.get(CATEGORY_Mobsconfig, "Supercreeper", true).getBoolean(true);
-		Superenderman = config.get(CATEGORY_Mobsconfig, "Superenderman", true).getBoolean(true);
-		Superskeleton = config.get(CATEGORY_Mobsconfig, "Superskeleton", true).getBoolean(true);
-		Superzombie = config.get(CATEGORY_Mobsconfig, "Superzombie", true).getBoolean(true);
+		SuperCreeper = config.get(CATEGORY_Mobsconfig, "Supercreeper", true).getBoolean(true);
+		SuperEnderman = config.get(CATEGORY_Mobsconfig, "Superenderman", true).getBoolean(true);
+		SuperSkeleton = config.get(CATEGORY_Mobsconfig, "Superskeleton", true).getBoolean(true);
+		SuperZombie = config.get(CATEGORY_Mobsconfig, "Superzombie", true).getBoolean(true);
 		TheDeath = config.get(CATEGORY_Mobsconfig, "TheDeath", true).getBoolean(true);
-		Flyingcreeper = config.get(CATEGORY_Mobsconfig, "Flyingcreeper", true).getBoolean(true);
-		Superzombiechance = config.get(CATEGORY_Mobspawn, "Superzombiechance", 1).getInt();
-		Superzombiemin = config.get(CATEGORY_Mobspawn, "Superzombiemin", 1).getInt();
-		Superzombiemax = config.get(CATEGORY_Mobspawn, "Superzombiemax", 2).getInt();
-		Superskeletonchance = config.get(CATEGORY_Mobspawn, "Superskeletonchance", 1).getInt();
-		Superskeletonmin = config.get(CATEGORY_Mobspawn, "Superskeletonmin", 1).getInt();
-		Superskeletonmax = config.get(CATEGORY_Mobspawn, "Superskeletonmax", 2).getInt();
-		Supercreeperchance = config.get(CATEGORY_Mobspawn, "Supercreeperchance", 1).getInt();
-		Supercreepermin = config.get(CATEGORY_Mobspawn, "Supercreepermin", 1).getInt();
-		Supercreepermax = config.get(CATEGORY_Mobspawn, "Supercreepermax", 2).getInt();
-		Superendermanchance = config.get(CATEGORY_Mobspawn, "Superendermanchance", 1).getInt();
-		Superendermanmin = config.get(CATEGORY_Mobspawn, "Superendermanmin", 1).getInt();
-		Superendermanmax = config.get(CATEGORY_Mobspawn, "Superendermanmax", 2).getInt();
-		Fastzombiechance = config.get(CATEGORY_Mobspawn, "Fastzombiechance", 1).getInt();
-		Fastzombiemin = config.get(CATEGORY_Mobspawn, "Fastzombiemin", 5).getInt();
-		Fastzombiemax = config.get(CATEGORY_Mobspawn, "Fastzombiemax", 10).getInt();
-		Flychance = config.get(CATEGORY_Mobspawn, "Flychance", 3).getInt();
-		Flymin = config.get(CATEGORY_Mobspawn, "Flymin", 1).getInt();
-		Flymax = config.get(CATEGORY_Mobspawn, "Flymax", 4).getInt();
-		Creeperdrillerchance = config.get(CATEGORY_Mobspawn, "Creeperdrillerchance", 1).getInt();
-		Creeperdrillermin = config.get(CATEGORY_Mobspawn, "Creeperdrillermin", 1).getInt();
-		Creeperdrillermax = config.get(CATEGORY_Mobspawn, "Creeperdrillermax", 2).getInt();
-		Flyingcreeperchance = config.get(CATEGORY_Mobspawn, "Flyingcreeperchance", 1).getInt();
-		Flyingcreepermin = config.get(CATEGORY_Mobspawn, "Flyingcreepermin", 1).getInt();
-		Flyingcreepermax = config.get(CATEGORY_Mobspawn, "Flyingcreepermax", 2).getInt();
+		FlyingCreeper = config.get(CATEGORY_Mobsconfig, "FlyingCreeper", true).getBoolean(true);
+		CrazyGuy = config.get(CATEGORY_Mobsconfig, "CrazyGuy", true).getBoolean(true);
+		SuperZombieProb = config.get(CATEGORY_Mobspawn, "SuperZombie Prob", 1).getInt();
+		SuperZombieMin = config.get(CATEGORY_Mobspawn, "SuperZombie Min", 1).getInt();
+		SuperZombieMax = config.get(CATEGORY_Mobspawn, "SuperZombie Max", 2).getInt();
+		SuperSkeletonProb = config.get(CATEGORY_Mobspawn, "SuperSkeleton Prob", 1).getInt();
+		SuperSkeletonMin = config.get(CATEGORY_Mobspawn, "SuperSkeleton Min", 1).getInt();
+		SuperSkeletonMax = config.get(CATEGORY_Mobspawn, "SuperSkeleton Max", 2).getInt();
+		SuperCreeperProb = config.get(CATEGORY_Mobspawn, "SuperCreeper Prob", 1).getInt();
+		SuperCreeperMin = config.get(CATEGORY_Mobspawn, "SuperCreeper Min", 1).getInt();
+		SuperCreeperMax = config.get(CATEGORY_Mobspawn, "SuperCreeper Max", 2).getInt();
+		SuperEndermanProb = config.get(CATEGORY_Mobspawn, "SuperEnderman Prob", 1).getInt();
+		SuperEndermanMin = config.get(CATEGORY_Mobspawn, "SuperEnderman Min", 1).getInt();
+		SuperEndermanMax = config.get(CATEGORY_Mobspawn, "SuperEnderman Max", 2).getInt();
+		FastZombieProb = config.get(CATEGORY_Mobspawn, "FastZombie Prob", 1).getInt();
+		FastZombieMin = config.get(CATEGORY_Mobspawn, "FastZombie Min", 5).getInt();
+		FastZombieMax = config.get(CATEGORY_Mobspawn, "FastZombie Max", 10).getInt();
+		FlyProb = config.get(CATEGORY_Mobspawn, "Fly Prob", 3).getInt();
+		FlyMin = config.get(CATEGORY_Mobspawn, "Fly Min", 1).getInt();
+		FlyMax = config.get(CATEGORY_Mobspawn, "Fly Max", 4).getInt();
+		CreeperDrillerProb = config.get(CATEGORY_Mobspawn, "CreeperDriller Prob", 1).getInt();
+		CreeperDrillerMin = config.get(CATEGORY_Mobspawn, "CreeperDriller Min", 1).getInt();
+		CreeperDrillerMax = config.get(CATEGORY_Mobspawn, "CreeperDriller Max", 2).getInt();
+		FlyingCreeperProb = config.get(CATEGORY_Mobspawn, "FlyingCreeper Prob", 1).getInt();
+		FlyingCreeperMin = config.get(CATEGORY_Mobspawn, "FlyingCreeper Min", 1).getInt();
+		FlyingCreeperMax = config.get(CATEGORY_Mobspawn, "FlyingCreeper Max", 2).getInt();
+		CrazyGuyProb = config.get(CATEGORY_Mobspawn, "CrazyGuy Prob", 1).getInt();
+		CrazyGuyMin = config.get(CATEGORY_Mobspawn, "CrazyGuy Min", 1).getInt();
+		CrazyGuyMax = config.get(CATEGORY_Mobspawn, "CrazyGuy Max", 2).getInt();
 
 		config.save();
 
@@ -282,7 +288,7 @@ public class Nanotech_mod
 	public void PostInitNanotech_mod(FMLPostInitializationEvent event)
 	{
 		NanotechRecipe.InitCommonRecipes();
-		if (Config_hardrecipe)
+		if (HardRecipe)
 		{
 			NanotechRecipe.InitHardRecipes();
 			NanotechRecipe.InitFallingBlockRecipes(4);

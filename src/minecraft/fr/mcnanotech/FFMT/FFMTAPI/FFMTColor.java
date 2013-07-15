@@ -9,6 +9,10 @@ public class FFMTColor {
 	public static int redInt;
 	public static String red;
 	
+	/** LIGHT RED **/
+	public static int redLightInt;
+	public static String redLight;
+	
 	/** WHITE **/
 	public static int whiteInt;
 	public static String white;
@@ -29,6 +33,10 @@ public class FFMTColor {
 	public static int blueLightInt;
 	public static String blueLight;
 	
+	/** DARK BLUE **/
+	public static int blueDarkInt;
+	public static String blueDark;
+	
 	/** BLUE-GREEN **/
 	public static int blueGreenInt;
 	public static String blueGreen;
@@ -44,6 +52,10 @@ public class FFMTColor {
 	/** YELLOW **/
 	public static int yellowInt;
 	public static String yellow;
+	
+	/** BRIGHT YELLOW **/
+	public static int yellowBrightInt;
+	public static String yellowBright;
 	
 	/** ORANGE **/
 	public static int orangeInt;
@@ -63,6 +75,10 @@ public class FFMTColor {
 		red = "\247c";
 		redInt = 16711680;
 		
+		/** LIGHT RED **/
+		redLight = "/247c";
+		redLightInt = 0;
+		
 		/** WHITE **/
 		whiteInt = 16777215;
 		white = "\247f";
@@ -81,7 +97,11 @@ public class FFMTColor {
 		
 		/** LIGHT BLUE **/
 		blueLightInt = 65535;
-		blueLight = "o";
+		blueLight = "\247b";
+		
+		/** DARK BLUE **/
+		blueDarkInt = 0;
+		blueDark = "\2471";
 		
 		/** BLUE-GREEN **/
 		blueGreenInt = 46220;
@@ -93,11 +113,15 @@ public class FFMTColor {
 		
 		/** BLACK **/
 		blackInt = 0;
-		black = "\2470";
+		black = "\2478";
 		
 		/** YELLOW **/
 		yellowInt = 16776960;
 		yellow = "o";
+		
+		/** YELLOW BRIGHT**/
+		yellowBrightInt = 0;
+		yellowBright = "/247e";
 		
 		/** ORANGE **/
 		orangeInt = 16744448;
@@ -109,7 +133,7 @@ public class FFMTColor {
 		
 		/** PINK **/
 		pinkInt = 16711808;
-		pink = "o";
+		pink = "/247d";
 	}
 	
 	public static FFMTColor instance()

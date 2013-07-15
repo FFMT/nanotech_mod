@@ -8,7 +8,8 @@ import net.minecraft.util.MathHelper;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelCreeperForreur;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCreeperforreur;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCreeperDriller;
+
 
 public class RenderCreeperForreur extends RenderLiving
 {
@@ -19,7 +20,7 @@ public class RenderCreeperForreur extends RenderLiving
 		super(new ModelCreeperForreur(), 0.5F);
 	}
 
-	protected void updateMob_creeperforreurScale(MobCreeperforreur par1Mob_creeperforreur, float par2)
+	protected void updateMob_creeperforreurScale(MobCreeperDriller par1Mob_creeperforreur, float par2)
 	{
 		float var4 = par1Mob_creeperforreur.setCreeperFlashTime(par2);
 		float var5 = 1.0F + MathHelper.sin(var4 * 100.0F) * var4 * 0.01F;
@@ -41,7 +42,7 @@ public class RenderCreeperForreur extends RenderLiving
 		GL11.glScalef(var6, var7, var6);
 	}
 
-	protected int updateMob_creeperforreurColorMultiplier(MobCreeperforreur par1Mob_creeperforreur, float par2, float par3)
+	protected int updateMob_creeperforreurColorMultiplier(MobCreeperDriller par1Mob_creeperforreur, float par2, float par3)
 	{
 		float var5 = par1Mob_creeperforreur.setCreeperFlashTime(par3);
 
@@ -70,7 +71,7 @@ public class RenderCreeperForreur extends RenderLiving
 		}
 	}
 
-	protected int renderMob_creeperforreurPassModel(MobCreeperforreur par1Mob_creeperforreur, int par2, float par3)
+	protected int renderMob_creeperforreurPassModel(MobCreeperDriller par1Mob_creeperforreur, int par2, float par3)
 	{
 		if (par1Mob_creeperforreur.getPowered())
 		{
@@ -106,28 +107,28 @@ public class RenderCreeperForreur extends RenderLiving
 		return -1;
 	}
 
-	protected int func_77061_b(MobCreeperforreur par1Mob_creeperforreur, int par2, float par3)
+	protected int func_77061_b(MobCreeperDriller par1Mob_creeperforreur, int par2, float par3)
 	{
 		return -1;
 	}
 
 	protected void preRenderCallback(EntityLiving par1EntityLiving, float par2)
 	{
-		this.updateMob_creeperforreurScale((MobCreeperforreur) par1EntityLiving, par2);
+		this.updateMob_creeperforreurScale((MobCreeperDriller) par1EntityLiving, par2);
 	}
 
 	protected int getColorMultiplier(EntityLiving par1EntityLiving, float par2, float par3)
 	{
-		return this.updateMob_creeperforreurColorMultiplier((MobCreeperforreur) par1EntityLiving, par2, par3);
+		return this.updateMob_creeperforreurColorMultiplier((MobCreeperDriller) par1EntityLiving, par2, par3);
 	}
 
 	protected int shouldRenderPass(EntityLiving par1EntityLiving, int par2, float par3)
 	{
-		return this.renderMob_creeperforreurPassModel((MobCreeperforreur) par1EntityLiving, par2, par3);
+		return this.renderMob_creeperforreurPassModel((MobCreeperDriller) par1EntityLiving, par2, par3);
 	}
 
 	protected int inheritRenderPass(EntityLiving par1EntityLiving, int par2, float par3)
 	{
-		return this.func_77061_b((MobCreeperforreur) par1EntityLiving, par2, par3);
+		return this.func_77061_b((MobCreeperDriller) par1EntityLiving, par2, par3);
 	}
 }

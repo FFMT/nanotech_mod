@@ -39,7 +39,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 {
-	private EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 0.25F, Nanotech_mod.Config_timeuntilnextarrow_superskeleton, 10.0F);
+	private EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 0.25F, Nanotech_mod.TimeUntilNextArrow, 10.0F);
 	private EntityAIAttackOnCollide aiAttackOnCollide = new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.31F, false);
 
 	public MobSuperSkeleton(World world)

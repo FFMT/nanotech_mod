@@ -151,7 +151,7 @@ public class MobCreeperDriller extends EntityMob
 					{
 						this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float) (this.field_82226_g * 0.5), var2);
 					}
-					if (Nanotech_mod.Config_creeperdrillermultiexplosion = false)
+					if (Nanotech_mod.MultipleExplosion = false)
 					{
 						this.setDead();
 					}

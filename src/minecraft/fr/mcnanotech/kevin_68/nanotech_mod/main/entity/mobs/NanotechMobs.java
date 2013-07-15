@@ -12,34 +12,34 @@ public class NanotechMobs
 {
 	public static void mobs()
 	{
-		if (Nanotech_mod.Superzombie)
+		if (Nanotech_mod.SuperZombie)
 		{
-			FFMTEntityHelper.addMob(MobSuperZombie.class, "SuperZombie", "SuperZombie", 0, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.blueGreenInt, FFMTColor.redInt, Nanotech_mod.Superzombiechance, Nanotech_mod.Superzombiemin, Nanotech_mod.Superzombiemax, EnumCreatureType.monster, Nanotech_mod.Nanotechbiome);
+			FFMTEntityHelper.addMob(MobSuperZombie.class, "SuperZombie", "SuperZombie", 0, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.blueGreenInt, FFMTColor.redInt, Nanotech_mod.SuperZombieProb, Nanotech_mod.SuperZombieMin, Nanotech_mod.SuperZombieMax, EnumCreatureType.monster, Nanotech_mod.Nanotechbiome);
 		}
 
-		if (Nanotech_mod.Fastzombie)
+		if (Nanotech_mod.FastZombie)
 		{
-			FFMTEntityHelper.addMob(MobFastzombie.class, "FastZombie", "FastZombie", 1, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.blueInt, FFMTColor.redInt, Nanotech_mod.Fastzombiechance, Nanotech_mod.Fastzombiemin, Nanotech_mod.Fastzombiemax, EnumCreatureType.monster, Nanotech_mod.Nanotechbiome);
+			FFMTEntityHelper.addMob(MobFastzombie.class, "FastZombie", "FastZombie", 1, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.blueInt, FFMTColor.redInt, Nanotech_mod.FastZombieProb, Nanotech_mod.FastZombieMin, Nanotech_mod.FastZombieMax, EnumCreatureType.monster, Nanotech_mod.Nanotechbiome);
 		}
 
-		if (Nanotech_mod.Superskeleton)
+		if (Nanotech_mod.SuperSkeleton)
 		{
-			FFMTEntityHelper.addMob(MobSuperSkeleton.class, "SuperSkeleton", "SuperSkeleton", 2, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.whiteInt, FFMTColor.yellowInt, Nanotech_mod.Superskeletonchance, Nanotech_mod.Superskeletonmin, Nanotech_mod.Superskeletonmax, EnumCreatureType.monster, Nanotech_mod.Nanotechbiome);
+			FFMTEntityHelper.addMob(MobSuperSkeleton.class, "SuperSkeleton", "SuperSkeleton", 2, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.whiteInt, FFMTColor.yellowInt, Nanotech_mod.SuperSkeletonProb, Nanotech_mod.SuperSkeletonMin, Nanotech_mod.SuperSkeletonMax, EnumCreatureType.monster, Nanotech_mod.Nanotechbiome);
 		}
 
-		if (Nanotech_mod.Supercreeper)
+		if (Nanotech_mod.SuperCreeper)
 		{
-			FFMTEntityHelper.addMob(MobSuperCreeper.class, "SuperCreeper", "SuperCreeper", 4, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.greenInt, FFMTColor.redInt, Nanotech_mod.Supercreeperchance, Nanotech_mod.Supercreepermin, Nanotech_mod.Supercreepermax, EnumCreatureType.monster, Nanotech_mod.Nanotechbiome);
+			FFMTEntityHelper.addMob(MobSuperCreeper.class, "SuperCreeper", "SuperCreeper", 4, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.greenInt, FFMTColor.redInt, Nanotech_mod.SuperCreeperProb, Nanotech_mod.SuperCreeperMin, Nanotech_mod.SuperCreeperMax, EnumCreatureType.monster, Nanotech_mod.Nanotechbiome);
 		}
 
-		if (Nanotech_mod.Superenderman)
+		if (Nanotech_mod.SuperEnderman)
 		{
-			FFMTEntityHelper.addMob(MobSuperEnderman.class, "SuperEnderman", "SuperEnderman", 5, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.blackInt, FFMTColor.grayGuiInt, Nanotech_mod.Superendermanchance, Nanotech_mod.Superendermanmin, Nanotech_mod.Superendermanmax, EnumCreatureType.monster, Nanotech_mod.Nanotechbiome);	
+			FFMTEntityHelper.addMob(MobSuperEnderman.class, "SuperEnderman", "SuperEnderman", 5, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.blackInt, FFMTColor.grayGuiInt, Nanotech_mod.SuperEndermanProb, Nanotech_mod.SuperEndermanMin, Nanotech_mod.SuperEndermanMax, EnumCreatureType.monster, Nanotech_mod.Nanotechbiome);	
 		}
 
-		if (Nanotech_mod.Creeperdriller)
+		if (Nanotech_mod.CreeperDriller)
 		{
-			FFMTEntityHelper.addMob(MobCreeperDriller.class, "CreeperDriller", "CreeperDriller", 6, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.orangeInt, FFMTColor.redInt, Nanotech_mod.Creeperdrillerchance, Nanotech_mod.Creeperdrillermin, Nanotech_mod.Creeperdrillermax, EnumCreatureType.monster, Nanotech_mod.Nanotechbiome);	
+			FFMTEntityHelper.addMob(MobCreeperDriller.class, "CreeperDriller", "CreeperDriller", 6, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.orangeInt, FFMTColor.redInt, Nanotech_mod.CreeperDrillerProb, Nanotech_mod.CreeperDrillerMin, Nanotech_mod.CreeperDrillerMax, EnumCreatureType.monster, Nanotech_mod.Nanotechbiome);	
 		}
 
 		if (Nanotech_mod.TheDeath)
@@ -49,12 +49,17 @@ public class NanotechMobs
 
 		if (Nanotech_mod.Fly)
 		{
-			FFMTEntityHelper.addMob(MobFly.class, "Fly", "Fly", 8, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.grayGuiInt, FFMTColor.blackInt, Nanotech_mod.Flychance, Nanotech_mod.Flymin, Nanotech_mod.Flymax, EnumCreatureType.monster, BiomeGenBase.plains, BiomeGenBase.extremeHills, BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.icePlains, BiomeGenBase.jungle, BiomeGenBase.beach, BiomeGenBase.desertHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forestHills, BiomeGenBase.iceMountains, BiomeGenBase.jungleHills, BiomeGenBase.taigaHills, Nanotech_mod.Nanotechbiome);
+			FFMTEntityHelper.addMob(MobFly.class, "Fly", "Fly", 8, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.grayGuiInt, FFMTColor.blackInt, Nanotech_mod.FlyProb, Nanotech_mod.FlyMin, Nanotech_mod.FlyMax, EnumCreatureType.monster, BiomeGenBase.plains, BiomeGenBase.extremeHills, BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.icePlains, BiomeGenBase.jungle, BiomeGenBase.beach, BiomeGenBase.desertHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forestHills, BiomeGenBase.iceMountains, BiomeGenBase.jungleHills, BiomeGenBase.taigaHills, Nanotech_mod.Nanotechbiome);
 		}
 
-		if (Nanotech_mod.Flyingcreeper)
+		if (Nanotech_mod.FlyingCreeper)
 		{
-			FFMTEntityHelper.addMob(MobFlyingCreeper.class, "FlyingCreeper", "FlyingCreeper", 9, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.greenInt, FFMTColor.redInt, Nanotech_mod.Flyingcreeperchance, Nanotech_mod.Flyingcreepermin, Nanotech_mod.Flyingcreepermax, EnumCreatureType.monster, Nanotech_mod.Nanotechbiome);
+			FFMTEntityHelper.addMob(MobFlyingCreeper.class, "FlyingCreeper", "FlyingCreeper", 9, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.greenInt, FFMTColor.redInt, Nanotech_mod.FlyingCreeperProb, Nanotech_mod.FlyingCreeperMin, Nanotech_mod.FlyingCreeperMax, EnumCreatureType.monster, Nanotech_mod.Nanotechbiome);
+		}
+		
+		if (Nanotech_mod.CrazyGuy)
+		{
+			FFMTEntityHelper.addMob(MobCrazyGuy.class, "CrazyGuy", "GrazyGuy", 10, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.blackInt, FFMTColor.yellowInt, Nanotech_mod.CrazyGuyProb, Nanotech_mod.CrazyGuyMin, Nanotech_mod.CrazyGuyMax, EnumCreatureType.creature, Nanotech_mod.Nanotechbiome);
 		}
 	}
 
