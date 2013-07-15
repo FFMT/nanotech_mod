@@ -10,6 +10,7 @@
 /reobf/*
 /runtime/*
 /temp/*
+/externalmods/*
 /src/minecraft/*
 /src/minecraft/fr/mcnanotech/*
 !/src/minecraft/fr/mcnanotech/kevin_68
