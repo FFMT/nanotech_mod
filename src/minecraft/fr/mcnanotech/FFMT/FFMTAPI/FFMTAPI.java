@@ -15,7 +15,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import fr.mcnanotech.FFMT.FFMTAPI.Interfaces.NotWorking;
 
-@Mod(modid = "FFMTAPI", name = "FFMT API", version = "1.0.0", useMetadata = true)
+@Mod(modid = "FFMTAPI", name = "FFMT API", version = "1.0.1", useMetadata = true)
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 /**

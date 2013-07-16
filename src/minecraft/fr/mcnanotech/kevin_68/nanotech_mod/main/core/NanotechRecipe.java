@@ -44,21 +44,14 @@ public class NanotechRecipe
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.ItemBase, 1, 10), new Object[]{ "WXW", "XCX", "WXW", 'W', Item.ingotGold, 'X', Block.pressurePlateStone, 'C', new ItemStack(NanotechItem.ItemBase, 1, 8) });
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.ItemBase, 1, 11), new Object[]{ "XWX", "WCW", "XWX", 'X', Block.stone, 'W', Item.redstone, 'C', new ItemStack(NanotechItem.ItemBase, 1, 8) });
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.ItemBase, 1, 12), new Object[]{ "XYX", "VCV", "XNX", 'X', new ItemStack(NanotechItem.ItemBase, 1, 13), 'Y', new ItemStack(NanotechItem.ItemBase, 1, 9), 'V', new ItemStack(NanotechItem.ItemBase, 1, 10), 'N', new ItemStack(NanotechItem.ItemBase, 1, 11) });
+		/* need change */
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitehelmet, 1), new Object[]{ "XXX", "X X", 'X', new ItemStack(NanotechItem.ItemBase, 1, 13) });
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitechestplate, 1), new Object[]{ "X X", "XXX", "XXX", 'X', new ItemStack(NanotechItem.ItemBase, 1, 13) });
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomiteleggings, 1), new Object[]{ "XXX", "X X", "X X", 'X', new ItemStack(NanotechItem.ItemBase, 1, 13) });
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomiteboots, 1), new Object[]{ "X X", "X X", 'X', new ItemStack(NanotechItem.ItemBase, 1, 13) });
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Mysterioushelmet, 1), new Object[]{ "XXX", "X X", 'X', new ItemStack(NanotechItem.ItemBase, 1, 4) });
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Mysteriouschestplate, 1), new Object[]{ "X X", "XXX", "XXX", 'X', new ItemStack(NanotechItem.ItemBase, 1, 4) });
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Mysteriousleggings, 1), new Object[]{ "XXX", "X X", "X X", 'X', new ItemStack(NanotechItem.ItemBase, 1, 4) });
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Mysteriousboots, 1), new Object[]{ "X X", "X X", 'X', new ItemStack(NanotechItem.ItemBase, 1, 4) });
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomiteaxe, 1), new Object[]{ "XX", "XW", " W", 'X', new ItemStack(NanotechItem.ItemBase, 1, 14), 'W', Item.stick });
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomiteaxe, 1), new Object[]{ "XX", "WX", "W ", 'X', new ItemStack(NanotechItem.ItemBase, 1, 14), 'W', Item.stick });
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitehoe, 1), new Object[]{ "XX", " W", " W", 'X', new ItemStack(NanotechItem.ItemBase, 1, 14), 'W', Item.stick });
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitehoe, 1), new Object[]{ "XX", "W ", "W ", 'X', new ItemStack(NanotechItem.ItemBase, 1, 14), 'W', Item.stick });
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitepickaxe, 1), new Object[]{ "XXX", " W ", " W ", 'X', new ItemStack(NanotechItem.ItemBase, 1, 14), 'W', Item.stick });
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomiteshovel, 1), new Object[]{ "X", "W", "W", 'X', new ItemStack(NanotechItem.ItemBase, 1, 14), 'W', Item.stick });
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitesword, 1), new Object[]{ "X", "X", "W", 'X', new ItemStack(NanotechItem.ItemBase, 1, 14), 'W', Item.stick });
+		/* end need change */
+		FFMTRegistry.addAllArmorCrafting(new ItemStack(NanotechItem.ItemBase, 1, 4), new ItemStack(NanotechItem.Mysterioushelmet, 1), new ItemStack(NanotechItem.Mysteriouschestplate, 1), new ItemStack(NanotechItem.Mysteriousleggings, 1), new ItemStack(NanotechItem.Mysteriousboots, 1));
+		FFMTRegistry.addAllToolsCrafting(new ItemStack(NanotechItem.ItemBase, 1, 14), new ItemStack(NanotechItem.Nanomiteaxe, 1), new ItemStack(NanotechItem.Nanomiteshovel, 1), new ItemStack(NanotechItem.Nanomitehoe, 1), new ItemStack(NanotechItem.Nanomitepickaxe, 1), new ItemStack(NanotechItem.Nanomitesword, 1), new ItemStack(Item.stick, 1));
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.ItemBase, 1, 13), new Object[]{ "X", "XWX", "X", 'X', Item.ingotIron, 'W', new ItemStack(NanotechBlock.BlockSpeed, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Diamondbow, 1), new Object[]{ " XW", "XCW", " XW", 'X', Item.diamond, 'W', Item.silk, 'C', new ItemStack(NanotechBlock.BlockSpeed, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Diamondbow, 1), new Object[]{ "WX ", "WCX", "WX ", 'X', Item.diamond, 'W', Item.silk, 'C', new ItemStack(NanotechBlock.BlockSpeed, 1, 0) });
