@@ -27,7 +27,7 @@ public class MobCrazyGuy extends EntityMob
 	{
 		super(par1World);
 		this.moveSpeed = 0.80F;
-		this.texture = "/mob/zombie.png";
+		this.texture = "/mods/Nanotech_mod/textures/mob/CrazyGuy.png";
 		this.getNavigator().setBreakDoors(true);
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(1, new EntityAIBreakDoor(this));

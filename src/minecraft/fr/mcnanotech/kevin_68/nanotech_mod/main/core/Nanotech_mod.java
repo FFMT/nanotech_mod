@@ -2,6 +2,11 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 
 import java.util.logging.Logger;
 
+import org.lwjgl.opengl.GL11;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -100,6 +105,7 @@ public class Nanotech_mod
 	public static int ItemNanoDiscID;
 	public static int ItemEdibleFleshID;
 	public static int ItemRottenChunkID;
+	public static int ItemGlassesCrazyID;
 
 	// Dimension ID
 	public static int dimensionID = 19;
@@ -212,6 +218,7 @@ public class Nanotech_mod
 		ItemNanoDiscID = config.getItem("Nanodisk (warning he use 18 ID)", 5100).getInt();
 		ItemEdibleFleshID = config.getItem("Edible Flesh", 5032).getInt();
 		ItemRottenChunkID = config.getItem("Chunk of rottenflesh", 5033).getInt();
+		ItemGlassesCrazyID = config.getItem("Glasses Crazy", 5034).getInt();
 
 		HardRecipe = config.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
 		
@@ -330,4 +337,5 @@ public class Nanotech_mod
 		MinecraftForge.setBlockHarvestLevel(NanotechBlock.BlockGrass, "shovel", 2);
 		MinecraftForge.setBlockHarvestLevel(NanotechBlock.Blocknotfalling, "shovel", 2);
 	}
+
 }

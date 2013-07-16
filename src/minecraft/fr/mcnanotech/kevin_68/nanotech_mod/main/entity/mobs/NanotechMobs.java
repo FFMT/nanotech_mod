@@ -59,7 +59,7 @@ public class NanotechMobs
 		
 		if (Nanotech_mod.CrazyGuy)
 		{
-			FFMTEntityHelper.addMob(MobCrazyGuy.class, "CrazyGuy", "GrazyGuy", 10, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.blackInt, FFMTColor.yellowInt, Nanotech_mod.CrazyGuyProb, Nanotech_mod.CrazyGuyMin, Nanotech_mod.CrazyGuyMax, EnumCreatureType.creature, Nanotech_mod.Nanotechbiome);
+			FFMTEntityHelper.addMob(MobCrazyGuy.class, "CrazyGuy", "GrazyGuy", 10, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.redInt, FFMTColor.yellowInt, Nanotech_mod.CrazyGuyProb, Nanotech_mod.CrazyGuyMin, Nanotech_mod.CrazyGuyMax, EnumCreatureType.creature, Nanotech_mod.Nanotechbiome);
 		}
 	}
 
