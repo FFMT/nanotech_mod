@@ -1,0 +1,19 @@
+[
+{
+  "modid": "Nanotech_mod",
+  "name": "Nanotech mod",
+  "description": "If you want add something, tell me!",
+  "version": "2.0.4",
+  "credits": "",
+  "logoFile": "/fr/mcnanotech/kevin_68/nanotech_mod/client/logo.png",
+  "mcversion": "1.5.2",
+  "url": "http://www.minecraftforum.net/topic/1547999-145forgenanotech-mod/",
+  "updateUrl": "",
+  "authors": ["kevin_68", "robin4002"],
+  "parent":"",
+  "screenshots": [],
+  "dependencies": [
+     "MinecraftForge"
+  ]
+}
+]

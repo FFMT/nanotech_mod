@@ -22,6 +22,8 @@
 /src/minecraft/Start.java
 /src/minecraft/mcpmod.info
 /src/minecraft/mods/buildcraft/*
+/src/minecraft/mods/advsolar/*
+/src/minecraft/mods/compactsolars/*
 /src/minecraft/buildcraft/*
 /src/minecraft/ic2/*
 /src/minecraft/gfx/*
