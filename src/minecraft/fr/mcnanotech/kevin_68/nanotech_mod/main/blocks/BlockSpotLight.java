@@ -16,12 +16,9 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockSpotLi
 
 public class BlockSpotLight extends BlockContainer
 {
-    @SideOnly(Side.CLIENT)
-    private Icon theIcon;
-
     public BlockSpotLight(int par1)
     {
-        super(par1, Material.glass);
+        super(par1, Material.iron);
     }
 
     public TileEntity createNewTileEntity(World par1World)
@@ -65,7 +62,6 @@ public class BlockSpotLight extends BlockContainer
     public void registerIcons(IconRegister par1IconRegister)
     {
         super.registerIcons(par1IconRegister);
-        this.theIcon = par1IconRegister.registerIcon("beacon");
     }
 
     public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving, ItemStack par6ItemStack)
@@ -76,11 +72,5 @@ public class BlockSpotLight extends BlockContainer
         {
             ((TileEntityBlockSpotLight)par1World.getBlockTileEntity(par2, par3, par4)).func_94047_a(par6ItemStack.getDisplayName());
         }
-    }
-
-    @SideOnly(Side.CLIENT)
-    public Icon getBeaconIcon()
-    {
-        return this.theIcon;
     }
 }

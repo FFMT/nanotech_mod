@@ -14,6 +14,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.render.TileEntityBloc
 
 public class GuiBlockSpotLight extends GuiContainer
 {
+	protected TileEntityBlockSpotLight tileSpotLight;
     public GuiBlockSpotLight(InventoryPlayer player_inventory, TileEntityBlockSpotLight tile_entity, World world)
 	{
 		super(new ContainerBlockSpotLight(tile_entity, player_inventory, world));
@@ -73,355 +74,355 @@ public class GuiBlockSpotLight extends GuiContainer
 	{
 		if (guibutton.id == 0)
 		{
-			if (TileEntityBlockSpotLightRender.red > 0)
+			if (tileSpotLight.getRedValue() > 0)
 			{
-				TileEntityBlockSpotLightRender.red -= 1;
+				tileSpotLight.addRedValue(-1);
 			}
 		}
 		if (guibutton.id == 1)
 		{
-			if (TileEntityBlockSpotLightRender.red > 10)
+			if (tileSpotLight.getRedValue()  > 10)
 			{
-				TileEntityBlockSpotLightRender.red -= 10;
+				tileSpotLight.addRedValue(-10);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.red = 0;
+				tileSpotLight.setRedValue(0);
 			}
 		}
 		if (guibutton.id == 2)
 		{
-			if (TileEntityBlockSpotLightRender.red > 100)
+			if (tileSpotLight.getRedValue()  > 100)
 			{
-				TileEntityBlockSpotLightRender.red -= 100;
+				tileSpotLight.addRedValue(-100);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.red = 0;
+				tileSpotLight.setRedValue(0);
 			}
 		}
 		if (guibutton.id == 3)
 		{
-			if (TileEntityBlockSpotLightRender.red < 255)
+			if (tileSpotLight.getRedValue()  < 255)
 			{
-				TileEntityBlockSpotLightRender.red += 1;
+				tileSpotLight.addRedValue(1);
 			}
 		}
 		if (guibutton.id == 4)
 		{
-			if (TileEntityBlockSpotLightRender.red < 245)
+			if (tileSpotLight.getRedValue()  < 245)
 			{
-				TileEntityBlockSpotLightRender.red += 10;
+				tileSpotLight.addRedValue(10);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.red = 255;
+				tileSpotLight.setRedValue(255);
 			}
 		}
 		if (guibutton.id == 5)
 		{
-			if (TileEntityBlockSpotLightRender.red < 155)
+			if (tileSpotLight.getRedValue()  < 155)
 			{
-				TileEntityBlockSpotLightRender.red += 100;
+				tileSpotLight.addRedValue(100);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.red = 255;
+				tileSpotLight.setRedValue(255);
 			}
 		}
 		
 		if (guibutton.id == 6)
 		{
-			if (TileEntityBlockSpotLightRender.green > 0)
+			if (tileSpotLight.getGreenValue() > 0)
 			{
-				TileEntityBlockSpotLightRender.green -= 1;
+				tileSpotLight.addGreenValue(-1);
 			}
 		}
 		if (guibutton.id == 7)
 		{
-			if (TileEntityBlockSpotLightRender.green > 10)
+			if (tileSpotLight.getGreenValue() > 10)
 			{
-				TileEntityBlockSpotLightRender.green -= 10;
+				tileSpotLight.addGreenValue(-10);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.green = 0;
+				tileSpotLight.setGreenValue(0);
 			}
 		}
 		if (guibutton.id == 8)
 		{
-			if (TileEntityBlockSpotLightRender.green > 100)
+			if (tileSpotLight.getGreenValue() > 100)
 			{
-				TileEntityBlockSpotLightRender.green -= 100;
+				tileSpotLight.addGreenValue(-100);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.green = 0;
+				tileSpotLight.setGreenValue(0);
 			}
 		}
 		if (guibutton.id == 9)
 		{
-			if (TileEntityBlockSpotLightRender.green < 255)
+			if (tileSpotLight.getGreenValue() < 255)
 			{
-				TileEntityBlockSpotLightRender.green += 1;
+				tileSpotLight.addGreenValue(1);
 			}
 		}
 		if (guibutton.id == 10)
 		{
-			if (TileEntityBlockSpotLightRender.green < 245)
+			if (tileSpotLight.getGreenValue() < 245)
 			{
-				TileEntityBlockSpotLightRender.green += 10;
+				tileSpotLight.addGreenValue(10);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.green = 255;
+				tileSpotLight.setGreenValue(255);
 			}
 		}
 		if (guibutton.id == 11)
 		{
-			if (TileEntityBlockSpotLightRender.green < 155)
+			if (tileSpotLight.getGreenValue() < 155)
 			{
-				TileEntityBlockSpotLightRender.green += 100;
+				tileSpotLight.addGreenValue(100);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.green = 255;
+				tileSpotLight.setGreenValue(255);
 			}
 		}
 		
 		if (guibutton.id == 12)
 		{
-			if (TileEntityBlockSpotLightRender.blue > 0)
+			if (tileSpotLight.getBlueValue() > 0)
 			{
-				TileEntityBlockSpotLightRender.blue -= 1;
+				tileSpotLight.addBlueValue(-1);
 			}
 		}
 		if (guibutton.id == 13)
 		{
-			if (TileEntityBlockSpotLightRender.blue > 10)
+			if (tileSpotLight.getBlueValue() > 10)
 			{
-				TileEntityBlockSpotLightRender.blue -= 10;
+				tileSpotLight.addBlueValue(-10);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.blue = 0;
+				tileSpotLight.setBlueValue(0);
 			}
 		}
 		if (guibutton.id == 14)
 		{
-			if (TileEntityBlockSpotLightRender.blue > 100)
+			if (tileSpotLight.getBlueValue() > 100)
 			{
-				TileEntityBlockSpotLightRender.blue -= 100;
+				tileSpotLight.addBlueValue(-100);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.blue = 0;
+				tileSpotLight.setBlueValue(0);
 			}
 		}
 		if (guibutton.id == 15)
 		{
-			if (TileEntityBlockSpotLightRender.blue < 255)
+			if (tileSpotLight.getBlueValue() < 255)
 			{
-				TileEntityBlockSpotLightRender.blue += 1;
+				tileSpotLight.addBlueValue(1);
 			}
 		}
 		if (guibutton.id == 16)
 		{
-			if (TileEntityBlockSpotLightRender.blue < 245)
+			if (tileSpotLight.getBlueValue() < 245)
 			{
-				TileEntityBlockSpotLightRender.blue += 10;
+				tileSpotLight.addBlueValue(10);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.blue = 255;
+				tileSpotLight.setBlueValue(255);
 			}
 		}
 		if (guibutton.id == 17)
 		{
-			if (TileEntityBlockSpotLightRender.blue < 155)
+			if (tileSpotLight.getBlueValue() < 155)
 			{
-				TileEntityBlockSpotLightRender.blue += 100;
+				tileSpotLight.addBlueValue(100);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.blue = 255;
+				tileSpotLight.setBlueValue(255);
 			}
 		}
 		
 		if (guibutton.id == 18)
 		{
-			if (TileEntityBlockSpotLightRender.darkRed > 0)
+			if (tileSpotLight.getDarkRedValue() > 0)
 			{
-				TileEntityBlockSpotLightRender.darkRed -= 1;
+				tileSpotLight.addDarkRedValue(-1);
 			}
 		}
 		if (guibutton.id == 19)
 		{
-			if (TileEntityBlockSpotLightRender.darkRed > 10)
+			if (tileSpotLight.getDarkRedValue() > 10)
 			{
-				TileEntityBlockSpotLightRender.darkRed -= 10;
+				tileSpotLight.addDarkRedValue(-10);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.darkRed = 0;
+				tileSpotLight.setDarkRedValue(0);
 			}
 		}
 		if (guibutton.id == 20)
 		{
-			if (TileEntityBlockSpotLightRender.darkRed > 100)
+			if (tileSpotLight.getDarkRedValue() > 100)
 			{
-				TileEntityBlockSpotLightRender.darkRed -= 100;
+				tileSpotLight.addDarkRedValue(-100);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.darkRed = 0;
+				tileSpotLight.setDarkRedValue(0);
 			}
 		}
 		if (guibutton.id == 21)
 		{
-			if (TileEntityBlockSpotLightRender.darkRed < 255)
+			if (tileSpotLight.getDarkRedValue() < 255)
 			{
-				TileEntityBlockSpotLightRender.darkRed += 1;
+				tileSpotLight.addDarkRedValue(1);
 			}
 		}
 		if (guibutton.id == 22)
 		{
-			if (TileEntityBlockSpotLightRender.darkRed < 245)
+			if (tileSpotLight.getDarkRedValue() < 245)
 			{
-				TileEntityBlockSpotLightRender.darkRed += 10;
+				tileSpotLight.addDarkRedValue(10);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.darkRed = 255;
+				tileSpotLight.setDarkRedValue(255);
 			}
 		}
 		if (guibutton.id == 23)
 		{
-			if (TileEntityBlockSpotLightRender.darkRed < 155)
+			if (tileSpotLight.getDarkRedValue() < 155)
 			{
-				TileEntityBlockSpotLightRender.darkRed += 100;
+				tileSpotLight.addDarkRedValue(100);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.darkRed = 255;
+				tileSpotLight.setDarkRedValue(255);
 			}
 		}
 		
 		if (guibutton.id == 24)
 		{
-			if (TileEntityBlockSpotLightRender.darkGreen > 0)
+			if (tileSpotLight.getDarkGreenValue() > 0)
 			{
-				TileEntityBlockSpotLightRender.darkGreen -= 1;
+				tileSpotLight.addDarkGreenValue(-1);
 			}
 		}
 		if (guibutton.id == 25)
 		{
-			if (TileEntityBlockSpotLightRender.darkGreen > 10)
+			if (tileSpotLight.getDarkGreenValue() > 10)
 			{
-				TileEntityBlockSpotLightRender.darkGreen -= 10;
+				tileSpotLight.addDarkGreenValue(-10);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.darkGreen = 0;
+				tileSpotLight.setDarkGreenValue(0);
 			}
 		}
 		if (guibutton.id == 26)
 		{
-			if (TileEntityBlockSpotLightRender.darkGreen > 100)
+			if (tileSpotLight.getDarkGreenValue() > 100)
 			{
-				TileEntityBlockSpotLightRender.darkGreen -= 100;
+				tileSpotLight.addDarkGreenValue(-100);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.darkGreen = 0;
+				tileSpotLight.setDarkGreenValue(0);
 			}
 		}
 		if (guibutton.id == 27)
 		{
-			if (TileEntityBlockSpotLightRender.darkGreen < 255)
+			if (tileSpotLight.getDarkGreenValue() < 255)
 			{
-				TileEntityBlockSpotLightRender.darkGreen += 1;
+				tileSpotLight.addDarkGreenValue(1);
 			}
 		}
 		if (guibutton.id == 28)
 		{
-			if (TileEntityBlockSpotLightRender.darkGreen < 245)
+			if (tileSpotLight.getDarkGreenValue() < 245)
 			{
-				TileEntityBlockSpotLightRender.darkGreen += 10;
+				tileSpotLight.addDarkGreenValue(10);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.darkGreen = 255;
+				tileSpotLight.setDarkGreenValue(255);
 			}
 		}
 		if (guibutton.id == 29)
 		{
-			if (TileEntityBlockSpotLightRender.darkGreen < 155)
+			if (tileSpotLight.getDarkGreenValue() < 155)
 			{
-				TileEntityBlockSpotLightRender.darkGreen += 100;
+				tileSpotLight.addDarkGreenValue(100);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.darkGreen = 255;
+				tileSpotLight.addDarkGreenValue(255);
 			}
 		}
 		
 		if (guibutton.id == 30)
 		{
-			if (TileEntityBlockSpotLightRender.darkBlue > 0)
+			if (tileSpotLight.getDarkBlueValue() > 0)
 			{
-				TileEntityBlockSpotLightRender.darkBlue -= 1;
+				tileSpotLight.addDarkBlueValue(-1);
 			}
 		}
 		if (guibutton.id == 31)
 		{
-			if (TileEntityBlockSpotLightRender.darkBlue > 10)
+			if (tileSpotLight.getDarkBlueValue() > 10)
 			{
-				TileEntityBlockSpotLightRender.darkBlue -= 10;
+				tileSpotLight.addDarkBlueValue(-10);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.darkBlue = 0;
+				tileSpotLight.setDarkBlueValue(0);
 			}
 		}
 		if (guibutton.id == 32)
 		{
-			if (TileEntityBlockSpotLightRender.darkBlue > 100)
+			if (tileSpotLight.getDarkBlueValue() > 100)
 			{
-				TileEntityBlockSpotLightRender.darkBlue -= 100;
+				tileSpotLight.addDarkBlueValue(-100);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.darkBlue = 0;
+				tileSpotLight.setDarkBlueValue(0);
 			}
 		}
 		if (guibutton.id == 33)
 		{
-			if (TileEntityBlockSpotLightRender.darkBlue < 255)
+			if (tileSpotLight.getDarkBlueValue() < 255)
 			{
-				TileEntityBlockSpotLightRender.darkBlue += 1;
+				tileSpotLight.addDarkBlueValue(1);
 			}
 		}
 		if (guibutton.id == 34)
 		{
-			if (TileEntityBlockSpotLightRender.darkBlue < 245)
+			if (tileSpotLight.getDarkBlueValue() < 245)
 			{
-				TileEntityBlockSpotLightRender.darkBlue += 10;
+				tileSpotLight.addDarkBlueValue(10);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.darkBlue = 255;
+				tileSpotLight.setDarkBlueValue(255);
 			}
 		}
 		if (guibutton.id == 35)
 		{
-			if (TileEntityBlockSpotLightRender.darkBlue < 155)
+			if (tileSpotLight.getDarkBlueValue() < 155)
 			{
-				TileEntityBlockSpotLightRender.darkBlue += 100;
+				tileSpotLight.addDarkBlueValue(100);
 			}
 			else
 			{
-				TileEntityBlockSpotLightRender.darkBlue = 255;
+				tileSpotLight.setDarkBlueValue(255);
 			}
 		}
 	}
@@ -431,14 +432,13 @@ public class GuiBlockSpotLight extends GuiContainer
 	{
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		//fontRenderer.drawString("Jump Block", 6, 6, 4210752);
-		fontRenderer.drawString(String.valueOf(TileEntityBlockSpotLightRender.red), xSize/2 - 2, ySize + -153, FFMTColor.redInt);
-		fontRenderer.drawString(String.valueOf(TileEntityBlockSpotLightRender.green), xSize/2 - 2, ySize + -131, FFMTColor.greenInt);
-		fontRenderer.drawString(String.valueOf(TileEntityBlockSpotLightRender.blue), xSize/2 - 2, ySize + -109, FFMTColor.blueInt);
-		fontRenderer.drawString(String.valueOf(TileEntityBlockSpotLightRender.darkRed), xSize/2 - 2, ySize + -87, FFMTColor.darkRedInt);
-		fontRenderer.drawString(String.valueOf(TileEntityBlockSpotLightRender.darkGreen), xSize/2 - 2, ySize + -65, FFMTColor.darkGreenInt);
-		fontRenderer.drawString(String.valueOf(TileEntityBlockSpotLightRender.darkBlue), xSize/2 - 2, ySize + -43, FFMTColor.darkBlueInt);
-
+		/*fontRenderer.drawString(String.valueOf(tileSpotLight.getRedValue()), xSize/2 - 2, ySize + -153, FFMTColor.redInt);
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getGreenValue()), xSize/2 - 2, ySize + -131, FFMTColor.greenInt);
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getBlueValue()), xSize/2 - 2, ySize + -109, FFMTColor.blueInt);
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkRedValue()), xSize/2 - 2, ySize + -87, FFMTColor.darkRedInt);
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkGreenValue()), xSize/2 - 2, ySize + -65, FFMTColor.darkGreenInt);
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkBlueValue()), xSize/2 - 2, ySize + -43, FFMTColor.darkBlueInt);
+*/
 	}
 
 	@Override
