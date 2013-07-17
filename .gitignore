@@ -1,4 +1,5 @@
 /bin/*
+/builds/*
 /conf/*
 /docs/*
 /eclipse/*
@@ -10,15 +11,28 @@
 /reobf/*
 /runtime/*
 /temp/*
-/externalmods/*
-/src/minecraft/*
-/src/minecraft/fr/mcnanotech/*
-!/src/minecraft/fr/mcnanotech/kevin_68
-!/src/minecraft/mods/Nanotech_mod
-!/src/minecraft/mods/UltimateGraviSuite
 
+/src/minecraft/cpw/*
+/src/minecraft/net/*
+/src/minecraft/ibxm/*
+/src/minecraft/paulscode/*
+/src/minecraft/*.cfg
+/src/minecraft/fmlversion.properties
+/src/minecraft/*.png
+/src/minecraft/Start.java
+/src/minecraft/mcpmod.info
+/src/minecraft/mods/buildcraft/*
+/src/minecraft/buildcraft/*
+/src/minecraft/ic2/*
+/src/minecraft/gfx/*
+/src/minecraft/lang/*
+/src/minecraft/advsolar/*
+/src/minecraft/gravisuite/*
+/src/minecraft/gregtechmod/*
 
 *.bat
 *.sh
+*.db
+!build.sh
 LICENSE.txt
 CHANGELOG

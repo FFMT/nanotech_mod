@@ -1,5 +1,6 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelCrazyGuy;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelCreeperForreur;
@@ -31,6 +32,8 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperEnderman;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperSkeleton;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperZombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockSpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.render.TileEntityBlockSpotLightRender;
 
 public class ClientProxy extends CommonProxy
 {
@@ -47,5 +50,6 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(MobFly.class, new RenderMobFly(new ModelFly(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(MobFlyingCreeper.class, new RenderFlyingCreeper(new ModelFlyingCreeper(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(MobCrazyGuy.class, new RenderCrazyGuy(new ModelCrazyGuy(), 0.5F));
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBlockSpotLight.class, new TileEntityBlockSpotLightRender());
 	}
 }

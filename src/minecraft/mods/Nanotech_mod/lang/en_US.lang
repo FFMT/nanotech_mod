@@ -33,6 +33,7 @@ tile.notfallinggravel.name = Not Falling Gravel
 tile.notfallingsand.name = Not Falling Sand
 tile.sodium.name = Block of Sodium
 tile.mossystone.name = Mossy Stone
+tile.spotlight.name = SpotLight
 
 #Items
 item.siliconore.name = Silicon Ore

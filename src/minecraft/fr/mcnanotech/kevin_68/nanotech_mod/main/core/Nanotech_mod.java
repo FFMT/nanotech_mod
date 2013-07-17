@@ -2,18 +2,11 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 
 import java.util.logging.Logger;
 
-import org.lwjgl.opengl.GL11;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.Property;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -39,6 +32,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventSound;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.network.GuiHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.network.PacketHandler;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
@@ -82,6 +76,7 @@ public class Nanotech_mod
 	public static int BlockNotFallingID;
 	public static int BlockSodiumID;
 	public static int BlockMossyStoneID;
+	public static int BlockSpotLightID;
 
 	// Item IDs
 	public static int ItemNanotechID;
@@ -105,7 +100,6 @@ public class Nanotech_mod
 	public static int ItemNanoDiscID;
 	public static int ItemEdibleFleshID;
 	public static int ItemRottenChunkID;
-	public static int ItemGlassesCrazyID;
 
 	// Dimension ID
 	public static int dimensionID = 19;
@@ -196,6 +190,7 @@ public class Nanotech_mod
 		BlockNotFallingID = config.getBlock("Not Falling Blocks", 1022).getInt();
 		BlockSodiumID = config.getBlock("Sodium", 1023).getInt();
 		BlockMossyStoneID = config.getBlock("Mossy Stone", 1024).getInt();
+		BlockSpotLightID = config.getBlock("SpotLight", 1025).getInt();
 
 		ItemNanotechID = config.getItem("Main Nanotech ID", 5000).getInt();
 		ItemSuperBottleOfXpID = config.getItem("Super Bottle of xp", 5005).getInt();
@@ -218,7 +213,6 @@ public class Nanotech_mod
 		ItemNanoDiscID = config.getItem("Nanodisk (warning he use 18 ID)", 5100).getInt();
 		ItemEdibleFleshID = config.getItem("Edible Flesh", 5032).getInt();
 		ItemRottenChunkID = config.getItem("Chunk of rottenflesh", 5033).getInt();
-		ItemGlassesCrazyID = config.getItem("Glasses Crazy", 5034).getInt();
 
 		HardRecipe = config.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
 		
@@ -320,6 +314,7 @@ public class Nanotech_mod
 		GameRegistry.registerTileEntity(TileEntityJumper.class, "TileEntityJumper");
 		GameRegistry.registerTileEntity(TileEntitySmoker.class, "TileEntitySmoker");
 		GameRegistry.registerTileEntity(TileEntityMultiplier.class, "TileEntityMultiplier");
+		GameRegistry.registerTileEntity(TileEntityBlockSpotLight.class, "TileEntityBlockSpotLight");
 	}
 
 	// Forge dictionary

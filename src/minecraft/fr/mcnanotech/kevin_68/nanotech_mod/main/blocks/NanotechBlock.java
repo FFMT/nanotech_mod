@@ -13,7 +13,7 @@ public class NanotechBlock
 			BlockSmoker, BlockTrashcan, BlockBarbedwire, BlockNanowood,
 			BlockNanoleaves, BlockNanosaplings, BlockNanoplanks, BlockNanoOre,
 			BlockConfusion, BlockFalling, Blocknotfalling, BlockSodium,
-			BlockSlope, BlockMossystone;
+			BlockSlope, BlockMossystone, BlockSpotLight;
 
 	// Blocks Initialization
 	public static void initBlock()
@@ -38,6 +38,7 @@ public class NanotechBlock
 		Blocknotfalling = new BlockNotFalling(Nanotech_mod.BlockNotFallingID, Material.sand).setHardness(0.5F).setStepSound(Block.soundGravelFootstep).setUnlocalizedName("notfalling").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockSodium = new BlockSodium(Nanotech_mod.BlockSodiumID, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("sodium").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockMossystone = new BlockBase(Nanotech_mod.BlockMossyStoneID, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("mossystone").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
+		BlockSpotLight = new BlockSpotLight(Nanotech_mod.BlockSpotLightID).setHardness(1.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("spotlight").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 	}
 
 	// Blocks registry
@@ -63,6 +64,7 @@ public class NanotechBlock
 		GameRegistry.registerBlock(Blocknotfalling, ItemBlockNotFalling.class, "Blocknotfalling", "Nanotech_mod");
 		GameRegistry.registerBlock(BlockSodium, "BlockSodium");
 		GameRegistry.registerBlock(BlockMossystone, "BlockMossyStone");
+		GameRegistry.registerBlock(BlockSpotLight, "BlockSpotLight");
 	}
 
 }

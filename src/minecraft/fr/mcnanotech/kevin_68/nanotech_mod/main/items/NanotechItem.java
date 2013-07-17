@@ -19,7 +19,7 @@ public class NanotechItem
 			Yourmusicdisc4, Yourmusicdisc5, Yourmusicdisc6, Yourmusicdisc7,
 			Yourmusicdisc8, Yourmusicdisc9, Yourmusicdisc10, Yourmusicdisc11,
 			Yourmusicdisc12, Yourmusicdisc13, Yourmusicdisc14, Yourmusicdisc15,
-			Yourmusicdisc16, Edibleflesh, Rottenchunk, GlassesCrazy;
+			Yourmusicdisc16, Edibleflesh, Rottenchunk;
 
 	// Enum tools and armor material
 	public static EnumArmorMaterial EnumArmorMaterialMysterious = EnumHelper.addArmorMaterial("Mysterious", 50, new int[]{6, 6, 6, 6}, 15);
@@ -66,7 +66,6 @@ public class NanotechItem
 		Yourmusicdisc16 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 16, "YourSound16", UtilDiskInfo.cdInfo[15], "disk16").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		Edibleflesh = new ItemEdibleflesh(Nanotech_mod.ItemEdibleFleshID, 3, 0.6F, true).setUnlocalizedName("edibleFlesh").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		Rottenchunk = new ItemEdibleflesh(Nanotech_mod.ItemRottenChunkID, 1, 0.6F, true).setUnlocalizedName("rottenChunk").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		GlassesCrazy = new ItemGlassesCrazy(Nanotech_mod.ItemGlassesCrazyID, EnumArmorMaterialMysterious, 1, 0).setUnlocalizedName("GlassesCrazy").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 	}
 
 }
