@@ -18,6 +18,7 @@ public class GuiBlockSpotLight extends GuiContainer
     public GuiBlockSpotLight(InventoryPlayer player_inventory, TileEntityBlockSpotLight tile_entity, World world)
 	{
 		super(new ContainerBlockSpotLight(tile_entity, player_inventory, world));
+		tileSpotLight = tile_entity;
 	}
 
 	@Override
@@ -363,7 +364,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				tileSpotLight.addDarkGreenValue(255);
+				tileSpotLight.setDarkGreenValue(255);
 			}
 		}
 		
@@ -432,13 +433,13 @@ public class GuiBlockSpotLight extends GuiContainer
 	{
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		/*fontRenderer.drawString(String.valueOf(tileSpotLight.getRedValue()), xSize/2 - 2, ySize + -153, FFMTColor.redInt);
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getRedValue()), xSize/2 - 2, ySize + -153, FFMTColor.redInt);
 		fontRenderer.drawString(String.valueOf(tileSpotLight.getGreenValue()), xSize/2 - 2, ySize + -131, FFMTColor.greenInt);
 		fontRenderer.drawString(String.valueOf(tileSpotLight.getBlueValue()), xSize/2 - 2, ySize + -109, FFMTColor.blueInt);
 		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkRedValue()), xSize/2 - 2, ySize + -87, FFMTColor.darkRedInt);
 		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkGreenValue()), xSize/2 - 2, ySize + -65, FFMTColor.darkGreenInt);
 		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkBlueValue()), xSize/2 - 2, ySize + -43, FFMTColor.darkBlueInt);
-*/
+
 	}
 
 	@Override

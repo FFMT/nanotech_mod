@@ -23,16 +23,16 @@ public class TileEntityBlockSpotLight extends TileEntity
     private long field_82137_b;
     @SideOnly(Side.CLIENT)
     private float field_82138_c;
-    private boolean isActive;
+    public boolean isActive;
     public boolean isReverse;
     private String field_94048_i;
 
-    private int red;
-    private int green;
-    private int blue;
-    private int darkRed;
-    private int darkGreen;
-    private int darkBlue;
+    public int red;
+    public int green;
+    public int blue;
+    public int darkRed;
+    public int darkGreen;
+    public int darkBlue;
     
     public void updateEntity()
     {
@@ -96,30 +96,13 @@ public class TileEntityBlockSpotLight extends TileEntity
         }
     }
 
-    public Packet getDescriptionPacket()
-    {
-        NBTTagCompound nbttagcompound = new NBTTagCompound();
-        this.writeToNBT(nbttagcompound);
-        return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 3, nbttagcompound);
-    }
 
     @SideOnly(Side.CLIENT)
     public double getMaxRenderDistanceSquared()
     {
         return 65536.0D;
     }
-
-    public void readFromNBT(NBTTagCompound par1NBTTagCompound)
-    {
-        super.readFromNBT(par1NBTTagCompound);
-        red = par1NBTTagCompound.getInteger("SpotLightRed");
-        green = par1NBTTagCompound.getInteger("SpotLightGreen");
-        blue = par1NBTTagCompound.getInteger("SpotLightBlue");
-        darkRed = par1NBTTagCompound.getInteger("SpotLightDarkRed");
-        darkGreen = par1NBTTagCompound.getInteger("SpotLightDarkGreen");
-        darkBlue = par1NBTTagCompound.getInteger("SpotLightDarkBlue");
-    }
-
+    
     public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeToNBT(par1NBTTagCompound);
@@ -131,34 +114,53 @@ public class TileEntityBlockSpotLight extends TileEntity
         par1NBTTagCompound.setInteger("SpotLightDarkBlue", darkBlue);
     }
     
-    public int addRedValue(int i)
+    public void readFromNBT(NBTTagCompound par1NBTTagCompound)
     {
-        return this.red + i;
+        super.readFromNBT(par1NBTTagCompound);
+        red = par1NBTTagCompound.getInteger("SpotLightRed");
+        green = par1NBTTagCompound.getInteger("SpotLightGreen");
+        blue = par1NBTTagCompound.getInteger("SpotLightBlue");
+        darkRed = par1NBTTagCompound.getInteger("SpotLightDarkRed");
+        darkGreen = par1NBTTagCompound.getInteger("SpotLightDarkGreen");
+        darkBlue = par1NBTTagCompound.getInteger("SpotLightDarkBlue");
+    }
+
+
+    public Packet getDescriptionPacket()
+    {
+        NBTTagCompound nbttagcompound = new NBTTagCompound();
+        this.writeToNBT(nbttagcompound);
+        return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4, nbttagcompound);
     }
     
-    public int addGreenValue(int i)
+    public void addRedValue(int i)
     {
-        return this.green + i;
+        this.red += i;
     }
     
-    public int addBlueValue(int i)
+    public void addGreenValue(int i)
     {
-        return this.blue + i;
+        this.green += i;
     }
     
-    public int addDarkRedValue(int i)
+    public void addBlueValue(int i)
     {
-        return this.darkRed + i;
+        this.blue += i;
     }
     
-    public int addDarkGreenValue(int i)
+    public void addDarkRedValue(int i)
     {
-        return this.darkGreen + i;
+       this.darkRed += i;
     }
     
-    public int addDarkBlueValue(int i)
+    public void addDarkGreenValue(int i)
     {
-        return this.darkBlue + i;
+        this.darkGreen += i;
+    }
+    
+    public void addDarkBlueValue(int i)
+    {
+        this.darkBlue += i;
     }
     
     public int setRedValue(int i)

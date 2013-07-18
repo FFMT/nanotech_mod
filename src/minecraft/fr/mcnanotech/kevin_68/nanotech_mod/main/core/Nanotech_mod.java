@@ -42,7 +42,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGeneration;
 
 @Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "2.0.3")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NanotechMod"}, packetHandler = PacketHandler.class)
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"nanotechmod"}, packetHandler = PacketHandler.class)
 public class Nanotech_mod
 {
 	// Instance
@@ -156,6 +156,8 @@ public class Nanotech_mod
 	// log
 	public static Logger NanoLog;
 
+	protected TileEntityBlockSpotLight tileSpotLight;
+	
 	@PreInit
 	public void PreInitNanotech_mod(FMLPreInitializationEvent event)
 	{

@@ -164,7 +164,7 @@ public class UltimateGraviChestPlateClientProxy
 
                 if (!var0.capabilities.isCreativeMode)
                 {
-                    ElectricItem.discharge(var1, UltimateGraviChestPlate.dischargeOnTick * UltimateGraviChestPlate.boostMultiplier, 3, true, false);
+                    ElectricItem.manager.discharge(var1, UltimateGraviChestPlate.dischargeOnTick * UltimateGraviChestPlate.boostMultiplier, 3, true, false);
                 }
             }
         }
@@ -226,7 +226,7 @@ public class UltimateGraviChestPlateClientProxy
                     }
                     else
                     {
-                        ElectricItem.discharge(var1, UltimateGraviChestPlate.dischargeOnTick, 3, true, false);
+                        ElectricItem.manager.discharge(var1, UltimateGraviChestPlate.dischargeOnTick, 3, true, false);
                     }
                 }
 
@@ -256,7 +256,7 @@ public class UltimateGraviChestPlateClientProxy
 
                         if (!var0.capabilities.isCreativeMode)
                         {
-                            ElectricItem.discharge(var1, UltimateGraviChestPlate.dischargeOnTick * UltimateGraviChestPlate.boostMultiplier, 3, true, false);
+                            ElectricItem.manager.discharge(var1, UltimateGraviChestPlate.dischargeOnTick * UltimateGraviChestPlate.boostMultiplier, 3, true, false);
                         }
                     }
                 }
@@ -276,7 +276,7 @@ public class UltimateGraviChestPlateClientProxy
                     }
                     else
                     {
-                        ElectricItem.discharge(var1, UltimateQuantumHelmet.dischargeOnTick, 3, true, false);
+                        ElectricItem.manager.discharge(var1, UltimateQuantumHelmet.dischargeOnTick, 3, true, false);
                     }
                 }
             }
