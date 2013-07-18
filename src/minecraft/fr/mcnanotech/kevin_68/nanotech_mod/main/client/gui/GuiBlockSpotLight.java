@@ -30,45 +30,45 @@ public class GuiBlockSpotLight extends GuiContainer
 
 			buttonList.add(new GuiButton(0, width/2-30, y + 7, 20, 20, FFMTColor.red + "-1"));
 			buttonList.add(new GuiButton(1, width/2-58, y + 7, 20, 20, FFMTColor.red + "-10"));
-			buttonList.add(new GuiButton(2, width/2-86, y + 7, 20, 20, FFMTColor.red + "-100"));
+			buttonList.add(new GuiButton(2, width/2-86, y + 7, 25, 20, FFMTColor.red + "-100"));
 			buttonList.add(new GuiButton(3, width/2+10, y + 7, 20, 20, FFMTColor.red + "+1"));
 			buttonList.add(new GuiButton(4, width/2+38, y + 7, 20, 20, FFMTColor.red + "+10"));
-			buttonList.add(new GuiButton(5, width/2+66, y + 7, 20, 20, FFMTColor.red + "+100"));
+			buttonList.add(new GuiButton(5, width/2+61, y + 7, 25, 20, FFMTColor.red + "+100"));
 			
 			buttonList.add(new GuiButton(6, width/2-30, y + 29, 20, 20, FFMTColor.green + "-1"));
 			buttonList.add(new GuiButton(7, width/2-58, y + 29, 20, 20, FFMTColor.green + "-10"));
-			buttonList.add(new GuiButton(8, width/2-86, y + 29, 20, 20, FFMTColor.green + "-100"));
+			buttonList.add(new GuiButton(8, width/2-86, y + 29, 25, 20, FFMTColor.green + "-100"));
 			buttonList.add(new GuiButton(9, width/2+10, y + 29, 20, 20, FFMTColor.green + "+1"));
 			buttonList.add(new GuiButton(10, width/2+38, y + 29, 20, 20, FFMTColor.green + "+10"));
-			buttonList.add(new GuiButton(11, width/2+66, y + 29, 20, 20, FFMTColor.green + "+100"));
+			buttonList.add(new GuiButton(11, width/2+61, y + 29, 25, 20, FFMTColor.green + "+100"));
 		
 			buttonList.add(new GuiButton(12, width/2-30, y + 51, 20, 20, FFMTColor.blue + "-1"));
 			buttonList.add(new GuiButton(13, width/2-58, y + 51, 20, 20, FFMTColor.blue + "-10"));
-			buttonList.add(new GuiButton(14, width/2-86, y + 51, 20, 20, FFMTColor.blue + "-100"));
+			buttonList.add(new GuiButton(14, width/2-86, y + 51, 25, 20, FFMTColor.blue + "-100"));
 			buttonList.add(new GuiButton(15, width/2+10, y + 51, 20, 20, FFMTColor.blue + "+1"));
 			buttonList.add(new GuiButton(16, width/2+38, y + 51, 20, 20, FFMTColor.blue + "+10"));
-			buttonList.add(new GuiButton(17, width/2+66, y + 51, 20, 20, FFMTColor.blue + "+100"));
+			buttonList.add(new GuiButton(17, width/2+61, y + 51, 25, 20, FFMTColor.blue + "+100"));
 
 			buttonList.add(new GuiButton(18, width/2-30, y + 73, 20, 20, FFMTColor.darkRed + "-1"));
 			buttonList.add(new GuiButton(19, width/2-58, y + 73, 20, 20, FFMTColor.darkRed + "-10"));
-			buttonList.add(new GuiButton(20, width/2-86, y + 73, 20, 20, FFMTColor.darkRed + "-100"));
+			buttonList.add(new GuiButton(20, width/2-86, y + 73, 25, 20, FFMTColor.darkRed + "-100"));
 			buttonList.add(new GuiButton(21, width/2+10, y + 73, 20, 20, FFMTColor.darkRed + "+1"));
 			buttonList.add(new GuiButton(22, width/2+38, y + 73, 20, 20, FFMTColor.darkRed + "+10"));
-			buttonList.add(new GuiButton(23, width/2+66, y + 73, 20, 20, FFMTColor.darkRed + "+100"));
+			buttonList.add(new GuiButton(23, width/2+61, y + 73, 25, 20, FFMTColor.darkRed + "+100"));
 			
 			buttonList.add(new GuiButton(24, width/2-30, y + 95, 20, 20, FFMTColor.darkGreen + "-1"));
 			buttonList.add(new GuiButton(25, width/2-58, y + 95, 20, 20, FFMTColor.darkGreen + "-10"));
-			buttonList.add(new GuiButton(26, width/2-86, y + 95, 20, 20, FFMTColor.darkGreen + "-100"));
+			buttonList.add(new GuiButton(26, width/2-86, y + 95, 25, 20, FFMTColor.darkGreen + "-100"));
 			buttonList.add(new GuiButton(27, width/2+10, y + 95, 20, 20, FFMTColor.darkGreen + "+1"));
 			buttonList.add(new GuiButton(28, width/2+38, y + 95, 20, 20, FFMTColor.darkGreen + "+10"));
-			buttonList.add(new GuiButton(29, width/2+66, y + 95, 20, 20, FFMTColor.darkGreen + "+100"));
+			buttonList.add(new GuiButton(29, width/2+61, y + 95, 25, 20, FFMTColor.darkGreen + "+100"));
 		
 			buttonList.add(new GuiButton(30, width/2-30, y + 117, 20, 20, FFMTColor.darkBlue + "-1"));
 			buttonList.add(new GuiButton(31, width/2-58, y + 117, 20, 20, FFMTColor.darkBlue + "-10"));
-			buttonList.add(new GuiButton(32, width/2-86, y + 117, 20, 20, FFMTColor.darkBlue + "-100"));
+			buttonList.add(new GuiButton(32, width/2-86, y + 117, 25, 20, FFMTColor.darkBlue + "-100"));
 			buttonList.add(new GuiButton(33, width/2+10, y + 117, 20, 20, FFMTColor.darkBlue + "+1"));
 			buttonList.add(new GuiButton(34, width/2+38, y + 117, 20, 20, FFMTColor.darkBlue + "+10"));
-			buttonList.add(new GuiButton(35, width/2+66, y + 117, 20, 20, FFMTColor.darkBlue + "+100"));
+			buttonList.add(new GuiButton(35, width/2+61, y + 117, 25, 20, FFMTColor.darkBlue + "+100"));
 	}
 
 	protected void actionPerformed(GuiButton guibutton)
@@ -433,12 +433,19 @@ public class GuiBlockSpotLight extends GuiContainer
 	{
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getRedValue()), xSize/2 - 2, ySize + -153, FFMTColor.redInt);
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getGreenValue()), xSize/2 - 2, ySize + -131, FFMTColor.greenInt);
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getBlueValue()), xSize/2 - 2, ySize + -109, FFMTColor.blueInt);
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkRedValue()), xSize/2 - 2, ySize + -87, FFMTColor.darkRedInt);
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkGreenValue()), xSize/2 - 2, ySize + -65, FFMTColor.darkGreenInt);
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkBlueValue()), xSize/2 - 2, ySize + -43, FFMTColor.darkBlueInt);
+		int redPos, greenPos, bluePos, darkRedPos, darkGreenPos, darkBluePos;
+		if (tileSpotLight.red < 10){redPos = 2;}else if (tileSpotLight.red > 9 && tileSpotLight.red < 100){redPos = 5;}else{redPos = 8;}
+		if (tileSpotLight.green < 10){greenPos = 2;}else if (tileSpotLight.green > 9 && tileSpotLight.green < 100){greenPos = 5;}else{greenPos = 8;}
+		if (tileSpotLight.blue < 10){bluePos = 2;}else if (tileSpotLight.blue > 9 && tileSpotLight.blue < 100){bluePos = 5;}else{bluePos = 8;}
+		if (tileSpotLight.darkRed < 10){darkRedPos = 2;}else if (tileSpotLight.darkRed > 9 && tileSpotLight.darkRed < 100){darkRedPos = 5;}else{darkRedPos = 8;}
+		if (tileSpotLight.darkGreen < 10){darkGreenPos = 2;}else if (tileSpotLight.darkGreen > 9 && tileSpotLight.darkGreen < 100){darkGreenPos = 5;}else{darkGreenPos = 8;}
+		if (tileSpotLight.darkBlue < 10){darkBluePos = 2;}else if (tileSpotLight.darkBlue > 9 && tileSpotLight.darkBlue < 100){darkBluePos = 5;}else{darkBluePos = 8;}
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getRedValue()), xSize/2 - redPos, ySize + -153, FFMTColor.redInt);
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getGreenValue()), xSize/2 - greenPos, ySize + -131, FFMTColor.greenInt);
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getBlueValue()), xSize/2 - bluePos, ySize + -109, FFMTColor.blueInt);
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkRedValue()), xSize/2 - darkRedPos, ySize + -87, FFMTColor.darkRedInt);
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkGreenValue()), xSize/2 - darkGreenPos, ySize + -65, FFMTColor.darkGreenInt);
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkBlueValue()), xSize/2 - darkBluePos, ySize + -43, FFMTColor.darkBlueInt);
 
 	}
 
@@ -446,7 +453,7 @@ public class GuiBlockSpotLight extends GuiContainer
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
 		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		this.mc.renderEngine.bindTexture("/mods/Nanotech_mod/textures/gui/BlockJumper.png");
+		this.mc.renderEngine.bindTexture("/mods/Nanotech_mod/textures/gui/BlockSpotLight.png");
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 
