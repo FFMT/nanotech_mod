@@ -44,6 +44,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	public MobThedeath(World world)
 	{
 		super(world);
+        this.setEntityHealth(this.getMaxHealth());
 		this.texture = "/mods/Nanotech_mod/textures/mob/thedeath.png";
 		this.setSize(5F, 8.0F);
 		this.isImmuneToFire = true;
@@ -58,15 +59,15 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityLiving.class, 50.0F, 0, false, false, mobSelector));
 		this.experienceValue = 50;
 	}
-
+	
 	protected void entityInit()
 	{
 		super.entityInit();
-		this.dataWatcher.addObject(16, new Integer(100));
-		this.dataWatcher.addObject(17, new Integer(0));
-		this.dataWatcher.addObject(18, new Integer(0));
-		this.dataWatcher.addObject(19, new Integer(0));
-		this.dataWatcher.addObject(20, new Integer(0));
+        this.dataWatcher.addObject(16, new Integer(this.getMaxHealth()));
+        this.dataWatcher.addObject(17, new Integer(0));
+        this.dataWatcher.addObject(18, new Integer(0));
+        this.dataWatcher.addObject(19, new Integer(0));
+        this.dataWatcher.addObject(20, new Integer(0));
 	}
 
 	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
@@ -611,11 +612,6 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		return 5000;
 	}
 
-	public String getEntityName()
-	{
-		return "The death";
-	}
-
 	@SideOnly(Side.CLIENT)
 	public float func_82207_a(int par1)
 	{
@@ -665,9 +661,10 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	}
 
 	@Override
+    @SideOnly(Side.CLIENT)
 	public int getBossHealth()
 	{
-		return this.health;
+        return this.dataWatcher.getWatchableObjectInt(16);
 	}
 
 }

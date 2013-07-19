@@ -5,6 +5,7 @@ import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.boss.BossStatus;
+import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.boss.EntityWither;
 
 import org.lwjgl.opengl.GL11;
@@ -40,13 +41,13 @@ public class RenderTheDeath extends RenderLiving
     	super.doRenderLiving(mobTheDeath, par2, par4, par6, par8, par9);
     }
     
-    public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
+    public void doRenderLiving(EntityLiving living, double par2, double par4, double par6, float par8, float par9)
     {
-        this.renderHealtBar((MobThedeath)par1EntityLiving, par2, par4, par6, par8, par9);
+        this.renderHealtBar((MobThedeath)living, par2, par4, par6, par8, par9);
     }
 
-    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+    public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9)
     {
-        this.renderHealtBar((MobThedeath)par1Entity, par2, par4, par6, par8, par9);
+        this.renderHealtBar((MobThedeath)entity, par2, par4, par6, par8, par9);
     }
 }
