@@ -76,19 +76,16 @@ public class BlockSpotLight extends BlockContainer
 	}
 	
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2)
+	public Icon getIcon(int side, int metadata)
 	{
-		if (par1 == 1)
+		if (side == 1 || side == 0)
 		{
 			return this.top;
 		}
-		
-		if (par1 == 0)
+		else
 		{
-			return this.top;
+			return this.side;
 		}
-		return this.side;
-			
 	}
 	
 }
