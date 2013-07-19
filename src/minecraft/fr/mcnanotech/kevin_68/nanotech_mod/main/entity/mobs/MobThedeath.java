@@ -45,7 +45,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	{
 		super(world);
 		this.texture = "/mods/Nanotech_mod/textures/mob/thedeath.png";
-		this.setSize(0.9F, 4.0F);
+		this.setSize(5F, 8.0F);
 		this.isImmuneToFire = true;
 		this.moveSpeed = 0.6F;
 		this.getNavigator().setCanSwim(true);
@@ -612,7 +612,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 	public int getMaxHealth()
 	{
-		return 600;
+		return 5000;
 	}
 
 	public String getEntityName()
