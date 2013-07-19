@@ -13,7 +13,7 @@ public class NanotechBlock
 			BlockSmoker, BlockTrashcan, BlockBarbedwire, BlockNanowood,
 			BlockNanoleaves, BlockNanosaplings, BlockNanoplanks, BlockNanoOre,
 			BlockConfusion, BlockFalling, Blocknotfalling, BlockSodium,
-			BlockSlope, BlockMossystone, BlockSpotLight;
+			BlockSlope, BlockMossystone, BlockSpotLight, BlockTheDeathHead;
 
 	// Blocks Initialization
 	public static void initBlock()
@@ -39,6 +39,7 @@ public class NanotechBlock
 		BlockSodium = new BlockSodium(Nanotech_mod.BlockSodiumID, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("sodium").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockMossystone = new BlockBase(Nanotech_mod.BlockMossyStoneID, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("mossystone").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockSpotLight = new BlockSpotLight(Nanotech_mod.BlockSpotLightID).setHardness(1.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("spotlight").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
+		BlockTheDeathHead = new BlockTheDeathHead(Nanotech_mod.BlockTheDeathHeadID).setHardness(5.0F).setResistance(10.0F).setUnlocalizedName("theDeathHead").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 	}
 
 	// Blocks registry
@@ -65,6 +66,7 @@ public class NanotechBlock
 		GameRegistry.registerBlock(BlockSodium, "BlockSodium");
 		GameRegistry.registerBlock(BlockMossystone, "BlockMossyStone");
 		GameRegistry.registerBlock(BlockSpotLight, "BlockSpotLight");
+		GameRegistry.registerBlock(BlockTheDeathHead, "BlockTheDeathHead");
 	}
 
 }

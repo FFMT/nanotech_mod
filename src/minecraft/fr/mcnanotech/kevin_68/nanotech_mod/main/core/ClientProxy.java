@@ -47,7 +47,7 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(MobSuperZombie.class, new RenderSuperZombie(new ModelSuperZombie(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(MobCreeperDriller.class, new RenderCreeperForreur(new ModelCreeperForreur(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(MobFastzombie.class, new RenderFastZombie(new ModelMobFastZombie(), 0.5F));
-		RenderingRegistry.registerEntityRenderingHandler(MobFly.class, new RenderMobFly(new ModelFly(), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(MobFly.class, new RenderMobFly(new ModelFly(), 0.05F));
 		RenderingRegistry.registerEntityRenderingHandler(MobFlyingCreeper.class, new RenderFlyingCreeper(new ModelFlyingCreeper(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(MobCrazyGuy.class, new RenderCrazyGuy(new ModelCrazyGuy(), 0.5F));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBlockSpotLight.class, new TileEntityBlockSpotLightRender());

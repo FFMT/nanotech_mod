@@ -21,7 +21,7 @@ public class MobFly extends EntityAmbientCreature
 	{
 		super(par1World);
 		this.texture = "/mods/Nanotech_mod/textures/mob/fly.png";
-		this.setSize(0.5F, 0.9F);
+		this.setSize(0.5F, 0.5F);
 		this.func_82236_f(true);
 		this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 20.0F));
 		this.tasks.addTask(7, new EntityAILookIdle(this));

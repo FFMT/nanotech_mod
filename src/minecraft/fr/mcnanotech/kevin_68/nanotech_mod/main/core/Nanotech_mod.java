@@ -77,6 +77,7 @@ public class Nanotech_mod
 	public static int BlockSodiumID;
 	public static int BlockMossyStoneID;
 	public static int BlockSpotLightID;
+	public static int BlockTheDeathHeadID;
 
 	// Item IDs
 	public static int ItemNanotechID;
@@ -193,6 +194,7 @@ public class Nanotech_mod
 		BlockSodiumID = config.getBlock("Sodium", 1023).getInt();
 		BlockMossyStoneID = config.getBlock("Mossy Stone", 1024).getInt();
 		BlockSpotLightID = config.getBlock("SpotLight", 1025).getInt();
+		BlockTheDeathHeadID = config.getBlock("TheDeathHead", 1026).getInt();
 
 		ItemNanotechID = config.getItem("Main Nanotech ID", 5000).getInt();
 		ItemSuperBottleOfXpID = config.getItem("Super Bottle of xp", 5005).getInt();
