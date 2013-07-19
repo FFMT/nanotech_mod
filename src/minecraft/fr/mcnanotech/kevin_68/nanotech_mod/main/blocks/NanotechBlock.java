@@ -13,7 +13,7 @@ public class NanotechBlock
 			BlockSmoker, BlockTrashcan, BlockBarbedwire, BlockNanowood,
 			BlockNanoleaves, BlockNanosaplings, BlockNanoplanks, BlockNanoOre,
 			BlockConfusion, BlockFalling, Blocknotfalling, BlockSodium,
-			BlockSlope, BlockMossystone, BlockSpotLight, BlockTheDeathHead;
+			BlockMossystone, BlockSpotLight, BlockTheDeathHead;
 
 	// Blocks Initialization
 	public static void initBlock()
