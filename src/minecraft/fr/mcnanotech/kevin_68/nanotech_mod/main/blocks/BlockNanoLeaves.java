@@ -23,6 +23,7 @@ public class BlockNanoLeaves extends BlockLeaves implements IShearable
 	{
 		super(id);
 		this.setTickRandomly(true);
+		this.setLightOpacity(1);
 	}
 
 	public void registerIcons(IconRegister iconregister)
@@ -45,16 +46,14 @@ public class BlockNanoLeaves extends BlockLeaves implements IShearable
 
 	public boolean isOpaqueCube()
 	{
-		return !this.graphicsLevel;
+		return Block.leaves.isOpaqueCube();
 	}
-
-	@Override
-	public boolean shouldSideBeRendered(IBlockAccess blockAccess, int par2, int par3, int par4, int par5)
-	{
-		graphicsLevel = !Block.leaves.isOpaqueCube();
-
-		return super.shouldSideBeRendered(blockAccess, par2, par3, par4, par5);
-	}
+	
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+    {
+        return !this.isOpaqueCube() ? true : super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
+    }
 
 	public Icon getIcon(int side, int metadata)
 	{
