@@ -48,95 +48,95 @@ public class BlockTheDeathHead extends Block
 	            
 	            if (flag0 || flag1 || flag2 || flag3)
 	            {
-	                world.setBlock(x, y, z, 0, 0, 2);
-	                world.setBlock(x, y - 1, z, 0, 0, 2);
-	                world.setBlock(x, y - 2, z, 0, 0, 2);
-	                world.setBlock(x, y - 3, z, 0, 0, 2);
-	                world.setBlock(x, y - 4, z, 0, 0, 2);
+	                world.setBlockToAir(x, y, z);
+	                world.setBlockToAir(x, y - 1, z);
+	                world.setBlockToAir(x, y - 2, z);
+	                world.setBlockToAir(x, y - 3, z);
+	                world.setBlockToAir(x, y - 4, z);
 
 	                if (flag0)
 	                {
-	                    world.setBlock(x - 1, y - 1, z, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 2, z, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 3, z, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 4, z, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 1, z + 1, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 2, z + 1, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 3, z + 1, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 1, z - 1, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 2, z - 1, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 3, z - 1, 0, 0, 2);
-	                    world.setBlock(x, y - 1, z + 1, 0, 0, 2);
-	                    world.setBlock(x, y - 1, z - 1, 0, 0, 2);
-	                    world.setBlock(x, y - 1, z + 2, 0, 0, 2);
-	                    world.setBlock(x, y - 1, z - 2, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 1, z + 2, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 1, z - 2, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 2, z + 2, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 2, z - 2, 0, 0, 2);
+	                    world.setBlockToAir(x - 1, y - 1, z);
+	                    world.setBlockToAir(x - 1, y - 2, z);
+	                    world.setBlockToAir(x - 1, y - 3, z);
+	                    world.setBlockToAir(x - 1, y - 4, z);
+	                    world.setBlockToAir(x - 1, y - 1, z + 1);
+	                    world.setBlockToAir(x - 1, y - 2, z + 1);
+	                    world.setBlockToAir(x - 1, y - 3, z + 1);
+	                    world.setBlockToAir(x - 1, y - 1, z - 1);
+	                    world.setBlockToAir(x - 1, y - 2, z - 1);
+	                    world.setBlockToAir(x - 1, y - 3, z - 1);
+	                    world.setBlockToAir(x, y - 1, z + 1);
+	                    world.setBlockToAir(x, y - 1, z - 1);
+	                    world.setBlockToAir(x, y - 1, z + 2);
+	                    world.setBlockToAir(x, y - 1, z - 2);
+	                    world.setBlockToAir(x - 1, y - 1, z + 2);
+	                    world.setBlockToAir(x - 1, y - 1, z - 2);
+	                    world.setBlockToAir(x - 1, y - 2, z + 2);
+	                    world.setBlockToAir(x - 1, y - 2, z - 2);
 	                }
 	                else if (flag1)
 	                {
-	                    world.setBlock(x + 1, y - 1, z, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 2, z, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 3, z, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 4, z, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 1, z - 1, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 2, z - 1, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 3, z - 1, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 1, z + 1, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 2, z + 1, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 3, z + 1, 0, 0, 2);
-	                    world.setBlock(x, y - 1, z - 1, 0, 0, 2);
-	                    world.setBlock(x, y - 1, z + 1, 0, 0, 2);
-	                    world.setBlock(x, y - 1, z - 2, 0, 0, 2);
-	                    world.setBlock(x, y - 1, z + 2, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 1, z - 2, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 1, z + 2, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 2, z - 2, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 2, z + 2, 0, 0, 2);
+	                    world.setBlockToAir(x + 1, y - 1, z);
+	                    world.setBlockToAir(x + 1, y - 2, z);
+	                    world.setBlockToAir(x + 1, y - 3, z);
+	                    world.setBlockToAir(x + 1, y - 4, z);
+	                    world.setBlockToAir(x + 1, y - 1, z - 1);
+	                    world.setBlockToAir(x + 1, y - 2, z - 1);
+	                    world.setBlockToAir(x + 1, y - 3, z - 1);
+	                    world.setBlockToAir(x + 1, y - 1, z + 1);
+	                    world.setBlockToAir(x + 1, y - 2, z + 1);
+	                    world.setBlockToAir(x + 1, y - 3, z + 1);
+	                    world.setBlockToAir(x, y - 1, z - 1);
+	                    world.setBlockToAir(x, y - 1, z + 1);
+	                    world.setBlockToAir(x, y - 1, z - 2);
+	                    world.setBlockToAir(x, y - 1, z + 2);
+	                    world.setBlockToAir(x + 1, y - 1, z - 2);
+	                    world.setBlockToAir(x + 1, y - 1, z + 2);
+	                    world.setBlockToAir(x + 1, y - 2, z - 2);
+	                    world.setBlockToAir(x + 1, y - 2, z + 2);
 	                }
 	                else if (flag2)
 	                {
-	                    world.setBlock(x, y - 1, z - 1, 0, 0, 2);
-	                    world.setBlock(x, y - 2, z - 1, 0, 0, 2);
-	                    world.setBlock(x, y - 3, z - 1, 0, 0, 2);
-	                    world.setBlock(x, y - 4, z - 1, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 1, z - 1, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 2, z - 1, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 3, z - 1, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 1, z - 1, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 2, z - 1, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 3, z - 1, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 1, z, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 1, z, 0, 0, 2);
-	                    world.setBlock(x + 2, y - 1, z, 0, 0, 2);
-	                    world.setBlock(x - 2, y - 1, z, 0, 0, 2);
-	                    world.setBlock(x - 2, y - 1, z - 1, 0, 0, 2);
-	                    world.setBlock(x + 2, y - 1, z - 1, 0, 0, 2);
-	                    world.setBlock(x - 2, y - 2, z - 1, 0, 0, 2);
-	                    world.setBlock(x + 2, y - 2, z - 1, 0, 0, 2);
+	                    world.setBlockToAir(x, y - 1, z - 1);
+	                    world.setBlockToAir(x, y - 2, z - 1);
+	                    world.setBlockToAir(x, y - 3, z - 1);
+	                    world.setBlockToAir(x, y - 4, z - 1);
+	                    world.setBlockToAir(x + 1, y - 1, z - 1);
+	                    world.setBlockToAir(x + 1, y - 2, z - 1);
+	                    world.setBlockToAir(x + 1, y - 3, z - 1);
+	                    world.setBlockToAir(x - 1, y - 1, z - 1);
+	                    world.setBlockToAir(x - 1, y - 2, z - 1);
+	                    world.setBlockToAir(x - 1, y - 3, z - 1);
+	                    world.setBlockToAir(x + 1, y - 1, z);
+	                    world.setBlockToAir(x - 1, y - 1, z);
+	                    world.setBlockToAir(x + 2, y - 1, z);
+	                    world.setBlockToAir(x - 2, y - 1, z);
+	                    world.setBlockToAir(x - 2, y - 1, z - 1);
+	                    world.setBlockToAir(x + 2, y - 1, z - 1);
+	                    world.setBlockToAir(x - 2, y - 2, z - 1);
+	                    world.setBlockToAir(x + 2, y - 2, z - 1);
 	                }
 	                else
 	                {
-	                    world.setBlock(x, y - 1, z + 1, 0, 0, 2);
-	                    world.setBlock(x, y - 2, z + 1, 0, 0, 2);
-	                    world.setBlock(x, y - 3, z + 1, 0, 0, 2);
-	                    world.setBlock(x, y - 4, z + 1, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 1, z + 1, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 2, z + 1, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 3, z + 1, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 1, z + 1, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 2, z + 1, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 3, z + 1, 0, 0, 2);
-	                    world.setBlock(x - 1, y - 1, z, 0, 0, 2);
-	                    world.setBlock(x + 1, y - 1, z, 0, 0, 2);
-	                    world.setBlock(x - 2, y - 1, z, 0, 0, 2);
-	                    world.setBlock(x + 2, y - 1, z, 0, 0, 2);
-	                    world.setBlock(x + 2, y - 1, z + 1, 0, 0, 2);
-	                    world.setBlock(x - 2, y - 1, z + 1, 0, 0, 2);
-	                    world.setBlock(x + 2, y - 2, z + 1, 0, 0, 2);
-	                    world.setBlock(x - 2, y - 2, z + 1, 0, 0, 2);
+	                    world.setBlockToAir(x, y - 1, z + 1);
+	                    world.setBlockToAir(x, y - 2, z + 1);
+	                    world.setBlockToAir(x, y - 3, z + 1);
+	                    world.setBlockToAir(x, y - 4, z + 1);
+	                    world.setBlockToAir(x - 1, y - 1, z + 1);
+	                    world.setBlockToAir(x - 1, y - 2, z + 1);
+	                    world.setBlockToAir(x - 1, y - 3, z + 1);
+	                    world.setBlockToAir(x + 1, y - 1, z + 1);
+	                    world.setBlockToAir(x + 1, y - 2, z + 1);
+	                    world.setBlockToAir(x + 1, y - 3, z + 1);
+	                    world.setBlockToAir(x - 1, y - 1, z);
+	                    world.setBlockToAir(x + 1, y - 1, z);
+	                    world.setBlockToAir(x - 2, y - 1, z);
+	                    world.setBlockToAir(x + 2, y - 1, z);
+	                    world.setBlockToAir(x + 2, y - 1, z + 1);
+	                    world.setBlockToAir(x - 2, y - 1, z + 1);
+	                    world.setBlockToAir(x + 2, y - 2, z + 1);
+	                    world.setBlockToAir(x - 2, y - 2, z + 1);
 	                }
 
 	                MobThedeath mobTheDeath = new MobThedeath(world);
