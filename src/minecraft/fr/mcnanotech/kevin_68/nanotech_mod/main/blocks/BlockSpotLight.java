@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -15,6 +16,9 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockSpotLi
 
 public class BlockSpotLight extends BlockContainer
 {
+	private Icon top;
+	private Icon side;
+	
 	public BlockSpotLight(int par1)
 	{
 		super(par1, Material.iron);
@@ -54,12 +58,6 @@ public class BlockSpotLight extends BlockContainer
 		return 0;
 	}
 
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister)
-	{
-		super.registerIcons(par1IconRegister);
-	}
-
 	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving, ItemStack par6ItemStack)
 	{
 		super.onBlockPlacedBy(par1World, par2, par3, par4, par5EntityLiving, par6ItemStack);
@@ -69,4 +67,28 @@ public class BlockSpotLight extends BlockContainer
 			((TileEntityBlockSpotLight)par1World.getBlockTileEntity(par2, par3, par4)).func_94047_a(par6ItemStack.getDisplayName());
 		}
 	}
+	
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister par1IconRegister)
+	{
+		this.side = par1IconRegister.registerIcon("Nanotech_mod:SpotLightSides");
+		this.top = par1IconRegister.registerIcon("Nanotech_mod:SpotLightTopAndBottom");
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int par1, int par2)
+	{
+		if (par1 == 1)
+		{
+			return this.top;
+		}
+		
+		if (par1 == 0)
+		{
+			return this.top;
+		}
+		return this.side;
+			
+	}
+	
 }
