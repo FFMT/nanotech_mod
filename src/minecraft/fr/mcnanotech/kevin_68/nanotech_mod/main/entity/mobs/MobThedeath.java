@@ -44,7 +44,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	public MobThedeath(World world)
 	{
 		super(world);
-        this.setEntityHealth(this.getMaxHealth());
+		this.setEntityHealth(this.getMaxHealth());
 		this.texture = "/mods/Nanotech_mod/textures/mob/thedeath.png";
 		this.setSize(5F, 8.0F);
 		this.isImmuneToFire = true;
@@ -59,15 +59,15 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityLiving.class, 50.0F, 0, false, false, mobSelector));
 		this.experienceValue = 50;
 	}
-	
+
 	protected void entityInit()
 	{
 		super.entityInit();
-        this.dataWatcher.addObject(16, new Integer(this.getMaxHealth()));
-        this.dataWatcher.addObject(17, new Integer(0));
-        this.dataWatcher.addObject(18, new Integer(0));
-        this.dataWatcher.addObject(19, new Integer(0));
-        this.dataWatcher.addObject(20, new Integer(0));
+		this.dataWatcher.addObject(16, new Integer(this.getMaxHealth()));
+		this.dataWatcher.addObject(17, new Integer(0));
+		this.dataWatcher.addObject(18, new Integer(0));
+		this.dataWatcher.addObject(19, new Integer(0));
+		this.dataWatcher.addObject(20, new Integer(0));
 	}
 
 	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
@@ -106,7 +106,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 	public void onLivingUpdate()
 	{
-		if (!this.worldObj.isRemote)
+		if(!this.worldObj.isRemote)
 		{
 			this.dataWatcher.updateObject(16, Integer.valueOf(this.health));
 		}
@@ -116,15 +116,15 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		double var6;
 		double var8;
 
-		if (!this.worldObj.isRemote && this.getWatchedTargetId(0) > 0)
+		if(!this.worldObj.isRemote && this.getWatchedTargetId(0) > 0)
 		{
 			Entity var1 = this.worldObj.getEntityByID(this.getWatchedTargetId(0));
 
-			if (var1 != null)
+			if(var1 != null)
 			{
-				if (this.posY < var1.posY || !this.isArmored() && this.posY < var1.posY + 5.0D)
+				if(this.posY < var1.posY || !this.isArmored() && this.posY < var1.posY + 5.0D)
 				{
-					if (this.motionY < 0.0D)
+					if(this.motionY < 0.0D)
 					{
 						this.motionY = 0.0D;
 					}
@@ -136,24 +136,24 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 				var4 = var1.posZ - this.posZ;
 				var6 = var2 * var2 + var4 * var4;
 
-				if (var6 > 9.0D)
+				if(var6 > 9.0D)
 				{
-					var8 = (double) MathHelper.sqrt_double(var6);
+					var8 = (double)MathHelper.sqrt_double(var6);
 					this.motionX += (var2 / var8 * 0.5D - this.motionX) * 0.6000000238418579D;
 					this.motionZ += (var4 / var8 * 0.5D - this.motionZ) * 0.6000000238418579D;
 				}
 			}
 		}
 
-		if (this.motionX * this.motionX + this.motionZ * this.motionZ > 0.05000000074505806D)
+		if(this.motionX * this.motionX + this.motionZ * this.motionZ > 0.05000000074505806D)
 		{
-			this.rotationYaw = (float) Math.atan2(this.motionZ, this.motionX) * (180F / (float) Math.PI) - 90.0F;
+			this.rotationYaw = (float)Math.atan2(this.motionZ, this.motionX) * (180F / (float)Math.PI) - 90.0F;
 		}
 
 		super.onLivingUpdate();
 		int var20;
 
-		for (var20 = 0; var20 < 2; ++var20)
+		for(var20 = 0; var20 < 2; ++var20)
 		{
 			this.field_82218_g[var20] = this.field_82221_e[var20];
 			this.field_82217_f[var20] = this.field_82220_d[var20];
@@ -161,31 +161,30 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 		int var21;
 
-		for (var20 = 0; var20 < 2; ++var20)
+		for(var20 = 0; var20 < 2; ++var20)
 		{
 			var21 = this.getWatchedTargetId(var20 + 1);
 			Entity var3 = null;
 
-			if (var21 > 0)
+			if(var21 > 0)
 			{
 				var3 = this.worldObj.getEntityByID(var21);
 			}
 
-			if (var3 != null)
+			if(var3 != null)
 			{
 				var4 = this.func_82214_u(var20 + 1);
 				var6 = this.func_82208_v(var20 + 1);
 				var8 = this.func_82213_w(var20 + 1);
 				double var10 = var3.posX - var4;
-				double var12 = var3.posY + (double) var3.getEyeHeight() - var6;
+				double var12 = var3.posY + (double)var3.getEyeHeight() - var6;
 				double var14 = var3.posZ - var8;
-				double var16 = (double) MathHelper.sqrt_double(var10 * var10 + var14 * var14);
-				float var18 = (float) (Math.atan2(var14, var10) * 180.0D / Math.PI) - 90.0F;
-				float var19 = (float) (-(Math.atan2(var12, var16) * 180.0D / Math.PI));
+				double var16 = (double)MathHelper.sqrt_double(var10 * var10 + var14 * var14);
+				float var18 = (float)(Math.atan2(var14, var10) * 180.0D / Math.PI) - 90.0F;
+				float var19 = (float)(-(Math.atan2(var12, var16) * 180.0D / Math.PI));
 				this.field_82220_d[var20] = this.func_82204_b(this.field_82220_d[var20], var19, 40.0F);
 				this.field_82221_e[var20] = this.func_82204_b(this.field_82221_e[var20], var18, 10.0F);
-			}
-			else
+			} else
 			{
 				this.field_82221_e[var20] = this.func_82204_b(this.field_82221_e[var20], this.renderYawOffset, 10.0F);
 			}
@@ -193,24 +192,24 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 		boolean var22 = this.isArmored();
 
-		for (var21 = 0; var21 < 3; ++var21)
+		for(var21 = 0; var21 < 3; ++var21)
 		{
 			double var23 = this.func_82214_u(var21);
 			double var5 = this.func_82208_v(var21);
 			double var7 = this.func_82213_w(var21);
 			this.worldObj.spawnParticle("smoke", var23 + this.rand.nextGaussian() * 0.30000001192092896D, var5 + this.rand.nextGaussian() * 0.30000001192092896D, var7 + this.rand.nextGaussian() * 0.30000001192092896D, 0.0D, 0.0D, 0.0D);
 
-			if (var22 && this.worldObj.rand.nextInt(4) == 0)
+			if(var22 && this.worldObj.rand.nextInt(4) == 0)
 			{
 				this.worldObj.spawnParticle("mobSpell", var23 + this.rand.nextGaussian() * 0.30000001192092896D, var5 + this.rand.nextGaussian() * 0.30000001192092896D, var7 + this.rand.nextGaussian() * 0.30000001192092896D, 0.699999988079071D, 0.699999988079071D, 0.5D);
 			}
 		}
 
-		if (this.func_82212_n() > 0)
+		if(this.func_82212_n() > 0)
 		{
-			for (var21 = 0; var21 < 3; ++var21)
+			for(var21 = 0; var21 < 3; ++var21)
 			{
-				this.worldObj.spawnParticle("mobSpell", this.posX + this.rand.nextGaussian() * 1.0D, this.posY + (double) (this.rand.nextFloat() * 3.3F), this.posZ + this.rand.nextGaussian() * 1.0D, 0.699999988079071D, 0.699999988079071D, 0.8999999761581421D);
+				this.worldObj.spawnParticle("mobSpell", this.posX + this.rand.nextGaussian() * 1.0D, this.posY + (double)(this.rand.nextFloat() * 3.3F), this.posZ + this.rand.nextGaussian() * 1.0D, 0.699999988079071D, 0.699999988079071D, 0.8999999761581421D);
 			}
 		}
 	}
@@ -221,24 +220,24 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	{
 		++this.deathTicks;
 
-		if (this.deathTicks >= 180 && this.deathTicks <= 200)
+		if(this.deathTicks >= 180 && this.deathTicks <= 200)
 		{
 			float var1 = (this.rand.nextFloat() - 0.5F) * 8.0F;
 			float var2 = (this.rand.nextFloat() - 0.5F) * 4.0F;
 			float var3 = (this.rand.nextFloat() - 0.5F) * 8.0F;
-			this.worldObj.spawnParticle("hugeexplosion", this.posX + (double) var1, this.posY + 2.0D + (double) var2, this.posZ + (double) var3, 0.0D, 0.0D, 0.0D);
+			this.worldObj.spawnParticle("hugeexplosion", this.posX + (double)var1, this.posY + 2.0D + (double)var2, this.posZ + (double)var3, 0.0D, 0.0D, 0.0D);
 		}
 
 		int var4;
 		int var5;
 
-		if (!this.worldObj.isRemote)
+		if(!this.worldObj.isRemote)
 		{
-			if (this.deathTicks > 150 && this.deathTicks % 5 == 0)
+			if(this.deathTicks > 150 && this.deathTicks % 5 == 0)
 			{
 				var4 = 1000;
 
-				while (var4 > 0)
+				while(var4 > 0)
 				{
 					var5 = EntityXPOrb.getXPSplit(var4);
 					var4 -= var5;
@@ -246,20 +245,20 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 				}
 			}
 
-			if (this.deathTicks == 1)
+			if(this.deathTicks == 1)
 			{
-				this.worldObj.func_82739_e(1018, (int) this.posX, (int) this.posY, (int) this.posZ, 0);
+				this.worldObj.func_82739_e(1018, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
 			}
 		}
 
 		this.moveEntity(0.0D, 0.10000000149011612D, 0.0D);
 		this.renderYawOffset = this.rotationYaw += 20.0F;
 
-		if (this.deathTicks == 200 && !this.worldObj.isRemote)
+		if(this.deathTicks == 200 && !this.worldObj.isRemote)
 		{
 			var4 = 2000;
 
-			while (var4 > 0)
+			while(var4 > 0)
 			{
 				var5 = EntityXPOrb.getXPSplit(var4);
 				var4 -= var5;
@@ -274,47 +273,46 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	{
 		int var1;
 
-		if (this.func_82212_n() > 0)
+		if(this.func_82212_n() > 0)
 		{
 			var1 = this.func_82212_n() - 1;
 
-			if (var1 <= 0)
+			if(var1 <= 0)
 			{
-				this.worldObj.newExplosion(this, this.posX, this.posY + (double) this.getEyeHeight(), this.posZ, 7.0F, false, this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"));
-				this.worldObj.func_82739_e(1013, (int) this.posX, (int) this.posY, (int) this.posZ, 0);
+				this.worldObj.newExplosion(this, this.posX, this.posY + (double)this.getEyeHeight(), this.posZ, 7.0F, false, this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"));
+				this.worldObj.func_82739_e(1013, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
 			}
 
 			this.func_82215_s(var1);
 
-			if (this.ticksExisted % 10 == 0)
+			if(this.ticksExisted % 10 == 0)
 			{
 				this.heal(10);
 			}
-		}
-		else
+		} else
 		{
 			super.updateAITasks();
 			int var13;
 
-			for (var1 = 1; var1 < 3; ++var1)
+			for(var1 = 1; var1 < 3; ++var1)
 			{
-				if (this.ticksExisted >= this.field_82223_h[var1 - 1])
+				if(this.ticksExisted >= this.field_82223_h[var1 - 1])
 				{
 					this.field_82223_h[var1 - 1] = this.ticksExisted + 10 + this.rand.nextInt(10);
 
-					if (this.worldObj.difficultySetting >= 2)
+					if(this.worldObj.difficultySetting >= 2)
 					{
 						int var10001 = var1 - 1;
 						int var10003 = this.field_82224_i[var1 - 1];
 						this.field_82224_i[var10001] = this.field_82224_i[var1 - 1] + 1;
 
-						if (var10003 > 15)
+						if(var10003 > 15)
 						{
 							float var2 = 10.0F;
 							float var3 = 5.0F;
-							double var4 = MathHelper.getRandomDoubleInRange(this.rand, this.posX - (double) var2, this.posX + (double) var2);
-							double var6 = MathHelper.getRandomDoubleInRange(this.rand, this.posY - (double) var3, this.posY + (double) var3);
-							double var8 = MathHelper.getRandomDoubleInRange(this.rand, this.posZ - (double) var2, this.posZ + (double) var2);
+							double var4 = MathHelper.getRandomDoubleInRange(this.rand, this.posX - (double)var2, this.posX + (double)var2);
+							double var6 = MathHelper.getRandomDoubleInRange(this.rand, this.posY - (double)var3, this.posY + (double)var3);
+							double var8 = MathHelper.getRandomDoubleInRange(this.rand, this.posZ - (double)var2, this.posZ + (double)var2);
 							this.func_82209_a(var1 + 1, var4, var6, var8, true);
 							this.field_82224_i[var1 - 1] = 0;
 						}
@@ -322,39 +320,36 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 					var13 = this.getWatchedTargetId(var1);
 
-					if (var13 > 0)
+					if(var13 > 0)
 					{
 						Entity var15 = this.worldObj.getEntityByID(var13);
 
-						if (var15 != null && var15.isEntityAlive() && this.getDistanceSqToEntity(var15) <= 900.0D && this.canEntityBeSeen(var15))
+						if(var15 != null && var15.isEntityAlive() && this.getDistanceSqToEntity(var15) <= 900.0D && this.canEntityBeSeen(var15))
 						{
-							this.func_82216_a(var1 + 1, (EntityLiving) var15);
+							this.func_82216_a(var1 + 1, (EntityLiving)var15);
 							this.field_82223_h[var1 - 1] = this.ticksExisted + 40 + this.rand.nextInt(20);
 							this.field_82224_i[var1 - 1] = 0;
-						}
-						else
+						} else
 						{
 							this.func_82211_c(var1, 0);
 						}
-					}
-					else
+					} else
 					{
 						List var14 = this.worldObj.selectEntitiesWithinAABB(EntityLiving.class, this.boundingBox.expand(20.0D, 8.0D, 20.0D), mobSelector);
 
-						for (int var17 = 0; var17 < 10 && !var14.isEmpty(); ++var17)
+						for(int var17 = 0; var17 < 10 && !var14.isEmpty(); ++var17)
 						{
-							EntityLiving var5 = (EntityLiving) var14.get(this.rand.nextInt(var14.size()));
+							EntityLiving var5 = (EntityLiving)var14.get(this.rand.nextInt(var14.size()));
 
-							if (var5 != this && var5.isEntityAlive() && this.canEntityBeSeen(var5))
+							if(var5 != this && var5.isEntityAlive() && this.canEntityBeSeen(var5))
 							{
-								if (var5 instanceof EntityPlayer)
+								if(var5 instanceof EntityPlayer)
 								{
-									if (!((EntityPlayer) var5).capabilities.disableDamage)
+									if(!((EntityPlayer)var5).capabilities.disableDamage)
 									{
 										this.func_82211_c(var1, var5.entityId);
 									}
-								}
-								else
+								} else
 								{
 									this.func_82211_c(var1, var5.entityId);
 								}
@@ -368,38 +363,37 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 				}
 			}
 
-			if (this.getAttackTarget() != null)
+			if(this.getAttackTarget() != null)
 			{
 				this.func_82211_c(0, this.getAttackTarget().entityId);
-			}
-			else
+			} else
 			{
 				this.func_82211_c(0, 0);
 			}
 
-			if (this.field_82222_j > 0)
+			if(this.field_82222_j > 0)
 			{
 				--this.field_82222_j;
 
-				if (this.field_82222_j == 0 && this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"))
+				if(this.field_82222_j == 0 && this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"))
 				{
 					var1 = MathHelper.floor_double(this.posY);
 					var13 = MathHelper.floor_double(this.posX);
 					int var16 = MathHelper.floor_double(this.posZ);
 					boolean var19 = false;
 
-					for (int var18 = -1; var18 <= 1; ++var18)
+					for(int var18 = -1; var18 <= 1; ++var18)
 					{
-						for (int var20 = -1; var20 <= 1; ++var20)
+						for(int var20 = -1; var20 <= 1; ++var20)
 						{
-							for (int var7 = 0; var7 <= 3; ++var7)
+							for(int var7 = 0; var7 <= 3; ++var7)
 							{
 								int var21 = var13 + var18;
 								int var9 = var1 + var7;
 								int var10 = var16 + var20;
 								int var11 = this.worldObj.getBlockId(var21, var9, var10);
 
-								if (var11 > 0 && var11 != Block.bedrock.blockID && var11 != Block.endPortal.blockID && var11 != Block.endPortalFrame.blockID)
+								if(var11 > 0 && var11 != Block.bedrock.blockID && var11 != Block.endPortal.blockID && var11 != Block.endPortalFrame.blockID)
 								{
 									int var12 = this.worldObj.getBlockMetadata(var21, var9, var10);
 									this.worldObj.playAuxSFX(2001, var21, var9, var10, var11 + (var12 << 12));
@@ -411,14 +405,14 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 						}
 					}
 
-					if (var19)
+					if(var19)
 					{
-						this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1012, (int) this.posX, (int) this.posY, (int) this.posZ, 0);
+						this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1012, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
 					}
 				}
 			}
 
-			if (this.ticksExisted % 20 == 0)
+			if(this.ticksExisted % 20 == 0)
 			{
 				this.heal(1);
 			}
@@ -441,15 +435,14 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 	private double func_82214_u(int par1)
 	{
-		if (par1 <= 0)
+		if(par1 <= 0)
 		{
 			return this.posX;
-		}
-		else
+		} else
 		{
-			float var2 = (this.renderYawOffset + (float) (180 * (par1 - 1))) / 180.0F * (float) Math.PI;
+			float var2 = (this.renderYawOffset + (float)(180 * (par1 - 1))) / 180.0F * (float)Math.PI;
 			float var3 = MathHelper.cos(var2);
-			return this.posX + (double) var3 * 1.3D;
+			return this.posX + (double)var3 * 1.3D;
 		}
 	}
 
@@ -460,15 +453,14 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 	private double func_82213_w(int par1)
 	{
-		if (par1 <= 0)
+		if(par1 <= 0)
 		{
 			return this.posZ;
-		}
-		else
+		} else
 		{
-			float var2 = (this.renderYawOffset + (float) (180 * (par1 - 1))) / 180.0F * (float) Math.PI;
+			float var2 = (this.renderYawOffset + (float)(180 * (par1 - 1))) / 180.0F * (float)Math.PI;
 			float var3 = MathHelper.sin(var2);
-			return this.posZ + (double) var3 * 1.3D;
+			return this.posZ + (double)var3 * 1.3D;
 		}
 	}
 
@@ -476,12 +468,12 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	{
 		float var4 = MathHelper.wrapAngleTo180_float(par2 - par1);
 
-		if (var4 > par3)
+		if(var4 > par3)
 		{
 			var4 = par3;
 		}
 
-		if (var4 < -par3)
+		if(var4 < -par3)
 		{
 			var4 = -par3;
 		}
@@ -491,12 +483,12 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 	private void func_82216_a(int par1, EntityLiving par2EntityLiving)
 	{
-		this.func_82209_a(par1, par2EntityLiving.posX, par2EntityLiving.posY + (double) par2EntityLiving.getEyeHeight() * 0.5D, par2EntityLiving.posZ, par1 == 0 && this.rand.nextFloat() < 0.001F);
+		this.func_82209_a(par1, par2EntityLiving.posX, par2EntityLiving.posY + (double)par2EntityLiving.getEyeHeight() * 0.5D, par2EntityLiving.posZ, par1 == 0 && this.rand.nextFloat() < 0.001F);
 	}
 
 	private void func_82209_a(int par1, double par2, double par4, double par6, boolean par8)
 	{
-		this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1016, (int) this.posX, (int) this.posY, (int) this.posZ, 0);
+		this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1016, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
 		double var9 = this.func_82214_u(par1);
 		double var11 = this.func_82208_v(par1);
 		double var13 = this.func_82213_w(par1);
@@ -505,7 +497,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		double var19 = par6 - var13;
 		EntityTheDeathBall var21 = new EntityTheDeathBall(this.worldObj, this, var15, var17, var19);
 
-		if (par8)
+		if(par8)
 		{
 			var21.setInvulnerable(true);
 		}
@@ -523,27 +515,24 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 	public boolean attackEntityFrom(DamageSource par1DamageSource, int par2)
 	{
-		if (this.isEntityInvulnerable())
+		if(this.isEntityInvulnerable())
 		{
 			return false;
-		}
-		else if (par1DamageSource == DamageSource.drown)
+		} else if(par1DamageSource == DamageSource.drown)
 		{
 			return false;
-		}
-		else if (this.func_82212_n() > 0)
+		} else if(this.func_82212_n() > 0)
 		{
 			return false;
-		}
-		else
+		} else
 		{
 			Entity var3;
 
-			if (this.isArmored())
+			if(this.isArmored())
 			{
 				var3 = par1DamageSource.getSourceOfDamage();
 
-				if (var3 instanceof EntityArrow)
+				if(var3 instanceof EntityArrow)
 				{
 					return false;
 				}
@@ -551,18 +540,17 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 			var3 = par1DamageSource.getEntity();
 
-			if (var3 != null && !(var3 instanceof EntityPlayer) && var3 instanceof EntityLiving && ((EntityLiving) var3).getCreatureAttribute() == this.getCreatureAttribute())
+			if(var3 != null && !(var3 instanceof EntityPlayer) && var3 instanceof EntityLiving && ((EntityLiving)var3).getCreatureAttribute() == this.getCreatureAttribute())
 			{
 				return false;
-			}
-			else
+			} else
 			{
-				if (this.field_82222_j <= 0)
+				if(this.field_82222_j <= 0)
 				{
 					this.field_82222_j = 20;
 				}
 
-				for (int var4 = 0; var4 < this.field_82224_i.length; ++var4)
+				for(int var4 = 0; var4 < this.field_82224_i.length; ++var4)
 				{
 					this.field_82224_i[var4] += 3;
 				}
@@ -594,7 +582,6 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	{
 		return !this.isDead;
 	}
-	
 
 	protected void fall(float par1)
 	{}
@@ -657,14 +644,14 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	@Override
 	public void attackEntityWithRangedAttack(EntityLiving entityliving, float f)
 	{
-		
+
 	}
 
 	@Override
-    @SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public int getBossHealth()
 	{
-        return this.dataWatcher.getWatchableObjectInt(16);
+		return this.dataWatcher.getWatchableObjectInt(16);
 	}
 
 }
