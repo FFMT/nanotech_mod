@@ -33,6 +33,8 @@ tile.notfallinggravel.name = Gravier qui ne tombe pas
 tile.notfallingsand.name = Sable qui ne tombe pas
 tile.sodium.name = Bloc de sodium
 tile.mossystone.name = Roche moussue
+tile.spotlight.name = Projecteur
+tile.theDeathHead.name = Tête de la Mort
 
 #Items
 item.siliconore.name = Minerai de silicium
