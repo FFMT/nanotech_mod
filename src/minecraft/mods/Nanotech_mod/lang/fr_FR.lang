@@ -73,6 +73,18 @@ item.mysteriousBoots.name = Bottes mystérieuses
 item.edibleFlesh.name = Chaire commestible
 item.rottenChunk.name = Gros morceau de chaire putréfié
 
+#Entity
+entity.SuperZombie.name = Super Zombie
+entity.FastZombie.name = Zombie rapide
+entity.SuperSkeleton.name = Super Squelette
+entity.SuperCreeper.name = Super Creeper
+entity.SuperEnderman.name = Super Enderman
+entity.CreeperDriller.name = Creeper foreur
+entity.TheDeath.name = La Mort
+entity.Fly.name = Mouche
+entity.FlyingCreeper.name = Creeper volant
+entity.CrazyGuy.name = Fou
+
 #Other
 info.void.1 = Item pour barrel vide
 info.void.2 = 100% cobblestone
