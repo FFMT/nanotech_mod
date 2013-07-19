@@ -30,17 +30,16 @@ public class EventSound
 			File fich2 = new File(Minecraft.getMinecraftDir() + "/resources/mod/streaming/YourSound.ogg");
 			File txt2 = new File(Minecraft.getMinecraftDir() + "/resources/mod/streaming/YourSound.txt");
 
-			if (!fich.exists())
+			if(!fich.exists())
 			{
 				getFile("http://dl.mcnanotech.fr/kevin_68/Nanotech_mod/Disk/nanodisk.ogg", "nanodisk.ogg");
 			}
-			if (!fich2.exists() && !txt2.exists())
+			if(!fich2.exists() && !txt2.exists())
 			{
 				getFile("http://dl.mcnanotech.fr/kevin_68/Nanotech_mod/Disk/YourSound.txt", "YourSound.txt");
 			}
 
-		}
-		catch (Exception e)
+		} catch(Exception e)
 		{
 			Nanotech_mod.NanoLog.severe("Failed to register event sounds");
 		}
@@ -56,7 +55,7 @@ public class EventSound
 		InputStream is = null;
 		File tmp = new File(destinationDir);
 
-		if (!tmp.exists())
+		if(!tmp.exists())
 		{
 			tmp.mkdir();
 		}
@@ -72,7 +71,7 @@ public class EventSound
 			uCon = Url.openConnection();
 			is = uCon.getInputStream();
 			buf = new byte[1024];
-			while ((ByteRead = is.read(buf)) != -1)
+			while((ByteRead = is.read(buf)) != -1)
 			{
 				outStream.write(buf, 0, ByteRead);
 				ByteWritten += ByteRead;
@@ -82,8 +81,7 @@ public class EventSound
 			System.out.println(destinationDir);
 			is.close();
 			outStream.close();
-		}
-		catch (Exception e)
+		} catch(Exception e)
 		{
 			e.printStackTrace();
 		}

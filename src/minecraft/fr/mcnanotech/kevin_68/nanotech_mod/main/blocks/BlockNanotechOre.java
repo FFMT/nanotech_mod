@@ -14,7 +14,8 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class BlockNanotechOre extends Block
 {
-	public static String[] type = new String[]{"silicon", "decrease"};
+	public static String[] type = new String[]
+	{"silicon", "decrease"};
 	public Icon[] iconbuffer;
 
 	public BlockNanotechOre(int id)
@@ -22,33 +23,32 @@ public class BlockNanotechOre extends Block
 		super(id, Material.rock);
 		setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 	}
-	
+
 	public void registerIcons(IconRegister iconregister)
 	{
-    	iconbuffer = new Icon[type.length];
-    	for(int i = 0; i < type.length; i++)
-    	{
-    		iconbuffer[i] = iconregister.registerIcon("Nanotech_mod:"+ type[i] + "ore");
-    	}
+		iconbuffer = new Icon[type.length];
+		for(int i = 0; i < type.length; i++)
+		{
+			iconbuffer[i] = iconregister.registerIcon("Nanotech_mod:" + type[i] + "ore");
+		}
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int damage)
-    {
-    	if(damage < type.length)
-    	{
-        	return iconbuffer[damage];
-    	}
-    	else 
-    	{
-    		return iconbuffer[0];
-    	}
-    }
+
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int side, int damage)
+	{
+		if(damage < type.length)
+		{
+			return iconbuffer[damage];
+		} else
+		{
+			return iconbuffer[0];
+		}
+	}
 
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int blockid, CreativeTabs creativeTabs, List list)
 	{
-		for (int metadatanumber = 0; metadatanumber < type.length; metadatanumber++)
+		for(int metadatanumber = 0; metadatanumber < type.length; metadatanumber++)
 		{
 			list.add(new ItemStack(blockid, 1, metadatanumber));
 		}

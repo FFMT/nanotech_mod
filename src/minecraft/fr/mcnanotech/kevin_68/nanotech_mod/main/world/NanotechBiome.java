@@ -15,8 +15,8 @@ public class NanotechBiome extends BiomeGenBase
 		this.spawnableCreatureList.clear();
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
-		this.topBlock = (byte) NanotechBlock.BlockGrass.blockID;
-		this.fillerBlock = (byte) Block.dirt.blockID;
+		this.topBlock = (byte)NanotechBlock.BlockGrass.blockID;
+		this.fillerBlock = (byte)Block.dirt.blockID;
 		this.setBiomeName("Nanotech");
 		this.theBiomeDecorator.treesPerChunk = 0;
 		this.theBiomeDecorator.flowersPerChunk = 0;

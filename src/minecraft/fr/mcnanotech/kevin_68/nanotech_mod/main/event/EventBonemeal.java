@@ -11,9 +11,9 @@ public class EventBonemeal
 	@ForgeSubscribe
 	public void onUseBonemeal(BonemealEvent event)
 	{
-		if (event.ID == NanotechBlock.BlockNanosaplings.blockID)
+		if(event.ID == NanotechBlock.BlockNanosaplings.blockID)
 		{
-			if (!event.world.isRemote)
+			if(!event.world.isRemote)
 			{
 				((BlockNanoSaplings)NanotechBlock.BlockNanosaplings).growTree(event.world, event.X, event.Y, event.Z, event.world.rand);
 				event.setResult(Result.ALLOW);

@@ -120,23 +120,23 @@ public class ModelSuperSkeleton extends ModelBase
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
 	{
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
-		this.head.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.head.rotateAngleX = par5 / (180F / (float) Math.PI);
+		this.head.rotateAngleY = par4 / (180F / (float)Math.PI);
+		this.head.rotateAngleX = par5 / (180F / (float)Math.PI);
 		this.head.rotateAngleY = this.head.rotateAngleY;
 		this.head.rotateAngleX = this.head.rotateAngleX;
 		this.rightleg.rotateAngleX = MathHelper.cos(par1 * 0.6662F) * 1.4F * par2;
-		this.leftleg.rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float) Math.PI) * 1.4F * par2;
+		this.leftleg.rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float)Math.PI) * 1.4F * par2;
 		this.rightleg.rotateAngleY = 0.0F;
 		this.leftleg.rotateAngleY = 0.0F;
 
-		if (this.isRiding)
+		if(this.isRiding)
 		{
-			this.rightarm.rotateAngleX += -((float) Math.PI / 5F);
-			this.leftarm.rotateAngleX += -((float) Math.PI / 5F);
-			this.rightleg.rotateAngleX = -((float) Math.PI * 2F / 5F);
-			this.leftleg.rotateAngleX = -((float) Math.PI * 2F / 5F);
-			this.rightleg.rotateAngleY = ((float) Math.PI / 10F);
-			this.leftleg.rotateAngleY = -((float) Math.PI / 10F);
+			this.rightarm.rotateAngleX += -((float)Math.PI / 5F);
+			this.leftarm.rotateAngleX += -((float)Math.PI / 5F);
+			this.rightleg.rotateAngleX = -((float)Math.PI * 2F / 5F);
+			this.leftleg.rotateAngleX = -((float)Math.PI * 2F / 5F);
+			this.rightleg.rotateAngleY = ((float)Math.PI / 10F);
+			this.leftleg.rotateAngleY = -((float)Math.PI / 10F);
 		}
 
 	}

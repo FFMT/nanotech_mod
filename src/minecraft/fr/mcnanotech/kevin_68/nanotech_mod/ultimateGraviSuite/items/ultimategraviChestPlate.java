@@ -55,8 +55,7 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 		if(!readInvisibilityStatus(stack))
 		{
 			return "/mods/UltimateGraviSuite/textures/armor/ultimategraviChestPlate.png";
-		}
-		else
+		} else
 		{
 			return "/mods/UltimateGraviSuite/textures/armor/ultimategraviChestPlateInvisible.png";
 		}

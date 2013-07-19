@@ -20,46 +20,46 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 
 public class BlockJumper extends BlockContainer
 {
-	public static String[] type = new String[]{"basic", "advanced"};
+	public static String[] type = new String[]
+	{"basic", "advanced"};
 	public Icon[] iconbuffer;
-	
+
 	public BlockJumper(int id)
 	{
 		super(id, Material.rock);
 	}
-	
+
 	public int damageDropped(int damage)
 	{
 		return damage;
 	}
-	
-    public void registerIcons(IconRegister iconregister)
-    {
-    	iconbuffer = new Icon[5];
-    	iconbuffer[0] = iconregister.registerIcon("Nanotech_mod:jumpbottom");
-    	iconbuffer[1] = iconregister.registerIcon("Nanotech_mod:jumptop");
-    	iconbuffer[2] = iconregister.registerIcon("Nanotech_mod:jumpside");
-    	iconbuffer[3] = iconregister.registerIcon("Nanotech_mod:jumptop_advanced");
-    	iconbuffer[4] = iconregister.registerIcon("Nanotech_mod:jumpside_advanced");
-    }               
-    
-    @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int damage)
-    {
-    	if(damage == 0)
-    	{
-    		return (side == 0) ? iconbuffer[0] : (side == 1) ? iconbuffer[1] : iconbuffer[2];
-    	}
-    	else
-    	{
-    		return (side == 0) ? iconbuffer[0] : (side == 1) ? iconbuffer[3] : iconbuffer[4];
-    	}
-    }
-    
+
+	public void registerIcons(IconRegister iconregister)
+	{
+		iconbuffer = new Icon[5];
+		iconbuffer[0] = iconregister.registerIcon("Nanotech_mod:jumpbottom");
+		iconbuffer[1] = iconregister.registerIcon("Nanotech_mod:jumptop");
+		iconbuffer[2] = iconregister.registerIcon("Nanotech_mod:jumpside");
+		iconbuffer[3] = iconregister.registerIcon("Nanotech_mod:jumptop_advanced");
+		iconbuffer[4] = iconregister.registerIcon("Nanotech_mod:jumpside_advanced");
+	}
+
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int side, int damage)
+	{
+		if(damage == 0)
+		{
+			return (side == 0) ? iconbuffer[0] : (side == 1) ? iconbuffer[1] : iconbuffer[2];
+		} else
+		{
+			return (side == 0) ? iconbuffer[0] : (side == 1) ? iconbuffer[3] : iconbuffer[4];
+		}
+	}
+
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int blockid, CreativeTabs creativeTabs, List list)
 	{
-		for (int metadatanumber = 0; metadatanumber < type.length; metadatanumber++)
+		for(int metadatanumber = 0; metadatanumber < type.length; metadatanumber++)
 		{
 			list.add(new ItemStack(blockid, 1, metadatanumber));
 		}
@@ -68,7 +68,7 @@ public class BlockJumper extends BlockContainer
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
 	{
 		float var5 = 0.050F;
-		return AxisAlignedBB.getAABBPool().getAABB((double)x, (double)y, (double)z, (double) (x + 1), (double)((float)(y + 1) - var5), (double)(z + 1));
+		return AxisAlignedBB.getAABBPool().getAABB((double)x, (double)y, (double)z, (double)(x + 1), (double)((float)(y + 1) - var5), (double)(z + 1));
 	}
 
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
@@ -85,7 +85,7 @@ public class BlockJumper extends BlockContainer
 	{
 		TileEntity tile_entity = world.getBlockTileEntity(x, y, z);
 
-		if (tile_entity == null || player.isSneaking())
+		if(tile_entity == null || player.isSneaking())
 		{
 			return false;
 		}

@@ -18,38 +18,40 @@ import net.minecraftforge.event.entity.player.ArrowNockEvent;
 public class ItemNanomiteBow extends ItemBow
 {
 	private Icon[] iconbuffer;
-	private static String[] bowpullname = new String[]{"nanomitebow_pull1", "nanomitebow_pull2", "nanomitebow_pull3"};
+	private static String[] bowpullname = new String[]
+	{"nanomitebow_pull1", "nanomitebow_pull2", "nanomitebow_pull3"};
+
 	public ItemNanomiteBow(int id)
 	{
 		super(id);
 		this.maxStackSize = 1;
 		this.setMaxDamage(300000);
 	}
-	
-    public void registerIcons(IconRegister iconregister)
-    {
-    	iconbuffer = new Icon[bowpullname.length];
-    	for(int i = 0; i < bowpullname.length; i++)
-    	{
-    		iconbuffer[i] = iconregister.registerIcon("Nanotech_mod:" + bowpullname[i]);
-    	}
-    	itemIcon = iconregister.registerIcon("Nanotech_mod:nanomitebow");
-    }
 
-    public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
-    {
-		if (usingItem != null && usingItem.getItem().itemID == NanotechItem.Nanomitebow.itemID)
+	public void registerIcons(IconRegister iconregister)
+	{
+		iconbuffer = new Icon[bowpullname.length];
+		for(int i = 0; i < bowpullname.length; i++)
+		{
+			iconbuffer[i] = iconregister.registerIcon("Nanotech_mod:" + bowpullname[i]);
+		}
+		itemIcon = iconregister.registerIcon("Nanotech_mod:nanomitebow");
+	}
+
+	public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
+	{
+		if(usingItem != null && usingItem.getItem().itemID == NanotechItem.Nanomitebow.itemID)
 		{
 			int k = usingItem.getMaxItemUseDuration() - useRemaining;
-			if (k >= 5)
+			if(k >= 5)
 				return iconbuffer[2];
-			if (k > 2)
+			if(k > 2)
 				return iconbuffer[1];
-			if (k > 0)
+			if(k > 0)
 				return iconbuffer[0];
 		}
 		return getIconIndex(stack);
-    }
+	}
 
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int par4)
 	{
@@ -57,7 +59,7 @@ public class ItemNanomiteBow extends ItemBow
 
 		ArrowLooseEvent event = new ArrowLooseEvent(player, stack, var6);
 		MinecraftForge.EVENT_BUS.post(event);
-		if (event.isCanceled())
+		if(event.isCanceled())
 		{
 			return;
 		}
@@ -65,43 +67,43 @@ public class ItemNanomiteBow extends ItemBow
 
 		boolean var5 = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, stack) > 0;
 
-		if (var5 || player.inventory.hasItem(Item.arrow.itemID))
+		if(var5 || player.inventory.hasItem(Item.arrow.itemID))
 		{
-			float var7 = (float) var6 / 20.0F;
+			float var7 = (float)var6 / 20.0F;
 			var7 = (var7 * var7 + var7 * 2.0F) / 3.0F;
 
-			if ((double) var7 < 0.1D)
+			if((double)var7 < 0.1D)
 			{
 				return;
 			}
 
-			if (var7 > 1.0F)
+			if(var7 > 1.0F)
 			{
 				var7 = 1.0F;
 			}
 
 			EntityArrow var8 = new EntityArrow(world, player, var7 * 16.0F);
 
-			if (var7 == 1.0F)
+			if(var7 == 1.0F)
 			{
 				var8.setIsCritical(true);
 			}
 
 			int var9 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, stack);
 
-			if (var9 > 0)
+			if(var9 > 0)
 			{
-				var8.setDamage(var8.getDamage() + (double) var9 * 0.5D + 0.5D);
+				var8.setDamage(var8.getDamage() + (double)var9 * 0.5D + 0.5D);
 			}
 
 			int var10 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, stack);
 
-			if (var10 > 0)
+			if(var10 > 0)
 			{
 				var8.setKnockbackStrength(var10);
 			}
 
-			if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, stack) > 0)
+			if(EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, stack) > 0)
 			{
 				var8.setFire(100);
 			}
@@ -109,16 +111,15 @@ public class ItemNanomiteBow extends ItemBow
 			stack.damageItem(1, player);
 			world.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + var7 * 0.5F);
 
-			if (var5)
+			if(var5)
 			{
 				var8.canBePickedUp = 2;
-			}
-			else
+			} else
 			{
 				player.inventory.consumeInventoryItem(Item.arrow.itemID);
 			}
 
-			if (!world.isRemote)
+			if(!world.isRemote)
 			{
 				world.spawnEntityInWorld(var8);
 			}
@@ -149,12 +150,12 @@ public class ItemNanomiteBow extends ItemBow
 	{
 		ArrowNockEvent event = new ArrowNockEvent(player, stack);
 		MinecraftForge.EVENT_BUS.post(event);
-		if (event.isCanceled())
+		if(event.isCanceled())
 		{
 			return event.result;
 		}
 
-		if (player.capabilities.isCreativeMode || player.inventory.hasItem(Item.arrow.itemID))
+		if(player.capabilities.isCreativeMode || player.inventory.hasItem(Item.arrow.itemID))
 		{
 			player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
 		}

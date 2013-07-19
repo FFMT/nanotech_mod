@@ -15,29 +15,30 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
 public class BlockMultiplier extends BlockContainer
 {
 	public Icon topbottomIcon;
+
 	public BlockMultiplier(int id)
 	{
 		super(id, Material.rock);
 	}
-	
-    public void registerIcons(IconRegister iconregister)
-    {
-    	topbottomIcon = iconregister.registerIcon("Nanotech_mod:multiplierside");
-    	blockIcon = iconregister.registerIcon("Nanotech_mod:multiplier");
-    }
-    
-    @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int damage)
-    {
+
+	public void registerIcons(IconRegister iconregister)
+	{
+		topbottomIcon = iconregister.registerIcon("Nanotech_mod:multiplierside");
+		blockIcon = iconregister.registerIcon("Nanotech_mod:multiplier");
+	}
+
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int side, int damage)
+	{
 		return side == 0 ? blockIcon : (side == 1 ? blockIcon : topbottomIcon);
-    }
+	}
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t)
 	{
 		TileEntity tileentity = world.getBlockTileEntity(x, y, z);
 
-		if (tileentity == null || player.isSneaking())
+		if(tileentity == null || player.isSneaking())
 		{
 			return false;
 		}

@@ -12,10 +12,10 @@ public class ItemNanomiteHoe extends ItemHoe
 		super(itemID, toolMaterial);
 	}
 
-    public void registerIcons(IconRegister iconregister)
-    {
-        itemIcon = iconregister.registerIcon("Nanotech_mod:nanomiteHoe");
-    }
+	public void registerIcons(IconRegister iconregister)
+	{
+		itemIcon = iconregister.registerIcon("Nanotech_mod:nanomiteHoe");
+	}
 
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
 	{

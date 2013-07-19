@@ -20,12 +20,12 @@ public class ItemMysteriousArmor extends ItemArmor
 		super(id, enumArmorMaterial, par3, par4);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-	
+
 	@SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister iconregister)
-    {
-        itemIcon = iconregister.registerIcon("Nanotech_mod:"+getUnlocalizedName().substring(5));
-    }
+	public void registerIcons(IconRegister iconregister)
+	{
+		itemIcon = iconregister.registerIcon("Nanotech_mod:" + getUnlocalizedName().substring(5));
+	}
 
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack stack)
@@ -35,11 +35,10 @@ public class ItemMysteriousArmor extends ItemArmor
 
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
 	{
-		if (stack.itemID == NanotechItem.Mysteriousleggings.itemID)
+		if(stack.itemID == NanotechItem.Mysteriousleggings.itemID)
 		{
 			return "/mods/Nanotech_mod/textures/armor/Mysteriousarmor2.png";
-		}
-		else
+		} else
 		{
 			return "/mods/Nanotech_mod/textures/armor/Mysteriousarmor.png";
 		}
@@ -49,16 +48,16 @@ public class ItemMysteriousArmor extends ItemArmor
 	public void livingFall(LivingFallEvent event)
 	{
 
-		if ((event.entity instanceof EntityPlayer))
+		if((event.entity instanceof EntityPlayer))
 		{
-			EntityPlayer player = (EntityPlayer) event.entity;
+			EntityPlayer player = (EntityPlayer)event.entity;
 			ItemStack armorb = player.inventory.armorInventory[0];
 
-			if ((armorb != null) && (armorb.getItem() == NanotechItem.Mysteriousboots))
+			if((armorb != null) && (armorb.getItem() == NanotechItem.Mysteriousboots))
 			{
-				if (!(event.entityLiving instanceof EntityPlayer))
+				if(!(event.entityLiving instanceof EntityPlayer))
 					return;
-				EntityPlayer eventPlayer = (EntityPlayer) event.entityLiving;
+				EntityPlayer eventPlayer = (EntityPlayer)event.entityLiving;
 				event.distance = 0F;
 			}
 		}

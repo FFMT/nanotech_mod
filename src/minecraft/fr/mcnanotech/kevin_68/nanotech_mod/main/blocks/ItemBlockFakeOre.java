@@ -19,11 +19,10 @@ public class ItemBlockFakeOre extends ItemBlock
 
 	public String getUnlocalizedName(ItemStack stack)
 	{
-		if (stack.getItemDamage() < BlockFakeOre.type.length)
+		if(stack.getItemDamage() < BlockFakeOre.type.length)
 		{
 			return "tile." + BlockFakeOre.type[stack.getItemDamage()];
-		}
-		else
+		} else
 		{
 			return getUnlocalizedName();
 		}

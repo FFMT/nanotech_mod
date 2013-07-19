@@ -12,10 +12,10 @@ public class ItemNanomitePickaxe extends ItemPickaxe
 		super(itemID, toolMaterial);
 	}
 
-    public void registerIcons(IconRegister iconregister)
-    {
-        itemIcon = iconregister.registerIcon("Nanotech_mod:nanomitePickaxe");
-    }
+	public void registerIcons(IconRegister iconregister)
+	{
+		itemIcon = iconregister.registerIcon("Nanotech_mod:nanomitePickaxe");
+	}
 
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
 	{

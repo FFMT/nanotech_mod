@@ -52,53 +52,53 @@ public class ModelSuperEnderman extends ModelBiped
 		this.bipedBody.rotationPointZ = -0.0F;
 		this.bipedRightLeg.rotateAngleX -= 0.0F;
 		this.bipedLeftLeg.rotateAngleX -= 0.0F;
-		this.bipedRightArm.rotateAngleX = (float) ((double) this.bipedRightArm.rotateAngleX * 0.5D);
-		this.bipedLeftArm.rotateAngleX = (float) ((double) this.bipedLeftArm.rotateAngleX * 0.5D);
-		this.bipedRightLeg.rotateAngleX = (float) ((double) this.bipedRightLeg.rotateAngleX * 0.5D);
-		this.bipedLeftLeg.rotateAngleX = (float) ((double) this.bipedLeftLeg.rotateAngleX * 0.5D);
+		this.bipedRightArm.rotateAngleX = (float)((double)this.bipedRightArm.rotateAngleX * 0.5D);
+		this.bipedLeftArm.rotateAngleX = (float)((double)this.bipedLeftArm.rotateAngleX * 0.5D);
+		this.bipedRightLeg.rotateAngleX = (float)((double)this.bipedRightLeg.rotateAngleX * 0.5D);
+		this.bipedLeftLeg.rotateAngleX = (float)((double)this.bipedLeftLeg.rotateAngleX * 0.5D);
 		float var8 = 0.4F;
 
-		if (this.bipedRightArm.rotateAngleX > var8)
+		if(this.bipedRightArm.rotateAngleX > var8)
 		{
 			this.bipedRightArm.rotateAngleX = var8;
 		}
 
-		if (this.bipedLeftArm.rotateAngleX > var8)
+		if(this.bipedLeftArm.rotateAngleX > var8)
 		{
 			this.bipedLeftArm.rotateAngleX = var8;
 		}
 
-		if (this.bipedRightArm.rotateAngleX < -var8)
+		if(this.bipedRightArm.rotateAngleX < -var8)
 		{
 			this.bipedRightArm.rotateAngleX = -var8;
 		}
 
-		if (this.bipedLeftArm.rotateAngleX < -var8)
+		if(this.bipedLeftArm.rotateAngleX < -var8)
 		{
 			this.bipedLeftArm.rotateAngleX = -var8;
 		}
 
-		if (this.bipedRightLeg.rotateAngleX > var8)
+		if(this.bipedRightLeg.rotateAngleX > var8)
 		{
 			this.bipedRightLeg.rotateAngleX = var8;
 		}
 
-		if (this.bipedLeftLeg.rotateAngleX > var8)
+		if(this.bipedLeftLeg.rotateAngleX > var8)
 		{
 			this.bipedLeftLeg.rotateAngleX = var8;
 		}
 
-		if (this.bipedRightLeg.rotateAngleX < -var8)
+		if(this.bipedRightLeg.rotateAngleX < -var8)
 		{
 			this.bipedRightLeg.rotateAngleX = -var8;
 		}
 
-		if (this.bipedLeftLeg.rotateAngleX < -var8)
+		if(this.bipedLeftLeg.rotateAngleX < -var8)
 		{
 			this.bipedLeftLeg.rotateAngleX = -var8;
 		}
 
-		if (this.isCarrying)
+		if(this.isCarrying)
 		{
 			this.bipedRightArm.rotateAngleX = -0.5F;
 			this.bipedLeftArm.rotateAngleX = -0.5F;
@@ -121,7 +121,7 @@ public class ModelSuperEnderman extends ModelBiped
 		this.bipedHeadwear.rotateAngleY = this.bipedHead.rotateAngleY;
 		this.bipedHeadwear.rotateAngleZ = this.bipedHead.rotateAngleZ;
 
-		if (this.isAttacking)
+		if(this.isAttacking)
 		{
 			float var9 = 1.0F;
 			this.bipedHead.rotationPointY -= var9 * 5.0F;

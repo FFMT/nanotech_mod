@@ -72,7 +72,7 @@ public class NanotechChunkProvider implements IChunkProvider
 	private double[] stoneNoise = new double[256];
 	private MapGenBase caveGenerator = new MapGenCaves();
 
-	//World gen
+	// World gen
 	private WorldGenNanoTree worldgentree = new WorldGenNanoTree(false);
 	private WorldModel1 worldgen1 = new WorldModel1();
 	private WorldModel2 worldgen2 = new WorldModel2();
@@ -81,7 +81,7 @@ public class NanotechChunkProvider implements IChunkProvider
 	private WorldModel5 worldgen5 = new WorldModel5();
 	private WorldModel6 worldgen6 = new WorldModel6();
 	private WorldModel7 worldgen7 = new WorldModel7();
-	
+
 	/** Holds Mineshaft Generator */
 	private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
 	private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
@@ -116,8 +116,8 @@ public class NanotechChunkProvider implements IChunkProvider
 
 	{
 		caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, CAVE);
-		mineshaftGenerator = (MapGenMineshaft) TerrainGen.getModdedMapGen(mineshaftGenerator, MINESHAFT);
-		scatteredFeatureGenerator = (MapGenScatteredFeature) TerrainGen.getModdedMapGen(scatteredFeatureGenerator, SCATTERED_FEATURE);
+		mineshaftGenerator = (MapGenMineshaft)TerrainGen.getModdedMapGen(mineshaftGenerator, MINESHAFT);
+		scatteredFeatureGenerator = (MapGenScatteredFeature)TerrainGen.getModdedMapGen(scatteredFeatureGenerator, SCATTERED_FEATURE);
 		ravineGenerator = TerrainGen.getModdedMapGen(ravineGenerator, RAVINE);
 	}
 
@@ -133,7 +133,8 @@ public class NanotechChunkProvider implements IChunkProvider
 		this.noiseGen5 = new NoiseGeneratorOctaves(this.rand, 10);
 		this.noiseGen6 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.mobSpawnerNoise = new NoiseGeneratorOctaves(this.rand, 8);
-		NoiseGeneratorOctaves[] noiseGens = {noiseGen1, noiseGen2, noiseGen3, noiseGen4, noiseGen5, noiseGen6, mobSpawnerNoise};
+		NoiseGeneratorOctaves[] noiseGens =
+		{noiseGen1, noiseGen2, noiseGen3, noiseGen4, noiseGen5, noiseGen6, mobSpawnerNoise};
 		noiseGens = TerrainGen.getModdedNoiseGenerators(world, this.rand, noiseGens);
 		this.noiseGen1 = noiseGens[0];
 		this.noiseGen2 = noiseGens[1];
@@ -196,10 +197,10 @@ public class NanotechChunkProvider implements IChunkProvider
 							{
 								if((var47 += var49) > 0.0D)
 								{
-									par3ArrayOfByte[var43 += var44] = (byte) Block.stone.blockID;
+									par3ArrayOfByte[var43 += var44] = (byte)Block.stone.blockID;
 								} else if(var12 * 8 + var31 < var6)
 								{
-									par3ArrayOfByte[var43 += var44] = (byte) Block.waterStill.blockID;
+									par3ArrayOfByte[var43 += var44] = (byte)Block.waterStill.blockID;
 								} else
 								{
 									par3ArrayOfByte[var43 += var44] = 0;
@@ -240,7 +241,7 @@ public class NanotechChunkProvider implements IChunkProvider
 			{
 				BiomeGenBase var10 = par4ArrayOfBiomeGenBase[var9 + var8 * 16];
 				float var11 = var10.getFloatTemperature();
-				int var12 = (int) (this.stoneNoise[var8 + var9 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
+				int var12 = (int)(this.stoneNoise[var8 + var9 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int var13 = -1;
 				byte var14 = var10.topBlock;
 				byte var15 = var10.fillerBlock;
@@ -251,7 +252,7 @@ public class NanotechChunkProvider implements IChunkProvider
 
 					if(var16 <= 0 + this.rand.nextInt(5))
 					{
-						par3ArrayOfByte[var17] = (byte) Block.bedrock.blockID;
+						par3ArrayOfByte[var17] = (byte)Block.bedrock.blockID;
 					} else
 					{
 						byte var18 = par3ArrayOfByte[var17];
@@ -266,7 +267,7 @@ public class NanotechChunkProvider implements IChunkProvider
 								if(var12 <= 0)
 								{
 									var14 = 0;
-									var15 = (byte) Block.stone.blockID;
+									var15 = (byte)Block.stone.blockID;
 								} else if(var16 >= var5 - 4 && var16 <= var5 + 1)
 								{
 									var14 = var10.topBlock;
@@ -277,10 +278,10 @@ public class NanotechChunkProvider implements IChunkProvider
 								{
 									if(var11 < 0.15F)
 									{
-										var14 = (byte) Block.ice.blockID;
+										var14 = (byte)Block.ice.blockID;
 									} else
 									{
-										var14 = (byte) Block.waterStill.blockID;
+										var14 = (byte)Block.waterStill.blockID;
 									}
 								}
 
@@ -301,7 +302,7 @@ public class NanotechChunkProvider implements IChunkProvider
 								if(var13 == 0 && var15 == Block.sand.blockID)
 								{
 									var13 = this.rand.nextInt(4);
-									var15 = (byte) Block.sandStone.blockID;
+									var15 = (byte)Block.sandStone.blockID;
 								}
 							}
 						}
@@ -326,20 +327,20 @@ public class NanotechChunkProvider implements IChunkProvider
 	 */
 	public Chunk provideChunk(int chunkX, int chunkZ)
 	{
-		this.rand.setSeed((long) chunkX * 341873128712L + (long) chunkZ * 132897987541L);
+		this.rand.setSeed((long)chunkX * 341873128712L + (long)chunkZ * 132897987541L);
 		byte[] var3 = new byte[32768];
 		this.generateTerrain(chunkX, chunkZ, var3);
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
 		this.replaceBlocksForBiome(chunkX, chunkZ, var3, this.biomesForGeneration);
 		this.caveGenerator.generate(this, this.worldObj, chunkX, chunkZ, var3);
 		this.ravineGenerator.generate(this, this.worldObj, chunkX, chunkZ, var3);
-		
+
 		Chunk var4 = new Chunk(this.worldObj, var3, chunkX, chunkZ);
 		byte[] var5 = var4.getBiomeArray();
 
 		for(int var6 = 0; var6 < var5.length; ++var6)
 		{
-			var5[var6] = (byte) this.biomesForGeneration[var6].biomeID;
+			var5[var6] = (byte)this.biomesForGeneration[var6].biomeID;
 		}
 
 		var4.generateSkylightMap();
@@ -370,7 +371,7 @@ public class NanotechChunkProvider implements IChunkProvider
 			{
 				for(int var9 = -2; var9 <= 2; ++var9)
 				{
-					float var10 = 10.0F / MathHelper.sqrt_float((float) (var8 * var8 + var9 * var9) + 0.2F);
+					float var10 = 10.0F / MathHelper.sqrt_float((float)(var8 * var8 + var9 * var9) + 0.2F);
 					this.parabolicField[var8 + 2 + (var9 + 2) * 5] = var10;
 				}
 			}
@@ -454,13 +455,13 @@ public class NanotechChunkProvider implements IChunkProvider
 
 				for(int var46 = 0; var46 < par6; ++var46)
 				{
-					double var48 = (double) var17;
-					double var26 = (double) var16;
+					double var48 = (double)var17;
+					double var26 = (double)var16;
 					var48 += var47 * 0.2D;
-					var48 = var48 * (double) par6 / 16.0D;
-					double var28 = (double) par6 / 2.0D + var48 * 4.0D;
+					var48 = var48 * (double)par6 / 16.0D;
+					double var28 = (double)par6 / 2.0D + var48 * 4.0D;
 					double var30 = 0.0D;
-					double var32 = ((double) var46 - var28) * 12.0D * 128.0D / 128.0D / var26;
+					double var32 = ((double)var46 - var28) * 12.0D * 128.0D / 128.0D / var26;
 
 					if(var32 < 0.0D)
 					{
@@ -486,7 +487,7 @@ public class NanotechChunkProvider implements IChunkProvider
 
 					if(var46 > par6 - 4)
 					{
-						double var40 = (double) ((float) (var46 - (par6 - 4)) / 3.0F);
+						double var40 = (double)((float)(var46 - (par6 - 4)) / 3.0F);
 						var30 = var30 * (1.0D - var40) + -10.0D * var40;
 					}
 
@@ -519,7 +520,7 @@ public class NanotechChunkProvider implements IChunkProvider
 		this.rand.setSeed(this.worldObj.getSeed());
 		long var7 = this.rand.nextLong() / 2L * 2L + 1L;
 		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
-		this.rand.setSeed((long) par2 * var7 + (long) par3 * var9 ^ this.worldObj.getSeed());
+		this.rand.setSeed((long)par2 * var7 + (long)par3 * var9 ^ this.worldObj.getSeed());
 		boolean var11 = false;
 
 		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(par1IChunkProvider, worldObj, rand, par2, par3, var11));
@@ -658,16 +659,16 @@ public class NanotechChunkProvider implements IChunkProvider
 	{
 		if(this.mapFeaturesEnabled)
 		{
-			this.mineshaftGenerator.generate(this, this.worldObj, chunkX, chunkZ, (byte[]) null);
-			this.scatteredFeatureGenerator.generate(this, this.worldObj, chunkX, chunkZ, (byte[]) null);
+			this.mineshaftGenerator.generate(this, this.worldObj, chunkX, chunkZ, (byte[])null);
+			this.scatteredFeatureGenerator.generate(this, this.worldObj, chunkX, chunkZ, (byte[])null);
 		}
-		
-		//world gen
+
+		// world gen
 		int Xcoord1 = chunkX * 16 + rand.nextInt(64);
 		int Ycoord1 = rand.nextInt(150);
 		int Zcoord1 = chunkZ * 16 + rand.nextInt(64);
 		worldgentree.generate(this.worldObj, rand, Xcoord1, Ycoord1, Zcoord1);
-		
+
 		int Xcoord2 = chunkX * 16 + rand.nextInt(512);
 		int Ycoord2 = rand.nextInt(100);
 		int Zcoord2 = chunkZ * 16 + rand.nextInt(512);
@@ -682,23 +683,20 @@ public class NanotechChunkProvider implements IChunkProvider
 		int Ycoord4 = rand.nextInt(100);
 		int Zcoord4 = chunkZ * 16 + rand.nextInt(512);
 		worldgen3.generate(this.worldObj, rand, Xcoord4, Ycoord4, Zcoord4);
-		
+
 		/*
-		int Xcoord5 = chunkX * 16 + rand.nextInt(512);
-		int Ycoord5 = rand.nextInt(100); 
-		int Zcoord5 = chunkZ * 16 + rand.nextInt(512);
-		worldgen4.generate(this.worldObj, rand, Xcoord5, Ycoord5, Zcoord5);
-		
-		int Xcoord6 = chunkX * 16 + rand.nextInt(512);
-		int Ycoord6 = rand.nextInt(100); 
-		int Zcoord6 = chunkZ * 16 + rand.nextInt(512);
-		worldgen5.generate(this.worldObj, rand, Xcoord6, Ycoord6, Zcoord6);
-		
-		int Xcoord7 = chunkX * 16 + rand.nextInt(512); 
-		int Ycoord7 = rand.nextInt(100);
-		int Zcoord7 = chunkZ * 16 + rand.nextInt(512);
-		worldgen6.generate(this.worldObj, rand, Xcoord7, Ycoord7, Zcoord7);
-		*/
+		 * int Xcoord5 = chunkX * 16 + rand.nextInt(512); int Ycoord5 =
+		 * rand.nextInt(100); int Zcoord5 = chunkZ * 16 + rand.nextInt(512);
+		 * worldgen4.generate(this.worldObj, rand, Xcoord5, Ycoord5, Zcoord5);
+		 * 
+		 * int Xcoord6 = chunkX * 16 + rand.nextInt(512); int Ycoord6 =
+		 * rand.nextInt(100); int Zcoord6 = chunkZ * 16 + rand.nextInt(512);
+		 * worldgen5.generate(this.worldObj, rand, Xcoord6, Ycoord6, Zcoord6);
+		 * 
+		 * int Xcoord7 = chunkX * 16 + rand.nextInt(512); int Ycoord7 =
+		 * rand.nextInt(100); int Zcoord7 = chunkZ * 16 + rand.nextInt(512);
+		 * worldgen6.generate(this.worldObj, rand, Xcoord7, Ycoord7, Zcoord7);
+		 */
 
 		int Xcoord8 = chunkX * 16 + rand.nextInt(512);
 		int Ycoord8 = rand.nextInt(100);
@@ -713,7 +711,7 @@ public class NanotechChunkProvider implements IChunkProvider
 	}
 
 	@Override
-	public void func_104112_b()                       
+	public void func_104112_b()
 	{
 
 	}

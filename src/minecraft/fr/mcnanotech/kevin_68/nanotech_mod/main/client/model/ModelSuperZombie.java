@@ -96,18 +96,18 @@ public class ModelSuperZombie extends ModelBase
 	public void setRotationAngles(float f1, float f2, float f3, float f4, float f5, float f6, Entity par7Entity)
 	{
 		super.setRotationAngles(f1, f2, f3, f4, f5, f6, par7Entity);
-		this.head.rotateAngleY = f4 / (180F / (float) Math.PI);
-		this.head.rotateAngleX = f5 / (180F / (float) Math.PI);
+		this.head.rotateAngleY = f4 / (180F / (float)Math.PI);
+		this.head.rotateAngleX = f5 / (180F / (float)Math.PI);
 		this.head.rotateAngleY = this.head.rotateAngleY;
 		this.head.rotateAngleX = this.head.rotateAngleX;
-		float var7 = MathHelper.sin(this.onGround * (float) Math.PI);
-		float var8 = MathHelper.sin((1.0F - (1.0F - this.onGround) * (1.0F - this.onGround)) * (float) Math.PI);
+		float var7 = MathHelper.sin(this.onGround * (float)Math.PI);
+		float var8 = MathHelper.sin((1.0F - (1.0F - this.onGround) * (1.0F - this.onGround)) * (float)Math.PI);
 		this.rightarm.rotateAngleZ = 0.0F;
 		this.leftarm.rotateAngleZ = 0.0F;
 		this.rightarm.rotateAngleY = -(0.1F - var7 * 0.6F);
 		this.leftarm.rotateAngleY = 0.1F - var7 * 0.6F;
-		this.rightarm.rotateAngleX = -((float) Math.PI / 2F);
-		this.leftarm.rotateAngleX = -((float) Math.PI / 2F);
+		this.rightarm.rotateAngleX = -((float)Math.PI / 2F);
+		this.leftarm.rotateAngleX = -((float)Math.PI / 2F);
 		this.rightarm.rotateAngleX -= var7 * 1.2F - var8 * 0.4F;
 		this.leftarm.rotateAngleX -= var7 * 1.2F - var8 * 0.4F;
 		this.rightarm.rotateAngleZ += MathHelper.cos(f3 * 0.09F) * 0.05F + 0.05F;
@@ -118,8 +118,8 @@ public class ModelSuperZombie extends ModelBase
 		this.leftarm2.rotateAngleZ = 0.0F;
 		this.rightarm2.rotateAngleY = -(0.1F - var7 * 0.6F);
 		this.leftarm2.rotateAngleY = 0.1F - var7 * 0.6F;
-		this.rightarm2.rotateAngleX = -((float) Math.PI / 2F);
-		this.leftarm2.rotateAngleX = -((float) Math.PI / 2F);
+		this.rightarm2.rotateAngleX = -((float)Math.PI / 2F);
+		this.leftarm2.rotateAngleX = -((float)Math.PI / 2F);
 		this.rightarm2.rotateAngleX -= var7 * 1.2F - var8 * 0.4F;
 		this.leftarm2.rotateAngleX -= var7 * 1.2F - var8 * 0.4F;
 		this.rightarm2.rotateAngleZ += MathHelper.cos(f3 * 0.09F) * 0.05F + 0.05F;
@@ -127,20 +127,20 @@ public class ModelSuperZombie extends ModelBase
 		this.rightarm2.rotateAngleX += MathHelper.sin(f3 * 0.067F) * 0.05F;
 		this.leftarm2.rotateAngleX -= MathHelper.sin(f3 * 0.067F) * 0.05F;
 		this.rightleg.rotateAngleX = MathHelper.cos(f1 * 0.6662F) * 1.4F * f2;
-		this.leftleg.rotateAngleX = MathHelper.cos(f1 * 0.6662F + (float) Math.PI) * 1.4F * f2;
+		this.leftleg.rotateAngleX = MathHelper.cos(f1 * 0.6662F + (float)Math.PI) * 1.4F * f2;
 		this.rightleg.rotateAngleY = 0.0F;
 		this.leftleg.rotateAngleY = 0.0F;
 
-		if (this.isRiding)
+		if(this.isRiding)
 		{
-			this.rightarm.rotateAngleX += -((float) Math.PI / 5F);
-			this.leftarm.rotateAngleX += -((float) Math.PI / 5F);
-			this.rightarm2.rotateAngleX += -((float) Math.PI / 5F);
-			this.leftarm2.rotateAngleX += -((float) Math.PI / 5F);
-			this.rightleg.rotateAngleX = -((float) Math.PI * 2F / 5F);
-			this.leftleg.rotateAngleX = -((float) Math.PI * 2F / 5F);
-			this.rightleg.rotateAngleY = ((float) Math.PI / 10F);
-			this.leftleg.rotateAngleY = -((float) Math.PI / 10F);
+			this.rightarm.rotateAngleX += -((float)Math.PI / 5F);
+			this.leftarm.rotateAngleX += -((float)Math.PI / 5F);
+			this.rightarm2.rotateAngleX += -((float)Math.PI / 5F);
+			this.leftarm2.rotateAngleX += -((float)Math.PI / 5F);
+			this.rightleg.rotateAngleX = -((float)Math.PI * 2F / 5F);
+			this.leftleg.rotateAngleX = -((float)Math.PI * 2F / 5F);
+			this.rightleg.rotateAngleY = ((float)Math.PI / 10F);
+			this.leftleg.rotateAngleY = -((float)Math.PI / 10F);
 		}
 	}
 

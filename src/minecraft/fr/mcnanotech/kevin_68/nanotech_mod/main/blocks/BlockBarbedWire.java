@@ -17,15 +17,15 @@ public class BlockBarbedWire extends Block
 	{
 		super(id, Material.iron);
 	}
-	
-    public void registerIcons(IconRegister iconregister)
-    {
-        blockIcon = iconregister.registerIcon("Nanotech_mod:barbedwire");
-    }
+
+	public void registerIcons(IconRegister iconregister)
+	{
+		blockIcon = iconregister.registerIcon("Nanotech_mod:barbedwire");
+	}
 
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		if (entity instanceof EntityLiving)
+		if(entity instanceof EntityLiving)
 		{
 			entity.setInWeb();
 			entity.attackEntityFrom(DamageSource.cactus, 2);

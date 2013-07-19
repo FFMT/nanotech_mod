@@ -7,5 +7,5 @@ import net.minecraft.item.ItemStack;
 
 public interface IItemTickListener
 {
-    boolean onTick(EntityPlayer var1, ItemStack var2);
+	boolean onTick(EntityPlayer var1, ItemStack var2);
 }

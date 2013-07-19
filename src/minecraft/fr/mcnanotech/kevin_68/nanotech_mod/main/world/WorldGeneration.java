@@ -12,9 +12,10 @@ public class WorldGeneration implements IWorldGenerator
 {
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
-		switch (world.provider.dimensionId)
+		switch(world.provider.dimensionId)
 		{
-		//TODO case 19: generateSurface(world, random, chunkX * 16, chunkZ * 16);
+		// TODO case 19: generateSurface(world, random, chunkX * 16, chunkZ *
+		// 16);
 		}
 	}
 

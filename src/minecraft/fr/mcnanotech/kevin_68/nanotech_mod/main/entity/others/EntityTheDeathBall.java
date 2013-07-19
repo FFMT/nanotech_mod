@@ -44,47 +44,44 @@ public class EntityTheDeathBall extends EntityFireball
 	{
 		return false;
 	}
-	
+
 	public float func_82146_a(Explosion explosion, World world, int x, int y, int z, Block block)
 	{
 		float var6 = super.func_82146_a(explosion, world, x, y, z, block);
-		if (this.isInvulnerable() && block != Block.bedrock && block != Block.endPortal && block != Block.endPortalFrame)
+		if(this.isInvulnerable() && block != Block.bedrock && block != Block.endPortal && block != Block.endPortalFrame)
 		{
 			var6 = Math.min(0.8F, var6);
 		}
 		return var6;
 	}
 
-
 	protected void onImpact(MovingObjectPosition par1MovingObjectPosition)
 	{
-		if (!this.worldObj.isRemote)
+		if(!this.worldObj.isRemote)
 		{
-			if (par1MovingObjectPosition.entityHit != null)
+			if(par1MovingObjectPosition.entityHit != null)
 			{
-				if (this.shootingEntity != null)
+				if(this.shootingEntity != null)
 				{
-					if (par1MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeMobDamage(this.shootingEntity), 8) && !par1MovingObjectPosition.entityHit.isEntityAlive())
+					if(par1MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeMobDamage(this.shootingEntity), 8) && !par1MovingObjectPosition.entityHit.isEntityAlive())
 					{
 						this.shootingEntity.heal(10);
 					}
-				}
-				else
+				} else
 				{
 					par1MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.magic, 10);
 				}
 
-				if (par1MovingObjectPosition.entityHit instanceof EntityLiving)
+				if(par1MovingObjectPosition.entityHit instanceof EntityLiving)
 				{
 					byte var2 = 0;
 
-					if (this.worldObj.difficultySetting > 1)
+					if(this.worldObj.difficultySetting > 1)
 					{
-						if (this.worldObj.difficultySetting == 2)
+						if(this.worldObj.difficultySetting == 2)
 						{
 							var2 = 50;
-						}
-						else if (this.worldObj.difficultySetting == 3)
+						} else if(this.worldObj.difficultySetting == 3)
 						{
 							var2 = 100;
 						}
@@ -109,7 +106,7 @@ public class EntityTheDeathBall extends EntityFireball
 
 	protected void entityInit()
 	{
-		this.dataWatcher.addObject(10, Byte.valueOf((byte) 0));
+		this.dataWatcher.addObject(10, Byte.valueOf((byte)0));
 	}
 
 	public boolean isInvulnerable()
@@ -119,6 +116,6 @@ public class EntityTheDeathBall extends EntityFireball
 
 	public void setInvulnerable(boolean par1)
 	{
-		this.dataWatcher.updateObject(10, Byte.valueOf((byte) (par1 ? 1 : 0)));
+		this.dataWatcher.updateObject(10, Byte.valueOf((byte)(par1 ? 1 : 0)));
 	}
 }

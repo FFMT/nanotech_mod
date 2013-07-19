@@ -19,11 +19,10 @@ public class ItemBlockNotFalling extends ItemBlock
 
 	public String getUnlocalizedName(ItemStack stack)
 	{
-		if (stack.getItemDamage() < BlockNotFalling.type.length)
+		if(stack.getItemDamage() < BlockNotFalling.type.length)
 		{
 			return getUnlocalizedName() + BlockNotFalling.type[stack.getItemDamage()];
-		}
-		else
+		} else
 		{
 			return getUnlocalizedName();
 		}

@@ -23,17 +23,17 @@ public class BlockNanoWood extends BlockLog
 	{
 		return this.blockID;
 	}
-	
-    public void registerIcons(IconRegister iconregister)
-    {
-        blockIcon = iconregister.registerIcon("Nanotech_mod:log");
-        topIcon = iconregister.registerIcon("Nanotech_mod:log_top");
-    }
+
+	public void registerIcons(IconRegister iconregister)
+	{
+		blockIcon = iconregister.registerIcon("Nanotech_mod:log");
+		topIcon = iconregister.registerIcon("Nanotech_mod:log_top");
+	}
 
 	public Icon getIcon(int side, int par2)
 	{
 		int k = par2 & 12;
-        return k == 0 && (side == 1 || side == 0) ? topIcon : (k == 4 && (side == 5 || side == 4) ? topIcon : (k == 8 && (side == 2 || side == 3) ? topIcon : blockIcon));
+		return k == 0 && (side == 1 || side == 0) ? topIcon : (k == 4 && (side == 5 || side == 4) ? topIcon : (k == 8 && (side == 2 || side == 3) ? topIcon : blockIcon));
 	}
 
 	public void getSubBlocks(int id, CreativeTabs creativeTabs, List list)

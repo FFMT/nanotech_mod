@@ -12,10 +12,10 @@ public class ItemNanomiteShovel extends ItemSpade
 		super(itemID, toolMaterial);
 	}
 
-    public void registerIcons(IconRegister iconregister)
-    {
-        itemIcon = iconregister.registerIcon("Nanotech_mod:nanomiteShovel");
-    }
+	public void registerIcons(IconRegister iconregister)
+	{
+		itemIcon = iconregister.registerIcon("Nanotech_mod:nanomiteShovel");
+	}
 
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
 	{

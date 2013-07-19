@@ -4,13 +4,12 @@ import ic2.api.item.Items;
 
 import java.util.Random;
 
-import advsolar.AdvancedSolarPanel;
-
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.Configuration;
+import advsolar.AdvancedSolarPanel;
 import cpw.mods.compactsolars.CompactSolars;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
@@ -219,8 +218,7 @@ public class UltimateGraviSuite
 				{"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumLeggings"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimatecircuit});
 				GameRegistry.addRecipe(new ItemStack(ultimateBoots, 1), new Object[]
 				{"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumBoots"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimatecircuit});
-			} 
-			else
+			} else
 			{
 				// add AdvancedSolarPanel non-gregtech recipes
 			}

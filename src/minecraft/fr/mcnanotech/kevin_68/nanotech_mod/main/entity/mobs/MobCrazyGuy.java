@@ -1,14 +1,11 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
-import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIBreakDoor;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAIMoveThroughVillage;
 import net.minecraft.entity.ai.EntityAIMoveTwardsRestriction;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
@@ -23,7 +20,7 @@ import net.minecraft.world.World;
 public class MobCrazyGuy extends EntityMob
 {
 
-	public MobCrazyGuy(World par1World) 
+	public MobCrazyGuy(World par1World)
 	{
 		super(par1World);
 		this.moveSpeed = 0.80F;
@@ -45,24 +42,24 @@ public class MobCrazyGuy extends EntityMob
 	}
 
 	@Override
-	public int getMaxHealth() 
+	public int getMaxHealth()
 	{
 		return 50;
 	}
-	
+
 	public int getAttackStrength(Entity par1Entity)
 	{
 		ItemStack var2 = this.getHeldItem();
 		int var3 = 3;
 
-		if (var2 != null)
+		if(var2 != null)
 		{
 			var3 += var2.getDamageVsEntity(this);
 		}
 
 		return var3;
 	}
-	
+
 	protected String getLivingSound()
 	{
 		return "";
@@ -87,7 +84,7 @@ public class MobCrazyGuy extends EntityMob
 	{
 		return true;
 	}
-	
+
 	protected int getDropItemId()
 	{
 		return Item.gunpowder.itemID;

@@ -34,19 +34,16 @@ public class AiCreeperDriller extends EntityAIBase
 
 	public void updateTask()
 	{
-		if (creeperAttackTarget == null)
+		if(creeperAttackTarget == null)
 		{
 			swellingCreeper.setCreeperState(-1);
-		}
-		else if (swellingCreeper.getDistanceSqToEntity(creeperAttackTarget) > 49.0D)
+		} else if(swellingCreeper.getDistanceSqToEntity(creeperAttackTarget) > 49.0D)
 		{
 			swellingCreeper.setCreeperState(-1);
-		}
-		else if (!swellingCreeper.getEntitySenses().canSee(creeperAttackTarget))
+		} else if(!swellingCreeper.getEntitySenses().canSee(creeperAttackTarget))
 		{
 			swellingCreeper.setCreeperState(-1);
-		}
-		else
+		} else
 		{
 			swellingCreeper.setCreeperState(1);
 		}

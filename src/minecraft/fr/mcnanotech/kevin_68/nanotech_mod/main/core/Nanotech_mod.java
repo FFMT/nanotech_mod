@@ -42,7 +42,8 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGeneration;
 
 @Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "2.0.3")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"nanotechmod"}, packetHandler = PacketHandler.class) 
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels =
+{"nanotechmod"}, packetHandler = PacketHandler.class)
 public class Nanotech_mod
 {
 	// Instance
@@ -115,8 +116,9 @@ public class Nanotech_mod
 	public static boolean MultipleExplosion;
 	public static int ExplosionRadius;
 	public static int TimeUntilNextArrow;
-	public static boolean CreeperDriller, FastZombie, Fly, SuperCreeper, SuperEnderman, 
-						  SuperSkeleton, SuperZombie, TheDeath, FlyingCreeper, CrazyGuy;
+	public static boolean CreeperDriller, FastZombie, Fly, SuperCreeper,
+			SuperEnderman, SuperSkeleton, SuperZombie, TheDeath, FlyingCreeper,
+			CrazyGuy;
 	public static int SuperZombieProb;
 	public static int SuperZombieMin;
 	public static int SuperZombieMax;
@@ -158,13 +160,13 @@ public class Nanotech_mod
 	public static Logger NanoLog;
 
 	protected TileEntityBlockSpotLight tileSpotLight;
-	
+
 	@PreInit
 	public void PreInitNanotech_mod(FMLPreInitializationEvent event)
 	{
 		NanoLog = event.getModLog();
 		Side side = FMLCommonHandler.instance().getEffectiveSide();
-		if (side == Side.CLIENT)
+		if(side == Side.CLIENT)
 		{
 			MinecraftForge.EVENT_BUS.register(new EventSound());
 			UtilDiskInfo.readInfo();
@@ -219,9 +221,9 @@ public class Nanotech_mod
 		ItemRottenChunkID = config.getItem("Chunk of rottenflesh", 5019).getInt();
 
 		HardRecipe = config.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
-		
-		//Property info = config.get(CATEGORY_Mobspawn, "", "");
-		//info.comment = "Set to 0 for disable mob spawning";
+
+		// Property info = config.get(CATEGORY_Mobspawn, "", "");
+		// info.comment = "Set to 0 for disable mob spawning";
 		CreeperDriller = config.get(CATEGORY_Mobsconfig, "CreeperDriller", true).getBoolean(true);
 		MultipleExplosion = config.get(CATEGORY_Mobsconfig, "Multiple Explosion (CreeperDriller)", true).getBoolean(true);
 		ExplosionRadius = config.get(CATEGORY_Mobsconfig, "Explosion Radius (SuperCreeper)", 5).getInt();
@@ -293,12 +295,11 @@ public class Nanotech_mod
 	public void PostInitNanotech_mod(FMLPostInitializationEvent event)
 	{
 		NanotechRecipe.InitCommonRecipes();
-		if (HardRecipe)
+		if(HardRecipe)
 		{
 			NanotechRecipe.InitHardRecipes();
 			NanotechRecipe.InitFallingBlockRecipes(4);
-		}
-		else
+		} else
 		{
 			NanotechRecipe.InitNormalRecipes();
 			NanotechRecipe.InitFallingBlockRecipes(8);

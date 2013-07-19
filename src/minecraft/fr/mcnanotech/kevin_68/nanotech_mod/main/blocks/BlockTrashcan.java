@@ -15,21 +15,22 @@ public class BlockTrashcan extends Block
 {
 	public Icon topIcon;
 	public Icon bottomIcon;
+
 	public BlockTrashcan(int id)
 	{
 		super(id, Material.iron);
 	}
-	
-    public void registerIcons(IconRegister iconregister)
-    {
-        blockIcon = iconregister.registerIcon("Nanotech_mod:trash_can_side");
-        topIcon = iconregister.registerIcon("Nanotech_mod:trash_can_top");
-        bottomIcon = iconregister.registerIcon("Nanotech_mod:trash_can_bottom");
-    }
+
+	public void registerIcons(IconRegister iconregister)
+	{
+		blockIcon = iconregister.registerIcon("Nanotech_mod:trash_can_side");
+		topIcon = iconregister.registerIcon("Nanotech_mod:trash_can_top");
+		bottomIcon = iconregister.registerIcon("Nanotech_mod:trash_can_bottom");
+	}
 
 	public Icon getIcon(int side, int damage)
 	{
-		return side == 1 ? topIcon : (side == 0 ?  bottomIcon : blockIcon);
+		return side == 1 ? topIcon : (side == 0 ? bottomIcon : blockIcon);
 	}
 
 	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB par5AxisAlignedBB, List par6List, Entity par7Entity)
@@ -55,7 +56,7 @@ public class BlockTrashcan extends Block
 
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		if (entity instanceof EntityItem)
+		if(entity instanceof EntityItem)
 		{
 			entity.setDead();
 		}

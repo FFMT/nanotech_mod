@@ -14,38 +14,38 @@ public class BlockPortalFrame extends Block
 		super(id, material);
 		this.setTickRandomly(true);
 	}
-	
-    public void registerIcons(IconRegister iconregister)
-    {
-        blockIcon = iconregister.registerIcon("Nanotech_mod:"+getUnlocalizedName2());
-    }
-    
-    public void onBlockAdded(World world, int x, int y, int z)
-    {
-    	this.checkDoCreatePortal(world, x, y, z);
-    }
-    
+
+	public void registerIcons(IconRegister iconregister)
+	{
+		blockIcon = iconregister.registerIcon("Nanotech_mod:" + getUnlocalizedName2());
+	}
+
+	public void onBlockAdded(World world, int x, int y, int z)
+	{
+		this.checkDoCreatePortal(world, x, y, z);
+	}
+
 	public void onNeighborBlockChange(World world, int x, int y, int z, int par5)
 	{
 		super.onNeighborBlockChange(world, x, y, z, par5);
-    	this.checkDoCreatePortal(world, x, y, z);
+		this.checkDoCreatePortal(world, x, y, z);
 	}
-	
-    public void updateTick(World world, int x, int y, int z, Random rand)
-    {
-    	this.checkDoCreatePortal(world, x, y, z);
-    }
-    
-    public int tickRate(World world)
-    {
-        return 120;
-    }
-	
+
+	public void updateTick(World world, int x, int y, int z, Random rand)
+	{
+		this.checkDoCreatePortal(world, x, y, z);
+	}
+
+	public int tickRate(World world)
+	{
+		return 120;
+	}
+
 	public void checkDoCreatePortal(World world, int x, int y, int z)
 	{
 		if(world.getBlockId(x - 1, y, z) == this.blockID && world.getBlockId(x - 1, y, z + 3) == this.blockID && world.getBlockId(x, y, z + 3) == this.blockID && world.getBlockId(x + 1, y, z + 1) == this.blockID && world.getBlockId(x + 1, y, z + 2) == this.blockID && world.getBlockId(x - 2, y, z + 1) == this.blockID && world.getBlockId(x - 2, y, z + 2) == this.blockID)
 		{
-			for(int i = 1; i < 3; i ++)
+			for(int i = 1; i < 3; i++)
 			{
 				if(world.isAirBlock(x, y, z + i))
 				{

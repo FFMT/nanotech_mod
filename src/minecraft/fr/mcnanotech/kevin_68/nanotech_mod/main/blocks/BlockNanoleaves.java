@@ -18,6 +18,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockNanoLeaves extends BlockLeaves implements IShearable
 {
 	private Icon fastIcon;
+
 	public BlockNanoLeaves(int id)
 	{
 		super(id);

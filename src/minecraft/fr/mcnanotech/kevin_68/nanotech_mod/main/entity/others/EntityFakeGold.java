@@ -23,10 +23,10 @@ public class EntityFakeGold extends Entity
 	{
 		this(par1World);
 		this.setPosition(par2, par4, par6);
-		float var8 = (float) (Math.random() * Math.PI * 2.0D);
-		this.motionX = (double) (-((float) Math.sin((double) var8)) * 0.02F);
+		float var8 = (float)(Math.random() * Math.PI * 2.0D);
+		this.motionX = (double)(-((float)Math.sin((double)var8)) * 0.02F);
 		this.motionY = 0.20000000298023224D;
-		this.motionZ = (double) (-((float) Math.cos((double) var8)) * 0.02F);
+		this.motionZ = (double)(-((float)Math.cos((double)var8)) * 0.02F);
 		this.fuse = 80;
 		this.prevPosX = par2;
 		this.prevPosY = par4;
@@ -68,23 +68,22 @@ public class EntityFakeGold extends Entity
 		this.motionY *= 0.9800000190734863D;
 		this.motionZ *= 0.9800000190734863D;
 
-		if (this.onGround)
+		if(this.onGround)
 		{
 			this.motionX *= 0.699999988079071D;
 			this.motionZ *= 0.699999988079071D;
 			this.motionY *= -0.5D;
 		}
 
-		if (this.fuse-- <= 0)
+		if(this.fuse-- <= 0)
 		{
 			this.setDead();
 
-			if (!this.worldObj.isRemote)
+			if(!this.worldObj.isRemote)
 			{
 				this.explode();
 			}
-		}
-		else
+		} else
 		{
 			this.worldObj.spawnParticle("smoke", this.posX, this.posY + 0.5D, this.posZ, 0.0D, 0.0D, 0.0D);
 		}
@@ -93,7 +92,7 @@ public class EntityFakeGold extends Entity
 	private void explode()
 	{
 		float var1 = 12.0F;
-		this.worldObj.createExplosion((Entity) null, this.posX, this.posY, this.posZ, var1, true);
+		this.worldObj.createExplosion((Entity)null, this.posX, this.posY, this.posZ, var1, true);
 	}
 
 	/**
@@ -101,7 +100,7 @@ public class EntityFakeGold extends Entity
 	 */
 	protected void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
 	{
-		par1NBTTagCompound.setByte("Fuse", (byte) this.fuse);
+		par1NBTTagCompound.setByte("Fuse", (byte)this.fuse);
 	}
 
 	/**

@@ -11,7 +11,8 @@ public class WorldModel7 extends WorldGenerator
 {
 	protected int[] GetValidSpawnBlocks()
 	{
-		return new int[]{Block.stone.blockID, Block.dirt.blockID, NanotechBlock.BlockGrass.blockID};
+		return new int[]
+		{Block.stone.blockID, Block.dirt.blockID, NanotechBlock.BlockGrass.blockID};
 	}
 
 	public boolean LocationIsValidSpawn(World world, int i, int j, int k)
@@ -34,17 +35,16 @@ public class WorldModel7 extends WorldGenerator
 		int blockID = world.getBlockId(i, j, k);
 		int blockIDAbove = world.getBlockId(i, j + 1, k);
 		int blockIDBelow = world.getBlockId(i, j - 1, k);
-		for (int x : GetValidSpawnBlocks())
+		for(int x : GetValidSpawnBlocks())
 		{
-			if (blockIDAbove != 0)
+			if(blockIDAbove != 0)
 			{
 				return false;
 			}
-			if (blockID == x)
+			if(blockID == x)
 			{
 				return true;
-			}
-			else if (blockID == Block.snow.blockID && blockIDBelow == x)
+			} else if(blockID == Block.snow.blockID && blockIDBelow == x)
 			{
 				return true;
 			}
@@ -53,13 +53,12 @@ public class WorldModel7 extends WorldGenerator
 	}
 
 	public WorldModel7()
-	{
-	}
+	{}
 
 	public boolean generate(World world, Random rand, int i, int j, int k)
 	{
 		// check that each corner is one of the valid spawn blocks
-		if (!LocationIsValidSpawn(world, i, j, k) || !LocationIsValidSpawn(world, i + 10, j, k) || !LocationIsValidSpawn(world, i + 10, j, k + 12) || !LocationIsValidSpawn(world, i, j, k + 12))
+		if(!LocationIsValidSpawn(world, i, j, k) || !LocationIsValidSpawn(world, i + 10, j, k) || !LocationIsValidSpawn(world, i + 10, j, k + 12) || !LocationIsValidSpawn(world, i, j, k + 12))
 		{
 			return false;
 		}

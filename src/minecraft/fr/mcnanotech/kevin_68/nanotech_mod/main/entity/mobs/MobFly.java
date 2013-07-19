@@ -30,7 +30,7 @@ public class MobFly extends EntityAmbientCreature
 	protected void entityInit()
 	{
 		super.entityInit();
-		this.dataWatcher.addObject(16, new Byte((byte) 0));
+		this.dataWatcher.addObject(16, new Byte((byte)0));
 	}
 
 	protected float getSoundVolume()
@@ -57,13 +57,12 @@ public class MobFly extends EntityAmbientCreature
 	{
 		byte var2 = this.dataWatcher.getWatchableObjectByte(16);
 
-		if (par1)
+		if(par1)
 		{
-			this.dataWatcher.updateObject(16, Byte.valueOf((byte) (var2 | 1)));
-		}
-		else
+			this.dataWatcher.updateObject(16, Byte.valueOf((byte)(var2 | 1)));
+		} else
 		{
-			this.dataWatcher.updateObject(16, Byte.valueOf((byte) (var2 & -2)));
+			this.dataWatcher.updateObject(16, Byte.valueOf((byte)(var2 & -2)));
 		}
 	}
 
@@ -76,12 +75,11 @@ public class MobFly extends EntityAmbientCreature
 	{
 		super.onUpdate();
 
-		if (this.func_82235_h())
+		if(this.func_82235_h())
 		{
 			this.motionX = this.motionY = this.motionZ = 0.0D;
-			this.posY = (double) MathHelper.floor_double(this.posY) + 1.0D - (double) this.height;
-		}
-		else
+			this.posY = (double)MathHelper.floor_double(this.posY) + 1.0D - (double)this.height;
+		} else
 		{
 			this.motionY *= 0.6000000238418579D;
 		}
@@ -91,51 +89,49 @@ public class MobFly extends EntityAmbientCreature
 	{
 		super.updateAITasks();
 
-		if (this.func_82235_h())
+		if(this.func_82235_h())
 		{
-			if (!this.worldObj.isBlockNormalCube(MathHelper.floor_double(this.posX), (int) this.posY + 1, MathHelper.floor_double(this.posZ)))
+			if(!this.worldObj.isBlockNormalCube(MathHelper.floor_double(this.posX), (int)this.posY + 1, MathHelper.floor_double(this.posZ)))
 			{
 				this.func_82236_f(false);
-				this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1015, (int) this.posX, (int) this.posY, (int) this.posZ, 0);
-			}
-			else
+				this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1015, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
+			} else
 			{
-				if (this.rand.nextInt(200) == 0)
+				if(this.rand.nextInt(200) == 0)
 				{
-					this.rotationYawHead = (float) this.rand.nextInt(360);
+					this.rotationYawHead = (float)this.rand.nextInt(360);
 				}
 
-				if (this.worldObj.getClosestPlayerToEntity(this, 4.0D) != null)
+				if(this.worldObj.getClosestPlayerToEntity(this, 4.0D) != null)
 				{
 					this.func_82236_f(false);
-					this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1015, (int) this.posX, (int) this.posY, (int) this.posZ, 0);
+					this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1015, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
 				}
 			}
-		}
-		else
+		} else
 		{
-			if (this.field_82237_a != null && (!this.worldObj.isAirBlock(this.field_82237_a.posX, this.field_82237_a.posY, this.field_82237_a.posZ) || this.field_82237_a.posY < 1))
+			if(this.field_82237_a != null && (!this.worldObj.isAirBlock(this.field_82237_a.posX, this.field_82237_a.posY, this.field_82237_a.posZ) || this.field_82237_a.posY < 1))
 			{
 				this.field_82237_a = null;
 			}
 
-			if (this.field_82237_a == null || this.rand.nextInt(30) == 0 || this.field_82237_a.getDistanceSquared((int) this.posX, (int) this.posY, (int) this.posZ) < 4.0F)
+			if(this.field_82237_a == null || this.rand.nextInt(30) == 0 || this.field_82237_a.getDistanceSquared((int)this.posX, (int)this.posY, (int)this.posZ) < 4.0F)
 			{
-				this.field_82237_a = new ChunkCoordinates((int) this.posX + this.rand.nextInt(7) - this.rand.nextInt(7), (int) this.posY + this.rand.nextInt(6) - 2, (int) this.posZ + this.rand.nextInt(7) - this.rand.nextInt(7));
+				this.field_82237_a = new ChunkCoordinates((int)this.posX + this.rand.nextInt(7) - this.rand.nextInt(7), (int)this.posY + this.rand.nextInt(6) - 2, (int)this.posZ + this.rand.nextInt(7) - this.rand.nextInt(7));
 			}
 
-			double var1 = (double) this.field_82237_a.posX + 0.5D - this.posX;
-			double var3 = (double) this.field_82237_a.posY + 0.1D - this.posY;
-			double var5 = (double) this.field_82237_a.posZ + 0.5D - this.posZ;
+			double var1 = (double)this.field_82237_a.posX + 0.5D - this.posX;
+			double var3 = (double)this.field_82237_a.posY + 0.1D - this.posY;
+			double var5 = (double)this.field_82237_a.posZ + 0.5D - this.posZ;
 			this.motionX += (Math.signum(var1) * 0.5D - this.motionX) * 0.10000000149011612D;
 			this.motionY += (Math.signum(var3) * 0.699999988079071D - this.motionY) * 0.10000000149011612D;
 			this.motionZ += (Math.signum(var5) * 0.5D - this.motionZ) * 0.10000000149011612D;
-			float var7 = (float) (Math.atan2(this.motionZ, this.motionX) * 180.0D / Math.PI) - 90.0F;
+			float var7 = (float)(Math.atan2(this.motionZ, this.motionX) * 180.0D / Math.PI) - 90.0F;
 			float var8 = MathHelper.wrapAngleTo180_float(var7 - this.rotationYaw);
 			this.moveForward = 0.5F;
 			this.rotationYaw += var8;
 
-			if (this.rand.nextInt(100) == 0 && this.worldObj.isBlockNormalCube(MathHelper.floor_double(this.posX), (int) this.posY + 1, MathHelper.floor_double(this.posZ)))
+			if(this.rand.nextInt(100) == 0 && this.worldObj.isBlockNormalCube(MathHelper.floor_double(this.posX), (int)this.posY + 1, MathHelper.floor_double(this.posZ)))
 			{
 				this.func_82236_f(true);
 			}
@@ -160,7 +156,7 @@ public class MobFly extends EntityAmbientCreature
 
 	public boolean attackEntityFrom(DamageSource par1DamageSource, int par2)
 	{
-		if (!this.worldObj.isRemote && this.func_82235_h())
+		if(!this.worldObj.isRemote && this.func_82235_h())
 		{
 			this.func_82236_f(false);
 		}
@@ -184,11 +180,10 @@ public class MobFly extends EntityAmbientCreature
 	{
 		int var1 = MathHelper.floor_double(this.boundingBox.minY);
 
-		if (var1 >= 63)
+		if(var1 >= 63)
 		{
 			return false;
-		}
-		else
+		} else
 		{
 			int var2 = MathHelper.floor_double(this.posX);
 			int var3 = MathHelper.floor_double(this.posZ);
@@ -196,14 +191,13 @@ public class MobFly extends EntityAmbientCreature
 			byte var5 = 4;
 			Calendar var6 = this.worldObj.getCurrentDate();
 
-			if ((var6.get(2) + 1 <= 10 || var6.get(5) < 20) && (var6.get(2) + 1 != 11 || var6.get(5) > 3))
+			if((var6.get(2) + 1 <= 10 || var6.get(5) < 20) && (var6.get(2) + 1 != 11 || var6.get(5) > 3))
 			{
-				if (this.rand.nextBoolean())
+				if(this.rand.nextBoolean())
 				{
 					return false;
 				}
-			}
-			else
+			} else
 			{
 				var5 = 7;
 			}

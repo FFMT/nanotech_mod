@@ -33,11 +33,11 @@ public class GuiSmoker extends GuiContainer
 
 	protected void actionPerformed(GuiButton guibutton)
 	{
-		if (guibutton.id == 1)
+		if(guibutton.id == 1)
 		{
 			tilesmoker.addSmokeInt();
 		}
-		if (guibutton.id == 2)
+		if(guibutton.id == 2)
 		{
 			tilesmoker.dimSmokeInt();
 		}

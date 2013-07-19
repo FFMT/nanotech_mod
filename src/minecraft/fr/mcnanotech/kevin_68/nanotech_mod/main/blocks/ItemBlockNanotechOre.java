@@ -19,11 +19,10 @@ public class ItemBlockNanotechOre extends ItemBlock
 
 	public String getUnlocalizedName(ItemStack stack)
 	{
-		if (stack.getItemDamage() < BlockNanotechOre.type.length)
+		if(stack.getItemDamage() < BlockNanotechOre.type.length)
 		{
 			return getUnlocalizedName() + "." + BlockNanotechOre.type[stack.getItemDamage()];
-		}
-		else
+		} else
 		{
 			return getUnlocalizedName();
 		}

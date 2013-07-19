@@ -16,19 +16,18 @@ public class UtilDiskInfo
 	public static void readInfo()
 	{
 		File cdlocalization = new File(Minecraft.getMinecraftDir() + "/resources/mod/streaming/diskinfo.txt");
-		if (!cdlocalization.exists())
+		if(!cdlocalization.exists())
 		{
 			try
 			{
 				BufferedWriter bw = new BufferedWriter(new FileWriter(cdlocalization));
-				for (int i = 1; i < 17; i++)
+				for(int i = 1; i < 17; i++)
 				{
 					bw.write("cd information" + i);
 					bw.newLine();
 				}
 				bw.close();
-			}
-			catch (IOException e)
+			} catch(IOException e)
 			{}
 		}
 
@@ -37,13 +36,12 @@ public class UtilDiskInfo
 			try
 			{
 				BufferedReader br = new BufferedReader(new FileReader(cdlocalization));
-				for (int i = 0; i < 16; i++)
+				for(int i = 0; i < 16; i++)
 				{
 					cdInfo[i] = br.readLine();
 				}
 				br.close();
-			}
-			catch (IOException e)
+			} catch(IOException e)
 			{
 				System.out.println("Failed to read cd name");
 			}

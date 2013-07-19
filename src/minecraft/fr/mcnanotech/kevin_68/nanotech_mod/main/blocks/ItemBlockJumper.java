@@ -10,7 +10,7 @@ public class ItemBlockJumper extends ItemBlock
 		super(id);
 		setHasSubtypes(true);
 	}
-	
+
 	public int getMetadata(int metadata)
 	{
 		return metadata;
@@ -18,11 +18,10 @@ public class ItemBlockJumper extends ItemBlock
 
 	public String getUnlocalizedName(ItemStack stack)
 	{
-		if (stack.getItemDamage() == 1)
+		if(stack.getItemDamage() == 1)
 		{
 			return getUnlocalizedName() + "advanced";
-		}
-		else
+		} else
 		{
 			return getUnlocalizedName();
 		}

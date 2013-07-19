@@ -10,7 +10,7 @@ public class BlockNanoPlanks extends Block
 	{
 		super(id, Material.wood);
 	}
-	
+
 	public void registerIcons(IconRegister iconregister)
 	{
 		blockIcon = iconregister.registerIcon("Nanotech_mod:nanoplank");

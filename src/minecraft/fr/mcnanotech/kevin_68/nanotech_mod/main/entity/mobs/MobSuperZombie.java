@@ -53,7 +53,7 @@ public class MobSuperZombie extends EntityMob
 		ItemStack var2 = this.getHeldItem();
 		int var3 = 6;
 
-		if (var2 != null)
+		if(var2 != null)
 		{
 			var3 += var2.getDamageVsEntity(this);
 		}
@@ -73,9 +73,9 @@ public class MobSuperZombie extends EntityMob
 
 	public void onLivingUpdate()
 	{
-		for (int k = 0; k < 2; k++)
+		for(int k = 0; k < 2; k++)
 		{
-			worldObj.spawnParticle("portal", posX + (rand.nextDouble() - 0.5D) * (double) width, (posY + rand.nextDouble() * (double) height) - 0.25D, posZ + (rand.nextDouble() - 0.5D) * (double) width, (rand.nextDouble() - 0.5D) * 2D, -rand.nextDouble(), (rand.nextDouble() - 0.5D) * 2D);
+			worldObj.spawnParticle("portal", posX + (rand.nextDouble() - 0.5D) * (double)width, (posY + rand.nextDouble() * (double)height) - 0.25D, posZ + (rand.nextDouble() - 0.5D) * (double)width, (rand.nextDouble() - 0.5D) * 2D, -rand.nextDouble(), (rand.nextDouble() - 0.5D) * 2D);
 		}
 
 		super.onLivingUpdate();
@@ -107,7 +107,7 @@ public class MobSuperZombie extends EntityMob
 
 	protected void dropRareDrop(int par1)
 	{
-		switch (this.rand.nextInt(4))
+		switch(this.rand.nextInt(4))
 		{
 		case 0:
 			this.dropItem(Item.swordDiamond.itemID, 1);

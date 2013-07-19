@@ -53,7 +53,7 @@ public class TileEntityJumper extends TileEntity implements IInventory
 	{
 		inventory[slot] = stack;
 
-		if (stack != null && stack.stackSize > getInventoryStackLimit())
+		if(stack != null && stack.stackSize > getInventoryStackLimit())
 		{
 			stack.stackSize = getInventoryStackLimit();
 		}
@@ -66,13 +66,13 @@ public class TileEntityJumper extends TileEntity implements IInventory
 
 		NBTTagList tagList = tagCompound.getTagList("Inventory");
 
-		for (int i = 0; i < tagList.tagCount(); i++)
+		for(int i = 0; i < tagList.tagCount(); i++)
 		{
-			NBTTagCompound tag = (NBTTagCompound) tagList.tagAt(i);
+			NBTTagCompound tag = (NBTTagCompound)tagList.tagAt(i);
 
 			byte slot = tag.getByte("Slot");
 
-			if (slot >= 0 && slot < inventory.length)
+			if(slot >= 0 && slot < inventory.length)
 			{
 				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
 			}
@@ -86,15 +86,15 @@ public class TileEntityJumper extends TileEntity implements IInventory
 
 		NBTTagList itemList = new NBTTagList();
 
-		for (int j = 0; j < inventory.length; j++)
+		for(int j = 0; j < inventory.length; j++)
 		{
 			ItemStack stack = inventory[j];
 
-			if (stack != null)
+			if(stack != null)
 			{
 				NBTTagCompound tag = new NBTTagCompound();
 
-				tag.setByte("Slot", (byte) j);
+				tag.setByte("Slot", (byte)j);
 				stack.writeToNBT(tag);
 				itemList.appendTag(tag);
 			}
@@ -108,16 +108,15 @@ public class TileEntityJumper extends TileEntity implements IInventory
 	{
 		ItemStack stack = getStackInSlot(slotIndex);
 
-		if (stack != null)
+		if(stack != null)
 		{
-			if (stack.stackSize <= amount)
+			if(stack.stackSize <= amount)
 			{
 				setInventorySlotContents(slotIndex, null);
-			}
-			else
+			} else
 			{
 				stack = stack.splitStack(amount);
-				if (stack.stackSize == 0)
+				if(stack.stackSize == 0)
 				{
 					setInventorySlotContents(slotIndex, null);
 				}
@@ -131,7 +130,7 @@ public class TileEntityJumper extends TileEntity implements IInventory
 	public ItemStack getStackInSlotOnClosing(int slotIndex)
 	{
 		ItemStack stack = getStackInSlot(slotIndex);
-		if (stack != null)
+		if(stack != null)
 		{
 			setInventorySlotContents(slotIndex, null);
 		}

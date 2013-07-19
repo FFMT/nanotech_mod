@@ -23,17 +23,17 @@ public class BlockNanoSaplings extends BlockSapling
 		float f = 0.4F;
 		setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
 	}
-	
+
 	public void registerIcons(IconRegister iconregister)
 	{
 		blockIcon = iconregister.registerIcon("Nanotech_mod:sapling");
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int metadata)
-    {
-        return blockIcon;
-    }
+
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int side, int metadata)
+	{
+		return blockIcon;
+	}
 
 	public void growTree(World world, int i, int j, int k, Random random)
 	{
@@ -41,7 +41,7 @@ public class BlockNanoSaplings extends BlockSapling
 		world.setBlock(i, j, k, 0);
 		Object obj = null;
 		obj = new WorldGenNanoTree(false);
-		if (!((WorldGenerator) (obj)).generate(world, random, i, j, k))
+		if(!((WorldGenerator)(obj)).generate(world, random, i, j, k))
 		{
 			world.setBlock(i, j, k, blockID, l, 3);
 		}

@@ -23,7 +23,7 @@ public class RenderSuperEnderman extends RenderLiving
 	public RenderSuperEnderman(ModelSuperEnderman Model_Mob_superenderman, float f)
 	{
 		super(new ModelSuperEnderman(), 0.5F);
-		this.Mob_superendermanModel = (ModelSuperEnderman) super.mainModel;
+		this.Mob_superendermanModel = (ModelSuperEnderman)super.mainModel;
 		this.setRenderPassModel(this.Mob_superendermanModel);
 	}
 
@@ -35,7 +35,7 @@ public class RenderSuperEnderman extends RenderLiving
 		this.Mob_superendermanModel.isCarrying = superenderman.getCarried() > 0;
 		this.Mob_superendermanModel.isAttacking = superenderman.func_70823_r();
 
-		if (superenderman.func_70823_r())
+		if(superenderman.func_70823_r())
 		{
 			double var10 = 0.02D;
 			par2 += this.rnd.nextGaussian() * var10;
@@ -52,7 +52,7 @@ public class RenderSuperEnderman extends RenderLiving
 	{
 		super.renderEquippedItems(par1Mob_superenderman, par2);
 
-		if (par1Mob_superenderman.getCarried() > 0)
+		if(par1Mob_superenderman.getCarried() > 0)
 		{
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 			GL11.glPushMatrix();
@@ -65,7 +65,7 @@ public class RenderSuperEnderman extends RenderLiving
 			int var4 = par1Mob_superenderman.getBrightnessForRender(par2);
 			int var5 = var4 % 65536;
 			int var6 = var4 / 65536;
-			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var5 / 1.0F, (float) var6 / 1.0F);
+			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)var5 / 1.0F, (float)var6 / 1.0F);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			this.loadTexture("/terrain.png");
@@ -80,11 +80,10 @@ public class RenderSuperEnderman extends RenderLiving
 	 */
 	protected int renderEyes(MobSuperEnderman superenderman, int par2, float par3)
 	{
-		if (par2 != 0)
+		if(par2 != 0)
 		{
 			return -1;
-		}
-		else
+		} else
 		{
 			this.loadTexture("/mob/enderman_eyes.png");
 			float var4 = 1.0F;
@@ -95,7 +94,7 @@ public class RenderSuperEnderman extends RenderLiving
 			char var5 = 61680;
 			int var6 = var5 % 65536;
 			int var7 = var5 / 65536;
-			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var6 / 1.0F, (float) var7 / 1.0F);
+			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)var6 / 1.0F, (float)var7 / 1.0F);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			GL11.glEnable(GL11.GL_LIGHTING);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, var4);
@@ -108,17 +107,17 @@ public class RenderSuperEnderman extends RenderLiving
 	 */
 	protected int shouldRenderPass(EntityLiving par1EntityLiving, int par2, float par3)
 	{
-		return this.renderEyes((MobSuperEnderman) par1EntityLiving, par2, par3);
+		return this.renderEyes((MobSuperEnderman)par1EntityLiving, par2, par3);
 	}
 
 	protected void renderEquippedItems(EntityLiving par1EntityLiving, float par2)
 	{
-		this.renderCarrying((MobSuperEnderman) par1EntityLiving, par2);
+		this.renderCarrying((MobSuperEnderman)par1EntityLiving, par2);
 	}
 
 	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
 	{
-		this.renderMob_superenderman((MobSuperEnderman) par1EntityLiving, par2, par4, par6, par8, par9);
+		this.renderMob_superenderman((MobSuperEnderman)par1EntityLiving, par2, par4, par6, par8, par9);
 	}
 
 	/**
@@ -131,6 +130,6 @@ public class RenderSuperEnderman extends RenderLiving
 	 */
 	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
 	{
-		this.renderMob_superenderman((MobSuperEnderman) par1Entity, par2, par4, par6, par8, par9);
+		this.renderMob_superenderman((MobSuperEnderman)par1Entity, par2, par4, par6, par8, par9);
 	}
 }

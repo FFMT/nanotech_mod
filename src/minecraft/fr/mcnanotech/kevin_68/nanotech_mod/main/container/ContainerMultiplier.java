@@ -29,15 +29,15 @@ public class ContainerMultiplier extends Container
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer)
 	{
-		for (int i = 0; i < 3; i++)
+		for(int i = 0; i < 3; i++)
 		{
-			for (int j = 0; j < 9; j++)
+			for(int j = 0; j < 9; j++)
 			{
 				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 			}
 		}
 
-		for (int i = 0; i < 9; i++)
+		for(int i = 0; i < 9; i++)
 		{
 			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
 		}
@@ -47,29 +47,27 @@ public class ContainerMultiplier extends Container
 	public ItemStack transferStackInSlot(EntityPlayer player, int slot)
 	{
 		ItemStack stack = null;
-		Slot slotObject = (Slot) inventorySlots.get(slot);
+		Slot slotObject = (Slot)inventorySlots.get(slot);
 
-		if (slotObject != null && slotObject.getHasStack())
+		if(slotObject != null && slotObject.getHasStack())
 		{
 			ItemStack stackInSlot = slotObject.getStack();
 			stack = stackInSlot.copy();
 
-			if (slot == 0)
+			if(slot == 0)
 			{
-				if (!mergeItemStack(stackInSlot, 1, inventorySlots.size(), true))
+				if(!mergeItemStack(stackInSlot, 1, inventorySlots.size(), true))
 				{
 					return null;
 				}
-			}
-			else if (!mergeItemStack(stackInSlot, 0, 1, false))
+			} else if(!mergeItemStack(stackInSlot, 0, 1, false))
 			{
 				return null;
 			}
-			if (stackInSlot.stackSize == 0)
+			if(stackInSlot.stackSize == 0)
 			{
 				slotObject.putStack(null);
-			}
-			else
+			} else
 			{
 				slotObject.onSlotChanged();
 			}

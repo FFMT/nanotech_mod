@@ -529,7 +529,7 @@ public class ModelTheDeath extends ModelBase
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		float f6 = MathHelper.cos(f2 * 0.1F);
 
-		this.head.rotateAngleY = f3 / (180F / (float) Math.PI);
-		this.head.rotateAngleX = f4 / (180F / (float) Math.PI);
+		this.head.rotateAngleY = f3 / (180F / (float)Math.PI);
+		this.head.rotateAngleX = f4 / (180F / (float)Math.PI);
 	}
 }

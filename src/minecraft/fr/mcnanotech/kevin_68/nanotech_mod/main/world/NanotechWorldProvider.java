@@ -28,7 +28,8 @@ public class NanotechWorldProvider extends WorldProvider
 		return "DIMNanotech";
 	}
 
-	@Override public IChunkProvider createChunkGenerator()
+	@Override
+	public IChunkProvider createChunkGenerator()
 	{
 		return new NanotechChunkProvider(worldObj, worldObj.getSeed(), true);
 	}

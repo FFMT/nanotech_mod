@@ -14,40 +14,40 @@ public class TileEntitySmoker extends TileEntity
 	{
 		return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) == this && player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
 	}
-	
-    public void writeToNBT(NBTTagCompound nbtTagCompound)
-    {
-        super.writeToNBT(nbtTagCompound);
-        nbtTagCompound.setInteger("Smoke", Smokepower);
-    }
 
-    public void readFromNBT(NBTTagCompound nbtTagCompound)
-    {
-        super.readFromNBT(nbtTagCompound);
-        Smokepower = nbtTagCompound.getInteger("Smoke");
-    }
-	
-    public Packet getDescriptionPacket()
-    {
-        NBTTagCompound nbttagcompound = new NBTTagCompound();
-        this.writeToNBT(nbttagcompound);
-        return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4, nbttagcompound);
-    }
-    
-    public void addSmokeInt()
-    {
-    	if(Smokepower < 15)
-        Smokepower ++;
-    }
-    
-    public void dimSmokeInt()
-    {
-    	if(Smokepower > 0)
-        Smokepower --;
-    }
-    
-    public int getSmokeValue()
-    {
-        return this.Smokepower;
-    }
+	public void writeToNBT(NBTTagCompound nbtTagCompound)
+	{
+		super.writeToNBT(nbtTagCompound);
+		nbtTagCompound.setInteger("Smoke", Smokepower);
+	}
+
+	public void readFromNBT(NBTTagCompound nbtTagCompound)
+	{
+		super.readFromNBT(nbtTagCompound);
+		Smokepower = nbtTagCompound.getInteger("Smoke");
+	}
+
+	public Packet getDescriptionPacket()
+	{
+		NBTTagCompound nbttagcompound = new NBTTagCompound();
+		this.writeToNBT(nbttagcompound);
+		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4, nbttagcompound);
+	}
+
+	public void addSmokeInt()
+	{
+		if(Smokepower < 15)
+			Smokepower++;
+	}
+
+	public void dimSmokeInt()
+	{
+		if(Smokepower > 0)
+			Smokepower--;
+	}
+
+	public int getSmokeValue()
+	{
+		return this.Smokepower;
+	}
 }

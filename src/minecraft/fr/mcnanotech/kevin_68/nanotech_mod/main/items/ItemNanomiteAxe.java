@@ -13,10 +13,10 @@ public class ItemNanomiteAxe extends ItemAxe
 		super(itemID, toolMaterial);
 	}
 
-    public void registerIcons(IconRegister iconregister)
-    {
-        itemIcon = iconregister.registerIcon("Nanotech_mod:nanomiteAxe");
-    }
+	public void registerIcons(IconRegister iconregister)
+	{
+		itemIcon = iconregister.registerIcon("Nanotech_mod:nanomiteAxe");
+	}
 
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
 	{

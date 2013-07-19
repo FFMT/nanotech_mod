@@ -2,7 +2,6 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.client.model;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.MathHelper;
 
 public class ModelCrazyGuy extends ModelBiped
 {

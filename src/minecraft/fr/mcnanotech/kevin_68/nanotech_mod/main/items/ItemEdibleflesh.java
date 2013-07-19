@@ -11,9 +11,9 @@ public class ItemEdibleflesh extends ItemFood
 		super(id, healAmount, saturation, wolf);
 	}
 
-    public void registerIcons(IconRegister iconregister)
-    {
-        itemIcon = iconregister.registerIcon("Nanotech_mod:"+getUnlocalizedName().substring(5));
-    }
+	public void registerIcons(IconRegister iconregister)
+	{
+		itemIcon = iconregister.registerIcon("Nanotech_mod:" + getUnlocalizedName().substring(5));
+	}
 
 }
