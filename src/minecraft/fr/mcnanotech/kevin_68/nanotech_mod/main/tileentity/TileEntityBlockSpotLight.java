@@ -36,10 +36,7 @@ public class TileEntityBlockSpotLight extends TileEntity
     
     public void updateEntity()
     {
-        if (this.worldObj.getTotalWorldTime() % 40L == 0L)
-        {
-            this.updateState();
-        }
+    	this.updateState();
     }
 
     private void updateState()
