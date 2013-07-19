@@ -593,11 +593,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	{
 		return !this.isDead;
 	}
-
-	public int getDragonHealth()
-	{
-		return this.dataWatcher.getWatchableObjectInt(16);
-	}
+	
 
 	protected void fall(float par1)
 	{}
