@@ -184,7 +184,8 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 				float var19 = (float)(-(Math.atan2(var12, var16) * 180.0D / Math.PI));
 				this.field_82220_d[var20] = this.func_82204_b(this.field_82220_d[var20], var19, 40.0F);
 				this.field_82221_e[var20] = this.func_82204_b(this.field_82221_e[var20], var18, 10.0F);
-			} else
+			}
+			else
 			{
 				this.field_82221_e[var20] = this.func_82204_b(this.field_82221_e[var20], this.renderYawOffset, 10.0F);
 			}
@@ -289,7 +290,8 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 			{
 				this.heal(10);
 			}
-		} else
+		}
+		else
 		{
 			super.updateAITasks();
 			int var13;
@@ -329,11 +331,13 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 							this.func_82216_a(var1 + 1, (EntityLiving)var15);
 							this.field_82223_h[var1 - 1] = this.ticksExisted + 40 + this.rand.nextInt(20);
 							this.field_82224_i[var1 - 1] = 0;
-						} else
+						}
+						else
 						{
 							this.func_82211_c(var1, 0);
 						}
-					} else
+					}
+					else
 					{
 						List var14 = this.worldObj.selectEntitiesWithinAABB(EntityLiving.class, this.boundingBox.expand(20.0D, 8.0D, 20.0D), mobSelector);
 
@@ -349,7 +353,8 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 									{
 										this.func_82211_c(var1, var5.entityId);
 									}
-								} else
+								}
+								else
 								{
 									this.func_82211_c(var1, var5.entityId);
 								}
@@ -366,7 +371,8 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 			if(this.getAttackTarget() != null)
 			{
 				this.func_82211_c(0, this.getAttackTarget().entityId);
-			} else
+			}
+			else
 			{
 				this.func_82211_c(0, 0);
 			}
@@ -438,7 +444,8 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		if(par1 <= 0)
 		{
 			return this.posX;
-		} else
+		}
+		else
 		{
 			float var2 = (this.renderYawOffset + (float)(180 * (par1 - 1))) / 180.0F * (float)Math.PI;
 			float var3 = MathHelper.cos(var2);
@@ -456,7 +463,8 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		if(par1 <= 0)
 		{
 			return this.posZ;
-		} else
+		}
+		else
 		{
 			float var2 = (this.renderYawOffset + (float)(180 * (par1 - 1))) / 180.0F * (float)Math.PI;
 			float var3 = MathHelper.sin(var2);
@@ -518,13 +526,16 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		if(this.isEntityInvulnerable())
 		{
 			return false;
-		} else if(par1DamageSource == DamageSource.drown)
+		}
+		else if(par1DamageSource == DamageSource.drown)
 		{
 			return false;
-		} else if(this.func_82212_n() > 0)
+		}
+		else if(this.func_82212_n() > 0)
 		{
 			return false;
-		} else
+		}
+		else
 		{
 			Entity var3;
 
@@ -543,7 +554,8 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 			if(var3 != null && !(var3 instanceof EntityPlayer) && var3 instanceof EntityLiving && ((EntityLiving)var3).getCreatureAttribute() == this.getCreatureAttribute())
 			{
 				return false;
-			} else
+			}
+			else
 			{
 				if(this.field_82222_j <= 0)
 				{

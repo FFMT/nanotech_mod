@@ -22,7 +22,8 @@ public class ItemBlockNotFalling extends ItemBlock
 		if(stack.getItemDamage() < BlockNotFalling.type.length)
 		{
 			return getUnlocalizedName() + BlockNotFalling.type[stack.getItemDamage()];
-		} else
+		}
+		else
 		{
 			return getUnlocalizedName();
 		}

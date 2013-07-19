@@ -114,7 +114,8 @@ public class ItemEmeraldBow extends ItemBow
 			if(creativeorinfinity)
 			{
 				var8.canBePickedUp = 2;
-			} else
+			}
+			else
 			{
 				player.inventory.consumeInventoryItem(Item.arrow.itemID);
 			}

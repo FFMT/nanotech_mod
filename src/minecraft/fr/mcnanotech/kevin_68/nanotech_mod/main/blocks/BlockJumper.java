@@ -50,7 +50,8 @@ public class BlockJumper extends BlockContainer
 		if(damage == 0)
 		{
 			return (side == 0) ? iconbuffer[0] : (side == 1) ? iconbuffer[1] : iconbuffer[2];
-		} else
+		}
+		else
 		{
 			return (side == 0) ? iconbuffer[0] : (side == 1) ? iconbuffer[3] : iconbuffer[4];
 		}

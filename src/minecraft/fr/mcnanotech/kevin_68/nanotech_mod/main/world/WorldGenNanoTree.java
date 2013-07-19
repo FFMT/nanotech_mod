@@ -63,7 +63,8 @@ public class WorldGenNanoTree extends WorldGenerator
 						{
 							flag = false;
 						}
-					} else
+					}
+					else
 					{
 						flag = false;
 					}

@@ -66,7 +66,8 @@ public class BlockNanoPortal extends Block
 					thePlayer.timeUntilPortal = 10;
 				}
 				entity.travelToDimension(Nanotech_mod.dimensionID);
-			} else
+			}
+			else
 			{
 				if(entity instanceof EntityPlayerMP)
 				{
@@ -107,7 +108,8 @@ public class BlockNanoPortal extends Block
 			{
 				d0 = (double)x + 0.5D + 0.25D * (double)i1;
 				d3 = (double)(par5Random.nextFloat() * 2.0F * (float)i1);
-			} else
+			}
+			else
 			{
 				d2 = (double)z + 0.5D + 0.25D * (double)i1;
 				d5 = (double)(par5Random.nextFloat() * 2.0F * (float)i1);

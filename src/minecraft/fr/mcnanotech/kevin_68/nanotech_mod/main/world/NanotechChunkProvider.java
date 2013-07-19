@@ -198,10 +198,12 @@ public class NanotechChunkProvider implements IChunkProvider
 								if((var47 += var49) > 0.0D)
 								{
 									par3ArrayOfByte[var43 += var44] = (byte)Block.stone.blockID;
-								} else if(var12 * 8 + var31 < var6)
+								}
+								else if(var12 * 8 + var31 < var6)
 								{
 									par3ArrayOfByte[var43 += var44] = (byte)Block.waterStill.blockID;
-								} else
+								}
+								else
 								{
 									par3ArrayOfByte[var43 += var44] = 0;
 								}
@@ -253,14 +255,16 @@ public class NanotechChunkProvider implements IChunkProvider
 					if(var16 <= 0 + this.rand.nextInt(5))
 					{
 						par3ArrayOfByte[var17] = (byte)Block.bedrock.blockID;
-					} else
+					}
+					else
 					{
 						byte var18 = par3ArrayOfByte[var17];
 
 						if(var18 == 0)
 						{
 							var13 = -1;
-						} else if(var18 == Block.stone.blockID)
+						}
+						else if(var18 == Block.stone.blockID)
 						{
 							if(var13 == -1)
 							{
@@ -268,7 +272,8 @@ public class NanotechChunkProvider implements IChunkProvider
 								{
 									var14 = 0;
 									var15 = (byte)Block.stone.blockID;
-								} else if(var16 >= var5 - 4 && var16 <= var5 + 1)
+								}
+								else if(var16 >= var5 - 4 && var16 <= var5 + 1)
 								{
 									var14 = var10.topBlock;
 									var15 = var10.fillerBlock;
@@ -279,7 +284,8 @@ public class NanotechChunkProvider implements IChunkProvider
 									if(var11 < 0.15F)
 									{
 										var14 = (byte)Block.ice.blockID;
-									} else
+									}
+									else
 									{
 										var14 = (byte)Block.waterStill.blockID;
 									}
@@ -290,11 +296,13 @@ public class NanotechChunkProvider implements IChunkProvider
 								if(var16 >= var5 - 1)
 								{
 									par3ArrayOfByte[var17] = var14;
-								} else
+								}
+								else
 								{
 									par3ArrayOfByte[var17] = var15;
 								}
-							} else if(var13 > 0)
+							}
+							else if(var13 > 0)
 							{
 								--var13;
 								par3ArrayOfByte[var17] = var15;
@@ -441,7 +449,8 @@ public class NanotechChunkProvider implements IChunkProvider
 
 					var47 /= 1.4D;
 					var47 /= 2.0D;
-				} else
+				}
+				else
 				{
 					if(var47 > 1.0D)
 					{
@@ -475,10 +484,12 @@ public class NanotechChunkProvider implements IChunkProvider
 					if(var38 < 0.0D)
 					{
 						var30 = var34;
-					} else if(var38 > 1.0D)
+					}
+					else if(var38 > 1.0D)
 					{
 						var30 = var36;
-					} else
+					}
+					else
 					{
 						var30 = var34 + (var36 - var34) * var38;
 					}

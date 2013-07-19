@@ -58,7 +58,8 @@ public class UltimateLeggings extends ItemArmor implements IElectricItem, IMetal
 		if(!readInvisibilityStatus(stack))
 		{
 			return "/mods/UltimateGraviSuite/textures/armor/ultimategraviChestPlate2.png";
-		} else
+		}
+		else
 		{
 			return "/mods/UltimateGraviSuite/textures/armor/ultimategraviChestPlateInvisible.png";
 		}
@@ -109,7 +110,8 @@ public class UltimateLeggings extends ItemArmor implements IElectricItem, IMetal
 		if(IC2.platform.isRendering())
 		{
 			var6 = IC2.enableQuantumSpeedOnSprint;
-		} else if(enableQuantumSpeedOnSprintMap.containsKey(player))
+		}
+		else if(enableQuantumSpeedOnSprintMap.containsKey(player))
 		{
 			var6 = ((Boolean)enableQuantumSpeedOnSprintMap.get(player)).booleanValue();
 		}

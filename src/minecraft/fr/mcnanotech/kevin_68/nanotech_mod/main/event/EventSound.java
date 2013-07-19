@@ -39,7 +39,8 @@ public class EventSound
 				getFile("http://dl.mcnanotech.fr/kevin_68/Nanotech_mod/Disk/YourSound.txt", "YourSound.txt");
 			}
 
-		} catch(Exception e)
+		}
+		catch(Exception e)
 		{
 			Nanotech_mod.NanoLog.severe("Failed to register event sounds");
 		}
@@ -81,7 +82,8 @@ public class EventSound
 			System.out.println(destinationDir);
 			is.close();
 			outStream.close();
-		} catch(Exception e)
+		}
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}

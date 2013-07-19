@@ -33,7 +33,8 @@ public class BlockFakeOre extends Block
 		if(damage == 0)
 		{
 			return Block.oreGold.getIcon(0, 0);
-		} else
+		}
+		else
 		{
 			return Block.oreDiamond.getIcon(0, 0);
 		}
@@ -117,7 +118,8 @@ public class BlockFakeOre extends Block
 			{
 				EntityFallingSand fallingblock = new EntityFallingSand(world, (double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), blockID, 1);
 				world.spawnEntityInWorld(fallingblock);
-			} else
+			}
+			else
 			{
 				world.setBlockToAir(x, y, z);
 
@@ -150,7 +152,8 @@ public class BlockFakeOre extends Block
 					{
 						world.setBlock(var6, var7, var8, blockID, 1, 3);
 						world.setBlockToAir(x, y, z);
-					} else
+					}
+					else
 					{
 						for(int var10 = 0; var10 < 128; ++var10)
 						{

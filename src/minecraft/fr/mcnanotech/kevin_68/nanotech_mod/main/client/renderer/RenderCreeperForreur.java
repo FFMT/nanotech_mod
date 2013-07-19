@@ -48,7 +48,8 @@ public class RenderCreeperForreur extends RenderLiving
 		if((int)(var5 * 10.0F) % 2 == 0)
 		{
 			return 0;
-		} else
+		}
+		else
 		{
 			int var6 = (int)(var5 * 0.2F * 255.0F);
 

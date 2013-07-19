@@ -78,7 +78,8 @@ public class MobSuperEnderman extends EntityMob
 					this.func_70819_e(true);
 					return var1;
 				}
-			} else
+			}
+			else
 			{
 				this.field_70826_g = 0;
 			}
@@ -94,7 +95,8 @@ public class MobSuperEnderman extends EntityMob
 		if(var2 != null && var2.itemID == Block.pumpkin.blockID)
 		{
 			return false;
-		} else
+		}
+		else
 		{
 			Vec3 var3 = par1EntityPlayer.getLook(1.0F).normalize();
 			Vec3 var4 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX - par1EntityPlayer.posX, this.boundingBox.minY + (double)(this.height / 2.0F) - (par1EntityPlayer.posY + (double)par1EntityPlayer.getEyeHeight()), this.posZ - par1EntityPlayer.posZ);
@@ -161,11 +163,13 @@ public class MobSuperEnderman extends EntityMob
 					}
 
 					this.teleportDelay = 0;
-				} else if(this.entityToAttack.getDistanceSqToEntity(this) > 256.0D && this.teleportDelay++ >= 30 && this.teleportToEntity(this.entityToAttack))
+				}
+				else if(this.entityToAttack.getDistanceSqToEntity(this) > 256.0D && this.teleportDelay++ >= 30 && this.teleportToEntity(this.entityToAttack))
 				{
 					this.teleportDelay = 0;
 				}
-			} else
+			}
+			else
 			{
 				this.func_70819_e(false);
 				this.teleportDelay = 0;
@@ -219,7 +223,8 @@ public class MobSuperEnderman extends EntityMob
 				if(var18 != 0 && Block.blocksList[var18].blockMaterial.blocksMovement())
 				{
 					var17 = true;
-				} else
+				}
+				else
 				{
 					--this.posY;
 					--var15;
@@ -241,7 +246,8 @@ public class MobSuperEnderman extends EntityMob
 		{
 			this.setPosition(var7, var9, var11);
 			return false;
-		} else
+		}
+		else
 		{
 			short var30 = 128;
 
@@ -331,7 +337,8 @@ public class MobSuperEnderman extends EntityMob
 			}
 
 			return false;
-		} else
+		}
+		else
 		{
 			if(par1DamageSource.getEntity() instanceof EntityPlayer)
 			{

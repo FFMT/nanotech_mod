@@ -41,10 +41,12 @@ public class BlockGrass extends Block
 		if(side == 1)
 		{
 			return iconTop;
-		} else if(side == 0)
+		}
+		else if(side == 0)
 		{
 			return Block.dirt.getBlockTextureFromSide(side);
-		} else
+		}
+		else
 		{
 			Material material = par1IBlockAccess.getBlockMaterial(x, y + 1, z);
 			return material != Material.snow && material != Material.craftedSnow ? blockIcon : iconSnowSide;
@@ -58,7 +60,8 @@ public class BlockGrass extends Block
 			if(par1World.getBlockLightValue(par2, par3 + 1, par4) < 4 && par1World.getBlockLightOpacity(par2, par3 + 1, par4) > 2)
 			{
 				par1World.setBlock(par2, par3, par4, Block.dirt.blockID, 0, 3);
-			} else if(par1World.getBlockLightValue(par2, par3 + 1, par4) >= 9)
+			}
+			else if(par1World.getBlockLightValue(par2, par3 + 1, par4) >= 9)
 			{
 				for(int var6 = 0; var6 < 4; ++var6)
 				{

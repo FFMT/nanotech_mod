@@ -113,7 +113,8 @@ public class TileEntityJumper extends TileEntity implements IInventory
 			if(stack.stackSize <= amount)
 			{
 				setInventorySlotContents(slotIndex, null);
-			} else
+			}
+			else
 			{
 				stack = stack.splitStack(amount);
 				if(stack.stackSize == 0)

@@ -35,7 +35,8 @@ public class BlockNotFalling extends Block
 		if(damage == 1)
 		{
 			return iconbuffer[1];
-		} else
+		}
+		else
 		{
 			return iconbuffer[0];
 		}

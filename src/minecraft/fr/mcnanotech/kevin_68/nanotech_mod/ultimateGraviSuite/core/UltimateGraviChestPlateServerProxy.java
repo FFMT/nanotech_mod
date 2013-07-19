@@ -30,14 +30,16 @@ public class UltimateGraviChestPlateServerProxy
 			ServerProxy.sendPlayerMessage(var0, "\u00a7cGravitation engine OFF");
 			ServerTickHandler.isFlyActiveByMod.put(var0, Boolean.valueOf(false));
 			UltimateGraviChestPlate.saveFlyStatus(var1, false);
-		} else
+		}
+		else
 		{
 			int var2 = UltimateGraviChestPlate.getCharge(var1);
 
 			if(var2 < UltimateGraviChestPlate.minCharge && !var0.capabilities.isCreativeMode)
 			{
 				ServerProxy.sendPlayerMessage(var0, "Not enough energy to run Gravitation engine !");
-			} else
+			}
+			else
 			{
 				ServerProxy.sendPlayerMessage(var0, "\u00a7aGravitation engine ON");
 				var0.capabilities.allowFlying = true;
@@ -60,14 +62,16 @@ public class UltimateGraviChestPlateServerProxy
 				ServerProxy.sendPlayerMessage(var0, "\u00a7cInvisibility OFF");
 				ServerTickHandler.isInvisibilityActiveByMod.put(var0, Boolean.valueOf(false));
 				UltimateGraviChestPlate.saveInvisibilityStatus(var1, false);
-			} else
+			}
+			else
 			{
 				int var2 = UltimateGraviChestPlate.getCharge(var1);
 
 				if(var2 < UltimateGraviChestPlate.minCharge && !var0.capabilities.isCreativeMode)
 				{
 					ServerProxy.sendPlayerMessage(var0, "Not enough energy to be Invisible !");
-				} else
+				}
+				else
 				{
 					ServerProxy.sendPlayerMessage(var0, "\u00a7aInvisibility ON");
 					ServerTickHandler.isInvisibilityActiveByMod.put(var0, Boolean.valueOf(true));
@@ -82,7 +86,8 @@ public class UltimateGraviChestPlateServerProxy
 			{
 				UltimateLeggings.saveInvisibilityStatus(var1, false);
 
-			} else
+			}
+			else
 			{
 				UltimateLeggings.saveInvisibilityStatus(var1, true);
 
@@ -94,7 +99,8 @@ public class UltimateGraviChestPlateServerProxy
 			{
 				UltimateBoots.saveInvisibilityStatus(var1, false);
 
-			} else
+			}
+			else
 			{
 				UltimateBoots.saveInvisibilityStatus(var1, true);
 
@@ -107,7 +113,8 @@ public class UltimateGraviChestPlateServerProxy
 			{
 				UltimateQuantumHelmet.saveInvisibilityStatus(var1, false);
 
-			} else
+			}
+			else
 			{
 				UltimateQuantumHelmet.saveInvisibilityStatus(var1, true);
 
@@ -125,14 +132,16 @@ public class UltimateGraviChestPlateServerProxy
 			ServerProxy.sendPlayerMessage(var0, "\u00a7cNight vision OFF");
 			ServerTickHandler.isINightVisionActiveByMod.put(var0, Boolean.valueOf(false));
 			UltimateQuantumHelmet.saveNightVisionStatus(var1, false);
-		} else
+		}
+		else
 		{
 			int var2 = UltimateQuantumHelmet.getCharge(var1);
 
 			if(var2 < UltimateQuantumHelmet.minCharge && !var0.capabilities.isCreativeMode)
 			{
 				ServerProxy.sendPlayerMessage(var0, "Not enough energy to be Invisible !");
-			} else
+			}
+			else
 			{
 				ServerProxy.sendPlayerMessage(var0, "\u00a7aNight vision ON");
 				ServerTickHandler.isINightVisionActiveByMod.put(var0, Boolean.valueOf(true));
@@ -210,7 +219,8 @@ public class UltimateGraviChestPlateServerProxy
 					ServerProxy.sendPlayerMessage(var0, "\u00a7cWarning ! Your\'s energy cell is depleted ! Gravitation engine shutdown !");
 					switchFlyModeServer(var0, var1);
 					switchInvisibleModeServer(var0, var1);
-				} else
+				}
+				else
 				{
 					ElectricItem.manager.discharge(var1, UltimateGraviChestPlate.dischargeOnTick, 3, true, false);
 				}
@@ -225,7 +235,8 @@ public class UltimateGraviChestPlateServerProxy
 				if(var5 <= UltimateGraviChestPlate.dischargeOnTick * UltimateGraviChestPlate.boostMultiplier && !var0.capabilities.isCreativeMode)
 				{
 					ServerProxy.sendPlayerMessage(var0, "Not enough energy to boost !");
-				} else
+				}
+				else
 				{
 					if(Keyboard.isJumpKeyDown(var0))
 					{
@@ -255,7 +266,8 @@ public class UltimateGraviChestPlateServerProxy
 				{
 					ServerProxy.sendPlayerMessage(var0, "\u00a7cWarning ! Your\'s energy cell is depleted ! Gravitation engine shutdown !");
 					switchNightVisionModeServer(var0, var1);
-				} else
+				}
+				else
 				{
 					ElectricItem.manager.discharge(var1, UltimateQuantumHelmet.dischargeOnTick, 3, true, false);
 				}

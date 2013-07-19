@@ -60,7 +60,8 @@ public class ClientTickHandler implements ITickHandler
 				if(mc.thePlayer.capabilities.isCreativeMode && !isLastCreativeState)
 				{
 					isLastCreativeState = true;
-				} else if(!mc.thePlayer.capabilities.isCreativeMode && isLastCreativeState && isFlyActiveByMod)
+				}
+				else if(!mc.thePlayer.capabilities.isCreativeMode && isLastCreativeState && isFlyActiveByMod)
 				{
 					mc.thePlayer.capabilities.allowFlying = true;
 					mc.thePlayer.capabilities.isFlying = true;
@@ -73,7 +74,8 @@ public class ClientTickHandler implements ITickHandler
 				{
 					mc.thePlayer.setPosition(mc.thePlayer.posX, 262.0D, mc.thePlayer.posZ);
 				}
-			} else if(isFlyActiveByMod)
+			}
+			else if(isFlyActiveByMod)
 			{
 				mc.thePlayer.capabilities.allowFlying = false;
 				mc.thePlayer.capabilities.isFlying = false;
@@ -120,7 +122,8 @@ public class ClientTickHandler implements ITickHandler
 					{
 						var15 = "\u00a7aGravitation engine ON";
 						var12 = mc.fontRenderer.getStringWidth("Gravitation engine ON");
-					} else
+					}
+					else
 					{
 						var15 = "";
 					}
@@ -175,7 +178,8 @@ public class ClientTickHandler implements ITickHandler
 					{
 						mc.ingameGUI.drawString(mc.fontRenderer, var15, var8, var9, 16777215);
 						mc.ingameGUI.drawString(mc.fontRenderer, var16, var10, var11, 16777215);
-					} else
+					}
+					else
 					{
 						mc.ingameGUI.drawString(mc.fontRenderer, var16, var10, var9, 16777215);
 					}

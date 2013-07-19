@@ -60,14 +60,16 @@ public class ContainerMultiplier extends Container
 				{
 					return null;
 				}
-			} else if(!mergeItemStack(stackInSlot, 0, 1, false))
+			}
+			else if(!mergeItemStack(stackInSlot, 0, 1, false))
 			{
 				return null;
 			}
 			if(stackInSlot.stackSize == 0)
 			{
 				slotObject.putStack(null);
-			} else
+			}
+			else
 			{
 				slotObject.onSlotChanged();
 			}

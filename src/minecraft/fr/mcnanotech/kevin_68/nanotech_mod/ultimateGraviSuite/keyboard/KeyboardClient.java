@@ -52,7 +52,8 @@ public class KeyboardClient extends Keyboard
 			}
 
 			return true;
-		} else
+		}
+		else
 		{
 			lastKeyModeState = false;
 			return false;

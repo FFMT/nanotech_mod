@@ -22,7 +22,8 @@ public class ItemBlockNanotechOre extends ItemBlock
 		if(stack.getItemDamage() < BlockNanotechOre.type.length)
 		{
 			return getUnlocalizedName() + "." + BlockNanotechOre.type[stack.getItemDamage()];
-		} else
+		}
+		else
 		{
 			return getUnlocalizedName();
 		}

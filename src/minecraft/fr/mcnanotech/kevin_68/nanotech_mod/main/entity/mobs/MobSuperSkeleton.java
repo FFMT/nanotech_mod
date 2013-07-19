@@ -109,7 +109,8 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 			}
 
 			return true;
-		} else
+		}
+		else
 		{
 			return false;
 		}
@@ -128,7 +129,8 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 			}
 
 			return var3;
-		} else
+		}
+		else
 		{
 			return super.getAttackStrength(par1Entity);
 		}
@@ -211,7 +213,8 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 			{
 				this.dropItem(Item.coal.itemID, 1);
 			}
-		} else
+		}
+		else
 		{
 			var3 = this.rand.nextInt(3 + par2);
 
@@ -256,7 +259,8 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 			this.tasks.addTask(4, this.aiAttackOnCollide);
 			this.setSkeletonType(1);
 			this.setCurrentItemOrArmor(0, new ItemStack(Item.swordStone));
-		} else
+		}
+		else
 		{
 			this.tasks.addTask(4, this.aiArrowAttack);
 			this.addRandomArmor();
@@ -289,7 +293,8 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		if(stack != null && stack.itemID == Item.bow.itemID)
 		{
 			this.tasks.addTask(4, this.aiArrowAttack);
-		} else
+		}
+		else
 		{
 			this.tasks.addTask(4, this.aiAttackOnCollide);
 		}
@@ -333,7 +338,8 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		if(par1 == 1)
 		{
 			this.setSize(0.72F, 2.16F);
-		} else
+		}
+		else
 		{
 			this.setSize(0.6F, 1.8F);
 		}

@@ -83,7 +83,8 @@ public class RenderSuperEnderman extends RenderLiving
 		if(par2 != 0)
 		{
 			return -1;
-		} else
+		}
+		else
 		{
 			this.loadTexture("/mob/enderman_eyes.png");
 			float var4 = 1.0F;

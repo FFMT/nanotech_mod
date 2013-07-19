@@ -299,7 +299,8 @@ public class Nanotech_mod
 		{
 			NanotechRecipe.InitHardRecipes();
 			NanotechRecipe.InitFallingBlockRecipes(4);
-		} else
+		}
+		else
 		{
 			NanotechRecipe.InitNormalRecipes();
 			NanotechRecipe.InitFallingBlockRecipes(8);

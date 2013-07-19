@@ -44,7 +44,8 @@ public class ServerTickHandler implements ITickHandler
 				if(var3.capabilities.isCreativeMode && !checkLastCreativeState(var3))
 				{
 					isLastCreativeState.put(var3, Boolean.valueOf(true));
-				} else if(!var3.capabilities.isCreativeMode && checkLastCreativeState(var3) && checkFlyActiveByMode(var3))
+				}
+				else if(!var3.capabilities.isCreativeMode && checkLastCreativeState(var3) && checkFlyActiveByMode(var3))
 				{
 					var3.capabilities.allowFlying = true;
 					var3.capabilities.isFlying = true;
@@ -62,7 +63,8 @@ public class ServerTickHandler implements ITickHandler
 				{
 					var3.setPosition(var3.posX, 262.0D, var3.posZ);
 				}
-			} else if(checkFlyActiveByMode(var3))
+			}
+			else if(checkFlyActiveByMode(var3))
 			{
 				var3.capabilities.allowFlying = false;
 				var3.capabilities.isFlying = false;

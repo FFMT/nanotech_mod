@@ -69,7 +69,8 @@ public class BlockTheDeathHead extends Block
 					world.setBlockToAir(x - 1, y - 1, z - 2);
 					world.setBlockToAir(x - 1, y - 2, z + 2);
 					world.setBlockToAir(x - 1, y - 2, z - 2);
-				} else if(flag1)
+				}
+				else if(flag1)
 				{
 					world.setBlockToAir(x + 1, y - 1, z);
 					world.setBlockToAir(x + 1, y - 2, z);
@@ -89,7 +90,8 @@ public class BlockTheDeathHead extends Block
 					world.setBlockToAir(x + 1, y - 1, z + 2);
 					world.setBlockToAir(x + 1, y - 2, z - 2);
 					world.setBlockToAir(x + 1, y - 2, z + 2);
-				} else if(flag2)
+				}
+				else if(flag2)
 				{
 					world.setBlockToAir(x, y - 1, z - 1);
 					world.setBlockToAir(x, y - 2, z - 1);
@@ -109,7 +111,8 @@ public class BlockTheDeathHead extends Block
 					world.setBlockToAir(x + 2, y - 1, z - 1);
 					world.setBlockToAir(x - 2, y - 2, z - 1);
 					world.setBlockToAir(x + 2, y - 2, z - 1);
-				} else
+				}
+				else
 				{
 					world.setBlockToAir(x, y - 1, z + 1);
 					world.setBlockToAir(x, y - 2, z + 1);
@@ -161,58 +164,76 @@ public class BlockTheDeathHead extends Block
 		if(par1 == 1)
 		{
 			return this.top;
-		} else if(par1 == 0)
+		}
+		else if(par1 == 0)
 		{
 			return this.bottom;
-		} else if(par1 == 2 && par2 == 2)
+		}
+		else if(par1 == 2 && par2 == 2)
 		{
 			return this.face;
-		} else if(par1 == 3 && par2 == 2)
+		}
+		else if(par1 == 3 && par2 == 2)
 		{
 			return this.back;
-		} else if(par1 == 4 && par2 == 2)
+		}
+		else if(par1 == 4 && par2 == 2)
 		{
 			return this.side2;
-		} else if(par1 == 5 && par2 == 2)
+		}
+		else if(par1 == 5 && par2 == 2)
 		{
 			return this.side;
-		} else if(par1 == 5 && par2 == 3)
+		}
+		else if(par1 == 5 && par2 == 3)
 		{
 			return this.face;
-		} else if(par1 == 4 && par2 == 3)
+		}
+		else if(par1 == 4 && par2 == 3)
 		{
 			return this.back;
-		} else if(par1 == 2 && par2 == 3)
+		}
+		else if(par1 == 2 && par2 == 3)
 		{
 			return this.side2;
-		} else if(par1 == 3 && par2 == 3)
+		}
+		else if(par1 == 3 && par2 == 3)
 		{
 			return this.side;
-		} else if(par1 == 3 && par2 == 0)
+		}
+		else if(par1 == 3 && par2 == 0)
 		{
 			return this.face;
-		} else if(par1 == 2 && par2 == 0)
+		}
+		else if(par1 == 2 && par2 == 0)
 		{
 			return this.back;
-		} else if(par1 == 4 && par2 == 0)
+		}
+		else if(par1 == 4 && par2 == 0)
 		{
 			return this.side2;
-		} else if(par1 == 5 && par2 == 0)
+		}
+		else if(par1 == 5 && par2 == 0)
 		{
 			return this.side;
-		} else if(par1 == 4 && par2 == 1)
+		}
+		else if(par1 == 4 && par2 == 1)
 		{
 			return this.face;
-		} else if(par1 == 5 && par2 == 1)
+		}
+		else if(par1 == 5 && par2 == 1)
 		{
 			return this.back;
-		} else if(par1 == 3 && par2 == 1)
+		}
+		else if(par1 == 3 && par2 == 1)
 		{
 			return this.side2;
-		} else if(par1 == 2 && par2 == 1)
+		}
+		else if(par1 == 2 && par2 == 1)
 		{
 			return this.side;
-		} else
+		}
+		else
 		{
 			return this.side;
 		}

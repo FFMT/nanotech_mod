@@ -49,7 +49,8 @@ public class TileEntityBlockSpotLightRender extends TileEntitySpecialRenderer
 			if(tileEntityBlockSpotLight.isReverse)
 			{
 				d13 = (double)(-256.0F * f1);
-			} else
+			}
+			else
 			{
 				d13 = (double)(256.0F * f1);
 			}
@@ -91,7 +92,8 @@ public class TileEntityBlockSpotLightRender extends TileEntitySpecialRenderer
 			if(tileEntityBlockSpotLight.isReverse)
 			{
 				d26 = (double)(-256.0F * f1);
-			} else
+			}
+			else
 			{
 				d26 = (double)(256.0F * f1);
 			}

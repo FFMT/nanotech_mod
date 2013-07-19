@@ -21,7 +21,8 @@ public class ItemBlockJumper extends ItemBlock
 		if(stack.getItemDamage() == 1)
 		{
 			return getUnlocalizedName() + "advanced";
-		} else
+		}
+		else
 		{
 			return getUnlocalizedName();
 		}

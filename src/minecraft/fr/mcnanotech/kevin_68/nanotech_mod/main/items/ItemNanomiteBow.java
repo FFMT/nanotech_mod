@@ -114,7 +114,8 @@ public class ItemNanomiteBow extends ItemBow
 			if(var5)
 			{
 				var8.canBePickedUp = 2;
-			} else
+			}
+			else
 			{
 				player.inventory.consumeInventoryItem(Item.arrow.itemID);
 			}

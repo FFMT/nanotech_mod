@@ -67,7 +67,8 @@ public class EntityTheDeathBall extends EntityFireball
 					{
 						this.shootingEntity.heal(10);
 					}
-				} else
+				}
+				else
 				{
 					par1MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.magic, 10);
 				}
@@ -81,7 +82,8 @@ public class EntityTheDeathBall extends EntityFireball
 						if(this.worldObj.difficultySetting == 2)
 						{
 							var2 = 50;
-						} else if(this.worldObj.difficultySetting == 3)
+						}
+						else if(this.worldObj.difficultySetting == 3)
 						{
 							var2 = 100;
 						}

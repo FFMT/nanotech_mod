@@ -85,7 +85,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getRedValue() > 10)
 			{
 				tileSpotLight.addRedValue(-10);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setRedValue(0);
 			}
@@ -95,7 +96,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getRedValue() > 100)
 			{
 				tileSpotLight.addRedValue(-100);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setRedValue(0);
 			}
@@ -112,7 +114,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getRedValue() < 245)
 			{
 				tileSpotLight.addRedValue(10);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setRedValue(255);
 			}
@@ -122,7 +125,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getRedValue() < 155)
 			{
 				tileSpotLight.addRedValue(100);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setRedValue(255);
 			}
@@ -140,7 +144,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getGreenValue() > 10)
 			{
 				tileSpotLight.addGreenValue(-10);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setGreenValue(0);
 			}
@@ -150,7 +155,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getGreenValue() > 100)
 			{
 				tileSpotLight.addGreenValue(-100);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setGreenValue(0);
 			}
@@ -167,7 +173,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getGreenValue() < 245)
 			{
 				tileSpotLight.addGreenValue(10);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setGreenValue(255);
 			}
@@ -177,7 +184,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getGreenValue() < 155)
 			{
 				tileSpotLight.addGreenValue(100);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setGreenValue(255);
 			}
@@ -195,7 +203,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getBlueValue() > 10)
 			{
 				tileSpotLight.addBlueValue(-10);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setBlueValue(0);
 			}
@@ -205,7 +214,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getBlueValue() > 100)
 			{
 				tileSpotLight.addBlueValue(-100);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setBlueValue(0);
 			}
@@ -222,7 +232,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getBlueValue() < 245)
 			{
 				tileSpotLight.addBlueValue(10);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setBlueValue(255);
 			}
@@ -232,7 +243,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getBlueValue() < 155)
 			{
 				tileSpotLight.addBlueValue(100);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setBlueValue(255);
 			}
@@ -250,7 +262,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getDarkRedValue() > 10)
 			{
 				tileSpotLight.addDarkRedValue(-10);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setDarkRedValue(0);
 			}
@@ -260,7 +273,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getDarkRedValue() > 100)
 			{
 				tileSpotLight.addDarkRedValue(-100);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setDarkRedValue(0);
 			}
@@ -277,7 +291,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getDarkRedValue() < 245)
 			{
 				tileSpotLight.addDarkRedValue(10);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setDarkRedValue(255);
 			}
@@ -287,7 +302,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getDarkRedValue() < 155)
 			{
 				tileSpotLight.addDarkRedValue(100);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setDarkRedValue(255);
 			}
@@ -305,7 +321,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getDarkGreenValue() > 10)
 			{
 				tileSpotLight.addDarkGreenValue(-10);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setDarkGreenValue(0);
 			}
@@ -315,7 +332,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getDarkGreenValue() > 100)
 			{
 				tileSpotLight.addDarkGreenValue(-100);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setDarkGreenValue(0);
 			}
@@ -332,7 +350,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getDarkGreenValue() < 245)
 			{
 				tileSpotLight.addDarkGreenValue(10);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setDarkGreenValue(255);
 			}
@@ -342,7 +361,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getDarkGreenValue() < 155)
 			{
 				tileSpotLight.addDarkGreenValue(100);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setDarkGreenValue(255);
 			}
@@ -360,7 +380,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getDarkBlueValue() > 10)
 			{
 				tileSpotLight.addDarkBlueValue(-10);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setDarkBlueValue(0);
 			}
@@ -370,7 +391,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getDarkBlueValue() > 100)
 			{
 				tileSpotLight.addDarkBlueValue(-100);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setDarkBlueValue(0);
 			}
@@ -387,7 +409,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getDarkBlueValue() < 245)
 			{
 				tileSpotLight.addDarkBlueValue(10);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setDarkBlueValue(255);
 			}
@@ -397,7 +420,8 @@ public class GuiBlockSpotLight extends GuiContainer
 			if(tileSpotLight.getDarkBlueValue() < 155)
 			{
 				tileSpotLight.addDarkBlueValue(100);
-			} else
+			}
+			else
 			{
 				tileSpotLight.setDarkBlueValue(255);
 			}
@@ -413,60 +437,72 @@ public class GuiBlockSpotLight extends GuiContainer
 		if(tileSpotLight.red < 10)
 		{
 			redPos = 2;
-		} else if(tileSpotLight.red > 9 && tileSpotLight.red < 100)
+		}
+		else if(tileSpotLight.red > 9 && tileSpotLight.red < 100)
 		{
 			redPos = 5;
-		} else
+		}
+		else
 		{
 			redPos = 8;
 		}
 		if(tileSpotLight.green < 10)
 		{
 			greenPos = 2;
-		} else if(tileSpotLight.green > 9 && tileSpotLight.green < 100)
+		}
+		else if(tileSpotLight.green > 9 && tileSpotLight.green < 100)
 		{
 			greenPos = 5;
-		} else
+		}
+		else
 		{
 			greenPos = 8;
 		}
 		if(tileSpotLight.blue < 10)
 		{
 			bluePos = 2;
-		} else if(tileSpotLight.blue > 9 && tileSpotLight.blue < 100)
+		}
+		else if(tileSpotLight.blue > 9 && tileSpotLight.blue < 100)
 		{
 			bluePos = 5;
-		} else
+		}
+		else
 		{
 			bluePos = 8;
 		}
 		if(tileSpotLight.darkRed < 10)
 		{
 			darkRedPos = 2;
-		} else if(tileSpotLight.darkRed > 9 && tileSpotLight.darkRed < 100)
+		}
+		else if(tileSpotLight.darkRed > 9 && tileSpotLight.darkRed < 100)
 		{
 			darkRedPos = 5;
-		} else
+		}
+		else
 		{
 			darkRedPos = 8;
 		}
 		if(tileSpotLight.darkGreen < 10)
 		{
 			darkGreenPos = 2;
-		} else if(tileSpotLight.darkGreen > 9 && tileSpotLight.darkGreen < 100)
+		}
+		else if(tileSpotLight.darkGreen > 9 && tileSpotLight.darkGreen < 100)
 		{
 			darkGreenPos = 5;
-		} else
+		}
+		else
 		{
 			darkGreenPos = 8;
 		}
 		if(tileSpotLight.darkBlue < 10)
 		{
 			darkBluePos = 2;
-		} else if(tileSpotLight.darkBlue > 9 && tileSpotLight.darkBlue < 100)
+		}
+		else if(tileSpotLight.darkBlue > 9 && tileSpotLight.darkBlue < 100)
 		{
 			darkBluePos = 5;
-		} else
+		}
+		else
 		{
 			darkBluePos = 8;
 		}

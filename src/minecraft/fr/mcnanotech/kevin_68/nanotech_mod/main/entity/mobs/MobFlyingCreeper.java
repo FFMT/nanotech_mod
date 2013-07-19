@@ -160,7 +160,8 @@ public class MobFlyingCreeper extends EntityMob
 					if(this.getPowered())
 					{
 						this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)(this.explosionRadius * 2.75), var2);
-					} else
+					}
+					else
 					{
 						this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)(this.explosionRadius * 2.5), var2);
 					}

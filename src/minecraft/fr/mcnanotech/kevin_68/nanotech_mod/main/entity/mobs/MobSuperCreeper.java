@@ -137,7 +137,8 @@ public class MobSuperCreeper extends EntityMob
 					if(this.getPowered())
 					{
 						this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)(this.explosionRadius * 2), var2);
-					} else
+					}
+					else
 					{
 						this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)this.explosionRadius, var2);
 					}

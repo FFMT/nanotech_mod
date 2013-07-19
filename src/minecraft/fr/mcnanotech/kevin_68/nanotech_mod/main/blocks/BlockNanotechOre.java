@@ -39,7 +39,8 @@ public class BlockNanotechOre extends Block
 		if(damage < type.length)
 		{
 			return iconbuffer[damage];
-		} else
+		}
+		else
 		{
 			return iconbuffer[0];
 		}

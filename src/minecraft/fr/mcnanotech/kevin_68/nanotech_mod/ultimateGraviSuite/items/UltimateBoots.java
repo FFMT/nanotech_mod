@@ -56,7 +56,8 @@ public class UltimateBoots extends ItemArmor implements IElectricItem, IMetalArm
 		if(!readInvisibilityStatus(stack))
 		{
 			return "/mods/UltimateGraviSuite/textures/armor/ultimategraviChestPlate.png";
-		} else
+		}
+		else
 		{
 			return "/mods/UltimateGraviSuite/textures/armor/ultimategraviChestPlateInvisible.png";
 		}
@@ -147,7 +148,8 @@ public class UltimateBoots extends ItemArmor implements IElectricItem, IMetalArm
 
 				player.motionY += (double)(var7 * 0.45F);
 				var7 = (float)((double)var7 * 0.90D);
-			} else if(var7 < 1.0F)
+			}
+			else if(var7 < 1.0F)
 			{
 				var7 = 0.0F;
 			}

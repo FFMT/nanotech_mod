@@ -21,7 +21,8 @@ public class ItemBlockSpeed extends ItemBlock
 		if(stack.getItemDamage() < BlockSpeed.type.length)
 		{
 			return "tile." + BlockSpeed.type[stack.getItemDamage()];
-		} else
+		}
+		else
 		{
 			return getUnlocalizedName();
 		}

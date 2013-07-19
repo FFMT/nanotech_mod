@@ -38,7 +38,8 @@ public class ItemMysteriousArmor extends ItemArmor
 		if(stack.itemID == NanotechItem.Mysteriousleggings.itemID)
 		{
 			return "/mods/Nanotech_mod/textures/armor/Mysteriousarmor2.png";
-		} else
+		}
+		else
 		{
 			return "/mods/Nanotech_mod/textures/armor/Mysteriousarmor.png";
 		}

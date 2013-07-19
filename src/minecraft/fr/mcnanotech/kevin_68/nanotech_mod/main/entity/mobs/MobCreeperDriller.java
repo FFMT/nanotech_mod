@@ -146,7 +146,8 @@ public class MobCreeperDriller extends EntityMob
 					if(this.getPowered())
 					{
 						this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)(this.field_82226_g * 0.5), var2);
-					} else
+					}
+					else
 					{
 						this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)(this.field_82226_g * 0.5), var2);
 					}

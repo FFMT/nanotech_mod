@@ -27,7 +27,8 @@ public class UtilDiskInfo
 					bw.newLine();
 				}
 				bw.close();
-			} catch(IOException e)
+			}
+			catch(IOException e)
 			{}
 		}
 
@@ -41,7 +42,8 @@ public class UtilDiskInfo
 					cdInfo[i] = br.readLine();
 				}
 				br.close();
-			} catch(IOException e)
+			}
+			catch(IOException e)
 			{
 				System.out.println("Failed to read cd name");
 			}

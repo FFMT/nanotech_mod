@@ -60,7 +60,8 @@ public class MobFly extends EntityAmbientCreature
 		if(par1)
 		{
 			this.dataWatcher.updateObject(16, Byte.valueOf((byte)(var2 | 1)));
-		} else
+		}
+		else
 		{
 			this.dataWatcher.updateObject(16, Byte.valueOf((byte)(var2 & -2)));
 		}
@@ -79,7 +80,8 @@ public class MobFly extends EntityAmbientCreature
 		{
 			this.motionX = this.motionY = this.motionZ = 0.0D;
 			this.posY = (double)MathHelper.floor_double(this.posY) + 1.0D - (double)this.height;
-		} else
+		}
+		else
 		{
 			this.motionY *= 0.6000000238418579D;
 		}
@@ -95,7 +97,8 @@ public class MobFly extends EntityAmbientCreature
 			{
 				this.func_82236_f(false);
 				this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1015, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
-			} else
+			}
+			else
 			{
 				if(this.rand.nextInt(200) == 0)
 				{
@@ -108,7 +111,8 @@ public class MobFly extends EntityAmbientCreature
 					this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1015, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
 				}
 			}
-		} else
+		}
+		else
 		{
 			if(this.field_82237_a != null && (!this.worldObj.isAirBlock(this.field_82237_a.posX, this.field_82237_a.posY, this.field_82237_a.posZ) || this.field_82237_a.posY < 1))
 			{
@@ -183,7 +187,8 @@ public class MobFly extends EntityAmbientCreature
 		if(var1 >= 63)
 		{
 			return false;
-		} else
+		}
+		else
 		{
 			int var2 = MathHelper.floor_double(this.posX);
 			int var3 = MathHelper.floor_double(this.posZ);
@@ -197,7 +202,8 @@ public class MobFly extends EntityAmbientCreature
 				{
 					return false;
 				}
-			} else
+			}
+			else
 			{
 				var5 = 7;
 			}

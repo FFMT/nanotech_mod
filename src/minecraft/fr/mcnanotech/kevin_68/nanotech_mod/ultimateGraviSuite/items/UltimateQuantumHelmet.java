@@ -68,7 +68,8 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 		if(!readInvisibilityStatus(stack))
 		{
 			return "/mods/UltimateGraviSuite/textures/armor/ultimategraviChestPlate.png";
-		} else
+		}
+		else
 		{
 			return "/mods/UltimateGraviSuite/textures/armor/ultimategraviChestPlateInvisible.png";
 		}
@@ -237,11 +238,13 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 		{
 			generating = 0 + genDay;
 			return generating;
-		} else if(skyIsVisible)
+		}
+		else if(skyIsVisible)
 		{
 			generating = 0 + genNight;
 			return generating;
-		} else
+		}
+		else
 		{
 			generating = 0;
 			return generating;
@@ -257,7 +260,8 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 		if(var0.worldObj.isDaytime() && !var1.booleanValue())
 		{
 			sunIsUp = true;
-		} else
+		}
+		else
 		{
 			sunIsUp = false;
 		}
@@ -265,7 +269,8 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 		if(var0.worldObj.canBlockSeeTheSky((int)var0.posX, (int)var0.posY + 1, (int)var0.posZ) && !noSunWorld)
 		{
 			skyIsVisible = true;
-		} else
+		}
+		else
 		{
 			skyIsVisible = false;
 		}

@@ -41,7 +41,8 @@ public class ClientProxy extends ServerProxy
 		{
 			var3.writeUTF(var0);
 			var3.writeInt(var1);
-		} catch(IOException var5)
+		}
+		catch(IOException var5)
 		{
 			var5.printStackTrace();
 		}

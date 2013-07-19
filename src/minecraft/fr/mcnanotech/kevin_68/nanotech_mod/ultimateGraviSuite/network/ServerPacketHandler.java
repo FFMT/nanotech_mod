@@ -98,7 +98,8 @@ public class ServerPacketHandler implements IPacketHandler
 			{
 				var10 = var5.inventory.armorInventory[2];
 			}
-		} catch(IOException var9)
+		}
+		catch(IOException var9)
 		{
 			var9.printStackTrace();
 		}

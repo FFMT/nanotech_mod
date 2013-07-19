@@ -29,7 +29,8 @@ public class ServerProxy
 		{
 			var4.writeUTF(var1);
 			var4.writeInt(var2);
-		} catch(IOException var6)
+		}
+		catch(IOException var6)
 		{
 			var6.printStackTrace();
 		}

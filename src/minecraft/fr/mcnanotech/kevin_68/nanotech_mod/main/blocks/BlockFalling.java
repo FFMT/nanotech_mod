@@ -40,7 +40,8 @@ public class BlockFalling extends BlockSand
 		if(damage < type.length)
 		{
 			return iconbuffer[damage];
-		} else
+		}
+		else
 		{
 			return iconbuffer[0];
 		}

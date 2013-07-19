@@ -51,7 +51,8 @@ public class ClientPacketHandler extends ServerPacketHandler
 					UltimateGraviChestPlateClientProxy.firstLoadClient(ClientProxy.mc.thePlayer, var6);
 				}
 			}
-		} catch(IOException var7)
+		}
+		catch(IOException var7)
 		{
 			var7.printStackTrace();
 		}

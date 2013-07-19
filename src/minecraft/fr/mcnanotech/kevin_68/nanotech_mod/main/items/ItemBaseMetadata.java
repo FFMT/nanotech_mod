@@ -42,7 +42,8 @@ public class ItemBaseMetadata extends Item
 		if(damage < type.length)
 		{
 			return iconbuffer[damage];
-		} else
+		}
+		else
 		{
 			return iconbuffer[0];
 		}
@@ -58,7 +59,8 @@ public class ItemBaseMetadata extends Item
 		if(stack.getItemDamage() < type.length)
 		{
 			return "item." + type[stack.getItemDamage()];
-		} else
+		}
+		else
 		{
 			return getUnlocalizedName();
 		}

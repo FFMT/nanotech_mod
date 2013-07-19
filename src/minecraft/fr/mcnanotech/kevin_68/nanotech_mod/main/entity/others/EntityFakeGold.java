@@ -83,7 +83,8 @@ public class EntityFakeGold extends Entity
 			{
 				this.explode();
 			}
-		} else
+		}
+		else
 		{
 			this.worldObj.spawnParticle("smoke", this.posX, this.posY + 0.5D, this.posZ, 0.0D, 0.0D, 0.0D);
 		}

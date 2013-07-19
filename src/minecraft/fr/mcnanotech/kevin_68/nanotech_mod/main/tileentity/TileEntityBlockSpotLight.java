@@ -39,12 +39,14 @@ public class TileEntityBlockSpotLight extends TileEntity
 			{
 				this.isActive = true;
 				this.isReverse = true;
-			} else
+			}
+			else
 			{
 				this.isActive = true;
 				this.isReverse = false;
 			}
-		} else
+		}
+		else
 		{
 			this.isActive = false;
 		}
@@ -56,7 +58,8 @@ public class TileEntityBlockSpotLight extends TileEntity
 		if(!this.isActive)
 		{
 			return 0.0F;
-		} else
+		}
+		else
 		{
 			int i = (int)(this.worldObj.getTotalWorldTime() - this.field_82137_b);
 			this.field_82137_b = this.worldObj.getTotalWorldTime();

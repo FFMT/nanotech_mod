@@ -44,7 +44,8 @@ public class WorldModel5 extends WorldGenerator
 			if(blockID == x)
 			{
 				return true;
-			} else if(blockID == Block.snow.blockID && blockIDBelow == x)
+			}
+			else if(blockID == Block.snow.blockID && blockIDBelow == x)
 			{
 				return true;
 			}
