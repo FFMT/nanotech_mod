@@ -8,7 +8,6 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.BlockSmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 
