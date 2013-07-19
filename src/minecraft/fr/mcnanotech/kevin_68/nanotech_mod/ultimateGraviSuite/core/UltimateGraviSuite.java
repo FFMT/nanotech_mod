@@ -14,6 +14,10 @@ import cpw.mods.compactsolars.CompactSolars;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.Init;
+import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.Mod.PostInit;
+import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -36,7 +40,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.network.ServerTick
 import gravisuite.GraviSuite;
 import gregtechmod.api.GregTech_API;
 
-@Mod(modid = "UltimateGraviSuite", name = "Ultimate Gravitation Suite", dependencies = "", version = "1.6")
+@Mod(modid = "UltimateGraviSuite", name = "Ultimate Gravitation Suite", dependencies = "required-after:IC2;required-after:GraviSuite", version = "1.6")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, clientPacketHandlerSpec = @NetworkMod.SidedPacketHandler(channels =
 {"gravisuite"}, packetHandler = ClientPacketHandler.class), serverPacketHandlerSpec = @NetworkMod.SidedPacketHandler(channels =
 {"gravisuite"}, packetHandler = ServerPacketHandler.class))
@@ -50,27 +54,21 @@ public class UltimateGraviSuite
 	 */
 	public static Keyboard keyboard;
 
-	/**
-	 * Items
-	 */
+	// Items
 	public static Item ultimategraviChestPlate;
 	public static Item theultimateSolarHelmet;
 	public static Item ultimatecircuit;
 	public static Item ultimateLeggings;
 	public static Item ultimateBoots;
 
-	/**
-	 * Items ID
-	 */
+	// Items ID
 	public static int ultimategraviChestPlateID;
 	public static int theultimateSolarHelmetID;
 	public static int ultimatecircuitID;
 	public static int ultimateLeggingsID;
 	public static int ultimateBootsID;
 
-	/**
-	 * Config
-	 */
+	// Config
 	public static Configuration config;
 	private boolean keyDown;
 	public static int hudPos;
@@ -78,62 +76,49 @@ public class UltimateGraviSuite
 	public static int uhGenNight = 0;
 	public static boolean displayHud;
 
-	/**
-	 * TickHnadler
-	 */
+	// TickHandler
 	public static ClientTickHandler clientTickHandler;
 	public static ServerTickHandler serverTickHandler;
 
-	/**
-	 * Class
-	 */
-	private static Class ASP;
-
-	/**
-	 * Other
-	 */
+	// Other
 	public static final Side side = FMLCommonHandler.instance().getEffectiveSide();
 	public static Random random = new Random();
 
-	/**
-	 * Instance
-	 */
-	@Mod.Instance("UltimateGraviSuite")
+	// Instance
+	@Instance("UltimateGraviSuite")
 	public static UltimateGraviSuite instance;
 
-	/**
-	 * Mod preInit
-	 * 
-	 * @param var1
-	 */
-	@Mod.PreInit
+	@PreInit
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
-		cfg.load();
-		ultimategraviChestPlateID = cfg.get("Items", "ultimategraviChestPlateID", 5500).getInt();
-		theultimateSolarHelmetID = cfg.get("Items", "ultimateSolarHelmetID", 5501).getInt();
-		ultimatecircuitID = cfg.get("Items", "ultimatecircuitID", 5502).getInt();
-		ultimateLeggingsID = cfg.get("Items", "ultimateLeggingsID", 5503).getInt();
-		ultimateBootsID = cfg.get("Items", "ultimateBootsID", 5504).getInt();
-
-		hudPos = cfg.get("Hud settings", "hudPosition", 1).getInt();
-		displayHud = cfg.get("Hud settings", "Display hud", true).getBoolean(true);
-
-		if(cfg.hasChanged())
+		try
 		{
+			cfg.load();
+			ultimategraviChestPlateID = cfg.get("Items", "ultimategraviChestPlateID", 5500).getInt();
+			theultimateSolarHelmetID = cfg.get("Items", "ultimateSolarHelmetID", 5501).getInt();
+			ultimatecircuitID = cfg.get("Items", "ultimatecircuitID", 5502).getInt();
+			ultimateLeggingsID = cfg.get("Items", "ultimateLeggingsID", 5503).getInt();
+			ultimateBootsID = cfg.get("Items", "ultimateBootsID", 5504).getInt();
 
-			cfg.save();
+			hudPos = cfg.get("Hud settings", "hudPosition", 1).getInt();
+			displayHud = cfg.get("Hud settings", "Display hud", true).getBoolean(true);
+		}
+		catch(Exception e)
+		{
+			
+		}
+		finally
+		{
+			if(cfg.hasChanged())
+			{
+				cfg.save();
+			}
 		}
 	}
 
-	/**
-	 * Mod Init
-	 * 
-	 * @param var1
-	 */
-	@Mod.Init
-	public void load(FMLInitializationEvent var1)
+	@Init
+	public void load(FMLInitializationEvent event)
 	{
 		this.Item();
 		this.ItemName();
@@ -142,9 +127,7 @@ public class UltimateGraviSuite
 		proxy.registerRenderers();
 	}
 
-	/**
-	 * Items statement
-	 */
+	// Items statement
 	public void Item()
 	{
 		ultimategraviChestPlate = new UltimateGraviChestPlate(ultimategraviChestPlateID, EnumArmorMaterial.DIAMOND, proxy.addArmor("UltimateGraviSuite"), 1).setUnlocalizedName("ultimategraviChestPlate");
@@ -154,9 +137,7 @@ public class UltimateGraviSuite
 		ultimateBoots = new UltimateBoots(ultimateBootsID, EnumArmorMaterial.DIAMOND, proxy.addArmor("UltimateBoots"), 3).setUnlocalizedName("ultimateBoots");
 	}
 
-	/**
-	 * Items Name
-	 */
+	// Items Name
 	public void ItemName()
 	{
 		LanguageRegistry.addName(ultimategraviChestPlate, "Ultimate GraviChestPlate");
@@ -166,13 +147,9 @@ public class UltimateGraviSuite
 		LanguageRegistry.addName(ultimateBoots, "Ultimate Quantum Boots");
 	}
 
-	/**
-	 * Mod PostInit
-	 * 
-	 * @param var1
-	 */
-	@Mod.PostInit
-	public void postInit(FMLPostInitializationEvent var1)
+	// Mod PostInit
+	@PostInit
+	public void postInit(FMLPostInitializationEvent event)
 	{
 		if(hudPos != 1 && hudPos != 2 && hudPos != 3 && hudPos != 4)
 		{
@@ -227,33 +204,24 @@ public class UltimateGraviSuite
 		}
 	}
 
-	/**
-	 * IS Simulating
-	 * 
-	 * @return
-	 */
+	// IS Simulating
 	public static boolean isSimulating()
 	{
 		return !FMLCommonHandler.instance().getEffectiveSide().isClient();
 	}
 
-	/**
-	 * NBTTag
-	 * 
-	 * @param var0
-	 * @return
-	 */
-	public static NBTTagCompound getOrCreateNbtData(ItemStack var0)
+	// NBTTag
+	public static NBTTagCompound getOrCreateNbtData(ItemStack stack)
 	{
-		NBTTagCompound var1 = var0.getTagCompound();
+		NBTTagCompound nbt = stack.getTagCompound();
 
-		if(var1 == null)
+		if(nbt == null)
 		{
-			var1 = new NBTTagCompound();
-			var0.setTagCompound(var1);
-			var1.setInteger("charge", 0);
+			nbt = new NBTTagCompound();
+			stack.setTagCompound(nbt);
+			nbt.setInteger("charge", 0);
 		}
 
-		return var1;
+		return nbt;
 	}
 }
