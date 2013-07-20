@@ -42,8 +42,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGeneration;
 
 @Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "2.0.3")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels =
-{"nanotechmod"}, packetHandler = PacketHandler.class)
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"nanotechmod"}, packetHandler = PacketHandler.class)
 public class Nanotech_mod
 {
 	// Instance
@@ -79,6 +78,7 @@ public class Nanotech_mod
 	public static int BlockMossyStoneID;
 	public static int BlockSpotLightID;
 	public static int BlockTheDeathHeadID;
+	public static int BlockTrailID;
 
 	// Item IDs
 	public static int ItemNanotechID;
@@ -197,6 +197,7 @@ public class Nanotech_mod
 		BlockMossyStoneID = config.getBlock("Mossy Stone", 1018).getInt();
 		BlockSpotLightID = config.getBlock("SpotLight", 1019).getInt();
 		BlockTheDeathHeadID = config.getBlock("TheDeathHead", 1020).getInt();
+		BlockTrailID = config.getBlock("Trail", 1021).getInt();
 
 		ItemNanotechID = config.getItem("Main Nanotech ID", 5000).getInt();
 		ItemSuperBottleOfXpID = config.getItem("Super Bottle of xp", 5001).getInt();
