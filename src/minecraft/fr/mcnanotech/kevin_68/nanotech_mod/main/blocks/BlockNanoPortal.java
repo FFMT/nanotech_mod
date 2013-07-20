@@ -85,39 +85,6 @@ public class BlockNanoPortal extends Block
 		return 1;
 	}
 
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random par5Random)
-	{
-		if(par5Random.nextInt(100) == 0)
-		{
-			world.playSound((double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, "portal.portal", 0.5F, par5Random.nextFloat() * 0.4F + 0.8F, false);
-		}
-		for(int l = 0; l < 4; ++l)
-		{
-			double d0 = (double)((float)x + par5Random.nextFloat());
-			double d1 = (double)((float)y + par5Random.nextFloat());
-			double d2 = (double)((float)z + par5Random.nextFloat());
-			double d3 = 0.0D;
-			double d4 = 0.0D;
-			double d5 = 0.0D;
-			int i1 = par5Random.nextInt(2) * 2 - 1;
-			d3 = ((double)par5Random.nextFloat() - 0.5D) * 0.5D;
-			d4 = ((double)par5Random.nextFloat() - 0.5D) * 0.5D;
-			d5 = ((double)par5Random.nextFloat() - 0.5D) * 0.5D;
-			if(world.getBlockId(x - 1, y, z) != this.blockID && world.getBlockId(x + 1, y, z) != this.blockID)
-			{
-				d0 = (double)x + 0.5D + 0.25D * (double)i1;
-				d3 = (double)(par5Random.nextFloat() * 2.0F * (float)i1);
-			}
-			else
-			{
-				d2 = (double)z + 0.5D + 0.25D * (double)i1;
-				d5 = (double)(par5Random.nextFloat() * 2.0F * (float)i1);
-			}
-			world.spawnParticle("portal", d0, d1, d2, d3, d4, d5);
-		}
-	}
-
 	public void registerIcons(IconRegister iconRegister)
 	{
 		blockIcon = iconRegister.registerIcon("Nanotech_mod:nanoportal");
