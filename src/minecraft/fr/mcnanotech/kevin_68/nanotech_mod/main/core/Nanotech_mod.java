@@ -108,6 +108,7 @@ public class Nanotech_mod
 	public static int ItemRottenChunkID;
 	public static int ItemTrailID;
 	public static int ItemScytheID;
+	public static int ItemCrazyGlassesID;
 
 	// Dimension ID
 	public static int dimensionID = 19;
@@ -228,6 +229,7 @@ public class Nanotech_mod
 		ItemRottenChunkID = config.getItem("Chunk of rottenflesh", 5019).getInt();
 		ItemTrailID = config.getItem("Trail", 5020).getInt();
 		ItemScytheID = config.getItem("Scythe", 5021).getInt();
+		ItemCrazyGlassesID = config.getItem("CrazyGlasses", 5022).getInt();
 
 		HardRecipe = config.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
 
