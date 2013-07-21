@@ -1,7 +1,10 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
+import java.util.Random;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockTrail;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.render.TileEntityBlockTrailRender;
@@ -11,6 +14,7 @@ import net.minecraft.block.BlockGlass;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.ColorizerGrass;
@@ -391,5 +395,16 @@ public class BlockTrail extends BlockContainer
     this.allDTLTRBLBR = iconRegister.registerIcon("Nanotech_mod:trailAllDTLTRBLBR");
     this.empty = iconRegister.registerIcon("Nanotech_mod:empty");
     this.nothing = iconRegister.registerIcon("Nanotech_mod:trailNothing");
+  }
+  
+  public int idDropped(int par1, Random par2Random, int par3)
+  {
+      return NanotechItem.Trail.itemID;
+  }
+  
+  @SideOnly(Side.CLIENT)
+  public int idPicked(World par1World, int par2, int par3, int par4)
+  {
+      return NanotechItem.Trail.itemID;
   }
 }
