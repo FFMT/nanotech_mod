@@ -103,6 +103,7 @@ public class Nanotech_mod
 	public static int ItemNanoDiscID;
 	public static int ItemEdibleFleshID;
 	public static int ItemRottenChunkID;
+	public static int ItemTrailID;
 
 	// Dimension ID
 	public static int dimensionID = 19;
@@ -221,6 +222,7 @@ public class Nanotech_mod
 		ItemNanoDiscID = config.getItem("Nanodisk (warning he use 18 ID)", 5100).getInt();
 		ItemEdibleFleshID = config.getItem("Edible Flesh", 5018).getInt();
 		ItemRottenChunkID = config.getItem("Chunk of rottenflesh", 5019).getInt();
+		ItemTrailID = config.getItem("Trail", 5020).getInt();
 
 		HardRecipe = config.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
 

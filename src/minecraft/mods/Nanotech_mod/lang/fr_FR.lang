@@ -72,6 +72,8 @@ item.mysteriousLeggings.name = Jambières mystérieuses
 item.mysteriousBoots.name = Bottes mystérieuses
 item.edibleFlesh.name = Chaire commestible
 item.rottenChunk.name = Gros morceau de chaire putréfié
+item.itemTrail.name = Chemin
+tile.blockTrail.name = BlockTrail
 
 #Entity
 entity.SuperZombie.name = Super Zombie

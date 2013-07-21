@@ -65,13 +65,15 @@ public class BlockTrail extends BlockContainer
   Icon allDBRBLTL;
   Icon allDBLTLTR;
   Icon allDTLTRBLBR;
+  Icon nothing;
+  Icon empty;
 
 
   public BlockTrail(int par1, Material par2Material)
   {
     super(par1, par2Material);
   }
-
+  
   public TileEntity createNewTileEntity(World par1World)
   {
 		return new 	TileEntityBlockTrail();
@@ -332,16 +334,18 @@ public class BlockTrail extends BlockContainer
 		  {
 			  return this.bottom;
 		  }
+		  return this.nothing;
+		
 	  }
 	  
-	  return this.blockIcon;
+	return this.empty;
   }
 
   public void registerIcons(IconRegister iconRegister)
   {
-    this.top = iconRegister.registerIcon("Nanotech_mod:trailTop");//
-    this.topRight = iconRegister.registerIcon("Nanotech_mod:trailTopRight");//
-    this.topLeft = iconRegister.registerIcon("Nanotech_mod:trailTopLeft");//
+    this.top = iconRegister.registerIcon("Nanotech_mod:trailTop");
+    this.topRight = iconRegister.registerIcon("Nanotech_mod:trailTopRight");
+    this.topLeft = iconRegister.registerIcon("Nanotech_mod:trailTopLeft");
     this.topBottom = iconRegister.registerIcon("Nanotech_mod:trailTopBottom");
     this.topLeftBottom = iconRegister.registerIcon("Nanotech_mod:trailTopLeftBottom");
     this.topRightBottom = iconRegister.registerIcon("Nanotech_mod:trailTopRightBottom");
@@ -353,7 +357,7 @@ public class BlockTrail extends BlockContainer
     this.left = iconRegister.registerIcon("Nanotech_mod:trailLeft");
     this.bottom = iconRegister.registerIcon("Nanotech_mod:trailBottom");
     this.right = iconRegister.registerIcon("Nanotech_mod:trailRight");
-    this.all = iconRegister.registerIcon("Nanotech_mod:trailGrass");
+    this.all = iconRegister.registerIcon("Nanotech_mod:trailAll");
     this.topRightDTR = iconRegister.registerIcon("Nanotech_mod:trailTopRightDTR");
     this.topLeftDTL = iconRegister.registerIcon("Nanotech_mod:trailTopLeftDTL");
     this.rightBottomDBR = iconRegister.registerIcon("Nanotech_mod:trailRightBottomDBR");
@@ -385,6 +389,7 @@ public class BlockTrail extends BlockContainer
     this.allDBRBLTL = iconRegister.registerIcon("Nanotech_mod:trailAllDBRBLTL");
     this.allDBLTLTR = iconRegister.registerIcon("Nanotech_mod:trailAllDBLTLTR");
     this.allDTLTRBLBR = iconRegister.registerIcon("Nanotech_mod:trailAllDTLTRBLBR");
-    this.blockIcon = iconRegister.registerIcon("Nanotech_mod:empty");
+    this.empty = iconRegister.registerIcon("Nanotech_mod:empty");
+    this.nothing = iconRegister.registerIcon("Nanotech_mod:trailNothing");
   }
 }

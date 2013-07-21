@@ -35,6 +35,7 @@ tile.sodium.name = Block of Sodium
 tile.mossystone.name = Mossy Stone
 tile.spotlight.name = SpotLight
 tile.theDeathHead.name = The Death Head
+tile.blockTrail.name = BlockTrail
 
 #Items
 item.siliconore.name = Silicon Ore
@@ -72,6 +73,7 @@ item.mysteriousLeggings.name = Mysterious Leggings
 item.mysteriousBoots.name = Mysterious Boots
 item.edibleFlesh.name = Edible Flesh
 item.rottenChunk.name = Chunk of Rotten flesh
+item.itemTrail.name = Trail
 
 #Entity
 entity.SuperZombie.name = Super Zombie
