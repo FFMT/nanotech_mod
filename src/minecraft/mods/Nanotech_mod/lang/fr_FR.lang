@@ -35,6 +35,7 @@ tile.sodium.name = Bloc de sodium
 tile.mossystone.name = Roche moussue
 tile.spotlight.name = Projecteur
 tile.theDeathHead.name = Tête de la Mort
+tile.blockTrail.name = Faux
 
 #Items
 item.siliconore.name = Minerai de silicium
@@ -73,7 +74,7 @@ item.mysteriousBoots.name = Bottes mystérieuses
 item.edibleFlesh.name = Chaire commestible
 item.rottenChunk.name = Gros morceau de chaire putréfié
 item.itemTrail.name = Chemin
-tile.blockTrail.name = BlockTrail
+item.scythe.name = Scythe
 
 #Entity
 entity.SuperZombie.name = Super Zombie
