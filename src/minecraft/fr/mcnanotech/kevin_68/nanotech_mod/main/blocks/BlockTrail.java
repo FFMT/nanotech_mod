@@ -2,15 +2,23 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockSpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockTrail;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.render.TileEntityBlockTrailRender;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockGlass;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
+import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 
-public class BlockTrail extends Block
-{
+public class BlockTrail extends BlockContainer
+{	
   Icon top;
   Icon left;
   Icon bottom;
@@ -64,6 +72,62 @@ public class BlockTrail extends Block
     super(par1, par2Material);
   }
 
+  public TileEntity createNewTileEntity(World par1World)
+  {
+		return new 	TileEntityBlockTrail();
+  }
+  
+  @Override
+  public int getRenderType() 
+  {
+          return 0;
+  }
+ 
+  @Override
+  public boolean isOpaqueCube() 
+  {
+          return false;
+  }
+ 
+  public boolean renderAsNormalBlock() 
+  {
+          return false;
+  }
+  
+  @SideOnly(Side.CLIENT)
+  public int getBlockColor()
+  {
+      double d0 = 0.5D;
+      double d1 = 1.0D;
+      return ColorizerGrass.getGrassColor(d0, d1);
+  }
+  
+  @SideOnly(Side.CLIENT)
+  public int getRenderColor(int par1)
+  {
+	  return this.getBlockColor();
+  }
+
+  @SideOnly(Side.CLIENT)
+  public int colorMultiplier(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
+  {
+      int l = 0;
+      int i1 = 0;
+      int j1 = 0;
+
+      for (int k1 = -1; k1 <= 1; ++k1)
+      {
+          for (int l1 = -1; l1 <= 1; ++l1)
+          {
+              int i2 = par1IBlockAccess.getBiomeGenForCoords(par2 + l1, par4 + k1).getBiomeGrassColor();
+              l += (i2 & 16711680) >> 16;
+              i1 += (i2 & 65280) >> 8;
+              j1 += i2 & 255;
+          }
+      }
+	return (l / 9 & 255) << 16 | (i1 / 9 & 255) << 8 | j1 / 9 & 255;
+  }
+  
   @SideOnly(Side.CLIENT)
   public Icon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
   {
@@ -270,7 +334,7 @@ public class BlockTrail extends Block
 		  }
 	  }
 	  
-	  return Block.dirt.getBlockTexture(blockAccess, x, y, z, side);
+	  return this.blockIcon;
   }
 
   public void registerIcons(IconRegister iconRegister)
@@ -289,7 +353,7 @@ public class BlockTrail extends Block
     this.left = iconRegister.registerIcon("Nanotech_mod:trailLeft");
     this.bottom = iconRegister.registerIcon("Nanotech_mod:trailBottom");
     this.right = iconRegister.registerIcon("Nanotech_mod:trailRight");
-    this.all = iconRegister.registerIcon("Nanotech_mod:trailAll");
+    this.all = iconRegister.registerIcon("Nanotech_mod:trailGrass");
     this.topRightDTR = iconRegister.registerIcon("Nanotech_mod:trailTopRightDTR");
     this.topLeftDTL = iconRegister.registerIcon("Nanotech_mod:trailTopLeftDTL");
     this.rightBottomDBR = iconRegister.registerIcon("Nanotech_mod:trailRightBottomDBR");
@@ -321,5 +385,6 @@ public class BlockTrail extends Block
     this.allDBRBLTL = iconRegister.registerIcon("Nanotech_mod:trailAllDBRBLTL");
     this.allDBLTLTR = iconRegister.registerIcon("Nanotech_mod:trailAllDBLTLTR");
     this.allDTLTRBLBR = iconRegister.registerIcon("Nanotech_mod:trailAllDTLTRBLBR");
+    this.blockIcon = iconRegister.registerIcon("Nanotech_mod:empty");
   }
 }

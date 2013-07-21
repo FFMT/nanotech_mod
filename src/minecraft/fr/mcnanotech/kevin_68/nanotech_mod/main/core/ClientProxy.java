@@ -33,7 +33,9 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperSkeleton;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperZombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockSpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockTrail;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.render.TileEntityBlockSpotLightRender;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.render.TileEntityBlockTrailRender;
 
 public class ClientProxy extends CommonProxy
 {
@@ -51,5 +53,6 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(MobFlyingCreeper.class, new RenderFlyingCreeper(new ModelFlyingCreeper(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(MobCrazyGuy.class, new RenderCrazyGuy(new ModelCrazyGuy(), 0.5F));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBlockSpotLight.class, new TileEntityBlockSpotLightRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBlockTrail.class, new TileEntityBlockTrailRender());
 	}
 }

@@ -33,6 +33,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.network.GuiHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.network.PacketHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockSpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockTrail;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
@@ -322,6 +323,7 @@ public class Nanotech_mod
 		GameRegistry.registerTileEntity(TileEntitySmoker.class, "TileEntitySmoker");
 		GameRegistry.registerTileEntity(TileEntityMultiplier.class, "TileEntityMultiplier");
 		GameRegistry.registerTileEntity(TileEntityBlockSpotLight.class, "TileEntityBlockSpotLight");
+		GameRegistry.registerTileEntity(TileEntityBlockTrail.class, "TileEntityBlockTrail");
 	}
 
 	// Forge dictionary
