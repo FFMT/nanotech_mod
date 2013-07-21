@@ -1,13 +1,14 @@
-nanotech_mod
+Nanotech_mod
 ============
 
 Nanotech_mod for mcnanotech.fr<br>
-Created by kevin_68, updated by robin4002
+Created by kevin_68, updated by robin4002<br><br>
 
-Todo list:
--Fix dimension lag
--Fix dimension gen
--Add the scythe to the death model
--Add texture tu CrazyGlasses
-
+Todo list:<br>
+-Fix dimension lag<br>
+-Fix dimension gen<br>
+-Add the scythe to the death model<br>
+-Add texture tu CrazyGlasses<br>
+-Add better xp drop for trash can<br>
+<br>
 That's all for now
