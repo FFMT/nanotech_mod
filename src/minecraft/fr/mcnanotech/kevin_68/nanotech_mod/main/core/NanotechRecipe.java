@@ -121,6 +121,8 @@ public class NanotechRecipe
 		{"XXX", " X ", "XXX", 'X', Block.fenceIron});
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockConfusion, 1), new Object[]
 		{"XXX", "WCV", "XXX", 'X', Block.stone, 'W', Item.spiderEye, 'C', Item.rottenFlesh, 'V', Item.bone});
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockTheDeathHead, 1), new Object[]
+		{"SHS", "DND", "SHS", 'S', Block.slowSand, 'H', Item.skull, 'D', Item.diamond, 'N', Item.netherStar});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechBlock.BlockMossystone, 2), new Object[]
 		{Block.cobblestoneMossy, Block.stone});
 
@@ -151,6 +153,8 @@ public class NanotechRecipe
 		{"X X", " X ", "X X", 'X', Block.fenceIron});
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockConfusion, 1), new Object[]
 		{"WRV", "XYX", "WCV", 'X', Block.stone, 'W', Item.fermentedSpiderEye, 'R', Item.rottenFlesh, 'V', Item.bone, 'Y', Block.slowSand, 'C', Block.cactus});
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockTheDeathHead, 1), new Object[]
+		{"HDH", "SNS", "HDH", 'S', Block.slowSand, 'H', Item.skull, 'D', Block.blockDiamond, 'N', Item.netherStar});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechBlock.BlockMossystone, 1), new Object[]
 		{Block.cobblestoneMossy, Block.stone});
 

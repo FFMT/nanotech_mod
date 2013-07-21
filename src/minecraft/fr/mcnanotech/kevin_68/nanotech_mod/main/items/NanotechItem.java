@@ -22,11 +22,10 @@ public class NanotechItem
 			Yourmusicdisc16, Edibleflesh, Rottenchunk, Trail, scythe;
 
 	// Enum tools and armor material
-	public static EnumArmorMaterial EnumArmorMaterialMysterious = EnumHelper.addArmorMaterial("Mysterious", 50, new int[]
-	{6, 6, 6, 6}, 15);
-	public static EnumArmorMaterial EnumArmorMaterialNanomite = EnumHelper.addArmorMaterial("Nanomite", 50, new int[]
-	{6, 6, 6, 6}, 15);
+	public static EnumArmorMaterial EnumArmorMaterialMysterious = EnumHelper.addArmorMaterial("Mysterious", 50, new int[] {6, 6, 6, 6}, 15);
+	public static EnumArmorMaterial EnumArmorMaterialNanomite = EnumHelper.addArmorMaterial("Nanomite", 50, new int[] {6, 6, 6, 6}, 15);
 	public static EnumToolMaterial EnumToolMaterialNanomite = EnumHelper.addToolMaterial("Nanomite", 4, 2000, 13F, 4, 14);
+	public static EnumToolMaterial EnumToolMaterialScythe = EnumHelper.addToolMaterial("Scythe", 4, 2500, 13F, 6, 2);
 
 	// Items Initialization
 	public static void initItem()
@@ -69,7 +68,7 @@ public class NanotechItem
 		Edibleflesh = new ItemEdibleflesh(Nanotech_mod.ItemEdibleFleshID, 3, 0.6F, true).setUnlocalizedName("edibleFlesh").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		Rottenchunk = new ItemEdibleflesh(Nanotech_mod.ItemRottenChunkID, 1, 0.6F, true).setUnlocalizedName("rottenChunk").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		Trail = new ItemTrail(Nanotech_mod.ItemTrailID).setUnlocalizedName("itemTrail").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
-		scythe = new ItemScythe(Nanotech_mod.ItemScytheID).setUnlocalizedName("scythe").setFull3D().setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		scythe = new ItemScythe(Nanotech_mod.ItemScytheID, EnumToolMaterialScythe).setUnlocalizedName("scythe").setFull3D().setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 	}
 
 }
