@@ -75,6 +75,7 @@ item.edibleFlesh.name = Chaire commestible
 item.rottenChunk.name = Gros morceau de chaire putréfié
 item.itemTrail.name = Chemin
 item.scythe.name = Faux
+item.crazyGlasses.name = Lunette de fou
 
 #Entity
 entity.SuperZombie.name = Super Zombie

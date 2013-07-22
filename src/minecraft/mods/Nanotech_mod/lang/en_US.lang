@@ -75,6 +75,7 @@ item.edibleFlesh.name = Edible Flesh
 item.rottenChunk.name = Chunk of Rotten flesh
 item.itemTrail.name = Trail
 item.scythe.name = Scythe
+item.crazyGlasses.name = Crazy Glasses
 
 #Entity
 entity.SuperZombie.name = Super Zombie
