@@ -35,6 +35,4 @@ public class ItemCrazyGlasses extends ItemArmor
 	{
 		return new ItemCrazyGlassesModel();
 	}
-
-
 }
