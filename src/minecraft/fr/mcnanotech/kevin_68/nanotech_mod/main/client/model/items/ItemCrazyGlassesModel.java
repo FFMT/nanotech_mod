@@ -7,7 +7,7 @@ import net.minecraft.entity.Entity;
 
 public class ItemCrazyGlassesModel extends ModelBiped
 	{
-	 ModelRenderer Shape1;
+	 	ModelRenderer Shape1;
 	    ModelRenderer Shape2;
 	    ModelRenderer Shape3;
 	    ModelRenderer Shape4;

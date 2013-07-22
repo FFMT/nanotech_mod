@@ -1,5 +1,6 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs;
 
+import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -87,6 +88,6 @@ public class MobCrazyGuy extends EntityMob
 
 	protected int getDropItemId()
 	{
-		return Item.gunpowder.itemID;
+		return NanotechItem.crazyGlasses.itemID;
 	}
 }
