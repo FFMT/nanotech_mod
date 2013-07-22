@@ -9,6 +9,7 @@ import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.items.ItemScytheModel;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
 
 public class ItemScytheRender implements IItemRenderer
 {

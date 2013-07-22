@@ -214,6 +214,11 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 			}
 		}
 	}
+	
+	public ItemStack getHeldItem()
+	{
+		return (new ItemStack(NanotechItem.scythe));
+	}
 
 	public int deathTicks = 0;
 
