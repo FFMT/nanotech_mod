@@ -183,10 +183,11 @@ public class UltimateBoots extends ItemArmor implements IElectricItem, IMetalArm
 		return true;
 	}
 
-	public void getSubItems(int id, CreativeTabs var2, List list)
+	public void getSubItems(int id, CreativeTabs creativetab, List list)
 	{
-		ElectricItem.manager.charge(new ItemStack(this, 1), Integer.MAX_VALUE, Integer.MAX_VALUE, true, false);
-		list.add(new ItemStack(this, 1));
+		ItemStack stack = new ItemStack(this, 1);
+		ElectricItem.manager.charge(stack, Integer.MAX_VALUE, Integer.MAX_VALUE, true, false);
+		list.add(stack);
 		list.add(new ItemStack(this, 1, this.getMaxDamage()));
 	}
 
