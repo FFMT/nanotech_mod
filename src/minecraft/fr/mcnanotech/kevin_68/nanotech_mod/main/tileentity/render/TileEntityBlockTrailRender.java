@@ -1,10 +1,5 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.render;
 
-import org.lwjgl.opengl.GL11;
-
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.blocks.ModelBlockTrail;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockSpotLight;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockTrail;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
@@ -12,6 +7,11 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import org.lwjgl.opengl.GL11;
+
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.blocks.ModelBlockTrail;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockTrail;
 
 
 public class TileEntityBlockTrailRender extends TileEntitySpecialRenderer {

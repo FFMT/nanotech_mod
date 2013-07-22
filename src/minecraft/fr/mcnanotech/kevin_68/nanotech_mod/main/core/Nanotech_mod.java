@@ -30,7 +30,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.NanotechMobs;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventBonemeal;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventRenderOverlay;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventSound;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.network.GuiHandler;

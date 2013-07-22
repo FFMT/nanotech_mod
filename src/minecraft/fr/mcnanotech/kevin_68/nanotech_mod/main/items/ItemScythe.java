@@ -2,7 +2,6 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.items;
 
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.EnumToolMaterial;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 

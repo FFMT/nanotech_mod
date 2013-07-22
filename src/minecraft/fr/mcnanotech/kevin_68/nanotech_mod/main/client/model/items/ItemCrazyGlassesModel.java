@@ -1,6 +1,5 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.items;
 
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;

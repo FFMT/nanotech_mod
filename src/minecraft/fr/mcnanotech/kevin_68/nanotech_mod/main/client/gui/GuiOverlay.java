@@ -1,20 +1,17 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Random;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
+
 import org.lwjgl.opengl.GL11;
+
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
 public class GuiOverlay extends Gui

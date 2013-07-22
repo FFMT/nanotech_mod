@@ -2,7 +2,6 @@ package fr.mcnanotech.FFMT.FFMTAPI;
 
 import java.util.Random;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.world.World;
@@ -12,7 +11,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.FFMT.FFMTAPI.Interfaces.IsWorking;
 import fr.mcnanotech.FFMT.FFMTAPI.Interfaces.UnTested;
-import fr.mcnanotech.FFMT.FFMTAPI.Interfaces.UnknownTestStatus;
 
 /**
  * @authors kevin_68, elias54
