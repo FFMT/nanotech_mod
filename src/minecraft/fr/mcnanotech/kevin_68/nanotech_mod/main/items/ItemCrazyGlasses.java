@@ -39,10 +39,16 @@ public class ItemCrazyGlasses extends ItemArmor
 	{
 		return new ItemCrazyGlassesModel();
 	}
-	
+	private int tick = 40;
 	@Override
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack stack)
 	{
+		tick ++;
 		player.addPotionEffect(new PotionEffect(Potion.confusion.id, 100, 50, true));
+		if (tick > 50)
+		{
+			world.playSoundAtEntity(player, "nanotech.crazyguy", 1.0F, 1.0F);
+			tick = 0;
+		}
 	}
 }

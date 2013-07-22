@@ -25,6 +25,7 @@ public class EventSound
 			event.manager.soundPoolSounds.addSound("nanotech/monsterhurt.ogg", Nanotech_mod.class.getResource("/mods/Nanotech_mod/sounds/monsterhurt.ogg"));
 			event.manager.soundPoolSounds.addSound("nanotech/monsterdead.ogg", Nanotech_mod.class.getResource("/mods/Nanotech_mod/sounds/monsterdead.ogg"));
 			event.manager.soundPoolSounds.addSound("nanotech/fly.ogg", Nanotech_mod.class.getResource("/mods/Nanotech_mod/sounds/fly.ogg"));
+			event.manager.soundPoolSounds.addSound("nanotech/crazyguy.ogg", Nanotech_mod.class.getResource("/mods/Nanotech_mod/sounds/CrazyGuy.ogg"));
 
 			File fich = new File(Minecraft.getMinecraftDir() + "/resources/mod/streaming/nanodisk.ogg");
 			File fich2 = new File(Minecraft.getMinecraftDir() + "/resources/mod/streaming/YourSound.ogg");
