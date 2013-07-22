@@ -66,44 +66,7 @@ public class RenderTheDeath extends RenderLiving
         GL11.glColor3f(f1, f1, f1);
         super.renderEquippedItems(par1EntityLiving, par2);
         ItemStack itemstack = par1EntityLiving.getHeldItem();
-        ItemStack itemstack1 = par1EntityLiving.getCurrentArmor(3);
         float f2;
-
-        if (itemstack1 != null)
-        {
-            GL11.glPushMatrix();
-
-            IItemRenderer customRenderer = MinecraftForgeClient.getItemRenderer(itemstack1, EQUIPPED);
-            boolean is3D = (customRenderer != null && customRenderer.shouldUseRenderHelper(EQUIPPED, itemstack1, BLOCK_3D));
-
-            if (itemstack1.getItem() instanceof ItemBlock)
-            {
-                if (is3D || RenderBlocks.renderItemIn3d(Block.blocksList[itemstack1.itemID].getRenderType()))
-                {
-                    f2 = 0.625F;
-                    GL11.glTranslatef(0.0F, -0.25F, 0.0F);
-                    GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
-                    GL11.glScalef(f2, -f2, -f2);
-                }
-
-                this.renderManager.itemRenderer.renderItem(par1EntityLiving, itemstack1, 0);
-            }
-            else if (itemstack1.getItem().itemID == Item.skull.itemID)
-            {
-                f2 = 1.0625F;
-                GL11.glScalef(f2, -f2, -f2);
-                String s = "";
-
-                if (itemstack1.hasTagCompound() && itemstack1.getTagCompound().hasKey("SkullOwner"))
-                {
-                    s = itemstack1.getTagCompound().getString("SkullOwner");
-                }
-
-                TileEntitySkullRenderer.skullRenderer.func_82393_a(-0.5F, 0.0F, -0.5F, 1, 180.0F, itemstack1.getItemDamage(), s);
-            }
-
-            GL11.glPopMatrix();
-        }
 
         if (itemstack != null)
         {
@@ -124,10 +87,10 @@ public class RenderTheDeath extends RenderLiving
 
             if(itemstack.itemID == NanotechItem.scythe.itemID)
             {
-				GL11.glRotatef(40F, 0.0F, 1.0F, 0.0F);
-				GL11.glRotatef(200F, 1.0F, 0.0F, 0.0F);
-				GL11.glRotatef(0F, 0.0F, 0.0F, 1.0F);
-				GL11.glTranslatef(-0.9F, 0.2F, 0.0F);
+				GL11.glRotatef(120F, 0.0F, 1.0F, 0.0F);
+				GL11.glRotatef(160F, 1.0F, 0.0F, 0.0F);
+				GL11.glRotatef(-15F, 0.0F, 0.0F, 1.0F);
+				GL11.glTranslatef(0.5F, 1.0F, 1.3F);
             }
             else if (Item.itemsList[itemstack.itemID].isFull3D())
             {
