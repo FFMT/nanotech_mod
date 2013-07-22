@@ -47,7 +47,7 @@ public class GuiOverlay extends Gui
 			GL11.glDisable(GL11.GL_DEPTH_TEST);
 			GL11.glDepthMask(false);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-			this.mc.renderEngine.bindTexture("/mods/Nanotech_mod/textures/armor/test.png");
+			this.mc.renderEngine.bindTexture("/mods/Nanotech_mod/textures/armor/crazyGlassesOverlay.png");
 			Tessellator tessellator = Tessellator.instance;
 			tessellator.startDrawingQuads();
 			tessellator.addVertexWithUV(0.0D, (double)l, -90.0D, 0.0D, 1.0D);
