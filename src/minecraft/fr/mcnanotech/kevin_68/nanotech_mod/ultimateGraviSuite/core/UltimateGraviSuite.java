@@ -48,10 +48,8 @@ public class UltimateGraviSuite
 {
 	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.ClientProxy", serverSide = "fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.ServerProxy")
 	public static ServerProxy proxy;
+	// Keyboard
 	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.keyboard.KeyboardClient", serverSide = "fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.keyboard.Keyboard")
-	/**
-	 * Keyboard
-	 */
 	public static Keyboard keyboard;
 
 	// Items
@@ -81,7 +79,6 @@ public class UltimateGraviSuite
 	public static ServerTickHandler serverTickHandler;
 
 	// Other
-	public static final Side side = FMLCommonHandler.instance().getEffectiveSide();
 	public static Random random = new Random();
 
 	// Instance
