@@ -28,6 +28,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechAchievement;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntityTheDeathBall;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
@@ -214,7 +215,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 			}
 		}
 	}
-	
+
 	public ItemStack getHeldItem()
 	{
 		return (new ItemStack(NanotechItem.scythe));
@@ -273,6 +274,23 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 			this.worldObj.newExplosion(this, this.posX, this.posY, this.posZ, 7.0F, false, this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"));
 			this.setDead();
 		}
+	}
+
+	public void onDeath(DamageSource par1DamageSource)
+	{
+		Entity entity = par1DamageSource.getEntity();
+
+		if (entity != null && entity instanceof EntityPlayer)
+		{
+			((EntityPlayer) entity).triggerAchievement(NanotechAchievement.killTheDeath);
+			
+			if (((EntityPlayer)entity).inventory.armorItemInSlot(3).itemID == NanotechItem.crazyGlasses.itemID)
+			{
+				((EntityPlayer)entity).triggerAchievement(NanotechAchievement.killTheDeathWithCG);
+			}
+		}
+
+		super.onDeath(par1DamageSource);
 	}
 
 	protected void updateAITasks()

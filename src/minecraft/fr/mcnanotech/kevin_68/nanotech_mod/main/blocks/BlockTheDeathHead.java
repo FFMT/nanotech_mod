@@ -4,12 +4,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechAchievement;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
 
 public class BlockTheDeathHead extends Block
@@ -20,6 +22,7 @@ public class BlockTheDeathHead extends Block
 	private Icon back;
 	private Icon face;
 	private Icon bottom;
+	private EntityPlayer player;
 
 	public BlockTheDeathHead(int id)
 	{
@@ -139,12 +142,6 @@ public class BlockTheDeathHead extends Block
 				world.spawnEntityInWorld(mobTheDeath);
 			}
 		}
-	}
-
-	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving, ItemStack par6ItemStack)
-	{
-		int l = MathHelper.floor_double((double)(par5EntityLiving.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
-		par1World.setBlockMetadataWithNotify(par2, par3, par4, l, 2);
 	}
 
 	@SideOnly(Side.CLIENT)

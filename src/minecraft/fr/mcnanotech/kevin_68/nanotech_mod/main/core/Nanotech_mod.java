@@ -29,6 +29,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiOverlay;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.NanotechMobs;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.event.CraftingHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventBonemeal;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventSound;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.PlayerTracker;
@@ -129,6 +130,7 @@ public class Nanotech_mod
 
 	//Player Tracker
 	public static PlayerTracker playerTracker = new PlayerTracker();
+	public static CraftingHandler craftingHandler = new CraftingHandler();
 	
 	@PreInit
 	public void PreInitNanotech_mod(FMLPreInitializationEvent event)
@@ -275,6 +277,7 @@ public class Nanotech_mod
 		this.other();
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
 		GameRegistry.registerPlayerTracker(playerTracker);
+		GameRegistry.registerCraftingHandler(craftingHandler);
 	}
 
 	@PostInit
