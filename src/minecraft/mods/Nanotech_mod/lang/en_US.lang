@@ -94,5 +94,9 @@ info.void.1 = Item for empty barrel
 info.void.2 = 100 % cobblestone
 info.void.3 = 100 % recyclable
 
+#Achievement
+achievement.installMod = Install Nanotech_mod
+
+#CreativeTab
 itemGroup.NanotechModBlocks = Nanotech mod Blocks
 itemGroup.NanotechModItems = Nanotech mod Items

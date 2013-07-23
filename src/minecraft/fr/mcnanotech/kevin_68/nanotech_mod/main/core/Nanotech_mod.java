@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
+import net.minecraft.stats.Achievement;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
@@ -30,6 +31,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.NanotechMobs;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventBonemeal;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventSound;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.event.PlayerTracker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.network.GuiHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.network.PacketHandler;
@@ -125,8 +127,9 @@ public class Nanotech_mod
 	// log
 	public static Logger NanoLog;
 
-	protected TileEntityBlockSpotLight tileSpotLight;
-
+	//Player Tracker
+	public static PlayerTracker playerTracker = new PlayerTracker();
+	
 	@PreInit
 	public void PreInitNanotech_mod(FMLPreInitializationEvent event)
 	{
@@ -251,6 +254,7 @@ public class Nanotech_mod
 		NanotechBlock.initBlock();
 		NanotechBlock.blockRegistry();
 		NanotechItem.initItem();
+		NanotechAchievement.initAchievement();
 	}
 
 	// Initialization
@@ -270,6 +274,7 @@ public class Nanotech_mod
 		this.forgeDictionary();
 		this.other();
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
+		GameRegistry.registerPlayerTracker(playerTracker);
 	}
 
 	@PostInit
@@ -321,5 +326,4 @@ public class Nanotech_mod
 		MinecraftForge.setBlockHarvestLevel(NanotechBlock.BlockGrass, "shovel", 2);
 		MinecraftForge.setBlockHarvestLevel(NanotechBlock.Blocknotfalling, "shovel", 2);
 	}
-
 }
