@@ -284,7 +284,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		{
 			((EntityPlayer) entity).triggerAchievement(NanotechAchievement.killTheDeath);
 			
-			if (((EntityPlayer)entity).inventory.armorItemInSlot(3).itemID == NanotechItem.crazyGlasses.itemID)
+			if (((EntityPlayer)entity).inventory.armorItemInSlot(3) != null && ((EntityPlayer)entity).inventory.armorItemInSlot(3) == new ItemStack(NanotechItem.crazyGlasses))
 			{
 				((EntityPlayer)entity).triggerAchievement(NanotechAchievement.killTheDeathWithCG);
 			}
