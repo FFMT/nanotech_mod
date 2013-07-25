@@ -1,5 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.items;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
@@ -35,11 +37,14 @@ public class ItemCrazyGlasses extends ItemArmor
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLiving entityliving, ItemStack stack, int armor)
 	{
 		return new ItemCrazyGlassesModel();
 	}
+	
 	private int tick = 40;
+	
 	@Override
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack stack)
 	{

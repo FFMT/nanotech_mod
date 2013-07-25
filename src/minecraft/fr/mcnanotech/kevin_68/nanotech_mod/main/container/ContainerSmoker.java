@@ -7,21 +7,21 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
+import net.minecraft.tileentity.TileEntityBeacon;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 
 public class ContainerSmoker extends Container
 {
 	public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
-	public IInventory craftResult = new InventoryCraftResult();
 
-	protected TileEntitySmoker tileentity;
+	protected TileEntitySmoker smoker;
 	private World worldObj;
 
 	public ContainerSmoker(TileEntitySmoker tileentity, InventoryPlayer playerinventory, World world)
 	{
 		this.worldObj = world;
-		this.tileentity = tileentity;
+		this.smoker = tileentity;
 
 		bindPlayerInventory(playerinventory);
 	}
@@ -29,7 +29,7 @@ public class ContainerSmoker extends Container
 	@Override
 	public boolean canInteractWith(EntityPlayer player)
 	{
-		return tileentity.isUseableByPlayer(player);
+		return smoker.isUseableByPlayer(player);
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer player_inventory)
@@ -50,5 +50,10 @@ public class ContainerSmoker extends Container
 		}
 
 		this.onCraftMatrixChanged(this.craftMatrix);
+	}
+
+	public TileEntitySmoker getSmoker()
+	{
+		return this.smoker;
 	}
 }

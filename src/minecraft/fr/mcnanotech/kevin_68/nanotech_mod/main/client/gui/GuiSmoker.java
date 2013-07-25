@@ -1,8 +1,12 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
@@ -13,7 +17,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 
 public class GuiSmoker extends GuiContainer
 {
-	protected TileEntitySmoker tilesmoker;
+	private TileEntitySmoker tilesmoker;
 
 	public GuiSmoker(InventoryPlayer playerinventory, TileEntitySmoker tileentity, World world)
 	{
@@ -35,11 +39,40 @@ public class GuiSmoker extends GuiContainer
 	{
 		if(guibutton.id == 1)
 		{
-			tilesmoker.addSmokeInt();
+			if(this.tilesmoker.getSmokeValue() < 15)
+			{
+				ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
+				DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
+
+				try
+				{
+					dataoutputstream.writeInt(this.tilesmoker.getSmokeValue() + 1);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|smoker", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
+			}
 		}
+
 		if(guibutton.id == 2)
 		{
-			tilesmoker.dimSmokeInt();
+			if(this.tilesmoker.getSmokeValue() > 0)
+			{
+				ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
+				DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
+
+				try
+				{
+					dataoutputstream.writeInt(this.tilesmoker.getSmokeValue() - 1);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|smoker", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
+			}
 		}
 	}
 

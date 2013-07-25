@@ -1,9 +1,12 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiOverlay;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelCrazyGuy;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelCreeperForreur;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelFly;
@@ -59,5 +62,11 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBlockSpotLight.class, new TileEntityBlockSpotLightRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBlockTrail.class, new TileEntityBlockTrailRender());
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.scythe.itemID, (IItemRenderer)new ItemScytheRender());
+	}
+	
+	@Override
+	public void registerOverlay()
+	{
+		MinecraftForge.EVENT_BUS.register(new GuiOverlay(Minecraft.getMinecraft()));
 	}
 }

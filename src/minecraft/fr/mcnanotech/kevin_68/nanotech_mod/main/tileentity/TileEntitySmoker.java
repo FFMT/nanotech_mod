@@ -2,6 +2,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
@@ -33,17 +34,15 @@ public class TileEntitySmoker extends TileEntity
 		this.writeToNBT(nbttagcompound);
 		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4, nbttagcompound);
 	}
+	
+    public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
+    {
+        this.readFromNBT(pkt.customParam1);
+    }
 
-	public void addSmokeInt()
+	public void setSmokeInt(int newValue)
 	{
-		if(Smokepower < 15)
-			Smokepower++;
-	}
-
-	public void dimSmokeInt()
-	{
-		if(Smokepower > 0)
-			Smokepower--;
+		Smokepower = newValue;
 	}
 
 	public int getSmokeValue()

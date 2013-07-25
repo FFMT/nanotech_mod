@@ -47,7 +47,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGeneration;
 
 @Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "2.0.3")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"nanotechmod"}, packetHandler = PacketHandler.class)
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTM|smoker"}, packetHandler = PacketHandler.class)
 public class Nanotech_mod
 {
 	// Instance
@@ -127,10 +127,6 @@ public class Nanotech_mod
 
 	// log
 	public static Logger NanoLog;
-
-	//Player Tracker
-	public static PlayerTracker playerTracker = new PlayerTracker();
-	public static CraftingHandler craftingHandler = new CraftingHandler();
 	
 	@PreInit
 	public void PreInitNanotech_mod(FMLPreInitializationEvent event)
@@ -276,13 +272,16 @@ public class Nanotech_mod
 		this.forgeDictionary();
 		this.other();
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
-		GameRegistry.registerPlayerTracker(playerTracker);
-		GameRegistry.registerCraftingHandler(craftingHandler);
+		
+		GameRegistry.registerPlayerTracker(new PlayerTracker());
+		GameRegistry.registerCraftingHandler(new CraftingHandler());
 	}
 
 	@PostInit
 	public void PostInitNanotech_mod(FMLPostInitializationEvent event)
 	{
+		proxy.registerOverlay();
+		
 		NanotechRecipe.InitCommonRecipes();
 		if(HardRecipe)
 		{
@@ -298,7 +297,6 @@ public class Nanotech_mod
 		// Localization
 		LanguageRegistry.instance().loadLocalization("/mods/Nanotech_mod/lang/en_US.lang", "en_US", false);
 		LanguageRegistry.instance().loadLocalization("/mods/Nanotech_mod/lang/fr_FR.lang", "fr_FR", false);
-		MinecraftForge.EVENT_BUS.register(new GuiOverlay(Minecraft.getMinecraft()));
 	}
 
 	// Gui and TileEntity
