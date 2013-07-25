@@ -9,20 +9,20 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 
 public class ContainerJumper extends Container
 {
-	protected TileEntityJumper tile_entity;
+	protected TileEntityJumper tileJumper;
 	private World worldObj;
 
-	public ContainerJumper(TileEntityJumper tile_entity, InventoryPlayer playerinventory, World world)
+	public ContainerJumper(TileEntityJumper tileEntity, InventoryPlayer playerinventory, World world)
 	{
 		this.worldObj = world;
-		this.tile_entity = tile_entity;
+		tileJumper = tileEntity;
 		bindPlayerInventory(playerinventory);
 	}
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player)
 	{
-		return tile_entity.isUseableByPlayer(player);
+		return tileJumper.isUseableByPlayer(player);
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer)
@@ -39,5 +39,10 @@ public class ContainerJumper extends Container
 		{
 			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
 		}
+	}
+	
+	public TileEntityJumper getJumper()
+	{
+		return tileJumper;
 	}
 }

@@ -4,17 +4,14 @@ import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.inventory.ContainerBeacon;
-import net.minecraft.inventory.Slot;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
-import net.minecraft.tileentity.TileEntityBeacon;
 import cpw.mods.fml.common.network.IPacketHandler;
-import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 
 public class PacketHandler implements IPacketHandler
@@ -26,15 +23,18 @@ public class PacketHandler implements IPacketHandler
 
 		if(packet.channel.equals("NTM|smoker"))
 		{
-			handleSmoker(packet, playerSender);
+			handleSmokerPacket(packet, playerSender);
 		}
-
+		
+		if(packet.channel.equals("NTM|jumper"))
+		{
+			handleJumperPacket(packet, playerSender);
+		}
 	}
 
-	private void handleSmoker(Packet250CustomPayload packet, EntityPlayer player)
+	private void handleSmokerPacket(Packet250CustomPayload packet, EntityPlayer player)
 	{
 		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
-
 		int smokePower;
 		try
 		{
@@ -48,8 +48,29 @@ public class PacketHandler implements IPacketHandler
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
+			Nanotech_mod.NanoLog.severe("Failed to handle smoker packet");
 		}
-
+	}
+	
+	private void handleJumperPacket(Packet250CustomPayload packet, EntityPlayer player)
+	{
+		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
+		int jumpHeith;
+		try
+		{
+			data = new DataInputStream(new ByteArrayInputStream(packet.data));
+			jumpHeith = data.readInt();
+			ContainerJumper containerJumper = (ContainerJumper)player.openContainer;
+			TileEntityJumper tileJumper = containerJumper.getJumper();
+			tileJumper.setJumpHeight(jumpHeith);
+			player.worldObj.markBlockForUpdate(tileJumper.xCoord, tileJumper.yCoord, tileJumper.zCoord);
+		}
+		catch(Exception exception)
+		{
+			exception.printStackTrace();
+			Nanotech_mod.NanoLog.severe("Failed to handle jumper packet");
+		}
+		
 	}
 
 }

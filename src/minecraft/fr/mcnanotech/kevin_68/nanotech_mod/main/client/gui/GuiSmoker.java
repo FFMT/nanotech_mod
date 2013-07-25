@@ -17,12 +17,12 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 
 public class GuiSmoker extends GuiContainer
 {
-	private TileEntitySmoker tilesmoker;
+	private TileEntitySmoker tileSmoker;
 
 	public GuiSmoker(InventoryPlayer playerinventory, TileEntitySmoker tileentity, World world)
 	{
 		super(new ContainerSmoker(tileentity, playerinventory, world));
-		tilesmoker = tileentity;
+		tileSmoker = tileentity;
 	}
 
 	@Override
@@ -39,14 +39,14 @@ public class GuiSmoker extends GuiContainer
 	{
 		if(guibutton.id == 1)
 		{
-			if(this.tilesmoker.getSmokeValue() < 15)
+			if(tileSmoker.getSmokeValue() < 15)
 			{
 				ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
 				DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
 
 				try
 				{
-					dataoutputstream.writeInt(this.tilesmoker.getSmokeValue() + 1);
+					dataoutputstream.writeInt(tileSmoker.getSmokeValue() + 1);
 					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|smoker", bytearrayoutputstream.toByteArray()));
 				}
 				catch(Exception exception)
@@ -56,16 +56,16 @@ public class GuiSmoker extends GuiContainer
 			}
 		}
 
-		if(guibutton.id == 2)
+		else if(guibutton.id == 2)
 		{
-			if(this.tilesmoker.getSmokeValue() > 0)
+			if(tileSmoker.getSmokeValue() > 0)
 			{
 				ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
 				DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
 
 				try
 				{
-					dataoutputstream.writeInt(this.tilesmoker.getSmokeValue() - 1);
+					dataoutputstream.writeInt(tileSmoker.getSmokeValue() - 1);
 					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|smoker", bytearrayoutputstream.toByteArray()));
 				}
 				catch(Exception exception)
@@ -83,7 +83,7 @@ public class GuiSmoker extends GuiContainer
 		int y = (height - ySize) / 2;
 		fontRenderer.drawString("Smoke Block", 6, 6, 4210752);
 		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 6, ySize - 96 + 2, 4210752);
-		fontRenderer.drawString(String.valueOf(tilesmoker.Smokepower), x, y, 4210752);
+		fontRenderer.drawString(String.valueOf(tileSmoker.Smokepower), x, y, 4210752);
 	}
 
 	@Override

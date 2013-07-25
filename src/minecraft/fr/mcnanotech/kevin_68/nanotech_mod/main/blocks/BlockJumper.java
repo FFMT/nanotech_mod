@@ -17,6 +17,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 
 public class BlockJumper extends BlockContainer
 {
@@ -74,7 +75,8 @@ public class BlockJumper extends BlockContainer
 
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		entity.motionY += TileEntityJumper.jumpheight;
+		TileEntityJumper tileJumper = (TileEntityJumper)world.getBlockTileEntity(x, y, z);
+		entity.motionY += tileJumper.getJumpHeightValue();
 		if(world.getBlockMetadata(x, y, z) == 1)
 		{
 			entity.fallDistance = 0.0F;

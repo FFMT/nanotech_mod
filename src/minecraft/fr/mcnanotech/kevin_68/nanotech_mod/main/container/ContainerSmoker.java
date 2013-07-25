@@ -13,8 +13,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 
 public class ContainerSmoker extends Container
 {
-	public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
-
 	protected TileEntitySmoker smoker;
 	private World worldObj;
 
@@ -22,7 +20,6 @@ public class ContainerSmoker extends Container
 	{
 		this.worldObj = world;
 		this.smoker = tileentity;
-
 		bindPlayerInventory(playerinventory);
 	}
 
@@ -48,12 +45,10 @@ public class ContainerSmoker extends Container
 		{
 			this.addSlotToContainer(new Slot(player_inventory, var6, 8 + var6 * 18, 142));
 		}
-
-		this.onCraftMatrixChanged(this.craftMatrix);
 	}
 
 	public TileEntitySmoker getSmoker()
 	{
-		return this.smoker;
+		return smoker;
 	}
 }
