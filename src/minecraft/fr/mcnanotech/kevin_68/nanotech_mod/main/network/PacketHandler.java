@@ -8,13 +8,13 @@ import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerBlockSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSmoker;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySpotLight;
 
 public class PacketHandler implements IPacketHandler
 {
@@ -89,8 +89,8 @@ public class PacketHandler implements IPacketHandler
 			data = new DataInputStream(new ByteArrayInputStream(packet.data));
 			type = data.readInt();
 			color = data.readInt();
-			ContainerBlockSpotLight containerSpotLight = (ContainerBlockSpotLight)player.openContainer;
-			TileEntityBlockSpotLight tileSpotLight = containerSpotLight.getSpotLight();
+			ContainerSpotLight containerSpotLight = (ContainerSpotLight)player.openContainer;
+			TileEntitySpotLight tileSpotLight = containerSpotLight.getSpotLight();
 			switch(type)
 			{
 				case 0: tileSpotLight.setRedValue(color);

@@ -3,16 +3,14 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockSpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySpotLight;
 
 public class BlockSpotLight extends BlockContainer
 {
@@ -26,7 +24,7 @@ public class BlockSpotLight extends BlockContainer
 
 	public TileEntity createNewTileEntity(World par1World)
 	{
-		return new TileEntityBlockSpotLight();
+		return new TileEntitySpotLight();
 	}
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)

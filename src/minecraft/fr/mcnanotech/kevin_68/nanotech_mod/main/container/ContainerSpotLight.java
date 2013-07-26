@@ -5,14 +5,14 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockSpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySpotLight;
 
-public class ContainerBlockSpotLight extends Container
+public class ContainerSpotLight extends Container
 {
-	protected TileEntityBlockSpotLight tileSpotLight;
+	protected TileEntitySpotLight tileSpotLight;
 	private World worldObj;
 
-	public ContainerBlockSpotLight(TileEntityBlockSpotLight tileEntity, InventoryPlayer inventoryPlayer, World world)
+	public ContainerSpotLight(TileEntitySpotLight tileEntity, InventoryPlayer inventoryPlayer, World world)
 	{
 		this.worldObj = world;
 		this.tileSpotLight = tileEntity;
@@ -34,7 +34,7 @@ public class ContainerBlockSpotLight extends Container
 		}
 	}
 
-	public TileEntityBlockSpotLight getSpotLight()
+	public TileEntitySpotLight getSpotLight()
 	{
 		return tileSpotLight;
 	}

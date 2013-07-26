@@ -10,7 +10,7 @@ import net.minecraft.util.AxisAlignedBB;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class TileEntityBlockSpotLight extends TileEntity
+public class TileEntitySpotLight extends TileEntity
 {
 	@SideOnly(Side.CLIENT)
 	private long field_82137_b;

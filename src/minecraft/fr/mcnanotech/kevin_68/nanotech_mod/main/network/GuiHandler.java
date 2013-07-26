@@ -4,18 +4,18 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiBlockSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiSmoker;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerBlockSpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSmoker;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockSpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySpotLight;
 
 public class GuiHandler implements IGuiHandler
 {
@@ -35,9 +35,9 @@ public class GuiHandler implements IGuiHandler
 		{
 			return new ContainerMultiplier((TileEntityMultiplier)tileentity, player.inventory, world);
 		}
-		if(tileentity instanceof TileEntityBlockSpotLight)
+		if(tileentity instanceof TileEntitySpotLight)
 		{
-			return new ContainerBlockSpotLight((TileEntityBlockSpotLight)tileentity, player.inventory, world);
+			return new ContainerSpotLight((TileEntitySpotLight)tileentity, player.inventory, world);
 		}
 
 		return null;
@@ -60,9 +60,9 @@ public class GuiHandler implements IGuiHandler
 		{
 			return new GuiMultiplier(player.inventory, (TileEntityMultiplier)tileentity, world);
 		}
-		if(tileentity instanceof TileEntityBlockSpotLight)
+		if(tileentity instanceof TileEntitySpotLight)
 		{
-			return new GuiBlockSpotLight(player.inventory, (TileEntityBlockSpotLight)tileentity, world);
+			return new GuiSpotLight(player.inventory, (TileEntitySpotLight)tileentity, world);
 		}
 
 		return null;

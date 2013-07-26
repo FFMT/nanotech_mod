@@ -12,17 +12,17 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.FFMT.FFMTAPI.FFMTColor;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerBlockSpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockSpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySpotLight;
 
-public class GuiBlockSpotLight extends GuiContainer
+public class GuiSpotLight extends GuiContainer
 {
-	protected TileEntityBlockSpotLight tileSpotLight;
+	protected TileEntitySpotLight tileSpotLight;
 
-	public GuiBlockSpotLight(InventoryPlayer playerInventory, TileEntityBlockSpotLight tileEntity, World world)
+	public GuiSpotLight(InventoryPlayer playerInventory, TileEntitySpotLight tileEntity, World world)
 	{
-		super(new ContainerBlockSpotLight(tileEntity, playerInventory, world));
+		super(new ContainerSpotLight(tileEntity, playerInventory, world));
 		tileSpotLight = tileEntity;
 	}
 

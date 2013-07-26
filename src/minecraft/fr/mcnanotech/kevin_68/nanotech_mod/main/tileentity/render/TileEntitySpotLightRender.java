@@ -9,13 +9,13 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockSpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySpotLight;
 
 @SideOnly(Side.CLIENT)
-public class TileEntityBlockSpotLightRender extends TileEntitySpecialRenderer
+public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 {
 
-	public void renderTileEntityBlockTestAt(TileEntityBlockSpotLight tileEntityBlockSpotLight, double par2, double par4, double par6, float par8)
+	public void renderTileEntitySpotLightAt(TileEntitySpotLight tileEntityBlockSpotLight, double par2, double par4, double par6, float par8)
 	{
 		float f1 = tileEntityBlockSpotLight.func_82125_v_();
 
@@ -126,6 +126,6 @@ public class TileEntityBlockSpotLightRender extends TileEntitySpecialRenderer
 
 	public void renderTileEntityAt(TileEntity par1TileEntity, double par2, double par4, double par6, float par8)
 	{
-		this.renderTileEntityBlockTestAt((TileEntityBlockSpotLight)par1TileEntity, par2, par4, par6, par8);
+		this.renderTileEntitySpotLightAt((TileEntitySpotLight)par1TileEntity, par2, par4, par6, par8);
 	}
 }
