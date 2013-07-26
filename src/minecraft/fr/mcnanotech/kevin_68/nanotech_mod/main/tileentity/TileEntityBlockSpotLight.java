@@ -2,6 +2,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
@@ -91,26 +92,26 @@ public class TileEntityBlockSpotLight extends TileEntity
 		return 65536.0D;
 	}
 
-	public void writeToNBT(NBTTagCompound par1NBTTagCompound)
+	public void writeToNBT(NBTTagCompound nbtTagCompound)
 	{
-		super.writeToNBT(par1NBTTagCompound);
-		par1NBTTagCompound.setInteger("SpotLightRed", red);
-		par1NBTTagCompound.setInteger("SpotLightGreen", green);
-		par1NBTTagCompound.setInteger("SpotLightBlue", blue);
-		par1NBTTagCompound.setInteger("SpotLightDarkRed", darkRed);
-		par1NBTTagCompound.setInteger("SpotLightDarkGreen", darkGreen);
-		par1NBTTagCompound.setInteger("SpotLightDarkBlue", darkBlue);
+		super.writeToNBT(nbtTagCompound);
+		nbtTagCompound.setInteger("SpotLightRed", red);
+		nbtTagCompound.setInteger("SpotLightGreen", green);
+		nbtTagCompound.setInteger("SpotLightBlue", blue);
+		nbtTagCompound.setInteger("SpotLightDarkRed", darkRed);
+		nbtTagCompound.setInteger("SpotLightDarkGreen", darkGreen);
+		nbtTagCompound.setInteger("SpotLightDarkBlue", darkBlue);
 	}
 
-	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
+	public void readFromNBT(NBTTagCompound nbtTagCompound)
 	{
-		super.readFromNBT(par1NBTTagCompound);
-		red = par1NBTTagCompound.getInteger("SpotLightRed");
-		green = par1NBTTagCompound.getInteger("SpotLightGreen");
-		blue = par1NBTTagCompound.getInteger("SpotLightBlue");
-		darkRed = par1NBTTagCompound.getInteger("SpotLightDarkRed");
-		darkGreen = par1NBTTagCompound.getInteger("SpotLightDarkGreen");
-		darkBlue = par1NBTTagCompound.getInteger("SpotLightDarkBlue");
+		super.readFromNBT(nbtTagCompound);
+		red = nbtTagCompound.getInteger("SpotLightRed");
+		green = nbtTagCompound.getInteger("SpotLightGreen");
+		blue = nbtTagCompound.getInteger("SpotLightBlue");
+		darkRed = nbtTagCompound.getInteger("SpotLightDarkRed");
+		darkGreen = nbtTagCompound.getInteger("SpotLightDarkGreen");
+		darkBlue = nbtTagCompound.getInteger("SpotLightDarkBlue");
 	}
 
 	public Packet getDescriptionPacket()
@@ -119,36 +120,11 @@ public class TileEntityBlockSpotLight extends TileEntity
 		this.writeToNBT(nbttagcompound);
 		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4, nbttagcompound);
 	}
-
-	public void addRedValue(int i)
-	{
-		this.red += i;
-	}
-
-	public void addGreenValue(int i)
-	{
-		this.green += i;
-	}
-
-	public void addBlueValue(int i)
-	{
-		this.blue += i;
-	}
-
-	public void addDarkRedValue(int i)
-	{
-		this.darkRed += i;
-	}
-
-	public void addDarkGreenValue(int i)
-	{
-		this.darkGreen += i;
-	}
-
-	public void addDarkBlueValue(int i)
-	{
-		this.darkBlue += i;
-	}
+	
+    public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
+    {
+        this.readFromNBT(pkt.customParam1);
+    }
 
 	public int setRedValue(int i)
 	{
@@ -208,31 +184,6 @@ public class TileEntityBlockSpotLight extends TileEntity
 	public int getDarkBlueValue()
 	{
 		return this.darkBlue;
-	}
-
-	public int getSizeInventory()
-	{
-		return 0;
-	}
-
-	public String getInvName()
-	{
-		return this.isInvNameLocalized() ? this.field_94048_i : "container.blocktest";
-	}
-
-	public boolean isInvNameLocalized()
-	{
-		return this.field_94048_i != null && this.field_94048_i.length() > 0;
-	}
-
-	public void func_94047_a(String par1Str)
-	{
-		this.field_94048_i = par1Str;
-	}
-
-	public int getInventoryStackLimit()
-	{
-		return 0;
 	}
 
 	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)

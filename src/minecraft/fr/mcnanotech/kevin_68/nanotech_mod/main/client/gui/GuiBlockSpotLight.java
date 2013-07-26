@@ -1,8 +1,12 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
@@ -15,10 +19,10 @@ public class GuiBlockSpotLight extends GuiContainer
 {
 	protected TileEntityBlockSpotLight tileSpotLight;
 
-	public GuiBlockSpotLight(InventoryPlayer player_inventory, TileEntityBlockSpotLight tile_entity, World world)
+	public GuiBlockSpotLight(InventoryPlayer playerInventory, TileEntityBlockSpotLight tileEntity, World world)
 	{
-		super(new ContainerBlockSpotLight(tile_entity, player_inventory, world));
-		tileSpotLight = tile_entity;
+		super(new ContainerBlockSpotLight(tileEntity, playerInventory, world));
+		tileSpotLight = tileEntity;
 	}
 
 	@Override
@@ -73,62 +77,157 @@ public class GuiBlockSpotLight extends GuiContainer
 
 	protected void actionPerformed(GuiButton guibutton)
 	{
+		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
+		DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
+		// Type : 0 = red, 2 = green, 3 = blue
 		if(guibutton.id == 0)
 		{
 			if(tileSpotLight.getRedValue() > 0)
 			{
-				tileSpotLight.addRedValue(-1);
+				try
+				{
+					dataoutputstream.writeInt(0);
+					dataoutputstream.writeInt(tileSpotLight.getRedValue() - 1);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 1)
 		{
+			
 			if(tileSpotLight.getRedValue() > 10)
 			{
-				tileSpotLight.addRedValue(-10);
+				try
+				{
+					dataoutputstream.writeInt(0);
+					dataoutputstream.writeInt(tileSpotLight.getRedValue() - 10);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setRedValue(0);
+				try
+				{
+					dataoutputstream.writeInt(0);
+					dataoutputstream.writeInt(0);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 2)
 		{
+			
 			if(tileSpotLight.getRedValue() > 100)
 			{
-				tileSpotLight.addRedValue(-100);
+				try
+				{
+					dataoutputstream.writeInt(0);
+					dataoutputstream.writeInt(tileSpotLight.getRedValue() - 100);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setRedValue(0);
+				try
+				{
+					dataoutputstream.writeInt(0);
+					dataoutputstream.writeInt(0);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 3)
 		{
 			if(tileSpotLight.getRedValue() < 255)
 			{
-				tileSpotLight.addRedValue(1);
+				try
+				{
+					dataoutputstream.writeInt(0);
+					dataoutputstream.writeInt(tileSpotLight.getRedValue() + 1);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 4)
 		{
 			if(tileSpotLight.getRedValue() < 245)
 			{
-				tileSpotLight.addRedValue(10);
+				try
+				{
+					dataoutputstream.writeInt(0);
+					dataoutputstream.writeInt(tileSpotLight.getRedValue() + 10);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setRedValue(255);
+				try
+				{
+					dataoutputstream.writeInt(0);
+					dataoutputstream.writeInt(255);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 5)
 		{
 			if(tileSpotLight.getRedValue() < 155)
 			{
-				tileSpotLight.addRedValue(100);
+				try
+				{
+					dataoutputstream.writeInt(0);
+					dataoutputstream.writeInt(tileSpotLight.getRedValue() + 100);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setRedValue(255);
+				try
+				{
+					dataoutputstream.writeInt(0);
+					dataoutputstream.writeInt(255);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 
@@ -136,58 +235,148 @@ public class GuiBlockSpotLight extends GuiContainer
 		{
 			if(tileSpotLight.getGreenValue() > 0)
 			{
-				tileSpotLight.addGreenValue(-1);
+				try
+				{
+					dataoutputstream.writeInt(1);
+					dataoutputstream.writeInt(tileSpotLight.getGreenValue() - 1);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 7)
 		{
 			if(tileSpotLight.getGreenValue() > 10)
 			{
-				tileSpotLight.addGreenValue(-10);
+				try
+				{
+					dataoutputstream.writeInt(1);
+					dataoutputstream.writeInt(tileSpotLight.getGreenValue() - 10);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setGreenValue(0);
+				try
+				{
+					dataoutputstream.writeInt(1);
+					dataoutputstream.writeInt(0);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 8)
 		{
 			if(tileSpotLight.getGreenValue() > 100)
 			{
-				tileSpotLight.addGreenValue(-100);
+				try
+				{
+					dataoutputstream.writeInt(1);
+					dataoutputstream.writeInt(tileSpotLight.getGreenValue() - 100);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setGreenValue(0);
+				try
+				{
+					dataoutputstream.writeInt(1);
+					dataoutputstream.writeInt(0);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 9)
 		{
 			if(tileSpotLight.getGreenValue() < 255)
 			{
-				tileSpotLight.addGreenValue(1);
+				try
+				{
+					dataoutputstream.writeInt(1);
+					dataoutputstream.writeInt(tileSpotLight.getGreenValue() + 1);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 10)
 		{
 			if(tileSpotLight.getGreenValue() < 245)
 			{
-				tileSpotLight.addGreenValue(10);
+				try
+				{
+					dataoutputstream.writeInt(1);
+					dataoutputstream.writeInt(tileSpotLight.getGreenValue() + 10);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setGreenValue(255);
+				try
+				{
+					dataoutputstream.writeInt(1);
+					dataoutputstream.writeInt(255);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 11)
 		{
 			if(tileSpotLight.getGreenValue() < 155)
 			{
-				tileSpotLight.addGreenValue(100);
+				try
+				{
+					dataoutputstream.writeInt(1);
+					dataoutputstream.writeInt(tileSpotLight.getGreenValue() + 100);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setGreenValue(255);
+				try
+				{
+					dataoutputstream.writeInt(1);
+					dataoutputstream.writeInt(255);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 
@@ -195,58 +384,148 @@ public class GuiBlockSpotLight extends GuiContainer
 		{
 			if(tileSpotLight.getBlueValue() > 0)
 			{
-				tileSpotLight.addBlueValue(-1);
+				try
+				{
+					dataoutputstream.writeInt(2);
+					dataoutputstream.writeInt(tileSpotLight.getBlueValue() - 1);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 13)
 		{
 			if(tileSpotLight.getBlueValue() > 10)
 			{
-				tileSpotLight.addBlueValue(-10);
+				try
+				{
+					dataoutputstream.writeInt(2);
+					dataoutputstream.writeInt(tileSpotLight.getBlueValue() - 10);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setBlueValue(0);
+				try
+				{
+					dataoutputstream.writeInt(2);
+					dataoutputstream.writeInt(0);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 14)
 		{
 			if(tileSpotLight.getBlueValue() > 100)
 			{
-				tileSpotLight.addBlueValue(-100);
+				try
+				{
+					dataoutputstream.writeInt(2);
+					dataoutputstream.writeInt(tileSpotLight.getBlueValue() - 100);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setBlueValue(0);
+				try
+				{
+					dataoutputstream.writeInt(2);
+					dataoutputstream.writeInt(0);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 15)
 		{
 			if(tileSpotLight.getBlueValue() < 255)
 			{
-				tileSpotLight.addBlueValue(1);
+				try
+				{
+					dataoutputstream.writeInt(2);
+					dataoutputstream.writeInt(tileSpotLight.getBlueValue() + 1);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 16)
 		{
 			if(tileSpotLight.getBlueValue() < 245)
 			{
-				tileSpotLight.addBlueValue(10);
+				try
+				{
+					dataoutputstream.writeInt(2);
+					dataoutputstream.writeInt(tileSpotLight.getBlueValue() + 10);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setBlueValue(255);
+				try
+				{
+					dataoutputstream.writeInt(2);
+					dataoutputstream.writeInt(255);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 17)
 		{
 			if(tileSpotLight.getBlueValue() < 155)
 			{
-				tileSpotLight.addBlueValue(100);
+				try
+				{
+					dataoutputstream.writeInt(2);
+					dataoutputstream.writeInt(tileSpotLight.getBlueValue() + 100);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setBlueValue(255);
+				try
+				{
+					dataoutputstream.writeInt(2);
+					dataoutputstream.writeInt(255);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 
@@ -254,58 +533,150 @@ public class GuiBlockSpotLight extends GuiContainer
 		{
 			if(tileSpotLight.getDarkRedValue() > 0)
 			{
-				tileSpotLight.addDarkRedValue(-1);
+				try
+				{
+					dataoutputstream.writeInt(3);
+					dataoutputstream.writeInt(tileSpotLight.getDarkRedValue() - 1);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 19)
 		{
+			
 			if(tileSpotLight.getDarkRedValue() > 10)
 			{
-				tileSpotLight.addDarkRedValue(-10);
+				try
+				{
+					dataoutputstream.writeInt(3);
+					dataoutputstream.writeInt(tileSpotLight.getDarkRedValue() - 10);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setDarkRedValue(0);
+				try
+				{
+					dataoutputstream.writeInt(3);
+					dataoutputstream.writeInt(0);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 20)
 		{
+			
 			if(tileSpotLight.getDarkRedValue() > 100)
 			{
-				tileSpotLight.addDarkRedValue(-100);
+				try
+				{
+					dataoutputstream.writeInt(3);
+					dataoutputstream.writeInt(tileSpotLight.getDarkRedValue() - 100);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setDarkRedValue(0);
+				try
+				{
+					dataoutputstream.writeInt(3);
+					dataoutputstream.writeInt(0);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 21)
 		{
 			if(tileSpotLight.getDarkRedValue() < 255)
 			{
-				tileSpotLight.addDarkRedValue(1);
+				try
+				{
+					dataoutputstream.writeInt(3);
+					dataoutputstream.writeInt(tileSpotLight.getDarkRedValue() + 1);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 22)
 		{
 			if(tileSpotLight.getDarkRedValue() < 245)
 			{
-				tileSpotLight.addDarkRedValue(10);
+				try
+				{
+					dataoutputstream.writeInt(3);
+					dataoutputstream.writeInt(tileSpotLight.getDarkRedValue() + 10);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setDarkRedValue(255);
+				try
+				{
+					dataoutputstream.writeInt(3);
+					dataoutputstream.writeInt(255);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 23)
 		{
 			if(tileSpotLight.getDarkRedValue() < 155)
 			{
-				tileSpotLight.addDarkRedValue(100);
+				try
+				{
+					dataoutputstream.writeInt(3);
+					dataoutputstream.writeInt(tileSpotLight.getDarkRedValue() + 100);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setDarkRedValue(255);
+				try
+				{
+					dataoutputstream.writeInt(3);
+					dataoutputstream.writeInt(255);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 
@@ -313,58 +684,148 @@ public class GuiBlockSpotLight extends GuiContainer
 		{
 			if(tileSpotLight.getDarkGreenValue() > 0)
 			{
-				tileSpotLight.addDarkGreenValue(-1);
+				try
+				{
+					dataoutputstream.writeInt(4);
+					dataoutputstream.writeInt(tileSpotLight.getDarkGreenValue() - 1);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 25)
 		{
 			if(tileSpotLight.getDarkGreenValue() > 10)
 			{
-				tileSpotLight.addDarkGreenValue(-10);
+				try
+				{
+					dataoutputstream.writeInt(4);
+					dataoutputstream.writeInt(tileSpotLight.getDarkGreenValue() - 10);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setDarkGreenValue(0);
+				try
+				{
+					dataoutputstream.writeInt(4);
+					dataoutputstream.writeInt(0);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 26)
 		{
 			if(tileSpotLight.getDarkGreenValue() > 100)
 			{
-				tileSpotLight.addDarkGreenValue(-100);
+				try
+				{
+					dataoutputstream.writeInt(4);
+					dataoutputstream.writeInt(tileSpotLight.getDarkGreenValue() - 100);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setDarkGreenValue(0);
+				try
+				{
+					dataoutputstream.writeInt(4);
+					dataoutputstream.writeInt(0);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 27)
 		{
 			if(tileSpotLight.getDarkGreenValue() < 255)
 			{
-				tileSpotLight.addDarkGreenValue(1);
+				try
+				{
+					dataoutputstream.writeInt(4);
+					dataoutputstream.writeInt(tileSpotLight.getDarkGreenValue() + 1);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 28)
 		{
 			if(tileSpotLight.getDarkGreenValue() < 245)
 			{
-				tileSpotLight.addDarkGreenValue(10);
+				try
+				{
+					dataoutputstream.writeInt(4);
+					dataoutputstream.writeInt(tileSpotLight.getDarkGreenValue() + 10);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setDarkGreenValue(255);
+				try
+				{
+					dataoutputstream.writeInt(4);
+					dataoutputstream.writeInt(255);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 29)
 		{
 			if(tileSpotLight.getDarkGreenValue() < 155)
 			{
-				tileSpotLight.addDarkGreenValue(100);
+				try
+				{
+					dataoutputstream.writeInt(4);
+					dataoutputstream.writeInt(tileSpotLight.getDarkGreenValue() + 100);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setDarkGreenValue(255);
+				try
+				{
+					dataoutputstream.writeInt(4);
+					dataoutputstream.writeInt(255);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 
@@ -372,58 +833,148 @@ public class GuiBlockSpotLight extends GuiContainer
 		{
 			if(tileSpotLight.getDarkBlueValue() > 0)
 			{
-				tileSpotLight.addDarkBlueValue(-1);
+				try
+				{
+					dataoutputstream.writeInt(5);
+					dataoutputstream.writeInt(tileSpotLight.getDarkBlueValue() - 1);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 31)
 		{
 			if(tileSpotLight.getDarkBlueValue() > 10)
 			{
-				tileSpotLight.addDarkBlueValue(-10);
+				try
+				{
+					dataoutputstream.writeInt(5);
+					dataoutputstream.writeInt(tileSpotLight.getDarkBlueValue() - 10);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setDarkBlueValue(0);
+				try
+				{
+					dataoutputstream.writeInt(5);
+					dataoutputstream.writeInt(0);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)                
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 32)
 		{
 			if(tileSpotLight.getDarkBlueValue() > 100)
 			{
-				tileSpotLight.addDarkBlueValue(-100);
+				try
+				{
+					dataoutputstream.writeInt(5);
+					dataoutputstream.writeInt(tileSpotLight.getDarkBlueValue() - 100);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setDarkBlueValue(0);
+				try
+				{
+					dataoutputstream.writeInt(5);
+					dataoutputstream.writeInt(0);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 33)
 		{
 			if(tileSpotLight.getDarkBlueValue() < 255)
 			{
-				tileSpotLight.addDarkBlueValue(1);
+				try
+				{
+					dataoutputstream.writeInt(5);
+					dataoutputstream.writeInt(tileSpotLight.getDarkBlueValue() + 1);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 34)
 		{
 			if(tileSpotLight.getDarkBlueValue() < 245)
 			{
-				tileSpotLight.addDarkBlueValue(10);
+				try
+				{
+					dataoutputstream.writeInt(5);
+					dataoutputstream.writeInt(tileSpotLight.getDarkBlueValue() + 10);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setDarkBlueValue(255);
+				try
+				{
+					dataoutputstream.writeInt(5);
+					dataoutputstream.writeInt(255);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 		if(guibutton.id == 35)
 		{
 			if(tileSpotLight.getDarkBlueValue() < 155)
 			{
-				tileSpotLight.addDarkBlueValue(100);
+				try
+				{
+					dataoutputstream.writeInt(5);
+					dataoutputstream.writeInt(tileSpotLight.getDarkBlueValue() + 100);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 			else
 			{
-				tileSpotLight.setDarkBlueValue(255);
+				try
+				{
+					dataoutputstream.writeInt(5);
+					dataoutputstream.writeInt(255);
+					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+				}
+				catch(Exception exception)
+				{
+					exception.printStackTrace();
+				}
 			}
 		}
 	}
@@ -512,7 +1063,6 @@ public class GuiBlockSpotLight extends GuiContainer
 		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkRedValue()), xSize / 2 - darkRedPos, ySize + -87, FFMTColor.darkRedInt);
 		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkGreenValue()), xSize / 2 - darkGreenPos, ySize + -65, FFMTColor.darkGreenInt);
 		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkBlueValue()), xSize / 2 - darkBluePos, ySize + -43, FFMTColor.darkBlueInt);
-
 	}
 
 	@Override

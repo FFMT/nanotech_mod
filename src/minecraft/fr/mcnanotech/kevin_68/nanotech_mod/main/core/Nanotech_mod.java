@@ -47,7 +47,8 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGeneration;
 
 @Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "2.0.3")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTM|smoker", "NTM|jumper"}, packetHandler = PacketHandler.class)
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTM|smoker", "NTM|jumper", "NTM|light"}, packetHandler = PacketHandler.class)
+
 public class Nanotech_mod
 {
 	// Instance
@@ -56,10 +57,7 @@ public class Nanotech_mod
 	// Proxy
 	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotech_mod.main.core.ClientProxy", serverSide = "fr.mcnanotech.kevin_68.nanotech_mod.main.core.CommonProxy")
 	public static CommonProxy proxy;
-
-	// GUI
-	private GuiHandler guiHandler = new GuiHandler();
-
+	
 	// Block IDs
 	public static int BlockPortalID, BlockPortalFrameID, BlockGrassID, BlockFakeOreID, BlockSpeedID, BlockJumperID,
 	BlockMultiplierID, BlockSmokerID, BlockTrashcanID, BlockBarbedWireID, BlockNanoWoodID, BlockNanoLeavesID, 
@@ -302,7 +300,7 @@ public class Nanotech_mod
 	// Gui and TileEntity
 	public void guiAndTileEntity()
 	{
-		NetworkRegistry.instance().registerGuiHandler(this, guiHandler);
+		NetworkRegistry.instance().registerGuiHandler(this.modInstance, new GuiHandler());
 		NetworkRegistry.instance().registerChannel(new PacketHandler(), "nanotechmod");
 
 		GameRegistry.registerTileEntity(TileEntityJumper.class, "TileEntityJumper");

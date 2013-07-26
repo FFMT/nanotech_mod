@@ -8,9 +8,11 @@ import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerBlockSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 
@@ -29,6 +31,11 @@ public class PacketHandler implements IPacketHandler
 		if(packet.channel.equals("NTM|jumper"))
 		{
 			handleJumperPacket(packet, playerSender);
+		}
+		
+		if(packet.channel.equals("NTM|light"))
+		{
+			handleSpotLightPacket(packet, playerSender);
 		}
 	}
 
@@ -70,7 +77,42 @@ public class PacketHandler implements IPacketHandler
 			exception.printStackTrace();
 			Nanotech_mod.NanoLog.severe("Failed to handle jumper packet");
 		}
-		
 	}
 
+	private void handleSpotLightPacket(Packet250CustomPayload packet, EntityPlayer player)
+	{
+		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
+		int type;
+		int color;
+		try
+		{
+			data = new DataInputStream(new ByteArrayInputStream(packet.data));
+			type = data.readInt();
+			color = data.readInt();
+			ContainerBlockSpotLight containerSpotLight = (ContainerBlockSpotLight)player.openContainer;
+			TileEntityBlockSpotLight tileSpotLight = containerSpotLight.getSpotLight();
+			switch(type)
+			{
+				case 0: tileSpotLight.setRedValue(color);
+					break;
+				case 1: tileSpotLight.setGreenValue(color);
+					break;
+				case 2: tileSpotLight.setBlueValue(color);
+					break;
+				case 3: tileSpotLight.setDarkRedValue(color);
+					break;
+				case 4: tileSpotLight.setDarkGreenValue(color);
+					break;
+				case 5: tileSpotLight.setDarkBlueValue(color);
+					break;
+				default: 
+			}
+			player.worldObj.markBlockForUpdate(tileSpotLight.xCoord, tileSpotLight.yCoord, tileSpotLight.zCoord);
+		}
+		catch(Exception exception)
+		{
+			exception.printStackTrace();
+			Nanotech_mod.NanoLog.severe("Failed to handle SpotLight packet");
+		}
+	}
 }

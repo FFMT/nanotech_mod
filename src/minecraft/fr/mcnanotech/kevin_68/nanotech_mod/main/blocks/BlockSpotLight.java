@@ -57,16 +57,6 @@ public class BlockSpotLight extends BlockContainer
 	{
 		return 0;
 	}
-
-	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving, ItemStack par6ItemStack)
-	{
-		super.onBlockPlacedBy(par1World, par2, par3, par4, par5EntityLiving, par6ItemStack);
-
-		if(par6ItemStack.hasDisplayName())
-		{
-			((TileEntityBlockSpotLight)par1World.getBlockTileEntity(par2, par3, par4)).func_94047_a(par6ItemStack.getDisplayName());
-		}
-	}
 	
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister)
