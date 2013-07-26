@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockTrail;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityTrail;
 
 public class BlockTrail extends BlockContainer
 {
@@ -73,7 +73,7 @@ public class BlockTrail extends BlockContainer
 
 	public TileEntity createNewTileEntity(World par1World)
 	{
-		return new TileEntityBlockTrail();
+		return new TileEntityTrail();
 	}
 
 	@Override

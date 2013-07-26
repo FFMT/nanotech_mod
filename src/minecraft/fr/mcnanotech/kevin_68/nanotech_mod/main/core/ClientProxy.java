@@ -39,10 +39,10 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperSkeleton;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperZombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockTrail;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySpotLight;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.render.TileEntityBlockTrailRender;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityTrail;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.render.TileEntitySpotLightRender;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.render.TileEntityTrailRender;
 
 public class ClientProxy extends CommonProxy
 {
@@ -60,7 +60,7 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(MobFlyingCreeper.class, new RenderFlyingCreeper(new ModelFlyingCreeper(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(MobCrazyGuy.class, new RenderCrazyGuy(new ModelCrazyGuy(), 0.5F));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpotLight.class, new TileEntitySpotLightRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBlockTrail.class, new TileEntityBlockTrailRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTrail.class, new TileEntityTrailRender());
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.scythe.itemID, (IItemRenderer)new ItemScytheRender());
 	}
 

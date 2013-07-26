@@ -11,15 +11,15 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.blocks.ModelBlockTrail;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockTrail;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityTrail;
 
-public class TileEntityBlockTrailRender extends TileEntitySpecialRenderer
+public class TileEntityTrailRender extends TileEntitySpecialRenderer
 {
 
 	// The model of your block
 	private final ModelBlockTrail model;
 
-	public TileEntityBlockTrailRender()
+	public TileEntityTrailRender()
 	{
 		this.model = new ModelBlockTrail();
 	}
@@ -35,10 +35,10 @@ public class TileEntityBlockTrailRender extends TileEntitySpecialRenderer
 	@Override
 	public void renderTileEntityAt(TileEntity par1TileEntity, double par2, double par4, double par6, float par8)
 	{
-		this.renderTileEntityAtBlockTrail((TileEntityBlockTrail)par1TileEntity, par2, par4, par6, par8);
+		this.renderTileEntityAtBlockTrail((TileEntityTrail)par1TileEntity, par2, par4, par6, par8);
 	}
 
-	public void renderTileEntityAtBlockTrail(TileEntityBlockTrail tileentity, double x, double y, double z, float scale)
+	public void renderTileEntityAtBlockTrail(TileEntityTrail tileentity, double x, double y, double z, float scale)
 	{
 		// The PushMatrix tells the renderer to "start" doing something.
 		GL11.glPushMatrix();
