@@ -13,6 +13,7 @@ import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.FFMT.FFMTAPI.FFMTColor;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerBlockSpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityBlockSpotLight;
 
 public class GuiBlockSpotLight extends GuiContainer
@@ -79,7 +80,7 @@ public class GuiBlockSpotLight extends GuiContainer
 	{
 		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
 		DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-		// Type : 0 = red, 2 = green, 3 = blue
+		// Type : 0 = red, 1 = green, 2 = blue, 3 = dark red, 4 = dark green, 5 = dark blue
 		if(guibutton.id == 0)
 		{
 			if(tileSpotLight.getRedValue() > 0)
@@ -114,16 +115,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(0);
-					dataoutputstream.writeInt(0);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 0); //red type = 0
 			}
 		}
 		if(guibutton.id == 2)
@@ -144,16 +136,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(0);
-					dataoutputstream.writeInt(0);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 0); //red type = 0
 			}
 		}
 		if(guibutton.id == 3)
@@ -189,16 +172,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(0);
-					dataoutputstream.writeInt(255);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 0); //red type = 0
 			}
 		}
 		if(guibutton.id == 5)
@@ -218,16 +192,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(0);
-					dataoutputstream.writeInt(255);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 0); //red type = 0
 			}
 		}
 
@@ -264,16 +229,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(1);
-					dataoutputstream.writeInt(0);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 1); //green type = 1
 			}
 		}
 		if(guibutton.id == 8)
@@ -293,16 +249,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(1);
-					dataoutputstream.writeInt(0);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 1); //green type = 1
 			}
 		}
 		if(guibutton.id == 9)
@@ -338,16 +285,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(1);
-					dataoutputstream.writeInt(255);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 1); //green type = 1
 			}
 		}
 		if(guibutton.id == 11)
@@ -367,16 +305,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(1);
-					dataoutputstream.writeInt(255);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 1); //green type = 1
 			}
 		}
 
@@ -413,16 +342,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(2);
-					dataoutputstream.writeInt(0);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 2); //blue type = 2
 			}
 		}
 		if(guibutton.id == 14)
@@ -442,16 +362,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(2);
-					dataoutputstream.writeInt(0);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 2); //blue type = 2
 			}
 		}
 		if(guibutton.id == 15)
@@ -487,16 +398,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(2);
-					dataoutputstream.writeInt(255);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 2); //blue type = 2
 			}
 		}
 		if(guibutton.id == 17)
@@ -516,16 +418,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(2);
-					dataoutputstream.writeInt(255);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 2); //blue type = 2
 			}
 		}
 
@@ -563,16 +456,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(3);
-					dataoutputstream.writeInt(0);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 3); //dark red type = 3
 			}
 		}
 		if(guibutton.id == 20)
@@ -593,16 +477,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(3);
-					dataoutputstream.writeInt(0);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 3); //dark red type = 3
 			}
 		}
 		if(guibutton.id == 21)
@@ -638,16 +513,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(3);
-					dataoutputstream.writeInt(255);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 3); //dark red type = 3
 			}
 		}
 		if(guibutton.id == 23)
@@ -667,16 +533,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(3);
-					dataoutputstream.writeInt(255);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 3); //dark red type = 3
 			}
 		}
 
@@ -713,16 +570,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(4);
-					dataoutputstream.writeInt(0);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 4); //dark green type = 4
 			}
 		}
 		if(guibutton.id == 26)
@@ -742,16 +590,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(4);
-					dataoutputstream.writeInt(0);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 4); //dark green type = 4
 			}
 		}
 		if(guibutton.id == 27)
@@ -787,16 +626,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(4);
-					dataoutputstream.writeInt(255);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 4); //dark green type = 4
 			}
 		}
 		if(guibutton.id == 29)
@@ -816,16 +646,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(4);
-					dataoutputstream.writeInt(255);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 4); //dark green type = 4
 			}
 		}
 
@@ -862,16 +683,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(5);
-					dataoutputstream.writeInt(0);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)                
-				{
-					exception.printStackTrace();
-				}
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 5); //dark blue type = 5
 			}
 		}
 		if(guibutton.id == 32)
@@ -891,16 +703,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(5);
-					dataoutputstream.writeInt(0);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 5); //dark blue type = 5
 			}
 		}
 		if(guibutton.id == 33)
@@ -936,16 +739,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(5);
-					dataoutputstream.writeInt(255);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 5); //dark blue type = 5
 			}
 		}
 		if(guibutton.id == 35)
@@ -965,16 +759,7 @@ public class GuiBlockSpotLight extends GuiContainer
 			}
 			else
 			{
-				try
-				{
-					dataoutputstream.writeInt(5);
-					dataoutputstream.writeInt(255);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 5); //dark blue type = 5
 			}
 		}
 	}
@@ -1063,6 +848,36 @@ public class GuiBlockSpotLight extends GuiContainer
 		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkRedValue()), xSize / 2 - darkRedPos, ySize + -87, FFMTColor.darkRedInt);
 		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkGreenValue()), xSize / 2 - darkGreenPos, ySize + -65, FFMTColor.darkGreenInt);
 		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkBlueValue()), xSize / 2 - darkBluePos, ySize + -43, FFMTColor.darkBlueInt);
+	}
+	
+	private void setToMax(ByteArrayOutputStream bytearrayoutputstream, DataOutputStream dataoutputstream, int type)
+	{
+		try
+		{
+			dataoutputstream.writeInt(type);
+			dataoutputstream.writeInt(255);
+			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+		}
+		catch(Exception exception)
+		{
+			exception.printStackTrace();
+			Nanotech_mod.NanoLog.severe("Failed to send SpotLight packet");
+		}
+	}
+	
+	private void setToMin(ByteArrayOutputStream bytearrayoutputstream, DataOutputStream dataoutputstream, int type)
+	{
+		try
+		{
+			dataoutputstream.writeInt(type);
+			dataoutputstream.writeInt(0);
+			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|light", bytearrayoutputstream.toByteArray()));
+		}
+		catch(Exception exception)
+		{
+			exception.printStackTrace();
+			Nanotech_mod.NanoLog.severe("Failed to send SpotLight packet");
+		}
 	}
 
 	@Override

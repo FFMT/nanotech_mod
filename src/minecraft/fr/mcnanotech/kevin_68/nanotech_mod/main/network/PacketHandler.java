@@ -105,7 +105,7 @@ public class PacketHandler implements IPacketHandler
 					break;
 				case 5: tileSpotLight.setDarkBlueValue(color);
 					break;
-				default: 
+				default: Nanotech_mod.NanoLog.severe("A SpotLight packet has a bad type, this is a bug");
 			}
 			player.worldObj.markBlockForUpdate(tileSpotLight.xCoord, tileSpotLight.yCoord, tileSpotLight.zCoord);
 		}
