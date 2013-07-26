@@ -27,12 +27,12 @@ public class PacketHandler implements IPacketHandler
 		{
 			handleSmokerPacket(packet, playerSender);
 		}
-		
+
 		if(packet.channel.equals("NTM|jumper"))
 		{
 			handleJumperPacket(packet, playerSender);
 		}
-		
+
 		if(packet.channel.equals("NTM|light"))
 		{
 			handleSpotLightPacket(packet, playerSender);
@@ -58,7 +58,7 @@ public class PacketHandler implements IPacketHandler
 			Nanotech_mod.NanoLog.severe("Failed to handle smoker packet");
 		}
 	}
-	
+
 	private void handleJumperPacket(Packet250CustomPayload packet, EntityPlayer player)
 	{
 		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
@@ -93,19 +93,26 @@ public class PacketHandler implements IPacketHandler
 			TileEntitySpotLight tileSpotLight = containerSpotLight.getSpotLight();
 			switch(type)
 			{
-				case 0: tileSpotLight.setRedValue(color);
-					break;
-				case 1: tileSpotLight.setGreenValue(color);
-					break;
-				case 2: tileSpotLight.setBlueValue(color);
-					break;
-				case 3: tileSpotLight.setDarkRedValue(color);
-					break;
-				case 4: tileSpotLight.setDarkGreenValue(color);
-					break;
-				case 5: tileSpotLight.setDarkBlueValue(color);
-					break;
-				default: Nanotech_mod.NanoLog.severe("A SpotLight packet has a bad type, this is a bug");
+			case 0:
+				tileSpotLight.setRedValue(color);
+				break;
+			case 1:
+				tileSpotLight.setGreenValue(color);
+				break;
+			case 2:
+				tileSpotLight.setBlueValue(color);
+				break;
+			case 3:
+				tileSpotLight.setDarkRedValue(color);
+				break;
+			case 4:
+				tileSpotLight.setDarkGreenValue(color);
+				break;
+			case 5:
+				tileSpotLight.setDarkBlueValue(color);
+				break;
+			default:
+				Nanotech_mod.NanoLog.severe("A SpotLight packet has a bad type, this is a bug");
 			}
 			player.worldObj.markBlockForUpdate(tileSpotLight.xCoord, tileSpotLight.yCoord, tileSpotLight.zCoord);
 		}

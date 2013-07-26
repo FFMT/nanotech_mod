@@ -63,7 +63,7 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBlockTrail.class, new TileEntityBlockTrailRender());
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.scythe.itemID, (IItemRenderer)new ItemScytheRender());
 	}
-	
+
 	@Override
 	public void registerOverlay()
 	{

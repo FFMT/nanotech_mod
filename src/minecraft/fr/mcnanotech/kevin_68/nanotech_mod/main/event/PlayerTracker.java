@@ -38,7 +38,7 @@ public class PlayerTracker implements IPlayerTracker
 	@ForgeSubscribe
 	public void onItemPickup(EntityItemPickupEvent event)
 	{
-		if (event.item.getEntityItem().isItemEqual(new ItemStack(NanotechItem.scythe)))
+		if(event.item.getEntityItem().isItemEqual(new ItemStack(NanotechItem.scythe)))
 		{
 			event.entityPlayer.triggerAchievement(NanotechAchievement.getScythe);
 		}

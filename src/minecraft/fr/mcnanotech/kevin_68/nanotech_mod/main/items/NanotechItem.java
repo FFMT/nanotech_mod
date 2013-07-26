@@ -10,21 +10,16 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.UtilDiskInfo;
 public class NanotechItem
 {
 	// Items statement
-	public static Item ItemBase, Superbottleofxp, Diamondbow, Emeraldbow,
-			Nanomitebow, Nanomiteaxe, Nanomitepickaxe, Nanomiteshovel,
-			Nanomitehoe, Nanomitesword, Nanomitehelmet, Nanomitechestplate,
-			Nanomiteleggings, Nanomiteboots, Mysterioushelmet,
-			Mysteriouschestplate, Mysteriousleggings, Mysteriousboots,
-			Nanodisc, Yourmusicdisc, Yourmusicdisc2, Yourmusicdisc3,
-			Yourmusicdisc4, Yourmusicdisc5, Yourmusicdisc6, Yourmusicdisc7,
-			Yourmusicdisc8, Yourmusicdisc9, Yourmusicdisc10, Yourmusicdisc11,
-			Yourmusicdisc12, Yourmusicdisc13, Yourmusicdisc14, Yourmusicdisc15,
-			Yourmusicdisc16, Edibleflesh, Rottenchunk, Trail, scythe, crazyGlasses;
+	public static Item ItemBase, Superbottleofxp, Diamondbow, Emeraldbow, Nanomitebow, Nanomiteaxe, Nanomitepickaxe, Nanomiteshovel, Nanomitehoe, Nanomitesword, Nanomitehelmet, Nanomitechestplate, Nanomiteleggings, Nanomiteboots, Mysterioushelmet, Mysteriouschestplate, Mysteriousleggings, Mysteriousboots, Nanodisc, Yourmusicdisc, Yourmusicdisc2, Yourmusicdisc3, Yourmusicdisc4, Yourmusicdisc5,
+			Yourmusicdisc6, Yourmusicdisc7, Yourmusicdisc8, Yourmusicdisc9, Yourmusicdisc10, Yourmusicdisc11, Yourmusicdisc12, Yourmusicdisc13, Yourmusicdisc14, Yourmusicdisc15, Yourmusicdisc16, Edibleflesh, Rottenchunk, Trail, scythe, crazyGlasses;
 
 	// Enum tools and armor material
-	public static EnumArmorMaterial EnumArmorMaterialMysterious = EnumHelper.addArmorMaterial("Mysterious", 50, new int[] {6, 6, 6, 6}, 15);
-	public static EnumArmorMaterial EnumArmorMaterialNanomite = EnumHelper.addArmorMaterial("Nanomite", 50, new int[] {6, 6, 6, 6}, 15);
-	public static EnumArmorMaterial EnumArmorMaterialCrazyGlasses = EnumHelper.addArmorMaterial("CrazyGlasses", 0, new int[] {0, 0, 0, 0}, 0);
+	public static EnumArmorMaterial EnumArmorMaterialMysterious = EnumHelper.addArmorMaterial("Mysterious", 50, new int[]
+	{6, 6, 6, 6}, 15);
+	public static EnumArmorMaterial EnumArmorMaterialNanomite = EnumHelper.addArmorMaterial("Nanomite", 50, new int[]
+	{6, 6, 6, 6}, 15);
+	public static EnumArmorMaterial EnumArmorMaterialCrazyGlasses = EnumHelper.addArmorMaterial("CrazyGlasses", 0, new int[]
+	{0, 0, 0, 0}, 0);
 	public static EnumToolMaterial EnumToolMaterialNanomite = EnumHelper.addToolMaterial("Nanomite", 4, 2000, 13F, 4, 14);
 	public static EnumToolMaterial EnumToolMaterialScythe = EnumHelper.addToolMaterial("Scythe", 4, 2500, 13F, 16, 2);
 
@@ -70,7 +65,7 @@ public class NanotechItem
 		Rottenchunk = new ItemEdibleflesh(Nanotech_mod.ItemRottenChunkID, 1, 0.6F, true).setUnlocalizedName("rottenChunk").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		Trail = new ItemTrail(Nanotech_mod.ItemTrailID).setUnlocalizedName("itemTrail").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		scythe = new ItemScythe(Nanotech_mod.ItemScytheID, EnumToolMaterialScythe).setUnlocalizedName("scythe").setFull3D().setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		crazyGlasses = new ItemCrazyGlasses(Nanotech_mod.ItemCrazyGlassesID, EnumArmorMaterialCrazyGlasses, 1 , 0).setUnlocalizedName("crazyGlasses").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		crazyGlasses = new ItemCrazyGlasses(Nanotech_mod.ItemCrazyGlassesID, EnumArmorMaterialCrazyGlasses, 1, 0).setUnlocalizedName("crazyGlasses").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 	}
 
 }

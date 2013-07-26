@@ -48,12 +48,12 @@ public class BlockNanoLeaves extends BlockLeaves implements IShearable
 	{
 		return Block.leaves.isOpaqueCube();
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
-    {
-        return !this.isOpaqueCube() ? true : super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
-    }
+
+	@SideOnly(Side.CLIENT)
+	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+	{
+		return !this.isOpaqueCube() ? true : super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
+	}
 
 	public Icon getIcon(int side, int metadata)
 	{

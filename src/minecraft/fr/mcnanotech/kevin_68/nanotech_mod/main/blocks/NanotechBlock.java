@@ -8,12 +8,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 public class NanotechBlock
 {
 	// Blocks statement
-	public static Block BlockPortal, BlockPortalframe, BlockGrass,
-			BlockFakeOre, BlockSpeed, BlockJumper, BlockMultiplier,
-			BlockSmoker, BlockTrashcan, BlockBarbedwire, BlockNanowood,
-			BlockNanoleaves, BlockNanosaplings, BlockNanoplanks, BlockNanoOre,
-			BlockConfusion, BlockFalling, Blocknotfalling, BlockSodium,
-			BlockMossystone, BlockSpotLight, BlockTheDeathHead, BlockTrail;
+	public static Block BlockPortal, BlockPortalframe, BlockGrass, BlockFakeOre, BlockSpeed, BlockJumper, BlockMultiplier, BlockSmoker, BlockTrashcan, BlockBarbedwire, BlockNanowood, BlockNanoleaves, BlockNanosaplings, BlockNanoplanks, BlockNanoOre, BlockConfusion, BlockFalling, Blocknotfalling, BlockSodium, BlockMossystone, BlockSpotLight, BlockTheDeathHead, BlockTrail;
 
 	// Blocks Initialization
 	public static void initBlock()

@@ -1,20 +1,17 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
-public class NanotechAchievement 
+public class NanotechAchievement
 {
-
-	//Achievement
+	// Achievement
 	public static Achievement installMod, blockBarbedWire, blockConfusion, blockFalling, blockJumper, blockJumperAdv, blockMossyStone, blockNotFalling, blockPortalFrame, blockSmoker, blockSpeed, blockSlow, blockSpotLight, blockTheDeath, blockTrail, blockTrashCan, killTheDeath, killTheDeathWithCG, getScythe, getMysteriousMat;
 	public static AchievementPage pageNanotech;
-	
 
-	
 	public static void initAchievement()
 	{
 		installMod = new Achievement(12569, "installMod", 0, 0, new ItemStack(NanotechItem.ItemBase, 1, 12), null).registerAchievement();
@@ -37,7 +34,7 @@ public class NanotechAchievement
 		killTheDeathWithCG = new Achievement(12587, "killTheDeathWithCG", 7, 0, NanotechBlock.BlockTheDeathHead, killTheDeath).registerAchievement();
 		getScythe = new Achievement(12588, "getScythe", 5, 2, NanotechItem.scythe, killTheDeath).registerAchievement();
 		getMysteriousMat = new Achievement(12589, "getMysteriousMat", 5, -2, new ItemStack(NanotechItem.ItemBase, 1, 2), killTheDeath).registerAchievement();
-		
+
 		pageNanotech = new AchievementPage("Nanotech_mod", installMod, blockBarbedWire, blockConfusion, blockFalling, blockJumper, blockJumperAdv, blockMossyStone, blockNotFalling, blockPortalFrame, blockSmoker, blockSpeed, blockSlow, blockSpotLight, blockTrail, blockTrashCan, blockTheDeath, killTheDeath, killTheDeathWithCG, getScythe, getMysteriousMat);
 		AchievementPage.registerAchievementPage(pageNanotech);
 	}

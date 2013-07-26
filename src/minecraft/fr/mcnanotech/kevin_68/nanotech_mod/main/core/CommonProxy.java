@@ -4,11 +4,11 @@ public class CommonProxy
 {
 	public void registerModRenders()
 	{
-		
+
 	}
-	
+
 	public void registerOverlay()
 	{
-		
+
 	}
 }

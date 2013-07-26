@@ -6,7 +6,7 @@ import net.minecraft.entity.Entity;
 
 public class ItemScytheModel extends ModelBase
 {
-	//fields
+	// fields
 	public ModelRenderer Stick;
 	public ModelRenderer blade1;
 	public ModelRenderer blade2;

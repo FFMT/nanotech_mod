@@ -23,24 +23,24 @@ public class GuiOverlay extends Gui
 		super();
 		this.mc = mc;
 	}
-	
+
 	@ForgeSubscribe(priority = EventPriority.NORMAL)
 	public void onRenderExperienceBar(RenderGameOverlayEvent event)
 	{
 		if(event.isCancelable() || event.type != ElementType.EXPERIENCE)
-		{      
+		{
 			return;
 		}
 
 		ItemStack stack = this.mc.thePlayer.inventory.armorItemInSlot(3);
-		if (this.mc.gameSettings.thirdPersonView == 0 && stack != null && stack.getItem().itemID == NanotechItem.crazyGlasses.itemID)
+		if(this.mc.gameSettings.thirdPersonView == 0 && stack != null && stack.getItem().itemID == NanotechItem.crazyGlasses.itemID)
 		{
 			ScaledResolution scaledresolution = new ScaledResolution(this.mc.gameSettings, this.mc.displayWidth, this.mc.displayHeight);
 			int k = scaledresolution.getScaledWidth();
 			int l = scaledresolution.getScaledHeight();
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-			GL11.glDisable(GL11.GL_LIGHTING); 
+			GL11.glDisable(GL11.GL_LIGHTING);
 			GL11.glDisable(GL11.GL_DEPTH_TEST);
 			GL11.glDepthMask(false);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);

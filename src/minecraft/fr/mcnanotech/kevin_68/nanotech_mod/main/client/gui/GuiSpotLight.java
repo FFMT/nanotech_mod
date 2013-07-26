@@ -80,7 +80,8 @@ public class GuiSpotLight extends GuiContainer
 	{
 		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
 		DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-		// Type : 0 = red, 1 = green, 2 = blue, 3 = dark red, 4 = dark green, 5 = dark blue
+		// Type : 0 = red, 1 = green, 2 = blue, 3 = dark red, 4 = dark green, 5
+		// = dark blue
 		if(guibutton.id == 0)
 		{
 			if(tileSpotLight.getRedValue() > 0)
@@ -99,7 +100,7 @@ public class GuiSpotLight extends GuiContainer
 		}
 		if(guibutton.id == 1)
 		{
-			
+
 			if(tileSpotLight.getRedValue() > 10)
 			{
 				try
@@ -115,12 +116,15 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 0); //red type = 0
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 0); // red
+																			// type
+																			// =
+																			// 0
 			}
 		}
 		if(guibutton.id == 2)
 		{
-			
+
 			if(tileSpotLight.getRedValue() > 100)
 			{
 				try
@@ -136,7 +140,10 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 0); //red type = 0
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 0); // red
+																			// type
+																			// =
+																			// 0
 			}
 		}
 		if(guibutton.id == 3)
@@ -172,7 +179,10 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 0); //red type = 0
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 0); // red
+																			// type
+																			// =
+																			// 0
 			}
 		}
 		if(guibutton.id == 5)
@@ -192,7 +202,10 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 0); //red type = 0
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 0); // red
+																			// type
+																			// =
+																			// 0
 			}
 		}
 
@@ -229,7 +242,10 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 1); //green type = 1
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 1); // green
+																			// type
+																			// =
+																			// 1
 			}
 		}
 		if(guibutton.id == 8)
@@ -249,7 +265,10 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 1); //green type = 1
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 1); // green
+																			// type
+																			// =
+																			// 1
 			}
 		}
 		if(guibutton.id == 9)
@@ -285,7 +304,10 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 1); //green type = 1
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 1); // green
+																			// type
+																			// =
+																			// 1
 			}
 		}
 		if(guibutton.id == 11)
@@ -305,7 +327,10 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 1); //green type = 1
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 1); // green
+																			// type
+																			// =
+																			// 1
 			}
 		}
 
@@ -342,7 +367,10 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 2); //blue type = 2
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 2); // blue
+																			// type
+																			// =
+																			// 2
 			}
 		}
 		if(guibutton.id == 14)
@@ -362,7 +390,10 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 2); //blue type = 2
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 2); // blue
+																			// type
+																			// =
+																			// 2
 			}
 		}
 		if(guibutton.id == 15)
@@ -398,7 +429,10 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 2); //blue type = 2
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 2); // blue
+																			// type
+																			// =
+																			// 2
 			}
 		}
 		if(guibutton.id == 17)
@@ -418,7 +452,10 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 2); //blue type = 2
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 2); // blue
+																			// type
+																			// =
+																			// 2
 			}
 		}
 
@@ -440,7 +477,7 @@ public class GuiSpotLight extends GuiContainer
 		}
 		if(guibutton.id == 19)
 		{
-			
+
 			if(tileSpotLight.getDarkRedValue() > 10)
 			{
 				try
@@ -456,12 +493,16 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 3); //dark red type = 3
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 3); // dark
+																			// red
+																			// type
+																			// =
+																			// 3
 			}
 		}
 		if(guibutton.id == 20)
 		{
-			
+
 			if(tileSpotLight.getDarkRedValue() > 100)
 			{
 				try
@@ -477,7 +518,11 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 3); //dark red type = 3
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 3); // dark
+																			// red
+																			// type
+																			// =
+																			// 3
 			}
 		}
 		if(guibutton.id == 21)
@@ -513,7 +558,11 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 3); //dark red type = 3
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 3); // dark
+																			// red
+																			// type
+																			// =
+																			// 3
 			}
 		}
 		if(guibutton.id == 23)
@@ -533,7 +582,11 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 3); //dark red type = 3
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 3); // dark
+																			// red
+																			// type
+																			// =
+																			// 3
 			}
 		}
 
@@ -570,7 +623,11 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 4); //dark green type = 4
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 4); // dark
+																			// green
+																			// type
+																			// =
+																			// 4
 			}
 		}
 		if(guibutton.id == 26)
@@ -590,7 +647,11 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 4); //dark green type = 4
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 4); // dark
+																			// green
+																			// type
+																			// =
+																			// 4
 			}
 		}
 		if(guibutton.id == 27)
@@ -626,7 +687,11 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 4); //dark green type = 4
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 4); // dark
+																			// green
+																			// type
+																			// =
+																			// 4
 			}
 		}
 		if(guibutton.id == 29)
@@ -646,7 +711,11 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 4); //dark green type = 4
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 4); // dark
+																			// green
+																			// type
+																			// =
+																			// 4
 			}
 		}
 
@@ -683,7 +752,11 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 5); //dark blue type = 5
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 5); // dark
+																			// blue
+																			// type
+																			// =
+																			// 5
 			}
 		}
 		if(guibutton.id == 32)
@@ -703,7 +776,11 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 5); //dark blue type = 5
+				this.setToMin(bytearrayoutputstream, dataoutputstream, 5); // dark
+																			// blue
+																			// type
+																			// =
+																			// 5
 			}
 		}
 		if(guibutton.id == 33)
@@ -739,7 +816,11 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 5); //dark blue type = 5
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 5); // dark
+																			// blue
+																			// type
+																			// =
+																			// 5
 			}
 		}
 		if(guibutton.id == 35)
@@ -759,7 +840,11 @@ public class GuiSpotLight extends GuiContainer
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 5); //dark blue type = 5
+				this.setToMax(bytearrayoutputstream, dataoutputstream, 5); // dark
+																			// blue
+																			// type
+																			// =
+																			// 5
 			}
 		}
 	}
@@ -849,7 +934,7 @@ public class GuiSpotLight extends GuiContainer
 		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkGreenValue()), xSize / 2 - darkGreenPos, ySize + -65, FFMTColor.darkGreenInt);
 		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkBlueValue()), xSize / 2 - darkBluePos, ySize + -43, FFMTColor.darkBlueInt);
 	}
-	
+
 	private void setToMax(ByteArrayOutputStream bytearrayoutputstream, DataOutputStream dataoutputstream, int type)
 	{
 		try
@@ -864,7 +949,7 @@ public class GuiSpotLight extends GuiContainer
 			Nanotech_mod.NanoLog.severe("Failed to send SpotLight packet");
 		}
 	}
-	
+
 	private void setToMin(ByteArrayOutputStream bytearrayoutputstream, DataOutputStream dataoutputstream, int type)
 	{
 		try

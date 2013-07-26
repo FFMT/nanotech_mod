@@ -36,11 +36,11 @@ public class TileEntitySmoker extends TileEntity
 		this.writeToNBT(nbttagcompound);
 		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4, nbttagcompound);
 	}
-	
-    public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
-    {
-        this.readFromNBT(pkt.customParam1);
-    }
+
+	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
+	{
+		this.readFromNBT(pkt.customParam1);
+	}
 
 	public void setSmokeInt(int newValue)
 	{

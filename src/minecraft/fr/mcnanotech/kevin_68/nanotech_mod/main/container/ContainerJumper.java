@@ -40,7 +40,7 @@ public class ContainerJumper extends Container
 			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
 		}
 	}
-	
+
 	public TileEntityJumper getJumper()
 	{
 		return tileJumper;

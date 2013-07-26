@@ -13,32 +13,34 @@ public class ItemScytheRender implements IItemRenderer
 {
 
 	protected ItemScytheModel model;
-	
+
 	public ItemScytheRender()
 	{
 		model = new ItemScytheModel();
 	}
-	
+
 	@Override
-	public boolean handleRenderType(ItemStack item, ItemRenderType type) 
+	public boolean handleRenderType(ItemStack item, ItemRenderType type)
 	{
 		switch(type)
 		{
-		case EQUIPPED: return true;
-		default: return false;
+		case EQUIPPED:
+			return true;
+		default:
+			return false;
 		}
 
 	}
 
 	@Override
-	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) 
+	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper)
 	{
 		return false;
 	}
 
 	@Override
-	public void renderItem(ItemRenderType type, ItemStack item, Object... data) 
-	{		
+	public void renderItem(ItemRenderType type, ItemStack item, Object... data)
+	{
 		switch(type)
 		{
 		case EQUIPPED:
@@ -55,6 +57,5 @@ public class ItemScytheRender implements IItemRenderer
 			break;
 		}
 	}
-
 
 }

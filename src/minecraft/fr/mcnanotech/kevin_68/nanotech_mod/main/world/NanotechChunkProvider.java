@@ -699,11 +699,9 @@ public class NanotechChunkProvider implements IChunkProvider
 		 * int Xcoord5 = chunkX * 16 + rand.nextInt(512); int Ycoord5 =
 		 * rand.nextInt(100); int Zcoord5 = chunkZ * 16 + rand.nextInt(512);
 		 * worldgen4.generate(this.worldObj, rand, Xcoord5, Ycoord5, Zcoord5);
-		 * 
 		 * int Xcoord6 = chunkX * 16 + rand.nextInt(512); int Ycoord6 =
 		 * rand.nextInt(100); int Zcoord6 = chunkZ * 16 + rand.nextInt(512);
 		 * worldgen5.generate(this.worldObj, rand, Xcoord6, Ycoord6, Zcoord6);
-		 * 
 		 * int Xcoord7 = chunkX * 16 + rand.nextInt(512); int Ycoord7 =
 		 * rand.nextInt(100); int Zcoord7 = chunkZ * 16 + rand.nextInt(512);
 		 * worldgen6.generate(this.worldObj, rand, Xcoord7, Ycoord7, Zcoord7);

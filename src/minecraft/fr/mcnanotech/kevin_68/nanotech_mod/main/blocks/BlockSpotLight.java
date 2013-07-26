@@ -16,7 +16,7 @@ public class BlockSpotLight extends BlockContainer
 {
 	private Icon top;
 	private Icon side;
-	
+
 	public BlockSpotLight(int par1)
 	{
 		super(par1, Material.iron);
@@ -55,18 +55,18 @@ public class BlockSpotLight extends BlockContainer
 	{
 		return 0;
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister)
 	{
 		this.side = par1IconRegister.registerIcon("Nanotech_mod:SpotLightSides");
 		this.top = par1IconRegister.registerIcon("Nanotech_mod:SpotLightTopAndBottom");
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int metadata)
 	{
-		if (side == 1 || side == 0)
+		if(side == 1 || side == 0)
 		{
 			return this.top;
 		}
@@ -75,5 +75,5 @@ public class BlockSpotLight extends BlockContainer
 			return this.side;
 		}
 	}
-	
+
 }

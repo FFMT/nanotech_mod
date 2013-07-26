@@ -44,8 +44,8 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGeneration;
 
 @Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "2.0.3")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTM|smoker", "NTM|jumper", "NTM|light"}, packetHandler = PacketHandler.class)
-
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels =
+{"NTM|smoker", "NTM|jumper", "NTM|light"}, packetHandler = PacketHandler.class)
 public class Nanotech_mod
 {
 	// Instance
@@ -54,19 +54,14 @@ public class Nanotech_mod
 	// Proxy
 	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotech_mod.main.core.ClientProxy", serverSide = "fr.mcnanotech.kevin_68.nanotech_mod.main.core.CommonProxy")
 	public static CommonProxy proxy;
-	
+
 	// Block IDs
-	public static int BlockPortalID, BlockPortalFrameID, BlockGrassID, BlockFakeOreID, BlockSpeedID, BlockJumperID,
-	BlockMultiplierID, BlockSmokerID, BlockTrashcanID, BlockBarbedWireID, BlockNanoWoodID, BlockNanoLeavesID, 
-	BlockNanoSaplingsID, BlockNanoPlanksID, BlockNanoOreID, BlockConfusionID, BlockFallingID, BlockNotFallingID,
-	BlockSodiumID, BlockMossyStoneID, BlockSpotLightID, BlockTheDeathHeadID, BlockTrailID;
+	public static int BlockPortalID, BlockPortalFrameID, BlockGrassID, BlockFakeOreID, BlockSpeedID, BlockJumperID, BlockMultiplierID, BlockSmokerID, BlockTrashcanID, BlockBarbedWireID, BlockNanoWoodID, BlockNanoLeavesID, BlockNanoSaplingsID, BlockNanoPlanksID, BlockNanoOreID, BlockConfusionID, BlockFallingID, BlockNotFallingID, BlockSodiumID, BlockMossyStoneID, BlockSpotLightID,
+			BlockTheDeathHeadID, BlockTrailID;
 
 	// Item IDs
-	public static int ItemNanotechID, ItemSuperBottleOfXpID, ItemDiamondBowID, ItemEmeraldBowID, ItemNanomiteBowID, 
-	ItemNanomiteAxeID, ItemNanomitePickaxeID, ItemNanomiteShovelID, ItemNanomiteHoeID, ItemNanomiteSwordID,
-	ItemNanomiteHelmetID, ItemNanomiteChestPlateID, ItemNanomiteLegginsID, ItemNanomiteBootsID, ItemMysteriousHelmetID,
-	ItemMysteriousChestPlateID, ItemMysteriousLegginsID, ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID,
-	ItemRottenChunkID, ItemTrailID, ItemScytheID, ItemCrazyGlassesID;
+	public static int ItemNanotechID, ItemSuperBottleOfXpID, ItemDiamondBowID, ItemEmeraldBowID, ItemNanomiteBowID, ItemNanomiteAxeID, ItemNanomitePickaxeID, ItemNanomiteShovelID, ItemNanomiteHoeID, ItemNanomiteSwordID, ItemNanomiteHelmetID, ItemNanomiteChestPlateID, ItemNanomiteLegginsID, ItemNanomiteBootsID, ItemMysteriousHelmetID, ItemMysteriousChestPlateID, ItemMysteriousLegginsID,
+			ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemTrailID, ItemScytheID, ItemCrazyGlassesID;
 
 	// Dimension ID
 	public static int dimensionID = 19;
@@ -81,8 +76,7 @@ public class Nanotech_mod
 	public static boolean MultipleExplosion;
 	public static int ExplosionRadius;
 	public static int TimeUntilNextArrow;
-	public static boolean CreeperDriller, FastZombie, Fly, SuperCreeper, SuperEnderman, SuperSkeleton, SuperZombie,
-	TheDeath, FlyingCreeper, CrazyGuy;
+	public static boolean CreeperDriller, FastZombie, Fly, SuperCreeper, SuperEnderman, SuperSkeleton, SuperZombie, TheDeath, FlyingCreeper, CrazyGuy;
 	public static int SuperZombieProb;
 	public static int SuperZombieMin;
 	public static int SuperZombieMax;
@@ -122,7 +116,7 @@ public class Nanotech_mod
 
 	// log
 	public static Logger NanoLog;
-	
+
 	@PreInit
 	public void PreInitNanotech_mod(FMLPreInitializationEvent event)
 	{
@@ -267,7 +261,7 @@ public class Nanotech_mod
 		this.forgeDictionary();
 		this.other();
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
-		
+
 		GameRegistry.registerPlayerTracker(new PlayerTracker());
 		GameRegistry.registerCraftingHandler(new CraftingHandler());
 	}
@@ -276,7 +270,7 @@ public class Nanotech_mod
 	public void PostInitNanotech_mod(FMLPostInitializationEvent event)
 	{
 		proxy.registerOverlay();
-		
+
 		NanotechRecipe.InitCommonRecipes();
 		if(HardRecipe)
 		{

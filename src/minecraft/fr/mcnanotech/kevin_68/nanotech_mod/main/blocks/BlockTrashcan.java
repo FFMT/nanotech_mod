@@ -59,14 +59,14 @@ public class BlockTrashcan extends Block
 	}
 
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
-	{		
+	{
 		int prob = random.nextInt(100);
-		if (entity instanceof EntityItem)
+		if(entity instanceof EntityItem)
 		{
-			if (!world.isRemote)
+			if(!world.isRemote)
 			{
 				entity.setDead();
-				if (prob < 15)
+				if(prob < 15)
 				{
 					world.spawnEntityInWorld(new EntityXPOrb(world, (double)x + 0.5D, (double)y + 1.5D, (double)z + 0.5D, 1));
 				}

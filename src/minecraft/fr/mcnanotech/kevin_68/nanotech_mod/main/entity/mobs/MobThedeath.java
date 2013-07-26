@@ -218,7 +218,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 	public ItemStack getHeldItem()
 	{
-		return (new ItemStack(NanotechItem.scythe));
+		return(new ItemStack(NanotechItem.scythe));
 	}
 
 	public int deathTicks = 0;
@@ -280,11 +280,11 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	{
 		Entity entity = par1DamageSource.getEntity();
 
-		if (entity != null && entity instanceof EntityPlayer)
+		if(entity != null && entity instanceof EntityPlayer)
 		{
-			((EntityPlayer) entity).triggerAchievement(NanotechAchievement.killTheDeath);
-			
-			if (((EntityPlayer)entity).inventory.armorItemInSlot(3) != null && ((EntityPlayer)entity).inventory.armorItemInSlot(3) == new ItemStack(NanotechItem.crazyGlasses))
+			((EntityPlayer)entity).triggerAchievement(NanotechAchievement.killTheDeath);
+
+			if(((EntityPlayer)entity).inventory.armorItemInSlot(3) != null && ((EntityPlayer)entity).inventory.armorItemInSlot(3) == new ItemStack(NanotechItem.crazyGlasses))
 			{
 				((EntityPlayer)entity).triggerAchievement(NanotechAchievement.killTheDeathWithCG);
 			}
