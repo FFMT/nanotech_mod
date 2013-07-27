@@ -5,6 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
@@ -31,12 +32,12 @@ public class BlockConfusion extends Block
 	{
 		if(entity instanceof EntityPlayer)
 		{
-			((EntityPlayer)entity).addPotionEffect(new PotionEffect(9, 20, 10));
-			((EntityPlayer)entity).addPotionEffect(new PotionEffect(15, 200, 10));
-			((EntityPlayer)entity).addPotionEffect(new PotionEffect(2, 200, 10));
-			((EntityPlayer)entity).addPotionEffect(new PotionEffect(4, 200, 10));
-			((EntityPlayer)entity).addPotionEffect(new PotionEffect(17, 200, 10));
-			((EntityPlayer)entity).addPotionEffect(new PotionEffect(20, 20, 10));
+			((EntityPlayer)entity).addPotionEffect(new PotionEffect(Potion.confusion.id, 20, 10));
+			((EntityPlayer)entity).addPotionEffect(new PotionEffect(Potion.blindness.id, 200, 10));
+			((EntityPlayer)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 200, 10));
+			((EntityPlayer)entity).addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 200, 10));
+			((EntityPlayer)entity).addPotionEffect(new PotionEffect(Potion.hunger.id, 200, 10));
+			((EntityPlayer)entity).addPotionEffect(new PotionEffect(Potion.wither.id, 20, 10));
 		}
 	}
 }
