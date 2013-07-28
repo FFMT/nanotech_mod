@@ -1,0 +1,147 @@
+<?xml version="1.0" ?>
+<project name="Nanotech_mod" default="build">
+
+    <property file="build.properties" prefix="build_number"/>
+    <property file="build.properties" prefix="mc_version"/>
+    <property file="build.properties" prefix="forge_version"/>
+    <property file="build.properties" prefix="NanotechMod_version"/>
+    <property file="build.properties" prefix="UltimateGraviSuite_version"/>
+    <property name="forge.dir" value="..\forge"/>
+    <property name="mcp.dir" value="${forge.dir}\${forge_version.forge_version}\mcp"/>
+	<available property="forge-exists" file="${mcp.dir}"/>
+
+    <!-- Download forge -->
+    <target name="download-forge" unless="forge-exists">
+        <propertyfile file="build.properties">
+            <entry key="mc_version" type="string" default="error"/>
+        </propertyfile>
+        <propertyfile file="build.properties">
+            <entry key="forge_version" type="string" default="error"/>
+        </propertyfile>
+	    <property name="forge.name" value="minecraftforge-src-${mc_version.mc_version}-${forge_version.forge_version}.zip"/>
+
+        <get src="http://files.minecraftforge.net/${forge.name}" dest="..\" usetimestamp="True"/>
+    </target>
+
+    <!-- Setup forge -->
+	<target name="setup" depends="download-forge" unless="forge-exists">
+        <unzip dest="..\" src="..\${forge.name}"/>
+        <mkdir dir="${forge.dir}\${forge_version.forge_version}\"/>
+        <move todir="${forge.dir}\${forge_version.forge_version}\">
+            <fileset dir="${forge.dir}">
+                <exclude name="${forge_version.forge_version}"/>
+            </fileset>
+        </move>
+
+        <delete file="..\${forge.name}"/>
+
+        <!-- Fix executable permissions -->
+        <chmod dir="${forge.dir}/${forge_version.forge_version}" perm="ugo+rx" includes="**.sh"/>
+
+        <!-- Install forge -->
+        <exec dir="${forge.dir}/${forge_version.forge_version}" executable="cmd" osfamily="windows">
+            <arg line="/c install.cmd"/>
+        </exec>
+
+        <exec dir="${forge.dir}/${forge_version.forge_version}" executable="sh" osfamily="unix">
+            <arg value="install.sh"/>
+        </exec>
+    </target>
+
+    <target name="increment_build_number">
+        <propertyfile file="build.properties">
+        <entry key="build_number" type="int" operation="+" default="1"/>
+        </propertyfile>
+    </target>
+
+    <!-- Copy source into mcp -->
+    <target name="copy_sources">
+        <copy todir="${mcp.dir}\src\minecraft\">
+            <fileset dir="common\" excludes= "fr\mcnanotech\kevin_68\nanotech_mod\ultimateGraviSuite\*"/>
+        </copy>
+    </target>
+
+    <!-- Copy lib into mcp -->
+    <target name="copy_libs">
+        <copy todir="${mcp.dir}\lib\">
+            <fileset dir="libs\" />
+        </copy>
+        <!--
+        <copy todir="${mcp.dir}\src\minecraft\">
+            <fileset dir="other_sources\" />
+        </copy> -->
+    </target>
+
+    <!-- Replace version token -->
+    <target name="replace_tokens">
+        <propertyfile file="build.properties">
+            <entry key="NanotechMod_version" type="string" default="error"/>
+        </propertyfile>
+        <replace dir="${mcp.dir}\src\minecraft" token="@VERSION@" value="${NanotechMod_version.NanotechMod_version}" />
+
+        <propertyfile file="build.properties">
+            <entry key="UltimateGraviSuite_version" type="string" default="error"/>
+        </propertyfile>
+        <replace dir="${mcp.dir}\src\minecraft" token="@GRAVI_VERSION@" value="${UltimateGraviSuite_version.UltimateGraviSuite_version}" />
+    </target>
+
+    <!-- Recompile -->
+    <target name="recompile">
+        <exec dir="${mcp.dir}" executable="cmd" osfamily="windows"> 
+            <arg line="/c recompile.bat" />
+        </exec>
+        <exec dir="${mcp.dir}" executable="bash" osfamily="unix">
+            <arg line="recompile.sh" />
+        </exec>
+    </target>
+
+    <!-- Reobfuscate -->
+    <target name="reobfuscate">
+        <exec dir="${mcp.dir}" executable="cmd" osfamily="windows">
+            <arg line="/c reobfuscate_srg.bat" />
+        </exec>
+        <exec dir="${mcp.dir}" executable="bash" osfamily="unix">
+            <arg line="reobfuscate_srg.sh" />
+        </exec>
+    </target>
+
+    <!-- Build the jar -->
+    <target name="createjar">
+        <!-- Build the jar -->
+        <mkdir dir="releases\" />
+        <jar destfile="releases\Nanotech_mod-core-universal-${NanotechMod_version.NanotechMod_version}.${build_number.build_number}-mc${mc_version.mc_version}.jar">
+            <fileset dir="resources\" includes="mods\Nanotech_mod\**" />
+            <fileset dir="resources\" includes="mcmod.info" />
+            <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\main\**"/>
+        </jar>
+        <jar destfile="releases\Nanotech_mod-UltimateGraviSuit-universal-${UltimateGraviSuite_version.UltimateGraviSuite_version}.${build_number.build_number}-mc${mc_version.mc_version}.jar">
+            <fileset dir="resources\" includes="mods\UltimateGraviSuite\**" />
+            <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\ultimateGraviSuite\**"/>
+        </jar>
+    </target>
+
+    <!-- Clean up the MCP source now that we are done -->
+    <target name="clean">
+        <delete file="${mcp.dir}\src\minecraft\mcmod.info" />
+        <delete dir="${mcp.dir}\src\minecraft\fr" />
+        <delete dir="${mcp.dir}\src\minecraft\gravisuite" />
+        <delete dir="${mcp.dir}\src\minecraft\gregtechmod" />
+        <delete file="${mcp.dir}\libs\*deobf*" />
+        <delete dir="${mcp.dir}\reobf\minecraft" />
+    </target>
+
+    <target name="build">
+        <!-- Prep for the build -->
+        <antcall target="download-forge" />
+        <antcall target="setup" />
+        <antcall target="increment_build_number" />
+        <antcall target="copy_sources" />
+        <antcall target="copy_libs" />
+        <antcall target="replace_tokens" />
+        <antcall target="recompile" />	
+        <antcall target="reobfuscate" />
+        <antcall target="createjar" />
+        <antcall target="clean" />
+    </target>
+</project>
+
