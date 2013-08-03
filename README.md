@@ -8,5 +8,6 @@ Todo list:
 * Fix dimension lag
 * Fix dimension gen
 * Fix the death hand
+* Fix UltimateGravi build
 
 That's all for now
