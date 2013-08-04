@@ -8,10 +8,12 @@ import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerFountain;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityFountain;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySpotLight;
@@ -36,6 +38,11 @@ public class PacketHandler implements IPacketHandler
 		if(packet.channel.equals("NTM|light"))
 		{
 			handleSpotLightPacket(packet, playerSender);
+		}
+
+		if (packet.channel.equals("NTM|fount"))
+		{
+			handleFountainPacket(packet, playerSender);
 		}
 	}
 
@@ -120,6 +127,50 @@ public class PacketHandler implements IPacketHandler
 		{
 			exception.printStackTrace();
 			Nanotech_mod.NanoLog.severe("Failed to handle SpotLight packet");
+		}
+	}
+
+	private void handleFountainPacket(Packet250CustomPayload packet, EntityPlayer player)
+	{
+		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
+		float height;
+		double width;
+		boolean rotate;
+		boolean animated;
+		int type;
+
+		try
+		{
+			data = new DataInputStream(new ByteArrayInputStream(packet.data));
+			type = data.readInt();
+			height = data.readFloat();
+			width = data.readDouble();
+			rotate = data.readBoolean();
+			animated = data.readBoolean();
+
+			ContainerFountain containerFountain = (ContainerFountain)player.openContainer;
+			TileEntityFountain tilefountain = containerFountain.getFountain();
+			switch (type)
+			{
+			case 0:
+				tilefountain.setHeight(height);
+				break;
+			case 1:
+				tilefountain.setWidth(width);
+				break;
+			case 2:
+				tilefountain.setRotate(rotate);
+				break;
+			case 3:
+				tilefountain.setAnimated(animated);
+				break;
+			}
+			player.worldObj.markBlockForUpdate(tilefountain.xCoord, tilefountain.yCoord, tilefountain.zCoord);
+		}
+		catch(Exception exception)
+		{
+			exception.printStackTrace();
+			Nanotech_mod.NanoLog.severe("Failed to handle Fountain packet");
 		}
 	}
 }
