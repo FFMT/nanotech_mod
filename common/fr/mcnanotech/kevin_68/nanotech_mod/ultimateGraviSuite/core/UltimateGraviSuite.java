@@ -41,9 +41,7 @@ import gravisuite.GraviSuite;
 import gregtechmod.api.GregTech_API;
 
 @Mod(modid = "UltimateGraviSuite", name = "Ultimate Gravitation Suite", dependencies = "required-after:IC2;required-after:GraviSuite", version = "1.6")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, clientPacketHandlerSpec = @NetworkMod.SidedPacketHandler(channels =
-{"gravisuite"}, packetHandler = ClientPacketHandler.class), serverPacketHandlerSpec = @NetworkMod.SidedPacketHandler(channels =
-{"gravisuite"}, packetHandler = ServerPacketHandler.class))
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, clientPacketHandlerSpec = @NetworkMod.SidedPacketHandler(channels ={"gravisuite"}, packetHandler = ClientPacketHandler.class), serverPacketHandlerSpec = @NetworkMod.SidedPacketHandler(channels = {"gravisuite"}, packetHandler = ServerPacketHandler.class))
 
 public class UltimateGraviSuite
 {

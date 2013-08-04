@@ -66,10 +66,9 @@
         <copy todir="${mcp.dir}\lib\">
             <fileset dir="libs\" />
         </copy>
-        <!--
         <copy todir="${mcp.dir}\src\minecraft\">
             <fileset dir="other_sources\" />
-        </copy> -->
+        </copy>
     </target>
 
     <!-- Replace version token -->
@@ -114,7 +113,7 @@
             <fileset dir="resources\" includes="mcmod.info" />
             <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\main\**"/>
         </jar>
-        <jar destfile="releases\Nanotech_mod-UltimateGraviSuit-universal-${UltimateGraviSuite_version.UltimateGraviSuite_version}.${build_number.build_number}-mc${mc_version.mc_version}.jar">
+        <jar destfile="releases\Nanotech_mod-UltimateGraviSuite-universal-${UltimateGraviSuite_version.UltimateGraviSuite_version}.${build_number.build_number}-mc${mc_version.mc_version}.jar">
             <fileset dir="resources\" includes="mods\UltimateGraviSuite\**" />
             <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\ultimateGraviSuite\**"/>
         </jar>

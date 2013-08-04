@@ -75,7 +75,7 @@ public class ClientProxy extends ServerProxy
 			var0.addChatMessage(var1);
 		}
 	}
-
+	
 	@ForgeSubscribe
 	public void onWorldLoad(WorldEvent.Load var1)
 	{

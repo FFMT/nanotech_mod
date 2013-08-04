@@ -222,5 +222,4 @@ public class UltimateLeggings extends ItemArmor implements IElectricItem, IMetal
 	{
 		return 20000;
 	}
-
 }

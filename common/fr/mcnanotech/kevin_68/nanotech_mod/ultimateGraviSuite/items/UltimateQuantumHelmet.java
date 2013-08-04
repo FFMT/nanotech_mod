@@ -324,10 +324,6 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 		ElectricItem.manager.discharge(var2, var4 * this.getEnergyPerDamage(), Integer.MAX_VALUE, true, false);
 	}
 
-	/**
-	 * returns a list of items with the same ID, but different meta (eg: dye
-	 * returns 16 items)
-	 */
 	public void getSubItems(int var1, CreativeTabs var2, List var3)
 	{
 		ItemStack var4 = new ItemStack(this, 1);
@@ -337,9 +333,6 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 	}
 
 	@SideOnly(Side.CLIENT)
-	/**
-	 * Return an item rarity from EnumRarity
-	 */
 	public EnumRarity getRarity(ItemStack var1)
 	{
 		return EnumRarity.epic;
@@ -387,5 +380,4 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 	{
 		return 20000;
 	}
-
 }

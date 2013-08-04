@@ -14,7 +14,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGravi
 
 public class ClientPacketHandler extends ServerPacketHandler
 {
-	public void onPacketData(INetworkManager var1, Packet250CustomPayload var2, Player var3)
+	public void onPacketData(INetworkManager var1, Packet250CustomPayload var2, Player player)
 	{
 		DataInputStream var4 = new DataInputStream(new ByteArrayInputStream(var2.data));
 

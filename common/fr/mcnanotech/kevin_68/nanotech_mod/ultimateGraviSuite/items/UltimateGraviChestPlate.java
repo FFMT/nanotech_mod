@@ -157,10 +157,6 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 		return true;
 	}
 
-	/**
-	 * returns a list of items with the same ID, but different meta (eg: dye
-	 * returns 16 items)
-	 */
 	public void getSubItems(int id, CreativeTabs crativetab, List list)
 	{
 		ItemStack var4 = new ItemStack(this, 1);
@@ -174,19 +170,12 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 		return false;
 	}
 
-	/**
-	 * Return the enchantability factor of the item, most of the time is based
-	 * on material.
-	 */
 	public int getItemEnchantability()
 	{
 		return 0;
 	}
 
 	@SideOnly(Side.CLIENT)
-	/**
-	 * Return an item rarity from EnumRarity
-	 */
 	public EnumRarity getRarity(ItemStack var1)
 	{
 		return EnumRarity.epic;

@@ -69,16 +69,16 @@ public class UltimateBoots extends ItemArmor implements IElectricItem, IMetalArm
 		if(IC2.platform.isSimulating() && fallevent.entity instanceof EntityPlayer)
 		{
 			EntityPlayer player = (EntityPlayer)fallevent.entity;
-			ItemStack var3 = player.inventory.armorInventory[0];
+			ItemStack stack = player.inventory.armorInventory[0];
 
-			if(var3 != null && var3.itemID == this.itemID)
+			if(stack != null && stack.itemID == this.itemID)
 			{
 				int var4 = (int)fallevent.distance - 3;
 				int var5 = this.getEnergyPerDamage() * var4;
 
-				if(var5 <= ElectricItem.manager.discharge(var3, Integer.MAX_VALUE, Integer.MAX_VALUE, true, true))
+				if(var5 <= ElectricItem.manager.discharge(stack, Integer.MAX_VALUE, Integer.MAX_VALUE, true, true))
 				{
-					ElectricItem.manager.discharge(var3, var5, Integer.MAX_VALUE, true, false);
+					ElectricItem.manager.discharge(stack, var5, Integer.MAX_VALUE, true, false);
 					fallevent.setCanceled(true);
 				}
 			}
@@ -160,7 +160,7 @@ public class UltimateBoots extends ItemArmor implements IElectricItem, IMetalArm
 
 	}
 
-	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot)
+	public int getArmorDisplay(EntityPlayer player, ItemStack stack, int slot)
 	{
 		return (int)Math.round(20.0D * this.getBaseAbsorptionRatio() * this.getDamageAbsorptionRatio());
 	}
@@ -197,39 +197,38 @@ public class UltimateBoots extends ItemArmor implements IElectricItem, IMetalArm
 	}
 
 	@Override
-	public boolean canProvideEnergy(ItemStack itemStack)
+	public boolean canProvideEnergy(ItemStack stack)
 	{
 		return true;
 	}
 
 	@Override
-	public int getChargedItemId(ItemStack itemStack)
+	public int getChargedItemId(ItemStack stack)
 	{
 		return this.itemID;
 	}
 
 	@Override
-	public int getEmptyItemId(ItemStack itemStack)
+	public int getEmptyItemId(ItemStack stack)
 	{
 		return this.itemID;
 	}
 
 	@Override
-	public int getMaxCharge(ItemStack itemStack)
+	public int getMaxCharge(ItemStack stack)
 	{
 		return 10000000;
 	}
 
 	@Override
-	public int getTier(ItemStack itemStack)
+	public int getTier(ItemStack stack)
 	{
 		return 2;
 	}
 
 	@Override
-	public int getTransferLimit(ItemStack itemStack)
+	public int getTransferLimit(ItemStack stack)
 	{
 		return 20000;
 	}
-
 }
