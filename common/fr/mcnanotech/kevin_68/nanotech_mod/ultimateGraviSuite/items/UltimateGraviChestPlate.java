@@ -116,7 +116,7 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 		return 1.1D;
 	}
 
-	public boolean isMetalArmor(ItemStack var1, EntityPlayer var2)
+	public boolean isMetalArmor(ItemStack stack, EntityPlayer player)
 	{
 		return true;
 	}
@@ -126,7 +126,7 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 		return (int)Math.round(20.0D * this.getBaseAbsorptionRatio() * this.getDamageAbsorptionRatio());
 	}
 
-	public void damageArmor(EntityLiving player, ItemStack stack, DamageSource var3, int var4, int var5)
+	public void damageArmor(EntityLiving player, ItemStack stack, DamageSource damage, int var4, int var5)
 	{
 		ElectricItem.manager.discharge(stack, var4 * this.getEnergyPerDamage(), Integer.MAX_VALUE, true, false);
 	}
@@ -176,43 +176,43 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack var1)
+	public EnumRarity getRarity(ItemStack stack)
 	{
 		return EnumRarity.epic;
 	}
 
 	@Override
-	public boolean canProvideEnergy(ItemStack itemStack)
+	public boolean canProvideEnergy(ItemStack stack)
 	{
 		return true;
 	}
 
 	@Override
-	public int getChargedItemId(ItemStack itemStack)
+	public int getChargedItemId(ItemStack stack)
 	{
 		return this.itemID;
 	}
 
 	@Override
-	public int getEmptyItemId(ItemStack itemStack)
+	public int getEmptyItemId(ItemStack stack)
 	{
 		return this.itemID;
 	}
 
 	@Override
-	public int getMaxCharge(ItemStack itemStack)
+	public int getMaxCharge(ItemStack stack)
 	{
 		return this.maxCharge;
 	}
 
 	@Override
-	public int getTier(ItemStack itemStack)
+	public int getTier(ItemStack stack)
 	{
 		return 2;
 	}
 
 	@Override
-	public int getTransferLimit(ItemStack itemStack)
+	public int getTransferLimit(ItemStack stack)
 	{
 		return 20000;
 	}

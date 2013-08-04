@@ -47,9 +47,9 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 	private static boolean wetBiome;
 	public static int minCharge;
 
-	public UltimateQuantumHelmet(int var1, EnumArmorMaterial var2, int var3, int var4)
+	public UltimateQuantumHelmet(int id, EnumArmorMaterial armorMaterial, int slot, int layer)
 	{
-		super(var1, var2, var3, var4);
+		super(id, armorMaterial, slot, layer);
 		genDay = UltimateGraviSuite.uhGenDay;
 		genNight = UltimateGraviSuite.uhGenNight;
 		minCharge = 10000;
@@ -75,30 +75,30 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 		}
 	}
 
-	public ISpecialArmor.ArmorProperties getProperties(EntityLiving var1, ItemStack var2, DamageSource var3, double var4, int var6)
+	public ISpecialArmor.ArmorProperties getProperties(EntityLiving entity, ItemStack stack, DamageSource var3, double var4, int var6)
 	{
 		double var7 = this.getBaseAbsorptionRatio() * this.getDamageAbsorptionRatio();
 		int var9 = this.getEnergyPerDamage();
-		int var10 = var9 <= 0 ? 0 : ElectricItem.manager.discharge(var2, Integer.MAX_VALUE, Integer.MAX_VALUE, true, true) / var9;
+		int var10 = var9 <= 0 ? 0 : ElectricItem.manager.discharge(stack, Integer.MAX_VALUE, Integer.MAX_VALUE, true, true) / var9;
 		return new ISpecialArmor.ArmorProperties(0, var7, var10);
 	}
 
-	public static int getCharge(ItemStack var0)
+	public static int getCharge(ItemStack stack)
 	{
-		NBTTagCompound var1 = UltimateGraviSuite.getOrCreateNbtData(var0);
-		int var2 = var1.getInteger("charge");
-		return var2;
+		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		int charge = nbttag.getInteger("charge");
+		return charge;
 	}
 
-	public static void setCharge(ItemStack var0, int var1)
+	public static void setCharge(ItemStack stack, int charge)
 	{
-		NBTTagCompound var2 = UltimateGraviSuite.getOrCreateNbtData(var0);
-		var2.setInteger("charge", var1);
+		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		nbttag.setInteger("charge", charge);
 	}
 
-	public static boolean onTick(EntityPlayer var0, ItemStack var1)
+	public static boolean onTick(EntityPlayer player, ItemStack stack)
 	{
-		gainFuel(var0);
+		gainFuel(player);
 
 		if(generating > 0)
 		{
@@ -106,30 +106,30 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 			int var2;
 			int var4;
 
-			for(var4 = 0; var4 < var0.inventory.armorInventory.length; ++var4)
+			for(var4 = 0; var4 < player.inventory.armorInventory.length; ++var4)
 			{
 				if(var3 <= 0)
 				{
 					return true;
 				}
 
-				if(var0.inventory.armorInventory[var4] != null && Item.itemsList[var0.inventory.armorInventory[var4].itemID] instanceof IElectricItem)
+				if(player.inventory.armorInventory[var4] != null && Item.itemsList[player.inventory.armorInventory[var4].itemID] instanceof IElectricItem)
 				{
-					var2 = ElectricItem.manager.charge(var0.inventory.armorInventory[var4], var3, 3, false, false);
+					var2 = ElectricItem.manager.charge(player.inventory.armorInventory[var4], var3, 3, false, false);
 					var3 -= var2;
 				}
 			}
 
-			for(var4 = 0; var4 < var0.inventory.mainInventory.length; ++var4)
+			for(var4 = 0; var4 < player.inventory.mainInventory.length; ++var4)
 			{
 				if(var3 <= 0)
 				{
 					return true;
 				}
 
-				if(var0.inventory.mainInventory[var4] != null && Item.itemsList[var0.inventory.mainInventory[var4].itemID] instanceof IElectricItem)
+				if(player.inventory.mainInventory[var4] != null && Item.itemsList[player.inventory.mainInventory[var4].itemID] instanceof IElectricItem)
 				{
-					var2 = ElectricItem.manager.charge(var0.inventory.mainInventory[var4], var3, 3, false, false);
+					var2 = ElectricItem.manager.charge(player.inventory.mainInventory[var4], var3, 3, false, false);
 					var3 -= var2;
 				}
 			}
@@ -138,16 +138,16 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 		return true;
 	}
 
-	public static boolean readNightVisionStatus(ItemStack var0)
+	public static boolean readNightVisionStatus(ItemStack stack)
 	{
-		NBTTagCompound var1 = UltimateGraviSuite.getOrCreateNbtData(var0);
-		return var1.getBoolean("isInvisible");
+		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		return nbttag.getBoolean("isInvisible");
 	}
 
-	public static boolean saveNightVisionStatus(ItemStack var0, boolean var1)
+	public static boolean saveNightVisionStatus(ItemStack stack, boolean nightvisionstatus)
 	{
-		NBTTagCompound var2 = UltimateGraviSuite.getOrCreateNbtData(var0);
-		var2.setBoolean("isInvisible", var1);
+		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		nbttag.setBoolean("isInvisible", nightvisionstatus);
 		return true;
 	}
 
@@ -227,11 +227,11 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 		IC2.platform.profilerEndSection();
 	}
 
-	public static int gainFuel(EntityPlayer var0)
+	public static int gainFuel(EntityPlayer player)
 	{
 		if(ticker++ % tickRate() == 0)
 		{
-			updateVisibility(var0);
+			updateVisibility(player);
 		}
 
 		if(sunIsUp && skyIsVisible)
@@ -251,13 +251,13 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 		}
 	}
 
-	public static void updateVisibility(EntityPlayer var0)
+	public static void updateVisibility(EntityPlayer player)
 	{
-		wetBiome = var0.worldObj.getWorldChunkManager().getBiomeGenAt((int)var0.posX, (int)var0.posZ).getIntRainfall() > 0;
-		noSunWorld = var0.worldObj.provider.hasNoSky;
-		Boolean var1 = Boolean.valueOf(wetBiome && (var0.worldObj.isRaining() || var0.worldObj.isThundering()));
+		wetBiome = player.worldObj.getWorldChunkManager().getBiomeGenAt((int)player.posX, (int)player.posZ).getIntRainfall() > 0;
+		noSunWorld = player.worldObj.provider.hasNoSky;
+		Boolean var1 = Boolean.valueOf(wetBiome && (player.worldObj.isRaining() || player.worldObj.isThundering()));
 
-		if(var0.worldObj.isDaytime() && !var1.booleanValue())
+		if(player.worldObj.isDaytime() && !var1.booleanValue())
 		{
 			sunIsUp = true;
 		}
@@ -266,7 +266,7 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 			sunIsUp = false;
 		}
 
-		if(var0.worldObj.canBlockSeeTheSky((int)var0.posX, (int)var0.posY + 1, (int)var0.posZ) && !noSunWorld)
+		if(player.worldObj.canBlockSeeTheSky((int)player.posX, (int)player.posY + 1, (int)player.posZ) && !noSunWorld)
 		{
 			skyIsVisible = true;
 		}
@@ -291,16 +291,16 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 		return 0.4D;
 	}
 
-	public static boolean readInvisibilityStatus(ItemStack var0)
+	public static boolean readInvisibilityStatus(ItemStack stack)
 	{
-		NBTTagCompound var1 = UltimateGraviSuite.getOrCreateNbtData(var0);
-		return var1.getBoolean("isInvisibleHel");
+		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		return nbttag.getBoolean("isInvisibleHel");
 	}
 
-	public static boolean saveInvisibilityStatus(ItemStack var0, boolean var1)
+	public static boolean saveInvisibilityStatus(ItemStack stack, boolean isInvisible)
 	{
-		NBTTagCompound var2 = UltimateGraviSuite.getOrCreateNbtData(var0);
-		var2.setBoolean("isInvisibleHel", var1);
+		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		nbttag.setBoolean("isInvisibleHel", isInvisible);
 		return true;
 	}
 
@@ -309,27 +309,27 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 		return 128;
 	}
 
-	public boolean isMetalArmor(ItemStack var1, EntityPlayer var2)
+	public boolean isMetalArmor(ItemStack stack, EntityPlayer player)
 	{
 		return true;
 	}
 
-	public int getArmorDisplay(EntityPlayer var1, ItemStack var2, int var3)
+	public int getArmorDisplay(EntityPlayer player, ItemStack stack, int var3)
 	{
 		return (int)Math.round(20.0D * this.getBaseAbsorptionRatio() * this.getDamageAbsorptionRatio());
 	}
 
-	public void damageArmor(EntityLiving var1, ItemStack var2, DamageSource var3, int var4, int var5)
+	public void damageArmor(EntityLiving living, ItemStack stack, DamageSource var3, int var4, int var5)
 	{
-		ElectricItem.manager.discharge(var2, var4 * this.getEnergyPerDamage(), Integer.MAX_VALUE, true, false);
+		ElectricItem.manager.discharge(stack, var4 * this.getEnergyPerDamage(), Integer.MAX_VALUE, true, false);
 	}
 
-	public void getSubItems(int var1, CreativeTabs var2, List var3)
+	public void getSubItems(int id, CreativeTabs creativetab, List list)
 	{
-		ItemStack var4 = new ItemStack(this, 1);
-		ElectricItem.manager.charge(var4, Integer.MAX_VALUE, Integer.MAX_VALUE, true, false);
-		var3.add(var4);
-		var3.add(new ItemStack(this, 1, this.getMaxDamage()));
+		ItemStack stack = new ItemStack(this, 1);
+		ElectricItem.manager.charge(stack, Integer.MAX_VALUE, Integer.MAX_VALUE, true, false);
+		list.add(stack);
+		list.add(new ItemStack(this, 1, this.getMaxDamage()));
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -346,37 +346,37 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 	}
 
 	@Override
-	public boolean canProvideEnergy(ItemStack itemStack)
+	public boolean canProvideEnergy(ItemStack stack)
 	{
 		return true;
 	}
 
 	@Override
-	public int getChargedItemId(ItemStack itemStack)
+	public int getChargedItemId(ItemStack stack)
 	{
 		return this.itemID;
 	}
 
 	@Override
-	public int getEmptyItemId(ItemStack itemStack)
+	public int getEmptyItemId(ItemStack stack)
 	{
 		return this.itemID;
 	}
 
 	@Override
-	public int getMaxCharge(ItemStack itemStack)
+	public int getMaxCharge(ItemStack stack)
 	{
 		return 10000000;
 	}
 
 	@Override
-	public int getTier(ItemStack itemStack)
+	public int getTier(ItemStack stack)
 	{
 		return 2;
 	}
 
 	@Override
-	public int getTransferLimit(ItemStack itemStack)
+	public int getTransferLimit(ItemStack stack)
 	{
 		return 20000;
 	}

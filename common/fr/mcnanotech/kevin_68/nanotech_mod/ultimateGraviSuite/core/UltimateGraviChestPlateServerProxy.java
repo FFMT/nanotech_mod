@@ -17,34 +17,34 @@ public class UltimateGraviChestPlateServerProxy
 {
 	private MinecraftServer mc = FMLCommonHandler.instance().getMinecraftServerInstance();
 
-	public static boolean switchFlyModeServer(EntityPlayer var0, ItemStack stack)
+	public static boolean switchFlyModeServer(EntityPlayer player, ItemStack stack)
 	{
 		if(UltimateGraviChestPlate.readFlyStatus(stack))
 		{
-			if(!var0.capabilities.isCreativeMode)
+			if(!player.capabilities.isCreativeMode)
 			{
-				var0.capabilities.allowFlying = false;
-				var0.capabilities.isFlying = false;
+				player.capabilities.allowFlying = false;
+				player.capabilities.isFlying = false;
 			}
 
-			ServerProxy.sendPlayerMessage(var0, "\u00a7cGravitation engine OFF");
-			ServerTickHandler.isFlyActiveByMod.put(var0, Boolean.valueOf(false));
+			ServerProxy.sendPlayerMessage(player, "\u00a7cGravitation engine OFF");
+			ServerTickHandler.isFlyActiveByMod.put(player, Boolean.valueOf(false));
 			UltimateGraviChestPlate.saveFlyStatus(stack, false);
 		}
 		else
 		{
 			int var2 = UltimateGraviChestPlate.getCharge(stack);
 
-			if(var2 < UltimateGraviChestPlate.minCharge && !var0.capabilities.isCreativeMode)
+			if(var2 < UltimateGraviChestPlate.minCharge && !player.capabilities.isCreativeMode)
 			{
-				ServerProxy.sendPlayerMessage(var0, "Not enough energy to run Gravitation engine !");
+				ServerProxy.sendPlayerMessage(player, "Not enough energy to run Gravitation engine !");
 			}
 			else
 			{
-				ServerProxy.sendPlayerMessage(var0, "\u00a7aGravitation engine ON");
-				var0.capabilities.allowFlying = true;
-				var0.capabilities.isFlying = true;
-				ServerTickHandler.isFlyActiveByMod.put(var0, Boolean.valueOf(true));
+				ServerProxy.sendPlayerMessage(player, "\u00a7aGravitation engine ON");
+				player.capabilities.allowFlying = true;
+				player.capabilities.isFlying = true;
+				ServerTickHandler.isFlyActiveByMod.put(player, Boolean.valueOf(true));
 				UltimateGraviChestPlate.saveFlyStatus(stack, true);
 			}
 		}

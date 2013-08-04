@@ -53,13 +53,13 @@ public class UltimateGraviChestPlateClientProxy
 		return true;
 	}
 
-	public static boolean switchInvisibleModeClient(EntityPlayer var0, ItemStack stack)
+	public static boolean switchInvisibleModeClient(EntityPlayer player, ItemStack stack)
 	{
 		if(stack.getItem() == UltimateGraviSuite.ultimategraviChestPlate)
 		{
 			if(UltimateGraviChestPlate.readInvisibilityStatus(stack))
 			{
-				ClientProxy.sendPlayerMessage(var0, "\u00a7cInvisibility OFF");
+				ClientProxy.sendPlayerMessage(player, "\u00a7cInvisibility OFF");
 				ClientTickHandler.isInvisibilityActiveByMod = false;
 				UltimateGraviChestPlate.saveInvisibilityStatus(stack, false);
 
@@ -68,13 +68,13 @@ public class UltimateGraviChestPlateClientProxy
 			{
 				int var2 = UltimateGraviChestPlate.getCharge(stack);
 
-				if(var2 < UltimateGraviChestPlate.minCharge && !var0.capabilities.isCreativeMode)
+				if(var2 < UltimateGraviChestPlate.minCharge && !player.capabilities.isCreativeMode)
 				{
-					ClientProxy.sendPlayerMessage(var0, "Not enough energy to be invisible !");
+					ClientProxy.sendPlayerMessage(player, "Not enough energy to be invisible !");
 				}
 				else
 				{
-					ClientProxy.sendPlayerMessage(var0, "\u00a7aInvisibility ON");
+					ClientProxy.sendPlayerMessage(player, "\u00a7aInvisibility ON");
 					ClientTickHandler.isInvisibilityActiveByMod = true;
 					UltimateGraviChestPlate.saveInvisibilityStatus(stack, true);
 				}

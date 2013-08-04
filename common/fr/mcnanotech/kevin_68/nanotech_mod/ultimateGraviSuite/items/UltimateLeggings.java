@@ -88,13 +88,13 @@ public class UltimateLeggings extends ItemArmor implements IElectricItem, IMetal
 		return 0.4D;
 	}
 
-	public boolean isMetalArmor(ItemStack var1, EntityPlayer var2)
+	public boolean isMetalArmor(ItemStack stack, EntityPlayer player)
 	{
 		return true;
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack var1)
+	public EnumRarity getRarity(ItemStack stack)
 	{
 		return EnumRarity.epic;
 	}
@@ -151,7 +151,7 @@ public class UltimateLeggings extends ItemArmor implements IElectricItem, IMetal
 
 	}
 
-	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot)
+	public int getArmorDisplay(EntityPlayer player, ItemStack stack, int slot)
 	{
 		return (int)Math.round(20.0D * this.getBaseAbsorptionRatio() * this.getDamageAbsorptionRatio());
 	}
@@ -188,37 +188,37 @@ public class UltimateLeggings extends ItemArmor implements IElectricItem, IMetal
 	}
 
 	@Override
-	public boolean canProvideEnergy(ItemStack itemStack)
+	public boolean canProvideEnergy(ItemStack stack)
 	{
 		return true;
 	}
 
 	@Override
-	public int getChargedItemId(ItemStack itemStack)
+	public int getChargedItemId(ItemStack stack)
 	{
 		return this.itemID;
 	}
 
 	@Override
-	public int getEmptyItemId(ItemStack itemStack)
+	public int getEmptyItemId(ItemStack stack)
 	{
 		return this.itemID;
 	}
 
 	@Override
-	public int getMaxCharge(ItemStack itemStack)
+	public int getMaxCharge(ItemStack stack)
 	{
 		return 10000000;
 	}
 
 	@Override
-	public int getTier(ItemStack itemStack)
+	public int getTier(ItemStack stack)
 	{
 		return 2;
 	}
 
 	@Override
-	public int getTransferLimit(ItemStack itemStack)
+	public int getTransferLimit(ItemStack stack)
 	{
 		return 20000;
 	}

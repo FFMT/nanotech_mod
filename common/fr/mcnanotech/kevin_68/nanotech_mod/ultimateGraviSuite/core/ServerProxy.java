@@ -15,31 +15,31 @@ public class ServerProxy
 	public void initCore()
 	{}
 
-	public static void sendPlayerMessage(EntityPlayer var0, String var1)
+	public static void sendPlayerMessage(EntityPlayer player, String message)
 	{
-		var0.addChatMessage(var1);
+		player.addChatMessage(message);
 	}
 
-	public static boolean sendPacket(EntityPlayer var0, String var1, int var2)
+	public static boolean sendPacket(EntityPlayer player, String var1, int var2)
 	{
-		ByteArrayOutputStream var3 = new ByteArrayOutputStream();
-		DataOutputStream var4 = new DataOutputStream(var3);
+		ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+		DataOutputStream data = new DataOutputStream(byteArray);
 
 		try
 		{
-			var4.writeUTF(var1);
-			var4.writeInt(var2);
+			data.writeUTF(var1);
+			data.writeInt(var2);
 		}
-		catch(IOException var6)
+		catch(IOException exception)
 		{
-			var6.printStackTrace();
+			exception.printStackTrace();
 		}
 
-		Packet250CustomPayload var5 = new Packet250CustomPayload();
-		var5.channel = "gravisuite";
-		var5.data = var3.toByteArray();
-		var5.length = var5.data.length;
-		PacketDispatcher.sendPacketToPlayer(var5, (Player)var0);
+		Packet250CustomPayload pkt = new Packet250CustomPayload();
+		pkt.channel = "gravisuite";
+		pkt.data = byteArray.toByteArray();
+		pkt.length = pkt.data.length;
+		PacketDispatcher.sendPacketToPlayer(pkt, (Player)player);
 		return true;
 	}
 

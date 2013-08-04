@@ -66,7 +66,6 @@ public class UltimateGraviSuite
 	public static int ultimateBootsID;
 
 	// Config
-	public static Configuration config;
 	private boolean keyDown;
 	public static int hudPos;
 	public static int uhGenDay = 1024;
@@ -115,7 +114,7 @@ public class UltimateGraviSuite
 
 	@Init
 	public void load(FMLInitializationEvent event)
-	{
+	{	
 		this.Item();
 		this.ItemName();
 		TickRegistry.registerTickHandler(new ServerTickHandler(), Side.SERVER);
