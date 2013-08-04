@@ -8,7 +8,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 public class NanotechBlock
 {
 	// Blocks statement
-	public static Block BlockPortal, BlockPortalframe, BlockGrass, BlockFakeOre, BlockSpeed, BlockJumper, BlockMultiplier, BlockSmoker, BlockTrashcan, BlockBarbedwire, BlockNanowood, BlockNanoleaves, BlockNanosaplings, BlockNanoplanks, BlockNanoOre, BlockConfusion, BlockFalling, Blocknotfalling, BlockSodium, BlockMossystone, BlockSpotLight, BlockTheDeathHead, BlockTrail;
+	public static Block BlockPortal, BlockPortalframe, BlockGrass, BlockFakeOre, BlockSpeed, BlockJumper, BlockMultiplier, BlockSmoker, BlockTrashcan, BlockBarbedwire, BlockNanowood, BlockNanoleaves, BlockNanosaplings, BlockNanoplanks, BlockNanoOre, BlockConfusion, BlockFalling, Blocknotfalling, BlockSodium, BlockMossystone, BlockSpotLight, BlockTheDeathHead, BlockTrail, BlockTea, BlockFountain;
 
 	// Blocks Initialization
 	public static void initBlock()
@@ -36,6 +36,8 @@ public class NanotechBlock
 		BlockSpotLight = new BlockSpotLight(Nanotech_mod.BlockSpotLightID).setHardness(1.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("spotlight").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockTheDeathHead = new BlockTheDeathHead(Nanotech_mod.BlockTheDeathHeadID).setHardness(5.0F).setResistance(10.0F).setUnlocalizedName("theDeathHead").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockTrail = new BlockTrail(Nanotech_mod.BlockTrailID, Material.ground).setHardness(1.0F).setResistance(1.0F).setUnlocalizedName("blockTrail").setStepSound(Block.soundGravelFootstep);
+		BlockTea = new BlockTea(Nanotech_mod.BlockTeaID).setUnlocalizedName("blockTea");
+		BlockFountain = new BlockFountain(Nanotech_mod.BlockFountainID).setUnlocalizedName("blockFountain").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 	}
 
 	// Blocks registry
@@ -64,6 +66,8 @@ public class NanotechBlock
 		GameRegistry.registerBlock(BlockSpotLight, "BlockSpotLight");
 		GameRegistry.registerBlock(BlockTheDeathHead, "BlockTheDeathHead");
 		GameRegistry.registerBlock(BlockTrail, "BlockTrail");
+		GameRegistry.registerBlock(BlockTea, "blockTea");
+		GameRegistry.registerBlock(BlockFountain, "blockFountain");
 	}
 
 }
