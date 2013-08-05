@@ -40,14 +40,7 @@ public class TileEntityLampLightRender extends TileEntitySpecialRenderer
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
-		if (tileentity.getBlockMetadata() == 0)
-		{
-			bindTextureByName("/mods/Nanotech_mod/textures/blocks/BlockLampLightOn.png");
-		}
-		else
-		{
-			bindTextureByName("/mods/Nanotech_mod/textures/blocks/BlockLampLightOff.png");
-		}
+		bindTextureByName(tileentity.getLampTexture);
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
 		this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);

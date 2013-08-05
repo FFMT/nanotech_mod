@@ -9,6 +9,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.Explosion;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -62,7 +63,7 @@ public class BlockLamp extends Block
 			return false;
 		}
 	}
-	/*
+	
     public boolean renderAsNormalBlock()
     {
         return false;
@@ -77,7 +78,7 @@ public class BlockLamp extends Block
     {
     	return -1;
     }
-	 */
+	 
 	public void updateLight(World world, int x, int y, int z)
 	{
 		if(world.getBlockId(x, y, z) == this.blockID && world.getBlockMetadata(x, y, z) == 2 && !world.isDaytime())
@@ -113,4 +114,12 @@ public class BlockLamp extends Block
 		return NanotechItem.lamp.itemID;
 	}
 
+    public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
+    {
+    	float f = 0.375F;
+        float f1 = 0.625F;
+        float f2 = 0.375F;
+        float f3 = 0.625F;
+        this.setBlockBounds(f, 0.0F, f2, f1, 1.0F, f3);
+    }
 }

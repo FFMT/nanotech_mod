@@ -38,8 +38,8 @@ public class NanotechBlock
 		BlockTrail = new BlockTrail(Nanotech_mod.BlockTrailID, Material.ground).setHardness(1.0F).setResistance(1.0F).setUnlocalizedName("blockTrail").setStepSound(Block.soundGravelFootstep);
 		BlockTea = new BlockTea(Nanotech_mod.BlockTeaID).setUnlocalizedName("blockTea");
 		BlockFountain = new BlockFountain(Nanotech_mod.BlockFountainID).setUnlocalizedName("blockFountain").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
-		BlockLamp = new BlockLamp(Nanotech_mod.BlockLampID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockLamp").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
-		BlockLampLight = new BlockLampLight(Nanotech_mod.BlockLampLightID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockLampLight").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
+		BlockLamp = new BlockLamp(Nanotech_mod.BlockLampID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockLamp");
+		BlockLampLight = new BlockLampLight(Nanotech_mod.BlockLampLightID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockLampLight");
 	}
 
 	// Blocks registry
