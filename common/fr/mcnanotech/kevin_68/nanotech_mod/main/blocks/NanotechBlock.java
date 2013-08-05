@@ -8,7 +8,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 public class NanotechBlock
 {
 	// Blocks statement
-	public static Block BlockPortal, BlockPortalframe, BlockGrass, BlockFakeOre, BlockSpeed, BlockJumper, BlockMultiplier, BlockSmoker, BlockTrashcan, BlockBarbedwire, BlockNanowood, BlockNanoleaves, BlockNanosaplings, BlockNanoplanks, BlockNanoOre, BlockConfusion, BlockFalling, Blocknotfalling, BlockSodium, BlockMossystone, BlockSpotLight, BlockTheDeathHead, BlockTrail, BlockTea, BlockFountain;
+	public static Block BlockPortal, BlockPortalframe, BlockGrass, BlockFakeOre, BlockSpeed, BlockJumper, BlockMultiplier, BlockSmoker, BlockTrashcan, BlockBarbedwire, BlockNanowood, BlockNanoleaves, BlockNanosaplings, BlockNanoplanks, BlockNanoOre, BlockConfusion, BlockFalling, Blocknotfalling, BlockSodium, BlockMossystone, BlockSpotLight, BlockTheDeathHead, BlockTrail, BlockTea, BlockFountain, BlockLamp, BlockLampLight;
 
 	// Blocks Initialization
 	public static void initBlock()
@@ -38,6 +38,8 @@ public class NanotechBlock
 		BlockTrail = new BlockTrail(Nanotech_mod.BlockTrailID, Material.ground).setHardness(1.0F).setResistance(1.0F).setUnlocalizedName("blockTrail").setStepSound(Block.soundGravelFootstep);
 		BlockTea = new BlockTea(Nanotech_mod.BlockTeaID).setUnlocalizedName("blockTea");
 		BlockFountain = new BlockFountain(Nanotech_mod.BlockFountainID).setUnlocalizedName("blockFountain").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
+		BlockLamp = new BlockLamp(Nanotech_mod.BlockLampID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockLamp").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
+		BlockLampLight = new BlockLampLight(Nanotech_mod.BlockLampLightID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockLampLight").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 	}
 
 	// Blocks registry
@@ -68,6 +70,8 @@ public class NanotechBlock
 		GameRegistry.registerBlock(BlockTrail, "BlockTrail");
 		GameRegistry.registerBlock(BlockTea, "blockTea");
 		GameRegistry.registerBlock(BlockFountain, "blockFountain");
+		GameRegistry.registerBlock(BlockLamp, ItemBlockLamp.class, "BlockLamp", "Nanotech_mod");
+		GameRegistry.registerBlock(BlockLampLight, "BlockLampLight");
 	}
 
 }

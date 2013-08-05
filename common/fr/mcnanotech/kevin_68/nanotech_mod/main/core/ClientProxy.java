@@ -28,6 +28,11 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderSuperEnder
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderSuperZombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderTheDeath;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.items.ItemScytheRender;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.tileentity.TileEntityFountainRender;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.tileentity.TileEntityLampLightRender;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.tileentity.TileEntityLampRender;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.tileentity.TileEntitySpotLightRender;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.tileentity.TileEntityTrailRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCrazyGuy;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCreeperDriller;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobFastzombie;
@@ -40,11 +45,10 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperZombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityFountain;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityLamp;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityLampLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityTrail;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.render.TileEntityFountainRender;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.render.TileEntitySpotLightRender;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.render.TileEntityTrailRender;
 
 public class ClientProxy extends CommonProxy
 {
@@ -65,7 +69,9 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpotLight.class, new TileEntitySpotLightRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTrail.class, new TileEntityTrailRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFountain.class, new TileEntityFountainRender());
-		
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLamp.class, new TileEntityLampRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLampLight.class, new TileEntityLampLightRender());
+
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.scythe.itemID, (IItemRenderer)new ItemScytheRender());
 	}
 

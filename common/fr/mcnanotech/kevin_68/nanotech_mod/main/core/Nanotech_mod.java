@@ -35,6 +35,8 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.network.GuiHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.network.PacketHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityFountain;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityLamp;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityLampLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySpotLight;
@@ -45,7 +47,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGeneration;
 
 @Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "2.0.3")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTM|smoker", "NTM|jumper", "NTM|light"}, packetHandler = PacketHandler.class)
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTM|smoker", "NTM|jumper", "NTM|light", "NTM|fount"}, packetHandler = PacketHandler.class)
 public class Nanotech_mod
 {
 	// Instance
@@ -57,11 +59,11 @@ public class Nanotech_mod
 
 	// Block IDs
 	public static int BlockPortalID, BlockPortalFrameID, BlockGrassID, BlockFakeOreID, BlockSpeedID, BlockJumperID, BlockMultiplierID, BlockSmokerID, BlockTrashcanID, BlockBarbedWireID, BlockNanoWoodID, BlockNanoLeavesID, BlockNanoSaplingsID, BlockNanoPlanksID, BlockNanoOreID, BlockConfusionID, BlockFallingID, BlockNotFallingID, BlockSodiumID, BlockMossyStoneID, BlockSpotLightID,
-			BlockTheDeathHeadID, BlockTrailID, BlockTeaID, BlockFountainID;
+			BlockTheDeathHeadID, BlockTrailID, BlockTeaID, BlockFountainID, BlockLampID, BlockLampLightID;
 
 	// Item IDs
 	public static int ItemNanotechID, ItemSuperBottleOfXpID, ItemDiamondBowID, ItemEmeraldBowID, ItemNanomiteBowID, ItemNanomiteAxeID, ItemNanomitePickaxeID, ItemNanomiteShovelID, ItemNanomiteHoeID, ItemNanomiteSwordID, ItemNanomiteHelmetID, ItemNanomiteChestPlateID, ItemNanomiteLegginsID, ItemNanomiteBootsID, ItemMysteriousHelmetID, ItemMysteriousChestPlateID, ItemMysteriousLegginsID,
-			ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemTrailID, ItemScytheID, ItemCrazyGlassesID, TeaSeedID, TeaID;
+			ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemTrailID, ItemScytheID, ItemCrazyGlassesID, TeaSeedID, TeaID, ItemLampID;
 
 	// Dimension ID
 	public static int dimensionID = 19;
@@ -157,6 +159,8 @@ public class Nanotech_mod
 			BlockTrailID = cfg.getBlock("Trail", 1021).getInt();
 			BlockTeaID = cfg.getBlock("Tea", 1022).getInt();
 			BlockFountainID = cfg.getBlock("Fountain", 1023).getInt();
+			BlockLampID = cfg.getBlock("Lamp", 1024).getInt();
+			BlockLampLightID = cfg.getBlock("LampLight", 1025).getInt();
 			
 			ItemNanotechID = cfg.getItem("Main Nanotech ID", 5000).getInt();
 			ItemSuperBottleOfXpID = cfg.getItem("Super Bottle of xp", 5001).getInt();
@@ -184,6 +188,7 @@ public class Nanotech_mod
 			ItemCrazyGlassesID = cfg.getItem("CrazyGlasses", 5022).getInt();
 			TeaSeedID = cfg.getItem("TeaSeed", 5023).getInt();
 			TeaID = cfg.getItem("Tea", 5024).getInt();
+			ItemLampID = cfg.getItem("Lamp", 5025).getInt();
 
 			HardRecipe = cfg.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
 
@@ -304,6 +309,8 @@ public class Nanotech_mod
 		GameRegistry.registerTileEntity(TileEntitySpotLight.class, "TileEntitySpotLight");
 		GameRegistry.registerTileEntity(TileEntityTrail.class, "TileEntityTrail");
 		GameRegistry.registerTileEntity(TileEntityFountain.class, "TileEntityFountain");
+		GameRegistry.registerTileEntity(TileEntityLamp.class, "TileEntityLamp");
+		GameRegistry.registerTileEntity(TileEntityLampLight.class, "TileEntityLampLight");
 	}
 
 	// Forge dictionary

@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.render;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.tileentity;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
