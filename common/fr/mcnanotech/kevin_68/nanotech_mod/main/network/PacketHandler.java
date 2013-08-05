@@ -137,12 +137,10 @@ public class PacketHandler implements IPacketHandler
 		double width;
 		boolean rotate;
 		boolean animated;
-		int type;
 
 		try
 		{
 			data = new DataInputStream(new ByteArrayInputStream(packet.data));
-			type = data.readInt();
 			height = data.readFloat();
 			width = data.readDouble();
 			rotate = data.readBoolean();
@@ -150,21 +148,10 @@ public class PacketHandler implements IPacketHandler
 
 			ContainerFountain containerFountain = (ContainerFountain)player.openContainer;
 			TileEntityFountain tilefountain = containerFountain.getFountain();
-			switch (type)
-			{
-			case 0:
-				tilefountain.setHeight(height);
-				break;
-			case 1:
-				tilefountain.setWidth(width);
-				break;
-			case 2:
-				tilefountain.setRotate(rotate);
-				break;
-			case 3:
-				tilefountain.setAnimated(animated);
-				break;
-			}
+			tilefountain.setHeight(height);
+			tilefountain.setWidth(width);
+			tilefountain.setRotate(rotate);
+			tilefountain.setAnimated(animated);
 			player.worldObj.markBlockForUpdate(tilefountain.xCoord, tilefountain.yCoord, tilefountain.zCoord);
 		}
 		catch(Exception exception)

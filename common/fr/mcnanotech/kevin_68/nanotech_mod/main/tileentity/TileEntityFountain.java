@@ -183,24 +183,24 @@ public class TileEntityFountain extends TileEntity
 		return animated;
 	}
 	
-	public float setHeight(float f)
+	public void setHeight(float f)
 	{
-		return height = f;
+		height = f;
 	}
 	
-	public double setWidth(double d)
+	public void setWidth(double d)
 	{
-		return width = d;
+		width = d;
 	}
 	
-	public boolean setRotate(boolean b)
+	public void setRotate(boolean b)
 	{
-		return rotate = b;
+		rotate = b;
 	}
 	
-	public boolean setAnimated(boolean b)
+	public void setAnimated(boolean b)
 	{
-		return animated = b;
+		animated = b;
 	}
 
 }

@@ -51,8 +51,10 @@ public class GuiFountain extends GuiContainer
 
 				try
 				{
-					dataoutputstream.writeInt(0);
 					dataoutputstream.writeFloat(tileFoutain.getHeight() + 0.5F);
+					dataoutputstream.writeDouble(tileFoutain.getWidth());
+					dataoutputstream.writeBoolean(tileFoutain.getRotate());
+					dataoutputstream.writeBoolean(tileFoutain.getAnimated());
 					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|fount", bytearrayoutputstream.toByteArray()));
 				}
 				catch(Exception exception)
@@ -71,8 +73,10 @@ public class GuiFountain extends GuiContainer
 
 				try
 				{
-					dataoutputstream.writeInt(0);
 					dataoutputstream.writeFloat(tileFoutain.getHeight() - 0.5F);
+					dataoutputstream.writeDouble(tileFoutain.getWidth());
+					dataoutputstream.writeBoolean(tileFoutain.getRotate());
+					dataoutputstream.writeBoolean(tileFoutain.getAnimated());
 					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|fount", bytearrayoutputstream.toByteArray()));
 				}
 				catch(Exception exception)
@@ -90,8 +94,10 @@ public class GuiFountain extends GuiContainer
 
 				try
 				{
-					dataoutputstream.writeInt(1);
+					dataoutputstream.writeFloat(tileFoutain.getHeight());
 					dataoutputstream.writeDouble(tileFoutain.getWidth() + 0.05D);
+					dataoutputstream.writeBoolean(tileFoutain.getRotate());
+					dataoutputstream.writeBoolean(tileFoutain.getAnimated());
 					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|fount", bytearrayoutputstream.toByteArray()));
 				}
 				catch(Exception exception)
@@ -110,8 +116,10 @@ public class GuiFountain extends GuiContainer
 
 				try
 				{
-					dataoutputstream.writeInt(1);
+					dataoutputstream.writeFloat(tileFoutain.getHeight());
 					dataoutputstream.writeDouble(tileFoutain.getWidth() - 0.05F);
+					dataoutputstream.writeBoolean(tileFoutain.getRotate());
+					dataoutputstream.writeBoolean(tileFoutain.getAnimated());
 					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|fount", bytearrayoutputstream.toByteArray()));
 				}
 				catch(Exception exception)
@@ -129,8 +137,10 @@ public class GuiFountain extends GuiContainer
 
 				try
 				{
-					dataoutputstream.writeInt(2);
+					dataoutputstream.writeFloat(tileFoutain.getHeight());
+					dataoutputstream.writeDouble(tileFoutain.getWidth());
 					dataoutputstream.writeBoolean(true);
+					dataoutputstream.writeBoolean(tileFoutain.getAnimated());
 					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|fount", bytearrayoutputstream.toByteArray()));
 				}
 				catch(Exception exception)
@@ -149,8 +159,10 @@ public class GuiFountain extends GuiContainer
 
 				try
 				{
-					dataoutputstream.writeInt(2);
+					dataoutputstream.writeFloat(tileFoutain.getHeight());
+					dataoutputstream.writeDouble(tileFoutain.getWidth());
 					dataoutputstream.writeBoolean(false);
+					dataoutputstream.writeBoolean(tileFoutain.getAnimated());
 					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|fount", bytearrayoutputstream.toByteArray()));
 				}
 				catch(Exception exception)
@@ -169,7 +181,9 @@ public class GuiFountain extends GuiContainer
 
 				try
 				{
-					dataoutputstream.writeInt(4);
+					dataoutputstream.writeFloat(tileFoutain.getHeight());
+					dataoutputstream.writeDouble(tileFoutain.getWidth());
+					dataoutputstream.writeBoolean(tileFoutain.getRotate());
 					dataoutputstream.writeBoolean(true);
 					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|fount", bytearrayoutputstream.toByteArray()));
 				}
@@ -189,7 +203,9 @@ public class GuiFountain extends GuiContainer
 
 				try
 				{
-					dataoutputstream.writeInt(4);
+					dataoutputstream.writeFloat(tileFoutain.getHeight());
+					dataoutputstream.writeDouble(tileFoutain.getWidth());
+					dataoutputstream.writeBoolean(tileFoutain.getRotate());
 					dataoutputstream.writeBoolean(false);
 					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|fount", bytearrayoutputstream.toByteArray()));
 				}
