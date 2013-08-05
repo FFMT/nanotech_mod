@@ -16,16 +16,16 @@ public class ItemTrail extends Item
 		super(id);
 	}
 
-	public void registerIcons(IconRegister par1IconRegister)
+	public void registerIcons(IconRegister iconregister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon("Nanotech_mod:itemTrail");
+		this.itemIcon = iconregister.registerIcon("Nanotech_mod:itemTrail");
 	}
 
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int par7, float par8, float par9, float par10)
 	{
-		int i1 = par3World.getBlockId(par4, par5, par6);
+		int i1 = world.getBlockId(x, y, z);
 
-		if(i1 == Block.snow.blockID && (par3World.getBlockMetadata(par4, par5, par6) & 7) < 1)
+		if(i1 == Block.snow.blockID && (world.getBlockMetadata(x, y, z) & 7) < 1)
 		{
 			par7 = 1;
 		}
@@ -33,60 +33,60 @@ public class ItemTrail extends Item
 		{
 			if(par7 == 0)
 			{
-				--par5;
+				--y;
 			}
 
 			if(par7 == 1)
 			{
-				++par5;
+				++y;
 			}
 
 			if(par7 == 2)
 			{
-				--par6;
+				--z;
 			}
 
 			if(par7 == 3)
 			{
-				++par6;
+				++z;
 			}
 
 			if(par7 == 4)
 			{
-				--par4;
+				--x;
 			}
 
 			if(par7 == 5)
 			{
-				++par4;
+				++x;
 			}
 		}
 
-		if(!par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack))
+		if(!player.canPlayerEdit(x, y, z, par7, stack))
 		{
 			return false;
 		}
-		else if(par1ItemStack.stackSize == 0)
+		else if(stack.stackSize == 0)
 		{
 			return false;
 		}
 		else
 		{
-			if(par3World.canPlaceEntityOnSide(NanotechBlock.BlockTrail.blockID, par4, par5, par6, false, par7, (Entity)null, par1ItemStack))
+			if(world.canPlaceEntityOnSide(NanotechBlock.BlockTrail.blockID, x, y, z, false, par7, (Entity)null, stack))
 			{
 				Block block = Block.blocksList[NanotechBlock.BlockTrail.blockID];
-				int j1 = block.onBlockPlaced(par3World, par4, par5, par6, par7, par8, par9, par10, 0);
+				int j1 = block.onBlockPlaced(world, x, y, z, par7, par8, par9, par10, 0);
 
-				if(par3World.setBlock(par4, par5, par6, NanotechBlock.BlockTrail.blockID, j1, 3))
+				if(world.setBlock(x, y, z, NanotechBlock.BlockTrail.blockID, j1, 3))
 				{
-					if(par3World.getBlockId(par4, par5, par6) == NanotechBlock.BlockTrail.blockID)
+					if(world.getBlockId(x, y, z) == NanotechBlock.BlockTrail.blockID)
 					{
-						Block.blocksList[NanotechBlock.BlockTrail.blockID].onBlockPlacedBy(par3World, par4, par5, par6, par2EntityPlayer, par1ItemStack);
-						Block.blocksList[NanotechBlock.BlockTrail.blockID].onPostBlockPlaced(par3World, par4, par5, par6, j1);
+						Block.blocksList[NanotechBlock.BlockTrail.blockID].onBlockPlacedBy(world, x, y, z, player, stack);
+						Block.blocksList[NanotechBlock.BlockTrail.blockID].onPostBlockPlaced(world, x, y, z, j1);
 					}
 
-					par3World.playSoundEffect((double)((float)par4 + 0.5F), (double)((float)par5 + 0.5F), (double)((float)par6 + 0.5F), block.stepSound.getPlaceSound(), (block.stepSound.getVolume() + 1.0F) / 2.0F, block.stepSound.getPitch() * 0.8F);
-					--par1ItemStack.stackSize;
+					world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), block.stepSound.getPlaceSound(), (block.stepSound.getVolume() + 1.0F) / 2.0F, block.stepSound.getPitch() * 0.8F);
+					--stack.stackSize;
 				}
 			}
 

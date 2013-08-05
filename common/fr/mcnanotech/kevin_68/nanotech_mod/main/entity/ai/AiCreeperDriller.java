@@ -9,9 +9,9 @@ public class AiCreeperDriller extends EntityAIBase
 	MobCreeperDriller swellingCreeper;
 	EntityLiving creeperAttackTarget;
 
-	public AiCreeperDriller(MobCreeperDriller mobcreeperDriller)
+	public AiCreeperDriller(MobCreeperDriller mob)
 	{
-		swellingCreeper = mobcreeperDriller;
+		swellingCreeper = mob;
 		setMutexBits(1);
 	}
 

@@ -15,8 +15,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityTrail;
 
 public class TileEntityTrailRender extends TileEntitySpecialRenderer
 {
-
-	// The model of your block
 	private final ModelBlockTrail model;
 
 	public TileEntityTrailRender()
@@ -33,32 +31,23 @@ public class TileEntityTrailRender extends TileEntitySpecialRenderer
 	}
 
 	@Override
-	public void renderTileEntityAt(TileEntity par1TileEntity, double par2, double par4, double par6, float par8)
+	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float scale)
 	{
-		this.renderTileEntityAtBlockTrail((TileEntityTrail)par1TileEntity, par2, par4, par6, par8);
+		this.renderTileEntityAtBlockTrail((TileEntityTrail)tileentity, x, y, z, scale);
 	}
 
 	public void renderTileEntityAtBlockTrail(TileEntityTrail tileentity, double x, double y, double z, float scale)
 	{
-		// The PushMatrix tells the renderer to "start" doing something.
 		GL11.glPushMatrix();
-		// This is setting the initial location.
 		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
-		// This is the texture of your block. It's pathed to be the same place
-		// as your other blocks here.
 		bindTextureByName("/mods/Nanotech_mod/textures/blocks/BlockTrail.png");
-		// This rotation part is very important! Without it, your model will
-		// render upside-down! And for some reason you DO need PushMatrix again!
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		// A reference to your Model file. Again, very important.
 		this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-		// Tell it to stop rendering for both the PushMatrix's
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
 	}
 
-	// Set the lighting stuff, so it changes it's brightness properly.
 	private void adjustLightFixture(World world, int i, int j, int k, Block block)
 	{
 		Tessellator tess = Tessellator.instance;

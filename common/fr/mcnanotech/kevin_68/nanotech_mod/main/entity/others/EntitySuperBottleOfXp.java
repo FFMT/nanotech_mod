@@ -13,14 +13,14 @@ public class EntitySuperBottleOfXp extends EntityThrowable
 		super(world);
 	}
 
-	public EntitySuperBottleOfXp(World par1World, EntityLiving par2EntityLiving)
+	public EntitySuperBottleOfXp(World world, EntityLiving entityliving)
 	{
-		super(par1World, par2EntityLiving);
+		super(world, entityliving);
 	}
 
-	public EntitySuperBottleOfXp(World par1World, double par2, double par4, double par6)
+	public EntitySuperBottleOfXp(World world, double x, double y, double z)
 	{
-		super(par1World, par2, par4, par6);
+		super(world, x, y, z);
 	}
 
 	protected float getGravityVelocity()
@@ -38,7 +38,7 @@ public class EntitySuperBottleOfXp extends EntityThrowable
 		return -20.0F;
 	}
 
-	protected void onImpact(MovingObjectPosition par1MovingObjectPosition)
+	protected void onImpact(MovingObjectPosition movingobjectposition)
 	{
 		if(!this.worldObj.isRemote)
 		{

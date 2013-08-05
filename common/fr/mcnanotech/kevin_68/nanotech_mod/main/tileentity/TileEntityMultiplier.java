@@ -58,11 +58,11 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound tagCompound)
+	public void readFromNBT(NBTTagCompound nbttagCompound)
 	{
-		super.readFromNBT(tagCompound);
+		super.readFromNBT(nbttagCompound);
 
-		NBTTagList tagList = tagCompound.getTagList("Inventory");
+		NBTTagList tagList = nbttagCompound.getTagList("Inventory");
 
 		for(int i = 0; i < tagList.tagCount(); i++)
 		{
@@ -77,9 +77,9 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound tagCompound)
+	public void writeToNBT(NBTTagCompound nbttagCompound)
 	{
-		super.writeToNBT(tagCompound);
+		super.writeToNBT(nbttagCompound);
 
 		NBTTagList itemList = new NBTTagList();
 
@@ -97,7 +97,7 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 			}
 		}
 
-		tagCompound.setTag("Inventory", itemList);
+		nbttagCompound.setTag("Inventory", itemList);
 	}
 
 	@Override
@@ -150,7 +150,7 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 	}
 
 	@Override
-	public boolean isStackValidForSlot(int i, ItemStack itemstack)
+	public boolean isStackValidForSlot(int slot, ItemStack stack)
 	{
 		return false;
 	}

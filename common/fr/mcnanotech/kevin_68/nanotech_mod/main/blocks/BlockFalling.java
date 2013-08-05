@@ -35,11 +35,11 @@ public class BlockFalling extends BlockSand
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int damage)
+	public Icon getIcon(int side, int metadata)
 	{
-		if(damage < type.length)
+		if(metadata < type.length)
 		{
-			return iconbuffer[damage];
+			return iconbuffer[metadata];
 		}
 		else
 		{

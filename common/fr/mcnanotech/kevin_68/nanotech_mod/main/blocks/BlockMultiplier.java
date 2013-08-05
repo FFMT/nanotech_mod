@@ -28,7 +28,7 @@ public class BlockMultiplier extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int damage)
+	public Icon getIcon(int side, int metadata)
 	{
 		return side == 0 ? blockIcon : (side == 1 ? blockIcon : topbottomIcon);
 	}

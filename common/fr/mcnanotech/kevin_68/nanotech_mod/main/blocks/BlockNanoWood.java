@@ -19,7 +19,7 @@ public class BlockNanoWood extends BlockLog
 		super(id);
 	}
 
-	public int idDropped(int side, Random par2Random, int par3)
+	public int idDropped(int side, Random random, int par3)
 	{
 		return this.blockID;
 	}
@@ -30,9 +30,9 @@ public class BlockNanoWood extends BlockLog
 		topIcon = iconregister.registerIcon("Nanotech_mod:log_top");
 	}
 
-	public Icon getIcon(int side, int par2)
+	public Icon getIcon(int side, int metadata)
 	{
-		int k = par2 & 12;
+		int k = metadata & 12;
 		return k == 0 && (side == 1 || side == 0) ? topIcon : (k == 4 && (side == 5 || side == 4) ? topIcon : (k == 8 && (side == 2 || side == 3) ? topIcon : blockIcon));
 	}
 

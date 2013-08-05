@@ -50,9 +50,9 @@ public class BlockNanoLeaves extends BlockLeaves implements IShearable
 	}
 
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+	public boolean shouldSideBeRendered(IBlockAccess blockaccess, int x, int y, int z, int side)
 	{
-		return !this.isOpaqueCube() ? true : super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
+		return !this.isOpaqueCube() ? true : super.shouldSideBeRendered(blockaccess, x, y, z, side);
 	}
 
 	public Icon getIcon(int side, int metadata)
@@ -65,7 +65,7 @@ public class BlockNanoLeaves extends BlockLeaves implements IShearable
 		return random.nextInt(20) == 0 ? 1 : 0;
 	}
 
-	public int idDropped(int par1, Random random, int par3)
+	public int idDropped(int metadata, Random random, int par3)
 	{
 		return NanotechBlock.BlockNanosaplings.blockID;
 	}
@@ -100,7 +100,7 @@ public class BlockNanoLeaves extends BlockLeaves implements IShearable
 		return true;
 	}
 
-	public int colorMultiplier(IBlockAccess blockAccess, int x, int y, int z)
+	public int colorMultiplier(IBlockAccess blockaccess, int x, int y, int z)
 	{
 		return -1;
 	}

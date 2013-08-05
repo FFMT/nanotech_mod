@@ -5,9 +5,9 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelFly;
 
 public class RenderMobFly extends RenderLiving
 {
-	private ModelFly flyModel = new ModelFly();
+	private ModelFly model = new ModelFly();
 
-	public RenderMobFly(ModelFly model_Mob_fly, float f)
+	public RenderMobFly(ModelFly model, float f)
 	{
 		super(new ModelFly(), 0.5F);
 	}

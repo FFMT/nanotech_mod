@@ -45,10 +45,10 @@ public class MobSuperZombie extends EntityMob
 		return 80;
 	}
 
-	protected void fall(float par1)
+	protected void fall(float damage)
 	{}
 
-	public int getAttackStrength(Entity par1Entity)
+	public int getAttackStrength(Entity entity)
 	{
 		ItemStack var2 = this.getHeldItem();
 		int var3 = 6;

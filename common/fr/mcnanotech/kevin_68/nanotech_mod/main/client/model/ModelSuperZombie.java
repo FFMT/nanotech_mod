@@ -93,9 +93,9 @@ public class ModelSuperZombie extends ModelBase
 		model.rotateAngleZ = z;
 	}
 
-	public void setRotationAngles(float f1, float f2, float f3, float f4, float f5, float f6, Entity par7Entity)
+	public void setRotationAngles(float f1, float f2, float f3, float f4, float f5, float f6, Entity entity)
 	{
-		super.setRotationAngles(f1, f2, f3, f4, f5, f6, par7Entity);
+		super.setRotationAngles(f1, f2, f3, f4, f5, f6, entity);
 		this.head.rotateAngleY = f4 / (180F / (float)Math.PI);
 		this.head.rotateAngleX = f5 / (180F / (float)Math.PI);
 		this.head.rotateAngleY = this.head.rotateAngleY;

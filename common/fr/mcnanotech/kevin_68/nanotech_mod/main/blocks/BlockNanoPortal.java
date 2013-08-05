@@ -29,9 +29,9 @@ public class BlockNanoPortal extends Block
 		return null;
 	}
 
-	public void onNeighborBlockChange(World world, int x, int y, int z, int par5)
+	public void onNeighborBlockChange(World world, int x, int y, int z, int blockid)
 	{
-		super.onNeighborBlockChange(world, x, y, z, par5);
+		super.onNeighborBlockChange(world, x, y, z, blockid);
 		if(world.getBlockId(x - 1, y, z) != NanotechBlock.BlockPortalframe.blockID && world.getBlockId(x + 1, y, z) != NanotechBlock.BlockPortalframe.blockID && world.getBlockId(x, y - 1, z) != NanotechBlock.BlockPortalframe.blockID && world.getBlockId(x, y + 1, z) != NanotechBlock.BlockPortalframe.blockID)
 		{
 			world.setBlockToAir(x, y, z);
@@ -49,7 +49,7 @@ public class BlockNanoPortal extends Block
 		return false;
 	}
 
-	public int quantityDropped(Random par1Random)
+	public int quantityDropped(Random random)
 	{
 		return 0;
 	}

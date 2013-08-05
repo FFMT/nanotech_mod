@@ -10,9 +10,9 @@ public class AiFlyingCreeper extends EntityAIBase
 
 	EntityLiving creeperAttackTarget;
 
-	public AiFlyingCreeper(MobFlyingCreeper mobflyingcreeper)
+	public AiFlyingCreeper(MobFlyingCreeper mob)
 	{
-		this.swellingCreeper = mobflyingcreeper;
+		this.swellingCreeper = mob;
 		this.setMutexBits(1);
 	}
 

@@ -1,5 +1,6 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs;
 
+import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -21,9 +22,9 @@ import net.minecraft.world.World;
 
 public class MobFastzombie extends EntityMob
 {
-	public MobFastzombie(World par1World)
+	public MobFastzombie(World world)
 	{
-		super(par1World);
+		super(world);
 		this.texture = "/mob/zombie.png";
 		this.moveSpeed = 1.00F;
 		this.getNavigator().setBreakDoors(true);
@@ -45,10 +46,10 @@ public class MobFastzombie extends EntityMob
 		return 2;
 	}
 
-	protected void fall(float par1)
+	protected void fall(float damage)
 	{}
 
-	public int getAttackStrength(Entity par1Entity)
+	public int getAttackStrength(Entity entity)
 	{
 		ItemStack var2 = this.getHeldItem();
 		int var3 = 1;
@@ -101,10 +102,12 @@ public class MobFastzombie extends EntityMob
 		return EnumCreatureAttribute.UNDEAD;
 	}
 
-	/**
-	 * protected int getDropItemId() { return
-	 * Nanotech_mod.Item_edibleflesh.itemID; }
-	 */
+	
+	 protected int getDropItemId() 
+	 { 
+		 return NanotechItem.Edibleflesh.itemID; 
+		 }
+	 
 	protected void dropRareDrop(int par1)
 	{
 		switch(this.rand.nextInt(4))

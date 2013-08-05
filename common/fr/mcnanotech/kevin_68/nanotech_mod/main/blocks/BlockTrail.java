@@ -66,12 +66,12 @@ public class BlockTrail extends BlockContainer
 	Icon nothing;
 	Icon empty;
 
-	public BlockTrail(int par1, Material par2Material)
+	public BlockTrail(int id, Material material)
 	{
-		super(par1, par2Material);
+		super(id, material);
 	}
 
-	public TileEntity createNewTileEntity(World par1World)
+	public TileEntity createNewTileEntity(World world)
 	{
 		return new TileEntityTrail();
 	}
@@ -108,7 +108,7 @@ public class BlockTrail extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
+	public int colorMultiplier(IBlockAccess blockaccess, int x, int y, int z)
 	{
 		int l = 0;
 		int i1 = 0;
@@ -118,7 +118,7 @@ public class BlockTrail extends BlockContainer
 		{
 			for(int l1 = -1; l1 <= 1; ++l1)
 			{
-				int i2 = par1IBlockAccess.getBiomeGenForCoords(par2 + l1, par4 + k1).getBiomeGrassColor();
+				int i2 = blockaccess.getBiomeGenForCoords(x + l1, z + k1).getBiomeGrassColor();
 				l += (i2 & 16711680) >> 16;
 				i1 += (i2 & 65280) >> 8;
 				j1 += i2 & 255;
@@ -390,13 +390,13 @@ public class BlockTrail extends BlockContainer
 		this.nothing = iconRegister.registerIcon("Nanotech_mod:trailNothing");
 	}
 
-	public int idDropped(int par1, Random par2Random, int par3)
+	public int idDropped(int metadata, Random random, int par3)
 	{
 		return NanotechItem.Trail.itemID;
 	}
 
 	@SideOnly(Side.CLIENT)
-	public int idPicked(World par1World, int par2, int par3, int par4)
+	public int idPicked(World world, int x, int y, int z)
 	{
 		return NanotechItem.Trail.itemID;
 	}

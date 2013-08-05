@@ -37,11 +37,11 @@ public class ItemBaseMetadata extends Item
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamage(int damage)
+	public Icon getIconFromDamage(int metadata)
 	{
-		if(damage < type.length)
+		if(metadata < type.length)
 		{
-			return iconbuffer[damage];
+			return iconbuffer[metadata];
 		}
 		else
 		{

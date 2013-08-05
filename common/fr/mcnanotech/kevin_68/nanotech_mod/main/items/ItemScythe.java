@@ -8,17 +8,17 @@ import net.minecraft.item.ItemSword;
 public class ItemScythe extends ItemSword
 {
 
-	public ItemScythe(int par1, EnumToolMaterial toolMaterial)
+	public ItemScythe(int id, EnumToolMaterial toolMaterial)
 	{
-		super(par1, toolMaterial);
+		super(id, toolMaterial);
 	}
 
-	public void registerIcons(IconRegister par1IconRegister)
+	public void registerIcons(IconRegister iconregister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon("Nanotech_mod:itemScythe");
+		this.itemIcon = iconregister.registerIcon("Nanotech_mod:itemScythe");
 	}
 
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+	public boolean getIsRepairable(ItemStack stack, ItemStack stack2)
 	{
 		return false;
 	}

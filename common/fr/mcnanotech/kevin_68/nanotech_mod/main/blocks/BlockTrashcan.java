@@ -32,24 +32,24 @@ public class BlockTrashcan extends Block
 		bottomIcon = iconregister.registerIcon("Nanotech_mod:trash_can_bottom");
 	}
 
-	public Icon getIcon(int side, int damage)
+	public Icon getIcon(int side, int metadata)
 	{
 		return side == 1 ? topIcon : (side == 0 ? bottomIcon : blockIcon);
 	}
 
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB par5AxisAlignedBB, List par6List, Entity par7Entity)
+	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axisalignedBB, List list, Entity entity)
 	{
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.3125F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, par5AxisAlignedBB, par6List, par7Entity);
+		super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
 		float var8 = 0.125F;
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, var8, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, par5AxisAlignedBB, par6List, par7Entity);
+		super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, var8);
-		super.addCollisionBoxesToList(world, x, y, z, par5AxisAlignedBB, par6List, par7Entity);
+		super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
 		this.setBlockBounds(1.0F - var8, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, par5AxisAlignedBB, par6List, par7Entity);
+		super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
 		this.setBlockBounds(0.0F, 0.0F, 1.0F - var8, 1.0F, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, par5AxisAlignedBB, par6List, par7Entity);
+		super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
 		this.setBlockBoundsForItemRender();
 	}
 

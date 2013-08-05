@@ -22,33 +22,33 @@ public class RenderTheDeath extends RenderLiving
 {
 	private float size;
 
-	private ModelBase thedeathModel = new ModelTheDeath();
+	private ModelBase model = new ModelTheDeath();
 
-	public RenderTheDeath(ModelTheDeath modelTheDeath, float f)
+	public RenderTheDeath(ModelTheDeath model, float f)
 	{
 		super(new ModelTheDeath(), 0.5F);
 		this.size = 3;
 	}
 
-	protected void preRenderScale(MobThedeath mobTheDeath, float par2)
+	protected void preRenderScale(MobThedeath mob, float par2)
 	{
 		GL11.glScalef(this.size, this.size, this.size);
 	}
 
-	protected void preRenderCallback(EntityLiving par1EntityLiving, float par2)
+	protected void preRenderCallback(EntityLiving entityliving, float par2)
 	{
-		this.preRenderScale((MobThedeath)par1EntityLiving, par2);
+		this.preRenderScale((MobThedeath)entityliving, par2);
 	}
 
-	public void renderHealtBar(MobThedeath mobTheDeath, double par2, double par4, double par6, float par8, float par9)
+	public void renderHealtBar(MobThedeath mob, double par2, double par4, double par6, float par8, float par9)
 	{
-		BossStatus.func_82824_a(mobTheDeath, true);
-		super.doRenderLiving(mobTheDeath, par2, par4, par6, par8, par9);
+		BossStatus.func_82824_a(mob, true);
+		super.doRenderLiving(mob, par2, par4, par6, par8, par9);
 	}
 
-	public void doRenderLiving(EntityLiving living, double par2, double par4, double par6, float par8, float par9)
+	public void doRenderLiving(EntityLiving entityliving, double par2, double par4, double par6, float par8, float par9)
 	{
-		this.renderHealtBar((MobThedeath)living, par2, par4, par6, par8, par9);
+		this.renderHealtBar((MobThedeath)entityliving, par2, par4, par6, par8, par9);
 	}
 
 	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9)
@@ -56,12 +56,12 @@ public class RenderTheDeath extends RenderLiving
 		this.renderHealtBar((MobThedeath)entity, par2, par4, par6, par8, par9);
 	}
 
-	protected void renderEquippedItems(EntityLiving par1EntityLiving, float par2)
+	protected void renderEquippedItems(EntityLiving entityliving, float par2)
 	{
 		float f1 = 1.0F;
 		GL11.glColor3f(f1, f1, f1);
-		super.renderEquippedItems(par1EntityLiving, par2);
-		ItemStack itemstack = par1EntityLiving.getHeldItem();
+		super.renderEquippedItems(entityliving, par2);
+		ItemStack itemstack = entityliving.getHeldItem();
 		float f2;
 
 		if(itemstack != null)
@@ -113,13 +113,13 @@ public class RenderTheDeath extends RenderLiving
 				GL11.glRotatef(20.0F, 0.0F, 0.0F, 1.0F);
 			}
 
-			this.renderManager.itemRenderer.renderItem(par1EntityLiving, itemstack, 0);
+			this.renderManager.itemRenderer.renderItem(entityliving, itemstack, 0);
 
 			if(itemstack.getItem().requiresMultipleRenderPasses())
 			{
 				for(int x = 1; x < itemstack.getItem().getRenderPasses(itemstack.getItemDamage()); x++)
 				{
-					this.renderManager.itemRenderer.renderItem(par1EntityLiving, itemstack, x);
+					this.renderManager.itemRenderer.renderItem(entityliving, itemstack, x);
 				}
 			}
 

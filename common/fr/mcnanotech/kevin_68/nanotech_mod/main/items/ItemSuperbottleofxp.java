@@ -12,9 +12,9 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntitySuperBottleO
 
 public class ItemSuperbottleofxp extends Item
 {
-	public ItemSuperbottleofxp(int par1)
+	public ItemSuperbottleofxp(int id)
 	{
-		super(par1);
+		super(id);
 		this.setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 	}
 
@@ -24,27 +24,27 @@ public class ItemSuperbottleofxp extends Item
 	}
 
 	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack par1ItemStack)
+	public boolean hasEffect(ItemStack stack)
 	{
 		return true;
 	}
 
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(!par3EntityPlayer.isSneaking())
+		if(!player.isSneaking())
 		{
-			if(!par3EntityPlayer.capabilities.isCreativeMode)
+			if(!player.capabilities.isCreativeMode)
 			{
-				--par1ItemStack.stackSize;
+				--stack.stackSize;
 			}
 
-			par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+			world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
-			if(!par2World.isRemote)
+			if(!world.isRemote)
 			{
-				par2World.spawnEntityInWorld(new EntitySuperBottleOfXp(par2World, par3EntityPlayer));
+				world.spawnEntityInWorld(new EntitySuperBottleOfXp(world, player));
 			}
 		}
-		return par1ItemStack;
+		return stack;
 	}
 }

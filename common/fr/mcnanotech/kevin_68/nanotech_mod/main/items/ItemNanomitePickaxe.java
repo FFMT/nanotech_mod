@@ -7,9 +7,9 @@ import net.minecraft.item.ItemStack;
 
 public class ItemNanomitePickaxe extends ItemPickaxe
 {
-	public ItemNanomitePickaxe(int itemID, EnumToolMaterial toolMaterial)
+	public ItemNanomitePickaxe(int id, EnumToolMaterial toolMaterial)
 	{
-		super(itemID, toolMaterial);
+		super(id, toolMaterial);
 	}
 
 	public void registerIcons(IconRegister iconregister)
@@ -17,7 +17,7 @@ public class ItemNanomitePickaxe extends ItemPickaxe
 		itemIcon = iconregister.registerIcon("Nanotech_mod:nanomitePickaxe");
 	}
 
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+	public boolean getIsRepairable(ItemStack stack, ItemStack stack2)
 	{
 		return true;
 	}

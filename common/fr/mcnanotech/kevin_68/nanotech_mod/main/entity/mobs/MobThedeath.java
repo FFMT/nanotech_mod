@@ -71,16 +71,16 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		this.dataWatcher.addObject(20, new Integer(0));
 	}
 
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
+	public void writeEntityToNBT(NBTTagCompound nbttagcompound)
 	{
-		super.writeEntityToNBT(par1NBTTagCompound);
-		par1NBTTagCompound.setInteger("Invul", this.func_82212_n());
+		super.writeEntityToNBT(nbttagcompound);
+		nbttagcompound.setInteger("Invul", this.func_82212_n());
 	}
 
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
+	public void readEntityFromNBT(NBTTagCompound nbttagcompound)
 	{
-		super.readEntityFromNBT(par1NBTTagCompound);
-		this.func_82215_s(par1NBTTagCompound.getInteger("Invul"));
+		super.readEntityFromNBT(nbttagcompound);
+		this.func_82215_s(nbttagcompound.getInteger("Invul"));
 		this.dataWatcher.updateObject(16, Integer.valueOf(this.health));
 	}
 
@@ -276,9 +276,9 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		}
 	}
 
-	public void onDeath(DamageSource par1DamageSource)
+	public void onDeath(DamageSource damagesource)
 	{
-		Entity entity = par1DamageSource.getEntity();
+		Entity entity = damagesource.getEntity();
 
 		if(entity != null && entity instanceof EntityPlayer)
 		{
@@ -290,7 +290,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 			}
 		}
 
-		super.onDeath(par1DamageSource);
+		super.onDeath(damagesource);
 	}
 
 	protected void updateAITasks()
@@ -539,18 +539,18 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		this.worldObj.spawnEntityInWorld(var21);
 	}
 
-	public void attackEntityWithRangedAttack(EntityLiving par1EntityLiving)
+	public void attackEntityWithRangedAttack(EntityLiving entityliving)
 	{
-		this.func_82216_a(0, par1EntityLiving);
+		this.func_82216_a(0, entityliving);
 	}
 
-	public boolean attackEntityFrom(DamageSource par1DamageSource, int par2)
+	public boolean attackEntityFrom(DamageSource damagesource, int par2)
 	{
 		if(this.isEntityInvulnerable())
 		{
 			return false;
 		}
-		else if(par1DamageSource == DamageSource.drown)
+		else if(damagesource == DamageSource.drown)
 		{
 			return false;
 		}
@@ -564,7 +564,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 			if(this.isArmored())
 			{
-				var3 = par1DamageSource.getSourceOfDamage();
+				var3 = damagesource.getSourceOfDamage();
 
 				if(var3 instanceof EntityArrow)
 				{
@@ -572,7 +572,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 				}
 			}
 
-			var3 = par1DamageSource.getEntity();
+			var3 = damagesource.getEntity();
 
 			if(var3 != null && !(var3 instanceof EntityPlayer) && var3 instanceof EntityLiving && ((EntityLiving)var3).getCreatureAttribute() == this.getCreatureAttribute())
 			{
@@ -590,12 +590,12 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 					this.field_82224_i[var4] += 3;
 				}
 
-				return super.attackEntityFrom(par1DamageSource, par2);
+				return super.attackEntityFrom(damagesource, par2);
 			}
 		}
 	}
 
-	protected void dropFewItems(boolean par1, int par2)
+	protected void dropFewItems(boolean killbyplayer, int lootinglevel)
 	{
 		entityDropItem(new ItemStack(NanotechItem.ItemBase, 25, 2), 0.0F);
 		dropItem(Item.diamond.itemID, 18);
@@ -619,10 +619,10 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		return !this.isDead;
 	}
 
-	protected void fall(float par1)
+	protected void fall(float damage)
 	{}
 
-	public void addPotionEffect(PotionEffect par1PotionEffect)
+	public void addPotionEffect(PotionEffect potioneffect)
 	{}
 
 	protected boolean isAIEnabled()

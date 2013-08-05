@@ -17,9 +17,9 @@ public class MobFly extends EntityAmbientCreature
 {
 	private ChunkCoordinates field_82237_a;
 
-	public MobFly(World par1World)
+	public MobFly(World world)
 	{
-		super(par1World);
+		super(world);
 		this.texture = "/mods/Nanotech_mod/textures/mob/fly.png";
 		this.setSize(0.5F, 0.5F);
 		this.func_82236_f(true);
@@ -147,7 +147,7 @@ public class MobFly extends EntityAmbientCreature
 		return false;
 	}
 
-	protected void fall(float par1)
+	protected void fall(float damage)
 	{}
 
 	protected void updateFallState(double par1, boolean par3)
@@ -158,26 +158,26 @@ public class MobFly extends EntityAmbientCreature
 		return true;
 	}
 
-	public boolean attackEntityFrom(DamageSource par1DamageSource, int par2)
+	public boolean attackEntityFrom(DamageSource damagesource, int par2)
 	{
 		if(!this.worldObj.isRemote && this.func_82235_h())
 		{
 			this.func_82236_f(false);
 		}
 
-		return super.attackEntityFrom(par1DamageSource, par2);
+		return super.attackEntityFrom(damagesource, par2);
 	}
 
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
+	public void readEntityFromNBT(NBTTagCompound nbttagcompound)
 	{
-		super.readEntityFromNBT(par1NBTTagCompound);
-		this.dataWatcher.updateObject(16, Byte.valueOf(par1NBTTagCompound.getByte("BatFlags")));
+		super.readEntityFromNBT(nbttagcompound);
+		this.dataWatcher.updateObject(16, Byte.valueOf(nbttagcompound.getByte("BatFlags")));
 	}
 
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
+	public void writeEntityToNBT(NBTTagCompound nbttagcompound)
 	{
-		super.writeEntityToNBT(par1NBTTagCompound);
-		par1NBTTagCompound.setByte("BatFlags", this.dataWatcher.getWatchableObjectByte(16));
+		super.writeEntityToNBT(nbttagcompound);
+		nbttagcompound.setByte("BatFlags", this.dataWatcher.getWatchableObjectByte(16));
 	}
 
 	public boolean getCanSpawnHere()

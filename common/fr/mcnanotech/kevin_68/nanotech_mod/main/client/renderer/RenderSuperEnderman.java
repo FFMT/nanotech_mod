@@ -17,42 +17,42 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperEnderman;
 public class RenderSuperEnderman extends RenderLiving
 {
 	/** The model of the enderman */
-	private ModelSuperEnderman Mob_superendermanModel;
+	private ModelSuperEnderman model;
 	private Random rnd = new Random();
 
-	public RenderSuperEnderman(ModelSuperEnderman Model_Mob_superenderman, float f)
+	public RenderSuperEnderman(ModelSuperEnderman model, float f)
 	{
 		super(new ModelSuperEnderman(), 0.5F);
-		this.Mob_superendermanModel = (ModelSuperEnderman)super.mainModel;
-		this.setRenderPassModel(this.Mob_superendermanModel);
+		this.model = (ModelSuperEnderman)super.mainModel;
+		this.setRenderPassModel(this.model);
 	}
 
 	/**
 	 * Renders the enderman
 	 */
-	public void renderMob_superenderman(MobSuperEnderman superenderman, double par2, double par4, double par6, float par8, float par9)
+	public void renderMob_superenderman(MobSuperEnderman mob, double par2, double par4, double par6, float par8, float par9)
 	{
-		this.Mob_superendermanModel.isCarrying = superenderman.getCarried() > 0;
-		this.Mob_superendermanModel.isAttacking = superenderman.func_70823_r();
+		this.model.isCarrying = mob.getCarried() > 0;
+		this.model.isAttacking = mob.func_70823_r();
 
-		if(superenderman.func_70823_r())
+		if(mob.func_70823_r())
 		{
 			double var10 = 0.02D;
 			par2 += this.rnd.nextGaussian() * var10;
 			par6 += this.rnd.nextGaussian() * var10;
 		}
 
-		super.doRenderLiving(superenderman, par2, par4, par6, par8, par9);
+		super.doRenderLiving(mob, par2, par4, par6, par8, par9);
 	}
 
 	/**
 	 * Render the block an enderman is carrying
 	 */
-	protected void renderCarrying(MobSuperEnderman par1Mob_superenderman, float par2)
+	protected void renderCarrying(MobSuperEnderman mob, float par2)
 	{
-		super.renderEquippedItems(par1Mob_superenderman, par2);
+		super.renderEquippedItems(mob, par2);
 
-		if(par1Mob_superenderman.getCarried() > 0)
+		if(mob.getCarried() > 0)
 		{
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 			GL11.glPushMatrix();
@@ -62,14 +62,14 @@ public class RenderSuperEnderman extends RenderLiving
 			GL11.glRotatef(20.0F, 1.0F, 0.0F, 0.0F);
 			GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
 			GL11.glScalef(var3, -var3, var3);
-			int var4 = par1Mob_superenderman.getBrightnessForRender(par2);
+			int var4 = mob.getBrightnessForRender(par2);
 			int var5 = var4 % 65536;
 			int var6 = var4 / 65536;
 			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)var5 / 1.0F, (float)var6 / 1.0F);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			this.loadTexture("/terrain.png");
-			this.renderBlocks.renderBlockAsItem(Block.blocksList[par1Mob_superenderman.getCarried()], par1Mob_superenderman.getCarryingData(), 1.0F);
+			this.renderBlocks.renderBlockAsItem(Block.blocksList[mob.getCarried()], mob.getCarryingData(), 1.0F);
 			GL11.glPopMatrix();
 			GL11.glDisable(GL12.GL_RESCALE_NORMAL);
 		}
@@ -78,7 +78,7 @@ public class RenderSuperEnderman extends RenderLiving
 	/**
 	 * Render the endermans eyes
 	 */
-	protected int renderEyes(MobSuperEnderman superenderman, int par2, float par3)
+	protected int renderEyes(MobSuperEnderman mob, int par2, float par3)
 	{
 		if(par2 != 0)
 		{
@@ -106,19 +106,19 @@ public class RenderSuperEnderman extends RenderLiving
 	/**
 	 * Queries whether should render the specified pass or not.
 	 */
-	protected int shouldRenderPass(EntityLiving par1EntityLiving, int par2, float par3)
+	protected int shouldRenderPass(EntityLiving entityliving, int par2, float par3)
 	{
-		return this.renderEyes((MobSuperEnderman)par1EntityLiving, par2, par3);
+		return this.renderEyes((MobSuperEnderman)entityliving, par2, par3);
 	}
 
-	protected void renderEquippedItems(EntityLiving par1EntityLiving, float par2)
+	protected void renderEquippedItems(EntityLiving entityliving, float par2)
 	{
-		this.renderCarrying((MobSuperEnderman)par1EntityLiving, par2);
+		this.renderCarrying((MobSuperEnderman)entityliving, par2);
 	}
 
-	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
+	public void doRenderLiving(EntityLiving entityliving, double par2, double par4, double par6, float par8, float par9)
 	{
-		this.renderMob_superenderman((MobSuperEnderman)par1EntityLiving, par2, par4, par6, par8, par9);
+		this.renderMob_superenderman((MobSuperEnderman)entityliving, par2, par4, par6, par8, par9);
 	}
 
 	/**
@@ -129,8 +129,8 @@ public class RenderSuperEnderman extends RenderLiving
 	 * void doRender(T entity, double d, double d1, double d2, float f, float
 	 * f1). But JAD is pre 1.5 so doesn't do that.
 	 */
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9)
 	{
-		this.renderMob_superenderman((MobSuperEnderman)par1Entity, par2, par4, par6, par8, par9);
+		this.renderMob_superenderman((MobSuperEnderman)entity, par2, par4, par6, par8, par9);
 	}
 }

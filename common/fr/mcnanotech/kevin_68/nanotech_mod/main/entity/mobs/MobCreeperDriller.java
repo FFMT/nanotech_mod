@@ -30,9 +30,9 @@ public class MobCreeperDriller extends EntityMob
 	private int field_82225_f = 20;
 	private int field_82226_g = 3;
 
-	public MobCreeperDriller(World par1World)
+	public MobCreeperDriller(World world)
 	{
-		super(par1World);
+		super(world);
 		this.texture = "/mods/Nanotech_mod/textures/mob/creeperforreur.png";
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(2, new AiCreeperDriller(this));
@@ -55,10 +55,10 @@ public class MobCreeperDriller extends EntityMob
 		return this.getAttackTarget() == null ? 3 : 3 + (this.health - 1);
 	}
 
-	protected void fall(float par1)
+	protected void fall(float damage)
 	{
-		super.fall(par1);
-		this.timeSinceIgnited = (int)((float)this.timeSinceIgnited + par1 * 1.5F);
+		super.fall(damage);
+		this.timeSinceIgnited = (int)((float)this.timeSinceIgnited + damage * 1.5F);
 
 		if(this.timeSinceIgnited > this.field_82225_f - 5)
 		{
@@ -78,32 +78,32 @@ public class MobCreeperDriller extends EntityMob
 		this.dataWatcher.addObject(17, Byte.valueOf((byte)0));
 	}
 
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
+	public void writeEntityToNBT(NBTTagCompound nbttagcompound)
 	{
-		super.writeEntityToNBT(par1NBTTagCompound);
+		super.writeEntityToNBT(nbttagcompound);
 
 		if(this.dataWatcher.getWatchableObjectByte(17) == 1)
 		{
-			par1NBTTagCompound.setBoolean("powered", true);
+			nbttagcompound.setBoolean("powered", true);
 		}
 
-		par1NBTTagCompound.setShort("Fuse", (short)this.field_82225_f);
-		par1NBTTagCompound.setByte("ExplosionRadius", (byte)this.field_82226_g);
+		nbttagcompound.setShort("Fuse", (short)this.field_82225_f);
+		nbttagcompound.setByte("ExplosionRadius", (byte)this.field_82226_g);
 	}
 
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
+	public void readEntityFromNBT(NBTTagCompound nbttagcompound)
 	{
-		super.readEntityFromNBT(par1NBTTagCompound);
-		this.dataWatcher.updateObject(17, Byte.valueOf((byte)(par1NBTTagCompound.getBoolean("powered") ? 1 : 0)));
+		super.readEntityFromNBT(nbttagcompound);
+		this.dataWatcher.updateObject(17, Byte.valueOf((byte)(nbttagcompound.getBoolean("powered") ? 1 : 0)));
 
-		if(par1NBTTagCompound.hasKey("Fuse"))
+		if(nbttagcompound.hasKey("Fuse"))
 		{
-			this.field_82225_f = par1NBTTagCompound.getShort("Fuse");
+			this.field_82225_f = nbttagcompound.getShort("Fuse");
 		}
 
-		if(par1NBTTagCompound.hasKey("ExplosionRadius"))
+		if(nbttagcompound.hasKey("ExplosionRadius"))
 		{
-			this.field_82226_g = par1NBTTagCompound.getByte("ExplosionRadius");
+			this.field_82226_g = nbttagcompound.getByte("ExplosionRadius");
 		}
 	}
 
@@ -186,7 +186,7 @@ public class MobCreeperDriller extends EntityMob
 		}
 	}
 
-	public boolean attackEntityAsMob(Entity par1Entity)
+	public boolean attackEntityAsMob(Entity entity)
 	{
 		return true;
 	}
@@ -197,9 +197,9 @@ public class MobCreeperDriller extends EntityMob
 	}
 
 	@SideOnly(Side.CLIENT)
-	public float setCreeperFlashTime(float par1)
+	public float setCreeperFlashTime(float time)
 	{
-		return ((float)this.lastActiveTime + (float)(this.timeSinceIgnited - this.lastActiveTime) * par1) / (float)(this.field_82225_f - 2);
+		return ((float)this.lastActiveTime + (float)(this.timeSinceIgnited - this.lastActiveTime) * time) / (float)(this.field_82225_f - 2);
 	}
 
 	protected int getDropItemId()
@@ -217,9 +217,9 @@ public class MobCreeperDriller extends EntityMob
 		this.dataWatcher.updateObject(16, Byte.valueOf((byte)par1));
 	}
 
-	public void onStruckByLightning(EntityLightningBolt par1EntityLightningBolt)
+	public void onStruckByLightning(EntityLightningBolt entitylightninbolt)
 	{
-		super.onStruckByLightning(par1EntityLightningBolt);
+		super.onStruckByLightning(entitylightninbolt);
 		this.dataWatcher.updateObject(17, Byte.valueOf((byte)1));
 	}
 

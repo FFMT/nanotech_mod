@@ -43,9 +43,9 @@ public class BlockSodium extends Block
 		}
 	}
 
-	public void onNeighborBlockChange(World world, int x, int y, int z, int par5)
+	public void onNeighborBlockChange(World world, int x, int y, int z, int blockid)
 	{
-		super.onNeighborBlockChange(world, x, y, z, par5);
+		super.onNeighborBlockChange(world, x, y, z, blockid);
 		this.checkdoexplode(world, x, y, z);
 	}
 

@@ -28,9 +28,9 @@ public class BlockFakeOre extends Block
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int damage)
+	public Icon getIcon(int side, int metadata)
 	{
-		if(damage == 0)
+		if(metadata == 0)
 		{
 			return Block.oreGold.getIcon(0, 0);
 		}
@@ -90,12 +90,12 @@ public class BlockFakeOre extends Block
 		return 5;
 	}
 
-	public void onBlockAdded(World world, int x, int z, int y)
+	public void onBlockAdded(World world, int x, int y, int z)
 	{
-		world.scheduleBlockUpdate(x, z, y, blockID, tickRate());
+		world.scheduleBlockUpdate(x, y, z, blockID, tickRate());
 	}
 
-	public void onNeighborBlockChange(World world, int x, int y, int z, int par5)
+	public void onNeighborBlockChange(World world, int x, int y, int z, int blockid)
 	{
 		if(world.getBlockMetadata(x, y, z) == 1)
 		{
@@ -103,7 +103,7 @@ public class BlockFakeOre extends Block
 		}
 	}
 
-	public void updateTick(World world, int x, int y, int z, Random par5Random)
+	public void updateTick(World world, int x, int y, int z, Random random)
 	{
 		fallIfPossible(world, x, y, z);
 	}

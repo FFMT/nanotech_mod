@@ -186,9 +186,9 @@ public class TileEntitySpotLight extends TileEntity
 		return this.darkBlue;
 	}
 
-	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
+	public boolean isUseableByPlayer(EntityPlayer player)
 	{
-		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
 	}
 
 	@SideOnly(Side.CLIENT)

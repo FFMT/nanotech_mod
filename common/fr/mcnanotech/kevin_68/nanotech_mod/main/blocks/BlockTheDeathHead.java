@@ -141,88 +141,88 @@ public class BlockTheDeathHead extends Block
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister)
+	public void registerIcons(IconRegister iconregister)
 	{
-		this.face = par1IconRegister.registerIcon("Nanotech_mod:theDeathHeadFace");
-		this.top = par1IconRegister.registerIcon("Nanotech_mod:theDeathHeadTop");
-		this.side = par1IconRegister.registerIcon("Nanotech_mod:theDeathHeadSide");
-		this.side2 = par1IconRegister.registerIcon("Nanotech_mod:theDeathHeadSide2");
-		this.back = par1IconRegister.registerIcon("Nanotech_mod:theDeathHeadBack");
-		this.bottom = par1IconRegister.registerIcon("Nanotech_mod:theDeathHeadBottom");
+		this.face = iconregister.registerIcon("Nanotech_mod:theDeathHeadFace");
+		this.top = iconregister.registerIcon("Nanotech_mod:theDeathHeadTop");
+		this.side = iconregister.registerIcon("Nanotech_mod:theDeathHeadSide");
+		this.side2 = iconregister.registerIcon("Nanotech_mod:theDeathHeadSide2");
+		this.back = iconregister.registerIcon("Nanotech_mod:theDeathHeadBack");
+		this.bottom = iconregister.registerIcon("Nanotech_mod:theDeathHeadBottom");
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2)
+	public Icon getIcon(int side, int metadata)
 	{
-		if(par1 == 1)
+		if(side == 1)
 		{
 			return this.top;
 		}
-		else if(par1 == 0)
+		else if(side == 0)
 		{
 			return this.bottom;
 		}
-		else if(par1 == 2 && par2 == 2)
+		else if(side == 2 && metadata == 2)
 		{
 			return this.face;
 		}
-		else if(par1 == 3 && par2 == 2)
+		else if(side == 3 && metadata == 2)
 		{
 			return this.back;
 		}
-		else if(par1 == 4 && par2 == 2)
+		else if(side == 4 && metadata == 2)
 		{
 			return this.side2;
 		}
-		else if(par1 == 5 && par2 == 2)
+		else if(side == 5 && metadata == 2)
 		{
 			return this.side;
 		}
-		else if(par1 == 5 && par2 == 3)
+		else if(side == 5 && metadata == 3)
 		{
 			return this.face;
 		}
-		else if(par1 == 4 && par2 == 3)
+		else if(side == 4 && metadata == 3)
 		{
 			return this.back;
 		}
-		else if(par1 == 2 && par2 == 3)
+		else if(side == 2 && metadata == 3)
 		{
 			return this.side2;
 		}
-		else if(par1 == 3 && par2 == 3)
+		else if(side == 3 && metadata == 3)
 		{
 			return this.side;
 		}
-		else if(par1 == 3 && par2 == 0)
+		else if(side == 3 && metadata == 0)
 		{
 			return this.face;
 		}
-		else if(par1 == 2 && par2 == 0)
+		else if(side == 2 && metadata == 0)
 		{
 			return this.back;
 		}
-		else if(par1 == 4 && par2 == 0)
+		else if(side == 4 && metadata == 0)
 		{
 			return this.side2;
 		}
-		else if(par1 == 5 && par2 == 0)
+		else if(side == 5 && metadata == 0)
 		{
 			return this.side;
 		}
-		else if(par1 == 4 && par2 == 1)
+		else if(side == 4 && metadata == 1)
 		{
 			return this.face;
 		}
-		else if(par1 == 5 && par2 == 1)
+		else if(side == 5 && metadata == 1)
 		{
 			return this.back;
 		}
-		else if(par1 == 3 && par2 == 1)
+		else if(side == 3 && metadata == 1)
 		{
 			return this.side2;
 		}
-		else if(par1 == 2 && par2 == 1)
+		else if(side == 2 && metadata == 1)
 		{
 			return this.side;
 		}

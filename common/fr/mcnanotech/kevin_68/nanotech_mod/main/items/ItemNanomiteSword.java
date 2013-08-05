@@ -7,9 +7,9 @@ import net.minecraft.item.ItemSword;
 
 public class ItemNanomiteSword extends ItemSword
 {
-	public ItemNanomiteSword(int itemID, EnumToolMaterial toolMaterial)
+	public ItemNanomiteSword(int id, EnumToolMaterial toolMaterial)
 	{
-		super(itemID, toolMaterial);
+		super(id, toolMaterial);
 	}
 
 	public void registerIcons(IconRegister iconregister)
@@ -17,7 +17,7 @@ public class ItemNanomiteSword extends ItemSword
 		itemIcon = iconregister.registerIcon("Nanotech_mod:nanomiteSword");
 	}
 
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+	public boolean getIsRepairable(ItemStack stack, ItemStack stack2)
 	{
 		return true;
 	}

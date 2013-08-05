@@ -18,7 +18,7 @@ public class GuiFountain extends GuiContainer
 {
 	private TileEntityFountain tileFoutain;
 
-	public GuiFountain(InventoryPlayer playerinventory,TileEntityFountain tileentity, World world)
+	public GuiFountain(InventoryPlayer playerinventory, TileEntityFountain tileentity, World world)
 	{
 		super(new ContainerFountain(tileentity, playerinventory, world));
 		tileFoutain = tileentity;

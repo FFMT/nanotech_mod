@@ -12,15 +12,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityTheDeathBall extends EntityFireball
 {
-	public EntityTheDeathBall(World par1World)
+	public EntityTheDeathBall(World world)
 	{
-		super(par1World);
+		super(world);
 		this.setSize(1.3125F, 1.3125F);
 	}
 
-	public EntityTheDeathBall(World par1World, EntityLiving par2EntityLiving, double par3, double par5, double par7)
+	public EntityTheDeathBall(World world, EntityLiving entityliving, double x, double y, double z)
 	{
-		super(par1World, par2EntityLiving, par3, par5, par7);
+		super(world, entityliving, x, y, z);
 		this.setSize(1.3125F, 1.3125F);
 	}
 
@@ -30,16 +30,12 @@ public class EntityTheDeathBall extends EntityFireball
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EntityTheDeathBall(World par1World, double par2, double par4, double par6, double par8, double par10, double par12)
+	public EntityTheDeathBall(World world, double x, double y, double z, double velx, double vely, double velz)
 	{
-		super(par1World, par2, par4, par6, par8, par10, par12);
+		super(world, x, y, z, velx, vely, velz);
 		this.setSize(1.3125F, 1.3125F);
 	}
 
-	/**
-	 * Returns true if the entity is on fire. Used by render to add the fire
-	 * effect on rendering.
-	 */
 	public boolean isBurning()
 	{
 		return false;
@@ -55,25 +51,25 @@ public class EntityTheDeathBall extends EntityFireball
 		return var6;
 	}
 
-	protected void onImpact(MovingObjectPosition par1MovingObjectPosition)
+	protected void onImpact(MovingObjectPosition movingobjectposition)
 	{
 		if(!this.worldObj.isRemote)
 		{
-			if(par1MovingObjectPosition.entityHit != null)
+			if(movingobjectposition.entityHit != null)
 			{
 				if(this.shootingEntity != null)
 				{
-					if(par1MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeMobDamage(this.shootingEntity), 8) && !par1MovingObjectPosition.entityHit.isEntityAlive())
+					if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeMobDamage(this.shootingEntity), 8) && !movingobjectposition.entityHit.isEntityAlive())
 					{
 						this.shootingEntity.heal(10);
 					}
 				}
 				else
 				{
-					par1MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.magic, 10);
+					movingobjectposition.entityHit.attackEntityFrom(DamageSource.magic, 10);
 				}
 
-				if(par1MovingObjectPosition.entityHit instanceof EntityLiving)
+				if(movingobjectposition.entityHit instanceof EntityLiving)
 				{
 					byte var2 = 0;
 
@@ -101,7 +97,7 @@ public class EntityTheDeathBall extends EntityFireball
 		return false;
 	}
 
-	public boolean attackEntityFrom(DamageSource par1DamageSource, int par2)
+	public boolean attackEntityFrom(DamageSource damagesource, int par2)
 	{
 		return false;
 	}

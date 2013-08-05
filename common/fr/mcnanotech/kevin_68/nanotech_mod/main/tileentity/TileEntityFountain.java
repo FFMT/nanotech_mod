@@ -21,8 +21,8 @@ public class TileEntityFountain extends TileEntity
 	public boolean isGoingDown = false;
 	private String field_94048_i;
 
-	public float height = 6.0F; //max 6.0F, min 0.0F
-	public double width = 0.2D; //max 0.5D, min 0.05D 
+	public float height = 6.0F;
+	public double width = 0.2D;
 	public boolean rotate = false;
 	public boolean animated = false;
 
@@ -152,9 +152,9 @@ public class TileEntityFountain extends TileEntity
 		this.readFromNBT(pkt.customParam1);
 	}
 
-	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
+	public boolean isUseableByPlayer(EntityPlayer player)
 	{
-		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -7,9 +7,9 @@ import net.minecraft.item.ItemStack;
 
 public class ItemNanomiteHoe extends ItemHoe
 {
-	public ItemNanomiteHoe(int itemID, EnumToolMaterial toolMaterial)
+	public ItemNanomiteHoe(int id, EnumToolMaterial toolMaterial)
 	{
-		super(itemID, toolMaterial);
+		super(id, toolMaterial);
 	}
 
 	public void registerIcons(IconRegister iconregister)
@@ -17,7 +17,7 @@ public class ItemNanomiteHoe extends ItemHoe
 		itemIcon = iconregister.registerIcon("Nanotech_mod:nanomiteHoe");
 	}
 
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+	public boolean getIsRepairable(ItemStack stack, ItemStack stack2)
 	{
 		return true;
 	}

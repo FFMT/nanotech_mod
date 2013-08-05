@@ -15,9 +15,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemMysteriousArmor extends ItemArmor
 {
-	public ItemMysteriousArmor(int id, EnumArmorMaterial enumArmorMaterial, int par3, int par4)
+	public ItemMysteriousArmor(int id, EnumArmorMaterial enumArmorMaterial, int slot, int layer)
 	{
-		super(id, enumArmorMaterial, par3, par4);
+		super(id, enumArmorMaterial, slot, layer);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
@@ -64,7 +64,7 @@ public class ItemMysteriousArmor extends ItemArmor
 		}
 	}
 
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+	public boolean getIsRepairable(ItemStack stack, ItemStack stack2)
 	{
 		return true;
 	}

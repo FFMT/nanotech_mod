@@ -22,21 +22,21 @@ public class BlockGrass extends Block
 		this.setTickRandomly(true);
 	}
 
-	public void registerIcons(IconRegister par1IconRegister)
+	public void registerIcons(IconRegister iconregister)
 	{
-		blockIcon = par1IconRegister.registerIcon("Nanotech_mod:grass_side");
-		iconTop = par1IconRegister.registerIcon("Nanotech_mod:grass_top");
-		iconSnowSide = par1IconRegister.registerIcon("Nanotech_mod:grass_side_snow");
+		blockIcon = iconregister.registerIcon("Nanotech_mod:grass_side");
+		iconTop = iconregister.registerIcon("Nanotech_mod:grass_top");
+		iconSnowSide = iconregister.registerIcon("Nanotech_mod:grass_side_snow");
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int damage)
+	public Icon getIcon(int side, int metadata)
 	{
 		return side == 1 ? iconTop : (side == 0 ? Block.dirt.getBlockTextureFromSide(side) : this.blockIcon);
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getBlockTexture(IBlockAccess par1IBlockAccess, int x, int y, int z, int side)
+	public Icon getBlockTexture(IBlockAccess blockaccess, int x, int y, int z, int side)
 	{
 		if(side == 1)
 		{
@@ -48,39 +48,39 @@ public class BlockGrass extends Block
 		}
 		else
 		{
-			Material material = par1IBlockAccess.getBlockMaterial(x, y + 1, z);
+			Material material = blockaccess.getBlockMaterial(x, y + 1, z);
 			return material != Material.snow && material != Material.craftedSnow ? blockIcon : iconSnowSide;
 		}
 	}
 
-	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
+	public void updateTick(World world, int x, int y, int z, Random par5Random)
 	{
-		if(!par1World.isRemote)
+		if(!world.isRemote)
 		{
-			if(par1World.getBlockLightValue(par2, par3 + 1, par4) < 4 && par1World.getBlockLightOpacity(par2, par3 + 1, par4) > 2)
+			if(world.getBlockLightValue(x, y + 1, z) < 4 && world.getBlockLightOpacity(x, y + 1, z) > 2)
 			{
-				par1World.setBlock(par2, par3, par4, Block.dirt.blockID, 0, 3);
+				world.setBlock(x, y, z, Block.dirt.blockID, 0, 3);
 			}
-			else if(par1World.getBlockLightValue(par2, par3 + 1, par4) >= 9)
+			else if(world.getBlockLightValue(x, y + 1, z) >= 9)
 			{
 				for(int var6 = 0; var6 < 4; ++var6)
 				{
-					int var7 = par2 + par5Random.nextInt(3) - 1;
-					int var8 = par3 + par5Random.nextInt(5) - 3;
-					int var9 = par4 + par5Random.nextInt(3) - 1;
-					int var10 = par1World.getBlockId(var7, var8 + 1, var9);
+					int var7 = x + par5Random.nextInt(3) - 1;
+					int var8 = y + par5Random.nextInt(5) - 3;
+					int var9 = z + par5Random.nextInt(3) - 1;
+					int var10 = world.getBlockId(var7, var8 + 1, var9);
 
-					if((par1World.getBlockId(var7, var8, var9) == Block.dirt.blockID && par1World.getBlockLightValue(var7, var8 + 1, var9) >= 4 && par1World.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (par1World.getBlockId(var7, var8, var9) == Block.grass.blockID && par1World.getBlockLightValue(var7, var8 + 1, var9) >= 4 && par1World.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (par1World.getBlockId(var7, var8, var9) == Block.mycelium.blockID && par1World.getBlockLightValue(var7, var8 + 1, var9) >= 4 && par1World.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (par1World.getBlockId(var7, var8, var9) == Block.tilledField.blockID && par1World.getBlockLightValue(var7, var8 + 1, var9) >= 4 && par1World.getBlockLightOpacity(var7, var8 + 1, var9) <= 2))
+					if((world.getBlockId(var7, var8, var9) == Block.dirt.blockID && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlockId(var7, var8, var9) == Block.grass.blockID && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlockId(var7, var8, var9) == Block.mycelium.blockID && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlockId(var7, var8, var9) == Block.tilledField.blockID && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2))
 					{
-						par1World.setBlock(var7, var8, var9, NanotechBlock.BlockGrass.blockID, 0, 3);
+						world.setBlock(var7, var8, var9, NanotechBlock.BlockGrass.blockID, 0, 3);
 					}
 				}
 			}
 		}
 	}
 
-	public int idDropped(int par1, Random par2Random, int par3)
+	public int idDropped(int metadata, Random random, int par3)
 	{
-		return Block.dirt.idDropped(0, par2Random, par3);
+		return Block.dirt.idDropped(0, random, par3);
 	}
 }

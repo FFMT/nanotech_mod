@@ -17,12 +17,12 @@ public class BlockSpotLight extends BlockContainer
 	private Icon top;
 	private Icon side;
 
-	public BlockSpotLight(int par1)
+	public BlockSpotLight(int id)
 	{
-		super(par1, Material.iron);
+		super(id, Material.iron);
 	}
 
-	public TileEntity createNewTileEntity(World par1World)
+	public TileEntity createNewTileEntity(World world)
 	{
 		return new TileEntitySpotLight();
 	}
@@ -57,10 +57,10 @@ public class BlockSpotLight extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister)
+	public void registerIcons(IconRegister iconregister)
 	{
-		this.side = par1IconRegister.registerIcon("Nanotech_mod:SpotLightSides");
-		this.top = par1IconRegister.registerIcon("Nanotech_mod:SpotLightTopAndBottom");
+		this.side = iconregister.registerIcon("Nanotech_mod:SpotLightSides");
+		this.top = iconregister.registerIcon("Nanotech_mod:SpotLightTopAndBottom");
 	}
 
 	@SideOnly(Side.CLIENT)

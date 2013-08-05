@@ -20,7 +20,7 @@ public class EventBonemeal
 				event.setResult(Result.ALLOW);
 			}
 		}
-		
+
 		if(event.ID == NanotechBlock.BlockTea.blockID)
 		{
 			if(!event.world.isRemote)

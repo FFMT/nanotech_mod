@@ -29,9 +29,9 @@ public class BlockJumper extends BlockContainer
 		super(id, Material.rock);
 	}
 
-	public int damageDropped(int damage)
+	public int damageDropped(int metadata)
 	{
-		return damage;
+		return metadata;
 	}
 
 	public void registerIcons(IconRegister iconregister)
@@ -45,9 +45,9 @@ public class BlockJumper extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int damage)
+	public Icon getIcon(int side, int metadata)
 	{
-		if(damage == 0)
+		if(metadata == 0)
 		{
 			return (side == 0) ? iconbuffer[0] : (side == 1) ? iconbuffer[1] : iconbuffer[2];
 		}

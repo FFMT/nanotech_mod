@@ -53,9 +53,9 @@ public class ItemEmeraldBow extends ItemBow
 		return getIconIndex(stack);
 	}
 
-	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int par4)
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int itemInUseCount)
 	{
-		int var6 = this.getMaxItemUseDuration(stack) - par4 - 3000;
+		int var6 = this.getMaxItemUseDuration(stack) - itemInUseCount - 3000;
 
 		ArrowLooseEvent event = new ArrowLooseEvent(player, stack, var6);
 		MinecraftForge.EVENT_BUS.post(event);

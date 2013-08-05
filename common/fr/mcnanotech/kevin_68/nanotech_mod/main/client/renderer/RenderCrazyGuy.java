@@ -6,9 +6,9 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelCrazyGuy;
 
 public class RenderCrazyGuy extends RenderLiving
 {
-	private ModelBase modelBase = new ModelCrazyGuy();
+	private ModelBase model = new ModelCrazyGuy();
 
-	public RenderCrazyGuy(ModelCrazyGuy modelFastZombie, float f)
+	public RenderCrazyGuy(ModelCrazyGuy model, float f)
 	{
 		super(new ModelCrazyGuy(), 0.5F);
 	}

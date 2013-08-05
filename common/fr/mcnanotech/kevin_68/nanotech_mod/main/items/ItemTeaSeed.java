@@ -11,40 +11,32 @@ import net.minecraftforge.common.IPlantable;
 
 public class ItemTeaSeed extends Item implements IPlantable
 {
-    /**
-     * The type of block this seed turns into (wheat or pumpkin stems for instance)
-     */
-    private int blockType;
 
-    /** BlockID of the block the seeds can be planted on. */
+    private int blockType;
     private int soilBlockID;
 
-    public ItemTeaSeed(int par1, int par2, int par3)
+    public ItemTeaSeed(int id, int blocktype, int soilblockid)
     {
-        super(par1);
-        this.blockType = par2;
-        this.soilBlockID = par3;
+        super(id);
+        this.blockType = blocktype;
+        this.soilBlockID = soilblockid;
     }
 
-    /**
-     * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
-     * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
-     */
-    public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int par7, float par8, float par9, float par10)
     {
         if (par7 != 1)
         {
             return false;
         }
-        else if (par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(par4, par5 + 1, par6, par7, par1ItemStack))
+        else if (player.canPlayerEdit(x, y, z, par7, stack) && player.canPlayerEdit(x, y + 1, z, par7, stack))
         {
-            int i1 = par3World.getBlockId(par4, par5, par6);
+            int i1 = world.getBlockId(x, y, z);
             Block soil = Block.blocksList[i1];
 
-            if (soil != null && soil.canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.isAirBlock(par4, par5 + 1, par6))
+            if (soil != null && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, this) && world.isAirBlock(x, y + 1, z))
             {
-                par3World.setBlock(par4, par5 + 1, par6, this.blockType);
-                --par1ItemStack.stackSize;
+                world.setBlock(x, y + 1, z, this.blockType);
+                --stack.stackSize;
                 return true;
             }
             else

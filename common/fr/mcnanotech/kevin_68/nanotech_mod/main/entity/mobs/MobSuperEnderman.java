@@ -45,18 +45,18 @@ public class MobSuperEnderman extends EntityMob
 		this.dataWatcher.addObject(18, new Byte((byte)0));
 	}
 
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
+	public void writeEntityToNBT(NBTTagCompound nbttagcompound)
 	{
-		super.writeEntityToNBT(par1NBTTagCompound);
-		par1NBTTagCompound.setShort("carried", (short)this.getCarried());
-		par1NBTTagCompound.setShort("carriedData", (short)this.getCarryingData());
+		super.writeEntityToNBT(nbttagcompound);
+		nbttagcompound.setShort("carried", (short)this.getCarried());
+		nbttagcompound.setShort("carriedData", (short)this.getCarryingData());
 	}
 
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
+	public void readEntityFromNBT(NBTTagCompound nbttagcompound)
 	{
-		super.readEntityFromNBT(par1NBTTagCompound);
-		this.setCarried(par1NBTTagCompound.getShort("carried"));
-		this.setCarryingData(par1NBTTagCompound.getShort("carriedData"));
+		super.readEntityFromNBT(nbttagcompound);
+		this.setCarried(nbttagcompound.getShort("carried"));
+		this.setCarryingData(nbttagcompound.getShort("carriedData"));
 	}
 
 	protected Entity findPlayerToAttack()
@@ -88,9 +88,9 @@ public class MobSuperEnderman extends EntityMob
 		return null;
 	}
 
-	private boolean shouldAttackPlayer(EntityPlayer par1EntityPlayer)
+	private boolean shouldAttackPlayer(EntityPlayer player)
 	{
-		ItemStack var2 = par1EntityPlayer.inventory.armorInventory[3];
+		ItemStack var2 = player.inventory.armorInventory[3];
 
 		if(var2 != null && var2.itemID == Block.pumpkin.blockID)
 		{
@@ -98,12 +98,12 @@ public class MobSuperEnderman extends EntityMob
 		}
 		else
 		{
-			Vec3 var3 = par1EntityPlayer.getLook(1.0F).normalize();
-			Vec3 var4 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX - par1EntityPlayer.posX, this.boundingBox.minY + (double)(this.height / 2.0F) - (par1EntityPlayer.posY + (double)par1EntityPlayer.getEyeHeight()), this.posZ - par1EntityPlayer.posZ);
+			Vec3 var3 = player.getLook(1.0F).normalize();
+			Vec3 var4 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX - player.posX, this.boundingBox.minY + (double)(this.height / 2.0F) - (player.posY + (double)player.getEyeHeight()), this.posZ - player.posZ);
 			double var5 = var4.lengthVector();
 			var4 = var4.normalize();
 			double var7 = var3.dotProduct(var4);
-			return var7 > 1.0D - 0.025D / var5 ? par1EntityPlayer.canEntityBeSeen(this) : false;
+			return var7 > 1.0D - 0.025D / var5 ? player.canEntityBeSeen(this) : false;
 		}
 	}
 
@@ -187,9 +187,9 @@ public class MobSuperEnderman extends EntityMob
 		return this.teleportTo(var1, var3, var5);
 	}
 
-	protected boolean teleportToEntity(Entity par1Entity)
+	protected boolean teleportToEntity(Entity entity)
 	{
-		Vec3 var2 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX - par1Entity.posX, this.boundingBox.minY + (double)(this.height / 2.0F) - par1Entity.posY + (double)par1Entity.getEyeHeight(), this.posZ - par1Entity.posZ);
+		Vec3 var2 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX - entity.posX, this.boundingBox.minY + (double)(this.height / 2.0F) - entity.posY + (double)entity.getEyeHeight(), this.posZ - entity.posZ);
 		var2 = var2.normalize();
 		double var3 = 16.0D;
 		double var5 = this.posX + (this.rand.nextDouble() - 0.5D) * 8.0D - var2.xCoord * var3;
@@ -198,14 +198,14 @@ public class MobSuperEnderman extends EntityMob
 		return this.teleportTo(var5, var7, var9);
 	}
 
-	protected boolean teleportTo(double par1, double par3, double par5)
+	protected boolean teleportTo(double x, double y, double z)
 	{
 		double var7 = this.posX;
 		double var9 = this.posY;
 		double var11 = this.posZ;
-		this.posX = par1;
-		this.posY = par3;
-		this.posZ = par5;
+		this.posX = x;
+		this.posY = y;
+		this.posZ = z;
 		boolean var13 = false;
 		int var14 = MathHelper.floor_double(this.posX);
 		int var15 = MathHelper.floor_double(this.posY);
@@ -289,13 +289,13 @@ public class MobSuperEnderman extends EntityMob
 		return Item.enderPearl.itemID;
 	}
 
-	protected void dropFewItems(boolean par1, int par2)
+	protected void dropFewItems(boolean killbyplayer, int lootinglevel)
 	{
 		int var3 = this.getDropItemId();
 
 		if(var3 > 0)
 		{
-			int var4 = this.rand.nextInt(2 + par2);
+			int var4 = this.rand.nextInt(2 + lootinglevel);
 
 			for(int var5 = 0; var5 < var4; ++var5)
 			{
@@ -324,9 +324,9 @@ public class MobSuperEnderman extends EntityMob
 		return this.dataWatcher.getWatchableObjectByte(17);
 	}
 
-	public boolean attackEntityFrom(DamageSource par1DamageSource, int par2)
+	public boolean attackEntityFrom(DamageSource damagesource, int par2)
 	{
-		if(par1DamageSource instanceof EntityDamageSourceIndirect)
+		if(damagesource instanceof EntityDamageSourceIndirect)
 		{
 			for(int var3 = 0; var3 < 64; ++var3)
 			{
@@ -340,12 +340,12 @@ public class MobSuperEnderman extends EntityMob
 		}
 		else
 		{
-			if(par1DamageSource.getEntity() instanceof EntityPlayer)
+			if(damagesource.getEntity() instanceof EntityPlayer)
 			{
 				this.func_70819_e(true);
 			}
 
-			return super.attackEntityFrom(par1DamageSource, par2);
+			return super.attackEntityFrom(damagesource, par2);
 		}
 	}
 

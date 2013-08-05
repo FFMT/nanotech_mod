@@ -94,18 +94,18 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		return "mob.skeleton.death";
 	}
 
-	protected void playStepSound(int par1, int par2, int par3, int par4)
+	protected void playStepSound(int x, int y, int z, int par4)
 	{
 		this.playSound("mob.skeleton.step", 0.15F, 1.0F);
 	}
 
-	public boolean attackEntityAsMob(Entity par1Entity)
+	public boolean attackEntityAsMob(Entity entity)
 	{
-		if(super.attackEntityAsMob(par1Entity))
+		if(super.attackEntityAsMob(entity))
 		{
-			if(this.getSkeletonType() == 1 && par1Entity instanceof EntityLiving)
+			if(this.getSkeletonType() == 1 && entity instanceof EntityLiving)
 			{
-				((EntityLiving)par1Entity).addPotionEffect(new PotionEffect(Potion.wither.id, 200));
+				((EntityLiving)entity).addPotionEffect(new PotionEffect(Potion.wither.id, 200));
 			}
 
 			return true;
@@ -116,7 +116,7 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		}
 	}
 
-	public int getAttackStrength(Entity par1Entity)
+	public int getAttackStrength(Entity entity)
 	{
 		if(this.getSkeletonType() == 1)
 		{
@@ -132,7 +132,7 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		}
 		else
 		{
-			return super.getAttackStrength(par1Entity);
+			return super.getAttackStrength(entity);
 		}
 	}
 
@@ -178,13 +178,13 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		super.onLivingUpdate();
 	}
 
-	public void onDeath(DamageSource par1DamageSource)
+	public void onDeath(DamageSource damagesource)
 	{
-		super.onDeath(par1DamageSource);
+		super.onDeath(damagesource);
 
-		if(par1DamageSource.getSourceOfDamage() instanceof EntityArrow && par1DamageSource.getEntity() instanceof EntityPlayer)
+		if(damagesource.getSourceOfDamage() instanceof EntityArrow && damagesource.getEntity() instanceof EntityPlayer)
 		{
-			EntityPlayer var2 = (EntityPlayer)par1DamageSource.getEntity();
+			EntityPlayer var2 = (EntityPlayer)damagesource.getEntity();
 			double var3 = var2.posX - this.posX;
 			double var5 = var2.posZ - this.posZ;
 
@@ -200,14 +200,14 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		return Item.arrow.itemID;
 	}
 
-	protected void dropFewItems(boolean par1, int par2)
+	protected void dropFewItems(boolean killbyplayer, int lootinglevel)
 	{
 		int var3;
 		int var4;
 
 		if(this.getSkeletonType() == 1)
 		{
-			var3 = this.rand.nextInt(3 + par2) - 1;
+			var3 = this.rand.nextInt(3 + lootinglevel) - 1;
 
 			for(var4 = 0; var4 < var3; ++var4)
 			{
@@ -216,7 +216,7 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		}
 		else
 		{
-			var3 = this.rand.nextInt(3 + par2);
+			var3 = this.rand.nextInt(3 + lootinglevel);
 
 			for(var4 = 0; var4 < var3; ++var4)
 			{
@@ -224,7 +224,7 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 			}
 		}
 
-		var3 = this.rand.nextInt(3 + par2);
+		var3 = this.rand.nextInt(3 + lootinglevel);
 
 		for(var4 = 0; var4 < var3; ++var4)
 		{
@@ -300,9 +300,9 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		}
 	}
 
-	public void attackEntityWithRangedAttack(EntityLiving par1EntityLiving)
+	public void attackEntityWithRangedAttack(EntityLiving entityliving)
 	{
-		EntityArrow var2 = new EntityArrow(this.worldObj, this, par1EntityLiving, 1.6F, 22.0F);
+		EntityArrow var2 = new EntityArrow(this.worldObj, this, entityliving, 1.6F, 22.0F);
 		int var3 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, this.getHeldItem());
 		int var4 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, this.getHeldItem());
 
@@ -345,30 +345,30 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		}
 	}
 
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
+	public void readEntityFromNBT(NBTTagCompound nbttagcompound)
 	{
-		super.readEntityFromNBT(par1NBTTagCompound);
+		super.readEntityFromNBT(nbttagcompound);
 
-		if(par1NBTTagCompound.hasKey("SkeletonType"))
+		if(nbttagcompound.hasKey("SkeletonType"))
 		{
-			byte var2 = par1NBTTagCompound.getByte("SkeletonType");
+			byte var2 = nbttagcompound.getByte("SkeletonType");
 			this.setSkeletonType(var2);
 		}
 
 		this.setCombatTask();
 	}
 
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
+	public void writeEntityToNBT(NBTTagCompound nbttagcompound)
 	{
-		super.writeEntityToNBT(par1NBTTagCompound);
-		par1NBTTagCompound.setByte("SkeletonType", (byte)this.getSkeletonType());
+		super.writeEntityToNBT(nbttagcompound);
+		nbttagcompound.setByte("SkeletonType", (byte)this.getSkeletonType());
 	}
 
-	public void setCurrentItemOrArmor(int par1, ItemStack par2ItemStack)
+	public void setCurrentItemOrArmor(int slot, ItemStack stack)
 	{
-		super.setCurrentItemOrArmor(par1, par2ItemStack);
+		super.setCurrentItemOrArmor(slot,  stack);
 
-		if(!this.worldObj.isRemote && par1 == 0)
+		if(!this.worldObj.isRemote && slot == 0)
 		{
 			this.setCombatTask();
 		}

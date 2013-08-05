@@ -30,7 +30,7 @@ public class ItemNanomiteArmor extends ItemArmor
 		}
 	}
 
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+	public boolean getIsRepairable(ItemStack stack, ItemStack stack2)
 	{
 		return true;
 	}

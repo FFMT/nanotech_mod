@@ -20,9 +20,9 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 public class MobCrazyGuy extends EntityMob
 {
 
-	public MobCrazyGuy(World par1World)
+	public MobCrazyGuy(World world)
 	{
-		super(par1World);
+		super(world);
 		this.moveSpeed = 0.80F;
 		this.texture = "/mods/Nanotech_mod/textures/mob/CrazyGuy.png";
 		this.getNavigator().setBreakDoors(true);
@@ -47,7 +47,7 @@ public class MobCrazyGuy extends EntityMob
 		return 50;
 	}
 
-	public int getAttackStrength(Entity par1Entity)
+	public int getAttackStrength(Entity entity)
 	{
 		ItemStack var2 = this.getHeldItem();
 		int var3 = 3;

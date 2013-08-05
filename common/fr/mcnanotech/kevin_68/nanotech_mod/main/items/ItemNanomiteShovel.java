@@ -7,9 +7,9 @@ import net.minecraft.item.ItemStack;
 
 public class ItemNanomiteShovel extends ItemSpade
 {
-	public ItemNanomiteShovel(int itemID, EnumToolMaterial toolMaterial)
+	public ItemNanomiteShovel(int id, EnumToolMaterial toolMaterial)
 	{
-		super(itemID, toolMaterial);
+		super(id, toolMaterial);
 	}
 
 	public void registerIcons(IconRegister iconregister)
@@ -17,7 +17,7 @@ public class ItemNanomiteShovel extends ItemSpade
 		itemIcon = iconregister.registerIcon("Nanotech_mod:nanomiteShovel");
 	}
 
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+	public boolean getIsRepairable(ItemStack stack, ItemStack stack2)
 	{
 		return true;
 	}

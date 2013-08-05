@@ -22,9 +22,9 @@ public class BlockTea extends BlockCrops
 	private Icon[] iconArray;
 	protected static Random itemRand = new Random();
 
-	protected BlockTea(int par1)
+	protected BlockTea(int id)
 	{
-		super(par1);
+		super(id);
 		this.setTickRandomly(true);
 		float f = 0.5F;
 		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
@@ -34,77 +34,77 @@ public class BlockTea extends BlockCrops
 		this.disableStats();
 	}
 
-	protected boolean canThisPlantGrowOnThisBlockID(int par1)
+	protected boolean canThisPlantGrowOnThisBlockID(int blockid)
 	{
-		return par1 == Block.tilledField.blockID;
+		return blockid == Block.tilledField.blockID;
 	}
 
-	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
+	public void updateTick(World world, int x, int y, int z, Random par5Random)
 	{
-		super.updateTick(par1World, par2, par3, par4, par5Random);
+		super.updateTick(world, x, y, z, par5Random);
 
-		if (par1World.getBlockLightValue(par2, par3 + 1, par4) >= 9)
+		if (world.getBlockLightValue(x, y + 1, z) >= 9)
 		{
-			int l = par1World.getBlockMetadata(par2, par3, par4);
+			int l = world.getBlockMetadata(x, y, z);
 
 			if (l < 7)
 			{
-				float f = this.getGrowthRate(par1World, par2, par3, par4);
+				float f = this.getGrowthRate(world, x, y, z);
 
 				if (par5Random.nextInt((int)(25.0F / f) + 1) == 0)
 				{
 					++l;
-					par1World.setBlockMetadataWithNotify(par2, par3, par4, l, 2);
+					world.setBlockMetadataWithNotify(x, y, z, l, 2);
 				}
 			}
 		}
 	}
 
-	public void fertilize(World par1World, int x, int y, int z)
+	public void fertilize(World world, int x, int y, int z)
 	{
-		int l = par1World.getBlockMetadata(x, y, z) + MathHelper.getRandomIntegerInRange(par1World.rand, 2, 5);
+		int l = world.getBlockMetadata(x, y, z) + MathHelper.getRandomIntegerInRange(world.rand, 2, 5);
 
 		if (l > 7)
 		{
 			l = 7;
 		}
 
-		par1World.setBlockMetadataWithNotify(x, y, z, l, 2);
+		world.setBlockMetadataWithNotify(x, y, z, l, 2);
 	}
 
-	private float getGrowthRate(World par1World, int par2, int par3, int par4)
+	private float getGrowthRate(World world, int x, int y, int z)
 	{
 		float f = 1.0F;
-		int l = par1World.getBlockId(par2, par3, par4 - 1);
-		int i1 = par1World.getBlockId(par2, par3, par4 + 1);
-		int j1 = par1World.getBlockId(par2 - 1, par3, par4);
-		int k1 = par1World.getBlockId(par2 + 1, par3, par4);
-		int l1 = par1World.getBlockId(par2 - 1, par3, par4 - 1);
-		int i2 = par1World.getBlockId(par2 + 1, par3, par4 - 1);
-		int j2 = par1World.getBlockId(par2 + 1, par3, par4 + 1);
-		int k2 = par1World.getBlockId(par2 - 1, par3, par4 + 1);
+		int l = world.getBlockId(x, y, z - 1);
+		int i1 = world.getBlockId(x, y, z + 1);
+		int j1 = world.getBlockId(x - 1, y, z);
+		int k1 = world.getBlockId(x + 1, y, z);
+		int l1 = world.getBlockId(x - 1, y, z - 1);
+		int i2 = world.getBlockId(x + 1, y, z - 1);
+		int j2 = world.getBlockId(x + 1, y, z + 1);
+		int k2 = world.getBlockId(x - 1, y, z + 1);
 		boolean flag = j1 == this.blockID || k1 == this.blockID;
 		boolean flag1 = l == this.blockID || i1 == this.blockID;
 		boolean flag2 = l1 == this.blockID || i2 == this.blockID || j2 == this.blockID || k2 == this.blockID;
 
-		for (int l2 = par2 - 1; l2 <= par2 + 1; ++l2)
+		for (int l2 = x - 1; l2 <= x + 1; ++l2)
 		{
-			for (int i3 = par4 - 1; i3 <= par4 + 1; ++i3)
+			for (int i3 = z - 1; i3 <= z + 1; ++i3)
 			{
-				int j3 = par1World.getBlockId(l2, par3 - 1, i3);
+				int j3 = world.getBlockId(l2, y - 1, i3);
 				float f1 = 0.0F;
 
-				if (blocksList[j3] != null && blocksList[j3].canSustainPlant(par1World, l2, par3 - 1, i3, ForgeDirection.UP, this))
+				if (blocksList[j3] != null && blocksList[j3].canSustainPlant(world, l2, y - 1, i3, ForgeDirection.UP, this))
 				{
 					f1 = 1.0F;
 
-					if (blocksList[j3].isFertile(par1World, l2, par3 - 1, i3))
+					if (blocksList[j3].isFertile(world, l2, y - 1, i3))
 					{
 						f1 = 3.0F;
 					}
 				}
 
-				if (l2 != par2 || i3 != par4)
+				if (l2 != x || i3 != z)
 				{
 					f1 /= 4.0F;
 				}
@@ -122,14 +122,14 @@ public class BlockTea extends BlockCrops
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2)
+	public Icon getIcon(int side, int metadata)
 	{
-		if (par2 < 0 || par2 > 7)
+		if (metadata < 0 || metadata > 7)
 		{
-			par2 = 7;
+			metadata = 7;
 		}
 
-		return this.iconArray[par2];
+		return this.iconArray[metadata];
 	}
 
 
@@ -148,9 +148,9 @@ public class BlockTea extends BlockCrops
 		return NanotechItem.tea.itemID;
 	}
 
-	public void dropBlockAsItemWithChance(World par1World, int par2, int par3, int par4, int par5, float par6, int par7)
+	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int par5, float par6, int par7)
 	{
-		super.dropBlockAsItemWithChance(par1World, par2, par3, par4, par5, par6, 0);
+		super.dropBlockAsItemWithChance(world, x, y, z, par5, par6, 0);
 	}
 
 	@Override 
@@ -172,30 +172,30 @@ public class BlockTea extends BlockCrops
 		return ret;
 	}
 
-	public int idDropped(int par1, Random par2Random, int par3)
+	public int idDropped(int metadata, Random random, int par3)
 	{
-		return par1 == 7 ? this.getCropItem() : this.getSeedItem();
+		return metadata == 7 ? this.getCropItem() : this.getSeedItem();
 	}
 
-	public int quantityDropped(Random par1Random)
+	public int quantityDropped(Random random)
 	{
 		return 1;
 	}
 
 	@SideOnly(Side.CLIENT)
-	public int idPicked(World par1World, int par2, int par3, int par4)
+	public int idPicked(World world, int x, int y, int z)
 	{
 		return this.getSeedItem();
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister)
+	public void registerIcons(IconRegister iconregister)
 	{
 		this.iconArray = new Icon[8];
 
 		for (int i = 0; i < this.iconArray.length; ++i)
 		{
-			this.iconArray[i] = par1IconRegister.registerIcon("Nanotech_mod:tea_" + i);
+			this.iconArray[i] = iconregister.registerIcon("Nanotech_mod:tea_" + i);
 		}
 	}
 }

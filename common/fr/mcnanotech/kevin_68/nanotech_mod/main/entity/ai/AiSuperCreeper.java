@@ -9,9 +9,9 @@ public class AiSuperCreeper extends EntityAIBase
 	MobSuperCreeper swellingCreeper;
 	EntityLiving creeperAttackTarget;
 
-	public AiSuperCreeper(MobSuperCreeper mobsupercreeper)
+	public AiSuperCreeper(MobSuperCreeper mob)
 	{
-		this.swellingCreeper = mobsupercreeper;
+		this.swellingCreeper = mob;
 		this.setMutexBits(1);
 	}
 

@@ -52,7 +52,7 @@ public class BlockBarbedWire extends Block
 		return false;
 	}
 
-	public int idDropped(int par1, Random par2Random, int par3)
+	public int idDropped(int metadata, Random random, int par3)
 	{
 		return this.blockID;
 	}

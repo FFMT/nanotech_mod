@@ -35,11 +35,11 @@ public class BlockSpeed extends Block
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int damage)
+	public Icon getIcon(int side, int metadata)
 	{
-		if(damage < type.length)
+		if(metadata < type.length)
 		{
-			return iconbuffer[damage];
+			return iconbuffer[metadata];
 		}
 		else
 		{
@@ -61,23 +61,23 @@ public class BlockSpeed extends Block
 		}
 	}
 
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
 	{
 		float var5 = 0.025F;
-		return AxisAlignedBB.getAABBPool().getAABB((double)par2, (double)par3, (double)par4, (double)(par2 + 1), (double)((float)(par3 + 1) - var5), (double)(par4 + 1));
+		return AxisAlignedBB.getAABBPool().getAABB((double)x, (double)y, (double)z, (double)(x + 1), (double)((float)(y + 1) - var5), (double)(z + 1));
 	}
 
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		int damage = world.getBlockMetadata(x, y, z);
-		if(damage == 1)
+		int metadata = world.getBlockMetadata(x, y, z);
+		if(metadata == 1)
 		{
 			entity.motionX *= 0.01D;
 			entity.motionZ *= 0.01D;
 			entity.setInWeb();
 		}
 
-		else if(damage == 0)
+		else if(metadata == 0)
 		{
 			entity.motionX *= 1.4D;
 			entity.motionZ *= 1.4D;

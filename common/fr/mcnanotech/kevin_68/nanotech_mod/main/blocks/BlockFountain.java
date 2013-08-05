@@ -17,12 +17,12 @@ public class BlockFountain extends BlockContainer
 	private Icon top;
 	private Icon side;
 
-	public BlockFountain(int par1)
+	public BlockFountain(int id)
 	{
-		super(par1, Material.iron);
+		super(id, Material.iron);
 	}
 
-	public TileEntity createNewTileEntity(World par1World)
+	public TileEntity createNewTileEntity(World world)
 	{
 		return new TileEntityFountain();
 	}
@@ -57,10 +57,10 @@ public class BlockFountain extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister)
+	public void registerIcons(IconRegister iconregister)
 	{
-		this.side = par1IconRegister.registerIcon("Nanotech_mod:FountainSide");
-		this.top = par1IconRegister.registerIcon("Nanotech_mod:FoutainTop");
+		this.side = iconregister.registerIcon("Nanotech_mod:FountainSide");
+		this.top = iconregister.registerIcon("Nanotech_mod:FoutainTop");
 	}
 
 	@SideOnly(Side.CLIENT)

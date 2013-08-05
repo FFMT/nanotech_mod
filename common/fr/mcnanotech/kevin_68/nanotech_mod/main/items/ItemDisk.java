@@ -28,19 +28,19 @@ public class ItemDisk extends ItemRecord
 		textureName = texture;
 	}
 
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int par7, float par8, float par9, float par10)
 	{
-		if(par3World.getBlockId(par4, par5, par6) == Block.jukebox.blockID && par3World.getBlockMetadata(par4, par5, par6) == 0)
+		if(world.getBlockId(x, y, z) == Block.jukebox.blockID && world.getBlockMetadata(x, y, z) == 0)
 		{
-			if(par3World.isRemote)
+			if(world.isRemote)
 			{
 				return true;
 			}
 			else
 			{
-				((BlockJukeBox)Block.jukebox).insertRecord(par3World, par4, par5, par6, par1ItemStack);
-				par3World.playAuxSFXAtEntity((EntityPlayer)null, 1005, par4, par5, par6, this.itemID);
-				--par1ItemStack.stackSize;
+				((BlockJukeBox)Block.jukebox).insertRecord(world, x, y, z, stack);
+				world.playAuxSFXAtEntity((EntityPlayer)null, 1005, x, y, z, this.itemID);
+				--stack.stackSize;
 				return true;
 			}
 		}
@@ -50,9 +50,9 @@ public class ItemDisk extends ItemRecord
 		}
 	}
 
-	public void registerIcons(IconRegister par1IconRegister)
+	public void registerIcons(IconRegister iconregister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon("Nanotech_mod:" + textureName);
+		this.itemIcon = iconregister.registerIcon("Nanotech_mod:" + textureName);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -68,7 +68,7 @@ public class ItemDisk extends ItemRecord
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack)
+	public EnumRarity getRarity(ItemStack stack)
 	{
 		return EnumRarity.rare;
 	}

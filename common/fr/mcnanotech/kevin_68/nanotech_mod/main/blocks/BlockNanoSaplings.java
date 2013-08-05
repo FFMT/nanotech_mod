@@ -48,15 +48,15 @@ public class BlockNanoSaplings extends BlockSapling
 	}
 
 	@Override
-	protected boolean canThisPlantGrowOnThisBlockID(int par1)
+	protected boolean canThisPlantGrowOnThisBlockID(int blockid)
 	{
-		return par1 == Block.grass.blockID || par1 == Block.dirt.blockID || par1 == Block.tilledField.blockID || par1 == NanotechBlock.BlockGrass.blockID;
+		return blockid == Block.grass.blockID || blockid == Block.dirt.blockID || blockid == Block.tilledField.blockID || blockid == NanotechBlock.BlockGrass.blockID;
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
+	public void getSubBlocks(int blockid, CreativeTabs creativetabs, List list)
 	{
-		par3List.add(new ItemStack(par1, 1, 0));
+		list.add(new ItemStack(blockid, 1, 0));
 	}
 
 	public void fertilize(World world, int x, int y, int z)

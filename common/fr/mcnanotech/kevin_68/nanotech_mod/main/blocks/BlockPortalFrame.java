@@ -25,13 +25,13 @@ public class BlockPortalFrame extends Block
 		this.checkDoCreatePortal(world, x, y, z);
 	}
 
-	public void onNeighborBlockChange(World world, int x, int y, int z, int par5)
+	public void onNeighborBlockChange(World world, int x, int y, int z, int blockid)
 	{
-		super.onNeighborBlockChange(world, x, y, z, par5);
+		super.onNeighborBlockChange(world, x, y, z, blockid);
 		this.checkDoCreatePortal(world, x, y, z);
 	}
 
-	public void updateTick(World world, int x, int y, int z, Random rand)
+	public void updateTick(World world, int x, int y, int z, Random random)
 	{
 		this.checkDoCreatePortal(world, x, y, z);
 	}
