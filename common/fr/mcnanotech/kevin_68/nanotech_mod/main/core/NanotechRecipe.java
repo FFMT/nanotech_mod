@@ -53,7 +53,7 @@ public class NanotechRecipe
 		{"X X", "XZX", "XXX", 'X', Item.ingotIron, 'Z', Item.bucketLava});
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockSpotLight), new Object[]
 		{"OAO", "RGB", "OAO", 'O', Block.obsidian, 'A', Block.glass, 'R', new ItemStack(Item.dyePowder, 1, 1), 'G', new ItemStack(Item.dyePowder, 1, 2), 'B', new ItemStack(Item.dyePowder, 1, 4)});
-		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.Trail, 2), new Object[]
+		GameRegistry.addShapelessRecipe(new ItemStack(NanotechBlock.BlockTrail, 2), new Object[]
 		{Block.grass, Block.gravel});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechBlock.BlockNanoplanks, 4), new Object[]
 		{NanotechBlock.BlockNanowood});

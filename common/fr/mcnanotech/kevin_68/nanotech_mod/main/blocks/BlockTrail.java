@@ -2,6 +2,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -17,54 +18,17 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityTrail;
 
 public class BlockTrail extends BlockContainer
 {
-	Icon top;
-	Icon left;
-	Icon bottom;
-	Icon right;
-	Icon topRight;
-	Icon topLeft;
-	Icon topBottom;
-	Icon topLeftBottom;
-	Icon topRightBottom;
-	Icon topLeftRight;
-	Icon leftRight;
-	Icon leftBottom;
-	Icon leftBottomRight;
-	Icon rightBottom;
-	Icon all;
-	Icon topRightDTR;
-	Icon topLeftDTL;
-	Icon leftBottomDBL;
-	Icon rightBottomDBR;
-	Icon topLeftBottomDTL;
-	Icon topLeftBottomDBL;
-	Icon topLeftBottomDTLBL;
-	Icon topRightBottomDTR;
-	Icon topRightBottomDBR;
-	Icon topRightBottomDTRBR;
-	Icon topLeftRightDTL;
-	Icon topLeftRightDTR;
-	Icon topLeftRightDTLTR;
-	Icon leftBottomRightDBL;
-	Icon leftBottomRightDBR;
-	Icon leftBottomRightDBLBR;
-	Icon allDTL;
-	Icon allDTR;
-	Icon allDBL;
-	Icon allDBR;
-	Icon allDTLTR;
-	Icon allDTLBL;
-	Icon allDTLBR;
-	Icon allDTRBL;
-	Icon allDTRBR;
-	Icon allDBLBR;
-	Icon allDTLTRBR;
-	Icon allDTRBRBL;
-	Icon allDBRBLTL;
-	Icon allDBLTLTR;
-	Icon allDTLTRBLBR;
-	Icon nothing;
-	Icon empty;
+	private Icon top, left, bottom, right, topRight, topLeft, topBottom,
+			topLeftBottom, topRightBottom, topLeftRight, leftRight, leftBottom,
+			leftBottomRight, rightBottom, all, topRightDTR, topLeftDTL,
+			leftBottomDBL, rightBottomDBR, topLeftBottomDTL, topLeftBottomDBL,
+			topLeftBottomDTLBL, topRightBottomDTR, topRightBottomDBR,
+			topRightBottomDTRBR, topLeftRightDTL, topLeftRightDTR,
+			topLeftRightDTLTR, leftBottomRightDBL, leftBottomRightDBR,
+			leftBottomRightDBLBR, allDTL, allDTR, allDBL, allDBR, allDTLTR,
+			allDTLBL, allDTLBR, allDTRBL, allDTRBR, allDBLBR, allDTLTRBR,
+			allDTRBRBL, allDBRBLTL, allDBLTLTR, allDTLTRBLBR, nothing, empty,
+			handIcon;
 
 	public BlockTrail(int id, Material material)
 	{
@@ -91,20 +55,6 @@ public class BlockTrail extends BlockContainer
 	public boolean renderAsNormalBlock()
 	{
 		return false;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public int getBlockColor()
-	{
-		double d0 = 0.5D;
-		double d1 = 1.0D;
-		return ColorizerGrass.getGrassColor(d0, d1);
-	}
-
-	@SideOnly(Side.CLIENT)
-	public int getRenderColor(int par1)
-	{
-		return this.getBlockColor();
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -388,16 +338,11 @@ public class BlockTrail extends BlockContainer
 		this.allDTLTRBLBR = iconRegister.registerIcon("Nanotech_mod:trailAllDTLTRBLBR");
 		this.empty = iconRegister.registerIcon("Nanotech_mod:empty");
 		this.nothing = iconRegister.registerIcon("Nanotech_mod:trailNothing");
+		this.handIcon = iconRegister.registerIcon("Nanotech_mod:TrailInHand");
 	}
 
-	public int idDropped(int metadata, Random random, int par3)
+	public Icon getIcon(int side, int metadata)
 	{
-		return NanotechItem.Trail.itemID;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public int idPicked(World world, int x, int y, int z)
-	{
-		return NanotechItem.Trail.itemID;
+		return side == 1 ? handIcon : Block.grass.getIcon(side, 0);
 	}
 }

@@ -35,7 +35,7 @@ public class NanotechBlock
 		BlockMossystone = new BlockBase(Nanotech_mod.BlockMossyStoneID, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("mossystone").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockSpotLight = new BlockSpotLight(Nanotech_mod.BlockSpotLightID).setHardness(1.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("spotlight").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockTheDeathHead = new BlockTheDeathHead(Nanotech_mod.BlockTheDeathHeadID).setHardness(5.0F).setResistance(10.0F).setUnlocalizedName("theDeathHead").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
-		BlockTrail = new BlockTrail(Nanotech_mod.BlockTrailID, Material.ground).setHardness(1.0F).setResistance(1.0F).setUnlocalizedName("blockTrail").setStepSound(Block.soundGravelFootstep);
+		BlockTrail = new BlockTrail(Nanotech_mod.BlockTrailID, Material.ground).setHardness(1.0F).setResistance(1.0F).setUnlocalizedName("blockTrail").setStepSound(Block.soundGravelFootstep).setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockTea = new BlockTea(Nanotech_mod.BlockTeaID).setUnlocalizedName("blockTea");
 		BlockFountain = new BlockFountain(Nanotech_mod.BlockFountainID).setUnlocalizedName("blockFountain").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockLamp = new BlockLamp(Nanotech_mod.BlockLampID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockLamp");

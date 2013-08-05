@@ -27,7 +27,7 @@ public class NanotechAchievement
 		blockSpeed = new Achievement(12579, "blockSpeed", -3, 5, NanotechBlock.BlockSpeed, installMod).registerAchievement();
 		blockSlow = new Achievement(12580, "blockSlow", -4, 5, new ItemStack(NanotechBlock.BlockSpeed, 1, 1), installMod).registerAchievement();
 		blockSpotLight = new Achievement(12581, "blockSpotLight", -5, 5, NanotechBlock.BlockSpotLight, installMod).registerAchievement();
-		blockTrail = new Achievement(12582, "blockTrail", -6, 5, NanotechItem.Trail, installMod).registerAchievement();
+		blockTrail = new Achievement(12582, "blockTrail", -6, 5, NanotechBlock.BlockTrail, installMod).registerAchievement();
 		blockTrashCan = new Achievement(12583, "blockTrashCan", 6, 5, NanotechBlock.BlockTrashcan, installMod).registerAchievement();
 		blockTheDeath = new Achievement(12584, "blockTheDeath", 3, 0, NanotechBlock.BlockTheDeathHead, installMod).registerAchievement();
 		killTheDeath = new Achievement(12586, "killTheDeath", 5, 0, NanotechBlock.BlockTheDeathHead, blockTheDeath).registerAchievement();

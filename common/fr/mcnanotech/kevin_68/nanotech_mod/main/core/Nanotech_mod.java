@@ -63,7 +63,7 @@ public class Nanotech_mod
 
 	// Item IDs
 	public static int ItemNanotechID, ItemSuperBottleOfXpID, ItemDiamondBowID, ItemEmeraldBowID, ItemNanomiteBowID, ItemNanomiteAxeID, ItemNanomitePickaxeID, ItemNanomiteShovelID, ItemNanomiteHoeID, ItemNanomiteSwordID, ItemNanomiteHelmetID, ItemNanomiteChestPlateID, ItemNanomiteLegginsID, ItemNanomiteBootsID, ItemMysteriousHelmetID, ItemMysteriousChestPlateID, ItemMysteriousLegginsID,
-			ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemTrailID, ItemScytheID, ItemCrazyGlassesID, TeaSeedID, TeaID, ItemLampID;
+			ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemScytheID, ItemCrazyGlassesID, TeaSeedID, TeaID, ItemLampID;
 
 	// Dimension ID
 	public static int dimensionID = 19;
@@ -183,12 +183,11 @@ public class Nanotech_mod
 			ItemNanoDiscID = cfg.getItem("Nanodisk (warning he use 18 ID)", 5100).getInt();
 			ItemEdibleFleshID = cfg.getItem("Edible Flesh", 5018).getInt();
 			ItemRottenChunkID = cfg.getItem("Chunk of rottenflesh", 5019).getInt();
-			ItemTrailID = cfg.getItem("Trail", 5020).getInt();
-			ItemScytheID = cfg.getItem("Scythe", 5021).getInt();
-			ItemCrazyGlassesID = cfg.getItem("CrazyGlasses", 5022).getInt();
-			TeaSeedID = cfg.getItem("TeaSeed", 5023).getInt();
-			TeaID = cfg.getItem("Tea", 5024).getInt();
-			ItemLampID = cfg.getItem("Lamp", 5025).getInt();
+			ItemScytheID = cfg.getItem("Scythe", 5020).getInt();
+			ItemCrazyGlassesID = cfg.getItem("CrazyGlasses", 5021).getInt();
+			TeaSeedID = cfg.getItem("TeaSeed", 5022).getInt();
+			TeaID = cfg.getItem("Tea", 5023).getInt();
+			ItemLampID = cfg.getItem("Lamp", 5024).getInt();
 
 			HardRecipe = cfg.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
 
