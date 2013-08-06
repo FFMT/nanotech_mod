@@ -26,8 +26,8 @@ public class BlockTea extends BlockCrops
 	{
 		super(id);
 		this.setTickRandomly(true);
-		float f = 0.5F;
-		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
+		float f = 0.4F;
+		setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
 		this.setCreativeTab((CreativeTabs)null);
 		this.setHardness(0.0F);
 		this.setStepSound(soundGrassFootstep);
@@ -135,7 +135,7 @@ public class BlockTea extends BlockCrops
 
 	public int getRenderType()
 	{
-		return 6;
+		return 1;
 	}
 
 	protected int getSeedItem()
@@ -195,7 +195,7 @@ public class BlockTea extends BlockCrops
 
 		for (int i = 0; i < this.iconArray.length; ++i)
 		{
-			this.iconArray[i] = iconregister.registerIcon("Nanotech_mod:tea_" + i);
+			this.iconArray[i] = iconregister.registerIcon("Nanotech_mod:tea_" + (i + 1));
 		}
 	}
 }

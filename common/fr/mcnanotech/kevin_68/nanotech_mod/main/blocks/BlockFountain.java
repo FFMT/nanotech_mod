@@ -15,7 +15,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityFountain;
 public class BlockFountain extends BlockContainer
 {
 	private Icon top;
-	private Icon side;
 
 	public BlockFountain(int id)
 	{
@@ -59,8 +58,8 @@ public class BlockFountain extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconregister)
 	{
-		this.side = iconregister.registerIcon("Nanotech_mod:FountainSide");
-		this.top = iconregister.registerIcon("Nanotech_mod:FoutainTop");
+		this.blockIcon = iconregister.registerIcon("stoneslab_top");
+		this.top = iconregister.registerIcon("Nanotech_mod:fountainTop");
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -70,10 +69,8 @@ public class BlockFountain extends BlockContainer
 		{
 			return this.top;
 		}
-		else
-		{
-			return this.side;
-		}
+		
+		return this.blockIcon;
 	}
 
 }

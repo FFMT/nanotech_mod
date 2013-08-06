@@ -36,6 +36,10 @@ tile.mossystone.name = Mossy Stone
 tile.spotlight.name = SpotLight
 tile.theDeathHead.name = The Death Head
 tile.blockTrail.name = BlockTrail
+tile.blockTea.name = BlockTea
+tile.blockFountain.name = Fountain
+tile.blockLamp.name = BlockLamp
+tile.blockLampLight.name = BlockLampLight
 
 #Items
 item.siliconore.name = Silicon Ore
@@ -76,6 +80,9 @@ item.rottenChunk.name = Chunk of Rotten flesh
 item.itemTrail.name = Trail
 item.scythe.name = Scythe
 item.crazyGlasses.name = Crazy Glasses
+item.teaSeed.name = Tea Sapling
+item.tea.name = Tea
+item.lamp.name = Lamp
 
 #Entity
 entity.SuperZombie.name = Super Zombie

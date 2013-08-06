@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
+import net.minecraft.potion.Potion;
 import net.minecraftforge.common.EnumHelper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
@@ -63,13 +64,13 @@ public class NanotechItem
 		Yourmusicdisc14 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 14, "YourSound14", UtilDiskInfo.cdInfo[13], "disk12").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		Yourmusicdisc15 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 15, "YourSound15", UtilDiskInfo.cdInfo[14], "disk15").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		Yourmusicdisc16 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 16, "YourSound16", UtilDiskInfo.cdInfo[15], "disk16").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Edibleflesh = new ItemEdibleflesh(Nanotech_mod.ItemEdibleFleshID, 3, 0.6F, true).setUnlocalizedName("edibleFlesh").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Rottenchunk = new ItemEdibleflesh(Nanotech_mod.ItemRottenChunkID, 1, 0.6F, true).setUnlocalizedName("rottenChunk").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		Edibleflesh = new ItemNanoFood(Nanotech_mod.ItemEdibleFleshID, 3, 0.6F, true).setUnlocalizedName("edibleFlesh").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		Rottenchunk = new ItemNanoFood(Nanotech_mod.ItemRottenChunkID, 1, 0.6F, true, Potion.hunger.id, 120, 0, 1.0F).setUnlocalizedName("rottenChunk").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		scythe = new ItemScythe(Nanotech_mod.ItemScytheID, EnumToolMaterialScythe).setUnlocalizedName("scythe").setFull3D().setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		crazyGlasses = new ItemCrazyGlasses(Nanotech_mod.ItemCrazyGlassesID, EnumArmorMaterialCrazyGlasses, 1, 0).setUnlocalizedName("crazyGlasses").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		teaSeed = new ItemTeaSeed(Nanotech_mod.TeaSeedID, NanotechBlock.BlockTea.blockID, Block.tilledField.blockID).setUnlocalizedName("teaSeed").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		tea = new ItemTea(Nanotech_mod.TeaID).setUnlocalizedName("tea");
-		lamp = new ItemLamp(Nanotech_mod.ItemLampID).setUnlocalizedName("itemLamp").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		tea = new ItemTea(Nanotech_mod.TeaID).setUnlocalizedName("tea").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		lamp = new ItemLamp(Nanotech_mod.ItemLampID).setUnlocalizedName("lamp").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 	}
 
 }

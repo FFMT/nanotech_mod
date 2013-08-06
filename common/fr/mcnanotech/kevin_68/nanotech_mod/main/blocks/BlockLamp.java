@@ -5,6 +5,7 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -113,7 +114,12 @@ public class BlockLamp extends Block
 	{
 		return NanotechItem.lamp.itemID;
 	}
-
+	
+	public void registerIcons(IconRegister iconregister)
+	{
+		blockIcon = iconregister.registerIcon("Nanotech_mod:jumpbottom"); // for particles
+	}
+	
     public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
     {
     	float f = 0.375F;

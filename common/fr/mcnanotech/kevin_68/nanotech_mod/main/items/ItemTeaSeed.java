@@ -1,6 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.items;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -67,4 +68,10 @@ public class ItemTeaSeed extends Item implements IPlantable
     {
         return 0;
     }
+    
+	public void registerIcons(IconRegister iconregister)
+	{
+		this.itemIcon = iconregister.registerIcon("Nanotech_mod:teaSeed");
+	}
+
 }

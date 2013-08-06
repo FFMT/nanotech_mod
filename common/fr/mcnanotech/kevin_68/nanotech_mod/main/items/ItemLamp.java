@@ -16,7 +16,7 @@ public class ItemLamp extends Item
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		this.itemIcon = iconregister.registerIcon("Nanotech_mod:itemLamp");
+		this.itemIcon = iconregister.registerIcon("Nanotech_mod:lamp");
 	}
 
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int par7, float par8, float par9, float par10)

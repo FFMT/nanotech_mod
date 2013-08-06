@@ -95,13 +95,13 @@ public class ModelBlockLampLight extends ModelBase
 	      Shape12.setRotationPoint(0F, 23F, 0F);
 	      Shape12.setTextureSize(64, 32);
 	      Shape12.mirror = true;
-	      setRotation(Shape12, 0F, 0.7853982F, 0.1745329F);
+	      setRotation(Shape12, 0.12F, 0.7853982F, 0.1945329F);
 	      Shape13 = new ModelRenderer(this, 60, 21);
 	      Shape13.addBox(-4F, -12F, -0.5F, 1, 9, 1);
 	      Shape13.setRotationPoint(0F, 23F, 0F);
 	      Shape13.setTextureSize(64, 32);
 	      Shape13.mirror = true;
-	      setRotation(Shape13, 0F, 0.7853982F, -0.1745329F);
+	      setRotation(Shape13, -0.12F, 0.7853982F, -0.1945329F);
 	      Shape14 = new ModelRenderer(this, 50, 4);
 	      Shape14.addBox(-2.58F, -11.5F, -3.5F, 0, 8, 7);
 	      Shape14.setRotationPoint(0F, 23F, 0F);

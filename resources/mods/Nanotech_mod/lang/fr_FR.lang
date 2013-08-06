@@ -36,6 +36,10 @@ tile.mossystone.name = Roche moussue
 tile.spotlight.name = Projecteur
 tile.theDeathHead.name = Tête de la Mort
 tile.blockTrail.name = Chemin
+tile.blockTea.name = BlockTea
+tile.blockFountain.name = Fontaine
+tile.blockLamp.name = BlockLamp
+tile.blockLampLight.name = BlockLampLight
 
 #Items
 item.siliconore.name = Minerai de silicium
@@ -75,6 +79,9 @@ item.edibleFlesh.name = Chaire commestible
 item.rottenChunk.name = Gros morceau de chaire putréfié
 item.scythe.name = Faux
 item.crazyGlasses.name = Lunette de fou
+item.teaSeed.name = Pousse de Thé
+item.tea.name = Thé
+item.lamp.name = Lampadaire
 
 #Entity
 entity.SuperZombie.name = Super Zombie
