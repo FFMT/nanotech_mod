@@ -9,7 +9,6 @@ Todo list:
 * Fix dimension gen
 * Fix the death hand
 * Fix UltimateGravi build
-* Fix packet for fountain
 * Better render for fountain?
 * Add textures for tea, fountain, etc
 * Add tea cup and other items like that
