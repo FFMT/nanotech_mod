@@ -53,7 +53,7 @@ public class BlockLampLight extends BlockContainer
 
 	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion par5Explosion) 
 	{
-		this.onBlockDestroyedByPlayer(world, x, y, z, 0);
+		this.onBlockDestroyedByPlayer(world, x, y, z, world.getBlockMetadata(x, y, z));
 	}
 
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata) 
@@ -77,7 +77,7 @@ public class BlockLampLight extends BlockContainer
 		return NanotechItem.lamp.itemID;
 	}
 	
-    public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
+    public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z)
     {
     	float f = 0.375F;
         float f1 = 0.625F;

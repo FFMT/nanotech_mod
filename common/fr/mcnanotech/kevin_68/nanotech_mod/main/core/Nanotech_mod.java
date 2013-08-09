@@ -40,6 +40,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityLampLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySunShade;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityTrail;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.UtilDiskInfo;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechBiome;
@@ -59,11 +60,11 @@ public class Nanotech_mod
 
 	// Block IDs
 	public static int BlockPortalID, BlockPortalFrameID, BlockGrassID, BlockFakeOreID, BlockSpeedID, BlockJumperID, BlockMultiplierID, BlockSmokerID, BlockTrashcanID, BlockBarbedWireID, BlockNanoWoodID, BlockNanoLeavesID, BlockNanoSaplingsID, BlockNanoPlanksID, BlockNanoOreID, BlockConfusionID, BlockFallingID, BlockNotFallingID, BlockSodiumID, BlockMossyStoneID, BlockSpotLightID,
-			BlockTheDeathHeadID, BlockTrailID, BlockTeaID, BlockFountainID, BlockLampID, BlockLampLightID;
+			BlockTheDeathHeadID, BlockTrailID, BlockTeaID, BlockFountainID, BlockLampID, BlockLampLightID, BlockSunShadeID;
 
 	// Item IDs
 	public static int ItemNanotechID, ItemSuperBottleOfXpID, ItemDiamondBowID, ItemEmeraldBowID, ItemNanomiteBowID, ItemNanomiteAxeID, ItemNanomitePickaxeID, ItemNanomiteShovelID, ItemNanomiteHoeID, ItemNanomiteSwordID, ItemNanomiteHelmetID, ItemNanomiteChestPlateID, ItemNanomiteLegginsID, ItemNanomiteBootsID, ItemMysteriousHelmetID, ItemMysteriousChestPlateID, ItemMysteriousLegginsID,
-			ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemScytheID, ItemCrazyGlassesID, TeaSeedID, TeaID, ItemLampID;
+			ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemScytheID, ItemCrazyGlassesID, TeaSeedID, TeaID, ItemLampID, ItemSunShadeID;
 
 	// Dimension ID
 	public static int dimensionID = 19;
@@ -161,6 +162,7 @@ public class Nanotech_mod
 			BlockFountainID = cfg.getBlock("Fountain", 1023).getInt();
 			BlockLampID = cfg.getBlock("Lamp", 1024).getInt();
 			BlockLampLightID = cfg.getBlock("LampLight", 1025).getInt();
+			BlockSunShadeID = cfg.getBlock("SunShade", 1026).getInt();
 			
 			ItemNanotechID = cfg.getItem("Main Nanotech ID", 5000).getInt();
 			ItemSuperBottleOfXpID = cfg.getItem("Super Bottle of xp", 5001).getInt();
@@ -188,6 +190,7 @@ public class Nanotech_mod
 			TeaSeedID = cfg.getItem("TeaSeed", 5022).getInt();
 			TeaID = cfg.getItem("Tea", 5023).getInt();
 			ItemLampID = cfg.getItem("Lamp", 5024).getInt();
+			ItemSunShadeID = cfg.getItem("SunShade", 5025).getInt();
 
 			HardRecipe = cfg.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
 
@@ -310,6 +313,7 @@ public class Nanotech_mod
 		GameRegistry.registerTileEntity(TileEntityFountain.class, "TileEntityFountain");
 		GameRegistry.registerTileEntity(TileEntityLamp.class, "TileEntityLamp");
 		GameRegistry.registerTileEntity(TileEntityLampLight.class, "TileEntityLampLight");
+		GameRegistry.registerTileEntity(TileEntitySunShade.class, "TileEntitySunShade");
 	}
 
 	// Forge dictionary

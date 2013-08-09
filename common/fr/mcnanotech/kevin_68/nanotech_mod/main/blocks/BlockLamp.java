@@ -101,7 +101,7 @@ public class BlockLamp extends Block
 
 	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion par5Explosion) 
 	{
-		this.onBlockDestroyedByPlayer(world, x, y, z, 0);
+		this.onBlockDestroyedByPlayer(world, x, y, z, world.getBlockMetadata(x, y, z));
 	}
 
 	public int idDropped(int metadata, Random random, int par3)
@@ -120,7 +120,7 @@ public class BlockLamp extends Block
 		blockIcon = iconregister.registerIcon("Nanotech_mod:jumpbottom"); // for particles
 	}
 	
-    public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
+    public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z)
     {
     	float f = 0.375F;
         float f1 = 0.625F;

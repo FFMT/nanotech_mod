@@ -8,7 +8,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 public class NanotechBlock
 {
 	// Blocks statement
-	public static Block BlockPortal, BlockPortalframe, BlockGrass, BlockFakeOre, BlockSpeed, BlockJumper, BlockMultiplier, BlockSmoker, BlockTrashcan, BlockBarbedwire, BlockNanowood, BlockNanoleaves, BlockNanosaplings, BlockNanoplanks, BlockNanoOre, BlockConfusion, BlockFalling, Blocknotfalling, BlockSodium, BlockMossystone, BlockSpotLight, BlockTheDeathHead, BlockTrail, BlockTea, BlockFountain, BlockLamp, BlockLampLight;
+	public static Block BlockPortal, BlockPortalframe, BlockGrass, BlockFakeOre, BlockSpeed, BlockJumper, BlockMultiplier, BlockSmoker, BlockTrashcan, BlockBarbedwire, BlockNanowood, BlockNanoleaves, BlockNanosaplings, BlockNanoplanks, BlockNanoOre, BlockConfusion, BlockFalling, Blocknotfalling, BlockSodium, BlockMossystone, BlockSpotLight, BlockTheDeathHead, BlockTrail, BlockTea, BlockFountain, BlockLamp, BlockLampLight, BlockSunShade;
 
 	// Blocks Initialization
 	public static void initBlock()
@@ -40,6 +40,7 @@ public class NanotechBlock
 		BlockFountain = new BlockFountain(Nanotech_mod.BlockFountainID).setUnlocalizedName("blockFountain").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockLamp = new BlockLamp(Nanotech_mod.BlockLampID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockLamp");
 		BlockLampLight = new BlockLampLight(Nanotech_mod.BlockLampLightID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockLampLight");
+		BlockSunShade = new BlockSunShade(Nanotech_mod.BlockSunShadeID, Material.wood).setHardness(2.0F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("sunShade");
 	}
 
 	// Blocks registry
@@ -72,6 +73,7 @@ public class NanotechBlock
 		GameRegistry.registerBlock(BlockFountain, "blockFountain");
 		GameRegistry.registerBlock(BlockLamp, ItemBlockLamp.class, "BlockLamp", "Nanotech_mod");
 		GameRegistry.registerBlock(BlockLampLight, "BlockLampLight");
+		GameRegistry.registerBlock(BlockSunShade, ItemBlockSunShade.class, "BlockSunShade", "Nanotech_mod");
 	}
 
 }
