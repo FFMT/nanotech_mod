@@ -3,7 +3,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.items;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
@@ -31,14 +31,14 @@ public class ItemCrazyGlasses extends ItemArmor
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
 	{
 		if(stack.itemID == NanotechItem.crazyGlasses.itemID)
-			return "/mods/Nanotech_mod/textures/armor/crazyGlasses.png";
+			return "Nanotech_mod:textures/armor/crazyGlasses.png";
 
-		return "/mods/Nanotech_mod/textures/block/empty.png";
+		return "Nanotech_mod:textures/block/empty.png";
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLiving entityliving, ItemStack stack, int armor)
+	public ModelBiped getArmorModel(EntityLivingBase entityliving, ItemStack stack, int armor)
 	{
 		return new ItemCrazyGlassesModel();
 	}
@@ -52,7 +52,7 @@ public class ItemCrazyGlasses extends ItemArmor
 		player.addPotionEffect(new PotionEffect(Potion.confusion.id, 100, 50, true));
 		if(tick > 50)
 		{
-			world.playSoundAtEntity(player, "nanotech.crazyguy", 1.0F, 1.0F);
+			world.playSoundAtEntity(player, "Nanotech_mod:CrazyGuy", 1.0F, 1.0F);
 			tick = 0;
 		}
 	}

@@ -7,6 +7,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
@@ -17,6 +18,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityFountain;
 public class GuiFountain extends GuiContainer
 {
 	private TileEntityFountain tileFoutain;
+	protected static final ResourceLocation texture = new ResourceLocation("Nanotech_mod:textures/gui/BlockFountain.png");
 
 	public GuiFountain(InventoryPlayer playerinventory, TileEntityFountain tileentity, World world)
 	{
@@ -238,7 +240,7 @@ public class GuiFountain extends GuiContainer
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
 		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		this.mc.renderEngine.bindTexture("/mods/Nanotech_mod/textures/gui/BlockFountain.png");
+		this.mc.renderEngine.func_110577_a(texture);
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 

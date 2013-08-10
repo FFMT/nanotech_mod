@@ -3,6 +3,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs;
 import java.util.Calendar;
 
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.passive.EntityAmbientCreature;
@@ -20,13 +21,19 @@ public class MobFly extends EntityAmbientCreature
 	public MobFly(World world)
 	{
 		super(world);
-		this.texture = "/mods/Nanotech_mod/textures/mob/fly.png";
 		this.setSize(0.5F, 0.5F);
 		this.func_82236_f(true);
 		this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 20.0F));
 		this.tasks.addTask(7, new EntityAILookIdle(this));
 	}
-
+	
+	 @Override
+	 protected void func_110147_ax()
+	 {
+		 super.func_110147_ax();
+		 this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(1D);
+	 }
+	 
 	protected void entityInit()
 	{
 		super.entityInit();
@@ -40,12 +47,7 @@ public class MobFly extends EntityAmbientCreature
 
 	protected String getLivingSound()
 	{
-		return "nanotech.fly";
-	}
-
-	public int getMaxHealth()
-	{
-		return 1;
+		return "Nanotech_mod:fly";
 	}
 
 	public boolean func_82235_h()

@@ -26,12 +26,12 @@ public class BlockFalling extends BlockSand
 	{
 		iconbuffer = new Icon[type.length];
 		iconbuffer[0] = iconregister.registerIcon("stone");
-		iconbuffer[1] = iconregister.registerIcon("stonebricksmooth");
-		iconbuffer[2] = iconregister.registerIcon("stonebricksmooth_cracked");
-		iconbuffer[3] = iconregister.registerIcon("stonebricksmooth_mossy");
-		iconbuffer[4] = iconregister.registerIcon("stonebricksmooth_carved");
-		iconbuffer[5] = iconregister.registerIcon("stonebrick");
-		iconbuffer[6] = iconregister.registerIcon("stoneMoss");
+		iconbuffer[1] = iconregister.registerIcon("stonebrick");
+		iconbuffer[2] = iconregister.registerIcon("stonebrick_cracked");
+		iconbuffer[3] = iconregister.registerIcon("stonebrick_mossy");
+		iconbuffer[4] = iconregister.registerIcon("stonebrick_carved");
+		iconbuffer[5] = iconregister.registerIcon("cobblestone");
+		iconbuffer[6] = iconregister.registerIcon("cobblestone_mossy");
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -3,6 +3,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.items;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
@@ -13,6 +14,7 @@ public class ItemScytheRender implements IItemRenderer
 {
 
 	protected ItemScytheModel model;
+	protected static final ResourceLocation texture = new ResourceLocation("Nanotech_mod:textures/items/scythe.png");
 
 	public ItemScytheRender()
 	{
@@ -46,7 +48,7 @@ public class ItemScytheRender implements IItemRenderer
 		case EQUIPPED:
 		{
 			GL11.glPushMatrix();
-			Minecraft.getMinecraft().renderEngine.bindTexture("/mods/Nanotech_mod/textures/items/scythe.png");
+			Minecraft.getMinecraft().renderEngine.func_110577_a(texture);
 			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
 			GL11.glRotatef(140F, 1.0F, 0.0F, 0.0F);
 			GL11.glTranslatef(0.0F, 0.0F, -0.8F);

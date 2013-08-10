@@ -5,6 +5,7 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.EventPriority;
@@ -17,6 +18,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 public class GuiOverlay extends Gui
 {
 	private Minecraft mc;
+	protected static final ResourceLocation texture = new ResourceLocation("Nanotech_mod:textures/armor/crazyGlassesOverlay.png");
 
 	public GuiOverlay(Minecraft mc)
 	{
@@ -44,7 +46,7 @@ public class GuiOverlay extends Gui
 			GL11.glDisable(GL11.GL_DEPTH_TEST);
 			GL11.glDepthMask(false);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-			this.mc.renderEngine.bindTexture("/mods/Nanotech_mod/textures/armor/crazyGlassesOverlay.png");
+			this.mc.renderEngine.func_110577_a(texture);
 			Tessellator tessellator = Tessellator.instance;
 			tessellator.startDrawingQuads();
 			tessellator.addVertexWithUV(0.0D, (double)l, -90.0D, 0.0D, 1.0D);

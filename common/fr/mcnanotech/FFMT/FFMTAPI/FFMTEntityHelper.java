@@ -104,31 +104,6 @@ public class FFMTEntityHelper
 	 * Add a mob too easy
 	 * @param entityClass (The entity class)
 	 * @param entityName (The entity name)
-	 * @param entityIngameName (The entity name rendered in game) (If not specified, by default is entity.entityName.name)
-	 * @param id (The entity ID)
-	 * @param mod (Mod instance)
-	 * @param trackingRange (Number of tracking range)
-	 * @param updateFrequency (Number update frequency)
-	 * @param sendsVelocityUpdates (Send velocity updates or not)
-	 * @param backGroundEggColour (Background egg color)
-	 * @param foreGroundEggColour (Foreground egg color)
-	 * @param weightedProb (Chance to spawn)
-	 * @param minSpawn (Minimum spawn per chunk)
-	 * @param maxSpawn (Maximum spawn per chunk)
-	 */
-	@IsWorking
-	public static void addMob(Class<? extends Entity> entityClass, String entityName, String entityIngameName,int id, Object mod, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates, int backGroundEggColour, int foreGroundEggColour, int weightedProb, int minSpawn, int maxSpawn, EnumCreatureType creatureType)
-	{
-		EntityRegistry.registerGlobalEntityID(entityClass, entityName, EntityRegistry.findGlobalUniqueEntityId(), backGroundEggColour, foreGroundEggColour);
-		EntityRegistry.registerModEntity(entityClass, entityName, id, mod, trackingRange, updateFrequency, sendsVelocityUpdates);
-		EntityRegistry.addSpawn(entityName, weightedProb, minSpawn, maxSpawn, creatureType);
-		LanguageRegistry.instance().addStringLocalization("entity." + entityName + ".name", entityIngameName);
-	}
-	
-	/**
-	 * Add a mob too easy
-	 * @param entityClass (The entity class)
-	 * @param entityName (The entity name)
 	 * @param id (The entity ID)
 	 * @param mod (Mod instance)
 	 * @param trackingRange (Number of tracking range)
@@ -147,31 +122,5 @@ public class FFMTEntityHelper
 		EntityRegistry.registerGlobalEntityID(entityClass, entityName, EntityRegistry.findGlobalUniqueEntityId(), backGroundEggColour, foreGroundEggColour);
 		EntityRegistry.registerModEntity(entityClass, entityName, id, mod, trackingRange, updateFrequency, sendsVelocityUpdates);
 		EntityRegistry.addSpawn(entityName, weightedProb, minSpawn, maxSpawn, creatureType, biome);
-	}
-	
-	/**
-	 * Add a mob too easy
-	 * @param entityClass (The entity class)
-	 * @param entityName (The entity name)
-	 * @param entityIngameName (The entity name rendered in game) (If not specified, by default is entity.entityName.name)
-	 * @param id (The entity ID)
-	 * @param mod (Mod instance)
-	 * @param trackingRange (Number of tracking range)
-	 * @param updateFrequency (Number update frequency)
-	 * @param sendsVelocityUpdates (Send velocity updates or not)
-	 * @param backGroundEggColour (Background egg color)
-	 * @param foreGroundEggColour (Foreground egg color)
-	 * @param weightedProb (Chance to spawn)
-	 * @param minSpawn (Minimum spawn per chunk)
-	 * @param maxSpawn (Maximum spawn per chunk)
-	 * @param biome (Biome where you want to spawn the mob)(If not specified, this mob doesn't spawn naturally)
-	 */
-	@IsWorking
-	public static void addMob(Class<? extends Entity> entityClass, String entityName, String entityIngameName, int id, Object mod, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates, int backGroundEggColour, int foreGroundEggColour, int weightedProb, int minSpawn, int maxSpawn, EnumCreatureType creatureType, BiomeGenBase... biome)
-	{
-		EntityRegistry.registerGlobalEntityID(entityClass, entityName, EntityRegistry.findGlobalUniqueEntityId(), backGroundEggColour, foreGroundEggColour);
-		EntityRegistry.registerModEntity(entityClass, entityName, id, mod, trackingRange, updateFrequency, sendsVelocityUpdates);
-		EntityRegistry.addSpawn(entityName, weightedProb, minSpawn, maxSpawn, creatureType, biome);
-		LanguageRegistry.instance().addStringLocalization("entity." + entityName + ".name", entityIngameName);
 	}
 }

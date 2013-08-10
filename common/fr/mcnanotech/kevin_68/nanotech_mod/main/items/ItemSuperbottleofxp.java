@@ -20,7 +20,7 @@ public class ItemSuperbottleofxp extends Item
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("expBottle");
+		itemIcon = iconregister.registerIcon("experience_bottle");
 	}
 
 	@SideOnly(Side.CLIENT)

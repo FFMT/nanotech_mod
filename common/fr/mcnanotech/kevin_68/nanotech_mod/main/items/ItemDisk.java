@@ -1,6 +1,8 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.items;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockJukeBox;
@@ -18,7 +20,7 @@ public class ItemDisk extends ItemRecord
 	public final String recordName;
 	public final String recordinfo;
 	public final String textureName;
-
+	
 	public ItemDisk(int id, String name, String info, String texture)
 	{
 		super(id, name);

@@ -166,19 +166,19 @@ public class BlockSunShade extends Block
 
 	public int idDropped(int metadata, Random random, int par3)
 	{
-		return NanotechItem.lamp.itemID;
+		return NanotechItem.sunShade.itemID;
 	}
 
 	@SideOnly(Side.CLIENT)
 	public int idPicked(World world, int x, int y, int z)
 	{
-		return NanotechItem.lamp.itemID;
+		return NanotechItem.sunShade.itemID;
 	}
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		blockIcon = iconregister.registerIcon("cloth_0"); // for particles
-		stick = iconregister.registerIcon("tree_side"); // for particles
+		blockIcon = iconregister.registerIcon("wool_colored_white"); // for particles
+		stick = iconregister.registerIcon("log_oak"); // for particles
 	}	
 
 	@SideOnly(Side.CLIENT)

@@ -2,8 +2,10 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
@@ -13,10 +15,22 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperCreeper;
 public class RenderSuperCreeper extends RenderLiving
 {
 	private ModelBase model = new ModelSuperCreeper(2.0F);
+	protected static final ResourceLocation texture = new ResourceLocation("Nanotech_mod:textures/entity/supercreeper.png");
 
 	public RenderSuperCreeper(ModelSuperCreeper model, float f)
 	{
 		super(new ModelSuperCreeper(), 0.5F);
+	}
+	
+	protected ResourceLocation func_110870_a(MobSuperCreeper entity)
+	{
+		return texture;
+	}
+
+	@Override
+	protected ResourceLocation func_110775_a(Entity par1Entity)
+	{
+		return this.func_110870_a((MobSuperCreeper)par1Entity);
 	}
 
 	protected void updateMob_supercreeperScale(MobSuperCreeper mob, float par2)
@@ -77,7 +91,7 @@ public class RenderSuperCreeper extends RenderLiving
 			if(par2 == 1)
 			{
 				float var4 = (float)mob.ticksExisted + par3;
-				this.loadTexture("/armor/power.png");
+				this.func_110776_a(new ResourceLocation("textures/entity/creeper/creeper_armor.png"));
 				GL11.glMatrixMode(GL11.GL_TEXTURE);
 				GL11.glLoadIdentity();
 				float var5 = var4 * 0.01F;

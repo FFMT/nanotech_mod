@@ -17,7 +17,7 @@ public class BlockPortalFrame extends Block
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		blockIcon = iconregister.registerIcon("Nanotech_mod:" + getUnlocalizedName2());
+		blockIcon = iconregister.registerIcon("Nanotech_mod:portalframe");
 	}
 
 	public void onBlockAdded(World world, int x, int y, int z)

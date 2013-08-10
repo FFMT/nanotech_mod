@@ -5,8 +5,10 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
@@ -19,6 +21,7 @@ public class RenderSuperEnderman extends RenderLiving
 	/** The model of the enderman */
 	private ModelSuperEnderman model;
 	private Random rnd = new Random();
+	protected static final ResourceLocation texture = new ResourceLocation("textures/entity/enderman/enderman.png");
 
 	public RenderSuperEnderman(ModelSuperEnderman model, float f)
 	{
@@ -26,16 +29,24 @@ public class RenderSuperEnderman extends RenderLiving
 		this.model = (ModelSuperEnderman)super.mainModel;
 		this.setRenderPassModel(this.model);
 	}
+	
+	protected ResourceLocation func_110870_a(MobSuperEnderman entity)
+	{
+		return texture;
+	}
 
-	/**
-	 * Renders the enderman
-	 */
+	@Override
+	protected ResourceLocation func_110775_a(Entity par1Entity)
+	{
+		return this.func_110870_a((MobSuperEnderman)par1Entity);
+	}
+
 	public void renderMob_superenderman(MobSuperEnderman mob, double par2, double par4, double par6, float par8, float par9)
 	{
 		this.model.isCarrying = mob.getCarried() > 0;
-		this.model.isAttacking = mob.func_70823_r();
+		this.model.isAttacking = mob.isScreaming();
 
-		if(mob.func_70823_r())
+		if(mob.isScreaming())
 		{
 			double var10 = 0.02D;
 			par2 += this.rnd.nextGaussian() * var10;
@@ -45,39 +56,33 @@ public class RenderSuperEnderman extends RenderLiving
 		super.doRenderLiving(mob, par2, par4, par6, par8, par9);
 	}
 
-	/**
-	 * Render the block an enderman is carrying
-	 */
 	protected void renderCarrying(MobSuperEnderman mob, float par2)
 	{
 		super.renderEquippedItems(mob, par2);
 
 		if(mob.getCarried() > 0)
 		{
-			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-			GL11.glPushMatrix();
-			float var3 = 0.5F;
-			GL11.glTranslatef(0.0F, 0.6875F, -0.75F);
-			var3 *= 1.0F;
-			GL11.glRotatef(20.0F, 1.0F, 0.0F, 0.0F);
-			GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
-			GL11.glScalef(var3, -var3, var3);
-			int var4 = mob.getBrightnessForRender(par2);
-			int var5 = var4 % 65536;
-			int var6 = var4 / 65536;
-			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)var5 / 1.0F, (float)var6 / 1.0F);
-			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-			this.loadTexture("/terrain.png");
-			this.renderBlocks.renderBlockAsItem(Block.blocksList[mob.getCarried()], mob.getCarryingData(), 1.0F);
-			GL11.glPopMatrix();
-			GL11.glDisable(GL12.GL_RESCALE_NORMAL);
+            GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+            GL11.glPushMatrix();
+            float f1 = 0.5F;
+            GL11.glTranslatef(0.0F, 0.6875F, -0.75F);
+            f1 *= 1.0F;
+            GL11.glRotatef(20.0F, 1.0F, 0.0F, 0.0F);
+            GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
+            GL11.glScalef(-f1, -f1, f1);
+            int i = mob.getBrightnessForRender(par2);
+            int j = i % 65536;
+            int k = i / 65536;
+            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)j / 1.0F, (float)k / 1.0F);
+            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+            this.func_110776_a(TextureMap.field_110575_b);
+            this.renderBlocks.renderBlockAsItem(Block.blocksList[mob.getCarried()], mob.getCarryingData(), 1.0F);
+            GL11.glPopMatrix();
+            GL11.glDisable(GL12.GL_RESCALE_NORMAL);
 		}
 	}
 
-	/**
-	 * Render the endermans eyes
-	 */
 	protected int renderEyes(MobSuperEnderman mob, int par2, float par3)
 	{
 		if(par2 != 0)
@@ -86,7 +91,7 @@ public class RenderSuperEnderman extends RenderLiving
 		}
 		else
 		{
-			this.loadTexture("/mob/enderman_eyes.png");
+			this.func_110776_a(new ResourceLocation("textures/entity/enderman/enderman_eyes.png"));
 			float var4 = 1.0F;
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glDisable(GL11.GL_ALPHA_TEST);
@@ -103,9 +108,6 @@ public class RenderSuperEnderman extends RenderLiving
 		}
 	}
 
-	/**
-	 * Queries whether should render the specified pass or not.
-	 */
 	protected int shouldRenderPass(EntityLiving entityliving, int par2, float par3)
 	{
 		return this.renderEyes((MobSuperEnderman)entityliving, par2, par3);
@@ -121,14 +123,6 @@ public class RenderSuperEnderman extends RenderLiving
 		this.renderMob_superenderman((MobSuperEnderman)entityliving, par2, par4, par6, par8, par9);
 	}
 
-	/**
-	 * Actually renders the given argument. This is a synthetic bridge method,
-	 * always casting down its argument and then handing it off to a worker
-	 * function which does the actual work. In all probabilty, the class Render
-	 * is generic (Render<T extends Entity) and this method has signature public
-	 * void doRender(T entity, double d, double d1, double d2, float f, float
-	 * f1). But JAD is pre 1.5 so doesn't do that.
-	 */
 	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9)
 	{
 		this.renderMob_superenderman((MobSuperEnderman)entity, par2, par4, par6, par8, par9);

@@ -1,6 +1,6 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others;
 
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.MovingObjectPosition;
@@ -13,7 +13,7 @@ public class EntitySuperBottleOfXp extends EntityThrowable
 		super(world);
 	}
 
-	public EntitySuperBottleOfXp(World world, EntityLiving entityliving)
+	public EntitySuperBottleOfXp(World world, EntityLivingBase entityliving)
 	{
 		super(world, entityliving);
 	}

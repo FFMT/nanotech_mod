@@ -22,11 +22,11 @@ public class ItemNanomiteArmor extends ItemArmor
 	{
 		if(stack.itemID == NanotechItem.Nanomiteleggings.itemID)
 		{
-			return "/mods/Nanotech_mod/textures/armor/Nanomitearmor2.png";
+			return "Nanotech_mod:textures/armor/Nanomitearmor2.png";
 		}
 		else
 		{
-			return "/mods/Nanotech_mod/textures/armor/Nanomitearmor.png";
+			return "Nanotech_mod:textures/armor/Nanomitearmor.png";
 		}
 	}
 

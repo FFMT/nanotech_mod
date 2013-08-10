@@ -2,6 +2,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
@@ -11,6 +12,8 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
 
 public class GuiMultiplier extends GuiContainer
 {
+	protected static final ResourceLocation texture = new ResourceLocation("Nanotech_mod:textures/gui/Multiplier.png");
+
 	public GuiMultiplier(InventoryPlayer inventoryPlayer, TileEntityMultiplier tileEntity, World world)
 	{
 		super(new ContainerMultiplier(tileEntity, inventoryPlayer, world));
@@ -30,7 +33,7 @@ public class GuiMultiplier extends GuiContainer
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.renderEngine.bindTexture("/mods/Nanotech_mod/textures/gui/Multiplier.png");
+		this.mc.renderEngine.func_110577_a(texture);
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);

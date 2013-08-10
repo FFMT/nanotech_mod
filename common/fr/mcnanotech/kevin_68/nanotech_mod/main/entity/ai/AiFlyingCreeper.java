@@ -1,6 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.ai;
 
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobFlyingCreeper;
 
@@ -8,7 +9,7 @@ public class AiFlyingCreeper extends EntityAIBase
 {
 	MobFlyingCreeper swellingCreeper;
 
-	EntityLiving creeperAttackTarget;
+	EntityLivingBase creeperAttackTarget;
 
 	public AiFlyingCreeper(MobFlyingCreeper mob)
 	{
@@ -16,17 +17,17 @@ public class AiFlyingCreeper extends EntityAIBase
 		this.setMutexBits(1);
 	}
 
-	public boolean shouldExecute()
-	{
-		EntityLiving var1 = this.swellingCreeper.getAttackTarget();
-		return this.swellingCreeper.getCreeperState() > 0 || var1 != null && this.swellingCreeper.getDistanceSqToEntity(var1) < 9.0D;
-	}
+    public boolean shouldExecute()
+    {
+        EntityLivingBase entitylivingbase = this.swellingCreeper.getAttackTarget();
+        return this.swellingCreeper.getCreeperState() > 0 || entitylivingbase != null && this.swellingCreeper.getDistanceSqToEntity(entitylivingbase) < 9.0D;
+    }
 
-	public void startExecuting()
-	{
-		this.swellingCreeper.getNavigator().clearPathEntity();
-		this.creeperAttackTarget = this.swellingCreeper.getAttackTarget();
-	}
+    public void startExecuting()
+    {
+        this.swellingCreeper.getNavigator().clearPathEntity();
+        this.creeperAttackTarget = this.swellingCreeper.getAttackTarget();
+    }
 
 	public void resetTask()
 	{

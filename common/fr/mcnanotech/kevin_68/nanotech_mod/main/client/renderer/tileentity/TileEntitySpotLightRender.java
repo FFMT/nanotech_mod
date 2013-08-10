@@ -4,6 +4,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
@@ -14,6 +15,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySpotLight;
 @SideOnly(Side.CLIENT)
 public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 {
+	protected static final ResourceLocation texture = new ResourceLocation("textures/entity/beacon_beam.png");
 
 	public void renderTileEntitySpotLightAt(TileEntitySpotLight tileentity, double x, double y, double z, float par8)
 	{
@@ -22,7 +24,7 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 		if(f1 > 0.0F)
 		{
 			Tessellator tessellator = Tessellator.instance;
-			this.bindTextureByName("/misc/beam.png");
+			this.func_110628_a(texture);
 			GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, 10497.0F);
 			GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, 10497.0F);
 			GL11.glDisable(GL11.GL_LIGHTING);

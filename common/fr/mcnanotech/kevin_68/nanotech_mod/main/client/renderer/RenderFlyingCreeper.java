@@ -2,23 +2,38 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelFlyingCreeper;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCreeperDriller;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobFlyingCreeper;
 
 public class RenderFlyingCreeper extends RenderLiving
 {
 	private ModelBase model = new ModelFlyingCreeper();
+	protected static final ResourceLocation texture = new ResourceLocation("Nanotech_mod:textures/entity/flyingcreeper.png");
 
 	public RenderFlyingCreeper(ModelFlyingCreeper model, float f)
 	{
 		super(new ModelFlyingCreeper(), 0.5F);
 	}
 
+	protected ResourceLocation func_110870_a(MobFlyingCreeper entity)
+	{
+		return texture;
+	}
+
+	@Override
+	protected ResourceLocation func_110775_a(Entity par1Entity)
+	{
+		return this.func_110870_a((MobFlyingCreeper)par1Entity);
+	}
+	
 	protected void updateMob_creeperforreurScale(MobFlyingCreeper mob, float par2)
 	{
 		float var4 = mob.getCreeperFlashIntensity(par2);
@@ -77,7 +92,7 @@ public class RenderFlyingCreeper extends RenderLiving
 			if(par2 == 1)
 			{
 				float var4 = (float)mob.ticksExisted + par3;
-				this.loadTexture("/armor/power.png");
+				this.func_110776_a(new ResourceLocation("textures/entity/creeper/creeper_armor.png"));
 				GL11.glMatrixMode(GL11.GL_TEXTURE);
 				GL11.glLoadIdentity();
 				float var5 = var4 * 0.01F;

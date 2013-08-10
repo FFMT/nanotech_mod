@@ -5,8 +5,10 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IRangedAttackMob;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIArrowAttack;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -45,26 +47,32 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	public MobThedeath(World world)
 	{
 		super(world);
-		this.setEntityHealth(this.getMaxHealth());
-		this.texture = "/mods/Nanotech_mod/textures/mob/thedeath.png";
+		this.setEntityHealth(this.func_110138_aP());
 		this.setSize(5F, 8.0F);
 		this.isImmuneToFire = true;
-		this.moveSpeed = 0.6F;
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.tasks.addTask(2, new EntityAIArrowAttack(this, this.moveSpeed, 40, 40.0F));
-		this.tasks.addTask(5, new EntityAIWander(this, this.moveSpeed));
+		this.tasks.addTask(2, new EntityAIArrowAttack(this, 1.0D, 40, 40.0F));
+		this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(7, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityLiving.class, 50.0F, 0, false, false, mobSelector));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityLiving.class, 0, false, false, mobSelector));
 		this.experienceValue = 50;
 	}
 
+	 @Override
+	 protected void func_110147_ax()
+	 {
+		 super.func_110147_ax();
+		 this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(5000D);
+	     this.func_110148_a(SharedMonsterAttributes.field_111265_b).func_111128_a(100.0D);
+		 this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.60D);
+	 }
+	
 	protected void entityInit()
 	{
 		super.entityInit();
-		this.dataWatcher.addObject(16, new Integer(this.getMaxHealth()));
 		this.dataWatcher.addObject(17, new Integer(0));
 		this.dataWatcher.addObject(18, new Integer(0));
 		this.dataWatcher.addObject(19, new Integer(0));
@@ -81,7 +89,6 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	{
 		super.readEntityFromNBT(nbttagcompound);
 		this.func_82215_s(nbttagcompound.getInteger("Invul"));
-		this.dataWatcher.updateObject(16, Integer.valueOf(this.health));
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -92,25 +99,21 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 	protected String getLivingSound()
 	{
-		return "nanotech.monster";
+		return "Nanotech_mod:monster";
 	}
 
 	protected String getHurtSound()
 	{
-		return "nanotech.monsterhurt";
+		return "Nanotech_mod:monsterhurt";
 	}
 
 	protected String getDeathSound()
 	{
-		return "nanotech.monsterdeath";
+		return "Nanotech_mod:monsterdeath";
 	}
 
 	public void onLivingUpdate()
 	{
-		if(!this.worldObj.isRemote)
-		{
-			this.dataWatcher.updateObject(16, Integer.valueOf(this.health));
-		}
 
 		this.motionY *= 0.6000000238418579D;
 		double var4;
@@ -362,30 +365,30 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 					}
 					else
 					{
-						List var14 = this.worldObj.selectEntitiesWithinAABB(EntityLiving.class, this.boundingBox.expand(20.0D, 8.0D, 20.0D), mobSelector);
+						List list = this.worldObj.selectEntitiesWithinAABB(EntityLiving.class, this.boundingBox.expand(20.0D, 8.0D, 20.0D), mobSelector);
 
-						for(int var17 = 0; var17 < 10 && !var14.isEmpty(); ++var17)
+						for(int var17 = 0; var17 < 10 && !list.isEmpty(); ++var17)
 						{
-							EntityLiving var5 = (EntityLiving)var14.get(this.rand.nextInt(var14.size()));
+                            EntityLivingBase entitylivingbase = (EntityLivingBase)list.get(this.rand.nextInt(list.size()));
 
-							if(var5 != this && var5.isEntityAlive() && this.canEntityBeSeen(var5))
+							if(entitylivingbase != this && entitylivingbase.isEntityAlive() && this.canEntityBeSeen(entitylivingbase))
 							{
-								if(var5 instanceof EntityPlayer)
+								if(entitylivingbase instanceof EntityPlayer)
 								{
-									if(!((EntityPlayer)var5).capabilities.disableDamage)
+									if(!((EntityPlayer)entitylivingbase).capabilities.disableDamage)
 									{
-										this.func_82211_c(var1, var5.entityId);
+										this.func_82211_c(var1, entitylivingbase.entityId);
 									}
 								}
 								else
 								{
-									this.func_82211_c(var1, var5.entityId);
+									this.func_82211_c(var1, entitylivingbase.entityId);
 								}
 
 								break;
 							}
 
-							var14.remove(var5);
+							list.remove(entitylivingbase);
 						}
 					}
 				}
@@ -451,7 +454,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	public void func_82206_m()
 	{
 		this.func_82215_s(220);
-		this.setEntityHealth(this.getMaxHealth() / 3);
+		this.setEntityHealth(this.func_110138_aP() / 3);
 	}
 
 	public void setInWeb()
@@ -630,11 +633,6 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		return true;
 	}
 
-	public int getMaxHealth()
-	{
-		return 5000;
-	}
-
 	@SideOnly(Side.CLIENT)
 	public float func_82207_a(int par1)
 	{
@@ -678,16 +676,9 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	}
 
 	@Override
-	public void attackEntityWithRangedAttack(EntityLiving entityliving, float f)
+	public void attackEntityWithRangedAttack(EntityLivingBase entityliving, float f)
 	{
 
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getBossHealth()
-	{
-		return this.dataWatcher.getWatchableObjectInt(16);
 	}
 
 }
