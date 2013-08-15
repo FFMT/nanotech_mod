@@ -5,6 +5,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fr.mcnanotech.FFMT.FFMTAPI.FFMTRegistry;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.blocks.NanotechCityBlock;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.items.NanotechCityItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
@@ -49,12 +51,15 @@ public class NanotechRecipe
 		{"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 15)});
 
 		// blocks
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockTrashcan), new Object[]
-		{"X X", "XZX", "XXX", 'X', Item.ingotIron, 'Z', Item.bucketLava});
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockSpotLight), new Object[]
-		{"OAO", "RGB", "OAO", 'O', Block.obsidian, 'A', Block.glass, 'R', new ItemStack(Item.dyePowder, 1, 1), 'G', new ItemStack(Item.dyePowder, 1, 2), 'B', new ItemStack(Item.dyePowder, 1, 4)});
-		GameRegistry.addShapelessRecipe(new ItemStack(NanotechBlock.BlockTrail, 2), new Object[]
-		{Block.grass, Block.gravel});
+		if (Nanotech_mod.nanotech_mod_city())
+		{
+			GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockTrashcan), new Object[]
+			{"X X", "XZX", "XXX", 'X', Item.ingotIron, 'Z', Item.bucketLava});
+			GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockSpotLight), new Object[]
+			{"OAO", "RGB", "OAO", 'O', Block.obsidian, 'A', Block.glass, 'R', new ItemStack(Item.dyePowder, 1, 1), 'G', new ItemStack(Item.dyePowder, 1, 2), 'B', new ItemStack(Item.dyePowder, 1, 4)});
+			GameRegistry.addShapelessRecipe(new ItemStack(NanotechCityBlock.BlockTrail, 2), new Object[]
+			{Block.grass, Block.gravel});
+		}
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechBlock.BlockNanoplanks, 4), new Object[]
 		{NanotechBlock.BlockNanowood});
 
@@ -99,10 +104,13 @@ public class NanotechRecipe
 		{" XW", "XCW", " XW", 'X', new ItemStack(NanotechItem.ItemBase, 1, 13), 'W', Item.silk, 'C', NanotechItem.Emeraldbow});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitebow, 1), new Object[]
 		{"WX ", "WCX", "WX ", 'X', new ItemStack(NanotechItem.ItemBase, 1, 13), 'W', Item.silk, 'C', NanotechItem.Emeraldbow});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.lamp, 1), new Object[]
-		{"IDI", "GSG", "III", 'I', Item.ingotIron, 'D', Block.daylightSensor, 'G', Block.thinGlass, 'S', Block.glowStone});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.sunShade, 1), new Object[]
-		{"WWW", " S ", " S ", 'W', Block.cloth, 'S', Item.stick});
+		if (Nanotech_mod.nanotech_mod_city())
+		{
+			GameRegistry.addRecipe(new ItemStack(NanotechCityItem.lamp, 1), new Object[]
+			{"IDI", "GSG", "III", 'I', Item.ingotIron, 'D', Block.daylightSensor, 'G', Block.thinGlass, 'S', Block.glowStone});
+			GameRegistry.addRecipe(new ItemStack(NanotechCityItem.sunShade, 1), new Object[]
+			{"WWW", " S ", " S ", 'W', Block.cloth, 'S', Item.stick});
+		}
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.ItemBase, 1, 8), new Object[]
 		{new ItemStack(NanotechItem.ItemBase, 1, 7), new ItemStack(NanotechItem.ItemBase, 1, 1)});

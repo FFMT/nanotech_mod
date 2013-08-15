@@ -9,8 +9,9 @@ import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
 import net.minecraftforge.oredict.OreDictionary;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.Init;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod.PostInit;
 import cpw.mods.fml.common.Mod.PreInit;
@@ -33,22 +34,16 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.event.PlayerTracker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.network.GuiHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.network.PacketHandler;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityFountain;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityLamp;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityLampLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySpotLight;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySunShade;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityTrail;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.UtilDiskInfo;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechBiome;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGeneration;
 
 @Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "2.0.3")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTM|smoker", "NTM|jumper", "NTM|light", "NTM|fount"}, packetHandler = PacketHandler.class)
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTM|smoker", "NTM|jumper"}, packetHandler = PacketHandler.class)
 public class Nanotech_mod
 {
 	// Instance
@@ -59,12 +54,12 @@ public class Nanotech_mod
 	public static CommonProxy proxy;
 
 	// Block IDs
-	public static int BlockPortalID, BlockPortalFrameID, BlockGrassID, BlockFakeOreID, BlockSpeedID, BlockJumperID, BlockMultiplierID, BlockSmokerID, BlockTrashcanID, BlockBarbedWireID, BlockNanoWoodID, BlockNanoLeavesID, BlockNanoSaplingsID, BlockNanoPlanksID, BlockNanoOreID, BlockConfusionID, BlockFallingID, BlockNotFallingID, BlockSodiumID, BlockMossyStoneID, BlockSpotLightID,
-			BlockTheDeathHeadID, BlockTrailID, BlockTeaID, BlockFountainID, BlockLampID, BlockLampLightID, BlockSunShadeID;
+	public static int BlockPortalID, BlockPortalFrameID, BlockGrassID, BlockFakeOreID, BlockSpeedID, BlockJumperID, BlockMultiplierID, BlockSmokerID, BlockBarbedWireID, BlockNanoWoodID, BlockNanoLeavesID, BlockNanoSaplingsID, BlockNanoPlanksID, BlockNanoOreID, BlockConfusionID, BlockFallingID, BlockNotFallingID, BlockSodiumID, BlockMossyStoneID,
+	BlockTheDeathHeadID, BlockTeaID;
 
 	// Item IDs
 	public static int ItemNanotechID, ItemSuperBottleOfXpID, ItemDiamondBowID, ItemEmeraldBowID, ItemNanomiteBowID, ItemNanomiteAxeID, ItemNanomitePickaxeID, ItemNanomiteShovelID, ItemNanomiteHoeID, ItemNanomiteSwordID, ItemNanomiteHelmetID, ItemNanomiteChestPlateID, ItemNanomiteLegginsID, ItemNanomiteBootsID, ItemMysteriousHelmetID, ItemMysteriousChestPlateID, ItemMysteriousLegginsID,
-			ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemScytheID, ItemCrazyGlassesID, TeaSeedID, TeaID, ItemLampID, ItemSunShadeID;
+	ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemScytheID, ItemCrazyGlassesID, TeaSeedID, TeaID;
 
 	// Dimension ID
 	public static int dimensionID = 19;
@@ -109,8 +104,8 @@ public class Nanotech_mod
 	public static int CrazyGuyMax;
 
 	// Configuration Category
-	public static final String CATEGORY_Other = "Other cfgs";
-	public static final String CATEGORY_Mobscfg = "Mobs cfgs";
+	public static final String CATEGORY_Other = "Other configs";
+	public static final String CATEGORY_Mobscfg = "Mobs configs";
 	public static final String CATEGORY_Mobspawn = "Mobs spawn";
 
 	// Creative tabs
@@ -120,7 +115,29 @@ public class Nanotech_mod
 	// log
 	public static Logger NanoLog;
 
-	@PreInit
+	public static boolean nanotech_mod_city()
+	{
+		try
+		{
+			if (Loader.isModLoaded("Nanotech_mod_City"))
+			{
+				NanoLog.info("Nanotech_mod City Detected");
+				return true;
+			}
+			else
+			{
+				NanoLog.info("Nanotech_mod City not detected");
+				return false;
+			}
+		}
+		catch (Exception e)
+		{
+			NanoLog.severe("Failed to check if Nanotech_mod City is here, or not");
+			return false;
+		}
+	}
+
+	@EventHandler
 	public void PreInitNanotech_mod(FMLPreInitializationEvent event)
 	{
 		NanoLog = event.getModLog();
@@ -130,7 +147,6 @@ public class Nanotech_mod
 			UtilDiskInfo.readInfo();
 		}
 
-		// cfguration
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
 		try
 		{
@@ -143,27 +159,20 @@ public class Nanotech_mod
 			BlockJumperID = cfg.getBlock("Jumper", 1004).getInt();
 			BlockMultiplierID = cfg.getBlock("Multiplier", 1005).getInt();
 			BlockSmokerID = cfg.getBlock("Smoker", 1006).getInt();
-			BlockTrashcanID = cfg.getBlock("Trash can", 1007).getInt();
-			BlockBarbedWireID = cfg.getBlock("Barbed Wire", 1008).getInt();
-			BlockNanoWoodID = cfg.getBlock("Nano Wood", 1009).getInt();
-			BlockNanoLeavesID = cfg.getBlock("Nano Leaves", 1010).getInt();
-			BlockNanoSaplingsID = cfg.getBlock("Nano Saplings", 1011).getInt();
-			BlockNanoPlanksID = cfg.getBlock("Nano Planks", 1012).getInt();
-			BlockNanoOreID = cfg.getBlock("Ore", 1013).getInt();
-			BlockConfusionID = cfg.getBlock("Confusion", 1014).getInt();
-			BlockFallingID = cfg.getBlock("Falling Blocks", 1015).getInt();
-			BlockNotFallingID = cfg.getBlock("Not Falling Blocks", 1016).getInt();
-			BlockSodiumID = cfg.getBlock("Sodium", 1017).getInt();
-			BlockMossyStoneID = cfg.getBlock("Mossy Stone", 1018).getInt();
-			BlockSpotLightID = cfg.getBlock("SpotLight", 1019).getInt();
-			BlockTheDeathHeadID = cfg.getBlock("TheDeathHead", 1020).getInt();
-			BlockTrailID = cfg.getBlock("Trail", 1021).getInt();
-			BlockTeaID = cfg.getBlock("Tea", 1022).getInt();
-			BlockFountainID = cfg.getBlock("Fountain", 1023).getInt();
-			BlockLampID = cfg.getBlock("Lamp", 1024).getInt();
-			BlockLampLightID = cfg.getBlock("LampLight", 1025).getInt();
-			BlockSunShadeID = cfg.getBlock("SunShade", 1026).getInt();
-			
+			BlockBarbedWireID = cfg.getBlock("Barbed Wire", 1007).getInt();
+			BlockNanoWoodID = cfg.getBlock("Nano Wood", 1008).getInt();
+			BlockNanoLeavesID = cfg.getBlock("Nano Leaves", 1009).getInt();
+			BlockNanoSaplingsID = cfg.getBlock("Nano Saplings", 1010).getInt();
+			BlockNanoPlanksID = cfg.getBlock("Nano Planks", 1011).getInt();
+			BlockNanoOreID = cfg.getBlock("Ore", 1012).getInt();
+			BlockConfusionID = cfg.getBlock("Confusion", 1013).getInt();
+			BlockFallingID = cfg.getBlock("Falling Blocks", 1014).getInt();
+			BlockNotFallingID = cfg.getBlock("Not Falling Blocks", 1015).getInt();
+			BlockSodiumID = cfg.getBlock("Sodium", 1016).getInt();
+			BlockMossyStoneID = cfg.getBlock("Mossy Stone", 1017).getInt();
+			BlockTheDeathHeadID = cfg.getBlock("TheDeathHead", 1018).getInt();
+			BlockTeaID = cfg.getBlock("Tea", 1019).getInt();
+
 			ItemNanotechID = cfg.getItem("Main Nanotech ID", 5000).getInt();
 			ItemSuperBottleOfXpID = cfg.getItem("Super Bottle of xp", 5001).getInt();
 			ItemDiamondBowID = cfg.getItem("Diamond bow", 5002).getInt();
@@ -189,8 +198,6 @@ public class Nanotech_mod
 			ItemCrazyGlassesID = cfg.getItem("CrazyGlasses", 5021).getInt();
 			TeaSeedID = cfg.getItem("TeaSeed", 5022).getInt();
 			TeaID = cfg.getItem("Tea", 5023).getInt();
-			ItemLampID = cfg.getItem("Lamp", 5024).getInt();
-			ItemSunShadeID = cfg.getItem("SunShade", 5025).getInt();
 
 			HardRecipe = cfg.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
 
@@ -256,7 +263,7 @@ public class Nanotech_mod
 	}
 
 	// Initialization
-	@Init
+	@EventHandler
 	public void InitNanotech_mod(FMLInitializationEvent event)
 	{
 		Nanotechbiome = new NanotechBiome(100).setBiomeName("Nanotechbiome").setTemperatureRainfall(1.2F, 0.9F);
@@ -277,7 +284,7 @@ public class Nanotech_mod
 		GameRegistry.registerCraftingHandler(new CraftingHandler());
 	}
 
-	@PostInit
+	@EventHandler
 	public void PostInitNanotech_mod(FMLPostInitializationEvent event)
 	{
 		proxy.registerOverlay();
@@ -294,9 +301,6 @@ public class Nanotech_mod
 			NanotechRecipe.InitFallingBlockRecipes(8);
 		}
 
-		// Localization
-		LanguageRegistry.instance().loadLocalization("/mods/Nanotech_mod/lang/en_US.lang", "en_US", false);
-		LanguageRegistry.instance().loadLocalization("/mods/Nanotech_mod/lang/fr_FR.lang", "fr_FR", false);
 	}
 
 	// Gui and TileEntity
@@ -308,12 +312,6 @@ public class Nanotech_mod
 		GameRegistry.registerTileEntity(TileEntityJumper.class, "TileEntityJumper");
 		GameRegistry.registerTileEntity(TileEntitySmoker.class, "TileEntitySmoker");
 		GameRegistry.registerTileEntity(TileEntityMultiplier.class, "TileEntityMultiplier");
-		GameRegistry.registerTileEntity(TileEntitySpotLight.class, "TileEntitySpotLight");
-		GameRegistry.registerTileEntity(TileEntityTrail.class, "TileEntityTrail");
-		GameRegistry.registerTileEntity(TileEntityFountain.class, "TileEntityFountain");
-		GameRegistry.registerTileEntity(TileEntityLamp.class, "TileEntityLamp");
-		GameRegistry.registerTileEntity(TileEntityLampLight.class, "TileEntityLampLight");
-		GameRegistry.registerTileEntity(TileEntitySunShade.class, "TileEntitySunShade");
 	}
 
 	// Forge dictionary

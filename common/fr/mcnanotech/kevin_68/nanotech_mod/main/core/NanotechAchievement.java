@@ -3,6 +3,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.blocks.NanotechCityBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
@@ -26,9 +27,12 @@ public class NanotechAchievement
 		blockSmoker = new Achievement(12578, "blockSmoker", -2, 5, NanotechBlock.BlockSmoker, installMod).registerAchievement();
 		blockSpeed = new Achievement(12579, "blockSpeed", -3, 5, NanotechBlock.BlockSpeed, installMod).registerAchievement();
 		blockSlow = new Achievement(12580, "blockSlow", -4, 5, new ItemStack(NanotechBlock.BlockSpeed, 1, 1), installMod).registerAchievement();
-		blockSpotLight = new Achievement(12581, "blockSpotLight", -5, 5, NanotechBlock.BlockSpotLight, installMod).registerAchievement();
-		blockTrail = new Achievement(12582, "blockTrail", -6, 5, NanotechBlock.BlockTrail, installMod).registerAchievement();
-		blockTrashCan = new Achievement(12583, "blockTrashCan", 6, 5, NanotechBlock.BlockTrashcan, installMod).registerAchievement();
+		if (Nanotech_mod.nanotech_mod_city())
+		{
+			blockSpotLight = new Achievement(12581, "blockSpotLight", -5, 5, NanotechCityBlock.BlockSpotLight, installMod).registerAchievement();
+			blockTrail = new Achievement(12582, "blockTrail", -6, 5, NanotechCityBlock.BlockTrail, installMod).registerAchievement();
+			blockTrashCan = new Achievement(12583, "blockTrashCan", 6, 5, NanotechCityBlock.BlockTrashcan, installMod).registerAchievement();
+		}
 		blockTheDeath = new Achievement(12584, "blockTheDeath", 3, 0, NanotechBlock.BlockTheDeathHead, installMod).registerAchievement();
 		killTheDeath = new Achievement(12586, "killTheDeath", 5, 0, NanotechBlock.BlockTheDeathHead, blockTheDeath).registerAchievement();
 		killTheDeathWithCG = new Achievement(12587, "killTheDeathWithCG", 7, 0, NanotechBlock.BlockTheDeathHead, killTheDeath).registerAchievement();
