@@ -12,5 +12,6 @@ Todo list:
 * Better render for fountain?
 * Add textures for tea, fountain, etc
 * Add tea cup and other items like that
+* Add nanomite bow : semi-auto, auto
 
 That's all for now
