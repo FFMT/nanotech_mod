@@ -2,6 +2,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -13,37 +14,37 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFalling extends BlockSand
 {
-	public static String[] type = new String[]
-	{"stone", "stonebrick", "crackedstonebrick", "mossystonebrick", "chiseledstonebrick", "cobblestone", "mossycobblestone"};
+	public static String[] type = new String[] {"stone", "stonebrick", "crackedstonebrick", "mossystonebrick", "chiseledstonebrick", "cobblestone", "mossycobblestone"};
 	private Icon[] iconbuffer;
 
 	public BlockFalling(int id, Material material)
 	{
 		super(id, material);
 	}
-
-	public void registerIcons(IconRegister iconregister)
-	{
-		iconbuffer = new Icon[type.length];
-		iconbuffer[0] = iconregister.registerIcon("stone");
-		iconbuffer[1] = iconregister.registerIcon("stonebrick");
-		iconbuffer[2] = iconregister.registerIcon("stonebrick_cracked");
-		iconbuffer[3] = iconregister.registerIcon("stonebrick_mossy");
-		iconbuffer[4] = iconregister.registerIcon("stonebrick_carved");
-		iconbuffer[5] = iconregister.registerIcon("cobblestone");
-		iconbuffer[6] = iconregister.registerIcon("cobblestone_mossy");
-	}
+	
+	public void registerIcons(IconRegister iconRegister){}
 
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int metadata)
 	{
-		if(metadata < type.length)
+		switch(metadata)
 		{
-			return iconbuffer[metadata];
-		}
-		else
-		{
-			return iconbuffer[0];
+		case 0:
+			return Block.stone.getBlockTextureFromSide(side);
+		case 1:
+			return Block.stoneBrick.getIcon(side, 0);
+		case 2:
+			return Block.stoneBrick.getIcon(side, 1);
+		case 3:
+			return Block.stoneBrick.getIcon(side, 2);
+		case 4:
+			return Block.stoneBrick.getIcon(side, 3);
+		case 5:
+			return Block.cobblestone.getBlockTextureFromSide(side);
+		case 6:
+			return Block.cobblestoneMossy.getBlockTextureFromSide(side);
+		default:
+			return Block.stone.getBlockTextureFromSide(side);
 		}
 	}
 

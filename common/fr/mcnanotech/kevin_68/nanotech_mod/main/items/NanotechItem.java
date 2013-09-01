@@ -6,8 +6,6 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.EnumHelper;
-import fr.mcnanotech.kevin_68.nanotech_mod.city.items.ItemLamp;
-import fr.mcnanotech.kevin_68.nanotech_mod.city.items.ItemSunShade;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.UtilDiskInfo;

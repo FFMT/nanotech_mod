@@ -1,8 +1,6 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.items;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockJukeBox;

@@ -2,7 +2,6 @@ package fr.mcnanotech.kevin_68.nanotech_mod.city.items;
 
 import net.minecraft.item.Item;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.core.Nanotech_mod_City;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class NanotechCityItem 
 {

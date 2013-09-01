@@ -4,11 +4,11 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
-import fr.mcnanotech.FFMT.FFMTAPI.FFMTRegistry;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.blocks.NanotechCityBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.items.NanotechCityItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
+import fr.minecraftforgefrance.ffmtapi.FFMTRegistry;
 
 public class NanotechRecipe
 {

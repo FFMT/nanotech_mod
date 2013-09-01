@@ -12,7 +12,6 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.city.client.model.blocks.ModelBlockLamp;
-import fr.mcnanotech.kevin_68.nanotech_mod.city.client.model.blocks.ModelBlockLampLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityLamp;
 
 public class TileEntityLampRender extends TileEntitySpecialRenderer
