@@ -56,7 +56,7 @@ public class Nanotech_mod
 
 	// Item IDs
 	public static int ItemNanotechID, ItemSuperBottleOfXpID, ItemDiamondBowID, ItemEmeraldBowID, ItemNanomiteBowID, ItemNanomiteAxeID, ItemNanomitePickaxeID, ItemNanomiteShovelID, ItemNanomiteHoeID, ItemNanomiteSwordID, ItemNanomiteHelmetID, ItemNanomiteChestPlateID, ItemNanomiteLegginsID, ItemNanomiteBootsID, ItemMysteriousHelmetID, ItemMysteriousChestPlateID, ItemMysteriousLegginsID,
-	ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemScytheID, ItemCrazyGlassesID, TeaSeedID, TeaID;
+	ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemScytheID, ItemCrazyGlassesID, TeaSeedID, TeaID, DebugID;
 
 	// Dimension ID
 	public static int dimensionID = 19;
@@ -195,7 +195,8 @@ public class Nanotech_mod
 			ItemCrazyGlassesID = cfg.getItem("CrazyGlasses", 5021).getInt();
 			TeaSeedID = cfg.getItem("TeaSeed", 5022).getInt();
 			TeaID = cfg.getItem("Tea", 5023).getInt();
-
+			DebugID = cfg.getItem("Debug Item", 5024).getInt();
+			
 			HardRecipe = cfg.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
 
 			CreeperDriller = cfg.get(CATEGORY_Mobscfg, "CreeperDriller", true).getBoolean(true);

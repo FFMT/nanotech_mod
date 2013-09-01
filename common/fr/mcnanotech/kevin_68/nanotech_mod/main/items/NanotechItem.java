@@ -14,7 +14,7 @@ public class NanotechItem
 {
 	// Items statement
 	public static Item ItemBase, Superbottleofxp, Diamondbow, Emeraldbow, Nanomitebow, Nanomiteaxe, Nanomitepickaxe, Nanomiteshovel, Nanomitehoe, Nanomitesword, Nanomitehelmet, Nanomitechestplate, Nanomiteleggings, Nanomiteboots, Mysterioushelmet, Mysteriouschestplate, Mysteriousleggings, Mysteriousboots, Nanodisc, Yourmusicdisc, Yourmusicdisc2, Yourmusicdisc3, Yourmusicdisc4, Yourmusicdisc5,
-			Yourmusicdisc6, Yourmusicdisc7, Yourmusicdisc8, Yourmusicdisc9, Yourmusicdisc10, Yourmusicdisc11, Yourmusicdisc12, Yourmusicdisc13, Yourmusicdisc14, Yourmusicdisc15, Yourmusicdisc16, Edibleflesh, Rottenchunk, scythe, crazyGlasses, teaSeed, tea;
+			Yourmusicdisc6, Yourmusicdisc7, Yourmusicdisc8, Yourmusicdisc9, Yourmusicdisc10, Yourmusicdisc11, Yourmusicdisc12, Yourmusicdisc13, Yourmusicdisc14, Yourmusicdisc15, Yourmusicdisc16, Edibleflesh, Rottenchunk, scythe, crazyGlasses, teaSeed, tea, debug;
 
 	// Enum tools and armor material
 	public static EnumArmorMaterial EnumArmorMaterialMysterious = EnumHelper.addArmorMaterial("Mysterious", 50, new int[]
@@ -70,6 +70,7 @@ public class NanotechItem
 		crazyGlasses = new ItemCrazyGlasses(Nanotech_mod.ItemCrazyGlassesID, EnumArmorMaterialCrazyGlasses, 1, 0).setUnlocalizedName("crazyGlasses").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		teaSeed = new ItemTeaSeed(Nanotech_mod.TeaSeedID, NanotechBlock.BlockTea.blockID, Block.tilledField.blockID).setUnlocalizedName("teaSeed").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		tea = new ItemTea(Nanotech_mod.TeaID).setUnlocalizedName("tea").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		debug = new ItemDebug(Nanotech_mod.DebugID).setUnlocalizedName("debug").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 	}
 
 }
