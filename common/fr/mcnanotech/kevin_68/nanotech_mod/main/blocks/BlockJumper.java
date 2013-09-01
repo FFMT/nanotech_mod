@@ -20,8 +20,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 
 public class BlockJumper extends BlockContainer
 {
-	public static String[] type = new String[]
-	{"basic", "advanced"};
+	public static String[] type = new String[] {"basic", "advanced"};
 	public Icon[] iconbuffer;
 
 	public BlockJumper(int id)
@@ -102,5 +101,4 @@ public class BlockJumper extends BlockContainer
 	{
 		return new TileEntityJumper();
 	}
-
 }
