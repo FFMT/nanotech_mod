@@ -89,7 +89,7 @@ public class ItemDebug extends Item
 			if (tile instanceof TileEntitySunShade)
 			{
 				TileEntitySunShade te = (TileEntitySunShade)tile;
-				player.addChatMessage("Status: " + FFMTColor.aqua + (te.getOpen() ? "Open" : "Close"));
+				player.addChatMessage("Status: " + FFMTColor.aqua + te.texture);
 				return true;
 			}
 		}
