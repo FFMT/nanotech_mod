@@ -75,5 +75,4 @@ public class BlockSpotLight extends BlockContainer
 			return this.side;
 		}
 	}
-
 }

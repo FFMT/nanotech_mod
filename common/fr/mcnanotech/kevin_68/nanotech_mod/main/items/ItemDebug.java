@@ -31,7 +31,8 @@ public class ItemDebug extends Item
 			player.addChatMessage(FFMTColor.gray + "-----------------------------------------------------");
 			player.addChatMessage("Name: " + FFMTColor.aqua + tile.getBlockType().getLocalizedName());
 			player.addChatMessage("Coords: X:" + FFMTColor.aqua + String.valueOf(x) + FFMTColor.white + " Y:" + FFMTColor.aqua + String.valueOf(y) + FFMTColor.white + " Z:" + FFMTColor.aqua + String.valueOf(z));
-
+			player.addChatMessage("Metadata : " + String.valueOf(world.getBlockMetadata(x, y, z)));
+			
 			if (tile instanceof TileEntityJumper)
 			{
 				TileEntityJumper te = (TileEntityJumper)tile;
@@ -88,7 +89,7 @@ public class ItemDebug extends Item
 			if (tile instanceof TileEntitySunShade)
 			{
 				TileEntitySunShade te = (TileEntitySunShade)tile;
-				player.addChatMessage("Status: " + FFMTColor.aqua + te.texture);
+				player.addChatMessage("Status: " + FFMTColor.aqua + (te.getOpen() ? "Open" : "Close"));
 				return true;
 			}
 		}

@@ -7,6 +7,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
@@ -20,7 +22,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySunShade;
 
 public class BlockSunShade extends Block
 {
-	public static String[] type = new String[]{"sunshade", "empty", "emptyFlat", "emptyTop"};
+	public static String[] type = new String[] {"sunshade", "empty", "emptyFlat", "emptyTop"};
 	public Icon stick;
 
 	public BlockSunShade(int id, Material material)
@@ -38,9 +40,9 @@ public class BlockSunShade extends Block
 	}
 
 	@Override
-	public TileEntity createTileEntity(World world, int metadata) 
+	public TileEntity createTileEntity(World world, int metadata)
 	{
-		if (metadata == 0)
+		if(metadata == 0)
 		{
 			return new TileEntitySunShade();
 		}
@@ -52,7 +54,7 @@ public class BlockSunShade extends Block
 
 	public boolean hasTileEntity(int metadata)
 	{
-		if (metadata == 0)
+		if(metadata == 0)
 		{
 			return true;
 		}
@@ -77,23 +79,23 @@ public class BlockSunShade extends Block
 		return -1;
 	}
 
-	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata) 
+	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata)
 	{
-		if (metadata == 0)
+		if(metadata == 0)
 		{
 			world.setBlockToAir(x, y, z);
 			world.setBlockToAir(x, y + 1, z);
-			if (world.getBlockMetadata(x, y + 2, z) == 1)
+			if(world.getBlockMetadata(x, y + 2, z) == 1)
 			{
 				world.setBlockToAir(x, y + 2, z);
 			}
-			else if (world.getBlockMetadata(x, y + 2, z) == 3)
+			else if(world.getBlockMetadata(x, y + 2, z) == 3)
 			{
-				for (int j = -1; j < 2; ++j)
+				for(int j = -1; j < 2; ++j)
 				{
-					for (int k = -1; k < 2; ++k)
+					for(int k = -1; k < 2; ++k)
 					{
-						if (world.getBlockId(x + j, y + 2, z + k) == this.blockID)
+						if(world.getBlockId(x + j, y + 2, z + k) == this.blockID)
 						{
 							world.setBlockToAir(x + j, y + 2, z + k);
 						}
@@ -101,21 +103,21 @@ public class BlockSunShade extends Block
 				}
 			}
 		}
-		else if (metadata == 1 && world.getBlockMetadata(x, y - 1, z) == 0 && world.getBlockId(x, y - 1, z) == this.blockID)
+		else if(metadata == 1 && world.getBlockMetadata(x, y - 1, z) == 0 && world.getBlockId(x, y - 1, z) == this.blockID)
 		{
 			world.setBlockToAir(x, y, z);
 			world.setBlockToAir(x, y - 1, z);
-			if (world.getBlockMetadata(x, y + 1, z) == 1)
+			if(world.getBlockMetadata(x, y + 1, z) == 1)
 			{
 				world.setBlockToAir(x, y + 1, z);
 			}
-			else if (world.getBlockMetadata(x, y + 1, z) == 3)
+			else if(world.getBlockMetadata(x, y + 1, z) == 3)
 			{
-				for (int j = -1; j < 2; ++j)
+				for(int j = -1; j < 2; ++j)
 				{
-					for (int k = -1; k < 2; ++k)
+					for(int k = -1; k < 2; ++k)
 					{
-						if (world.getBlockId(x + j, y + 1, z + k) == this.blockID)
+						if(world.getBlockId(x + j, y + 1, z + k) == this.blockID)
 						{
 							world.setBlockToAir(x + j, y + 1, z + k);
 						}
@@ -123,21 +125,21 @@ public class BlockSunShade extends Block
 				}
 			}
 		}
-		else if (world.getBlockMetadata(x, y - 2, z) == 0 && world.getBlockId(x, y - 2, z) == this.blockID)
+		else if(world.getBlockMetadata(x, y - 2, z) == 0 && world.getBlockId(x, y - 2, z) == this.blockID)
 		{
 			world.setBlockToAir(x, y - 1, z);
 			world.setBlockToAir(x, y - 2, z);
-			if (metadata == 1)
+			if(metadata == 1)
 			{
 				world.setBlockToAir(x, y, z);
 			}
-			else if (metadata == 3)
+			else if(metadata == 3)
 			{
-				for (int j = -1; j < 2; ++j)
+				for(int j = -1; j < 2; ++j)
 				{
-					for (int k = -1; k < 2; ++k)
+					for(int k = -1; k < 2; ++k)
 					{
-						if (world.getBlockId(x + j, y, z + k) == this.blockID)
+						if(world.getBlockId(x + j, y, z + k) == this.blockID)
 						{
 							world.setBlockToAir(x + j, y, z + k);
 						}
@@ -145,7 +147,7 @@ public class BlockSunShade extends Block
 				}
 			}
 		}
-		else if (metadata == 2)
+		else if(metadata == 2)
 		{
 			world.setBlock(x, y, z, this.blockID, 2, 1);
 		}
@@ -153,9 +155,9 @@ public class BlockSunShade extends Block
 		{
 			super.onBlockDestroyedByPlayer(world, x, y, z, metadata);
 		}
-	}    
+	}
 
-	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion par5Explosion) 
+	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion explosion)
 	{
 		this.onBlockDestroyedByPlayer(world, x, y, z, world.getBlockMetadata(x, y, z));
 	}
@@ -173,9 +175,10 @@ public class BlockSunShade extends Block
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		blockIcon = iconregister.registerIcon("wool_colored_white"); // for particles
+		blockIcon = iconregister.registerIcon("wool_colored_white"); // for
+																		// particles
 		stick = iconregister.registerIcon("log_oak"); // for particles
-	}	
+	}
 
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int metadata)
@@ -192,7 +195,7 @@ public class BlockSunShade extends Block
 
 	public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z)
 	{
-		if (blockAccess.getBlockMetadata(x, y, z) == 0 || blockAccess.getBlockMetadata(x, y, z) == 1)
+		if(blockAccess.getBlockMetadata(x, y, z) == 0 || blockAccess.getBlockMetadata(x, y, z) == 1)
 		{
 			float f = 0.375F;
 			float f1 = 0.625F;
@@ -200,7 +203,7 @@ public class BlockSunShade extends Block
 			float f3 = 0.625F;
 			this.setBlockBounds(f, 0.0F, f2, f1, 1.0F, f3);
 		}
-		else if (blockAccess.getBlockMetadata(x, y, z) == 2)
+		else if(blockAccess.getBlockMetadata(x, y, z) == 2)
 		{
 			this.setBlockBounds(0.0F, 0.85F, 0.0F, 1.0F, 0.95F, 1.0F);
 		}

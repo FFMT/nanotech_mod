@@ -12,14 +12,14 @@ public class TileEntitySunShade extends TileEntity
 
 	public void updateEntity()
 	{
-		if (this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
+		if(this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
 		{
 			texture = "Open";
-			if (this.worldObj.getBlockMetadata(xCoord, yCoord + 2, zCoord) == 1)
+			if(this.worldObj.getBlockMetadata(xCoord, yCoord + 2, zCoord) == 1)
 			{
-				for (int j = -1; j < 2; ++j)
+				for(int j = -1; j < 2; ++j)
 				{
-					for (int k = -1; k < 2; ++k)
+					for(int k = -1; k < 2; ++k)
 					{
 						if(j == 0 && k == 0)
 						{
@@ -30,17 +30,18 @@ public class TileEntitySunShade extends TileEntity
 							this.worldObj.setBlock(xCoord + j, yCoord + 2, zCoord + k, NanotechCityBlock.BlockSunShade.blockID, 2, 1);
 						}
 					}
+					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 				}
 			}
 		}
 		else
 		{
 			texture = "Close";
-			if (this.worldObj.getBlockMetadata(xCoord, yCoord + 2, zCoord) == 3)
+			if(this.worldObj.getBlockMetadata(xCoord, yCoord + 2, zCoord) == 3)
 			{
-				for (int j = -1; j < 2; ++j)
+				for(int j = -1; j < 2; ++j)
 				{
-					for (int k = -1; k < 2; ++k)
+					for(int k = -1; k < 2; ++k)
 					{
 						if(j == 0 && k == 0)
 						{
@@ -51,6 +52,7 @@ public class TileEntitySunShade extends TileEntity
 							this.worldObj.setBlockToAir(xCoord + j, yCoord + 2, zCoord + k);
 						}
 					}
+					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 				}
 			}
 		}
