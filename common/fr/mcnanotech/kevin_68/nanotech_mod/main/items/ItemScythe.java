@@ -15,7 +15,7 @@ public class ItemScythe extends ItemSword
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		this.itemIcon = iconregister.registerIcon("Nanotech_mod:itemScythe");
+		this.itemIcon = iconregister.registerIcon("nanotech_mod:itemScythe");
 	}
 
 	public boolean getIsRepairable(ItemStack stack, ItemStack stack2)

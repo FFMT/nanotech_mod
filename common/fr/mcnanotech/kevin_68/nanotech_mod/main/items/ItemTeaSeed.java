@@ -71,7 +71,7 @@ public class ItemTeaSeed extends Item implements IPlantable
     
 	public void registerIcons(IconRegister iconregister)
 	{
-		this.itemIcon = iconregister.registerIcon("Nanotech_mod:teaSeed");
+		this.itemIcon = iconregister.registerIcon("nanotech_mod:teaSeed");
 	}
 
 }

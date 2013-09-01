@@ -27,5 +27,4 @@ public class ItemBlockJumper extends ItemBlock
 			return getUnlocalizedName();
 		}
 	}
-
 }

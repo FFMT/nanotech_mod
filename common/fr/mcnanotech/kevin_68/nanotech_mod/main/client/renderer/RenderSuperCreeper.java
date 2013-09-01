@@ -15,7 +15,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperCreeper;
 public class RenderSuperCreeper extends RenderLiving
 {
 	private ModelBase model = new ModelSuperCreeper(2.0F);
-	protected static final ResourceLocation texture = new ResourceLocation("Nanotech_mod:textures/entity/supercreeper.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod:textures/entity/supercreeper.png");
 
 	public RenderSuperCreeper(ModelSuperCreeper model, float f)
 	{

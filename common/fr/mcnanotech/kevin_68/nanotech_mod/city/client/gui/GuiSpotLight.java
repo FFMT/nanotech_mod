@@ -20,7 +20,7 @@ import fr.minecraftforgefrance.ffmtapi.FFMTColor;
 public class GuiSpotLight extends GuiContainer
 {
 	protected TileEntitySpotLight tileSpotLight;
-	protected static final ResourceLocation texture = new ResourceLocation("Nanotech_mod_City:textures/gui/BlockSpotLight.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod_city:textures/gui/BlockSpotLight.png");
 
 	public GuiSpotLight(InventoryPlayer playerInventory, TileEntitySpotLight tileEntity, World world)
 	{

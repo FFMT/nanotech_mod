@@ -18,7 +18,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 public class GuiOverlay extends Gui
 {
 	private Minecraft mc;
-	protected static final ResourceLocation texture = new ResourceLocation("Nanotech_mod:textures/armor/crazyGlassesOverlay.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/armor/crazyGlassesOverlay.png");
 
 	public GuiOverlay(Minecraft mc)
 	{

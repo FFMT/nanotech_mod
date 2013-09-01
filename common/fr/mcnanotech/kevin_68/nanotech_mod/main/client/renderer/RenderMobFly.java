@@ -9,7 +9,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobFly;
 public class RenderMobFly extends RenderLiving
 {
 	private ModelFly model = new ModelFly();
-	protected static final ResourceLocation texture = new ResourceLocation("Nanotech_mod:textures/entity/fly.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod:textures/entity/fly.png");
 
 	public RenderMobFly(ModelFly model, float f)
 	{

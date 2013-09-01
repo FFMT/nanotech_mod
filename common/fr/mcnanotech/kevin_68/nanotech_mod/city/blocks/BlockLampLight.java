@@ -6,6 +6,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -13,6 +14,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.items.NanotechCityItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityLampLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 
 public class BlockLampLight extends BlockContainer
 {	
@@ -43,10 +45,13 @@ public class BlockLampLight extends BlockContainer
 		return -1;
 	}
 	
-	public void registerIcons(IconRegister iconregister)
+	public Icon getIcon(int side, int metadata)
 	{
-		blockIcon = iconregister.registerIcon("Nanotech_mod:jumpbottom"); // for particles
+		return NanotechBlock.BlockJumper.getIcon(0, 0);
 	}
+
+	public void registerIcons(IconRegister iconregister)
+	{}
 	
 	public void updateLight(World world, int x, int y, int z)
 	{

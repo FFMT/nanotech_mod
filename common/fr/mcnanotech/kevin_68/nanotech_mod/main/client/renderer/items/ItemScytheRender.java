@@ -14,7 +14,7 @@ public class ItemScytheRender implements IItemRenderer
 {
 
 	protected ItemScytheModel model;
-	protected static final ResourceLocation texture = new ResourceLocation("Nanotech_mod:textures/items/scythe.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/items/scythe.png");
 
 	public ItemScytheRender()
 	{

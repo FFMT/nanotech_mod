@@ -5,7 +5,6 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockFakeOre extends ItemBlock
 {
-
 	public ItemBlockFakeOre(int id)
 	{
 		super(id);
@@ -28,5 +27,4 @@ public class ItemBlockFakeOre extends ItemBlock
 			return getUnlocalizedName();
 		}
 	}
-
 }

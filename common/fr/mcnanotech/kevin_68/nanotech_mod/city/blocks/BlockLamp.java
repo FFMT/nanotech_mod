@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -17,10 +18,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.items.NanotechCityItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityLamp;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityLampLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 
 public class BlockLamp extends Block
 {
-	public static String[] type = new String[]{"lamp1", "empty", "lampLightOff"};
+	public static String[] type = new String[] {"lamp1", "empty", "lampLightOff"};
 
 	public BlockLamp(int id, Material material)
 	{
@@ -37,13 +39,13 @@ public class BlockLamp extends Block
 	}
 
 	@Override
-	public TileEntity createTileEntity(World world, int metadata) 
+	public TileEntity createTileEntity(World world, int metadata)
 	{
-		if (metadata == 0)
+		if(metadata == 0)
 		{
 			return new TileEntityLamp();
 		}
-		else if (metadata == 2)
+		else if(metadata == 2)
 		{
 			return new TileEntityLampLight();
 		}
@@ -55,7 +57,7 @@ public class BlockLamp extends Block
 
 	public boolean hasTileEntity(int metadata)
 	{
-		if (metadata == 0 || metadata == 2)
+		if(metadata == 0 || metadata == 2)
 		{
 			return true;
 		}
@@ -64,22 +66,22 @@ public class BlockLamp extends Block
 			return false;
 		}
 	}
-	
-    public boolean renderAsNormalBlock()
-    {
-        return false;
-    }
 
-    public boolean isOpaqueCube()
-    {
-        return false;
-    }
+	public boolean renderAsNormalBlock()
+	{
+		return false;
+	}
 
-    public int getRenderType()
-    {
-    	return -1;
-    }
-	 
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
+
+	public int getRenderType()
+	{
+		return -1;
+	}
+
 	public void updateLight(World world, int x, int y, int z)
 	{
 		if(world.getBlockId(x, y, z) == this.blockID && world.getBlockMetadata(x, y, z) == 2 && !world.isDaytime())
@@ -89,17 +91,17 @@ public class BlockLamp extends Block
 		}
 	}
 
-	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata) 
+	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata)
 	{
-		for (int i = - 3; i < 4; ++i)
+		for(int i = -3; i < 4; ++i)
 
-			if (world.getBlockId(x, y + i, z) == this.blockID || world.getBlockId(x, y + i, z) == NanotechCityBlock.BlockLampLight.blockID)
+			if(world.getBlockId(x, y + i, z) == this.blockID || world.getBlockId(x, y + i, z) == NanotechCityBlock.BlockLampLight.blockID)
 			{
 				world.setBlockToAir(x, y + i, z);
 			}
-	}    
+	}
 
-	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion par5Explosion) 
+	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion par5Explosion)
 	{
 		this.onBlockDestroyedByPlayer(world, x, y, z, world.getBlockMetadata(x, y, z));
 	}
@@ -108,24 +110,27 @@ public class BlockLamp extends Block
 	{
 		return NanotechCityItem.lamp.itemID;
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public int idPicked(World world, int x, int y, int z)
 	{
 		return NanotechCityItem.lamp.itemID;
 	}
-	
-	public void registerIcons(IconRegister iconregister)
+
+	public Icon getIcon(int side, int metadata)
 	{
-		blockIcon = iconregister.registerIcon("Nanotech_mod:jumpbottom"); // for particles
+		return NanotechBlock.BlockJumper.getIcon(0, 0);
 	}
-	
-    public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z)
-    {
-    	float f = 0.375F;
-        float f1 = 0.625F;
-        float f2 = 0.375F;
-        float f3 = 0.625F;
-        this.setBlockBounds(f, 0.0F, f2, f1, 1.0F, f3);
-    }
+
+	public void registerIcons(IconRegister iconregister)
+	{}
+
+	public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z)
+	{
+		float f = 0.375F;
+		float f1 = 0.625F;
+		float f2 = 0.375F;
+		float f3 = 0.625F;
+		this.setBlockBounds(f, 0.0F, f2, f1, 1.0F, f3);
+	}
 }

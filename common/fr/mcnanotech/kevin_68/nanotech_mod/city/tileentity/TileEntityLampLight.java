@@ -9,7 +9,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.blocks.BlockLampLight;
 
 public class TileEntityLampLight extends TileEntity 
 {
-	public String getLampTexture = "Nanotech_mod_City:textures/blocks/BlockLampLightOn.png";
+	public String getLampTexture = "nanotech_mod_city:textures/blocks/BlockLampLightOn.png";
 	
 	public void updateEntity()
 	{
@@ -39,11 +39,11 @@ public class TileEntityLampLight extends TileEntity
 	{
 		if (this.getBlockMetadata() == 0)
 		{
-			return "Nanotech_mod_City:textures/blocks/BlockLampLightOn.png";
+			return "nanotech_mod_city:textures/blocks/BlockLampLightOn.png";
 		}
 		else
 		{
-			return "Nanotech_mod_City:textures/blocks/BlockLampLightOff.png";
+			return "nanotech_mod_city:textures/blocks/BlockLampLightOff.png";
 		}
 	}
 	

@@ -27,9 +27,9 @@ public class BlockTrashcan extends Block
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		blockIcon = iconregister.registerIcon("Nanotech_mod_City:trash_can_side");
-		topIcon = iconregister.registerIcon("Nanotech_mod_City:trash_can_top");
-		bottomIcon = iconregister.registerIcon("Nanotech_mod_City:trash_can_bottom");
+		blockIcon = iconregister.registerIcon("nanotech_mod_city:trash_can_side");
+		topIcon = iconregister.registerIcon("nanotech_mod_city:trash_can_top");
+		bottomIcon = iconregister.registerIcon("nanotech_mod_city:trash_can_bottom");
 	}
 
 	public Icon getIcon(int side, int metadata)

@@ -5,7 +5,6 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockNanotechOre extends ItemBlock
 {
-
 	public ItemBlockNanotechOre(int id)
 	{
 		super(id);
@@ -28,5 +27,4 @@ public class ItemBlockNanotechOre extends ItemBlock
 			return getUnlocalizedName();
 		}
 	}
-
 }

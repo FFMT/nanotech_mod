@@ -99,17 +99,17 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 	protected String getLivingSound()
 	{
-		return "Nanotech_mod:monster";
+		return "nanotech_mod:monster";
 	}
 
 	protected String getHurtSound()
 	{
-		return "Nanotech_mod:monsterhurt";
+		return "nanotech_mod:monsterhurt";
 	}
 
 	protected String getDeathSound()
 	{
-		return "Nanotech_mod:monsterdeath";
+		return "nanotech_mod:monsterdeath";
 	}
 
 	public void onLivingUpdate()

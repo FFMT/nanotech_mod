@@ -18,8 +18,7 @@ import net.minecraftforge.event.entity.player.ArrowNockEvent;
 public class ItemDiamondBow extends ItemBow
 {
 	private Icon[] iconbuffer;
-	private static String[] bowpullname = new String[]
-	{"diamondbow_pull1", "diamondbow_pull2", "diamondbow_pull3"};
+	private static String[] bowpullname = new String[] {"diamondbow_pull1", "diamondbow_pull2", "diamondbow_pull3"};
 
 	public ItemDiamondBow(int id)
 	{
@@ -33,9 +32,9 @@ public class ItemDiamondBow extends ItemBow
 		iconbuffer = new Icon[bowpullname.length];
 		for(int i = 0; i < bowpullname.length; i++)
 		{
-			iconbuffer[i] = iconregister.registerIcon("Nanotech_mod:" + bowpullname[i]);
+			iconbuffer[i] = iconregister.registerIcon("nanotech_mod:" + bowpullname[i]);
 		}
-		itemIcon = iconregister.registerIcon("Nanotech_mod:diamondbow");
+		itemIcon = iconregister.registerIcon("nanotech_mod:diamondbow");
 	}
 
 	public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)

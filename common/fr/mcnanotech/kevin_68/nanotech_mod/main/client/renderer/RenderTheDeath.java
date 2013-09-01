@@ -22,7 +22,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 public class RenderTheDeath extends RenderLiving
 {
 	private float size;
-	protected static final ResourceLocation texture = new ResourceLocation("Nanotech_mod:textures/entity/thedeath.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod:textures/entity/thedeath.png");
 
 	private ModelBase model = new ModelTheDeath();
 

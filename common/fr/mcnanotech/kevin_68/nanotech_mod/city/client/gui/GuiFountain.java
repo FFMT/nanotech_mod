@@ -18,7 +18,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityFountain;
 public class GuiFountain extends GuiContainer
 {
 	private TileEntityFountain tileFoutain;
-	protected static final ResourceLocation texture = new ResourceLocation("Nanotech_mod_City:textures/gui/BlockFountain.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod_city:textures/gui/BlockFountain.png");
 
 	public GuiFountain(InventoryPlayer playerinventory, TileEntityFountain tileentity, World world)
 	{

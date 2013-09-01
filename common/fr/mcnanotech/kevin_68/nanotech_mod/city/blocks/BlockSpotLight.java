@@ -59,8 +59,8 @@ public class BlockSpotLight extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconregister)
 	{
-		this.side = iconregister.registerIcon("Nanotech_mod_City:SpotLightSides");
-		this.top = iconregister.registerIcon("Nanotech_mod_City:SpotLightTopAndBottom");
+		this.side = iconregister.registerIcon("nanotech_mod_city:SpotLightSides");
+		this.top = iconregister.registerIcon("nanotech_mod_city:SpotLightTopAndBottom");
 	}
 
 	@SideOnly(Side.CLIENT)

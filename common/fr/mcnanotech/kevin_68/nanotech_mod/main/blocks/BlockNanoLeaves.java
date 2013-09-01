@@ -26,8 +26,8 @@ public class BlockNanoLeaves extends BlockFFMTLeavesBase implements IShearable
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		blockIcon = iconregister.registerIcon("Nanotech_mod:nanoleaves");
-		fastIcon = iconregister.registerIcon("Nanotech_mod:nanoleaves_opaque");
+		blockIcon = iconregister.registerIcon("nanotech_mod:nanoleaves");
+		fastIcon = iconregister.registerIcon("nanotech_mod:nanoleaves_opaque");
 	}
 
 	@SideOnly(Side.CLIENT)

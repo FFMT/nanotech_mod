@@ -19,7 +19,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 public class GuiSmoker extends GuiContainer
 {
 	private TileEntitySmoker tileSmoker;
-	protected static final ResourceLocation texture = new ResourceLocation("Nanotech_mod:textures/gui/BlockSmoker.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/gui/BlockSmoker.png");
 
 	public GuiSmoker(InventoryPlayer playerinventory, TileEntitySmoker tileentity, World world)
 	{

@@ -32,7 +32,7 @@ public class ItemBaseMetadata extends Item
 		iconbuffer = new Icon[type.length];
 		for(int i = 0; i < type.length; i++)
 		{
-			iconbuffer[i] = iconregister.registerIcon("Nanotech_mod:" + type[i]);
+			iconbuffer[i] = iconregister.registerIcon("nanotech_mod:" + type[i]);
 		}
 	}
 

@@ -47,7 +47,7 @@ public class MobFly extends EntityAmbientCreature
 
 	protected String getLivingSound()
 	{
-		return "Nanotech_mod:fly";
+		return "nanotech_mod:fly";
 	}
 
 	public boolean func_82235_h()

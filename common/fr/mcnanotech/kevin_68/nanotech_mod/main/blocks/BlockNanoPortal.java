@@ -85,11 +85,6 @@ public class BlockNanoPortal extends Block
 		return 1;
 	}
 
-	public void registerIcons(IconRegister iconRegister)
-	{
-		blockIcon = iconRegister.registerIcon("Nanotech_mod:nanoportal");
-	}
-
 	@SideOnly(Side.CLIENT)
 	public int idPicked(World world, int x, int y, int z)
 	{

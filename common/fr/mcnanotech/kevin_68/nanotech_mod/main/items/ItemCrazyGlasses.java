@@ -25,15 +25,15 @@ public class ItemCrazyGlasses extends ItemArmor
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("Nanotech_mod:crazyGlassesItem");
+		itemIcon = iconregister.registerIcon("nanotech_mod:crazyGlassesItem");
 	}
 
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
 	{
 		if(stack.itemID == NanotechItem.crazyGlasses.itemID)
-			return "Nanotech_mod:textures/armor/crazyGlasses.png";
+			return "nanotech_mod:textures/armor/crazyGlasses.png";
 
-		return "Nanotech_mod:textures/block/empty.png";
+		return "nanotech_mod:textures/block/empty.png";
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class ItemCrazyGlasses extends ItemArmor
 		player.addPotionEffect(new PotionEffect(Potion.confusion.id, 100, 50, true));
 		if(tick > 50)
 		{
-			world.playSoundAtEntity(player, "Nanotech_mod:CrazyGuy", 1.0F, 1.0F);
+			world.playSoundAtEntity(player, "nanotech_mod:CrazyGuy", 1.0F, 1.0F);
 			tick = 0;
 		}
 	}

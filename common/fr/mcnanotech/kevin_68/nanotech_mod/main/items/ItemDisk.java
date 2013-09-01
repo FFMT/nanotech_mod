@@ -52,7 +52,7 @@ public class ItemDisk extends ItemRecord
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		this.itemIcon = iconregister.registerIcon("Nanotech_mod:" + textureName);
+		this.itemIcon = iconregister.registerIcon("nanotech_mod:" + textureName);
 	}
 
 	@SideOnly(Side.CLIENT)

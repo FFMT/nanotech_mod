@@ -19,11 +19,6 @@ public class BlockSmoker extends BlockContainer
 		setTickRandomly(true);
 	}
 
-	public void registerIcons(IconRegister iconregister)
-	{
-		blockIcon = iconregister.registerIcon("Nanotech_mod:smoker");
-	}
-
 	public void randomDisplayTick(World world, int x, int y, int z, Random random)
 	{
 		TileEntitySmoker tilesmoker = (TileEntitySmoker)world.getBlockTileEntity(x, y, z);

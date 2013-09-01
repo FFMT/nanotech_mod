@@ -27,5 +27,4 @@ public class ItemBlockSpeed extends ItemBlock
 			return getUnlocalizedName();
 		}
 	}
-
 }

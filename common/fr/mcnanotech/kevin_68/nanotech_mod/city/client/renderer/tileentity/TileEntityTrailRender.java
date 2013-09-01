@@ -17,7 +17,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrail;
 public class TileEntityTrailRender extends TileEntitySpecialRenderer
 {
 	private final ModelBlockTrail model;
-	protected static final ResourceLocation texture = new ResourceLocation("Nanotech_mod_City:textures/blocks/BlockTrail.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod_city:textures/blocks/BlockTrail.png");
 
 	public TileEntityTrailRender()
 	{
