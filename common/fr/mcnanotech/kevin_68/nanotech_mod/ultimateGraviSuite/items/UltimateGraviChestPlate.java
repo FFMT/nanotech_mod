@@ -19,6 +19,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
@@ -87,11 +88,16 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 		}
 
 		if(readInvisibilityStatus(stack))
+		{		
+			player.setInvisible(true);
+		}
+		else if (!player.isPotionActive(Potion.invisibility))
 		{
-			player.addPotionEffect(new PotionEffect(14, 20, 100));
+			player.setInvisible(false);
 		}
 
 		this.getArmorTexture(stack, player, 1, 1);
+		
 		IC2.platform.profilerEndSection();
 	}
 
