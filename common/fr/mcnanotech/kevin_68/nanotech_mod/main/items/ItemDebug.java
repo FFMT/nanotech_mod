@@ -31,7 +31,7 @@ public class ItemDebug extends Item
 			player.addChatMessage(FFMTColor.gray + "-----------------------------------------------------");
 			player.addChatMessage("Name: " + FFMTColor.aqua + tile.getBlockType().getLocalizedName());
 			player.addChatMessage("Coords: X:" + FFMTColor.aqua + String.valueOf(x) + FFMTColor.white + " Y:" + FFMTColor.aqua + String.valueOf(y) + FFMTColor.white + " Z:" + FFMTColor.aqua + String.valueOf(z));
-			player.addChatMessage("Metadata : " + String.valueOf(world.getBlockMetadata(x, y, z)));
+			player.addChatMessage("Metadata : " + FFMTColor.aqua + String.valueOf(world.getBlockMetadata(x, y, z)));
 			
 			if (tile instanceof TileEntityJumper)
 			{
