@@ -75,6 +75,7 @@ item.scythe.name=Scythe
 item.crazyGlasses.name=Crazy Glasses
 item.teaSeed.name=Tea Sapling
 item.tea.name=Tea
+item.debug.name=Debug
 
 #Entity
 entity.SuperZombie.name=Super Zombie
