@@ -10,21 +10,21 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperZombie;
 public class RenderSuperZombie extends RenderLiving
 {
 	private ModelBase model = new ModelSuperZombie();
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod:textures/entity/superzombie.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/entity/superzombie.png");
 
 	public RenderSuperZombie(ModelSuperZombie model, float f)
 	{
 		super(new ModelSuperZombie(), 0.5F);
 	}
 	
-	protected ResourceLocation func_110870_a(MobSuperZombie entity)
+	protected ResourceLocation getZombieTexture(MobSuperZombie entity)
 	{
 		return texture;
 	}
 
 	@Override
-	protected ResourceLocation func_110775_a(Entity par1Entity)
+	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.func_110870_a((MobSuperZombie)par1Entity);
+		return this.getZombieTexture((MobSuperZombie)entity);
 	}
 }

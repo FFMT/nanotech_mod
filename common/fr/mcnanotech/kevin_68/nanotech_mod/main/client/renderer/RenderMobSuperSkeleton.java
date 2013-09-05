@@ -16,14 +16,14 @@ public class RenderMobSuperSkeleton extends RenderLiving
 		super(new ModelSuperSkeleton(), 0.5F);
 	}
 	
-	protected ResourceLocation func_110870_a(MobSuperSkeleton entity)
+	protected ResourceLocation getSkeletonTexture(MobSuperSkeleton entity)
 	{
 		return texture;
 	}
 
 	@Override
-	protected ResourceLocation func_110775_a(Entity par1Entity)
+	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.func_110870_a((MobSuperSkeleton)par1Entity);
+		return this.getSkeletonTexture((MobSuperSkeleton)entity);
 	}
 }

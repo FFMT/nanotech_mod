@@ -38,13 +38,13 @@ public class MobSuperZombie extends EntityMob
 	}
 	
 	 @Override
-	 protected void func_110147_ax()
+	 protected void applyEntityAttributes()
 	 {
-		 super.func_110147_ax();
-		 this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(80D);
-	     this.func_110148_a(SharedMonsterAttributes.field_111265_b).func_111128_a(40.0D);
-		 this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.50D);
-		 this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(6.0D);
+		 super.applyEntityAttributes();
+		 this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(80D);
+	     this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
+		 this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.50D);
+		 this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(6.0D);
 	 }
 
 	protected void fall(float damage)

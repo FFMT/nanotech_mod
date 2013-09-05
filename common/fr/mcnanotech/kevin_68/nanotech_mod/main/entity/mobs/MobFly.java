@@ -28,10 +28,10 @@ public class MobFly extends EntityAmbientCreature
 	}
 	
 	 @Override
-	 protected void func_110147_ax()
+	 protected void applyEntityAttributes()
 	 {
-		 super.func_110147_ax();
-		 this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(1D);
+		 super.applyEntityAttributes();
+		 this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(1D);
 	 }
 	 
 	protected void entityInit()

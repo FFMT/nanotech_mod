@@ -47,7 +47,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	public MobThedeath(World world)
 	{
 		super(world);
-		this.setEntityHealth(this.func_110138_aP());
+		this.setHealth(this.getMaxHealth());
 		this.setSize(5F, 8.0F);
 		this.isImmuneToFire = true;
 		this.getNavigator().setCanSwim(true);
@@ -62,12 +62,12 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	}
 
 	 @Override
-	 protected void func_110147_ax()
+	 protected void applyEntityAttributes()
 	 {
-		 super.func_110147_ax();
-		 this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(5000D);
-	     this.func_110148_a(SharedMonsterAttributes.field_111265_b).func_111128_a(100.0D);
-		 this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.60D);
+		 super.applyEntityAttributes();
+		 this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(5000D);
+	     this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(100.0D);
+		 this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.60D);
 	 }
 	
 	protected void entityInit()
@@ -454,7 +454,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	public void func_82206_m()
 	{
 		this.func_82215_s(220);
-		this.setEntityHealth(this.func_110138_aP() / 3);
+		this.setHealth(this.getMaxHealth() / 3);
 	}
 
 	public void setInWeb()

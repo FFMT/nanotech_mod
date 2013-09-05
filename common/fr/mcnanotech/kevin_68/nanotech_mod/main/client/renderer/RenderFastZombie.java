@@ -17,14 +17,14 @@ public class RenderFastZombie extends RenderLiving
 		super(new ModelMobFastZombie(), 0.5F);
 	}
 	
-	protected ResourceLocation func_110870_a(MobFastzombie entity)
+	protected ResourceLocation getFastTexture(MobFastzombie entity)
 	{
 		return texture;
 	}
 
 	@Override
-	protected ResourceLocation func_110775_a(Entity par1Entity)
+	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.func_110870_a((MobFastzombie)par1Entity);
+		return this.getFastTexture((MobFastzombie)entity);
 	}
 }

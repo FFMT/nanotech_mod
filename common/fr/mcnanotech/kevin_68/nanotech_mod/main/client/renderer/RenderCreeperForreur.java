@@ -22,15 +22,15 @@ public class RenderCreeperForreur extends RenderLiving
 		super(new ModelCreeperForreur(), 0.5F);
 	}
 	
-	protected ResourceLocation func_110870_a(MobCreeperDriller entity)
+	protected ResourceLocation getCreeperDrillerTexture(MobCreeperDriller entity)
 	{
 		return texture;
 	}
 
 	@Override
-	protected ResourceLocation func_110775_a(Entity par1Entity)
+	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.func_110870_a((MobCreeperDriller)par1Entity);
+		return this.getCreeperDrillerTexture((MobCreeperDriller)entity);
 	}
 
 	protected void updateMob_creeperforreurScale(MobCreeperDriller mob, float par2)
@@ -91,7 +91,7 @@ public class RenderCreeperForreur extends RenderLiving
 			if(par2 == 1)
 			{
 				float var4 = (float)mob.ticksExisted + par3;
-				this.func_110776_a(new ResourceLocation("textures/entity/creeper/creeper_armor.png"));
+				this.bindTexture(new ResourceLocation("textures/entity/creeper/creeper_armor.png"));
 				GL11.glMatrixMode(GL11.GL_TEXTURE);
 				GL11.glLoadIdentity();
 				float var5 = var4 * 0.01F;

@@ -22,7 +22,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 public class RenderTheDeath extends RenderLiving
 {
 	private float size;
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod:textures/entity/thedeath.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/entity/thedeath.png");
 
 	private ModelBase model = new ModelTheDeath();
 
@@ -32,15 +32,15 @@ public class RenderTheDeath extends RenderLiving
 		this.size = 3;
 	}
 	
-	protected ResourceLocation func_110870_a(MobThedeath entity)
+	protected ResourceLocation getTheDeathTexture(MobThedeath entity)
 	{
 		return texture;
 	}
 
 	@Override
-	protected ResourceLocation func_110775_a(Entity par1Entity)
+	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.func_110870_a((MobThedeath)par1Entity);
+		return this.getTheDeathTexture((MobThedeath)entity);
 	}
 	
 	protected void preRenderScale(MobThedeath mob, float par2)
@@ -55,7 +55,7 @@ public class RenderTheDeath extends RenderLiving
 
 	public void renderHealtBar(MobThedeath mob, double par2, double par4, double par6, float par8, float par9)
 	{
-		BossStatus.func_82824_a(mob, true);
+		BossStatus.setBossStatus(mob, true);
 		super.doRenderLiving(mob, par2, par4, par6, par8, par9);
 	}
 

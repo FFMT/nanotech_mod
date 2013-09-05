@@ -53,7 +53,7 @@ public class ItemDebugRender implements IItemRenderer
 		case EQUIPPED:
 		{
 			GL11.glPushMatrix();
-			Minecraft.getMinecraft().renderEngine.func_110577_a(texture);
+			Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 			GL11.glTranslatef(0.4F, -0.6F, 0.0F);
 			model.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 			GL11.glPopMatrix();
@@ -61,7 +61,7 @@ public class ItemDebugRender implements IItemRenderer
 		case EQUIPPED_FIRST_PERSON:
 		{
 			GL11.glPushMatrix();
-			Minecraft.getMinecraft().renderEngine.func_110577_a(texture);
+			Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 			GL11.glTranslatef(0.4F, -0.6F, 0.0F);
 			model.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 			GL11.glPopMatrix();
@@ -69,7 +69,7 @@ public class ItemDebugRender implements IItemRenderer
 		case ENTITY:
 		{
 			GL11.glPushMatrix();
-			Minecraft.getMinecraft().renderEngine.func_110577_a(texture);
+			Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 			GL11.glTranslatef(0.4F, -0.6F, 0.0F);
 			model.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 			GL11.glPopMatrix();

@@ -50,16 +50,16 @@ public class MobSuperCreeper extends EntityMob
 		return true;
 	}
 
-    protected void func_110147_ax()
+    protected void applyEntityAttributes()
     {
-        super.func_110147_ax();
-		 this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(60D);
-        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.25D);
+        super.applyEntityAttributes();
+		 this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(60D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
     }
     
 	public int func_82143_as()
 	{
-		return this.getAttackTarget() == null ? 3 : 3 + (int)(this.func_110143_aJ() - 1.0F);
+		return this.getAttackTarget() == null ? 3 : 3 + (int)(this.getHealth() - 1.0F);
 	}
 
 	protected void fall(float damage)

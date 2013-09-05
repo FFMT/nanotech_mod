@@ -63,12 +63,12 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 	}
 	
 	 @Override
-	 protected void func_110147_ax()
+	 protected void applyEntityAttributes()
 	 {
-		 super.func_110147_ax();
-		 this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(50D);
-	     this.func_110148_a(SharedMonsterAttributes.field_111265_b).func_111128_a(40.0D);
-		 this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.25D);
+		 super.applyEntityAttributes();
+		 this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(50D);
+	     this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
+		 this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
 	 }
 
 	protected void entityInit()
@@ -231,16 +231,16 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 
 
 
-    public EntityLivingData func_110161_a(EntityLivingData par1EntityLivingData)
+    public EntityLivingData onSpawnWithEgg(EntityLivingData par1EntityLivingData)
     {
-        par1EntityLivingData = super.func_110161_a(par1EntityLivingData);
+        par1EntityLivingData = super.onSpawnWithEgg(par1EntityLivingData);
 
         if (this.worldObj.provider instanceof WorldProviderHell && this.getRNG().nextInt(5) > 0)
         {
             this.tasks.addTask(4, this.aiAttackOnCollide);
             this.setSkeletonType(1);
             this.setCurrentItemOrArmor(0, new ItemStack(Item.swordStone));
-            this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(4.0D);
+            this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(4.0D);
         }
         else
         {
@@ -249,7 +249,7 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
             this.enchantEquipment();
         }
 
-        this.setCanPickUpLoot(this.rand.nextFloat() < 0.55F * this.worldObj.func_110746_b(this.posX, this.posY, this.posZ));
+        this.setCanPickUpLoot(this.rand.nextFloat() < 0.55F * this.worldObj.getLocationTensionFactor(this.posX, this.posY, this.posZ));
 
         if (this.getCurrentItemOrArmor(4) == null)
         {

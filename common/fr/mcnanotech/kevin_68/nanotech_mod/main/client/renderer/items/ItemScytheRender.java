@@ -52,7 +52,7 @@ public class ItemScytheRender implements IItemRenderer
 		case EQUIPPED:
 		{
 			GL11.glPushMatrix();
-			Minecraft.getMinecraft().renderEngine.func_110577_a(texture);
+			Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
 			GL11.glRotatef(140F, 1.0F, 0.0F, 0.0F);
 			GL11.glTranslatef(0.0F, 0.0F, -0.8F);
@@ -62,7 +62,7 @@ public class ItemScytheRender implements IItemRenderer
 		case EQUIPPED_FIRST_PERSON:
 		{
 			GL11.glPushMatrix();
-			Minecraft.getMinecraft().renderEngine.func_110577_a(texture);
+			Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
 			GL11.glRotatef(140F, 1.0F, 0.0F, 0.0F);
 			GL11.glTranslatef(0.0F, 0.0F, -0.8F);
@@ -72,7 +72,7 @@ public class ItemScytheRender implements IItemRenderer
 		case ENTITY:
 		{
 			GL11.glPushMatrix();
-			Minecraft.getMinecraft().renderEngine.func_110577_a(texture);
+			Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
 			GL11.glRotatef(140F, 1.0F, 0.0F, 0.0F);
 			GL11.glTranslatef(0.0F, 0.0F, -0.8F);

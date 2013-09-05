@@ -30,15 +30,15 @@ public class RenderSuperEnderman extends RenderLiving
 		this.setRenderPassModel(this.model);
 	}
 	
-	protected ResourceLocation func_110870_a(MobSuperEnderman entity)
+	protected ResourceLocation getEndermanTexture(MobSuperEnderman entity)
 	{
 		return texture;
 	}
 
 	@Override
-	protected ResourceLocation func_110775_a(Entity par1Entity)
+	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.func_110870_a((MobSuperEnderman)par1Entity);
+		return this.getEndermanTexture((MobSuperEnderman)entity);
 	}
 
 	public void renderMob_superenderman(MobSuperEnderman mob, double par2, double par4, double par6, float par8, float par9)
@@ -76,7 +76,7 @@ public class RenderSuperEnderman extends RenderLiving
             OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)j / 1.0F, (float)k / 1.0F);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            this.func_110776_a(TextureMap.field_110575_b);
+            this.bindTexture(TextureMap.locationBlocksTexture);
             this.renderBlocks.renderBlockAsItem(Block.blocksList[mob.getCarried()], mob.getCarryingData(), 1.0F);
             GL11.glPopMatrix();
             GL11.glDisable(GL12.GL_RESCALE_NORMAL);
@@ -91,7 +91,7 @@ public class RenderSuperEnderman extends RenderLiving
 		}
 		else
 		{
-			this.func_110776_a(new ResourceLocation("textures/entity/enderman/enderman_eyes.png"));
+			this.bindTexture(new ResourceLocation("textures/entity/enderman/enderman_eyes.png"));
 			float var4 = 1.0F;
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glDisable(GL11.GL_ALPHA_TEST);

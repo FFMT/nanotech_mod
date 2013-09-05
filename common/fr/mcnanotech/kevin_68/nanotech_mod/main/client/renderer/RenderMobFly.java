@@ -16,14 +16,14 @@ public class RenderMobFly extends RenderLiving
 		super(new ModelFly(), 0.5F);
 	}
 	
-	protected ResourceLocation func_110870_a(MobFly entity)
+	protected ResourceLocation getFlyTexture(MobFly entity)
 	{
 		return texture;
 	}
 
 	@Override
-	protected ResourceLocation func_110775_a(Entity par1Entity)
+	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.func_110870_a((MobFly)par1Entity);
+		return this.getFlyTexture((MobFly)entity);
 	}
 }
