@@ -47,17 +47,6 @@ public class NanotechRecipe
 		{"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 14)});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Yourmusicdisc16, 1), new Object[]
 		{"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 15)});
-
-		// blocks
-		if (Nanotech_mod.nanotech_mod_city())
-		{
-			GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockTrashcan), new Object[]
-			{"X X", "XZX", "XXX", 'X', Item.ingotIron, 'Z', Item.bucketLava});
-			GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockSpotLight), new Object[]
-			{"OAO", "RGB", "OAO", 'O', Block.obsidian, 'A', Block.glass, 'R', new ItemStack(Item.dyePowder, 1, 1), 'G', new ItemStack(Item.dyePowder, 1, 2), 'B', new ItemStack(Item.dyePowder, 1, 4)});
-			GameRegistry.addShapelessRecipe(new ItemStack(NanotechCityBlock.BlockTrail, 2), new Object[]
-			{Block.grass, Block.gravel});
-		}
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechBlock.BlockNanoplanks, 4), new Object[]
 		{NanotechBlock.BlockNanowood});
 
