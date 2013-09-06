@@ -20,8 +20,6 @@ public class BlockNanoLeaves extends BlockFFMTLeavesBase implements IShearable
 	public BlockNanoLeaves(int id)
 	{
 		super(id);
-		this.setTickRandomly(true);
-		this.setLightOpacity(1);
 	}
 
 	public void registerIcons(IconRegister iconregister)
@@ -56,25 +54,12 @@ public class BlockNanoLeaves extends BlockFFMTLeavesBase implements IShearable
 	{
 		if(!world.isRemote)
 		{
-			byte var8 = 20;
-
-			if((par5 & 3) == 3)
+			if(world.rand.nextInt(20) == 0)
 			{
-				var8 = 40;
-			}
-
-			if(world.rand.nextInt(var8) == 0)
-			{
-				int var9 = this.idDropped(par5, world.rand, par7);
-				this.dropBlockAsItem_do(world, x, y, z, new ItemStack(var9, 1, this.damageDropped(par5)));
+				int splingid = this.idDropped(par5, world.rand, par7);
+				this.dropBlockAsItem_do(world, x, y, z, new ItemStack(splingid, 1, this.damageDropped(par5)));
 			}
 		}
-	}
-
-	@Override
-	public boolean isLeaves(World world, int x, int y, int z)
-	{
-		return true;
 	}
 
 	public int colorMultiplier(IBlockAccess blockaccess, int x, int y, int z)
