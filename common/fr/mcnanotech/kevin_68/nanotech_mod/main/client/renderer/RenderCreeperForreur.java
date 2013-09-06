@@ -2,8 +2,10 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
@@ -13,10 +15,22 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCreeperDriller;
 public class RenderCreeperForreur extends RenderLiving
 {
 	private ModelBase model = new ModelCreeperForreur(2.0F);
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/entity/creeperforreur.png");
 
 	public RenderCreeperForreur(ModelCreeperForreur model, float f)
 	{
 		super(new ModelCreeperForreur(), 0.5F);
+	}
+	
+	protected ResourceLocation getCreeperDrillerTexture(MobCreeperDriller entity)
+	{
+		return texture;
+	}
+
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity)
+	{
+		return this.getCreeperDrillerTexture((MobCreeperDriller)entity);
 	}
 
 	protected void updateMob_creeperforreurScale(MobCreeperDriller mob, float par2)
@@ -77,7 +91,7 @@ public class RenderCreeperForreur extends RenderLiving
 			if(par2 == 1)
 			{
 				float var4 = (float)mob.ticksExisted + par3;
-				this.loadTexture("/armor/power.png");
+				this.bindTexture(new ResourceLocation("textures/entity/creeper/creeper_armor.png"));
 				GL11.glMatrixMode(GL11.GL_TEXTURE);
 				GL11.glLoadIdentity();
 				float var5 = var4 * 0.01F;

@@ -1,0 +1,17 @@
+#fr_FR
+#French language file
+
+#Blocks
+tile.trashcan.name=Poubelle
+tile.spotlight.name=Projecteur
+tile.blockTrail.name=Chemin
+tile.blockFountain.name=Fontaine
+tile.blockLamp.name=BlockLamp
+tile.blockLampLight.name=BlockLampLight
+
+#Items
+item.lamp.name=Lampadaire
+item.sunShade.name=Parasol
+
+#CreativeTabs
+itemGroup.NanotechModCity=Nanotech Mod City

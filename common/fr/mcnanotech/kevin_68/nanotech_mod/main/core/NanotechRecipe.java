@@ -4,9 +4,9 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
-import fr.mcnanotech.FFMT.FFMTAPI.FFMTRegistry;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
+import fr.minecraftforgefrance.ffmtapi.FFMTRegistry;
 
 public class NanotechRecipe
 {
@@ -49,12 +49,15 @@ public class NanotechRecipe
 		{"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 15)});
 
 		// blocks
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockTrashcan), new Object[]
-		{"X X", "XZX", "XXX", 'X', Item.ingotIron, 'Z', Item.bucketLava});
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockSpotLight), new Object[]
-		{"OAO", "RGB", "OAO", 'O', Block.obsidian, 'A', Block.glass, 'R', new ItemStack(Item.dyePowder, 1, 1), 'G', new ItemStack(Item.dyePowder, 1, 2), 'B', new ItemStack(Item.dyePowder, 1, 4)});
-		GameRegistry.addShapelessRecipe(new ItemStack(NanotechBlock.BlockTrail, 2), new Object[]
-		{Block.grass, Block.gravel});
+		if (Nanotech_mod.nanotech_mod_city())
+		{
+			GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockTrashcan), new Object[]
+			{"X X", "XZX", "XXX", 'X', Item.ingotIron, 'Z', Item.bucketLava});
+			GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockSpotLight), new Object[]
+			{"OAO", "RGB", "OAO", 'O', Block.obsidian, 'A', Block.glass, 'R', new ItemStack(Item.dyePowder, 1, 1), 'G', new ItemStack(Item.dyePowder, 1, 2), 'B', new ItemStack(Item.dyePowder, 1, 4)});
+			GameRegistry.addShapelessRecipe(new ItemStack(NanotechCityBlock.BlockTrail, 2), new Object[]
+			{Block.grass, Block.gravel});
+		}
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechBlock.BlockNanoplanks, 4), new Object[]
 		{NanotechBlock.BlockNanowood});
 
@@ -62,7 +65,7 @@ public class NanotechRecipe
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.ItemBase, 1, 5), new Object[]
 		{"XXX", "WYW", "XXX", 'X', Item.redstone, 'W', new ItemStack(NanotechItem.ItemBase, 1, 3), 'Y', Item.ingotIron});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.ItemBase, 1, 6), new Object[]
-		{"XYX", "WVW", "XYX", 'X', Item.redstone, 'Y', Item.lightStoneDust, 'W', new ItemStack(NanotechItem.ItemBase, 1, 3), 'V', new ItemStack(NanotechItem.ItemBase, 1, 5)});
+		{"XYX", "WVW", "XYX", 'X', Item.redstone, 'Y', Item.glowstone, 'W', new ItemStack(NanotechItem.ItemBase, 1, 3), 'V', new ItemStack(NanotechItem.ItemBase, 1, 5)});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.ItemBase, 1, 7), new Object[]
 		{"XYX", "WVW", "XYX", 'X', Item.ingotGold, 'Y', Item.redstone, 'W', new ItemStack(NanotechItem.ItemBase, 1, 5), 'V', new ItemStack(NanotechItem.ItemBase, 1, 6)});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.ItemBase, 1, 9), new Object[]
@@ -73,7 +76,7 @@ public class NanotechRecipe
 		{"XWX", "WCW", "XWX", 'X', Block.stone, 'W', Item.redstone, 'C', new ItemStack(NanotechItem.ItemBase, 1, 8)});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.ItemBase, 1, 12), new Object[]
 		{"XYX", "VCV", "XNX", 'X', new ItemStack(NanotechItem.ItemBase, 1, 13), 'Y', new ItemStack(NanotechItem.ItemBase, 1, 9), 'V', new ItemStack(NanotechItem.ItemBase, 1, 10), 'N', new ItemStack(NanotechItem.ItemBase, 1, 11)});
-		/* need change */
+		/* TODO need change */
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitehelmet, 1), new Object[]
 		{"XXX", "X X", 'X', new ItemStack(NanotechItem.ItemBase, 1, 13)});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitechestplate, 1), new Object[]
@@ -99,11 +102,6 @@ public class NanotechRecipe
 		{" XW", "XCW", " XW", 'X', new ItemStack(NanotechItem.ItemBase, 1, 13), 'W', Item.silk, 'C', NanotechItem.Emeraldbow});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitebow, 1), new Object[]
 		{"WX ", "WCX", "WX ", 'X', new ItemStack(NanotechItem.ItemBase, 1, 13), 'W', Item.silk, 'C', NanotechItem.Emeraldbow});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.lamp, 1), new Object[]
-		{"IDI", "GSG", "III", 'I', Item.ingotIron, 'D', Block.daylightSensor, 'G', Block.thinGlass, 'S', Block.glowStone});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.sunShade, 1), new Object[]
-		{"WWW", " S ", " S ", 'W', Block.cloth, 'S', Item.stick});
-		
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.ItemBase, 1, 8), new Object[]
 		{new ItemStack(NanotechItem.ItemBase, 1, 7), new ItemStack(NanotechItem.ItemBase, 1, 1)});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.ItemBase, 1, 14), new Object[]
@@ -226,5 +224,4 @@ public class NanotechRecipe
 		{"XZX", "ZXZ", "XZX", 'X', Block.sand, 'Z', Block.cobblestoneMossy});
 
 	}
-
 }

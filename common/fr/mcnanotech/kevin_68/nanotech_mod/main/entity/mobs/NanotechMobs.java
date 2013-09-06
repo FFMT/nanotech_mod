@@ -2,9 +2,9 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs;
 
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
-import fr.mcnanotech.FFMT.FFMTAPI.FFMTColor;
-import fr.mcnanotech.FFMT.FFMTAPI.FFMTEntityHelper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.minecraftforgefrance.ffmtapi.FFMTColor;
+import fr.minecraftforgefrance.ffmtapi.entityhelper.FFMTEntityHelper;
 
 public class NanotechMobs
 {

@@ -9,6 +9,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
 
@@ -21,6 +22,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 public class RenderTheDeath extends RenderLiving
 {
 	private float size;
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/entity/thedeath.png");
 
 	private ModelBase model = new ModelTheDeath();
 
@@ -29,7 +31,18 @@ public class RenderTheDeath extends RenderLiving
 		super(new ModelTheDeath(), 0.5F);
 		this.size = 3;
 	}
+	
+	protected ResourceLocation getTheDeathTexture(MobThedeath entity)
+	{
+		return texture;
+	}
 
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity)
+	{
+		return this.getTheDeathTexture((MobThedeath)entity);
+	}
+	
 	protected void preRenderScale(MobThedeath mob, float par2)
 	{
 		GL11.glScalef(this.size, this.size, this.size);
@@ -42,7 +55,7 @@ public class RenderTheDeath extends RenderLiving
 
 	public void renderHealtBar(MobThedeath mob, double par2, double par4, double par6, float par8, float par9)
 	{
-		BossStatus.func_82824_a(mob, true);
+		BossStatus.setBossStatus(mob, true);
 		super.doRenderLiving(mob, par2, par4, par6, par8, par9);
 	}
 

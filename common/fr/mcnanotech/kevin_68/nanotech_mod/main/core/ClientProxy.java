@@ -6,6 +6,18 @@ import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity.TileEntityFountainRender;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity.TileEntityLampLightRender;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity.TileEntityLampRender;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity.TileEntitySpotLightRender;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity.TileEntitySunShadeRender;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity.TileEntityTrailRender;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityFountain;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityLamp;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityLampLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySunShade;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrail;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiOverlay;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelCrazyGuy;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelCreeperForreur;
@@ -27,13 +39,8 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderSuperCreep
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderSuperEnderman;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderSuperZombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderTheDeath;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.items.ItemDebugRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.items.ItemScytheRender;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.tileentity.TileEntityFountainRender;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.tileentity.TileEntityLampLightRender;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.tileentity.TileEntityLampRender;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.tileentity.TileEntitySpotLightRender;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.tileentity.TileEntitySunShadeRender;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.tileentity.TileEntityTrailRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCrazyGuy;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCreeperDriller;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobFastzombie;
@@ -45,12 +52,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperSkeleton;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperZombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityFountain;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityLamp;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityLampLight;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySpotLight;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySunShade;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityTrail;
 
 public class ClientProxy extends CommonProxy
 {
@@ -76,6 +77,7 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySunShade.class, new TileEntitySunShadeRender());
 
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.scythe.itemID, (IItemRenderer)new ItemScytheRender());
+		MinecraftForgeClient.registerItemRenderer(NanotechItem.debug.itemID, (IItemRenderer)new ItemDebugRender());
 	}
 
 	@Override

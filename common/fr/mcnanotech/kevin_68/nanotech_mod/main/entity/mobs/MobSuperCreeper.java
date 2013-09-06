@@ -2,6 +2,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -33,7 +34,6 @@ public class MobSuperCreeper extends EntityMob
 	public MobSuperCreeper(World world)
 	{
 		super(world);
-		this.texture = "/mods/Nanotech_mod/textures/mob/supercreeper.png";
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(2, new AiSuperCreeper(this));
 		this.tasks.addTask(3, new EntityAIAvoidEntity(this, MobThedeath.class, 6.0F, 0.25F, 0.3F));
@@ -41,7 +41,7 @@ public class MobSuperCreeper extends EntityMob
 		this.tasks.addTask(5, new EntityAIWander(this, 0.2F));
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
-		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
+		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 		this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false));
 	}
 
@@ -50,9 +50,16 @@ public class MobSuperCreeper extends EntityMob
 		return true;
 	}
 
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+		 this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(60D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
+    }
+    
 	public int func_82143_as()
 	{
-		return this.getAttackTarget() == null ? 3 : 3 + (this.health - 1);
+		return this.getAttackTarget() == null ? 3 : 3 + (int)(this.getHealth() - 1.0F);
 	}
 
 	protected void fall(float damage)
@@ -64,11 +71,6 @@ public class MobSuperCreeper extends EntityMob
 		{
 			this.timeSinceIgnited = this.field_82225_f - 5;
 		}
-	}
-
-	public int getMaxHealth()
-	{
-		return 60;
 	}
 
 	protected void entityInit()

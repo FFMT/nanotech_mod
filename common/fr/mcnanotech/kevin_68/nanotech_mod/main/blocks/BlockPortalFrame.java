@@ -15,11 +15,6 @@ public class BlockPortalFrame extends Block
 		this.setTickRandomly(true);
 	}
 
-	public void registerIcons(IconRegister iconregister)
-	{
-		blockIcon = iconregister.registerIcon("Nanotech_mod:" + getUnlocalizedName2());
-	}
-
 	public void onBlockAdded(World world, int x, int y, int z)
 	{
 		this.checkDoCreatePortal(world, x, y, z);

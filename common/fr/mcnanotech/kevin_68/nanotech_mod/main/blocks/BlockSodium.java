@@ -18,11 +18,6 @@ public class BlockSodium extends Block
 		super(id, material);
 	}
 
-	public void registerIcons(IconRegister iconregister)
-	{
-		blockIcon = iconregister.registerIcon("Nanotech_mod:sodium");
-	}
-
 	public void onBlockAdded(World world, int x, int y, int z)
 	{
 		super.onBlockAdded(world, x, y, z);

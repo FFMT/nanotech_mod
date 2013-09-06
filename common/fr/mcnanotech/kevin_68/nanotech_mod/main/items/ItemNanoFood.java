@@ -19,7 +19,7 @@ public class ItemNanoFood extends ItemFood
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("Nanotech_mod:" + getUnlocalizedName().substring(5));
+		itemIcon = iconregister.registerIcon("nanotech_mod:" + getUnlocalizedName().substring(5));
 	}
 
 }

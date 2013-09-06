@@ -20,8 +20,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 
 public class BlockJumper extends BlockContainer
 {
-	public static String[] type = new String[]
-	{"basic", "advanced"};
+	public static String[] type = new String[] {"basic", "advanced"};
 	public Icon[] iconbuffer;
 
 	public BlockJumper(int id)
@@ -37,11 +36,11 @@ public class BlockJumper extends BlockContainer
 	public void registerIcons(IconRegister iconregister)
 	{
 		iconbuffer = new Icon[5];
-		iconbuffer[0] = iconregister.registerIcon("Nanotech_mod:jumpbottom");
-		iconbuffer[1] = iconregister.registerIcon("Nanotech_mod:jumptop");
-		iconbuffer[2] = iconregister.registerIcon("Nanotech_mod:jumpside");
-		iconbuffer[3] = iconregister.registerIcon("Nanotech_mod:jumptop_advanced");
-		iconbuffer[4] = iconregister.registerIcon("Nanotech_mod:jumpside_advanced");
+		iconbuffer[0] = iconregister.registerIcon("nanotech_mod:jumpbottom");
+		iconbuffer[1] = iconregister.registerIcon("nanotech_mod:jumptop");
+		iconbuffer[2] = iconregister.registerIcon("nanotech_mod:jumpside");
+		iconbuffer[3] = iconregister.registerIcon("nanotech_mod:jumptop_advanced");
+		iconbuffer[4] = iconregister.registerIcon("nanotech_mod:jumpside_advanced");
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -102,5 +101,4 @@ public class BlockJumper extends BlockContainer
 	{
 		return new TileEntityJumper();
 	}
-
 }

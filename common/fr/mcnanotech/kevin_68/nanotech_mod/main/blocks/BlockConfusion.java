@@ -2,7 +2,6 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
@@ -15,11 +14,6 @@ public class BlockConfusion extends Block
 	public BlockConfusion(int id)
 	{
 		super(id, Material.iron);
-	}
-
-	public void registerIcons(IconRegister iconregister)
-	{
-		blockIcon = iconregister.registerIcon("Nanotech_mod:confusion");
 	}
 
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)

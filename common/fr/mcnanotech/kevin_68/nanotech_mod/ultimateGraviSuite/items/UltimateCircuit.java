@@ -14,7 +14,7 @@ public class UltimateCircuit extends Item
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("UltimateGraviSuite:ultimateCircuit");
+		itemIcon = iconregister.registerIcon("ultimategravisuite:ultimateCircuit");
 	}
 
 }

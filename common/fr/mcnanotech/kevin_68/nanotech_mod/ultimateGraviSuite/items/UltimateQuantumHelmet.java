@@ -16,7 +16,7 @@ import java.util.List;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumRarity;
@@ -60,22 +60,22 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("UltimateGraviSuite:ultimateHelmet");
+		itemIcon = iconregister.registerIcon("ultimategravisuite:ultimateHelmet");
 	}
 
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
 	{
 		if(!readInvisibilityStatus(stack))
 		{
-			return "/mods/UltimateGraviSuite/textures/armor/ultimategraviChestPlate.png";
+			return "ultimategravisuite:/textures/armor/ultimategraviChestPlate.png";
 		}
 		else
 		{
-			return "/mods/UltimateGraviSuite/textures/armor/ultimategraviChestPlateInvisible.png";
+			return "ultimategravisuite:/textures/armor/ultimategraviChestPlateInvisible.png";
 		}
 	}
 
-	public ISpecialArmor.ArmorProperties getProperties(EntityLiving entity, ItemStack stack, DamageSource var3, double var4, int var6)
+	public ArmorProperties getProperties(EntityLivingBase entity, ItemStack stack, DamageSource var3, double var4, int var6)
 	{
 		double var7 = this.getBaseAbsorptionRatio() * this.getDamageAbsorptionRatio();
 		int var9 = this.getEnergyPerDamage();
@@ -319,7 +319,7 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 		return (int)Math.round(20.0D * this.getBaseAbsorptionRatio() * this.getDamageAbsorptionRatio());
 	}
 
-	public void damageArmor(EntityLiving living, ItemStack stack, DamageSource var3, int var4, int var5)
+	public void damageArmor(EntityLivingBase living, ItemStack stack, DamageSource var3, int var4, int var5)
 	{
 		ElectricItem.manager.discharge(stack, var4 * this.getEnergyPerDamage(), Integer.MAX_VALUE, true, false);
 	}

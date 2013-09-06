@@ -12,13 +12,14 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
@@ -47,22 +48,22 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("UltimateGraviSuite:ultimateGraviChestPlate");
+		itemIcon = iconregister.registerIcon("ultimategravisuite:ultimateGraviChestPlate");
 	}
 
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
 	{
 		if(!readInvisibilityStatus(stack))
 		{
-			return "/mods/UltimateGraviSuite/textures/armor/ultimategraviChestPlate.png";
+			return "ultimategravisuite:/textures/armor/ultimategraviChestPlate.png";
 		}
 		else
 		{
-			return "/mods/UltimateGraviSuite/textures/armor/ultimategraviChestPlateInvisible.png";
+			return "ultimategravisuite:/textures/armor/ultimategraviChestPlateInvisible.png";
 		}
 	}
 
-	public ArmorProperties getProperties(EntityLiving entity, ItemStack stack, DamageSource var3, double var4, int var6)
+	public ArmorProperties getProperties(EntityLivingBase entity, ItemStack stack, DamageSource var3, double var4, int var6)
 	{
 
 		double var7 = this.getBaseAbsorptionRatio() * this.getDamageAbsorptionRatio();
@@ -87,11 +88,16 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 		}
 
 		if(readInvisibilityStatus(stack))
+		{		
+			player.setInvisible(true);
+		}
+		else if (!player.isPotionActive(Potion.invisibility))
 		{
-			player.addPotionEffect(new PotionEffect(14, 20, 100));
+			player.setInvisible(false);
 		}
 
 		this.getArmorTexture(stack, player, 1, 1);
+		
 		IC2.platform.profilerEndSection();
 	}
 
@@ -126,7 +132,7 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 		return (int)Math.round(20.0D * this.getBaseAbsorptionRatio() * this.getDamageAbsorptionRatio());
 	}
 
-	public void damageArmor(EntityLiving player, ItemStack stack, DamageSource damage, int var4, int var5)
+	public void damageArmor(EntityLivingBase player, ItemStack stack, DamageSource damage, int var4, int var5)
 	{
 		ElectricItem.manager.discharge(stack, var4 * this.getEnergyPerDamage(), Integer.MAX_VALUE, true, false);
 	}

@@ -13,7 +13,7 @@ import java.util.Map;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumRarity;
@@ -50,22 +50,22 @@ public class UltimateLeggings extends ItemArmor implements IElectricItem, IMetal
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("UltimateGraviSuite:ultimateLeggings");
+		itemIcon = iconregister.registerIcon("ultimategravisuite:ultimateLeggings");
 	}
 
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
 	{
 		if(!readInvisibilityStatus(stack))
 		{
-			return "/mods/UltimateGraviSuite/textures/armor/ultimategraviChestPlate2.png";
+			return "ultimategravisuite:/textures/armor/ultimategraviChestPlate2.png";
 		}
 		else
 		{
-			return "/mods/UltimateGraviSuite/textures/armor/ultimategraviChestPlateInvisible.png";
+			return "ultimategravisuite:/textures/armor/ultimategraviChestPlateInvisible.png";
 		}
 	}
 
-	public ArmorProperties getProperties(EntityLiving entity, ItemStack stack, DamageSource damagesource, double var4, int var6)
+	public ArmorProperties getProperties(EntityLivingBase entity, ItemStack stack, DamageSource damagesource, double var4, int var6)
 	{
 		double var7 = this.getBaseAbsorptionRatio() * this.getDamageAbsorptionRatio();
 		int var9 = this.getEnergyPerDamage();
@@ -135,7 +135,7 @@ public class UltimateLeggings extends ItemArmor implements IElectricItem, IMetal
 			{
 				var8 = 0.1F;
 
-				if(player.isJumping)
+				if (IC2.keyboard.isJumpKeyDown(player))
 				{
 					player.motionY += 0.10000055149011612D;
 				}
@@ -156,7 +156,7 @@ public class UltimateLeggings extends ItemArmor implements IElectricItem, IMetal
 		return (int)Math.round(20.0D * this.getBaseAbsorptionRatio() * this.getDamageAbsorptionRatio());
 	}
 
-	public void damageArmor(EntityLiving entity, ItemStack stack, DamageSource var3, int var4, int var5)
+	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource var3, int var4, int var5)
 	{
 		ElectricItem.manager.discharge(stack, var4 * this.getEnergyPerDamage(), Integer.MAX_VALUE, true, false);
 	}

@@ -1,0 +1,17 @@
+#en_US
+#Master Language file
+
+#Blocks
+tile.trashcan.name=Trash can
+tile.spotlight.name=SpotLight
+tile.blockTrail.name=BlockTrail
+tile.blockFountain.name=Fountain
+tile.blockLamp.name=BlockLamp
+tile.blockLampLight.name=BlockLampLight
+
+#Items
+item.lamp.name=Lamp
+item.sunShade.name=SunShade
+
+#CreativeTab
+itemGroup.NanotechModCity=Nanotech mod City

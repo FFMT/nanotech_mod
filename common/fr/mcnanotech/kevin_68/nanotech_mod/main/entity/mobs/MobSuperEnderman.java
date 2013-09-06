@@ -1,9 +1,14 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs;
 
+import java.util.UUID;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
+import net.minecraft.entity.ai.attributes.AttributeInstance;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -14,6 +19,8 @@ import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 
 public class MobSuperEnderman extends EntityMob
 {
@@ -25,17 +32,20 @@ public class MobSuperEnderman extends EntityMob
 	public MobSuperEnderman(World world)
 	{
 		super(world);
-		this.texture = "/mob/enderman.png";
-		this.moveSpeed = 0.2F;
 		this.setSize(0.6F, 2.9F);
 		this.stepHeight = 1.0F;
 		this.tasks.addTask(3, new EntityAIAvoidEntity(this, MobThedeath.class, 6.0F, 0.25F, 0.5F));
 	}
-
-	public int getMaxHealth()
-	{
-		return 100;
-	}
+	
+	 @Override
+	 protected void applyEntityAttributes()
+	 {
+		 super.applyEntityAttributes();
+		 this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(100D);
+	     this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(40.0D);
+		 this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.20D);
+		 this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(3.0D);
+	 }
 
 	protected void entityInit()
 	{
@@ -75,7 +85,7 @@ public class MobSuperEnderman extends EntityMob
 				if(this.field_70826_g++ == 5)
 				{
 					this.field_70826_g = 0;
-					this.func_70819_e(true);
+					this.setScreaming(true);
 					return var1;
 				}
 			}
@@ -106,172 +116,235 @@ public class MobSuperEnderman extends EntityMob
 			return var7 > 1.0D - 0.025D / var5 ? player.canEntityBeSeen(this) : false;
 		}
 	}
+	
+	private Entity field_110194_bu;
+    private static final UUID field_110192_bp = UUID.fromString("020E0DFB-87AE-4653-9556-831010E291A0");
+    private static final AttributeModifier attackingSpeedBoostModifier = (new AttributeModifier(field_110192_bp, "Attacking speed boost", 6.199999809265137D, 0)).setSaved(false);
+    private boolean field_104003_g;
+    
+    public void onLivingUpdate()
+    {
+        if (this.isWet())
+        {
+            this.attackEntityFrom(DamageSource.drown, 1.0F);
+        }
 
-	public void onLivingUpdate()
-	{
-		if(this.isWet())
-		{
-			this.attackEntityFrom(DamageSource.drown, 1);
-		}
+        if (this.field_110194_bu != this.entityToAttack)
+        {
+            AttributeInstance attributeinstance = this.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
+            attributeinstance.removeModifier(attackingSpeedBoostModifier);
 
-		this.moveSpeed = this.entityToAttack != null ? 6.5F : 0.3F;
-		int var1;
+            if (this.entityToAttack != null)
+            {
+                attributeinstance.applyModifier(attackingSpeedBoostModifier);
+            }
+        }
 
-		for(var1 = 0; var1 < 2; ++var1)
-		{
-			this.worldObj.spawnParticle("portal", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height - 0.25D, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, (this.rand.nextDouble() - 0.5D) * 2.0D, -this.rand.nextDouble(), (this.rand.nextDouble() - 0.5D) * 2.0D);
-		}
+        this.field_110194_bu = this.entityToAttack;
+        int i;
 
-		if(this.worldObj.isDaytime() && !this.worldObj.isRemote)
-		{
-			float var6 = this.getBrightness(1.0F);
+        if (!this.worldObj.isRemote && this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"))
+        {
+            int j;
+            int k;
+            int l;
 
-			if(var6 > 0.5F && this.worldObj.canBlockSeeTheSky(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)) && this.rand.nextFloat() * 30.0F < (var6 - 0.4F) * 2.0F)
-			{
-				this.entityToAttack = null;
-				this.func_70819_e(false);
-				this.teleportRandomly();
-			}
-		}
+            if (this.getCarried() == 0)
+            {
+                if (this.rand.nextInt(20) == 0)
+                {
+                    i = MathHelper.floor_double(this.posX - 2.0D + this.rand.nextDouble() * 4.0D);
+                    j = MathHelper.floor_double(this.posY + this.rand.nextDouble() * 3.0D);
+                    k = MathHelper.floor_double(this.posZ - 2.0D + this.rand.nextDouble() * 4.0D);
+                    l = this.worldObj.getBlockId(i, j, k);
 
-		if(this.isWet())
-		{
-			this.entityToAttack = null;
-			this.func_70819_e(false);
-			this.teleportRandomly();
-		}
+                    if (carriableBlocks[l])
+                    {
+                        this.setCarried(this.worldObj.getBlockId(i, j, k));
+                        this.setCarryingData(this.worldObj.getBlockMetadata(i, j, k));
+                        this.worldObj.setBlock(i, j, k, 0);
+                    }
+                }
+            }
+            else if (this.rand.nextInt(2000) == 0)
+            {
+                i = MathHelper.floor_double(this.posX - 1.0D + this.rand.nextDouble() * 2.0D);
+                j = MathHelper.floor_double(this.posY + this.rand.nextDouble() * 2.0D);
+                k = MathHelper.floor_double(this.posZ - 1.0D + this.rand.nextDouble() * 2.0D);
+                l = this.worldObj.getBlockId(i, j, k);
+                int i1 = this.worldObj.getBlockId(i, j - 1, k);
 
-		this.isJumping = false;
+                if (l == 0 && i1 > 0 && Block.blocksList[i1].renderAsNormalBlock())
+                {
+                    this.worldObj.setBlock(i, j, k, this.getCarried(), this.getCarryingData(), 3);
+                    this.setCarried(0);
+                }
+            }
+        }
 
-		if(this.entityToAttack != null)
-		{
-			this.faceEntity(this.entityToAttack, 100.0F, 100.0F);
-		}
+        for (i = 0; i < 2; ++i)
+        {
+            this.worldObj.spawnParticle("portal", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height - 0.25D, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, (this.rand.nextDouble() - 0.5D) * 2.0D, -this.rand.nextDouble(), (this.rand.nextDouble() - 0.5D) * 2.0D);
+        }
 
-		if(!this.worldObj.isRemote && this.isEntityAlive())
-		{
-			if(this.entityToAttack != null)
-			{
-				if(this.entityToAttack instanceof EntityPlayer && this.shouldAttackPlayer((EntityPlayer)this.entityToAttack))
-				{
-					this.moveStrafing = this.moveForward = 0.0F;
-					this.moveSpeed = 0.0F;
+        if (this.worldObj.isDaytime() && !this.worldObj.isRemote)
+        {
+            float f = this.getBrightness(1.0F);
 
-					if(this.entityToAttack.getDistanceSqToEntity(this) < 16.0D)
-					{
-						this.teleportRandomly();
-					}
+            if (f > 0.5F && this.worldObj.canBlockSeeTheSky(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)) && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F)
+            {
+                this.entityToAttack = null;
+                this.setScreaming(false);
+                this.field_104003_g = false;
+                this.teleportRandomly();
+            }
+        }
 
-					this.teleportDelay = 0;
-				}
-				else if(this.entityToAttack.getDistanceSqToEntity(this) > 256.0D && this.teleportDelay++ >= 30 && this.teleportToEntity(this.entityToAttack))
-				{
-					this.teleportDelay = 0;
-				}
-			}
-			else
-			{
-				this.func_70819_e(false);
-				this.teleportDelay = 0;
-			}
-		}
+        if (this.isWet() || this.isBurning())
+        {
+            this.entityToAttack = null;
+            this.setScreaming(false);
+            this.field_104003_g = false;
+            this.teleportRandomly();
+        }
 
-		super.onLivingUpdate();
-	}
+        if (this.isScreaming() && !this.field_104003_g && this.rand.nextInt(100) == 0)
+        {
+            this.setScreaming(false);
+        }
 
-	protected boolean teleportRandomly()
-	{
-		double var1 = this.posX + (this.rand.nextDouble() - 0.5D) * 64.0D;
-		double var3 = this.posY + (double)(this.rand.nextInt(64) - 32);
-		double var5 = this.posZ + (this.rand.nextDouble() - 0.5D) * 64.0D;
-		return this.teleportTo(var1, var3, var5);
-	}
+        this.isJumping = false;
 
-	protected boolean teleportToEntity(Entity entity)
-	{
-		Vec3 var2 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX - entity.posX, this.boundingBox.minY + (double)(this.height / 2.0F) - entity.posY + (double)entity.getEyeHeight(), this.posZ - entity.posZ);
-		var2 = var2.normalize();
-		double var3 = 16.0D;
-		double var5 = this.posX + (this.rand.nextDouble() - 0.5D) * 8.0D - var2.xCoord * var3;
-		double var7 = this.posY + (double)(this.rand.nextInt(16) - 8) - var2.yCoord * var3;
-		double var9 = this.posZ + (this.rand.nextDouble() - 0.5D) * 8.0D - var2.zCoord * var3;
-		return this.teleportTo(var5, var7, var9);
-	}
+        if (this.entityToAttack != null)
+        {
+            this.faceEntity(this.entityToAttack, 100.0F, 100.0F);
+        }
 
-	protected boolean teleportTo(double x, double y, double z)
-	{
-		double var7 = this.posX;
-		double var9 = this.posY;
-		double var11 = this.posZ;
-		this.posX = x;
-		this.posY = y;
-		this.posZ = z;
-		boolean var13 = false;
-		int var14 = MathHelper.floor_double(this.posX);
-		int var15 = MathHelper.floor_double(this.posY);
-		int var16 = MathHelper.floor_double(this.posZ);
-		int var18;
+        if (!this.worldObj.isRemote && this.isEntityAlive())
+        {
+            if (this.entityToAttack != null)
+            {
+                if (this.entityToAttack instanceof EntityPlayer && this.shouldAttackPlayer((EntityPlayer)this.entityToAttack))
+                {
+                    if (this.entityToAttack.getDistanceSqToEntity(this) < 16.0D)
+                    {
+                        this.teleportRandomly();
+                    }
 
-		if(this.worldObj.blockExists(var14, var15, var16))
-		{
-			boolean var17 = false;
+                    this.teleportDelay = 0;
+                }
+                else if (this.entityToAttack.getDistanceSqToEntity(this) > 256.0D && this.teleportDelay++ >= 30 && this.teleportToEntity(this.entityToAttack))
+                {
+                    this.teleportDelay = 0;
+                }
+            }
+            else
+            {
+                this.setScreaming(false);
+                this.teleportDelay = 0;
+            }
+        }
 
-			while(!var17 && var15 > 0)
-			{
-				var18 = this.worldObj.getBlockId(var14, var15 - 1, var16);
+        super.onLivingUpdate();
+    }
+    
+    protected boolean teleportRandomly()
+    {
+        double d0 = this.posX + (this.rand.nextDouble() - 0.5D) * 64.0D;
+        double d1 = this.posY + (double)(this.rand.nextInt(64) - 32);
+        double d2 = this.posZ + (this.rand.nextDouble() - 0.5D) * 64.0D;
+        return this.teleportTo(d0, d1, d2);
+    }
+    protected boolean teleportToEntity(Entity par1Entity)
+    {
+        Vec3 vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX - par1Entity.posX, this.boundingBox.minY + (double)(this.height / 2.0F) - par1Entity.posY + (double)par1Entity.getEyeHeight(), this.posZ - par1Entity.posZ);
+        vec3 = vec3.normalize();
+        double d0 = 16.0D;
+        double d1 = this.posX + (this.rand.nextDouble() - 0.5D) * 8.0D - vec3.xCoord * d0;
+        double d2 = this.posY + (double)(this.rand.nextInt(16) - 8) - vec3.yCoord * d0;
+        double d3 = this.posZ + (this.rand.nextDouble() - 0.5D) * 8.0D - vec3.zCoord * d0;
+        return this.teleportTo(d1, d2, d3);
+    }
 
-				if(var18 != 0 && Block.blocksList[var18].blockMaterial.blocksMovement())
-				{
-					var17 = true;
-				}
-				else
-				{
-					--this.posY;
-					--var15;
-				}
-			}
+    protected boolean teleportTo(double par1, double par3, double par5)
+    {
+        EnderTeleportEvent event = new EnderTeleportEvent(this, par1, par3, par5, 0);
+        if (MinecraftForge.EVENT_BUS.post(event)){
+            return false;
+        }
 
-			if(var17)
-			{
-				this.setPosition(this.posX, this.posY, this.posZ);
+        double d3 = this.posX;
+        double d4 = this.posY;
+        double d5 = this.posZ;
+        this.posX = event.targetX;
+        this.posY = event.targetY;
+        this.posZ = event.targetZ;
+        boolean flag = false;
+        int i = MathHelper.floor_double(this.posX);
+        int j = MathHelper.floor_double(this.posY);
+        int k = MathHelper.floor_double(this.posZ);
+        int l;
 
-				if(this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty() && !this.worldObj.isAnyLiquid(this.boundingBox))
-				{
-					var13 = true;
-				}
-			}
-		}
+        if (this.worldObj.blockExists(i, j, k))
+        {
+            boolean flag1 = false;
 
-		if(!var13)
-		{
-			this.setPosition(var7, var9, var11);
-			return false;
-		}
-		else
-		{
-			short var30 = 128;
+            while (!flag1 && j > 0)
+            {
+                l = this.worldObj.getBlockId(i, j - 1, k);
 
-			for(var18 = 0; var18 < var30; ++var18)
-			{
-				double var19 = (double)var18 / ((double)var30 - 1.0D);
-				float var21 = (this.rand.nextFloat() - 0.5F) * 0.2F;
-				float var22 = (this.rand.nextFloat() - 0.5F) * 0.2F;
-				float var23 = (this.rand.nextFloat() - 0.5F) * 0.2F;
-				double var24 = var7 + (this.posX - var7) * var19 + (this.rand.nextDouble() - 0.5D) * (double)this.width * 2.0D;
-				double var26 = var9 + (this.posY - var9) * var19 + this.rand.nextDouble() * (double)this.height;
-				double var28 = var11 + (this.posZ - var11) * var19 + (this.rand.nextDouble() - 0.5D) * (double)this.width * 2.0D;
-				this.worldObj.spawnParticle("portal", var24, var26, var28, (double)var21, (double)var22, (double)var23);
-			}
+                if (l != 0 && Block.blocksList[l].blockMaterial.blocksMovement())
+                {
+                    flag1 = true;
+                }
+                else
+                {
+                    --this.posY;
+                    --j;
+                }
+            }
 
-			this.worldObj.playSoundEffect(var7, var9, var11, "mob.endermen.portal", 1.0F, 1.0F);
-			this.worldObj.playSoundAtEntity(this, "mob.endermen.portal", 1.0F, 1.0F);
-			return true;
-		}
-	}
+            if (flag1)
+            {
+                this.setPosition(this.posX, this.posY, this.posZ);
 
+                if (this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty() && !this.worldObj.isAnyLiquid(this.boundingBox))
+                {
+                    flag = true;
+                }
+            }
+        }
+
+        if (!flag)
+        {
+            this.setPosition(d3, d4, d5);
+            return false;
+        }
+        else
+        {
+            short short1 = 128;
+
+            for (l = 0; l < short1; ++l)
+            {
+                double d6 = (double)l / ((double)short1 - 1.0D);
+                float f = (this.rand.nextFloat() - 0.5F) * 0.2F;
+                float f1 = (this.rand.nextFloat() - 0.5F) * 0.2F;
+                float f2 = (this.rand.nextFloat() - 0.5F) * 0.2F;
+                double d7 = d3 + (this.posX - d3) * d6 + (this.rand.nextDouble() - 0.5D) * (double)this.width * 2.0D;
+                double d8 = d4 + (this.posY - d4) * d6 + this.rand.nextDouble() * (double)this.height;
+                double d9 = d5 + (this.posZ - d5) * d6 + (this.rand.nextDouble() - 0.5D) * (double)this.width * 2.0D;
+                this.worldObj.spawnParticle("portal", d7, d8, d9, (double)f, (double)f1, (double)f2);
+            }
+
+            this.worldObj.playSoundEffect(d3, d4, d5, "mob.endermen.portal", 1.0F, 1.0F);
+            this.playSound("mob.endermen.portal", 1.0F, 1.0F);
+            return true;
+        }
+    }
+    
 	protected String getLivingSound()
 	{
-		return this.func_70823_r() ? "mob.endermen.scream" : "mob.endermen.idle";
+		return this.isScreaming() ? "mob.endermen.scream" : "mob.endermen.idle";
 	}
 
 	protected String getHurtSound()
@@ -342,22 +415,23 @@ public class MobSuperEnderman extends EntityMob
 		{
 			if(damagesource.getEntity() instanceof EntityPlayer)
 			{
-				this.func_70819_e(true);
+				this.setScreaming(true);
 			}
 
 			return super.attackEntityFrom(damagesource, par2);
 		}
 	}
 
-	public boolean func_70823_r()
-	{
-		return this.dataWatcher.getWatchableObjectByte(18) > 0;
-	}
+    public boolean isScreaming()
+    {
+        return this.dataWatcher.getWatchableObjectByte(18) > 0;
+    }
 
-	public void func_70819_e(boolean par1)
-	{
-		this.dataWatcher.updateObject(18, Byte.valueOf((byte)(par1 ? 1 : 0)));
-	}
+    public void setScreaming(boolean par1)
+    {
+        this.dataWatcher.updateObject(18, Byte.valueOf((byte)(par1 ? 1 : 0)));
+    }
+
 
 	public int getAttackStrength(Entity par1Entity)
 	{

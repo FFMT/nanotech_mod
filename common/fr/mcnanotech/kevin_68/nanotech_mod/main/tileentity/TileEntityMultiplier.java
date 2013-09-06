@@ -150,7 +150,7 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 	}
 
 	@Override
-	public boolean isStackValidForSlot(int slot, ItemStack stack)
+	public boolean isItemValidForSlot(int slot, ItemStack itemstack)
 	{
 		return false;
 	}

@@ -4,8 +4,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.ICraftingHandler;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.blocks.NanotechCityBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechAchievement;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class CraftingHandler implements ICraftingHandler
 {
@@ -63,21 +65,25 @@ public class CraftingHandler implements ICraftingHandler
 				player.triggerAchievement(NanotechAchievement.blockSlow);
 			}
 		}
-		if(stack.itemID == NanotechBlock.BlockSpotLight.blockID)
+		
+		if (Nanotech_mod.nanotech_mod_city())
 		{
-			player.triggerAchievement(NanotechAchievement.blockSpotLight);
-		}
-		if(stack.itemID == NanotechBlock.BlockTheDeathHead.blockID)
-		{
-			player.triggerAchievement(NanotechAchievement.blockTheDeath);
-		}
-		if(stack.itemID == NanotechBlock.BlockTrail.blockID)
-		{
-			player.triggerAchievement(NanotechAchievement.blockTrail);
-		}
-		if(stack.itemID == NanotechBlock.BlockTrashcan.blockID)
-		{
-			player.triggerAchievement(NanotechAchievement.blockTrashCan);
+			if(stack.itemID == NanotechCityBlock.BlockSpotLight.blockID)
+			{
+				player.triggerAchievement(NanotechAchievement.blockSpotLight);
+			}
+			if(stack.itemID == NanotechBlock.BlockTheDeathHead.blockID)
+			{
+				player.triggerAchievement(NanotechAchievement.blockTheDeath);
+			}
+			if(stack.itemID == NanotechCityBlock.BlockTrail.blockID)
+			{
+				player.triggerAchievement(NanotechAchievement.blockTrail);
+			}
+			if(stack.itemID == NanotechCityBlock.BlockTrashcan.blockID)
+			{
+				player.triggerAchievement(NanotechAchievement.blockTrashCan);
+			}
 		}
 
 	}

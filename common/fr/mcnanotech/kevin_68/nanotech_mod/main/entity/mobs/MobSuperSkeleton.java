@@ -7,8 +7,11 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EntityLivingData;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IRangedAttackMob;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIArrowAttack;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
@@ -33,8 +36,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProviderHell;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
@@ -45,23 +46,30 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 	public MobSuperSkeleton(World world)
 	{
 		super(world);
-		this.texture = "/mods/Nanotech_mod/textures/mob/superskeleton.png";
-		this.moveSpeed = 0.25F;
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(2, new EntityAIRestrictSun(this));
 		this.tasks.addTask(3, new EntityAIAvoidEntity(this, MobThedeath.class, 6.0F, 0.25F, 0.5F));
-		this.tasks.addTask(4, new EntityAIFleeSun(this, this.moveSpeed));
-		this.tasks.addTask(5, new EntityAIWander(this, this.moveSpeed));
+		this.tasks.addTask(4, new EntityAIFleeSun(this, 1.0D));
+		this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 
 		if(world != null && !world.isRemote)
 		{
 			this.setCombatTask();
 		}
 	}
+	
+	 @Override
+	 protected void applyEntityAttributes()
+	 {
+		 super.applyEntityAttributes();
+		 this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(50D);
+	     this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
+		 this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
+	 }
 
 	protected void entityInit()
 	{
@@ -72,11 +80,6 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 	public boolean isAIEnabled()
 	{
 		return true;
-	}
-
-	public int getMaxHealth()
-	{
-		return 50;
 	}
 
 	protected String getLivingSound()
@@ -113,26 +116,6 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		else
 		{
 			return false;
-		}
-	}
-
-	public int getAttackStrength(Entity entity)
-	{
-		if(this.getSkeletonType() == 1)
-		{
-			ItemStack var2 = this.getHeldItem();
-			int var3 = 4;
-
-			if(var2 != null)
-			{
-				var3 += var2.getDamageVsEntity(this);
-			}
-
-			return var3;
-		}
-		else
-		{
-			return super.getAttackStrength(entity);
 		}
 	}
 
@@ -246,43 +229,42 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		this.setCurrentItemOrArmor(0, new ItemStack(Item.bow));
 	}
 
-	@SideOnly(Side.CLIENT)
-	public String getTexture()
-	{
-		return this.getSkeletonType() == 1 ? "/mob/skeleton_wither.png" : super.getTexture();
-	}
 
-	public void initCreature()
-	{
-		if(this.worldObj.provider instanceof WorldProviderHell && this.getRNG().nextInt(5) > 0)
-		{
-			this.tasks.addTask(4, this.aiAttackOnCollide);
-			this.setSkeletonType(1);
-			this.setCurrentItemOrArmor(0, new ItemStack(Item.swordStone));
-		}
-		else
-		{
-			this.tasks.addTask(4, this.aiArrowAttack);
-			this.addRandomArmor();
-			this.func_82162_bC();
-		}
 
-		if(this.rand.nextFloat() < pickUpLootProability[this.worldObj.difficultySetting])
-		{
-			;
-		}
+    public EntityLivingData onSpawnWithEgg(EntityLivingData par1EntityLivingData)
+    {
+        par1EntityLivingData = super.onSpawnWithEgg(par1EntityLivingData);
 
-		if(this.getCurrentItemOrArmor(4) == null)
-		{
-			Calendar var1 = this.worldObj.getCurrentDate();
+        if (this.worldObj.provider instanceof WorldProviderHell && this.getRNG().nextInt(5) > 0)
+        {
+            this.tasks.addTask(4, this.aiAttackOnCollide);
+            this.setSkeletonType(1);
+            this.setCurrentItemOrArmor(0, new ItemStack(Item.swordStone));
+            this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(4.0D);
+        }
+        else
+        {
+            this.tasks.addTask(4, this.aiArrowAttack);
+            this.addRandomArmor();
+            this.enchantEquipment();
+        }
 
-			if(var1.get(2) + 1 == 10 && var1.get(5) == 31 && this.rand.nextFloat() < 0.25F)
-			{
-				this.setCurrentItemOrArmor(4, new ItemStack(this.rand.nextFloat() < 0.1F ? Block.pumpkinLantern : Block.pumpkin));
-				this.equipmentDropChances[4] = 0.0F;
-			}
-		}
-	}
+        this.setCanPickUpLoot(this.rand.nextFloat() < 0.55F * this.worldObj.getLocationTensionFactor(this.posX, this.posY, this.posZ));
+
+        if (this.getCurrentItemOrArmor(4) == null)
+        {
+            Calendar calendar = this.worldObj.getCurrentDate();
+
+            if (calendar.get(2) + 1 == 10 && calendar.get(5) == 31 && this.rand.nextFloat() < 0.25F)
+            {
+                this.setCurrentItemOrArmor(4, new ItemStack(this.rand.nextFloat() < 0.1F ? Block.pumpkinLantern : Block.pumpkin));
+                this.equipmentDropChances[4] = 0.0F;
+            }
+        }
+
+        return par1EntityLivingData;
+    }
+
 
 	public void setCombatTask()
 	{
@@ -374,32 +356,30 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		}
 	}
 
-	@Override
-	public void attackEntityWithRangedAttack(EntityLiving entityliving, float f)
-	{
-		EntityArrow entityarrow = new EntityArrow(this.worldObj, this, entityliving, 1.6F, (float)(14 - this.worldObj.difficultySetting * 4));
-		int i = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, this.getHeldItem());
-		int j = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, this.getHeldItem());
-		entityarrow.setDamage((double)(f * 2.0F) + this.rand.nextGaussian() * 0.25D + (double)((float)this.worldObj.difficultySetting * 0.11F));
+    public void attackEntityWithRangedAttack(EntityLivingBase par1EntityLivingBase, float par2)
+    {
+        EntityArrow entityarrow = new EntityArrow(this.worldObj, this, par1EntityLivingBase, 1.6F, (float)(14 - this.worldObj.difficultySetting * 4));
+        int i = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, this.getHeldItem());
+        int j = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, this.getHeldItem());
+        entityarrow.setDamage((double)(par2 * 2.0F) + this.rand.nextGaussian() * 0.25D + (double)((float)this.worldObj.difficultySetting * 0.11F));
 
-		if(i > 0)
-		{
-			entityarrow.setDamage(entityarrow.getDamage() + (double)i * 0.5D + 0.5D);
-		}
+        if (i > 0)
+        {
+            entityarrow.setDamage(entityarrow.getDamage() + (double)i * 0.5D + 0.5D);
+        }
 
-		if(j > 0)
-		{
-			entityarrow.setKnockbackStrength(j);
-		}
+        if (j > 0)
+        {
+            entityarrow.setKnockbackStrength(j);
+        }
 
-		if(EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, this.getHeldItem()) > 0 || this.getSkeletonType() == 1)
-		{
-			entityarrow.setFire(100);
-		}
+        if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, this.getHeldItem()) > 0 || this.getSkeletonType() == 1)
+        {
+            entityarrow.setFire(100);
+        }
 
-		this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
-		this.worldObj.spawnEntityInWorld(entityarrow);
-
-	}
+        this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
+        this.worldObj.spawnEntityInWorld(entityarrow);
+    }
 
 }

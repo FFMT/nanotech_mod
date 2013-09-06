@@ -1,10 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
-import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.AxisAlignedBB;
@@ -16,11 +13,6 @@ public class BlockBarbedWire extends Block
 	public BlockBarbedWire(int id)
 	{
 		super(id, Material.iron);
-	}
-
-	public void registerIcons(IconRegister iconregister)
-	{
-		blockIcon = iconregister.registerIcon("Nanotech_mod:barbedwire");
 	}
 
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
@@ -50,10 +42,5 @@ public class BlockBarbedWire extends Block
 	public boolean renderAsNormalBlock()
 	{
 		return false;
-	}
-
-	public int idDropped(int metadata, Random random, int par3)
-	{
-		return this.blockID;
 	}
 }

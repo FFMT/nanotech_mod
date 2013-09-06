@@ -10,6 +10,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
@@ -21,6 +22,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 public class GuiJumper extends GuiContainer
 {
 	private TileEntityJumper tileJumper;
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/gui/BlockJumper.png");
 
 	public GuiJumper(InventoryPlayer playerInventory, TileEntityJumper tileEntity, World world)
 	{
@@ -91,7 +93,7 @@ public class GuiJumper extends GuiContainer
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
 		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		this.mc.renderEngine.bindTexture("/mods/Nanotech_mod/textures/gui/Blockjumper.png");
+		this.mc.renderEngine.bindTexture(texture);
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 

@@ -41,9 +41,9 @@ public class EntityTheDeathBall extends EntityFireball
 		return false;
 	}
 
-	public float func_82146_a(Explosion explosion, World world, int x, int y, int z, Block block)
+	public float getBlockExplosionResistance(Explosion explosion, World world, int x, int y, int z, Block block)
 	{
-		float var6 = super.func_82146_a(explosion, world, x, y, z, block);
+		float var6 = super.getBlockExplosionResistance(explosion, world, x, y, z, block);
 		if(this.isInvulnerable() && block != Block.bedrock && block != Block.endPortal && block != Block.endPortalFrame)
 		{
 			var6 = Math.min(0.8F, var6);

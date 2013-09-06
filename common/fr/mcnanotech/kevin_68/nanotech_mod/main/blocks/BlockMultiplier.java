@@ -23,8 +23,8 @@ public class BlockMultiplier extends BlockContainer
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		topbottomIcon = iconregister.registerIcon("Nanotech_mod:multiplierside");
-		blockIcon = iconregister.registerIcon("Nanotech_mod:multiplier");
+		topbottomIcon = iconregister.registerIcon("nanotech_mod:multiplierside");
+		blockIcon = iconregister.registerIcon("nanotech_mod:multiplier");
 	}
 
 	@SideOnly(Side.CLIENT)

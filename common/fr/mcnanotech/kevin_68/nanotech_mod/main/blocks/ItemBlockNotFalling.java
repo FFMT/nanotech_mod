@@ -5,7 +5,6 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockNotFalling extends ItemBlock
 {
-
 	public ItemBlockNotFalling(int par1)
 	{
 		super(par1);

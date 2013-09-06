@@ -195,7 +195,7 @@ public class BlockTea extends BlockCrops
 
 		for (int i = 0; i < this.iconArray.length; ++i)
 		{
-			this.iconArray[i] = iconregister.registerIcon("Nanotech_mod:tea_" + (i + 1));
+			this.iconArray[i] = iconregister.registerIcon("nanotech_mod:tea_" + (i + 1));
 		}
 	}
 }

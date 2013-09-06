@@ -13,7 +13,7 @@ public class ItemTea extends Item
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		this.itemIcon = iconregister.registerIcon("Nanotech_mod:tea");
+		this.itemIcon = iconregister.registerIcon("nanotech_mod:tea");
 	}
 
 }

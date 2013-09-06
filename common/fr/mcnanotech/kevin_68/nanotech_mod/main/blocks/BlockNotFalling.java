@@ -13,8 +13,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockNotFalling extends Block
 {
-	public static String[] type = new String[]
-	{"gravel", "sand"};
+	public static String[] type = new String[] {"gravel", "sand"};
 	private Icon[] iconbuffer;
 
 	public BlockNotFalling(int id, Material material)

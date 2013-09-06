@@ -5,7 +5,6 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockFalling extends ItemBlock
 {
-
 	public ItemBlockFalling(int id)
 	{
 		super(id);
@@ -28,5 +27,4 @@ public class ItemBlockFalling extends ItemBlock
 			return getUnlocalizedName();
 		}
 	}
-
 }

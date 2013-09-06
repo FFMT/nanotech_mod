@@ -1,63 +1,78 @@
 <?xml version="1.0" ?>
-<project name="Nanotech_mod" default="build">
+<project name="Nanotech_mod" default="buildall">
 
-    <property file="build.properties" prefix="build_number"/>
-    <property file="build.properties" prefix="mc_version"/>
-    <property file="build.properties" prefix="forge_version"/>
-    <property file="build.properties" prefix="NanotechMod_version"/>
-    <property file="build.properties" prefix="UltimateGraviSuite_version"/>
+    <property file="build.properties" prefix="buildprop"/>
     <property name="forge.dir" value="..\forge"/>
-    <property name="mcp.dir" value="${forge.dir}\${forge_version.forge_version}\mcp"/>
-	<available property="forge-exists" file="${mcp.dir}"/>
+    <property name="mcp.dir" value="${forge.dir}\${buildprop.forge}\mcp"/>
+	<available property="mcp-exists" file="${mcp.dir}"/>
 
-    <!-- Download forge -->
-    <target name="download-forge" unless="forge-exists">
+    <!-- Download and setup forge -->
+    <target name="download-and-setup-forge" unless="mcp-exists">
         <propertyfile file="build.properties">
-            <entry key="mc_version" type="string" default="error"/>
+            <entry key="mc" type="string" default="error"/>
         </propertyfile>
         <propertyfile file="build.properties">
-            <entry key="forge_version" type="string" default="error"/>
+            <entry key="forge" type="string" default="error"/>
         </propertyfile>
-	    <property name="forge.name" value="minecraftforge-src-${mc_version.mc_version}-${forge_version.forge_version}.zip"/>
+	    <property name="forge.name" value="minecraftforge-src-${buildprop.mc}-${buildprop.forge}.zip"/>
 
         <get src="http://files.minecraftforge.net/${forge.name}" dest="..\" usetimestamp="True"/>
-    </target>
 
-    <!-- Setup forge -->
-	<target name="setup" depends="download-forge" unless="forge-exists">
-        <unzip dest="..\" src="..\${forge.name}"/>
+        <!-- setup -->
+        <mkdir dir="..\forgetemp"/>
+        <unzip dest="..\forgetemp" src="..\${forge.name}"/>
         <mkdir dir="${forge.dir}\${forge_version.forge_version}\"/>
         <move todir="${forge.dir}\${forge_version.forge_version}\">
-            <fileset dir="${forge.dir}">
-                <exclude name="${forge_version.forge_version}"/>
+            <fileset dir="..\forgetemp\forge">
             </fileset>
         </move>
 
+        <delete dir="..\forgetemp"/>
         <delete file="..\${forge.name}"/>
 
         <!-- Fix executable permissions -->
-        <chmod dir="${forge.dir}/${forge_version.forge_version}" perm="ugo+rx" includes="**.sh"/>
+        <chmod dir="${forge.dir}/${buildprop.forge}" perm="ugo+rx" includes="**.sh"/>
 
         <!-- Install forge -->
-        <exec dir="${forge.dir}/${forge_version.forge_version}" executable="cmd" osfamily="windows">
+        <exec dir="${forge.dir}/${buildprop.forge}" executable="cmd" osfamily="windows">
             <arg line="/c install.cmd"/>
         </exec>
 
-        <exec dir="${forge.dir}/${forge_version.forge_version}" executable="sh" osfamily="unix">
+        <exec dir="${forge.dir}/${buildprop.forge}" executable="sh" osfamily="unix">
             <arg value="install.sh"/>
         </exec>
     </target>
 
-    <target name="increment_build_number">
+    <!-- Nanotech Mod build number -->
+    <target name="increment_build_ntm_number">
         <propertyfile file="build.properties">
-        <entry key="build_number" type="int" operation="+" default="1"/>
+        <entry key="ntm_build" type="int" operation="+" default="1"/>
         </propertyfile>
     </target>
 
-    <!-- Copy source into mcp -->
-    <target name="copy_sources">
+    <!-- Ultimate Gravi Suite build number -->
+    <target name="increment_build_ugs_number">
+        <propertyfile file="build.properties">
+        <entry key="ugs_build" type="int" operation="+" default="1"/>
+        </propertyfile>
+    </target>
+
+    <!-- Copy nanotech mod source into mcp -->
+    <target name="copy_ntm_sources">
         <copy todir="${mcp.dir}\src\minecraft\">
-            <fileset dir="common\" excludes= "fr\mcnanotech\kevin_68\nanotech_mod\ultimateGraviSuite\*"/>
+            <fileset dir="common\">
+                <include name="fr\mcnanotech\kevin_68\nanotech_mod\main\"/>
+                <include name="fr\mcnanotech\kevin_68\nanotech_mod\city\"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <!-- Copy ultimate gravi suite source into mcp -->
+    <target name="copy_ugs_sources">
+        <copy todir="${mcp.dir}\src\minecraft\">
+            <fileset dir="common\">
+                <include name="fr\mcnanotech\kevin_68\nanotech_mod\ultimateGraviSuite\"/>
+            </fileset>
         </copy>
     </target>
 
@@ -66,22 +81,19 @@
         <copy todir="${mcp.dir}\lib\">
             <fileset dir="libs\" />
         </copy>
-        <copy todir="${mcp.dir}\src\minecraft\">
-            <fileset dir="other_sources\" />
-        </copy>
     </target>
 
     <!-- Replace version token -->
     <target name="replace_tokens">
         <propertyfile file="build.properties">
-            <entry key="NanotechMod_version" type="string" default="error"/>
+            <entry key="ntm_version" type="string" default="error"/>
         </propertyfile>
-        <replace dir="${mcp.dir}\src\minecraft" token="@VERSION@" value="${NanotechMod_version.NanotechMod_version}" />
+        <replace dir="${mcp.dir}\src\minecraft" token="@VERSION@" value="${buildprop.ntm_version}" />
 
         <propertyfile file="build.properties">
-            <entry key="UltimateGraviSuite_version" type="string" default="error"/>
+            <entry key="ugs_version" type="string" default="error"/>
         </propertyfile>
-        <replace dir="${mcp.dir}\src\minecraft" token="@GRAVI_VERSION@" value="${UltimateGraviSuite_version.UltimateGraviSuite_version}" />
+        <replace dir="${mcp.dir}\src\minecraft" token="@GRAVI_VERSION@" value="${buildprop.ugs_version}" />
     </target>
 
     <!-- Recompile -->
@@ -105,17 +117,30 @@
     </target>
 
     <!-- Build the jar -->
-    <target name="createjar">
-        <!-- Build the jar -->
+    <target name="create_ntm_jar">
         <mkdir dir="releases\" />
-        <jar destfile="releases\Nanotech_mod-core-universal-${NanotechMod_version.NanotechMod_version}.${build_number.build_number}-mc${mc_version.mc_version}.jar">
-            <fileset dir="resources\" includes="mods\Nanotech_mod\**" />
+        <jar destfile="releases\Nanotech_mod-core-universal-${buildprop.ntm_version}.${buildprop.ntm_build}-mc${buildprop.mc}.jar">
+            <fileset dir="resources\">
+                <include name ="assets\nanotech_mod\**" /> 
+                <exclude name ="assets\nanotech_mod\**.db" /> 
+            </fileset>
             <fileset dir="resources\" includes="mcmod.info" />
-            <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\main\**"/>
+            <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\main\"/>
         </jar>
-        <jar destfile="releases\Nanotech_mod-UltimateGraviSuite-universal-${UltimateGraviSuite_version.UltimateGraviSuite_version}.${build_number.build_number}-mc${mc_version.mc_version}.jar">
-            <fileset dir="resources\" includes="mods\UltimateGraviSuite\**" />
-            <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\ultimateGraviSuite\**"/>
+        <jar destfile="releases\Nanotech_mod-city-universal-${buildprop.ntm_version}.${buildprop.ntm_build}-mc${buildprop.mc}.jar">
+            <fileset dir="resources\">
+                <include name ="assets\nanotech_mod_city\**" /> 
+                <exclude name ="assets\nanotech_mod_city\**.db" /> 
+            </fileset>
+            <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\city\"/>
+        </jar>
+    </target>
+
+    <target name="create_ugs_jar">
+        <mkdir dir="releases\" />
+        <jar destfile="releases\Nanotech_mod-UltimateGraviSuite-universal-${buildprop.ugs_version}.${buildprop.ugs_build}-mc${buildprop.mc}.jar">
+            <fileset dir="resources\" includes="assets\ultimategravisuite\**" />
+            <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\ultimateGraviSuite\"/>
         </jar>
     </target>
 
@@ -129,18 +154,44 @@
         <delete dir="${mcp.dir}\reobf\minecraft" />
     </target>
 
-    <target name="build">
-        <!-- Prep for the build -->
-        <antcall target="download-forge" />
-        <antcall target="setup" />
-        <antcall target="increment_build_number" />
-        <antcall target="copy_sources" />
+    <target name="buildall">
+        <antcall target="clean" />
+        <antcall target="download-and-setup-forge" />
+        <antcall target="increment_build_ntm_number" />
+        <antcall target="increment_build_ugs_number" />
+        <antcall target="copy_ntm_sources" />
+        <antcall target="copy_ugs_sources" />
+        <antcall target="copy_libs" />
+        <antcall target="replace_tokens" />
+        <antcall target="recompile" />
+        <antcall target="reobfuscate" />
+        <antcall target="create_ntm_jar" />	
+        <antcall target="create_ugs_jar" />
+        <antcall target="clean" />
+    </target>
+
+    <target name="buildntm">
+        <antcall target="clean" />
+        <antcall target="download-and-setup-forge" />
+        <antcall target="increment_build_ntm_number" />
+        <antcall target="copy_ntm_sources" />
         <antcall target="copy_libs" />
         <antcall target="replace_tokens" />
         <antcall target="recompile" />	
         <antcall target="reobfuscate" />
-        <antcall target="createjar" />
+        <antcall target="create_ntm_jar" />
         <antcall target="clean" />
     </target>
-</project>
 
+    <target name="buildugs">
+        <antcall target="clean" />
+        <antcall target="download-and-setup-forge" />
+        <antcall target="increment_build_ugs_number" />
+        <antcall target="copy_ugs_sources" />
+        <antcall target="copy_libs" />
+        <antcall target="replace_tokens" />
+        <antcall target="recompile" />	
+        <antcall target="reobfuscate" />
+        <antcall target="create_ugs_jar" />
+    </target>
+</project>
