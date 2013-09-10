@@ -4,7 +4,11 @@
     <property file="build.properties" prefix="buildprop"/>
     <property name="forge.dir" value="..\forge"/>
     <property name="mcp.dir" value="${forge.dir}\${buildprop.forge}\mcp"/>
-	<available property="mcp-exists" file="${mcp.dir}"/>
+    <property name="ic2.name" value="industrialcraft-2-dev-deobf_2.0.${buildprop.ic2_build}-experimental.jar"/>
+	<property name="ffmtapi.name" value="${buildprop.ffmtapi}"/>
+    <available property="mcp-exists" file="${mcp.dir}"/>
+	<available property="ffmtapi-exists" file="libs\${buildprop.ffmtapi}"/>
+	<available property="ic2-exists" file="libs\ic2.name"/>
 
     <!-- Download and setup forge -->
     <target name="download-and-setup-forge" unless="mcp-exists">
@@ -76,10 +80,37 @@
         </copy>
     </target>
 
-    <!-- Copy lib into mcp -->
-    <target name="copy_libs">
+    <!-- Download ic2-->
+    <target name="download_ic2" unless="ic2-exists">
+        <get src="http://ic2api.player.to:8080/job/IC2_experimental/${buildprop.ic2_build}/artifact/packages/${ic2.name}" dest="libs/" usetimestamp="True"/>
+    </target>
+
+    <!-- Download FFMT API-->
+    <target name="download_ffmtapi" unless="ffmtapi-exists">
+        <get src="http://dl.mcnanotech.fr/FFMT/API/download/${buildprop.ffmtapi}" dest="libs/" usetimestamp="True"/>
+    </target>
+
+    <!-- Extract FFMT API into bin -->
+    <target name="extract_ffmtapi">
+        <unzip src="libs/${ffmtapi.name}" dest="${mcp.dir}/bin/minecraft/">
+            <patternset>
+                <include name="**/*.class" />
+            </patternset>
+        </unzip>
         <copy todir="${mcp.dir}\lib\">
-            <fileset dir="libs\" />
+            <fileset file="libs\${ffmtapi.name}" />
+        </copy>
+    </target>
+
+    <!-- Extract IC2 into bin -->
+    <target name="extract_ic2">
+        <unzip src="libs/${ic2.name}" dest="${mcp.dir}/bin/minecraft/">
+            <patternset>
+                <include name="**/*.class" />
+            </patternset>
+        </unzip>
+        <copy todir="${mcp.dir}\lib\">
+            <fileset file="libs\${ic2.name}" />
         </copy>
     </target>
 
@@ -88,12 +119,13 @@
         <propertyfile file="build.properties">
             <entry key="ntm_version" type="string" default="error"/>
         </propertyfile>
-        <replace dir="${mcp.dir}\src\minecraft" token="@VERSION@" value="${buildprop.ntm_version}" />
+        <replace file="${mcp.dir}\src\minecraft\fr\mcnanotech\kevin_68\nanotech_mod\main\core\Nanotech_mod.java" token="@VERSION@" value="${buildprop.ntm_version}" />
+        <replace file="${mcp.dir}\src\minecraft\fr\mcnanotech\kevin_68\nanotech_mod\city\core\Nanotech_mod_City.java" token="@VERSION@" value="${buildprop.ntm_version}" />
 
         <propertyfile file="build.properties">
             <entry key="ugs_version" type="string" default="error"/>
         </propertyfile>
-        <replace dir="${mcp.dir}\src\minecraft" token="@GRAVI_VERSION@" value="${buildprop.ugs_version}" />
+        <replace file="${mcp.dir}\src\minecraft\fr\mcnanotech\kevin_68\nanotech_mod\ultimateGraviSuite\core\UltimateGraviSuite.java" token="@GRAVI_VERSION@" value="${buildprop.ugs_version}" />
     </target>
 
     <!-- Recompile -->
@@ -150,18 +182,20 @@
         <delete dir="${mcp.dir}\src\minecraft\fr" />
         <delete dir="${mcp.dir}\src\minecraft\gravisuite" />
         <delete dir="${mcp.dir}\src\minecraft\gregtechmod" />
-        <delete file="${mcp.dir}\libs\*deobf*" />
         <delete dir="${mcp.dir}\reobf\minecraft" />
     </target>
 
     <target name="buildall">
         <antcall target="clean" />
         <antcall target="download-and-setup-forge" />
+        <antcall target="download_ic2" />
+        <antcall target="download_ffmtapi" />
         <antcall target="increment_build_ntm_number" />
         <antcall target="increment_build_ugs_number" />
         <antcall target="copy_ntm_sources" />
         <antcall target="copy_ugs_sources" />
-        <antcall target="copy_libs" />
+        <antcall target="extract_ic2" />
+        <antcall target="extract_ffmtapi" />
         <antcall target="replace_tokens" />
         <antcall target="recompile" />
         <antcall target="reobfuscate" />
@@ -173,9 +207,10 @@
     <target name="buildntm">
         <antcall target="clean" />
         <antcall target="download-and-setup-forge" />
+        <antcall target="download_ffmtapi" />
         <antcall target="increment_build_ntm_number" />
         <antcall target="copy_ntm_sources" />
-        <antcall target="copy_libs" />
+        <antcall target="extract_ffmtapi" />
         <antcall target="replace_tokens" />
         <antcall target="recompile" />	
         <antcall target="reobfuscate" />
@@ -186,9 +221,10 @@
     <target name="buildugs">
         <antcall target="clean" />
         <antcall target="download-and-setup-forge" />
+        <antcall target="download_ic2" />
         <antcall target="increment_build_ugs_number" />
         <antcall target="copy_ugs_sources" />
-        <antcall target="copy_libs" />
+        <antcall target="extract_ic2" />
         <antcall target="replace_tokens" />
         <antcall target="recompile" />	
         <antcall target="reobfuscate" />

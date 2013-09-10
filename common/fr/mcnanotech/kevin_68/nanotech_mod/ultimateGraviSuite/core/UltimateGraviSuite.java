@@ -33,7 +33,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.network.ClientTick
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.network.ServerPacketHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.network.ServerTickHandler;
 
-@Mod(modid = "UltimateGraviSuite", name = "Ultimate Gravitation Suite"/*, dependencies = "required-after:IC2;required-after:GraviSuite"*/, version = "1.6")
+@Mod(modid = "UltimateGraviSuite", name = "Ultimate Gravitation Suite"/*, dependencies = "required-after:IC2;required-after:GraviSuite"*/, version = "@GRAVI_VERSION@")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, clientPacketHandlerSpec = @NetworkMod.SidedPacketHandler(channels ={"gravisuite"}, packetHandler = ClientPacketHandler.class), serverPacketHandlerSpec = @NetworkMod.SidedPacketHandler(channels = {"gravisuite"}, packetHandler = ServerPacketHandler.class))
 
 public class UltimateGraviSuite

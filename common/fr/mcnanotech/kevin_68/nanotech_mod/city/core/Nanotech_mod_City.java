@@ -27,7 +27,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySunShade;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrail;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
-@Mod(modid = "Nanotech_mod_City", name = "Nanotech mod City", version = "1.0.0")
+@Mod(modid = "Nanotech_mod_City", name = "Nanotech mod City", version = "@VERSION@")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTMC|light", "NTMC|fount"}, packetHandler = PacketHandler.class)
 public class Nanotech_mod_City 
 {

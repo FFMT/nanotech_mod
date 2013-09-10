@@ -39,7 +39,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechBiome;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGeneration;
 
-@Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "2.0.3")
+@Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "@VERSION@")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTM|smoker", "NTM|jumper"}, packetHandler = PacketHandler.class)
 public class Nanotech_mod
 {
