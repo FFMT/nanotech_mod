@@ -103,7 +103,7 @@ public class WorldGenNanoTree extends WorldGenerator
 
 					if((Math.abs(i5) != i4 || Math.abs(l5) != i4 || random.nextInt(2) != 0 && j3 != 0) && !Block.opaqueCubeLookup[world.getBlockId(k4, j2, k5)])
 					{
-						setBlockAndMetadata(world, k4, j2, k5, NanotechBlock.BlockNanoleaves.blockID, field_48199_d);
+						setBlockAndMetadata(world, k4, j2, k5, NanotechBlock.BlockNanoleaves.blockID, 0);
 					}
 				}
 			}
