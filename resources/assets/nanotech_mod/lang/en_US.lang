@@ -89,6 +89,11 @@ entity.Fly.name=Fly
 entity.FlyingCreeper.name=Flying Creeper
 entity.CrazyGuy.name=Crazy Guy
 
+#Container
+container.multiplier=Multiplier
+container.input=Input
+container.output=Output
+
 #Other
 info.void.1=Item for empty barrel
 info.void.2=100 % cobblestone

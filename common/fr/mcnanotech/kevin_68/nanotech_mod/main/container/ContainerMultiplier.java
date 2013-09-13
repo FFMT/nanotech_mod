@@ -17,7 +17,7 @@ public class ContainerMultiplier extends Container
 		this.tileEntity = tileEntity;
 
 		addSlotToContainer(new Slot(tileEntity, 0, 54, 37));
-		addSlotToContainer(new Slot(tileEntity, 0, 104, 37));
+		addSlotToContainer(new Slot(tileEntity, 1, 104, 37));
 		bindPlayerInventory(inventoryPlayer);
 	}
 

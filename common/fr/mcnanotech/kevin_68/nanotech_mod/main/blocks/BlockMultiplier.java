@@ -3,7 +3,9 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
@@ -53,4 +55,14 @@ public class BlockMultiplier extends BlockContainer
 	{
 		return new TileEntityMultiplier();
 	}
+	
+    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack) 
+    {
+    	TileEntity te = world.getBlockTileEntity(x, y, z);
+    	if(te != null && te instanceof TileEntityMultiplier && stack.hasDisplayName())
+    	{
+    		TileEntityMultiplier multiplier = (TileEntityMultiplier)te;
+    		multiplier.setCustomName(stack.getDisplayName());
+    	}
+    }
 }

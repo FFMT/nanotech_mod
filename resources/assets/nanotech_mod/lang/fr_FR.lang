@@ -90,10 +90,19 @@ entity.Fly.name=Mouche
 entity.FlyingCreeper.name=Creeper volant
 entity.CrazyGuy.name=Fou
 
+#Container
+container.multiplier=Multiplieur
+container.input=Entré
+container.output=Sortie
+
 #Other
 info.void.1=Item pour barrel vide
 info.void.2=100% cobblestone
 info.void.3=100% recyclable
 
+#Achievement
+achievement.installMod=Installez Nanotech_mod
+
+#CreativeTab
 itemGroup.NanotechModBlocks=Blocs de Nanotech mod
 itemGroup.NanotechModItems=Items de Nanotech mod

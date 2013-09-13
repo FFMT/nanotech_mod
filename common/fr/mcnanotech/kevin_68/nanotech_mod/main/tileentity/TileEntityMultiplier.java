@@ -9,17 +9,26 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityMultiplier extends TileEntity implements IInventory
 {
-	private ItemStack[] inventory;
+	private ItemStack[] inventory = new ItemStack[2];
+	private String customName;
 
-	public TileEntityMultiplier()
-	{
-		inventory = new ItemStack[1];
-	}
+    public void updateEntity() 
+    {
+    	if(this.inventory[1] == null && this.inventory[0] != null)
+    	{
+    		this.inventory[1] = this.inventory[0].copy();
+    		inventory[1].stackSize = 64;
+    	}
+    	if(this.inventory[1] != null && this.inventory[1].stackSize < 64)
+    	{
+    		this.inventory[1].stackSize = 64;
+    	}
+    }
 
 	@Override
 	public String getInvName()
 	{
-		return "TileEntity Ticket Distributor";
+		return "container.multiplier";
 	}
 
 	@Override
@@ -74,6 +83,10 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
 			}
 		}
+		if(nbttagCompound.hasKey("Name"))
+		{
+			this.customName = nbttagCompound.getString("Name");
+		}
 	}
 
 	@Override
@@ -96,8 +109,12 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 				itemList.appendTag(tag);
 			}
 		}
-
 		nbttagCompound.setTag("Inventory", itemList);
+		
+		if(this.customName != null)
+		{
+			nbttagCompound.setString("Name", this.customName);
+		}
 	}
 
 	@Override
@@ -146,7 +163,17 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 	@Override
 	public boolean isInvNameLocalized()
 	{
-		return false;
+		return this.customName != null && this.customName.length() > 0;
+	}
+	
+	public void setCustomName(String name)
+	{
+		this.customName = name;
+	}
+	
+	public String getCustomName()
+	{
+		return this.customName;
 	}
 
 	@Override

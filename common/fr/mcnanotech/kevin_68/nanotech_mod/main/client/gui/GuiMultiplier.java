@@ -1,6 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -12,31 +13,30 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
 
 public class GuiMultiplier extends GuiContainer
 {
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/gui/Multiplier.png");
+	public static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/gui/Multiplier.png");
+	private TileEntityMultiplier tileMultiplier;
 
 	public GuiMultiplier(InventoryPlayer inventoryPlayer, TileEntityMultiplier tileEntity, World world)
 	{
 		super(new ContainerMultiplier(tileEntity, inventoryPlayer, world));
+		this.tileMultiplier = tileEntity;
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int i, int j)
 	{
-		fontRenderer.drawString("Multiplier", 8, 6, 4210752);
-		fontRenderer.drawString("1.Place Items", 70, 10, 4210752);
-		fontRenderer.drawString("2.Shift", 130, 55, 4210752);
-		fontRenderer.drawString("click", 130, 70, 4210752);
-		fontRenderer.drawString("3.Take", 70, 70, 4210752);
+		fontRenderer.drawString(tileMultiplier.isInvNameLocalized() ? tileMultiplier.getCustomName() : I18n.getString(tileMultiplier.getInvName()), 8, 6, 4210752);
+		fontRenderer.drawString(I18n.getString("container.input"), 50, 20, 4210752);
+		fontRenderer.drawString(I18n.getString("container.output"), 100, 20, 4210752);
 	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.renderEngine.bindTexture(texture);
+		this.mc.getTextureManager().bindTexture(texture);
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 	}
-
 }
