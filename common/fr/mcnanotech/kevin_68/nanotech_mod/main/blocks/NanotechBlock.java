@@ -8,13 +8,13 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 public class NanotechBlock
 {
 	// Blocks statement
-	public static Block BlockPortal, BlockPortalframe, BlockGrass, BlockFakeOre, BlockSpeed, BlockJumper, BlockMultiplier, BlockSmoker, BlockBarbedwire, BlockNanowood, BlockNanoleaves, BlockNanosaplings, BlockNanoplanks, BlockNanoOre, BlockConfusion, BlockFalling, Blocknotfalling, BlockSodium, BlockMossystone, BlockTheDeathHead, BlockTea;
+	public static Block BlockPortal, BlockPortalFrame, BlockGrass, BlockFakeOre, BlockSpeed, BlockJumper, BlockMultiplier, BlockSmoker, BlockBarbedwire, BlockNanowood, BlockNanoleaves, BlockNanosaplings, BlockNanoplanks, BlockNanoOre, BlockConfusion, BlockFalling, Blocknotfalling, BlockSodium, BlockMossystone, BlockTheDeathHead, BlockTea;
 
 	// Blocks Initialization
 	public static void initBlock()
 	{
 		BlockPortal = new BlockNanoPortal(Nanotech_mod.BlockPortalID).setBlockUnbreakable().setUnlocalizedName("portal").setTextureName("nanotech_mod:nanoportal");
-		BlockPortalframe = new BlockPortalFrame(Nanotech_mod.BlockPortalFrameID, Material.rock).setResistance(5F).setHardness(2F).setUnlocalizedName("portalframe").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B).setTextureName("nanotech_mod:portalframe");
+		BlockPortalFrame = new BlockBase(Nanotech_mod.BlockPortalFrameID, Material.rock).setResistance(5F).setHardness(2F).setUnlocalizedName("portalframe").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B).setTextureName("nanotech_mod:portalframe");
 		BlockGrass = new BlockGrass(Nanotech_mod.BlockGrassID).setHardness(0.6F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("nanograss").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockFakeOre = new BlockFakeOre(Nanotech_mod.BlockFakeOreID).setHardness(3.0F).setResistance(5F).setUnlocalizedName("fakediamond").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockSpeed = new BlockSpeed(Nanotech_mod.BlockSpeedID).setHardness(0.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("speed").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
@@ -40,7 +40,7 @@ public class NanotechBlock
 	public static void blockRegistry()
 	{
 		GameRegistry.registerBlock(BlockPortal, "BlockPortal");
-		GameRegistry.registerBlock(BlockPortalframe, "BlockPortalframe");
+		GameRegistry.registerBlock(BlockPortalFrame, "BlockPortalframe");
 		GameRegistry.registerBlock(BlockGrass, "BlockGrass");
 		GameRegistry.registerBlock(BlockFakeOre, ItemBlockFakeOre.class, "BlockFakeOre", "Nanotech_mod");
 		GameRegistry.registerBlock(BlockSpeed, ItemBlockSpeed.class, "BlockSpeed", "Nanotech_mod");

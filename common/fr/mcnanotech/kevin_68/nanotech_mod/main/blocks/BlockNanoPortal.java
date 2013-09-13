@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -21,7 +22,31 @@ public class BlockNanoPortal extends Block
 		this.setTickRandomly(true);
 		this.setStepSound(soundGlassFootstep);
 		this.setLightValue(0.75F);
-		this.setBlockBounds(0.0F, 0.40F, 0.0F, 1.0F, 0.60F, 1.0F);
+	}
+
+	public void setBlockBoundsBasedOnState(IBlockAccess iblockaccess, int x, int y, int z)
+	{
+		float f;
+		float f1;
+
+		if(iblockaccess.getBlockId(x - 1, y, z) != this.blockID && iblockaccess.getBlockId(x + 1, y, z) != this.blockID)
+		{
+			f = 0.125F;
+			f1 = 0.5F;
+			this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f1, 0.5F + f, 1.0F, 0.5F + f1);
+		}
+		else
+		{
+			f = 0.5F;
+			f1 = 0.125F;
+			this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f1, 0.5F + f, 1.0F, 0.5F + f1);
+		}
+	}
+
+	public void setBlockBoundsForItemRender()
+	{
+		float f1 = 0.125F;
+		this.setBlockBounds(0, 0.0F, 0.5F - f1, 1F, 1.0F, 0.5F + f1);
 	}
 
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
@@ -31,8 +56,71 @@ public class BlockNanoPortal extends Block
 
 	public void onNeighborBlockChange(World world, int x, int y, int z, int blockid)
 	{
-		super.onNeighborBlockChange(world, x, y, z, blockid);
-		if(world.getBlockId(x - 1, y, z) != NanotechBlock.BlockPortalframe.blockID && world.getBlockId(x + 1, y, z) != NanotechBlock.BlockPortalframe.blockID && world.getBlockId(x, y - 1, z) != NanotechBlock.BlockPortalframe.blockID && world.getBlockId(x, y + 1, z) != NanotechBlock.BlockPortalframe.blockID)
+		int y2 = y;
+		while(world.getBlockId(x, y2, z) == this.blockID)
+		{
+			y2--;
+		}
+		if(world.getBlockId(x, y2, z) != NanotechBlock.BlockPortalFrame.blockID)
+		{
+			world.setBlockToAir(x, y, z);
+		}
+		int y3 = y2 + 1;
+		boolean portalisgood = false;
+		if(world.getBlockId(x, y3, z + 1) == this.blockID)
+		{
+			portalisgood = (world.getBlockId(x, y2, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2, z + 1) == NanotechBlock.BlockPortalFrame.blockID && 
+					world.getBlockId(x, y2 + 1, z + 2) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2 + 2, z + 2) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2 + 3, z + 2) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2 + 1, z - 1) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2 + 2, z - 1) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2 + 3, z - 1) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2 + 4, z - 1) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID);
+		}
+		else if(world.getBlockId(x, y3, z - 1) == this.blockID)
+		{
+			portalisgood = (world.getBlockId(x, y2, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2, z - 1) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2 + 1, z - 2) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2 + 2, z - 2) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2 + 3, z - 2) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2 + 1, z + 1) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2 + 2, z + 1) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2 + 3, z + 1) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2 + 4, z + 1) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID);
+		}
+		else if(world.getBlockId(x + 1, y3, z) == this.blockID)
+		{
+			portalisgood = (world.getBlockId(x, y2, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x + 1, y2, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x + 2, y2 + 1, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x + 2, y2 + 2, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x + 2, y2 + 3, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x - 1, y2 + 1, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x - 1, y2 + 2, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x - 1, y2 + 3, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x + 1, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID);
+		}
+		else if(world.getBlockId(x - 1, y3, z) == this.blockID)
+		{
+			portalisgood = (world.getBlockId(x, y2, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x - 1, y2, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x - 2, y2 + 1, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x - 2, y2 + 2, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x - 2, y2 + 3, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x + 1, y2 + 1, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x + 1, y2 + 2, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x + 1, y2 + 3, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x + 1, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID &&
+					world.getBlockId(x, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID);
+		}
+
+		if(!portalisgood)
 		{
 			world.setBlockToAir(x, y, z);
 		}
@@ -89,5 +177,34 @@ public class BlockNanoPortal extends Block
 	public int idPicked(World world, int x, int y, int z)
 	{
 		return 0;
+	}
+
+	public void breakBlock(World world, int x, int y, int z, int metadata, int side)
+	{
+		super.breakBlock(world, x, y, z, metadata, side);
+		if(world.getBlockId(x, y + 1, z) == this.blockID)
+		{
+			world.setBlockToAir(x, y + 1, z);
+		}
+		if(world.getBlockId(x, y - 1, z) == this.blockID)
+		{
+			world.setBlockToAir(x, y - 1, z);
+		}
+		if(world.getBlockId(x + 1, y, z) == this.blockID)
+		{
+			world.setBlockToAir(x + 1, y, z);
+		}
+		if(world.getBlockId(x - 1, y, z) == this.blockID)
+		{
+			world.setBlockToAir(x - 1, y, z);
+		}
+		if(world.getBlockId(x, y, z + 1) == this.blockID)
+		{
+			world.setBlockToAir(x, y, z + 1);
+		}
+		if(world.getBlockId(x, y, z - 1) == this.blockID)
+		{
+			world.setBlockToAir(x, y, z - 1);
+		}
 	}
 }

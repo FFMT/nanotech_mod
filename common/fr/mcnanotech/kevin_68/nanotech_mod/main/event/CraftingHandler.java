@@ -46,7 +46,7 @@ public class CraftingHandler implements ICraftingHandler
 		{
 			player.triggerAchievement(NanotechAchievement.blockNotFalling);
 		}
-		if(stack.itemID == NanotechBlock.BlockPortalframe.blockID)
+		if(stack.itemID == NanotechBlock.BlockPortalFrame.blockID)
 		{
 			player.triggerAchievement(NanotechAchievement.blockPortalFrame);
 		}

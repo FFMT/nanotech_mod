@@ -103,7 +103,7 @@ public class NanotechRecipe
 
 	public static void InitNormalRecipes()
 	{
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockPortalframe, 4), new Object[]
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockPortalFrame, 4), new Object[]
 		{" X ", "XZX", " X ", 'X', Block.blockIron, 'Z', Block.obsidian});
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockSpeed, 2, 0), new Object[]
 		{" X ", "XZX", " X ", 'X', Item.redstone, 'Z', Block.slowSand});
@@ -135,7 +135,7 @@ public class NanotechRecipe
 
 	public static void InitHardRecipes()
 	{
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockPortalframe, 1), new Object[]
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockPortalFrame, 1), new Object[]
 		{" X ", "XZX", " X ", 'X', Block.blockIron, 'Z', Block.obsidian});
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.BlockSpeed, 1, 0), new Object[]
 		{" X ", "XZX", " X ", 'X', Item.redstone, 'Z', Block.slowSand});

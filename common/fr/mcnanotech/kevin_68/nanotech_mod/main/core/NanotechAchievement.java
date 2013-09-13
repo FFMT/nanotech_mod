@@ -23,7 +23,7 @@ public class NanotechAchievement
 		blockJumperAdv = new Achievement(12574, "blockJumperAdv", 0, 7, new ItemStack(NanotechBlock.BlockJumper, 1, 1), blockJumper).registerAchievement();
 		blockMossyStone = new Achievement(12575, "blockMossyStone", 1, 5, NanotechBlock.BlockMossystone, installMod).registerAchievement();
 		blockNotFalling = new Achievement(12576, "blockNotFalling", 2, 5, NanotechBlock.Blocknotfalling, installMod).registerAchievement();
-		blockPortalFrame = new Achievement(12577, "blockPortalFrame", -1, 5, NanotechBlock.BlockPortalframe, installMod).registerAchievement();
+		blockPortalFrame = new Achievement(12577, "blockPortalFrame", -1, 5, NanotechBlock.BlockPortalFrame, installMod).registerAchievement();
 		blockSmoker = new Achievement(12578, "blockSmoker", -2, 5, NanotechBlock.BlockSmoker, installMod).registerAchievement();
 		blockSpeed = new Achievement(12579, "blockSpeed", -3, 5, NanotechBlock.BlockSpeed, installMod).registerAchievement();
 		blockSlow = new Achievement(12580, "blockSlow", -4, 5, new ItemStack(NanotechBlock.BlockSpeed, 1, 1), installMod).registerAchievement();
