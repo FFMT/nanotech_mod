@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLeaves;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -13,19 +14,47 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.minecraftforgefrance.ffmtapi.blockhelper.BlockFFMTLeavesBase;
 
-public class BlockNanoLeaves extends BlockFFMTLeavesBase implements IShearable
+public class BlockNanoLeaves extends BlockLeaves implements IShearable
 {
+	protected Icon fastIcon;
 	public BlockNanoLeaves(int id)
 	{
 		super(id);
+		this.setLightOpacity(1);
 	}
 
 	public void registerIcons(IconRegister iconregister)
 	{
 		blockIcon = iconregister.registerIcon("nanotech_mod:nanoleaves");
 		fastIcon = iconregister.registerIcon("nanotech_mod:nanoleaves_opaque");
+	}
+	
+	public boolean isOpaqueCube()
+	{
+		return Block.leaves.isOpaqueCube();
+	}
+
+	@SideOnly(Side.CLIENT)
+	public boolean shouldSideBeRendered(IBlockAccess blockaccess, int x, int y, int z, int side)
+	{
+		return !this.isOpaqueCube() ? true : super.shouldSideBeRendered(blockaccess, x, y, z, side);
+	}
+
+	public Icon getIcon(int side, int metadata)
+	{
+		return(isOpaqueCube() ? fastIcon : blockIcon);
+	}
+
+	public void getSubBlocks(int par1, CreativeTabs creativeTabs, List list)
+	{
+		list.add(new ItemStack(par1, 1, 0));
+	}
+	
+	@Override
+	public boolean isLeaves(World world, int x, int y, int z)
+	{
+		return true;
 	}
 
 	@SideOnly(Side.CLIENT)
