@@ -5,7 +5,6 @@ import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
 import ic2.api.item.IMetalArmor;
 import ic2.core.IC2;
-import ic2.core.IC2Potion;
 import ic2.core.Ic2Items;
 import ic2.core.item.ItemTinCan;
 
@@ -192,10 +191,10 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 
 			if(var9 > -1)
 			{
-				ItemTinCan var13 = (ItemTinCan)player.inventory.mainInventory[var9].getItem();
-				player.getFoodStats().addStats(var13.getHealAmount(), var13.getSaturationModifier());
-				var13.func_77849_c(player.inventory.mainInventory[var9], player.worldObj, player);
-				var13.onEaten(player);
+				ItemTinCan can = (ItemTinCan)player.inventory.mainInventory[var9].getItem();
+				player.getFoodStats().addStats(can.getHealAmount(), can.getSaturationModifier());
+				can.func_77849_c(player.inventory.mainInventory[var9], player.worldObj, player);
+				can.onEaten(player); 
 
 				if(--player.inventory.mainInventory[var9].stackSize <= 0)
 				{
@@ -333,15 +332,23 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack var1)
+	public EnumRarity getRarity(ItemStack stack)
 	{
 		return EnumRarity.epic;
 	}
 
 	static
 	{
+		Potion IC2radiation = null;
+		try
+		{
+			IC2radiation = (Potion)Class.forName("ic2.core.IC2Potion").getField("radiation").get(null);
+		}
+		catch(Exception ex)
+		{
+		}
 		potionRemovalCost[Potion.poison.id] = 10000;
-		potionRemovalCost[IC2Potion.radiation.id] = 10000;
+		potionRemovalCost[IC2radiation.id] = 10000;
 		potionRemovalCost[Potion.wither.id] = 25000;
 	}
 
