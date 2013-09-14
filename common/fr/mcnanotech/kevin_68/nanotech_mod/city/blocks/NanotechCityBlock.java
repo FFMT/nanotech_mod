@@ -13,10 +13,10 @@ public class NanotechCityBlock
 	// Blocks Initialization
 	public static void initBlock()
 	{
-		BlockTrashcan = new BlockTrashcan(Nanotech_mod_City.BlockTrashcanID).setHardness(0.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("trashcan").setCreativeTab(Nanotech_mod_City.CREATIVE_TAB_C);
-		BlockSpotLight = new BlockSpotLight(Nanotech_mod_City.BlockSpotLightID).setHardness(1.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("spotlight").setCreativeTab(Nanotech_mod_City.CREATIVE_TAB_C);
-		BlockTrail = new BlockTrail(Nanotech_mod_City.BlockTrailID, Material.ground).setHardness(1.0F).setResistance(1.0F).setUnlocalizedName("blockTrail").setStepSound(Block.soundGravelFootstep).setCreativeTab(Nanotech_mod_City.CREATIVE_TAB_C);
-		BlockFountain = new BlockFountain(Nanotech_mod_City.BlockFountainID).setUnlocalizedName("blockFountain").setCreativeTab(Nanotech_mod_City.CREATIVE_TAB_C);
+		BlockTrashcan = new BlockTrashcan(Nanotech_mod_City.BlockTrashcanID).setHardness(0.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("trashcan").setCreativeTab(Nanotech_mod_City.cityTab);
+		BlockSpotLight = new BlockSpotLight(Nanotech_mod_City.BlockSpotLightID).setHardness(1.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("spotlight").setCreativeTab(Nanotech_mod_City.cityTab);
+		BlockTrail = new BlockTrail(Nanotech_mod_City.BlockTrailID, Material.ground).setHardness(1.0F).setResistance(1.0F).setUnlocalizedName("blockTrail").setStepSound(Block.soundGravelFootstep).setCreativeTab(Nanotech_mod_City.cityTab);
+		BlockFountain = new BlockFountain(Nanotech_mod_City.BlockFountainID).setUnlocalizedName("blockFountain").setCreativeTab(Nanotech_mod_City.cityTab);
 		BlockLamp = new BlockLamp(Nanotech_mod_City.BlockLampID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockLamp");
 		BlockLampLight = new BlockLampLight(Nanotech_mod_City.BlockLampLightID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockLampLight");
 		BlockSunShade = new BlockSunShade(Nanotech_mod_City.BlockSunShadeID, Material.wood).setHardness(2.0F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("sunShade");

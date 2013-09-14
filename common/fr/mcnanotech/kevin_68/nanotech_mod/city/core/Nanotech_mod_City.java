@@ -45,7 +45,7 @@ public class Nanotech_mod_City
 	// Item IDs
 	public static int ItemLampID, ItemSunShadeID;
 	
-	public static CreativeTabs CREATIVE_TAB_C = new CreativeTabs("NanotechModCity")
+	public static CreativeTabs cityTab = new CreativeTabs("NanotechModCity")
 	{
 		@SideOnly(Side.CLIENT)
 		public int getTabIconItemIndex()
