@@ -9,17 +9,17 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelCreeperForreur;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelCreeperDriller;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCreeperDriller;
 
-public class RenderCreeperForreur extends RenderLiving
+public class RenderCreeperDriller extends RenderLiving
 {
-	private ModelBase model = new ModelCreeperForreur(2.0F);
+	private ModelBase model = new ModelCreeperDriller(2.0F);
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/entity/creeperforreur.png");
 
-	public RenderCreeperForreur(ModelCreeperForreur model, float f)
+	public RenderCreeperDriller(ModelCreeperDriller model, float f)
 	{
-		super(new ModelCreeperForreur(), 0.5F);
+		super(new ModelCreeperDriller(), 0.5F);
 	}
 	
 	protected ResourceLocation getCreeperDrillerTexture(MobCreeperDriller entity)

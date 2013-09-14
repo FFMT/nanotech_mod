@@ -5,7 +5,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
-public class ModelCreeperForreur extends ModelBase
+public class ModelCreeperDriller extends ModelBase
 {
 	ModelRenderer leg23;
 	ModelRenderer leg13;
@@ -28,12 +28,12 @@ public class ModelCreeperForreur extends ModelBase
 	ModelRenderer liaison1;
 	ModelRenderer liaison2;
 
-	public ModelCreeperForreur()
+	public ModelCreeperDriller()
 	{
 		this(0.0F);
 	}
 
-	public ModelCreeperForreur(float par1)
+	public ModelCreeperDriller(float par1)
 	{
 		textureWidth = 64;
 		textureHeight = 32;

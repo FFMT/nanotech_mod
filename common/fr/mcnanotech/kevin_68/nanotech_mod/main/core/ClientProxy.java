@@ -20,7 +20,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySunShade;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrail;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiOverlay;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelCrazyGuy;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelCreeperForreur;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelCreeperDriller;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelFly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelFlyingCreeper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelMobFastZombie;
@@ -30,7 +30,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelSuperSkeleton;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelSuperZombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelTheDeath;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderCrazyGuy;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderCreeperForreur;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderCreeperDriller;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderFastZombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderFlyingCreeper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderMobFly;
@@ -63,18 +63,11 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(MobSuperSkeleton.class, new RenderMobSuperSkeleton(new ModelSuperSkeleton(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(MobSuperEnderman.class, new RenderSuperEnderman(new ModelSuperEnderman(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(MobSuperZombie.class, new RenderSuperZombie(new ModelSuperZombie(), 0.5F));
-		RenderingRegistry.registerEntityRenderingHandler(MobCreeperDriller.class, new RenderCreeperForreur(new ModelCreeperForreur(), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(MobCreeperDriller.class, new RenderCreeperDriller(new ModelCreeperDriller(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(MobFastzombie.class, new RenderFastZombie(new ModelMobFastZombie(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(MobFly.class, new RenderMobFly(new ModelFly(), 0.05F));
 		RenderingRegistry.registerEntityRenderingHandler(MobFlyingCreeper.class, new RenderFlyingCreeper(new ModelFlyingCreeper(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(MobCrazyGuy.class, new RenderCrazyGuy(new ModelCrazyGuy(), 0.5F));
-		
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpotLight.class, new TileEntitySpotLightRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTrail.class, new TileEntityTrailRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFountain.class, new TileEntityFountainRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLamp.class, new TileEntityLampRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLampLight.class, new TileEntityLampLightRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySunShade.class, new TileEntitySunShadeRender());
 
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.scythe.itemID, (IItemRenderer)new ItemScytheRender());
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.debug.itemID, (IItemRenderer)new ItemDebugRender());
