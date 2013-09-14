@@ -57,11 +57,11 @@ public class UltimateLeggings extends ItemArmor implements IElectricItem, IMetal
 	{
 		if(!readInvisibilityStatus(stack))
 		{
-			return "ultimategravisuite:/textures/armor/ultimategraviChestPlate2.png";
+			return "ultimategravisuite:textures/armor/ultimategraviChestPlate2.png";
 		}
 		else
 		{
-			return "ultimategravisuite:/textures/armor/ultimategraviChestPlateInvisible.png";
+			return "ultimategravisuite:textures/armor/ultimategraviChestPlateInvisible.png";
 		}
 	}
 

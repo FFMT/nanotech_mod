@@ -22,7 +22,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 public class GuiJumper extends GuiContainer
 {
 	private TileEntityJumper tileJumper;
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/gui/BlockJumper.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/gui/jumper.png");
 
 	public GuiJumper(InventoryPlayer playerInventory, TileEntityJumper tileEntity, World world)
 	{

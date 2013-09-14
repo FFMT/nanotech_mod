@@ -66,11 +66,11 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 	{
 		if(!readInvisibilityStatus(stack))
 		{
-			return "ultimategravisuite:/textures/armor/ultimategraviChestPlate.png";
+			return "ultimategravisuite:textures/armor/ultimategraviChestPlate.png";
 		}
 		else
 		{
-			return "ultimategravisuite:/textures/armor/ultimategraviChestPlateInvisible.png";
+			return "ultimategravisuite:textures/armor/ultimategraviChestPlateInvisible.png";
 		}
 	}
 

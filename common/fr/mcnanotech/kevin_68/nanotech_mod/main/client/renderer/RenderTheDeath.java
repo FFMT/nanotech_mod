@@ -6,6 +6,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -53,28 +54,33 @@ public class RenderTheDeath extends RenderLiving
 		this.preRenderScale((MobThedeath)entityliving, par2);
 	}
 
-	public void renderHealtBar(MobThedeath mob, double par2, double par4, double par6, float par8, float par9)
+	public void renderHealtBar(MobThedeath mob, double x, double y, double z, float par8, float par9)
 	{
 		BossStatus.setBossStatus(mob, true);
-		super.doRenderLiving(mob, par2, par4, par6, par8, par9);
+		super.doRenderLiving(mob, x, y, z, par8, par9);
 	}
 
-	public void doRenderLiving(EntityLiving entityliving, double par2, double par4, double par6, float par8, float par9)
+	public void doRenderLiving(EntityLiving entityliving, double x, double y, double z, float par8, float par9)
 	{
-		this.renderHealtBar((MobThedeath)entityliving, par2, par4, par6, par8, par9);
+		this.renderHealtBar((MobThedeath)entityliving, x, y, z, par8, par9);
 	}
 
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9)
+	public void doRender(Entity entity, double x, double y, double z, float par8, float par9)
 	{
-		this.renderHealtBar((MobThedeath)entity, par2, par4, par6, par8, par9);
+		this.renderHealtBar((MobThedeath)entity, x, y, z, par8, par9);
 	}
+	
+    protected void renderEquippedItems(EntityLivingBase livingbase, float par2)
+    {
+        this.func_130005_c((EntityLiving)livingbase, par2);
+    }
 
-	protected void renderEquippedItems(EntityLiving entityliving, float par2)
+	protected void func_130005_c(EntityLiving living, float par2)
 	{
 		float f1 = 1.0F;
 		GL11.glColor3f(f1, f1, f1);
-		super.renderEquippedItems(entityliving, par2);
-		ItemStack itemstack = entityliving.getHeldItem();
+		super.renderEquippedItems(living, par2);
+		ItemStack itemstack = living.getHeldItem();
 		float f2;
 
 		if(itemstack != null)
@@ -111,7 +117,7 @@ public class RenderTheDeath extends RenderLiving
 					GL11.glTranslatef(0.0F, -0.125F, 0.0F);
 				}
 
-				this.func_82422_c();
+				GL11.glTranslatef(0.0F, 0.1875F, 0.0F);
 				GL11.glScalef(f2, -f2, f2);
 				GL11.glRotatef(-100.0F, 1.0F, 0.0F, 0.0F);
 				GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
@@ -126,22 +132,17 @@ public class RenderTheDeath extends RenderLiving
 				GL11.glRotatef(20.0F, 0.0F, 0.0F, 1.0F);
 			}
 
-			this.renderManager.itemRenderer.renderItem(entityliving, itemstack, 0);
+			this.renderManager.itemRenderer.renderItem(living, itemstack, 0);
 
 			if(itemstack.getItem().requiresMultipleRenderPasses())
 			{
 				for(int x = 1; x < itemstack.getItem().getRenderPasses(itemstack.getItemDamage()); x++)
 				{
-					this.renderManager.itemRenderer.renderItem(entityliving, itemstack, x);
+					this.renderManager.itemRenderer.renderItem(living, itemstack, x);
 				}
 			}
 
 			GL11.glPopMatrix();
 		}
-	}
-
-	protected void func_82422_c()
-	{
-		GL11.glTranslatef(0.0F, 0.1875F, 0.0F);
 	}
 }
