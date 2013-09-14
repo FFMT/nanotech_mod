@@ -10,6 +10,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -26,6 +27,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityLampLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySunShade;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrail;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechAchievement;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 @Mod(modid = "Nanotech_mod_City", name = "Nanotech mod City", version = "@VERSION@")
@@ -88,11 +90,14 @@ public class Nanotech_mod_City
 		NanotechCityBlock.initBlock();
 		NanotechCityBlock.blockRegistry();
 		NanotechCityItem.initItem();
+		NanotechCityAchievement.initAchievement();
 	}
 	
 	@EventHandler
 	public void Init(FMLInitializationEvent event)
 	{
+		GameRegistry.registerCraftingHandler(new CityCraftingHandler());
+		
 		// NetWork
 		NetworkRegistry.instance().registerGuiHandler(this.modInstance, new GuiHandler());
 		NetworkRegistry.instance().registerChannel(new PacketHandler(), "nanotechmodcity");
@@ -111,5 +116,11 @@ public class Nanotech_mod_City
 		// Recipe
 		GameRegistry.addRecipe(new ItemStack(NanotechCityItem.lamp, 1), new Object[]{"IDI", "GSG", "III", 'I', Item.ingotIron, 'D', Block.daylightSensor, 'G', Block.thinGlass, 'S', Block.glowStone});
 		GameRegistry.addRecipe(new ItemStack(NanotechCityItem.sunShade, 1), new Object[]{"WWW", " S ", " S ", 'W', Block.cloth, 'S', Item.stick});
+	}
+	
+	@EventHandler
+	public void PostInit(FMLPostInitializationEvent event)
+	{
+		NanotechCityAchievement.addAchievementInPage();
 	}
 }

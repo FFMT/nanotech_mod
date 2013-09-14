@@ -26,18 +26,16 @@ public class CraftingHandler implements ICraftingHandler
 		{
 			player.triggerAchievement(NanotechAchievement.blockFalling);
 		}
-		if(stack.itemID == NanotechBlock.BlockJumper.blockID)
+		if(stack.itemID == NanotechBlock.BlockJumper.blockID && stack.getItemDamage() == 0)
 		{
-			if(stack == new ItemStack(NanotechBlock.BlockJumper, 1, 0))
-			{
-				player.triggerAchievement(NanotechAchievement.blockJumper);
-			}
-			if(stack == new ItemStack(NanotechBlock.BlockJumper, 1, 1))
-			{
-				player.triggerAchievement(NanotechAchievement.blockJumperAdv);
-			}
-
+			player.triggerAchievement(NanotechAchievement.blockJumper);
 		}
+
+		if(stack.itemID == NanotechBlock.BlockJumper.blockID && stack.getItemDamage() == 1)
+		{
+			player.triggerAchievement(NanotechAchievement.blockJumperAdv);
+		}
+
 		if(stack.itemID == NanotechBlock.BlockMossystone.blockID)
 		{
 			player.triggerAchievement(NanotechAchievement.blockMossyStone);
@@ -54,43 +52,23 @@ public class CraftingHandler implements ICraftingHandler
 		{
 			player.triggerAchievement(NanotechAchievement.blockSmoker);
 		}
-		if(stack.itemID == NanotechBlock.BlockSpeed.blockID)
+		if(stack.itemID == NanotechBlock.BlockSpeed.blockID && stack.getItemDamage() == 0)
 		{
-			if(stack == new ItemStack(NanotechBlock.BlockSpeed, 1, 0))
-			{
-				player.triggerAchievement(NanotechAchievement.blockSpeed);
-			}
-			if(stack == new ItemStack(NanotechBlock.BlockSpeed, 1, 1))
-			{
-				player.triggerAchievement(NanotechAchievement.blockSlow);
-			}
-		}
-		
-		if (Nanotech_mod.nanotech_mod_city())
-		{
-			if(stack.itemID == NanotechCityBlock.BlockSpotLight.blockID)
-			{
-				player.triggerAchievement(NanotechAchievement.blockSpotLight);
-			}
-			if(stack.itemID == NanotechBlock.BlockTheDeathHead.blockID)
-			{
-				player.triggerAchievement(NanotechAchievement.blockTheDeath);
-			}
-			if(stack.itemID == NanotechCityBlock.BlockTrail.blockID)
-			{
-				player.triggerAchievement(NanotechAchievement.blockTrail);
-			}
-			if(stack.itemID == NanotechCityBlock.BlockTrashcan.blockID)
-			{
-				player.triggerAchievement(NanotechAchievement.blockTrashCan);
-			}
+			player.triggerAchievement(NanotechAchievement.blockSpeed);
 		}
 
+		if(stack.itemID == NanotechBlock.BlockSpeed.blockID && stack.getItemDamage() == 1)
+		{
+			player.triggerAchievement(NanotechAchievement.blockSlow);
+		}
+
+		if(stack.itemID == NanotechBlock.BlockTheDeathHead.blockID)
+		{
+			player.triggerAchievement(NanotechAchievement.blockTheDeath);
+		}
 	}
 
 	@Override
 	public void onSmelting(EntityPlayer player, ItemStack item)
-	{
-
-	}
+	{}
 }

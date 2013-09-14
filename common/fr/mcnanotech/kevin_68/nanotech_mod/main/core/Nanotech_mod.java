@@ -9,7 +9,6 @@ import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
 import net.minecraftforge.oredict.OreDictionary;
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -111,28 +110,6 @@ public class Nanotech_mod
 
 	// log
 	public static Logger NanoLog;
-
-	public static boolean nanotech_mod_city()
-	{
-		try
-		{
-			if (Loader.isModLoaded("Nanotech_mod_City"))
-			{
-				NanoLog.info("Nanotech_mod City Detected");
-				return true;
-			}
-			else
-			{
-				NanoLog.info("Nanotech_mod City not detected");
-				return false;
-			}
-		}
-		catch (Exception e)
-		{
-			NanoLog.severe("Failed to check if Nanotech_mod City is here, or not");
-			return false;
-		}
-	}
 
 	@EventHandler
 	public void PreInitNanotech_mod(FMLPreInitializationEvent event)

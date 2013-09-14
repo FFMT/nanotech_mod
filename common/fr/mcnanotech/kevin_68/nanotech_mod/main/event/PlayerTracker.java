@@ -6,11 +6,11 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import cpw.mods.fml.common.IPlayerTracker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechAchievement;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
 public class PlayerTracker implements IPlayerTracker
 {
-
 	@Override
 	public void onPlayerLogin(EntityPlayer player)
 	{
@@ -26,7 +26,10 @@ public class PlayerTracker implements IPlayerTracker
 	@Override
 	public void onPlayerChangedDimension(EntityPlayer player)
 	{
-
+		if(player.dimension == Nanotech_mod.dimensionID)
+		{
+			player.triggerAchievement(NanotechAchievement.nanotechDim);
+		}
 	}
 
 	@Override
