@@ -43,5 +43,4 @@ public class PlayerTracker implements IPlayerTracker
 			event.entityPlayer.triggerAchievement(NanotechAchievement.getScythe);
 		}
 	}
-
 }

@@ -149,7 +149,7 @@ public class TileEntityFountain extends TileEntity
 
 	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
 	{
-		this.readFromNBT(pkt.data);//TODO verifier
+		this.readFromNBT(pkt.data);
 	}
 
 	public boolean isUseableByPlayer(EntityPlayer player)

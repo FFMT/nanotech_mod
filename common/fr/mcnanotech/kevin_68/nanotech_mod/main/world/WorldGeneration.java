@@ -14,12 +14,11 @@ public class WorldGeneration implements IWorldGenerator
 	{
 		switch(world.provider.dimensionId)
 		{
-		// TODO case 19: generateSurface(world, random, chunkX * 16, chunkZ *
-		// 16);
+		case 19: generateNanotechDim(world, random, chunkX * 16, chunkZ * 16);
 		}
 	}
 
-	private void generateSurface(World world, Random random, int blockX, int blockZ)
+	private void generateNanotechDim(World world, Random random, int blockX, int blockZ)
 	{
 		int Xcoord2 = blockX + random.nextInt(1);
 		int Ycoord2 = random.nextInt(100);

@@ -17,7 +17,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityLampLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 
 public class BlockLampLight extends BlockContainer
-{	
+{
 	public BlockLampLight(int id, Material material)
 	{
 		super(id, material);
@@ -25,11 +25,11 @@ public class BlockLampLight extends BlockContainer
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) 
+	public TileEntity createNewTileEntity(World world)
 	{
 		return new TileEntityLampLight();
 	}
-	
+
 	public boolean renderAsNormalBlock()
 	{
 		return false;
@@ -44,7 +44,7 @@ public class BlockLampLight extends BlockContainer
 	{
 		return -1;
 	}
-	
+
 	public Icon getIcon(int side, int metadata)
 	{
 		return NanotechBlock.BlockJumper.getIcon(0, 0);
@@ -52,7 +52,7 @@ public class BlockLampLight extends BlockContainer
 
 	public void registerIcons(IconRegister iconregister)
 	{}
-	
+
 	public void updateLight(World world, int x, int y, int z)
 	{
 		if(world.getBlockId(x, y, z) == this.blockID && world.isDaytime())
@@ -62,16 +62,16 @@ public class BlockLampLight extends BlockContainer
 		}
 	}
 
-	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion par5Explosion) 
+	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion par5Explosion)
 	{
 		this.onBlockDestroyedByPlayer(world, x, y, z, world.getBlockMetadata(x, y, z));
 	}
 
-	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata) 
+	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata)
 	{
-		for (int i = - 3; i < 4; ++i)
+		for(int i = -3; i < 4; ++i)
 
-			if (world.getBlockId(x, y + i, z) == this.blockID || world.getBlockId(x, y + i, z) == NanotechCityBlock.BlockLamp.blockID)
+			if(world.getBlockId(x, y + i, z) == this.blockID || world.getBlockId(x, y + i, z) == NanotechCityBlock.BlockLamp.blockID)
 			{
 				world.setBlockToAir(x, y + i, z);
 			}
@@ -81,20 +81,19 @@ public class BlockLampLight extends BlockContainer
 	{
 		return NanotechCityItem.lamp.itemID;
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public int idPicked(World world, int x, int y, int z)
 	{
 		return NanotechCityItem.lamp.itemID;
 	}
-	
-    public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z)
-    {
-    	float f = 0.375F;
-        float f1 = 0.625F;
-        float f2 = 0.375F;
-        float f3 = 0.625F;
-        this.setBlockBounds(f, 0.0F, f2, f1, 1.0F, f3);
-    }
-}
 
+	public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z)
+	{
+		float f = 0.375F;
+		float f1 = 0.625F;
+		float f2 = 0.375F;
+		float f3 = 0.625F;
+		this.setBlockBounds(f, 0.0F, f2, f1, 1.0F, f3);
+	}
+}

@@ -16,5 +16,4 @@ public class UltimateCircuit extends Item
 	{
 		itemIcon = iconregister.registerIcon("ultimategravisuite:ultimateCircuit");
 	}
-
 }

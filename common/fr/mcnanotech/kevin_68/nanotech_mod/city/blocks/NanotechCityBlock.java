@@ -33,5 +33,4 @@ public class NanotechCityBlock
 		GameRegistry.registerBlock(BlockSunShade, ItemBlockSunShade.class, "BlockSunShade", "Nanotech_mod_City");
 	
 	}
-
 }

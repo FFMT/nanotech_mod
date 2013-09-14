@@ -17,7 +17,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrail;
 public class ClientProxy extends CommonProxy
 {
 	@Override
-	public void registerModRenders()
+	public void registerTileRenders()
 	{
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpotLight.class, new TileEntitySpotLightRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTrail.class, new TileEntityTrailRender());

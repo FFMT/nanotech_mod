@@ -1,6 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.city.core;
 
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
@@ -9,13 +10,13 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.blocks.NanotechCityBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.city.creativetab.CreativetabCity;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.items.NanotechCityItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.network.GuiHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.network.PacketHandler;
@@ -43,14 +44,18 @@ public class Nanotech_mod_City
 
 	// Item IDs
 	public static int ItemLampID, ItemSunShadeID;
-
-	// Configuration Category
-	public static final String CATEGORY_Other = "Other configs";
 	
-	public static CreativetabCity CREATIVE_TAB_C = new CreativetabCity("NanotechModCity");
+	public static CreativeTabs CREATIVE_TAB_C = new CreativeTabs("NanotechModCity")
+	{
+		@SideOnly(Side.CLIENT)
+		public int getTabIconItemIndex()
+		{
+			return NanotechCityItem.lamp.itemID;
+		}
+	};
 
 	@EventHandler
-	public void PreInitNanotech_mod(FMLPreInitializationEvent event)
+	public void PreInit(FMLPreInitializationEvent event)
 	{
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
 		try
@@ -86,34 +91,25 @@ public class Nanotech_mod_City
 	}
 	
 	@EventHandler
-	public void InitNanotech_mod(FMLInitializationEvent event)
+	public void Init(FMLInitializationEvent event)
 	{
-		this.guiAndTileEntity();
-		proxy.registerModRenders();
-	}
-	
-	@EventHandler
-	public void PostInitNanotech_mod(FMLPostInitializationEvent event)
-	{
-		GameRegistry.addRecipe(new ItemStack(NanotechCityItem.lamp, 1), new Object[]
-		{"IDI", "GSG", "III", 'I', Item.ingotIron, 'D', Block.daylightSensor, 'G', Block.thinGlass, 'S', Block.glowStone});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityItem.sunShade, 1), new Object[]
-		{"WWW", " S ", " S ", 'W', Block.cloth, 'S', Item.stick});
-	}
-
-	// Gui and TileEntity
-	public void guiAndTileEntity()
-	{
+		// NetWork
 		NetworkRegistry.instance().registerGuiHandler(this.modInstance, new GuiHandler());
 		NetworkRegistry.instance().registerChannel(new PacketHandler(), "nanotechmodcity");
 
+		// TileEntity
 		GameRegistry.registerTileEntity(TileEntitySpotLight.class, "TileEntitySpotLight");
 		GameRegistry.registerTileEntity(TileEntityTrail.class, "TileEntityTrail");
 		GameRegistry.registerTileEntity(TileEntityFountain.class, "TileEntityFountain");
 		GameRegistry.registerTileEntity(TileEntityLamp.class, "TileEntityLamp");
 		GameRegistry.registerTileEntity(TileEntityLampLight.class, "TileEntityLampLight");
 		GameRegistry.registerTileEntity(TileEntitySunShade.class, "TileEntitySunShade");
+		
+		// Render
+		proxy.registerTileRenders();
+		
+		// Recipe
+		GameRegistry.addRecipe(new ItemStack(NanotechCityItem.lamp, 1), new Object[]{"IDI", "GSG", "III", 'I', Item.ingotIron, 'D', Block.daylightSensor, 'G', Block.thinGlass, 'S', Block.glowStone});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityItem.sunShade, 1), new Object[]{"WWW", " S ", " S ", 'W', Block.cloth, 'S', Item.stick});
 	}
-
-	
 }

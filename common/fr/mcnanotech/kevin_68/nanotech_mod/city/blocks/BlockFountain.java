@@ -69,8 +69,7 @@ public class BlockFountain extends BlockContainer
 		{
 			return this.top;
 		}
-		
+
 		return this.blockIcon;
 	}
-
 }

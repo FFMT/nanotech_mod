@@ -123,7 +123,7 @@ public class TileEntitySpotLight extends TileEntity
 
 	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
 	{
-		this.readFromNBT(pkt.data);//TODO verifier
+		this.readFromNBT(pkt.data);
 	}
 
 	public int setRedValue(int i)
@@ -196,5 +196,4 @@ public class TileEntitySpotLight extends TileEntity
 	{
 		return INFINITE_EXTENT_AABB;
 	}
-
 }
