@@ -1,5 +1,6 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
