@@ -92,7 +92,7 @@ entity.CrazyGuy.name=Fou
 
 #Container
 container.multiplier=Multiplieur
-container.input=Entré
+container.input=Entrée
 container.output=Sortie
 
 #Other
@@ -106,3 +106,8 @@ achievement.installMod=Installez Nanotech_mod
 #CreativeTab
 itemGroup.NanotechModBlocks=Blocs de Nanotech mod
 itemGroup.NanotechModItems=Items de Nanotech mod
+
+#Death Message
+deathMessage.sodium.0=%s a été rongé(e) par le sodium
+deathMessage.sodium.1=%s n'a pas respecté les consignes de sécurité en manipulant du sodium
+deathMessage.sodium.2=%s veut devenir scientifique mais n'a pas les compétences requises

@@ -3,9 +3,8 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
@@ -33,9 +32,9 @@ public class BlockSodium extends Block
 
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		if(entity instanceof EntityLiving)
+		if(entity instanceof EntityLivingBase)
 		{
-			entity.attackEntityFrom(DamageSource.cactus, 1);
+			entity.attackEntityFrom(NanotechDamageSource.sodiumDamage, 1.0F);
 		}
 	}
 

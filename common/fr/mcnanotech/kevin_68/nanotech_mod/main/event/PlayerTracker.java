@@ -1,13 +1,9 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.event;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import cpw.mods.fml.common.IPlayerTracker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechAchievement;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
 public class PlayerTracker implements IPlayerTracker
 {
@@ -36,14 +32,5 @@ public class PlayerTracker implements IPlayerTracker
 	public void onPlayerRespawn(EntityPlayer player)
 	{
 
-	}
-
-	@ForgeSubscribe
-	public void onItemPickup(EntityItemPickupEvent event)
-	{
-		if(event.item.getEntityItem().isItemEqual(new ItemStack(NanotechItem.scythe)))
-		{
-			event.entityPlayer.triggerAchievement(NanotechAchievement.getScythe);
-		}
 	}
 }

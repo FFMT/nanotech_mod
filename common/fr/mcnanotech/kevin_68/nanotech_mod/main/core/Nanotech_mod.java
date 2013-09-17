@@ -19,13 +19,15 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.NanotechMobs;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.event.CraftingHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventBonemeal;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventSound;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.event.PlayerEvent;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.PlayerTracker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.network.GuiHandler;
@@ -33,6 +35,8 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.network.PacketHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.CraftingHandler;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.CrazyGlassesTickHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.UtilDiskInfo;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechBiome;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechWorldProvider;
@@ -230,7 +234,7 @@ public class Nanotech_mod
 				cfg.save();
 			}
 		}
-
+		NanotechDamageSource.loadDamageSource();
 		NanotechBlock.initBlock();
 		NanotechBlock.blockRegistry();
 		NanotechItem.initItem();
@@ -253,10 +257,14 @@ public class Nanotech_mod
 		proxy.registerModRenders();
 		this.forgeDictionary();
 		this.other();
+		
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
+		MinecraftForge.EVENT_BUS.register(new PlayerEvent());
 
 		GameRegistry.registerPlayerTracker(new PlayerTracker());
 		GameRegistry.registerCraftingHandler(new CraftingHandler());
+		
+		TickRegistry.registerTickHandler(new CrazyGlassesTickHandler(), Side.SERVER);
 	}
 
 	@EventHandler

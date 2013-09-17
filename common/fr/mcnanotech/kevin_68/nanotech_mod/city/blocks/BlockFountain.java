@@ -40,11 +40,6 @@ public class BlockFountain extends BlockContainer
 		return true;
 	}
 
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
-
 	public boolean renderAsNormalBlock()
 	{
 		return false;

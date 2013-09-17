@@ -48,12 +48,19 @@ public class ItemCrazyGlasses extends ItemArmor
 	@Override
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack stack)
 	{
-		tick++;
-		player.addPotionEffect(new PotionEffect(Potion.confusion.id, 100, 50, true));
-		if(tick > 50)
+		if(!world.isRemote)
 		{
-			world.playSoundAtEntity(player, "nanotech_mod:CrazyGuy", 1.0F, 1.0F);
-			tick = 0;
+			player.addPotionEffect(new PotionEffect(Potion.confusion.id, 100, 50, true));
+			if(tick > 56)
+			{
+				float randPitch = -5.0F + world.rand.nextFloat() * 10;
+				world.playSoundAtEntity(player, "nanotech_mod:CrazyGuy", 30.0F, randPitch);
+				tick = 0 + (int)(randPitch * 13.0F);
+			}
+			else
+			{
+				tick++;
+			}
 		}
 	}
 }

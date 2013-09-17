@@ -175,8 +175,7 @@ public class BlockSunShade extends Block
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		blockIcon = iconregister.registerIcon("wool_colored_white"); // for
-																		// particles
+		blockIcon = iconregister.registerIcon("wool_colored_white"); // for particles
 		stick = iconregister.registerIcon("log_oak"); // for particles
 	}
 

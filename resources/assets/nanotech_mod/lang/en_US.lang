@@ -105,3 +105,8 @@ achievement.installMod=Install Nanotech_mod
 #CreativeTab
 itemGroup.NanotechModBlocks=Nanotech mod Blocks
 itemGroup.NanotechModItems=Nanotech mod Items
+
+#Death Message
+deathMessage.sodium.0=%s was corroded by sodium
+deathMessage.sodium.1=%s the player did not respect the safety instructions by manipulating sodium
+deathMessage.sodium.2=%s wants to become a scientist, but it does not have the required skills

@@ -57,7 +57,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(7, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityLiving.class, 0, false, false, mobSelector));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityLivingBase.class, 0, false, false, mobSelector));
 		this.experienceValue = 50;
 	}
 
@@ -65,7 +65,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	 protected void applyEntityAttributes()
 	 {
 		 super.applyEntityAttributes();
-		 this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(5000D);
+		 this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(5D);
 	     this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(100.0D);
 		 this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.60D);
 	 }
@@ -287,7 +287,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		{
 			((EntityPlayer)entity).triggerAchievement(NanotechAchievement.killTheDeath);
 
-			if(((EntityPlayer)entity).inventory.armorItemInSlot(3) != null && ((EntityPlayer)entity).inventory.armorItemInSlot(3) == new ItemStack(NanotechItem.crazyGlasses))
+			if(((EntityPlayer)entity).inventory.armorItemInSlot(3) != null && ItemStack.areItemStackTagsEqual(((EntityPlayer)entity).inventory.armorItemInSlot(3), new ItemStack(NanotechItem.crazyGlasses)))
 			{
 				((EntityPlayer)entity).triggerAchievement(NanotechAchievement.killTheDeathWithCG);
 			}
@@ -365,7 +365,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 					}
 					else
 					{
-						List list = this.worldObj.selectEntitiesWithinAABB(EntityLiving.class, this.boundingBox.expand(20.0D, 8.0D, 20.0D), mobSelector);
+						List list = this.worldObj.selectEntitiesWithinAABB(EntityLivingBase.class, this.boundingBox.expand(20.0D, 8.0D, 20.0D), mobSelector);
 
 						for(int var17 = 0; var17 < 10 && !list.isEmpty(); ++var17)
 						{
@@ -515,7 +515,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		return par1 + var4;
 	}
 
-	private void func_82216_a(int par1, EntityLiving par2EntityLiving)
+	private void func_82216_a(int par1, EntityLivingBase par2EntityLiving)
 	{
 		this.func_82209_a(par1, par2EntityLiving.posX, par2EntityLiving.posY + (double)par2EntityLiving.getEyeHeight() * 0.5D, par2EntityLiving.posZ, par1 == 0 && this.rand.nextFloat() < 0.001F);
 	}
@@ -542,7 +542,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		this.worldObj.spawnEntityInWorld(var21);
 	}
 
-	public void attackEntityWithRangedAttack(EntityLiving entityliving)
+	public void attackEntityWithRangedAttack(EntityLivingBase entityliving)
 	{
 		this.func_82216_a(0, entityliving);
 	}
@@ -577,7 +577,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 			var3 = damagesource.getEntity();
 
-			if(var3 != null && !(var3 instanceof EntityPlayer) && var3 instanceof EntityLiving && ((EntityLiving)var3).getCreatureAttribute() == this.getCreatureAttribute())
+			if(var3 != null && !(var3 instanceof EntityPlayer) && var3 instanceof EntityLivingBase && ((EntityLivingBase)var3).getCreatureAttribute() == this.getCreatureAttribute())
 			{
 				return false;
 			}
