@@ -1,5 +1,9 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity;
 
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.INetworkManager;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import cpw.mods.fml.relauncher.Side;
@@ -8,53 +12,92 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.blocks.NanotechCityBlock;
 
 public class TileEntitySunShade extends TileEntity
 {
-	public String texture;
+	private boolean isOpen;
 
-	public void updateEntity()
+	public void writeToNBT(NBTTagCompound nbtTagCompound)
 	{
-		if(this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
+		super.writeToNBT(nbtTagCompound);
+		nbtTagCompound.setBoolean("open", isOpen);
+	}
+
+	public void readFromNBT(NBTTagCompound nbtTagCompound)
+	{
+		super.readFromNBT(nbtTagCompound);
+		isOpen = nbtTagCompound.getBoolean("open");
+	}
+
+	public Packet getDescriptionPacket()
+	{
+		NBTTagCompound nbttagcompound = new NBTTagCompound();
+		this.writeToNBT(nbttagcompound);
+		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4, nbttagcompound);
+	}
+
+	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
+	{
+		this.readFromNBT(pkt.data);
+	}
+
+	public boolean getIsOpen()
+	{
+		return isOpen;
+	}
+
+	public void openSunShade()
+	{
+		if(this.worldObj.getBlockMetadata(xCoord, yCoord + 2, zCoord) == 1)
 		{
-			texture = "Open";
-			if(this.worldObj.getBlockMetadata(xCoord, yCoord + 2, zCoord) == 1)
+			for(int j = -1; j < 2; ++j)
 			{
-				for(int j = -1; j < 2; ++j)
+				for(int k = -1; k < 2; ++k)
 				{
-					for(int k = -1; k < 2; ++k)
+					if(j == 0 && k == 0)
 					{
-						if(j == 0 && k == 0)
-						{
-							this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityBlock.BlockSunShade.blockID, 3, 1);
-						}
-						else
-						{
-							this.worldObj.setBlock(xCoord + j, yCoord + 2, zCoord + k, NanotechCityBlock.BlockSunShade.blockID, 2, 1);
-						}
+						this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityBlock.BlockSunShade.blockID, 3, 1);
 					}
-					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+					else
+					{
+						this.worldObj.setBlock(xCoord + j, yCoord + 2, zCoord + k, NanotechCityBlock.BlockSunShade.blockID, 2, 1);
+					}
 				}
+				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 			}
+		}
+		this.isOpen = true;
+	}
+
+	public void closeSunShade()
+	{
+		if(this.worldObj.getBlockMetadata(xCoord, yCoord + 2, zCoord) == 3)
+		{
+			for(int j = -1; j < 2; ++j)
+			{
+				for(int k = -1; k < 2; ++k)
+				{
+					if(j == 0 && k == 0)
+					{
+						this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityBlock.BlockSunShade.blockID, 1, 1);
+					}
+					else
+					{
+						this.worldObj.setBlockToAir(xCoord + j, yCoord + 2, zCoord + k);
+					}
+				}
+				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+			}
+		}
+		this.isOpen = false;
+	}
+
+	public void switchSunShade()
+	{
+		if(getIsOpen())
+		{
+			this.closeSunShade();
 		}
 		else
 		{
-			texture = "Close";
-			if(this.worldObj.getBlockMetadata(xCoord, yCoord + 2, zCoord) == 3)
-			{
-				for(int j = -1; j < 2; ++j)
-				{
-					for(int k = -1; k < 2; ++k)
-					{
-						if(j == 0 && k == 0)
-						{
-							this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityBlock.BlockSunShade.blockID, 1, 1);
-						}
-						else
-						{
-							this.worldObj.setBlockToAir(xCoord + j, yCoord + 2, zCoord + k);
-						}
-					}
-					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-				}
-			}
+			this.openSunShade();
 		}
 	}
 

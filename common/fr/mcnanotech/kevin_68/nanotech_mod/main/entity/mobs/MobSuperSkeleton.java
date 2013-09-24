@@ -106,9 +106,9 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 	{
 		if(super.attackEntityAsMob(entity))
 		{
-			if(this.getSkeletonType() == 1 && entity instanceof EntityLiving)
+			if(this.getSkeletonType() == 1 && entity instanceof EntityLivingBase)
 			{
-				((EntityLiving)entity).addPotionEffect(new PotionEffect(Potion.wither.id, 200));
+				((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.wither.id, 200));
 			}
 
 			return true;
@@ -228,61 +228,17 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		super.addRandomArmor();
 		this.setCurrentItemOrArmor(0, new ItemStack(Item.bow));
 	}
-
-
-
-    public EntityLivingData onSpawnWithEgg(EntityLivingData par1EntityLivingData)
-    {
-        par1EntityLivingData = super.onSpawnWithEgg(par1EntityLivingData);
-
-        if (this.worldObj.provider instanceof WorldProviderHell && this.getRNG().nextInt(5) > 0)
-        {
-            this.tasks.addTask(4, this.aiAttackOnCollide);
-            this.setSkeletonType(1);
-            this.setCurrentItemOrArmor(0, new ItemStack(Item.swordStone));
-            this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(4.0D);
-        }
-        else
-        {
-            this.tasks.addTask(4, this.aiArrowAttack);
-            this.addRandomArmor();
-            this.enchantEquipment();
-        }
-
-        this.setCanPickUpLoot(this.rand.nextFloat() < 0.55F * this.worldObj.getLocationTensionFactor(this.posX, this.posY, this.posZ));
-
-        if (this.getCurrentItemOrArmor(4) == null)
-        {
-            Calendar calendar = this.worldObj.getCurrentDate();
-
-            if (calendar.get(2) + 1 == 10 && calendar.get(5) == 31 && this.rand.nextFloat() < 0.25F)
-            {
-                this.setCurrentItemOrArmor(4, new ItemStack(this.rand.nextFloat() < 0.1F ? Block.pumpkinLantern : Block.pumpkin));
-                this.equipmentDropChances[4] = 0.0F;
-            }
-        }
-
-        return par1EntityLivingData;
-    }
-
-
+	
 	public void setCombatTask()
 	{
 		this.tasks.removeTask(this.aiAttackOnCollide);
 		this.tasks.removeTask(this.aiArrowAttack);
 		ItemStack stack = this.getHeldItem();
+		this.tasks.addTask(4, this.aiArrowAttack);
 
-		if(stack != null && stack.itemID == Item.bow.itemID)
-		{
-			this.tasks.addTask(4, this.aiArrowAttack);
-		}
-		else
-		{
-			this.tasks.addTask(4, this.aiAttackOnCollide);
-		}
 	}
 
-	public void attackEntityWithRangedAttack(EntityLiving entityliving)
+	public void attackEntityWithRangedAttack(EntityLivingBase entityliving)
 	{
 		EntityArrow var2 = new EntityArrow(this.worldObj, this, entityliving, 1.6F, 22.0F);
 		int var3 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, this.getHeldItem());

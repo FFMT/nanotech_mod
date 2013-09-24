@@ -30,14 +30,50 @@ public class BlockSunShade extends Block
 		super(id, material);
 	}
 
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
+	{
+		if(!world.isRemote)
+		{
+			int metadata = world.getBlockMetadata(x, y, z);
+			if(metadata == 0)
+			{
+				TileEntity te = world.getBlockTileEntity(x, y, z);
+
+				if(te != null && te instanceof TileEntitySunShade)
+				{
+					TileEntitySunShade tesunshade = (TileEntitySunShade)te;
+					tesunshade.switchSunShade();
+					return true;
+				}
+			}
+			else if(metadata == 1)
+			{
+				TileEntity te = world.getBlockTileEntity(x, y - 1, z);
+
+				if(te != null && te instanceof TileEntitySunShade)
+				{
+					TileEntitySunShade tesunshade = (TileEntitySunShade)te;
+					tesunshade.switchSunShade();
+					return true;
+				}
+				else
+				{
+					te = world.getBlockTileEntity(x, y - 2, z);
+					if(te != null && te instanceof TileEntitySunShade)
+					{
+						TileEntitySunShade tesunshade = (TileEntitySunShade)te;
+						tesunshade.switchSunShade();
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int blockid, CreativeTabs creativeTabs, List list)
-	{
-		for(int metadatanumber = 0; metadatanumber < type.length; metadatanumber++)
-		{
-			list.add(new ItemStack(blockid, 1, metadatanumber));
-		}
-	}
+	{}
 
 	@Override
 	public TileEntity createTileEntity(World world, int metadata)

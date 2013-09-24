@@ -42,7 +42,7 @@ public class MobSuperEnderman extends EntityMob
 	 {
 		 super.applyEntityAttributes();
 		 this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(100D);
-	     this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(40.0D);
+	     this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
 		 this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.20D);
 		 this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(3.0D);
 	 }

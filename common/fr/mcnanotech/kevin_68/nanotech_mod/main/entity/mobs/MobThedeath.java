@@ -61,15 +61,15 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		this.experienceValue = 50;
 	}
 
-	 @Override
-	 protected void applyEntityAttributes()
-	 {
-		 super.applyEntityAttributes();
-		 this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(5D);
-	     this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(100.0D);
-		 this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.60D);
-	 }
-	
+	@Override
+	protected void applyEntityAttributes()
+	{
+		super.applyEntityAttributes();
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(5000D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(100.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.60D);
+	}
+
 	protected void entityInit()
 	{
 		super.entityInit();
@@ -119,6 +119,24 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		double var4;
 		double var6;
 		double var8;
+		for(int i = 0; i < 4; ++i)
+		{
+			int j = MathHelper.floor_double(this.posX + (double)((float)(i % 2 * 2 - 1) * 0.25F));
+			int k = MathHelper.floor_double(this.posY);
+			int l = MathHelper.floor_double(this.posZ + (double)((float)(i / 2 % 2 * 2 - 1) * 0.25F));
+
+			if(this.worldObj.getBlockId(j, k, l) == 0 && Block.fire.canPlaceBlockAt(this.worldObj, j, k, l))
+			{
+				for (int x = -1; x < 2; x++)
+				{
+					for (int z = -1; z < 2; z++)
+					{
+						this.worldObj.setBlock(j + x, k, l + z, Block.fire.blockID);
+					}
+				}
+				
+			}
+		}
 
 		if(!this.worldObj.isRemote && this.getWatchedTargetId(0) > 0)
 		{
@@ -369,7 +387,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 						for(int var17 = 0; var17 < 10 && !list.isEmpty(); ++var17)
 						{
-                            EntityLivingBase entitylivingbase = (EntityLivingBase)list.get(this.rand.nextInt(list.size()));
+							EntityLivingBase entitylivingbase = (EntityLivingBase)list.get(this.rand.nextInt(list.size()));
 
 							if(entitylivingbase != this && entitylivingbase.isEntityAlive() && this.canEntityBeSeen(entitylivingbase))
 							{
