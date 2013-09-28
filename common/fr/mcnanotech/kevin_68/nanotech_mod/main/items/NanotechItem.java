@@ -17,12 +17,9 @@ public class NanotechItem
 			Yourmusicdisc6, Yourmusicdisc7, Yourmusicdisc8, Yourmusicdisc9, Yourmusicdisc10, Yourmusicdisc11, Yourmusicdisc12, Yourmusicdisc13, Yourmusicdisc14, Yourmusicdisc15, Yourmusicdisc16, Edibleflesh, Rottenchunk, scythe, crazyGlasses, teaSeed, tea, debug;
 
 	// Enum tools and armor material
-	public static EnumArmorMaterial EnumArmorMaterialMysterious = EnumHelper.addArmorMaterial("Mysterious", 50, new int[]
-	{6, 6, 6, 6}, 15);
-	public static EnumArmorMaterial EnumArmorMaterialNanomite = EnumHelper.addArmorMaterial("Nanomite", 50, new int[]
-	{6, 6, 6, 6}, 15);
-	public static EnumArmorMaterial EnumArmorMaterialCrazyGlasses = EnumHelper.addArmorMaterial("CrazyGlasses", 0, new int[]
-	{0, 0, 0, 0}, 0);
+	public static EnumArmorMaterial EnumArmorMaterialMysterious = EnumHelper.addArmorMaterial("Mysterious", 50, new int[] {6, 6, 6, 6}, 15);
+	public static EnumArmorMaterial EnumArmorMaterialNanomite = EnumHelper.addArmorMaterial("Nanomite", 50, new int[] {6, 6, 6, 6}, 15);
+	public static EnumArmorMaterial EnumArmorMaterialCrazyGlasses = EnumHelper.addArmorMaterial("CrazyGlasses", 0, new int[] {0, 0, 0, 0}, 0);
 	public static EnumToolMaterial EnumToolMaterialNanomite = EnumHelper.addToolMaterial("Nanomite", 4, 2000, 13F, 4, 14);
 	public static EnumToolMaterial EnumToolMaterialScythe = EnumHelper.addToolMaterial("Scythe", 4, 2500, 13F, 16, 2);
 

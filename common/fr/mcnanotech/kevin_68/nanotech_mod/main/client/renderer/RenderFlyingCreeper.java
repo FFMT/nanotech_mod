@@ -32,7 +32,7 @@ public class RenderFlyingCreeper extends RenderLiving
 	{
 		return this.getFlyingTexture((MobFlyingCreeper)entity);
 	}
-	
+
 	protected void updateMob_creeperforreurScale(MobFlyingCreeper mob, float par2)
 	{
 		float var4 = mob.getCreeperFlashIntensity(par2);

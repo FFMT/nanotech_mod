@@ -36,15 +36,15 @@ public class MobCrazyGuy extends EntityMob
 
 	}
 
-	 @Override
-	 protected void applyEntityAttributes()
-	 {
-		 super.applyEntityAttributes();
-		 this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(50D);
-	     this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(40.0D);
-		 this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.80D);
-		 this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(3.0D);
-	 }
+	@Override
+	protected void applyEntityAttributes()
+	{
+		super.applyEntityAttributes();
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(50D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(40.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.80D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(3.0D);
+	}
 
 	protected String getLivingSound()
 	{

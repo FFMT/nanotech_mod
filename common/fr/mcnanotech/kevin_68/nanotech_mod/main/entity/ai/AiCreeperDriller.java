@@ -15,18 +15,18 @@ public class AiCreeperDriller extends EntityAIBase
 		setMutexBits(1);
 	}
 
-    public boolean shouldExecute()
-    {
-        EntityLivingBase entitylivingbase = this.swellingCreeper.getAttackTarget();
-        return this.swellingCreeper.getCreeperState() > 0 || entitylivingbase != null && this.swellingCreeper.getDistanceSqToEntity(entitylivingbase) < 9.0D;
-    }
+	public boolean shouldExecute()
+	{
+		EntityLivingBase entitylivingbase = this.swellingCreeper.getAttackTarget();
+		return this.swellingCreeper.getCreeperState() > 0 || entitylivingbase != null && this.swellingCreeper.getDistanceSqToEntity(entitylivingbase) < 9.0D;
+	}
 
-    public void startExecuting()
-    {
-        this.swellingCreeper.getNavigator().clearPathEntity();
-        this.creeperAttackTarget = this.swellingCreeper.getAttackTarget();
-    }
-    
+	public void startExecuting()
+	{
+		this.swellingCreeper.getNavigator().clearPathEntity();
+		this.creeperAttackTarget = this.swellingCreeper.getAttackTarget();
+	}
+
 	public void resetTask()
 	{
 		creeperAttackTarget = null;

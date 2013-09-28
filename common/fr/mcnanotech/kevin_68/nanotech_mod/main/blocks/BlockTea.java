@@ -43,15 +43,15 @@ public class BlockTea extends BlockCrops
 	{
 		super.updateTick(world, x, y, z, par5Random);
 
-		if (world.getBlockLightValue(x, y + 1, z) >= 9)
+		if(world.getBlockLightValue(x, y + 1, z) >= 9)
 		{
 			int l = world.getBlockMetadata(x, y, z);
 
-			if (l < 7)
+			if(l < 7)
 			{
 				float f = this.getGrowthRate(world, x, y, z);
 
-				if (par5Random.nextInt((int)(25.0F / f) + 1) == 0)
+				if(par5Random.nextInt((int)(25.0F / f) + 1) == 0)
 				{
 					++l;
 					world.setBlockMetadataWithNotify(x, y, z, l, 2);
@@ -64,7 +64,7 @@ public class BlockTea extends BlockCrops
 	{
 		int l = world.getBlockMetadata(x, y, z) + MathHelper.getRandomIntegerInRange(world.rand, 2, 5);
 
-		if (l > 7)
+		if(l > 7)
 		{
 			l = 7;
 		}
@@ -87,24 +87,24 @@ public class BlockTea extends BlockCrops
 		boolean flag1 = l == this.blockID || i1 == this.blockID;
 		boolean flag2 = l1 == this.blockID || i2 == this.blockID || j2 == this.blockID || k2 == this.blockID;
 
-		for (int l2 = x - 1; l2 <= x + 1; ++l2)
+		for(int l2 = x - 1; l2 <= x + 1; ++l2)
 		{
-			for (int i3 = z - 1; i3 <= z + 1; ++i3)
+			for(int i3 = z - 1; i3 <= z + 1; ++i3)
 			{
 				int j3 = world.getBlockId(l2, y - 1, i3);
 				float f1 = 0.0F;
 
-				if (blocksList[j3] != null && blocksList[j3].canSustainPlant(world, l2, y - 1, i3, ForgeDirection.UP, this))
+				if(blocksList[j3] != null && blocksList[j3].canSustainPlant(world, l2, y - 1, i3, ForgeDirection.UP, this))
 				{
 					f1 = 1.0F;
 
-					if (blocksList[j3].isFertile(world, l2, y - 1, i3))
+					if(blocksList[j3].isFertile(world, l2, y - 1, i3))
 					{
 						f1 = 3.0F;
 					}
 				}
 
-				if (l2 != x || i3 != z)
+				if(l2 != x || i3 != z)
 				{
 					f1 /= 4.0F;
 				}
@@ -113,7 +113,7 @@ public class BlockTea extends BlockCrops
 			}
 		}
 
-		if (flag2 || flag && flag1)
+		if(flag2 || flag && flag1)
 		{
 			f /= 2.0F;
 		}
@@ -124,14 +124,13 @@ public class BlockTea extends BlockCrops
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int metadata)
 	{
-		if (metadata < 0 || metadata > 7)
+		if(metadata < 0 || metadata > 7)
 		{
 			metadata = 7;
 		}
 
 		return this.iconArray[metadata];
 	}
-
 
 	public int getRenderType()
 	{
@@ -153,16 +152,16 @@ public class BlockTea extends BlockCrops
 		super.dropBlockAsItemWithChance(world, x, y, z, par5, par6, 0);
 	}
 
-	@Override 
+	@Override
 	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune)
 	{
 		ArrayList<ItemStack> ret = super.getBlockDropped(world, x, y, z, metadata, fortune);
 
-		if (metadata >= 7)
+		if(metadata >= 7)
 		{
-			for (int n = 0; n < 3 + fortune; n++)
+			for(int n = 0; n < 3 + fortune; n++)
 			{
-				if (world.rand.nextInt(15) <= metadata)
+				if(world.rand.nextInt(15) <= metadata)
 				{
 					ret.add(new ItemStack(this.getSeedItem(), 1, 0));
 				}
@@ -193,7 +192,7 @@ public class BlockTea extends BlockCrops
 	{
 		this.iconArray = new Icon[8];
 
-		for (int i = 0; i < this.iconArray.length; ++i)
+		for(int i = 0; i < this.iconArray.length; ++i)
 		{
 			this.iconArray[i] = iconregister.registerIcon("nanotech_mod:tea_" + (i + 1));
 		}

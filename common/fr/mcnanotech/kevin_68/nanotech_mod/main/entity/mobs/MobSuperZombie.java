@@ -36,16 +36,16 @@ public class MobSuperZombie extends EntityMob
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 	}
-	
-	 @Override
-	 protected void applyEntityAttributes()
-	 {
-		 super.applyEntityAttributes();
-		 this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(80D);
-	     this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
-		 this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.50D);
-		 this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(6.0D);
-	 }
+
+	@Override
+	protected void applyEntityAttributes()
+	{
+		super.applyEntityAttributes();
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(80D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.50D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(6.0D);
+	}
 
 	protected void fall(float damage)
 	{}
@@ -86,8 +86,7 @@ public class MobSuperZombie extends EntityMob
 	}
 
 	/**
-	 * protected int getDropItemId() { return
-	 * Nanotech_mod.Item_edibleflesh.itemID; }
+	 * protected int getDropItemId() { return Nanotech_mod.Item_edibleflesh.itemID; }
 	 */
 	public EnumCreatureAttribute getCreatureAttribute()
 	{

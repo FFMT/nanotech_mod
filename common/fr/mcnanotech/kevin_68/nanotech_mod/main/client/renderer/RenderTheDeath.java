@@ -33,7 +33,7 @@ public class RenderTheDeath extends RenderLiving
 		super(new ModelTheDeath(), 0.5F);
 		this.modelSize = 3;
 	}
-	
+
 	protected ResourceLocation getTheDeathTexture(MobThedeath entity)
 	{
 		return texture;
@@ -44,7 +44,7 @@ public class RenderTheDeath extends RenderLiving
 	{
 		return this.getTheDeathTexture((MobThedeath)entity);
 	}
-	
+
 	protected void preRenderScale(MobThedeath mob, float par2)
 	{
 		GL11.glScalef(this.modelSize, this.modelSize, this.modelSize);
@@ -70,11 +70,11 @@ public class RenderTheDeath extends RenderLiving
 	{
 		this.renderHealtBar((MobThedeath)entity, x, y, z, par8, par9);
 	}
-	
-    protected void renderEquippedItems(EntityLivingBase livingbase, float par2)
-    {
-        this.func_130005_c((EntityLiving)livingbase, par2);
-    }
+
+	protected void renderEquippedItems(EntityLivingBase livingbase, float par2)
+	{
+		this.func_130005_c((EntityLiving)livingbase, par2);
+	}
 
 	protected void func_130005_c(EntityLiving living, float par2)
 	{

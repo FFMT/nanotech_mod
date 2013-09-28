@@ -21,8 +21,9 @@ public class BlockFalling extends BlockSand
 	{
 		super(id, material);
 	}
-	
-	public void registerIcons(IconRegister iconRegister){}
+
+	public void registerIcons(IconRegister iconRegister)
+	{}
 
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int metadata)

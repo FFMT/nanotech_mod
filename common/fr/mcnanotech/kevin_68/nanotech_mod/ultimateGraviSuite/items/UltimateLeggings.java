@@ -135,7 +135,7 @@ public class UltimateLeggings extends ItemArmor implements IElectricItem, IMetal
 			{
 				var8 = 0.1F;
 
-				if (IC2.keyboard.isJumpKeyDown(player))
+				if(IC2.keyboard.isJumpKeyDown(player))
 				{
 					player.motionY += 0.10000055149011612D;
 				}

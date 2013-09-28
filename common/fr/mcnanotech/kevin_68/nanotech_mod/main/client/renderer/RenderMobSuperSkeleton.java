@@ -15,7 +15,7 @@ public class RenderMobSuperSkeleton extends RenderLiving
 	{
 		super(new ModelSuperSkeleton(), 0.5F);
 	}
-	
+
 	protected ResourceLocation getSkeletonTexture(MobSuperSkeleton entity)
 	{
 		return texture;

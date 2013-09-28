@@ -14,8 +14,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class BlockNanotechOre extends Block
 {
-	public static String[] type = new String[]
-	{"silicon", "decrease"};
+	public static String[] type = new String[] {"silicon", "decrease"};
 	public Icon[] iconbuffer;
 
 	public BlockNanotechOre(int id)

@@ -194,7 +194,7 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 				ItemTinCan can = (ItemTinCan)player.inventory.mainInventory[var9].getItem();
 				player.getFoodStats().addStats(can.getHealAmount(), can.getSaturationModifier());
 				can.func_77849_c(player.inventory.mainInventory[var9], player.worldObj, player);
-				can.onEaten(player); 
+				can.onEaten(player);
 
 				if(--player.inventory.mainInventory[var9].stackSize <= 0)
 				{
@@ -345,8 +345,7 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 			IC2radiation = (Potion)Class.forName("ic2.core.IC2Potion").getField("radiation").get(null);
 		}
 		catch(Exception ex)
-		{
-		}
+		{}
 		potionRemovalCost[Potion.poison.id] = 10000;
 		potionRemovalCost[IC2radiation.id] = 10000;
 		potionRemovalCost[Potion.wither.id] = 25000;

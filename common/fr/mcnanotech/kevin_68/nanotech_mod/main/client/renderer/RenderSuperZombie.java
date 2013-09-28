@@ -16,7 +16,7 @@ public class RenderSuperZombie extends RenderLiving
 	{
 		super(new ModelSuperZombie(), 0.5F);
 	}
-	
+
 	protected ResourceLocation getZombieTexture(MobSuperZombie entity)
 	{
 		return texture;

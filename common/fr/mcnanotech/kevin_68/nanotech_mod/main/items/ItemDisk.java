@@ -18,7 +18,7 @@ public class ItemDisk extends ItemRecord
 	public final String recordName;
 	public final String recordinfo;
 	public final String textureName;
-	
+
 	public ItemDisk(int id, String name, String info, String texture)
 	{
 		super(id, name);

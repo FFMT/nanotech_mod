@@ -16,7 +16,7 @@ public class RenderFastZombie extends RenderLiving
 	{
 		super(new ModelMobFastZombie(), 0.5F);
 	}
-	
+
 	protected ResourceLocation getFastTexture(MobFastzombie entity)
 	{
 		return texture;

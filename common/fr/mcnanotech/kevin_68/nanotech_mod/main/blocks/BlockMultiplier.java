@@ -55,14 +55,14 @@ public class BlockMultiplier extends BlockContainer
 	{
 		return new TileEntityMultiplier();
 	}
-	
-    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack) 
-    {
-    	TileEntity te = world.getBlockTileEntity(x, y, z);
-    	if(te != null && te instanceof TileEntityMultiplier && stack.hasDisplayName())
-    	{
-    		TileEntityMultiplier multiplier = (TileEntityMultiplier)te;
-    		multiplier.setCustomName(stack.getDisplayName());
-    	}
-    }
+
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
+	{
+		TileEntity te = world.getBlockTileEntity(x, y, z);
+		if(te != null && te instanceof TileEntityMultiplier && stack.hasDisplayName())
+		{
+			TileEntityMultiplier multiplier = (TileEntityMultiplier)te;
+			multiplier.setCustomName(stack.getDisplayName());
+		}
+	}
 }

@@ -21,7 +21,7 @@ public class RenderCreeperDriller extends RenderLiving
 	{
 		super(new ModelCreeperDriller(), 0.5F);
 	}
-	
+
 	protected ResourceLocation getCreeperDrillerTexture(MobCreeperDriller entity)
 	{
 		return texture;

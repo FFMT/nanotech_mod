@@ -29,6 +29,5 @@ public class CityCraftingHandler implements ICraftingHandler
 
 	@Override
 	public void onSmelting(EntityPlayer player, ItemStack item)
-	{
-	}
+	{}
 }

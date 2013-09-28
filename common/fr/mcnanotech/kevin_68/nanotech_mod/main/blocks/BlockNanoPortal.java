@@ -69,55 +69,19 @@ public class BlockNanoPortal extends Block
 		boolean portalisgood = false;
 		if(world.getBlockId(x, y3, z + 1) == this.blockID)
 		{
-			portalisgood = (world.getBlockId(x, y2, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2, z + 1) == NanotechBlock.BlockPortalFrame.blockID && 
-					world.getBlockId(x, y2 + 1, z + 2) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2 + 2, z + 2) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2 + 3, z + 2) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2 + 1, z - 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2 + 2, z - 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2 + 3, z - 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2 + 4, z - 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID);
+			portalisgood = (world.getBlockId(x, y2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 1, z + 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 2, z + 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 3, z + 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 1, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 2, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 3, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 4, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID);
 		}
 		else if(world.getBlockId(x, y3, z - 1) == this.blockID)
 		{
-			portalisgood = (world.getBlockId(x, y2, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2, z - 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2 + 1, z - 2) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2 + 2, z - 2) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2 + 3, z - 2) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2 + 1, z + 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2 + 2, z + 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2 + 3, z + 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2 + 4, z + 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID);
+			portalisgood = (world.getBlockId(x, y2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 1, z - 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 2, z - 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 3, z - 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 1, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 2, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 3, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 4, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID);
 		}
 		else if(world.getBlockId(x + 1, y3, z) == this.blockID)
 		{
-			portalisgood = (world.getBlockId(x, y2, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x + 1, y2, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x + 2, y2 + 1, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x + 2, y2 + 2, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x + 2, y2 + 3, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x - 1, y2 + 1, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x - 1, y2 + 2, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x - 1, y2 + 3, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x + 1, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID);
+			portalisgood = (world.getBlockId(x, y2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 2, y2 + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 2, y2 + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 2, y2 + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y2 + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y2 + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y2 + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID);
 		}
 		else if(world.getBlockId(x - 1, y3, z) == this.blockID)
 		{
-			portalisgood = (world.getBlockId(x, y2, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x - 1, y2, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x - 2, y2 + 1, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x - 2, y2 + 2, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x - 2, y2 + 3, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x + 1, y2 + 1, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x + 1, y2 + 2, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x + 1, y2 + 3, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x + 1, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID);
+			portalisgood = (world.getBlockId(x, y2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 2, y2 + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 2, y2 + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 2, y2 + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y2 + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y2 + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y2 + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y2 + 4, z) == NanotechBlock.BlockPortalFrame.blockID);
 		}
 
 		if(!portalisgood)

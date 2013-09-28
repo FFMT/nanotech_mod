@@ -127,14 +127,14 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 			if(this.worldObj.getBlockId(j, k, l) == 0 && Block.fire.canPlaceBlockAt(this.worldObj, j, k, l))
 			{
-				for (int x = -1; x < 2; x++)
+				for(int x = -1; x < 2; x++)
 				{
-					for (int z = -1; z < 2; z++)
+					for(int z = -1; z < 2; z++)
 					{
 						this.worldObj.setBlock(j + x, k, l + z, Block.fire.blockID);
 					}
 				}
-				
+
 			}
 		}
 

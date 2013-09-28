@@ -12,18 +12,18 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 	private ItemStack[] inventory = new ItemStack[2];
 	private String customName;
 
-    public void updateEntity() 
-    {
-    	if(this.inventory[1] == null && this.inventory[0] != null)
-    	{
-    		this.inventory[1] = this.inventory[0].copy();
-    		inventory[1].stackSize = 64;
-    	}
-    	if(this.inventory[1] != null && this.inventory[1].stackSize < 64)
-    	{
-    		this.inventory[1].stackSize = 64;
-    	}
-    }
+	public void updateEntity()
+	{
+		if(this.inventory[1] == null && this.inventory[0] != null)
+		{
+			this.inventory[1] = this.inventory[0].copy();
+			inventory[1].stackSize = 64;
+		}
+		if(this.inventory[1] != null && this.inventory[1].stackSize < 64)
+		{
+			this.inventory[1].stackSize = 64;
+		}
+	}
 
 	@Override
 	public String getInvName()
@@ -110,7 +110,7 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 			}
 		}
 		nbttagCompound.setTag("Inventory", itemList);
-		
+
 		if(this.customName != null)
 		{
 			nbttagCompound.setString("Name", this.customName);
@@ -165,12 +165,12 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 	{
 		return this.customName != null && this.customName.length() > 0;
 	}
-	
+
 	public void setCustomName(String name)
 	{
 		this.customName = name;
 	}
-	
+
 	public String getCustomName()
 	{
 		return this.customName;

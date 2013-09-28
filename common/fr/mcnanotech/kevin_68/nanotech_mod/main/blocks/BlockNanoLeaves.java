@@ -18,6 +18,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockNanoLeaves extends BlockLeaves implements IShearable
 {
 	protected Icon fastIcon;
+
 	public BlockNanoLeaves(int id)
 	{
 		super(id);
@@ -29,7 +30,7 @@ public class BlockNanoLeaves extends BlockLeaves implements IShearable
 		blockIcon = iconregister.registerIcon("nanotech_mod:nanoleaves");
 		fastIcon = iconregister.registerIcon("nanotech_mod:nanoleaves_opaque");
 	}
-	
+
 	public boolean isOpaqueCube()
 	{
 		return Block.leaves.isOpaqueCube();
@@ -50,7 +51,7 @@ public class BlockNanoLeaves extends BlockLeaves implements IShearable
 	{
 		list.add(new ItemStack(par1, 1, 0));
 	}
-	
+
 	@Override
 	public boolean isLeaves(World world, int x, int y, int z)
 	{

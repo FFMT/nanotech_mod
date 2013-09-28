@@ -15,7 +15,7 @@ public class UtilDiskInfo
 
 	public static void readInfo()
 	{
-		File cdlocalization = new File(Minecraft.getMinecraft().mcDataDir + "/config/diskinfo.txt");	
+		File cdlocalization = new File(Minecraft.getMinecraft().mcDataDir + "/config/diskinfo.txt");
 		if(!cdlocalization.exists())
 		{
 			try

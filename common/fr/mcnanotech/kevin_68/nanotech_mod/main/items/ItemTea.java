@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 public class ItemTea extends Item
 {
 
-	public ItemTea(int id) 
+	public ItemTea(int id)
 	{
 		super(id);
 	}

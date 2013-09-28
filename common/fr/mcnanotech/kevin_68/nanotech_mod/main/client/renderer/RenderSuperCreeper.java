@@ -21,7 +21,7 @@ public class RenderSuperCreeper extends RenderLiving
 	{
 		super(new ModelSuperCreeper(), 0.5F);
 	}
-	
+
 	protected ResourceLocation getCreeperTexture(MobSuperCreeper entity)
 	{
 		return texture;

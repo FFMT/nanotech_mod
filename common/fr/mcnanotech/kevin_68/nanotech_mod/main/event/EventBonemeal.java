@@ -10,6 +10,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 public class EventBonemeal
 {
 	private int counter = 0;
+
 	@ForgeSubscribe
 	public void onUseBonemeal(BonemealEvent event)
 	{
@@ -26,7 +27,7 @@ public class EventBonemeal
 				else
 				{
 					event.setResult(Result.ALLOW);
-					counter ++;
+					counter++;
 				}
 			}
 		}

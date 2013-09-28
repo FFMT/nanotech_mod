@@ -88,16 +88,16 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 		}
 
 		if(readInvisibilityStatus(stack))
-		{		
+		{
 			player.setInvisible(true);
 		}
-		else if (!player.isPotionActive(Potion.invisibility))
+		else if(!player.isPotionActive(Potion.invisibility))
 		{
 			player.setInvisible(false);
 		}
 
 		this.getArmorTexture(stack, player, 1, 1);
-		
+
 		IC2.platform.profilerEndSection();
 	}
 

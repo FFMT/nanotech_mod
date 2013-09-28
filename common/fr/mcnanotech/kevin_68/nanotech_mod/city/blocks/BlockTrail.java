@@ -14,17 +14,8 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrail;
 
 public class BlockTrail extends BlockContainer
 {
-	private Icon top, left, bottom, right, topRight, topLeft, topBottom,
-			topLeftBottom, topRightBottom, topLeftRight, leftRight, leftBottom,
-			leftBottomRight, rightBottom, all, topRightDTR, topLeftDTL,
-			leftBottomDBL, rightBottomDBR, topLeftBottomDTL, topLeftBottomDBL,
-			topLeftBottomDTLBL, topRightBottomDTR, topRightBottomDBR,
-			topRightBottomDTRBR, topLeftRightDTL, topLeftRightDTR,
-			topLeftRightDTLTR, leftBottomRightDBL, leftBottomRightDBR,
-			leftBottomRightDBLBR, allDTL, allDTR, allDBL, allDBR, allDTLTR,
-			allDTLBL, allDTLBR, allDTRBL, allDTRBR, allDBLBR, allDTLTRBR,
-			allDTRBRBL, allDBRBLTL, allDBLTLTR, allDTLTRBLBR, nothing, empty,
-			handIcon;
+	private Icon top, left, bottom, right, topRight, topLeft, topBottom, topLeftBottom, topRightBottom, topLeftRight, leftRight, leftBottom, leftBottomRight, rightBottom, all, topRightDTR, topLeftDTL, leftBottomDBL, rightBottomDBR, topLeftBottomDTL, topLeftBottomDBL, topLeftBottomDTLBL, topRightBottomDTR, topRightBottomDBR, topRightBottomDTRBR, topLeftRightDTL, topLeftRightDTR, topLeftRightDTLTR,
+			leftBottomRightDBL, leftBottomRightDBR, leftBottomRightDBLBR, allDTL, allDTR, allDBL, allDBR, allDTLTR, allDTLBL, allDTLBR, allDTRBL, allDTRBR, allDBLBR, allDTLTRBR, allDTRBRBL, allDBRBLTL, allDBLTLTR, allDTLTRBLBR, nothing, empty, handIcon;
 
 	public BlockTrail(int id, Material material)
 	{

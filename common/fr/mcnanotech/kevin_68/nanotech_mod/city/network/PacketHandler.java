@@ -25,7 +25,7 @@ public class PacketHandler implements IPacketHandler
 			handleSpotLightPacket(packet, playerSender);
 		}
 
-		if (packet.channel.equals("NTMC|fount"))
+		if(packet.channel.equals("NTMC|fount"))
 		{
 			handleFountainPacket(packet, playerSender);
 		}

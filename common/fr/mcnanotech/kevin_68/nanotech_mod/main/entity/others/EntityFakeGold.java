@@ -89,7 +89,7 @@ public class EntityFakeGold extends Entity
 	{
 		nbttagcompound.setByte("Fuse", (byte)this.fuse);
 	}
-	
+
 	protected void readEntityFromNBT(NBTTagCompound nbttagcompound)
 	{
 		this.fuse = nbttagcompound.getByte("Fuse");

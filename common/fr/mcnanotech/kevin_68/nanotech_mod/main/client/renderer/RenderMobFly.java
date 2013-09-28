@@ -15,7 +15,7 @@ public class RenderMobFly extends RenderLiving
 	{
 		super(new ModelFly(), 0.5F);
 	}
-	
+
 	protected ResourceLocation getFlyTexture(MobFly entity)
 	{
 		return texture;

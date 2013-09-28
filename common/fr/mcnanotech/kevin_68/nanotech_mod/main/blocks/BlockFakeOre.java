@@ -27,7 +27,8 @@ public class BlockFakeOre extends Block
 		super(id, Material.rock);
 	}
 
-	public void registerIcons(IconRegister iconRegister){}
+	public void registerIcons(IconRegister iconRegister)
+	{}
 
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int metadata)

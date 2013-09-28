@@ -32,7 +32,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 @Mod(modid = "Nanotech_mod_City", name = "Nanotech mod City", version = "@VERSION@")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTMC|light", "NTMC|fount"}, packetHandler = PacketHandler.class)
-public class Nanotech_mod_City 
+public class Nanotech_mod_City
 {
 	// Instance
 	@Instance("Nanotech_mod_City")
@@ -42,11 +42,11 @@ public class Nanotech_mod_City
 	public static CommonProxy proxy;
 
 	// Block IDs
-	public static int BlockTrashcanID, BlockSpotLightID, BlockTrailID, BlockFountainID, BlockLampID, BlockLampLightID, BlockSunShadeID;
+	public static int BlockTrashcanID, BlockSpotLightID, BlockTrailID, BlockFountainID, BlockLampID, BlockLampLightID, BlockSunShadeID, BlockModernFenceID;
 
 	// Item IDs
 	public static int ItemLampID, ItemSunShadeID;
-	
+
 	public static CreativeTabs cityTab = new CreativeTabs("NanotechModCity")
 	{
 		@SideOnly(Side.CLIENT)
@@ -70,6 +70,7 @@ public class Nanotech_mod_City
 			BlockLampID = cfg.getBlock("Lamp", 1024).getInt();
 			BlockLampLightID = cfg.getBlock("LampLight", 1025).getInt();
 			BlockSunShadeID = cfg.getBlock("SunShade", 1026).getInt();
+			BlockModernFenceID = cfg.getBlock("ModernFence", 1027).getInt();
 
 			ItemLampID = cfg.getItem("Lamp", 5150).getInt();
 			ItemSunShadeID = cfg.getItem("SunShade", 5151).getInt();
@@ -86,18 +87,18 @@ public class Nanotech_mod_City
 				cfg.save();
 			}
 		}
-		
+
 		NanotechCityBlock.initBlock();
 		NanotechCityBlock.blockRegistry();
 		NanotechCityItem.initItem();
 		NanotechCityAchievement.initAchievement();
 	}
-	
+
 	@EventHandler
 	public void Init(FMLInitializationEvent event)
 	{
 		GameRegistry.registerCraftingHandler(new CityCraftingHandler());
-		
+
 		// NetWork
 		NetworkRegistry.instance().registerGuiHandler(this.modInstance, new GuiHandler());
 		NetworkRegistry.instance().registerChannel(new PacketHandler(), "nanotechmodcity");
@@ -109,15 +110,15 @@ public class Nanotech_mod_City
 		GameRegistry.registerTileEntity(TileEntityLamp.class, "TileEntityLamp");
 		GameRegistry.registerTileEntity(TileEntityLampLight.class, "TileEntityLampLight");
 		GameRegistry.registerTileEntity(TileEntitySunShade.class, "TileEntitySunShade");
-		
+
 		// Render
 		proxy.registerTileRenders();
-		
+
 		// Recipe
-		GameRegistry.addRecipe(new ItemStack(NanotechCityItem.lamp, 1), new Object[]{"IDI", "GSG", "III", 'I', Item.ingotIron, 'D', Block.daylightSensor, 'G', Block.thinGlass, 'S', Block.glowStone});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityItem.sunShade, 1), new Object[]{"WWW", " S ", " S ", 'W', Block.cloth, 'S', Item.stick});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityItem.lamp, 1), new Object[] {"IDI", "GSG", "III", 'I', Item.ingotIron, 'D', Block.daylightSensor, 'G', Block.thinGlass, 'S', Block.glowStone});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityItem.sunShade, 1), new Object[] {"WWW", " S ", " S ", 'W', Block.cloth, 'S', Item.stick});
 	}
-	
+
 	@EventHandler
 	public void PostInit(FMLPostInitializationEvent event)
 	{

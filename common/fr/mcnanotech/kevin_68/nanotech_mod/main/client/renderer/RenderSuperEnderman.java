@@ -29,7 +29,7 @@ public class RenderSuperEnderman extends RenderLiving
 		this.model = (ModelSuperEnderman)super.mainModel;
 		this.setRenderPassModel(this.model);
 	}
-	
+
 	protected ResourceLocation getEndermanTexture(MobSuperEnderman entity)
 	{
 		return texture;
@@ -62,24 +62,24 @@ public class RenderSuperEnderman extends RenderLiving
 
 		if(mob.getCarried() > 0)
 		{
-            GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-            GL11.glPushMatrix();
-            float f1 = 0.5F;
-            GL11.glTranslatef(0.0F, 0.6875F, -0.75F);
-            f1 *= 1.0F;
-            GL11.glRotatef(20.0F, 1.0F, 0.0F, 0.0F);
-            GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
-            GL11.glScalef(-f1, -f1, f1);
-            int i = mob.getBrightnessForRender(par2);
-            int j = i % 65536;
-            int k = i / 65536;
-            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)j / 1.0F, (float)k / 1.0F);
-            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            this.bindTexture(TextureMap.locationBlocksTexture);
-            this.renderBlocks.renderBlockAsItem(Block.blocksList[mob.getCarried()], mob.getCarryingData(), 1.0F);
-            GL11.glPopMatrix();
-            GL11.glDisable(GL12.GL_RESCALE_NORMAL);
+			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+			GL11.glPushMatrix();
+			float f1 = 0.5F;
+			GL11.glTranslatef(0.0F, 0.6875F, -0.75F);
+			f1 *= 1.0F;
+			GL11.glRotatef(20.0F, 1.0F, 0.0F, 0.0F);
+			GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
+			GL11.glScalef(-f1, -f1, f1);
+			int i = mob.getBrightnessForRender(par2);
+			int j = i % 65536;
+			int k = i / 65536;
+			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)j / 1.0F, (float)k / 1.0F);
+			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+			this.bindTexture(TextureMap.locationBlocksTexture);
+			this.renderBlocks.renderBlockAsItem(Block.blocksList[mob.getCarried()], mob.getCarryingData(), 1.0F);
+			GL11.glPopMatrix();
+			GL11.glDisable(GL12.GL_RESCALE_NORMAL);
 		}
 	}
 

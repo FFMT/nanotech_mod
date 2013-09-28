@@ -26,14 +26,14 @@ public class MobFly extends EntityAmbientCreature
 		this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 20.0F));
 		this.tasks.addTask(7, new EntityAILookIdle(this));
 	}
-	
-	 @Override
-	 protected void applyEntityAttributes()
-	 {
-		 super.applyEntityAttributes();
-		 this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(1D);
-	 }
-	 
+
+	@Override
+	protected void applyEntityAttributes()
+	{
+		super.applyEntityAttributes();
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(1D);
+	}
+
 	protected void entityInit()
 	{
 		super.entityInit();

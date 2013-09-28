@@ -108,8 +108,7 @@ public class NanotechChunkProvider implements IChunkProvider
 	double[] noise6;
 
 	/**
-	 * Used to store the 5x5 parabolic field that is used during terrain
-	 * generation.
+	 * Used to store the 5x5 parabolic field that is used during terrain generation.
 	 */
 	float[] parabolicField;
 	int[][] field_73219_j = new int[32][32];
@@ -133,8 +132,7 @@ public class NanotechChunkProvider implements IChunkProvider
 		this.noiseGen5 = new NoiseGeneratorOctaves(this.rand, 10);
 		this.noiseGen6 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.mobSpawnerNoise = new NoiseGeneratorOctaves(this.rand, 8);
-		NoiseGeneratorOctaves[] noiseGens =
-		{noiseGen1, noiseGen2, noiseGen3, noiseGen4, noiseGen5, noiseGen6, mobSpawnerNoise};
+		NoiseGeneratorOctaves[] noiseGens = {noiseGen1, noiseGen2, noiseGen3, noiseGen4, noiseGen5, noiseGen6, mobSpawnerNoise};
 		noiseGens = TerrainGen.getModdedNoiseGenerators(world, this.rand, noiseGens);
 		this.noiseGen1 = noiseGens[0];
 		this.noiseGen2 = noiseGens[1];
@@ -146,8 +144,7 @@ public class NanotechChunkProvider implements IChunkProvider
 	}
 
 	/**
-	 * Generates the shape of the terrain for the chunk though its all stone
-	 * though the water is frozen if the temperature is low enough
+	 * Generates the shape of the terrain for the chunk though its all stone though the water is frozen if the temperature is low enough
 	 */
 	public void generateTerrain(int par1, int par2, byte[] par3ArrayOfByte)
 	{
@@ -329,9 +326,8 @@ public class NanotechChunkProvider implements IChunkProvider
 	}
 
 	/**
-	 * Will return back a chunk, if it doesn't exist and its not a MP client it
-	 * will generates all the blocks for the specified chunk from the map seed
-	 * and chunk seed
+	 * Will return back a chunk, if it doesn't exist and its not a MP client it will generates all the blocks for the specified chunk from
+	 * the map seed and chunk seed
 	 */
 	public Chunk provideChunk(int chunkX, int chunkZ)
 	{
@@ -356,8 +352,7 @@ public class NanotechChunkProvider implements IChunkProvider
 	}
 
 	/**
-	 * generates a subset of the level's terrain data. Takes 7 arguments: the
-	 * [empty] noise array, the position, and the size.
+	 * generates a subset of the level's terrain data. Takes 7 arguments: the [empty] noise array, the position, and the size.
 	 */
 	private double[] initializeNoiseField(double[] par1ArrayOfDouble, int par2, int par3, int par4, int par5, int par6, int par7)
 	{
@@ -607,9 +602,8 @@ public class NanotechChunkProvider implements IChunkProvider
 	}
 
 	/**
-	 * Two modes of operation: if passed true, save all Chunks in one go. If
-	 * passed false, save up to two chunks. Return true if all chunks have been
-	 * saved.
+	 * Two modes of operation: if passed true, save all Chunks in one go. If passed false, save up to two chunks. Return true if all chunks
+	 * have been saved.
 	 */
 	public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate)
 	{
@@ -617,8 +611,7 @@ public class NanotechChunkProvider implements IChunkProvider
 	}
 
 	/**
-	 * Unloads the 100 oldest chunks from memory, due to a bug with
-	 * chunkSet.add() never being called it thinks the list is always empty and
+	 * Unloads the 100 oldest chunks from memory, due to a bug with chunkSet.add() never being called it thinks the list is always empty and
 	 * will not remove any chunks.
 	 */
 	public boolean unload100OldestChunks()
@@ -643,8 +636,7 @@ public class NanotechChunkProvider implements IChunkProvider
 	}
 
 	/**
-	 * Returns a list of creatures of the specified type that can spawn at the
-	 * given location.
+	 * Returns a list of creatures of the specified type that can spawn at the given location.
 	 */
 	public List getPossibleCreatures(EnumCreatureType par1EnumCreatureType, int par2, int par3, int par4)
 	{
@@ -653,8 +645,7 @@ public class NanotechChunkProvider implements IChunkProvider
 	}
 
 	/**
-	 * Returns the location of the closest structure of the specified type. If
-	 * not found returns null.
+	 * Returns the location of the closest structure of the specified type. If not found returns null.
 	 */
 	public ChunkPosition findClosestStructure(World par1World, String par2Str, int par3, int par4, int par5)
 	{
@@ -696,15 +687,11 @@ public class NanotechChunkProvider implements IChunkProvider
 		worldgen3.generate(this.worldObj, rand, Xcoord4, Ycoord4, Zcoord4);
 
 		/*
-		 * int Xcoord5 = chunkX * 16 + rand.nextInt(512); int Ycoord5 =
-		 * rand.nextInt(100); int Zcoord5 = chunkZ * 16 + rand.nextInt(512);
-		 * worldgen4.generate(this.worldObj, rand, Xcoord5, Ycoord5, Zcoord5);
-		 * int Xcoord6 = chunkX * 16 + rand.nextInt(512); int Ycoord6 =
-		 * rand.nextInt(100); int Zcoord6 = chunkZ * 16 + rand.nextInt(512);
-		 * worldgen5.generate(this.worldObj, rand, Xcoord6, Ycoord6, Zcoord6);
-		 * int Xcoord7 = chunkX * 16 + rand.nextInt(512); int Ycoord7 =
-		 * rand.nextInt(100); int Zcoord7 = chunkZ * 16 + rand.nextInt(512);
-		 * worldgen6.generate(this.worldObj, rand, Xcoord7, Ycoord7, Zcoord7);
+		 * int Xcoord5 = chunkX * 16 + rand.nextInt(512); int Ycoord5 = rand.nextInt(100); int Zcoord5 = chunkZ * 16 + rand.nextInt(512);
+		 * worldgen4.generate(this.worldObj, rand, Xcoord5, Ycoord5, Zcoord5); int Xcoord6 = chunkX * 16 + rand.nextInt(512); int Ycoord6 =
+		 * rand.nextInt(100); int Zcoord6 = chunkZ * 16 + rand.nextInt(512); worldgen5.generate(this.worldObj, rand, Xcoord6, Ycoord6,
+		 * Zcoord6); int Xcoord7 = chunkX * 16 + rand.nextInt(512); int Ycoord7 = rand.nextInt(100); int Zcoord7 = chunkZ * 16 +
+		 * rand.nextInt(512); worldgen6.generate(this.worldObj, rand, Xcoord7, Ycoord7, Zcoord7);
 		 */
 
 		int Xcoord8 = chunkX * 16 + rand.nextInt(512);

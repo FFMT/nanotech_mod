@@ -5,10 +5,10 @@ import net.minecraft.block.material.Material;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.core.Nanotech_mod_City;
 
-public class NanotechCityBlock 
+public class NanotechCityBlock
 {
 	// Blocks statement
-	public static Block BlockTrashcan, BlockSpotLight, BlockTrail, BlockFountain, BlockLamp, BlockLampLight, BlockSunShade;
+	public static Block BlockTrashcan, BlockSpotLight, BlockTrail, BlockFountain, BlockLamp, BlockLampLight, BlockSunShade, BlockModernFence;
 
 	// Blocks Initialization
 	public static void initBlock()
@@ -20,7 +20,9 @@ public class NanotechCityBlock
 		BlockLamp = new BlockLamp(Nanotech_mod_City.BlockLampID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockLamp");
 		BlockLampLight = new BlockLampLight(Nanotech_mod_City.BlockLampLightID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockLampLight");
 		BlockSunShade = new BlockSunShade(Nanotech_mod_City.BlockSunShadeID, Material.wood).setHardness(2.0F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("sunShade");
+		BlockModernFence = new BlockModernFence(Nanotech_mod_City.BlockModernFenceID).setHardness(1.5F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("modernFence").setCreativeTab(Nanotech_mod_City.cityTab);
 	}
+
 	// Blocks registry
 	public static void blockRegistry()
 	{
@@ -31,6 +33,6 @@ public class NanotechCityBlock
 		GameRegistry.registerBlock(BlockLamp, ItemBlockLamp.class, "BlockLamp", "Nanotech_mod_City");
 		GameRegistry.registerBlock(BlockLampLight, "BlockLampLight");
 		GameRegistry.registerBlock(BlockSunShade, ItemBlockSunShade.class, "BlockSunShade", "Nanotech_mod_City");
-	
+		GameRegistry.registerBlock(BlockModernFence, "blockModernFence");
 	}
 }

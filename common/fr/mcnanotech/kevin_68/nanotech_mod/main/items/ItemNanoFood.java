@@ -10,7 +10,7 @@ public class ItemNanoFood extends ItemFood
 	{
 		super(id, healAmount, saturation, wolf);
 	}
-	
+
 	public ItemNanoFood(int id, int healAmount, float saturation, boolean wolf, int pID, int pDuration, int pAmplifier, float pProb)
 	{
 		super(id, healAmount, saturation, wolf);

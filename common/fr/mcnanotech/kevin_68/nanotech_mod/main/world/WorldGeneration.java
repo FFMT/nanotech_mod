@@ -14,7 +14,8 @@ public class WorldGeneration implements IWorldGenerator
 	{
 		switch(world.provider.dimensionId)
 		{
-		case 19: generateNanotechDim(world, random, chunkX * 16, chunkZ * 16);
+		case 19:
+			generateNanotechDim(world, random, chunkX * 16, chunkZ * 16);
 		}
 	}
 

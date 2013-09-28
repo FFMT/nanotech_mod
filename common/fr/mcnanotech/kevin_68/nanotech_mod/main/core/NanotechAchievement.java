@@ -35,7 +35,7 @@ public class NanotechAchievement
 		getMysteriousMat = new Achievement(12589, "getMysteriousMat", 5, -2, new ItemStack(NanotechItem.ItemBase, 1, 2), killTheDeath).registerAchievement();
 		nanotechDim = new Achievement(12590, "nanotechDim", -3, 8, new ItemStack(NanotechBlock.BlockGrass, 0, 0), blockPortalFrame).registerAchievement();
 
-	    pageNanotech = new AchievementPage("Nanotech_mod", installMod, blockBarbedWire, blockConfusion, blockFalling, blockJumper, blockJumperAdv, blockMossyStone, blockNotFalling, blockPortalFrame, blockSmoker, blockSpeed, blockSlow, blockTheDeath, killTheDeath, killTheDeathWithCG, getScythe, getMysteriousMat, nanotechDim);
+		pageNanotech = new AchievementPage("Nanotech_mod", installMod, blockBarbedWire, blockConfusion, blockFalling, blockJumper, blockJumperAdv, blockMossyStone, blockNotFalling, blockPortalFrame, blockSmoker, blockSpeed, blockSlow, blockTheDeath, killTheDeath, killTheDeathWithCG, getScythe, getMysteriousMat, nanotechDim);
 		AchievementPage.registerAchievementPage(pageNanotech);
 	}
 }

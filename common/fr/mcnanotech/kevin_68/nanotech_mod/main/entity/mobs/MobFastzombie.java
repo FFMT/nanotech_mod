@@ -38,16 +38,16 @@ public class MobFastzombie extends EntityMob
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 	}
 
-	 @Override
-	 protected void applyEntityAttributes()
-	 {
-		 super.applyEntityAttributes();
-		 this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(2D);
-	     this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
-		 this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0D);
-		 this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1D);
-	 }
-	
+	@Override
+	protected void applyEntityAttributes()
+	{
+		super.applyEntityAttributes();
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(2D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1D);
+	}
+
 	protected void fall(float damage)
 	{}
 
@@ -91,12 +91,11 @@ public class MobFastzombie extends EntityMob
 		return EnumCreatureAttribute.UNDEAD;
 	}
 
-	
-	 protected int getDropItemId() 
-	 { 
-		 return NanotechItem.Edibleflesh.itemID; 
-		 }
-	 
+	protected int getDropItemId()
+	{
+		return NanotechItem.Edibleflesh.itemID;
+	}
+
 	protected void dropRareDrop(int par1)
 	{
 		switch(this.rand.nextInt(4))

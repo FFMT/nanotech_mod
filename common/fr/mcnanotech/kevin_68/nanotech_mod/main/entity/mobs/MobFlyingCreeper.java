@@ -51,15 +51,14 @@ public class MobFlyingCreeper extends EntityMob
 		return true;
 	}
 
-    protected void applyEntityAttributes()
-    {
-        super.applyEntityAttributes();
-		 this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20D);
-		 this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
-    }
-    
-	
+	protected void applyEntityAttributes()
+	{
+		super.applyEntityAttributes();
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
+	}
+
 	public int func_82143_as()
 	{
 		return this.getAttackTarget() == null ? 3 : 3 + (int)(this.getHealth() - 1.0F);

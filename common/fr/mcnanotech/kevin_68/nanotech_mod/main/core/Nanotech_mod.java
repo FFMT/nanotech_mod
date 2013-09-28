@@ -54,12 +54,11 @@ public class Nanotech_mod
 	public static CommonProxy proxy;
 
 	// Block IDs
-	public static int BlockPortalID, BlockPortalFrameID, BlockGrassID, BlockFakeOreID, BlockSpeedID, BlockJumperID, BlockMultiplierID, BlockSmokerID, BlockBarbedWireID, BlockNanoWoodID, BlockNanoLeavesID, BlockNanoSaplingsID, BlockNanoPlanksID, BlockNanoOreID, BlockConfusionID, BlockFallingID, BlockNotFallingID, BlockSodiumID, BlockMossyStoneID,
-	BlockTheDeathHeadID, BlockTeaID;
+	public static int BlockPortalID, BlockPortalFrameID, BlockGrassID, BlockFakeOreID, BlockSpeedID, BlockJumperID, BlockMultiplierID, BlockSmokerID, BlockBarbedWireID, BlockNanoWoodID, BlockNanoLeavesID, BlockNanoSaplingsID, BlockNanoPlanksID, BlockNanoOreID, BlockConfusionID, BlockFallingID, BlockNotFallingID, BlockSodiumID, BlockMossyStoneID, BlockTheDeathHeadID, BlockTeaID;
 
 	// Item IDs
 	public static int ItemNanotechID, ItemSuperBottleOfXpID, ItemDiamondBowID, ItemEmeraldBowID, ItemNanomiteBowID, ItemNanomiteAxeID, ItemNanomitePickaxeID, ItemNanomiteShovelID, ItemNanomiteHoeID, ItemNanomiteSwordID, ItemNanomiteHelmetID, ItemNanomiteChestPlateID, ItemNanomiteLegginsID, ItemNanomiteBootsID, ItemMysteriousHelmetID, ItemMysteriousChestPlateID, ItemMysteriousLegginsID,
-	ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemScytheID, ItemCrazyGlassesID, TeaSeedID, TeaID, DebugID;
+			ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemScytheID, ItemCrazyGlassesID, TeaSeedID, TeaID, DebugID;
 
 	// Dimension ID
 	public static int dimensionID = 19;
@@ -177,7 +176,7 @@ public class Nanotech_mod
 			TeaSeedID = cfg.getItem("TeaSeed", 5022).getInt();
 			TeaID = cfg.getItem("Tea", 5023).getInt();
 			DebugID = cfg.getItem("Debug Item", 5024).getInt();
-			
+
 			HardRecipe = cfg.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
 
 			CreeperDriller = cfg.get(CATEGORY_Mobscfg, "CreeperDriller", true).getBoolean(true);
@@ -257,13 +256,13 @@ public class Nanotech_mod
 		proxy.registerModRenders();
 		this.forgeDictionary();
 		this.other();
-		
+
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
 		MinecraftForge.EVENT_BUS.register(new PlayerEvent());
 
 		GameRegistry.registerPlayerTracker(new PlayerTracker());
 		GameRegistry.registerCraftingHandler(new CraftingHandler());
-		
+
 		TickRegistry.registerTickHandler(new CrazyGlassesTickHandler(), Side.SERVER);
 	}
 

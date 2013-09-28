@@ -18,9 +18,9 @@ public class EventSound
 			event.manager.addSound("nanotech_mod:fly.ogg");
 			event.manager.addSound("nanotech_mod:CrazyGuy.ogg");
 			event.manager.addStreaming("nanotech_mod:nanodisk.ogg");
-			for (int i = 1; i < 17; i++)
+			for(int i = 1; i < 17; i++)
 			{
-				event.manager.addStreaming("nanotech_mod:YourSound" + i +".ogg");
+				event.manager.addStreaming("nanotech_mod:YourSound" + i + ".ogg");
 			}
 
 		}

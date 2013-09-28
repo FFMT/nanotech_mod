@@ -33,9 +33,7 @@ public class KeyboardClient extends Keyboard
 
 	public KeyboardClient()
 	{
-		KeyBindingRegistry.registerKeyBinding(new KeyHandler(new KeyBinding[]
-		{flyKey, invKey, nightKey}, new boolean[]
-		{false, false, false})
+		KeyBindingRegistry.registerKeyBinding(new KeyHandler(new KeyBinding[] {flyKey, invKey, nightKey}, new boolean[] {false, false, false})
 		{
 			@Override
 			public String getLabel()

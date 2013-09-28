@@ -173,7 +173,7 @@ public class GuiFountain extends GuiContainer
 				}
 			}
 		}
-		
+
 		else if(guibutton.id == 7)
 		{
 			if(!tileFoutain.getAnimated())
@@ -226,14 +226,28 @@ public class GuiFountain extends GuiContainer
 		int y = (height - ySize) / 2;
 		int rotatePos;
 		int animPos;
-		if (tileFoutain.rotate){rotatePos = 8;}else{rotatePos = 10;}
-		if (tileFoutain.animated){animPos = 8;}else{animPos = 10;}
+		if(tileFoutain.rotate)
+		{
+			rotatePos = 8;
+		}
+		else
+		{
+			rotatePos = 10;
+		}
+		if(tileFoutain.animated)
+		{
+			animPos = 8;
+		}
+		else
+		{
+			animPos = 10;
+		}
 
 		fontRenderer.drawString("Fountain", 6, 6, 4210752);
-		fontRenderer.drawString(String.valueOf(tileFoutain.height),  xSize / 2 - 5, ySize + -143, 4210752);
-		fontRenderer.drawString(String.valueOf(tileFoutain.width),  xSize / 2 - 5, ySize + -121, 4210752);
-		fontRenderer.drawString(String.valueOf(tileFoutain.rotate),  xSize / 2 - rotatePos, ySize + -99, 4210752);
-		fontRenderer.drawString(String.valueOf(tileFoutain.animated),  xSize / 2 - animPos, ySize + -77, 4210752);
+		fontRenderer.drawString(String.valueOf(tileFoutain.height), xSize / 2 - 5, ySize + -143, 4210752);
+		fontRenderer.drawString(String.valueOf(tileFoutain.width), xSize / 2 - 5, ySize + -121, 4210752);
+		fontRenderer.drawString(String.valueOf(tileFoutain.rotate), xSize / 2 - rotatePos, ySize + -99, 4210752);
+		fontRenderer.drawString(String.valueOf(tileFoutain.animated), xSize / 2 - animPos, ySize + -77, 4210752);
 	}
 
 	@Override

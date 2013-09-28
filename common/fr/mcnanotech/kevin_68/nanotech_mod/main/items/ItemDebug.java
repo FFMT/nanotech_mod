@@ -29,16 +29,7 @@ public class ItemDebug extends Item
 		TileEntity tile = world.getBlockTileEntity(x, y, z);
 		if(!world.isRemote && world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID)
 		{
-			if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && 
-					world.getBlockId(x - 1, y, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x - 2, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x - 2, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x - 2, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x + 1, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x + 1, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x + 1, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x - 1, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
+			if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 2, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 2, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 2, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
 			{
 				for(int i = 0; i < 3; i++)
 				{
@@ -46,17 +37,8 @@ public class ItemDebug extends Item
 					world.setBlock(x - 1, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
 				}
 			}
-			
-			if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && 
-					world.getBlockId(x + 1, y, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x + 2, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x + 2, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x + 2, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x - 1, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x - 1, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x - 1, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x + 1, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
+
+			if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 2, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 2, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 2, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
 			{
 				for(int i = 0; i < 3; i++)
 				{
@@ -64,17 +46,8 @@ public class ItemDebug extends Item
 					world.setBlock(x + 1, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
 				}
 			}
-			
-			if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && 
-					world.getBlockId(x, y, z - 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 1, z - 2) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 2, z - 2) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 3, z - 2) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 1, z + 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 2, z + 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 3, z + 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 4, z - 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
+
+			if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 1, z - 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 2, z - 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 3, z - 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 1, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 2, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 3, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
 			{
 				for(int i = 0; i < 3; i++)
 				{
@@ -82,17 +55,8 @@ public class ItemDebug extends Item
 					world.setBlock(x, y + 1 + i, z - 1, NanotechBlock.BlockPortal.blockID);
 				}
 			}
-			
-			if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && 
-					world.getBlockId(x, y, z + 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 1, z + 2) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 2, z + 2) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 3, z + 2) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 1, z - 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 2, z - 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 3, z - 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 4, z + 1) == NanotechBlock.BlockPortalFrame.blockID &&
-					world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
+
+			if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 1, z + 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 2, z + 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 3, z + 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 1, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 2, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 3, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
 			{
 				for(int i = 0; i < 3; i++)
 				{
@@ -107,30 +71,30 @@ public class ItemDebug extends Item
 			player.addChatMessage("Name: " + FFMTColor.aqua + tile.getBlockType().getLocalizedName());
 			player.addChatMessage("Coords: X:" + FFMTColor.aqua + String.valueOf(x) + FFMTColor.white + " Y:" + FFMTColor.aqua + String.valueOf(y) + FFMTColor.white + " Z:" + FFMTColor.aqua + String.valueOf(z));
 			player.addChatMessage("Metadata : " + FFMTColor.aqua + String.valueOf(world.getBlockMetadata(x, y, z)));
-			
-			if (tile instanceof TileEntityJumper)
+
+			if(tile instanceof TileEntityJumper)
 			{
 				TileEntityJumper te = (TileEntityJumper)tile;
 				player.addChatMessage("Power: " + FFMTColor.aqua + String.valueOf(te.getJumpHeightValue()));
 				player.addChatMessage("Advanced: " + FFMTColor.aqua + String.valueOf(te.getBlockMetadata() == 1 ? "true" : "false"));
 				return true;
 			}
-			
-			if (tile instanceof TileEntityMultiplier)
+
+			if(tile instanceof TileEntityMultiplier)
 			{
 				TileEntityMultiplier te = (TileEntityMultiplier)tile;
 				player.addChatMessage(FFMTColor.red + "Cheating block!");
 				return true;
 			}
-			
-			if (tile instanceof TileEntitySmoker)
+
+			if(tile instanceof TileEntitySmoker)
 			{
 				TileEntitySmoker te = (TileEntitySmoker)tile;
 				player.addChatMessage("Power: " + FFMTColor.aqua + String.valueOf(te.getSmokeValue()));
 				return true;
 			}
-			
-			if (tile instanceof TileEntityFountain)
+
+			if(tile instanceof TileEntityFountain)
 			{
 				TileEntityFountain te = (TileEntityFountain)tile;
 				player.addChatMessage("Height: " + FFMTColor.aqua + String.valueOf(te.getHeight()));
@@ -139,15 +103,15 @@ public class ItemDebug extends Item
 				player.addChatMessage("Animated: " + FFMTColor.aqua + String.valueOf(te.getAnimated()));
 				return true;
 			}
-			
-			if (tile instanceof TileEntityLampLight)
+
+			if(tile instanceof TileEntityLampLight)
 			{
 				TileEntityLampLight te = (TileEntityLampLight)tile;
 				player.addChatMessage("Light: " + FFMTColor.aqua + String.valueOf(te.getBlockMetadata() == 0 ? "true" : "false"));
 				return true;
 			}
-			
-			if (tile instanceof TileEntitySpotLight)
+
+			if(tile instanceof TileEntitySpotLight)
 			{
 				TileEntitySpotLight te = (TileEntitySpotLight)tile;
 				player.addChatMessage("Powered: " + FFMTColor.aqua + String.valueOf(te.isActive));
@@ -160,8 +124,8 @@ public class ItemDebug extends Item
 				player.addChatMessage("Darkblue: " + FFMTColor.aqua + String.valueOf(te.darkBlue));
 				return true;
 			}
-			
-			if (tile instanceof TileEntitySunShade)
+
+			if(tile instanceof TileEntitySunShade)
 			{
 				TileEntitySunShade te = (TileEntitySunShade)tile;
 				player.addChatMessage("Open: " + FFMTColor.aqua + te.getIsOpen());
@@ -170,7 +134,7 @@ public class ItemDebug extends Item
 		}
 		return false;
 	}
-	
+
 	public void registerIcons(IconRegister iconregister)
 	{
 		this.itemIcon = iconregister.registerIcon("nanotech_mod:itemDebug");

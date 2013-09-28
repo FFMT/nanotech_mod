@@ -11,8 +11,7 @@ public class WorldModel3 extends WorldGenerator
 {
 	protected int[] GetValidSpawnBlocks()
 	{
-		return new int[]
-		{Block.stone.blockID, Block.dirt.blockID, NanotechBlock.BlockGrass.blockID};
+		return new int[] {Block.stone.blockID, Block.dirt.blockID, NanotechBlock.BlockGrass.blockID};
 	}
 
 	public boolean LocationIsValidSpawn(World world, int i, int j, int k)

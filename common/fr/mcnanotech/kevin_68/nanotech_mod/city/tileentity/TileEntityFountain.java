@@ -31,26 +31,26 @@ public class TileEntityFountain extends TileEntity
 		this.updateState();
 		float randAnimated = this.worldObj.rand.nextInt(20);
 
-		if (isActive)
+		if(isActive)
 		{
-			if (f < height && !animated)
+			if(f < height && !animated)
 			{
 				f += 0.1;
 			}
-			else if (animated)
+			else if(animated)
 			{
-				if (randAnimated != 0)
+				if(randAnimated != 0)
 				{
-					if (f < height && !isGoingDown)
+					if(f < height && !isGoingDown)
 					{
 						f += 0.1;
 					}
-					else if (f == height || f > height / randAnimated)
+					else if(f == height || f > height / randAnimated)
 					{
 						f -= 0.1;
 						isGoingDown = true;
 					}
-					else if (f == height / randAnimated || f < height / randAnimated)
+					else if(f == height / randAnimated || f < height / randAnimated)
 					{
 						isGoingDown = false;
 					}
@@ -58,7 +58,7 @@ public class TileEntityFountain extends TileEntity
 			}
 		}
 
-		if (!isActive && f != 0.0F)
+		if(!isActive && f != 0.0F)
 		{
 			f = 0.0F;
 		}
@@ -162,42 +162,42 @@ public class TileEntityFountain extends TileEntity
 	{
 		return INFINITE_EXTENT_AABB;
 	}
-	
+
 	public float getHeight()
 	{
 		return height;
 	}
-	
+
 	public double getWidth()
 	{
 		return width;
 	}
-	
+
 	public boolean getRotate()
 	{
 		return rotate;
 	}
-	
+
 	public boolean getAnimated()
 	{
 		return animated;
 	}
-	
+
 	public void setHeight(float f)
 	{
 		height = f;
 	}
-	
+
 	public void setWidth(double d)
 	{
 		width = d;
 	}
-	
+
 	public void setRotate(boolean b)
 	{
 		rotate = b;
 	}
-	
+
 	public void setAnimated(boolean b)
 	{
 		animated = b;
