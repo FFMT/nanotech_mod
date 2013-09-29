@@ -40,21 +40,21 @@ public class TileEntityModernFenceRender extends TileEntitySpecialRenderer
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float scale)
 	{
 		TileEntityModernFence te = (TileEntityModernFence)tileentity;
-		if(te.textures[0])
+		if(te.render[0])
 			this.renderTileEntityAtBlockLamp0((TileEntityModernFence)tileentity, x, y, z, scale);
-		if(te.textures[1])
+		if(te.render[1])
 			this.renderTileEntityAtBlockLamp1((TileEntityModernFence)tileentity, x, y, z, scale);
-		if(te.textures[2])
+		if(te.render[2])
 			this.renderTileEntityAtBlockLamp2((TileEntityModernFence)tileentity, x, y, z, scale);
-		if(te.textures[3])
+		if(te.render[3])
 			this.renderTileEntityAtBlockLamp3((TileEntityModernFence)tileentity, x, y, z, scale);
-		if(te.textures[4])
+		if(te.render[4])
 			this.renderTileEntityAtBlockLamp4((TileEntityModernFence)tileentity, x, y, z, scale);
-		if(te.textures[5])
+		if(te.render[5])
 			this.renderTileEntityAtBlockLamp5((TileEntityModernFence)tileentity, x, y, z, scale);
-		if(te.textures[6])
+		if(te.render[6])
 			this.renderTileEntityAtBlockLamp6((TileEntityModernFence)tileentity, x, y, z, scale);
-		if(te.textures[7])
+		if(te.render[7])
 			this.renderTileEntityAtBlockLamp7((TileEntityModernFence)tileentity, x, y, z, scale);
 		this.renderTileEntityAtBlockLamp((TileEntityModernFence)tileentity, x, y, z, scale);
 	}
