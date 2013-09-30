@@ -9,6 +9,7 @@
     <available property="mcp-exists" file="${mcp.dir}"/>
 	<available property="ffmtapi-exists" file="libs\${buildprop.ffmtapi}"/>
 	<available property="ic2-exists" file="libs\ic2.name"/>
+    <property environment="env"/>
 
     <!-- Download and setup forge -->
     <target name="download-and-setup-forge" unless="mcp-exists">
@@ -45,20 +46,6 @@
         <exec dir="${forge.dir}/${buildprop.forge}" executable="sh" osfamily="unix">
             <arg value="install.sh"/>
         </exec>
-    </target>
-
-    <!-- Nanotech Mod build number -->
-    <target name="increment_build_ntm_number">
-        <propertyfile file="build.properties">
-        <entry key="ntm_build" type="int" operation="+" default="1"/>
-        </propertyfile>
-    </target>
-
-    <!-- Ultimate Gravi Suite build number -->
-    <target name="increment_build_ugs_number">
-        <propertyfile file="build.properties">
-        <entry key="ugs_build" type="int" operation="+" default="1"/>
-        </propertyfile>
     </target>
 
     <!-- Copy nanotech mod source into mcp -->
@@ -151,7 +138,7 @@
     <!-- Build the jar -->
     <target name="create_ntm_jar">
         <mkdir dir="releases\" />
-        <jar destfile="releases\Nanotech_mod-core-universal-${buildprop.ntm_version}.${buildprop.ntm_build}-mc${buildprop.mc}.jar">
+        <jar destfile="releases\Nanotech_mod-core-universal-${buildprop.ntm_version}.${env.BUILD_NUMBER}-mc${buildprop.mc}.jar">
             <fileset dir="resources\">
                 <include name ="assets\nanotech_mod\**" /> 
                 <exclude name ="assets\nanotech_mod\**.db" /> 
@@ -159,7 +146,7 @@
             <fileset dir="resources\" includes="mcmod.info" />
             <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\main\"/>
         </jar>
-        <jar destfile="releases\Nanotech_mod-city-universal-${buildprop.ntm_version}.${buildprop.ntm_build}-mc${buildprop.mc}.jar">
+        <jar destfile="releases\Nanotech_mod-city-universal-${buildprop.ntm_version}.${env.BUILD_NUMBER}-mc${buildprop.mc}.jar">
             <fileset dir="resources\">
                 <include name ="assets\nanotech_mod_city\**" /> 
                 <exclude name ="assets\nanotech_mod_city\**.db" /> 
@@ -170,7 +157,7 @@
 
     <target name="create_ugs_jar">
         <mkdir dir="releases\" />
-        <jar destfile="releases\Nanotech_mod-UltimateGraviSuite-universal-${buildprop.ugs_version}.${buildprop.ugs_build}-mc${buildprop.mc}.jar">
+        <jar destfile="releases\Nanotech_mod-UltimateGraviSuite-universal-${buildprop.ugs_version}.${env.BUILD_NUMBER}-mc${buildprop.mc}.jar">
             <fileset dir="resources\" includes="assets\ultimategravisuite\**" />
             <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\ultimateGraviSuite\"/>
         </jar>
@@ -185,13 +172,11 @@
         <delete dir="${mcp.dir}\reobf\minecraft" />
     </target>
 
-    <target name="buildall">
+    <target name="build">
         <antcall target="clean" />
         <antcall target="download-and-setup-forge" />
         <antcall target="download_ic2" />
         <antcall target="download_ffmtapi" />
-        <antcall target="increment_build_ntm_number" />
-        <antcall target="increment_build_ugs_number" />
         <antcall target="copy_ntm_sources" />
         <antcall target="copy_ugs_sources" />
         <antcall target="extract_ic2" />
@@ -208,7 +193,6 @@
         <antcall target="clean" />
         <antcall target="download-and-setup-forge" />
         <antcall target="download_ffmtapi" />
-        <antcall target="increment_build_ntm_number" />
         <antcall target="copy_ntm_sources" />
         <antcall target="extract_ffmtapi" />
         <antcall target="replace_tokens" />
@@ -222,7 +206,6 @@
         <antcall target="clean" />
         <antcall target="download-and-setup-forge" />
         <antcall target="download_ic2" />
-        <antcall target="increment_build_ugs_number" />
         <antcall target="copy_ugs_sources" />
         <antcall target="extract_ic2" />
         <antcall target="replace_tokens" />
