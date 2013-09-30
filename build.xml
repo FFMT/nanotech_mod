@@ -1,10 +1,9 @@
 <?xml version="1.0" ?>
-<project name="Nanotech_mod" default="buildall">
+<project name="Nanotech_mod" default="build">
 
     <property file="build.properties" prefix="buildprop"/>
     <property name="forge.dir" value="..\forge"/>
     <property name="mcp.dir" value="${forge.dir}\${buildprop.forge}\mcp"/>
-    <property name="ic2.name" value="industrialcraft-2-dev-deobf_2.0.${buildprop.ic2_build}-experimental.jar"/>
 	<property name="ffmtapi.name" value="${buildprop.ffmtapi}"/>
     <available property="mcp-exists" file="${mcp.dir}"/>
 	<available property="ffmtapi-exists" file="libs\${buildprop.ffmtapi}"/>
@@ -91,13 +90,13 @@
 
     <!-- Extract IC2 into bin -->
     <target name="extract_ic2">
-        <unzip src="libs/${ic2.name}" dest="${mcp.dir}/bin/minecraft/">
+        <unzip src="libs/${buildprop.ic2_name}" dest="${mcp.dir}/bin/minecraft/">
             <patternset>
                 <include name="**/*.class" />
             </patternset>
         </unzip>
         <copy todir="${mcp.dir}\lib\">
-            <fileset file="libs\${ic2.name}" />
+            <fileset file="libs\${buildprop.ic2_name}" />
         </copy>
     </target>
 
