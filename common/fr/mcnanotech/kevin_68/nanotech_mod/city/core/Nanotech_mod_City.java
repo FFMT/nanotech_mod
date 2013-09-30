@@ -27,7 +27,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityLampLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySunShade;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrail;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechAchievement;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 @Mod(modid = "Nanotech_mod_City", name = "Nanotech mod City", version = "@VERSION@")

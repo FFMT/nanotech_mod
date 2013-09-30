@@ -41,25 +41,25 @@ public class TileEntityModernFenceRender extends TileEntitySpecialRenderer
 	{
 		TileEntityModernFence te = (TileEntityModernFence)tileentity;
 		if(te.render[0])
-			this.renderTileEntityAtBlockLamp0((TileEntityModernFence)tileentity, x, y, z, scale);
+			this.renderTileEntityAtBlockModernFence0((TileEntityModernFence)tileentity, x, y, z, scale);
 		if(te.render[1])
-			this.renderTileEntityAtBlockLamp1((TileEntityModernFence)tileentity, x, y, z, scale);
+			this.renderTileEntityAtBlockModernFence1((TileEntityModernFence)tileentity, x, y, z, scale);
 		if(te.render[2])
-			this.renderTileEntityAtBlockLamp2((TileEntityModernFence)tileentity, x, y, z, scale);
+			this.renderTileEntityAtBlockModernFence2((TileEntityModernFence)tileentity, x, y, z, scale);
 		if(te.render[3])
-			this.renderTileEntityAtBlockLamp3((TileEntityModernFence)tileentity, x, y, z, scale);
+			this.renderTileEntityAtBlockModernFence3((TileEntityModernFence)tileentity, x, y, z, scale);
 		if(te.render[4])
-			this.renderTileEntityAtBlockLamp4((TileEntityModernFence)tileentity, x, y, z, scale);
+			this.renderTileEntityAtBlockModernFence4((TileEntityModernFence)tileentity, x, y, z, scale);
 		if(te.render[5])
-			this.renderTileEntityAtBlockLamp5((TileEntityModernFence)tileentity, x, y, z, scale);
+			this.renderTileEntityAtBlockModernFence5((TileEntityModernFence)tileentity, x, y, z, scale);
 		if(te.render[6])
-			this.renderTileEntityAtBlockLamp6((TileEntityModernFence)tileentity, x, y, z, scale);
+			this.renderTileEntityAtBlockModernFence6((TileEntityModernFence)tileentity, x, y, z, scale);
 		if(te.render[7])
-			this.renderTileEntityAtBlockLamp7((TileEntityModernFence)tileentity, x, y, z, scale);
-		this.renderTileEntityAtBlockLamp((TileEntityModernFence)tileentity, x, y, z, scale);
+			this.renderTileEntityAtBlockModernFence7((TileEntityModernFence)tileentity, x, y, z, scale);
+		this.renderTileEntityAtBlockModernFence((TileEntityModernFence)tileentity, x, y, z, scale);
 	}
 
-	public void renderTileEntityAtBlockLamp(TileEntityModernFence tileentity, double x, double y, double z, float scale)
+	public void renderTileEntityAtBlockModernFence(TileEntityModernFence tileentity, double x, double y, double z, float scale)
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
@@ -72,7 +72,7 @@ public class TileEntityModernFenceRender extends TileEntitySpecialRenderer
 		GL11.glPopMatrix();
 	}
 
-	public void renderTileEntityAtBlockLamp0(TileEntityModernFence tileentity, double x, double y, double z, float scale)
+	public void renderTileEntityAtBlockModernFence0(TileEntityModernFence tileentity, double x, double y, double z, float scale)
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
@@ -85,7 +85,7 @@ public class TileEntityModernFenceRender extends TileEntitySpecialRenderer
 		GL11.glPopMatrix();
 	}
 
-	public void renderTileEntityAtBlockLamp1(TileEntityModernFence tileentity, double x, double y, double z, float scale)
+	public void renderTileEntityAtBlockModernFence1(TileEntityModernFence tileentity, double x, double y, double z, float scale)
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
@@ -98,7 +98,7 @@ public class TileEntityModernFenceRender extends TileEntitySpecialRenderer
 		GL11.glPopMatrix();
 	}
 
-	public void renderTileEntityAtBlockLamp2(TileEntityModernFence tileentity, double x, double y, double z, float scale)
+	public void renderTileEntityAtBlockModernFence2(TileEntityModernFence tileentity, double x, double y, double z, float scale)
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
@@ -111,7 +111,7 @@ public class TileEntityModernFenceRender extends TileEntitySpecialRenderer
 		GL11.glPopMatrix();
 	}
 
-	public void renderTileEntityAtBlockLamp3(TileEntityModernFence tileentity, double x, double y, double z, float scale)
+	public void renderTileEntityAtBlockModernFence3(TileEntityModernFence tileentity, double x, double y, double z, float scale)
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
@@ -124,7 +124,7 @@ public class TileEntityModernFenceRender extends TileEntitySpecialRenderer
 		GL11.glPopMatrix();
 	}
 
-	public void renderTileEntityAtBlockLamp4(TileEntityModernFence tileentity, double x, double y, double z, float scale)
+	public void renderTileEntityAtBlockModernFence4(TileEntityModernFence tileentity, double x, double y, double z, float scale)
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
@@ -137,7 +137,7 @@ public class TileEntityModernFenceRender extends TileEntitySpecialRenderer
 		GL11.glPopMatrix();
 	}
 
-	public void renderTileEntityAtBlockLamp5(TileEntityModernFence tileentity, double x, double y, double z, float scale)
+	public void renderTileEntityAtBlockModernFence5(TileEntityModernFence tileentity, double x, double y, double z, float scale)
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
@@ -150,7 +150,7 @@ public class TileEntityModernFenceRender extends TileEntitySpecialRenderer
 		GL11.glPopMatrix();
 	}
 
-	public void renderTileEntityAtBlockLamp6(TileEntityModernFence tileentity, double x, double y, double z, float scale)
+	public void renderTileEntityAtBlockModernFence6(TileEntityModernFence tileentity, double x, double y, double z, float scale)
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
@@ -163,7 +163,7 @@ public class TileEntityModernFenceRender extends TileEntitySpecialRenderer
 		GL11.glPopMatrix();
 	}
 
-	public void renderTileEntityAtBlockLamp7(TileEntityModernFence tileentity, double x, double y, double z, float scale)
+	public void renderTileEntityAtBlockModernFence7(TileEntityModernFence tileentity, double x, double y, double z, float scale)
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);

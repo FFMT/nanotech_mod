@@ -9,7 +9,6 @@ import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.items.ItemDebugModel;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.items.ItemScytheModel;
 
 public class ItemDebugRender implements IItemRenderer
 {

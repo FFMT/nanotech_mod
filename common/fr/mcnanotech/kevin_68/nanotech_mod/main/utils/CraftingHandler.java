@@ -4,10 +4,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.ICraftingHandler;
-import fr.mcnanotech.kevin_68.nanotech_mod.city.blocks.NanotechCityBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechAchievement;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class CraftingHandler implements ICraftingHandler
 {

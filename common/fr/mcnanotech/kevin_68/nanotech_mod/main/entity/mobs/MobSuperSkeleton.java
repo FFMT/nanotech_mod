@@ -1,14 +1,9 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs;
 
-import java.util.Calendar;
-
-import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EntityLivingData;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -35,7 +30,6 @@ import net.minecraft.stats.AchievementList;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldProviderHell;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
