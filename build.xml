@@ -68,11 +68,13 @@
 
     <!-- Download ic2-->
     <target name="download_ic2" unless="ic2-exists">
+        <mkdir dir="libs/"/>
         <get src="http://ic2api.player.to:8080/job/IC2_experimental/${buildprop.ic2_build}/artifact/packages/${buildprop.ic2_name}" dest="libs/" usetimestamp="True"/>
     </target>
 
     <!-- Download FFMT API-->
     <target name="download_ffmtapi" unless="ffmtapi-exists">
+        <mkdir dir="libs/"/>
         <get src="http://dl.mcnanotech.fr/FFMT/API/download/${buildprop.ffmtapi}" dest="libs/" usetimestamp="True"/>
     </target>
 
