@@ -101,6 +101,19 @@ info.void.3=100 % recyclable
 
 #Achievement
 achievement.installMod=Install Nanotech_mod
+achievement.installMod.desc=Thank's for download!
+achievement.blockBarbedWire=Craft Barbed Wire
+achievement.blockBarbedWire.desc=Spiky!
+achievement.blockConfusion=
+achievement.blockConfusion.desc=
+achievement.blockFalling=
+achievement.blockFalling.desc=
+achievement.blockJumperAdv=
+achievement.blockJumperAdv.desc=
+achievement.blockMossyStone=
+achievement.blockMossyStone.desc=
+achievement.blockNotFalling=
+achievement.blockNotFalling.desc=
 
 #CreativeTab
 itemGroup.NanotechModBlocks=Nanotech mod Blocks

@@ -8,6 +8,7 @@ tile.blockTrail.name=BlockTrail
 tile.blockFountain.name=Fountain
 tile.blockLamp.name=BlockLamp
 tile.blockLampLight.name=BlockLampLight
+tile.modernFence.name=Modern Fence
 
 #Items
 item.lamp.name=Lamp

@@ -15,7 +15,7 @@ public class NanotechAchievement
 	public static void initAchievement()
 	{
 		installMod = new Achievement(12569, "installMod", 0, 0, new ItemStack(NanotechItem.ItemBase, 1, 12), null).registerAchievement();
-		blockBarbedWire = new Achievement(12570, "blockBarbedWire", 1, 7, NanotechBlock.BlockBarbedwire, installMod).registerAchievement();
+		blockBarbedWire = new Achievement(12570, "blockBarbedWire", 1, 8, NanotechBlock.BlockBarbedwire, installMod).registerAchievement();
 		blockConfusion = new Achievement(12571, "blockConfusion", 1, 6, NanotechBlock.BlockConfusion, installMod).registerAchievement();
 		blockFalling = new Achievement(12572, "blockFalling", 1, 7, NanotechBlock.BlockFalling, installMod).registerAchievement();
 		blockJumper = new Achievement(12573, "blockJumper", -1, 5, new ItemStack(NanotechBlock.BlockJumper, 1, 0), installMod).registerAchievement();
