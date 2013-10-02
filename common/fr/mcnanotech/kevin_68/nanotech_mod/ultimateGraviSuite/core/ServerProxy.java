@@ -61,9 +61,4 @@ public class ServerProxy
 	{
 		return null;
 	}
-
-	public int addArmor(String var1)
-	{
-		return 0;
-	}
 }

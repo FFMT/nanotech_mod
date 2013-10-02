@@ -1,7 +1,5 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core;
 
-import java.util.Random;
-
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,7 +15,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateBoots;
@@ -62,13 +59,6 @@ public class UltimateGraviSuite
 	public static int uhGenNight = 0;
 	public static boolean displayHud;
 
-	// TickHandler
-	public static ClientTickHandler clientTickHandler;
-	public static ServerTickHandler serverTickHandler;
-
-	// Other
-	public static Random random = new Random();
-
 	// Instance
 	@Instance("UltimateGraviSuite")
 	public static UltimateGraviSuite instance;
@@ -105,31 +95,16 @@ public class UltimateGraviSuite
 	@EventHandler
 	public void load(FMLInitializationEvent event)
 	{
-		this.Item();
-		this.ItemName();
+		ultimategraviChestPlate = new UltimateGraviChestPlate(ultimategraviChestPlateID, EnumArmorMaterial.DIAMOND, 0, 1).setUnlocalizedName("ultimategraviChestPlate");
+		theultimateSolarHelmet = new UltimateQuantumHelmet(theultimateSolarHelmetID, EnumArmorMaterial.DIAMOND, 0, 0).setUnlocalizedName("theUltimateSolarHelmet");
+		ultimateLeggings = new UltimateLeggings(ultimateLeggingsID, EnumArmorMaterial.DIAMOND, 0, 2).setUnlocalizedName("ultimateLeggings");
+		ultimateBoots = new UltimateBoots(ultimateBootsID, EnumArmorMaterial.DIAMOND, 0, 3).setUnlocalizedName("ultimateBoots");
+		
+		ultimatecircuit = new UltimateCircuit(ultimatecircuitID).setUnlocalizedName("ultimateCircuit").setTextureName("ultimategravisuite:ultimateCircuit");
+		
 		TickRegistry.registerTickHandler(new ServerTickHandler(), Side.SERVER);
 		proxy.initCore();
 		proxy.registerRenderers();
-	}
-
-	// Items statement
-	public void Item()
-	{
-		ultimategraviChestPlate = new UltimateGraviChestPlate(ultimategraviChestPlateID, EnumArmorMaterial.DIAMOND, proxy.addArmor("UltimateGraviSuite"), 1).setUnlocalizedName("ultimategraviChestPlate");
-		theultimateSolarHelmet = new UltimateQuantumHelmet(theultimateSolarHelmetID, EnumArmorMaterial.DIAMOND, proxy.addArmor("ultimateQuantumHelmet"), 0).setUnlocalizedName("TheUltimateSolarHelmet");
-		ultimateLeggings = new UltimateLeggings(ultimateLeggingsID, EnumArmorMaterial.DIAMOND, proxy.addArmor("UltimateLeggins"), 2).setUnlocalizedName("UltimateLeggings");
-		ultimatecircuit = new UltimateCircuit(ultimatecircuitID).setUnlocalizedName("UltimateCircuit").setTextureName("ultimategravisuite:ultimateCircuit");
-		ultimateBoots = new UltimateBoots(ultimateBootsID, EnumArmorMaterial.DIAMOND, proxy.addArmor("UltimateBoots"), 3).setUnlocalizedName("ultimateBoots");
-	}
-
-	// Items Name
-	public void ItemName()
-	{
-		LanguageRegistry.addName(ultimategraviChestPlate, "Ultimate GraviChestPlate");
-		LanguageRegistry.addName(theultimateSolarHelmet, "Ultimate Quantum Helmet");
-		LanguageRegistry.addName(ultimatecircuit, "Ultimate circuit");
-		LanguageRegistry.addName(ultimateLeggings, "Ultimate Quantum Leggings");
-		LanguageRegistry.addName(ultimateBoots, "Ultimate Quantum Boots");
 	}
 
 	// Mod PostInit
