@@ -57,7 +57,7 @@ public class NanotechMobs
 
 		if(Nanotech_mod.CrazyGuy)
 		{
-			FFMTEntityHelper.addMob(MobCrazyGuy.class, "CrazyGuy", 10, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.redInt, FFMTColor.yellowInt, Nanotech_mod.CrazyGuyProb, Nanotech_mod.CrazyGuyMin, Nanotech_mod.CrazyGuyMax, EnumCreatureType.creature, Nanotech_mod.Nanotechbiome);
+			FFMTEntityHelper.addMob(MobCrazyGuy.class, "CrazyGuy", 10, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.redInt, FFMTColor.yellowInt, Nanotech_mod.CrazyGuyProb, Nanotech_mod.CrazyGuyMin, Nanotech_mod.CrazyGuyMax, EnumCreatureType.creature, BiomeGenBase.plains, BiomeGenBase.extremeHills, BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.icePlains, BiomeGenBase.jungle, BiomeGenBase.beach, BiomeGenBase.desertHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forestHills, BiomeGenBase.iceMountains, BiomeGenBase.jungleHills, BiomeGenBase.taigaHills, Nanotech_mod.Nanotechbiome);
 		}
 	}
 

@@ -1,8 +1,11 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
 public class TileEntityModernFence extends TileEntity
@@ -104,6 +107,12 @@ public class TileEntityModernFence extends TileEntity
 		{
 			return false;
 		}
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public AxisAlignedBB getRenderBoundingBox()
+	{
+		return INFINITE_EXTENT_AABB;
 	}
 
 }
