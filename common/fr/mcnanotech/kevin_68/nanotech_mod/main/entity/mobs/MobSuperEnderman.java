@@ -24,7 +24,7 @@ import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 
 public class MobSuperEnderman extends EntityMob
 {
-	public static boolean[] carriableBlocks = new boolean[256];
+	public static boolean[] carriableBlocks = new boolean[4096];
 
 	private int teleportDelay = 0;
 	private int field_70826_g = 0;

@@ -14,14 +14,22 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 
 	public void updateEntity()
 	{
-		if(this.inventory[1] == null && this.inventory[0] != null)
+		if(this.inventory[0] == null && this.inventory[1] != null)
 		{
-			this.inventory[1] = this.inventory[0].copy();
-			inventory[1].stackSize = 64;
+			this.inventory[0] = this.inventory[1].copy();
+			this.inventory[0].stackSize = 64;
 		}
-		if(this.inventory[1] != null && this.inventory[1].stackSize < 64)
+		else if(this.inventory[0] != null && this.inventory[1] != null)
 		{
-			this.inventory[1].stackSize = 64;
+			if(!this.isItemStackEqualWithoutQuantity(inventory[0], inventory[1]))
+			{
+				this.inventory[0] = this.inventory[1].copy();
+				this.inventory[0].stackSize = 64;
+			}
+		}
+		if(this.inventory[0] != null && this.inventory[0].stackSize < 64)
+		{
+			this.inventory[0].stackSize = 64;
 		}
 	}
 
@@ -180,5 +188,10 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 	public boolean isItemValidForSlot(int slot, ItemStack itemstack)
 	{
 		return false;
+	}
+	
+	private boolean isItemStackEqualWithoutQuantity(ItemStack stack, ItemStack stack2)
+	{
+		return stack.itemID != stack2.itemID ? false : (stack.getItemDamage() != stack2.getItemDamage() ? false : (stack.stackTagCompound == null && stack2.stackTagCompound != null ? false : stack.stackTagCompound == null || stack.stackTagCompound.equals(stack2.stackTagCompound)));
 	}
 }
