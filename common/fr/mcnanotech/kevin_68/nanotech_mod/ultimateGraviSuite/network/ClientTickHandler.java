@@ -33,21 +33,21 @@ public class ClientTickHandler implements ITickHandler
 			{
 				isFirstLoad = true;
 
-				for(int var3 = 0; var3 < mc.gameSettings.keyBindings.length; ++var3)
+				for(int keyId = 0; keyId < mc.gameSettings.keyBindings.length; ++keyId)
 				{
-					if(mc.gameSettings.keyBindings[var3].keyDescription == "Boost Key")
+					if(mc.gameSettings.keyBindings[keyId].keyDescription.equals("Boost Key"))
 					{
-						KeyboardClient.icBoostKeyID = var3;
+						KeyboardClient.icBoostKeyID = keyId;
 					}
 
-					if(mc.gameSettings.keyBindings[var3].keyDescription == "ALT Key")
+					if(mc.gameSettings.keyBindings[keyId].keyDescription.equals("ALT Key"))
 					{
-						KeyboardClient.icAltKeyID = var3;
+						KeyboardClient.icAltKeyID = keyId;
 					}
 
-					if(mc.gameSettings.keyBindings[var3].keyDescription == "Mode Switch Key")
+					if(mc.gameSettings.keyBindings[keyId].keyDescription.equals("Mode Switch Key"))
 					{
-						KeyboardClient.icModeKeyID = var3;
+						KeyboardClient.icModeKeyID = keyId;
 					}
 				}
 			}

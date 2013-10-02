@@ -80,11 +80,6 @@
 
     <!-- Extract FFMT API into bin -->
     <target name="extract_ffmtapi">
-        <unzip src="libs/${ffmtapi.name}" dest="${mcp.dir}/bin/minecraft/">
-            <patternset>
-                <include name="**/*.class" />
-            </patternset>
-        </unzip>
         <copy todir="${mcp.dir}\lib\">
             <fileset file="libs\${ffmtapi.name}" />
         </copy>
@@ -92,13 +87,11 @@
 
     <!-- Extract IC2 into bin -->
     <target name="extract_ic2">
-        <unzip src="libs/${buildprop.ic2_name}" dest="${mcp.dir}/bin/minecraft/">
-            <patternset>
-                <include name="**/*.class" />
-            </patternset>
-        </unzip>
         <copy todir="${mcp.dir}\lib\">
             <fileset file="libs\${buildprop.ic2_name}" />
+        </copy>
+        <copy todir="${mcp.dir}\src\minecraft\">
+            <fileset dir="external_api\" />
         </copy>
     </target>
 
@@ -171,7 +164,6 @@
     <target name="clean">
         <delete file="${mcp.dir}\src\minecraft\mcmod.info" />
         <delete dir="${mcp.dir}\src\minecraft\fr" />
-        <delete dir="${mcp.dir}\src\minecraft\gravisuite" />
         <delete dir="${mcp.dir}\src\minecraft\gregtechmod" />
         <delete dir="${mcp.dir}\reobf\minecraft" />
     </target>
