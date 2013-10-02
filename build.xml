@@ -161,7 +161,7 @@
         <jar destfile="releases\Nanotech_mod-UltimateGraviSuite-universal-${buildprop.ugs_version}.${env.BUILD_NUMBER}-mc${buildprop.mc}.jar">
             <fileset dir="resources\">
                 <include name ="assets\ultimategravisuite\**" />
-                <include name ="assets\ultimategravisuite\**.db" />
+                <exclude name ="assets\ultimategravisuite\**.db" />
             </fileset>
             <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\ultimateGraviSuite\"/>
         </jar>
