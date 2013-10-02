@@ -18,7 +18,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperEnderman;
 
 public class RenderSuperEnderman extends RenderLiving
 {
-	/** The model of the enderman */
 	private ModelSuperEnderman model;
 	private Random rnd = new Random();
 	protected static final ResourceLocation texture = new ResourceLocation("textures/entity/enderman/enderman.png");

@@ -22,7 +22,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
 public class RenderTheDeath extends RenderLiving
 {
-	private float modelSize;
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/entity/thedeath.png");
 
 	private ModelBase model = new ModelTheDeath();
@@ -30,7 +29,6 @@ public class RenderTheDeath extends RenderLiving
 	public RenderTheDeath(ModelTheDeath model, float f)
 	{
 		super(new ModelTheDeath(), 0.5F);
-		this.modelSize = 3;
 	}
 
 	protected ResourceLocation getTheDeathTexture(MobThedeath entity)
@@ -46,7 +44,7 @@ public class RenderTheDeath extends RenderLiving
 
 	protected void preRenderScale(MobThedeath mob, float par2)
 	{
-		GL11.glScalef(this.modelSize, this.modelSize, this.modelSize);
+		GL11.glScalef(3F, 3F, 3F);
 	}
 
 	protected void preRenderCallback(EntityLivingBase entityliving, float par2)

@@ -9,7 +9,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobFastzombie;
 
 public class RenderFastZombie extends RenderLiving
 {
-	private ModelBase model = new ModelMobFastZombie();
 	protected static final ResourceLocation texture = new ResourceLocation("textures/entity/zombie/zombie.png");
 
 	public RenderFastZombie(ModelMobFastZombie model, float f)

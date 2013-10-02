@@ -9,7 +9,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCrazyGuy;
 
 public class RenderCrazyGuy extends RenderLiving
 {
-	private ModelBase model = new ModelCrazyGuy();
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/entity/crazyguy.png");
 
 	public RenderCrazyGuy(ModelCrazyGuy model, float f)
