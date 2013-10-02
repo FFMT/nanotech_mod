@@ -28,6 +28,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySunShade;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrail;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
 @Mod(modid = "Nanotech_mod_City", name = "Nanotech mod City", version = "@VERSION@")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTMC|light", "NTMC|fount"}, packetHandler = PacketHandler.class)
@@ -116,6 +117,12 @@ public class Nanotech_mod_City
 		// Recipe
 		GameRegistry.addRecipe(new ItemStack(NanotechCityItem.lamp, 1), new Object[] {"IDI", "GSG", "III", 'I', Item.ingotIron, 'D', Block.daylightSensor, 'G', Block.thinGlass, 'S', Block.glowStone});
 		GameRegistry.addRecipe(new ItemStack(NanotechCityItem.sunShade, 1), new Object[] {"WWW", " S ", " S ", 'W', Block.cloth, 'S', Item.stick});
+		GameRegistry.addShapelessRecipe(new ItemStack(NanotechCityBlock.BlockTrail, 1), new Object[] {Block.grass, Block.gravel});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockFountain, 1), new Object[] {"S S", "SWS", "SPS", 'S', new ItemStack(Block.stoneSingleSlab, 0), 'W', Item.bucketWater, 'P', Block.pistonBase});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockModernFence, 4), new Object[] {"I I", "III", "I I", 'I', Item.ingotIron});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockTrashcan, 1), new Object[] {"I I", "ICI", "III", 'I', Item.ingotIron, 'C', Block.cactus});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockSpotLight), new Object[] {"OAO", "RGB", "OAO", 'O', Block.obsidian, 'A', Block.glass, 'R', new ItemStack(Item.dyePowder, 1, 1), 'G', new ItemStack(Item.dyePowder, 1, 2), 'B', new ItemStack(Item.dyePowder, 1, 4)});
+				
 	}
 
 	@EventHandler
