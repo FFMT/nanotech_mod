@@ -132,7 +132,7 @@ public class UltimateGraviSuite
 			{
 				try
 				{
-					Block advsolar = (Block)Class.forName("advsolar.AdvancedSolarPanel").getField("blockAdvSolarPanel").get(null);
+					Block advsolar = (Block)Class.forName("cpw.mods.compactsolars.CompactSolars").getField("compactSolarBlock").get(null);
 					if(Loader.isModLoaded("GregTech_Addon"))
 					{
 
@@ -157,7 +157,7 @@ public class UltimateGraviSuite
 			{
 				try
 				{
-					Block compactsolar = (Block)Class.forName("cpw.mods.compactsolars.CompactSolars").getField("compactSolarBlock").get(null);
+					Block compactsolar = (Block)Class.forName("advsolar.AdvancedSolarPanel").getField("blockAdvSolarPanel").get(null);
 					if(Loader.isModLoaded("GregTech_Addon"))
 					{
 
