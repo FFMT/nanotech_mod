@@ -11,9 +11,4 @@ public class UltimateCircuit extends Item
 		super(id);
 		this.setCreativeTab(IC2.tabIC2);
 	}
-
-	public void registerIcons(IconRegister iconregister)
-	{
-		itemIcon = iconregister.registerIcon("ultimategravisuite:ultimateCircuit");
-	}
 }

@@ -3,6 +3,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
@@ -59,6 +60,11 @@ public class NanotechRecipe
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.ItemBase, 1, 14), new Object[] {new ItemStack(NanotechItem.ItemBase, 1, 12), new ItemStack(NanotechItem.ItemBase, 1, 1)});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.ItemBase, 1, 15), new Object[] {Block.cobblestone});
 		GameRegistry.addShapelessRecipe(new ItemStack(Block.cobblestone), new Object[] {new ItemStack(NanotechItem.ItemBase, 1, 15)});
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.BlockSodium), new Object[]{"XXX", "XXX", "XXX", 'X', "itemSodium"}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.BlockSodium), new Object[]{"XXX", "XXX", "XXX", 'X', "dustSodium"}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.BlockSodium), new Object[]{"XXX", "XXX", "XXX", 'X', "ingotSodium"}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.BlockSodium), new Object[]{"XXX", "XXX", "XXX", 'X', "cellSodium"}));
 	}
 
 	public static void InitNormalRecipes()

@@ -10,10 +10,8 @@ import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.Init;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.Mod.PostInit;
-import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -75,7 +73,7 @@ public class UltimateGraviSuite
 	@Instance("UltimateGraviSuite")
 	public static UltimateGraviSuite instance;
 
-	@PreInit
+	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
@@ -104,7 +102,7 @@ public class UltimateGraviSuite
 		}
 	}
 
-	@Init
+	@EventHandler
 	public void load(FMLInitializationEvent event)
 	{
 		this.Item();
@@ -120,7 +118,7 @@ public class UltimateGraviSuite
 		ultimategraviChestPlate = new UltimateGraviChestPlate(ultimategraviChestPlateID, EnumArmorMaterial.DIAMOND, proxy.addArmor("UltimateGraviSuite"), 1).setUnlocalizedName("ultimategraviChestPlate");
 		theultimateSolarHelmet = new UltimateQuantumHelmet(theultimateSolarHelmetID, EnumArmorMaterial.DIAMOND, proxy.addArmor("ultimateQuantumHelmet"), 0).setUnlocalizedName("TheUltimateSolarHelmet");
 		ultimateLeggings = new UltimateLeggings(ultimateLeggingsID, EnumArmorMaterial.DIAMOND, proxy.addArmor("UltimateLeggins"), 2).setUnlocalizedName("UltimateLeggings");
-		ultimatecircuit = new UltimateCircuit(ultimatecircuitID).setUnlocalizedName("UltimateCircuit");
+		ultimatecircuit = new UltimateCircuit(ultimatecircuitID).setUnlocalizedName("UltimateCircuit").setTextureName("ultimategravisuite:ultimateCircuit");
 		ultimateBoots = new UltimateBoots(ultimateBootsID, EnumArmorMaterial.DIAMOND, proxy.addArmor("UltimateBoots"), 3).setUnlocalizedName("ultimateBoots");
 	}
 
@@ -135,7 +133,7 @@ public class UltimateGraviSuite
 	}
 
 	// Mod PostInit
-	@PostInit
+	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		if(hudPos < 1 || hudPos > 4)
