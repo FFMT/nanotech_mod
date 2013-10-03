@@ -127,7 +127,6 @@ public class UltimateGraviSuite
 
 		try
 		{
-			ugslogger.fine("------------------------------------------------");
 			ugslogger.fine("Start Mods Check");
 			Item gravisuit = (Item)Class.forName("gravisuite.GraviSuite").getField("graviChestPlate").get(null);
 			if(Loader.isModLoaded("CompactSolars"))
@@ -136,9 +135,9 @@ public class UltimateGraviSuite
 				try
 				{
 					Block advsolar = (Block)Class.forName("cpw.mods.compactsolars.CompactSolars").getField("compactSolarBlock").get(null);
-					if(Loader.isModLoaded("GregTech_Addon"))
+					if(Loader.isModLoaded("gregtech_addon"))
 					{
-						ugslogger.fine("GregTech_Addon loaded");
+						ugslogger.fine("GregTech loaded");
 						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimatecircuit, 1), new Object[] {"ABC", "BDB", "CBA", 'A', GregTech_API.getGregTechItem(40, 1, 0), 'B', Items.getItem("advancedCircuit"), 'C', GregTech_API.getGregTechItem(3, 1, 0), 'D', GregTech_API.getGregTechBlock(1, 1, 4)}));
 						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimategraviChestPlate, 1), new Object[] {"SIS", "XGX", "SYS", 'I', GregTech_API.getGregTechItem(38, 1, 1), 'G', gravisuit, 'S', "itemSuperconductor", 'Y', GregTech_API.getGregTechBlock(1, 1, 4), 'X', ultimatecircuit}));
 						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(theultimateSolarHelmet, 1), new Object[] {"SPS", "XUX", "SYS", 'S', new ItemStack(advsolar, 1, 2), 'X', ultimatecircuit, 'P', "itemSuperconductor", 'U', Items.getItem("quantumHelmet"), 'Y', GregTech_API.getGregTechBlock(1, 1, 4)}));
@@ -162,9 +161,9 @@ public class UltimateGraviSuite
 				try
 				{
 					Block compactsolar = (Block)Class.forName("advsolar.AdvancedSolarPanel").getField("blockAdvSolarPanel").get(null);
-					if(Loader.isModLoaded("GregTech_Addon"))
+					if(Loader.isModLoaded("gregtech_addon"))
 					{
-						ugslogger.fine("GregTech_Addon loaded");
+						ugslogger.fine("GregTech loaded");
 						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimatecircuit, 1), new Object[] {"ABC", "BDB", "CBA", 'A', GregTech_API.getGregTechItem(40, 1, 0), 'B', Items.getItem("advancedCircuit"), 'C', GregTech_API.getGregTechItem(3, 1, 0), 'D', GregTech_API.getGregTechBlock(1, 1, 4)}));
 						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimategraviChestPlate, 1), new Object[] {"SIS", "XGX", "SYS", 'I', GregTech_API.getGregTechItem(38, 1, 1), 'G', gravisuit, 'S', "itemSuperconductor", 'Y', GregTech_API.getGregTechBlock(1, 1, 4), 'X', ultimatecircuit}));
 						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(theultimateSolarHelmet, 1), new Object[] {"SPS", "XUX", "SYS", 'S', new ItemStack(compactsolar, 1, 2), 'X', ultimatecircuit, 'P', "itemSuperconductor", 'U', Items.getItem("quantumHelmet"), 'Y', GregTech_API.getGregTechBlock(1, 1, 4)}));
@@ -186,8 +185,6 @@ public class UltimateGraviSuite
 		{
 			ugslogger.severe("Fatal error, couldn't init any recipe");
 		}
-		ugslogger.fine("End of Mods Check");
-		ugslogger.fine("------------------------------------------------");
 	}
 
 	// IS Simulating
