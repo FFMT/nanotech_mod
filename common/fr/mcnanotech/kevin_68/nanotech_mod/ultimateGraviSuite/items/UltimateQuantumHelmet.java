@@ -21,6 +21,7 @@ import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
@@ -155,7 +156,6 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 	{
 		this.getArmorTexture(stack, player, 1, 1);
 		boolean var4 = false;
-		int var11;
 		int var5 = player.getAir();
 
 		if(readNightVisionStatus(stack))
@@ -178,27 +178,28 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 
 		if(ElectricItem.manager.canUse(stack, 1000) && player.getFoodStats().needFood())
 		{
-			int var9 = -1;
+			int SlotWithTinCanId = -1;
 
-			for(var11 = 0; var11 < player.inventory.mainInventory.length; ++var11)
+			for(int slotId = 0; slotId < player.inventory.mainInventory.length; slotId++)
 			{
-				if(player.inventory.mainInventory[var11] != null && player.inventory.mainInventory[var11].itemID == Ic2Items.filledTinCan.itemID)
+				if(player.inventory.mainInventory[slotId] != null && player.inventory.mainInventory[slotId].itemID == Ic2Items.filledTinCan.itemID)
 				{
-					var9 = var11;
+					SlotWithTinCanId = slotId;
 					break;
 				}
 			}
 
-			if(var9 > -1)
+			if(SlotWithTinCanId > -1)
 			{
-				ItemTinCan can = (ItemTinCan)player.inventory.mainInventory[var9].getItem();
+				ItemFood can = (ItemFood)player.inventory.mainInventory[SlotWithTinCanId].getItem();
 				player.getFoodStats().addStats(can.getHealAmount(), can.getSaturationModifier());
-				can.func_77849_c(player.inventory.mainInventory[var9], player.worldObj, player);
-				can.onEaten(player);
+				ItemTinCan can1 = (ItemTinCan)can;
+				can1.func_77849_c(player.inventory.mainInventory[SlotWithTinCanId], player.worldObj, player);
+				can1.onEaten(player);
 
-				if(--player.inventory.mainInventory[var9].stackSize <= 0)
+				if(--player.inventory.mainInventory[SlotWithTinCanId].stackSize <= 0)
 				{
-					player.inventory.mainInventory[var9] = null;
+					player.inventory.mainInventory[SlotWithTinCanId] = null;
 				}
 
 				ElectricItem.manager.use(stack, 1000, (EntityPlayer)null);
