@@ -9,52 +9,47 @@ import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import cpw.mods.fml.common.network.Player;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.ClientProxy;
-import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviChestPlateClientProxy;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
 
 public class ClientPacketHandler extends ServerPacketHandler
 {
-	public void onPacketData(INetworkManager var1, Packet250CustomPayload var2, Player player)
+	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player)
 	{
-		DataInputStream var4 = new DataInputStream(new ByteArrayInputStream(var2.data));
+		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
 
 		try
 		{
-			String var5 = var4.readUTF();
+			String packetType = data.readUTF();
+			ItemStack chestPlate = ClientProxy.mc.thePlayer.inventory.armorItemInSlot(2);
 
-			if(var5.equalsIgnoreCase("setFlyStatus"))
+			if(packetType.equalsIgnoreCase("setFlyStatus"))
 			{
-				ItemStack var6 = ClientProxy.mc.thePlayer.inventory.armorItemInSlot(2);
 
-				if(var6 != null && var6.getItem() == UltimateGraviSuite.ultimategraviChestPlate)
+				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
 				{
-					UltimateGraviChestPlateClientProxy.firstLoadClient(ClientProxy.mc.thePlayer, var6);
+					ClientPacketHelper.firstLoadClient(ClientProxy.mc.thePlayer, chestPlate);
 				}
 			}
 
-			if(var5.equalsIgnoreCase("setInvisibilityStatus"))
+			if(packetType.equalsIgnoreCase("setInvisibilityStatus"))
 			{
-				ItemStack var6 = ClientProxy.mc.thePlayer.inventory.armorItemInSlot(2);
-
-				if(var6 != null && var6.getItem() == UltimateGraviSuite.ultimategraviChestPlate)
+				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
 				{
-					UltimateGraviChestPlateClientProxy.firstLoadClient(ClientProxy.mc.thePlayer, var6);
+					ClientPacketHelper.firstLoadClient(ClientProxy.mc.thePlayer, chestPlate);
 				}
 			}
 
-			if(var5.equalsIgnoreCase("setNightVisionStatus"))
+			if(packetType.equalsIgnoreCase("setNightVisionStatus"))
 			{
-				ItemStack var6 = ClientProxy.mc.thePlayer.inventory.armorItemInSlot(2);
-
-				if(var6 != null && var6.getItem() == UltimateGraviSuite.theultimateSolarHelmet)
+				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimateHelmet))
 				{
-					UltimateGraviChestPlateClientProxy.firstLoadClient(ClientProxy.mc.thePlayer, var6);
+					ClientPacketHelper.firstLoadClient(ClientProxy.mc.thePlayer, chestPlate);
 				}
 			}
 		}
-		catch(IOException var7)
+		catch(IOException exception)
 		{
-			var7.printStackTrace();
+			exception.printStackTrace();
 		}
 	}
 }

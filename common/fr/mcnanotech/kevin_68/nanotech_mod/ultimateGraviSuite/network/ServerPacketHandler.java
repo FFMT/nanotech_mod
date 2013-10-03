@@ -10,98 +10,97 @@ import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
-import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviChestPlateServerProxy;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
 
 public class ServerPacketHandler implements IPacketHandler
 {
-	public void onPacketData(INetworkManager var1, Packet250CustomPayload var2, Player var3)
+	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player)
 	{
-		DataInputStream var4 = new DataInputStream(new ByteArrayInputStream(var2.data));
-		EntityPlayerMP var5 = (EntityPlayerMP)var3;
+		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
+		EntityPlayerMP playerMP = (EntityPlayerMP)player;
 
 		try
 		{
-			String var6 = var4.readUTF();
-			int var7;
+			String packetType = data.readUTF();
+			int dataInt;
 
-			if(var6.equalsIgnoreCase("keyFLY"))
+			if(packetType.equalsIgnoreCase("keyFLY"))
 			{
-				var7 = var4.readInt();
-				ItemStack var8 = var5.inventory.armorInventory[2];
+				dataInt = data.readInt();
+				ItemStack chestPlate = playerMP.inventory.armorInventory[2];
 
-				if(var8 != null && var8.getItem() == UltimateGraviSuite.ultimategraviChestPlate)
+				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
 				{
-					UltimateGraviChestPlateServerProxy.switchFlyModeServer(var5, var8);
+					ServerPacketHelper.switchFlyModeServer(playerMP, chestPlate);
 				}
 			}
 
-			if(var6.equalsIgnoreCase("keyInv"))
+			if(packetType.equalsIgnoreCase("keyInv"))
 			{
-				var7 = var4.readInt();
-				ItemStack var8 = var5.inventory.armorInventory[2];
-				ItemStack var9 = var5.inventory.armorInventory[1];
-				ItemStack var10 = var5.inventory.armorInventory[0];
-				ItemStack var11 = var5.inventory.armorInventory[3];
+				dataInt = data.readInt();
+				ItemStack boots = playerMP.inventory.armorInventory[0];
+				ItemStack leggings = playerMP.inventory.armorInventory[1];
+				ItemStack chestPlate = playerMP.inventory.armorInventory[2];
+				ItemStack helmet = playerMP.inventory.armorInventory[3];
 
-				if(var8 != null && var8.getItem() == UltimateGraviSuite.ultimategraviChestPlate)
+				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
 				{
-					UltimateGraviChestPlateServerProxy.switchInvisibleModeServer(var5, var8);
+					ServerPacketHelper.switchInvisibleModeServer(playerMP, chestPlate);
 				}
 
-				if(var9 != null && var9.getItem() == UltimateGraviSuite.ultimateLeggings)
+				if(leggings != null && leggings.getItem().equals(UltimateGraviSuite.ultimateLeggings))
 				{
-					UltimateGraviChestPlateServerProxy.switchInvisibleModeServer(var5, var9);
+					ServerPacketHelper.switchInvisibleModeServer(playerMP, leggings);
 				}
 
-				if(var10 != null && var10.getItem() == UltimateGraviSuite.ultimateBoots)
+				if(boots != null && boots.getItem().equals(UltimateGraviSuite.ultimateBoots))
 				{
-					UltimateGraviChestPlateServerProxy.switchInvisibleModeServer(var5, var10);
+					ServerPacketHelper.switchInvisibleModeServer(playerMP, boots);
 				}
 
-				if(var11 != null && var11.getItem() == UltimateGraviSuite.theultimateSolarHelmet)
+				if(helmet != null && helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet))
 				{
-					UltimateGraviChestPlateServerProxy.switchInvisibleModeServer(var5, var11);
+					ServerPacketHelper.switchInvisibleModeServer(playerMP, helmet);
 				}
 			}
 
-			if(var6.equalsIgnoreCase("keyNight"))
+			if(packetType.equalsIgnoreCase("keyNight"))
 			{
-				var7 = var4.readInt();
-				ItemStack var8 = var5.inventory.armorInventory[3];
+				dataInt = data.readInt();
+				ItemStack chestplate = playerMP.inventory.armorInventory[3];
 
-				if(var8 != null && var8.getItem() == UltimateGraviSuite.theultimateSolarHelmet)
+				if(chestplate != null && chestplate.getItem().equals(UltimateGraviSuite.ultimateHelmet))
 				{
-					UltimateGraviChestPlateServerProxy.switchNightVisionModeServer(var5, var8);
+					ServerPacketHelper.switchNightVisionModeServer(playerMP, chestplate);
 				}
 			}
 
-			ItemStack var10;
+			ItemStack chestplate;
 
-			if(var6.equalsIgnoreCase("worldLoad"))
+			if(packetType.equalsIgnoreCase("worldLoad"))
 			{
-				var10 = var5.inventory.armorInventory[2];
+				chestplate = playerMP.inventory.armorInventory[2];
 
-				if(var10 != null && var10.getItem() == UltimateGraviSuite.ultimategraviChestPlate)
+				if(chestplate != null && chestplate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
 				{
-					UltimateGraviChestPlateServerProxy.firstLoadServer(var5, var10);
+					ServerPacketHelper.firstLoadServer(playerMP, chestplate);
 				}
 			}
 
-			if(var6.equalsIgnoreCase("keyState"))
+			if(packetType.equalsIgnoreCase("keyState"))
 			{
-				var7 = var4.readInt();
-				UltimateGraviSuite.keyboard.processKeyUpdate(var5, var7);
+				dataInt = data.readInt();
+				UltimateGraviSuite.keyboard.processKeyUpdate(playerMP, dataInt);
 			}
 
-			if(var6.equalsIgnoreCase("keyModePressed"))
+			if(packetType.equalsIgnoreCase("keyModePressed"))
 			{
-				var10 = var5.inventory.armorInventory[2];
+				chestplate = playerMP.inventory.armorInventory[2];
 			}
 		}
-		catch(IOException var9)
+		catch(IOException exception)
 		{
-			var9.printStackTrace();
+			exception.printStackTrace();
 		}
 	}
 }

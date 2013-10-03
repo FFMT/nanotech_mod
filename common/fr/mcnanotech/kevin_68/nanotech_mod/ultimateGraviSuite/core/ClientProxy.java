@@ -15,6 +15,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.network.ClientPacketHelper;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.network.ClientTickHandler;
 
 @SideOnly(Side.CLIENT)
@@ -77,8 +78,8 @@ public class ClientProxy extends ServerProxy
 	}
 
 	@ForgeSubscribe
-	public void onWorldLoad(WorldEvent.Load var1)
+	public void onWorldLoad(WorldEvent.Load event)
 	{
-		UltimateGraviChestPlateClientProxy.firstLoad = true;
+		ClientPacketHelper.firstLoad = true;
 	}
 }

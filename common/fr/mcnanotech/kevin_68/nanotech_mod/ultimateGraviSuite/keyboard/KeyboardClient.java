@@ -13,14 +13,13 @@ import cpw.mods.fml.common.TickType;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.ClientProxy;
-import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviChestPlateClientProxy;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
+import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.network.ClientPacketHelper;
 
 @SideOnly(Side.CLIENT)
 public class KeyboardClient extends Keyboard
 {
 	public static Minecraft mc = FMLClientHandler.instance().getClient();
-	public static KeyBinding flyKey = new KeyBinding("Ultimate Gravi Fly Key", 33);
 	public static KeyBinding invKey = new KeyBinding("Invisibility Ultimate Gravi Key", 34);
 	public static KeyBinding nightKey = new KeyBinding("Night vision Ultimate Solar Helmet Key", 35);
 	private static int lastKeyState = 0;
@@ -28,12 +27,13 @@ public class KeyboardClient extends Keyboard
 	public static int icBoostKeyID;
 	public static int icAltKeyID;
 	public static int icModeKeyID;
+	public static int gravisuitFlyKeyID;
 	public static float moveStrafe;
 	public static float moveForward;
 
 	public KeyboardClient()
 	{
-		KeyBindingRegistry.registerKeyBinding(new KeyHandler(new KeyBinding[] {flyKey, invKey, nightKey}, new boolean[] {false, false, false})
+		KeyBindingRegistry.registerKeyBinding(new KeyHandler(new KeyBinding[] {invKey, nightKey}, new boolean[] {false, false, false})
 		{
 			@Override
 			public String getLabel()
@@ -42,59 +42,56 @@ public class KeyboardClient extends Keyboard
 			}
 
 			@Override
-			public void keyDown(EnumSet var1, KeyBinding var2, boolean var3, boolean var4)
+			public void keyDown(EnumSet types, KeyBinding kb, boolean tickEnd, boolean isRepeat)
 			{
-				if(var3 && var2 == KeyboardClient.flyKey && KeyboardClient.mc.inGameHasFocus)
+				ItemStack helmet = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(3);
+				ItemStack chestPlate = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(2);
+				ItemStack leggings = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(1);
+				ItemStack boots = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(0);
+				
+				if(tickEnd && kb == mc.gameSettings.keyBindings[gravisuitFlyKeyID] && KeyboardClient.mc.inGameHasFocus)
 				{
-					ItemStack var5 = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(2);
 
-					if(var5 != null && var5.getItem() == UltimateGraviSuite.ultimategraviChestPlate)
+					if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
 					{
 						ClientProxy.sendMyPacket("keyFLY", 1);
-						UltimateGraviChestPlateClientProxy.switchFlyModeClient(KeyboardClient.mc.thePlayer, var5);
+						ClientPacketHelper.switchFlyModeClient(KeyboardClient.mc.thePlayer, chestPlate);
 					}
 				}
 
-				if(var3 && var2 == KeyboardClient.invKey && KeyboardClient.mc.inGameHasFocus)
+				if(tickEnd && kb == KeyboardClient.invKey && KeyboardClient.mc.inGameHasFocus)
 				{
-					ItemStack var5 = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(2);
-					ItemStack var6 = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(1);
-					ItemStack var7 = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(0);
-					ItemStack var8 = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(3);
-
-					if(var5 != null && var5.getItem() == UltimateGraviSuite.ultimategraviChestPlate)
+					if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
 					{
 						ClientProxy.sendMyPacket("keyInv", 1);
-						UltimateGraviChestPlateClientProxy.switchInvisibleModeClient(KeyboardClient.mc.thePlayer, var5);
+						ClientPacketHelper.switchInvisibleModeClient(KeyboardClient.mc.thePlayer, chestPlate);
 
-						if(var6 != null && var6.getItem() == UltimateGraviSuite.ultimateLeggings)
+						if(leggings != null && leggings.getItem().equals(UltimateGraviSuite.ultimateLeggings))
 						{
 							ClientProxy.sendMyPacket("keyInvLeg", 1);
-							UltimateGraviChestPlateClientProxy.switchInvisibleModeClient(KeyboardClient.mc.thePlayer, var6);
+							ClientPacketHelper.switchInvisibleModeClient(KeyboardClient.mc.thePlayer, leggings);
 						}
 
-						if(var7 != null && var7.getItem() == UltimateGraviSuite.ultimateBoots)
+						if(boots != null && boots.getItem().equals(UltimateGraviSuite.ultimateBoots))
 						{
 							ClientProxy.sendMyPacket("keyInvBoo", 1);
-							UltimateGraviChestPlateClientProxy.switchInvisibleModeClient(KeyboardClient.mc.thePlayer, var7);
+							ClientPacketHelper.switchInvisibleModeClient(KeyboardClient.mc.thePlayer, boots);
 						}
 
-						if(var8 != null && var8.getItem() == UltimateGraviSuite.theultimateSolarHelmet)
+						if(helmet != null && helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet))
 						{
 							ClientProxy.sendMyPacket("keyInvHel", 1);
-							UltimateGraviChestPlateClientProxy.switchInvisibleModeClient(KeyboardClient.mc.thePlayer, var8);
+							ClientPacketHelper.switchInvisibleModeClient(KeyboardClient.mc.thePlayer, helmet);
 						}
 					}
 				}
 
-				if(var3 && var2 == KeyboardClient.nightKey && KeyboardClient.mc.inGameHasFocus)
+				if(tickEnd && kb == KeyboardClient.nightKey && KeyboardClient.mc.inGameHasFocus)
 				{
-					ItemStack var5 = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(3);
-
-					if(var5 != null && var5.getItem() == UltimateGraviSuite.theultimateSolarHelmet)
+					if(helmet != null && helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet))
 					{
 						ClientProxy.sendMyPacket("keyNight", 1);
-						UltimateGraviChestPlateClientProxy.switchNightVisionModeClient(KeyboardClient.mc.thePlayer, var5);
+						ClientPacketHelper.switchNightVisionModeClient(KeyboardClient.mc.thePlayer, helmet);
 					}
 				}
 			}
@@ -162,13 +159,13 @@ public class KeyboardClient extends Keyboard
 
 	public void sendKeyUpdate(EntityPlayer player)
 	{
-		int var2 = (isBoostKeyDown(player) ? 1 : 0) << 0 | (isAltKeyDown(player) ? 1 : 0) << 1 | (isModeKeyPress(player) ? 1 : 0) << 2 | (isForwardKeyDown(player) ? 1 : 0) << 3 | (isJumpKeyDown(player) ? 1 : 0) << 4 | (isSneakKeyDown(player) ? 1 : 0) << 5;
+		int keyId = (isBoostKeyDown(player) ? 1 : 0) << 0 | (isAltKeyDown(player) ? 1 : 0) << 1 | (isModeKeyPress(player) ? 1 : 0) << 2 | (isForwardKeyDown(player) ? 1 : 0) << 3 | (isJumpKeyDown(player) ? 1 : 0) << 4 | (isSneakKeyDown(player) ? 1 : 0) << 5;
 
-		if(var2 != lastKeyState)
+		if(keyId != lastKeyState)
 		{
-			ClientProxy.sendMyPacket("keyState", var2);
-			lastKeyState = var2;
-			super.processKeyUpdate(player, var2);
+			ClientProxy.sendMyPacket("keyState", keyId);
+			lastKeyState = keyId;
+			super.processKeyUpdate(player, keyId);
 		}
 	}
 

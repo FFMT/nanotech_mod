@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core;
+package fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.network;
 
 import ic2.api.item.ElectricItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -6,14 +6,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
 import cpw.mods.fml.common.FMLCommonHandler;
+import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.ServerProxy;
+import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateBoots;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateGraviChestPlate;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateLeggings;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateQuantumHelmet;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.keyboard.Keyboard;
-import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.network.ServerTickHandler;
 
-public class UltimateGraviChestPlateServerProxy
+public class ServerPacketHelper
 {
 	private MinecraftServer mc = FMLCommonHandler.instance().getMinecraftServerInstance();
 
@@ -52,35 +53,35 @@ public class UltimateGraviChestPlateServerProxy
 		return true;
 	}
 
-	public static boolean switchInvisibleModeServer(EntityPlayer var0, ItemStack stack)
+	public static boolean switchInvisibleModeServer(EntityPlayer player, ItemStack stack)
 	{
-		if(stack.getItem() == UltimateGraviSuite.ultimategraviChestPlate)
+		if(stack.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
 		{
 			if(UltimateGraviChestPlate.readInvisibilityStatus(stack))
 			{
 
-				ServerProxy.sendPlayerMessage(var0, "\u00a7cInvisibility OFF");
-				ServerTickHandler.isInvisibilityActiveByMod.put(var0, Boolean.valueOf(false));
+				ServerProxy.sendPlayerMessage(player, "\u00a7cInvisibility OFF");
+				ServerTickHandler.isInvisibilityActiveByMod.put(player, Boolean.valueOf(false));
 				UltimateGraviChestPlate.saveInvisibilityStatus(stack, false);
 			}
 			else
 			{
 				int var2 = UltimateGraviChestPlate.getCharge(stack);
 
-				if(var2 < UltimateGraviChestPlate.minCharge && !var0.capabilities.isCreativeMode)
+				if(var2 < UltimateGraviChestPlate.minCharge && !player.capabilities.isCreativeMode)
 				{
-					ServerProxy.sendPlayerMessage(var0, "Not enough energy to be Invisible !");
+					ServerProxy.sendPlayerMessage(player, "Not enough energy to be Invisible !");
 				}
 				else
 				{
-					ServerProxy.sendPlayerMessage(var0, "\u00a7aInvisibility ON");
-					ServerTickHandler.isInvisibilityActiveByMod.put(var0, Boolean.valueOf(true));
+					ServerProxy.sendPlayerMessage(player, "\u00a7aInvisibility ON");
+					ServerTickHandler.isInvisibilityActiveByMod.put(player, Boolean.valueOf(true));
 					UltimateGraviChestPlate.saveInvisibilityStatus(stack, true);
 				}
 			}
 		}
 
-		if(stack.getItem() == UltimateGraviSuite.ultimateLeggings)
+		if(stack.getItem().equals(UltimateGraviSuite.ultimateLeggings))
 		{
 			if(UltimateLeggings.readInvisibilityStatus(stack))
 			{
@@ -93,7 +94,7 @@ public class UltimateGraviChestPlateServerProxy
 
 			}
 		}
-		if(stack.getItem() == UltimateGraviSuite.ultimateBoots)
+		if(stack.getItem().equals(UltimateGraviSuite.ultimateBoots))
 		{
 			if(UltimateBoots.readInvisibilityStatus(stack))
 			{
@@ -107,7 +108,7 @@ public class UltimateGraviChestPlateServerProxy
 			}
 		}
 
-		if(stack.getItem() == UltimateGraviSuite.theultimateSolarHelmet)
+		if(stack.getItem().equals(UltimateGraviSuite.ultimateHelmet))
 		{
 			if(UltimateQuantumHelmet.readInvisibilityStatus(stack))
 			{
@@ -124,27 +125,27 @@ public class UltimateGraviChestPlateServerProxy
 		return true;
 	}
 
-	public static boolean switchNightVisionModeServer(EntityPlayer var0, ItemStack stack)
+	public static boolean switchNightVisionModeServer(EntityPlayer player, ItemStack stack)
 	{
 		if(UltimateQuantumHelmet.readNightVisionStatus(stack))
 		{
 
-			ServerProxy.sendPlayerMessage(var0, "\u00a7cNight vision OFF");
-			ServerTickHandler.isINightVisionActiveByMod.put(var0, Boolean.valueOf(false));
+			ServerProxy.sendPlayerMessage(player, "\u00a7cNight vision OFF");
+			ServerTickHandler.isINightVisionActiveByMod.put(player, Boolean.valueOf(false));
 			UltimateQuantumHelmet.saveNightVisionStatus(stack, false);
 		}
 		else
 		{
 			int var2 = UltimateQuantumHelmet.getCharge(stack);
 
-			if(var2 < UltimateQuantumHelmet.minCharge && !var0.capabilities.isCreativeMode)
+			if(var2 < UltimateQuantumHelmet.minCharge && !player.capabilities.isCreativeMode)
 			{
-				ServerProxy.sendPlayerMessage(var0, "Not enough energy to be Invisible !");
+				ServerProxy.sendPlayerMessage(player, "Not enough energy to be Invisible !");
 			}
 			else
 			{
-				ServerProxy.sendPlayerMessage(var0, "\u00a7aNight vision ON");
-				ServerTickHandler.isINightVisionActiveByMod.put(var0, Boolean.valueOf(true));
+				ServerProxy.sendPlayerMessage(player, "\u00a7aNight vision ON");
+				ServerTickHandler.isINightVisionActiveByMod.put(player, Boolean.valueOf(true));
 				UltimateQuantumHelmet.saveNightVisionStatus(stack, true);
 			}
 		}
@@ -152,17 +153,17 @@ public class UltimateGraviChestPlateServerProxy
 		return true;
 	}
 
-	public static boolean boostModeServer(EntityPlayer var0, ItemStack stack, float var2, float var3)
+	public static boolean boostModeServer(EntityPlayer player, ItemStack stack, float f1, float f2)
 	{
-		if(UltimateGraviChestPlate.readFlyStatus(stack) && !var0.onGround && var0.capabilities.isFlying && !var0.isInWater())
+		if(UltimateGraviChestPlate.readFlyStatus(stack) && !player.onGround && player.capabilities.isFlying && !player.isInWater())
 		{
 			int var4 = UltimateGraviChestPlate.getCharge(stack);
 
-			if(var4 > UltimateGraviChestPlate.dischargeOnTick * UltimateGraviChestPlate.boostMultiplier || var0.capabilities.isCreativeMode)
+			if(var4 > UltimateGraviChestPlate.dischargeOnTick * UltimateGraviChestPlate.boostMultiplier || player.capabilities.isCreativeMode)
 			{
-				var0.moveFlying(var2, var3, UltimateGraviChestPlate.boostSpeed);
+				player.moveFlying(f1, f2, UltimateGraviChestPlate.boostSpeed);
 
-				if(!var0.capabilities.isCreativeMode)
+				if(!player.capabilities.isCreativeMode)
 				{
 					ElectricItem.manager.discharge(stack, UltimateGraviChestPlate.dischargeOnTick * UltimateGraviChestPlate.boostMultiplier, 3, true, false);
 				}
@@ -172,13 +173,13 @@ public class UltimateGraviChestPlateServerProxy
 		return true;
 	}
 
-	public static boolean firstLoadServer(EntityPlayer var0, ItemStack stack)
+	public static boolean firstLoadServer(EntityPlayer player, ItemStack stack)
 	{
 		if(UltimateGraviChestPlate.readFlyStatus(stack))
 		{
 			UltimateGraviChestPlate.saveFlyStatus(stack, false);
-			switchFlyModeServer(var0, stack);
-			ServerProxy.sendPacket(var0, "setFlyStatus", 0);
+			switchFlyModeServer(player, stack);
+			ServerProxy.sendPacket(player, "setFlyStatus", 0);
 		}
 		if(UltimateGraviChestPlate.readInvisibilityStatus(stack))
 		{
@@ -186,25 +187,25 @@ public class UltimateGraviChestPlateServerProxy
 			UltimateLeggings.saveInvisibilityStatus(stack, false);
 			UltimateBoots.saveInvisibilityStatus(stack, false);
 			UltimateQuantumHelmet.saveInvisibilityStatus(stack, false);
-			switchInvisibleModeServer(var0, stack);
-			ServerProxy.sendPacket(var0, "setInvisibilityStatus", 0);
+			switchInvisibleModeServer(player, stack);
+			ServerProxy.sendPacket(player, "setInvisibilityStatus", 0);
 		}
 		if(UltimateQuantumHelmet.readNightVisionStatus(stack))
 		{
 			UltimateQuantumHelmet.saveNightVisionStatus(stack, false);
-			switchNightVisionModeServer(var0, stack);
-			ServerProxy.sendPacket(var0, "setNightVisionStatus", 0);
+			switchNightVisionModeServer(player, stack);
+			ServerProxy.sendPacket(player, "setNightVisionStatus", 0);
 		}
 
 		return true;
 	}
 
-	public static boolean onTickServer(EntityPlayer var0, ItemStack stack, float var2, float var3)
+	public static boolean onTickServer(EntityPlayer player, ItemStack stack, float var2, float var3)
 	{
-		if(ServerTickHandler.checkLastUndressed(var0))
+		if(ServerTickHandler.checkLastUndressed(player))
 		{
 			UltimateGraviChestPlate.saveFlyStatus(stack, false);
-			ServerTickHandler.lastUndressed.put(var0, Boolean.valueOf(false));
+			ServerTickHandler.lastUndressed.put(player, Boolean.valueOf(false));
 		}
 
 		if(UltimateGraviChestPlate.readFlyStatus(stack) || UltimateGraviChestPlate.readInvisibilityStatus(stack))
@@ -212,13 +213,13 @@ public class UltimateGraviChestPlateServerProxy
 			NBTTagCompound var4 = UltimateGraviSuite.getOrCreateNbtData(stack);
 			int var5 = UltimateGraviChestPlate.getCharge(stack);
 
-			if(!var0.capabilities.isCreativeMode)
+			if(!player.capabilities.isCreativeMode)
 			{
 				if(var5 < UltimateGraviChestPlate.dischargeOnTick)
 				{
-					ServerProxy.sendPlayerMessage(var0, "\u00a7cWarning ! Your\'s energy cell is depleted ! Gravitation engine shutdown !");
-					switchFlyModeServer(var0, stack);
-					switchInvisibleModeServer(var0, stack);
+					ServerProxy.sendPlayerMessage(player, "\u00a7cWarning ! Your\'s energy cell is depleted ! Gravitation engine shutdown !");
+					switchFlyModeServer(player, stack);
+					switchInvisibleModeServer(player, stack);
 				}
 				else
 				{
@@ -226,29 +227,29 @@ public class UltimateGraviChestPlateServerProxy
 				}
 			}
 
-			var0.fallDistance = 0.0F;
+			player.fallDistance = 0.0F;
 
-			if(!var0.onGround && var0.capabilities.isFlying && Keyboard.isBoostKeyDown(var0))
+			if(!player.onGround && player.capabilities.isFlying && Keyboard.isBoostKeyDown(player))
 			{
-				boostModeServer(var0, stack, var2, var3);
+				boostModeServer(player, stack, var2, var3);
 
-				if(var5 <= UltimateGraviChestPlate.dischargeOnTick * UltimateGraviChestPlate.boostMultiplier && !var0.capabilities.isCreativeMode)
+				if(var5 <= UltimateGraviChestPlate.dischargeOnTick * UltimateGraviChestPlate.boostMultiplier && !player.capabilities.isCreativeMode)
 				{
-					ServerProxy.sendPlayerMessage(var0, "Not enough energy to boost !");
+					ServerProxy.sendPlayerMessage(player, "Not enough energy to boost !");
 				}
 				else
 				{
-					if(Keyboard.isJumpKeyDown(var0))
+					if(Keyboard.isJumpKeyDown(player))
 					{
-						var0.motionY += (double)(UltimateGraviChestPlate.boostSpeed + 0.03F);
+						player.motionY += (double)(UltimateGraviChestPlate.boostSpeed + 0.03F);
 					}
 
-					if(Keyboard.isSneakKeyDown(var0))
+					if(Keyboard.isSneakKeyDown(player))
 					{
-						var0.motionY -= (double)(UltimateGraviChestPlate.boostSpeed + 0.03F);
+						player.motionY -= (double)(UltimateGraviChestPlate.boostSpeed + 0.03F);
 					}
 
-					if(!var0.capabilities.isCreativeMode)
+					if(!player.capabilities.isCreativeMode)
 					{
 						ElectricItem.manager.discharge(stack, UltimateGraviChestPlate.dischargeOnTick * UltimateGraviChestPlate.boostMultiplier, 3, true, false);
 					}
@@ -258,14 +259,14 @@ public class UltimateGraviChestPlateServerProxy
 
 		if(UltimateQuantumHelmet.readNightVisionStatus(stack))
 		{
-			int var4 = UltimateQuantumHelmet.getCharge(stack);
+			int charge = UltimateQuantumHelmet.getCharge(stack);
 
-			if(!var0.capabilities.isCreativeMode)
+			if(!player.capabilities.isCreativeMode)
 			{
-				if(var4 < UltimateQuantumHelmet.dischargeOnTick)
+				if(charge < UltimateQuantumHelmet.dischargeOnTick)
 				{
-					ServerProxy.sendPlayerMessage(var0, "\u00a7cWarning ! Your\'s energy cell is depleted ! Gravitation engine shutdown !");
-					switchNightVisionModeServer(var0, stack);
+					ServerProxy.sendPlayerMessage(player, "\u00a7cWarning ! Your\'s energy cell is depleted ! Gravitation engine shutdown !");
+					switchNightVisionModeServer(player, stack);
 				}
 				else
 				{
@@ -274,7 +275,7 @@ public class UltimateGraviChestPlateServerProxy
 			}
 		}
 
-		var0.extinguish();
+		player.extinguish();
 		return true;
 	}
 }

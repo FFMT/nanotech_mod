@@ -8,7 +8,6 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
-import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviChestPlateClientProxy;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateGraviChestPlate;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateQuantumHelmet;
@@ -25,9 +24,9 @@ public class ClientTickHandler implements ITickHandler
 	public static boolean isLastUndressed = false;
 	public static boolean isLastCreativeState = false;
 
-	public void tickStart(EnumSet var1, Object... var2)
+	public void tickStart(EnumSet type, Object... tickData)
 	{
-		if(var1.contains(TickType.CLIENT) && mc.theWorld != null)
+		if(type.contains(TickType.CLIENT) && mc.theWorld != null)
 		{
 			if(!isFirstLoad)
 			{
@@ -49,13 +48,18 @@ public class ClientTickHandler implements ITickHandler
 					{
 						KeyboardClient.icModeKeyID = keyId;
 					}
+					
+					if(mc.gameSettings.keyBindings[keyId].keyDescription.equals("Gravi Fly Key"))
+					{
+						KeyboardClient.gravisuitFlyKeyID = keyId;
+					}
 				}
 			}
 
 			UltimateGraviSuite.keyboard.sendKeyUpdate(mc.thePlayer);
-			ItemStack var4 = mc.thePlayer.inventory.armorInventory[2];
+			ItemStack chestPlate = mc.thePlayer.inventory.armorInventory[2];
 
-			if(var4 != null && var4.getItem() == UltimateGraviSuite.ultimategraviChestPlate)
+			if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
 			{
 				if(mc.thePlayer.capabilities.isCreativeMode && !isLastCreativeState)
 				{
@@ -68,7 +72,7 @@ public class ClientTickHandler implements ITickHandler
 					isLastCreativeState = false;
 				}
 
-				UltimateGraviChestPlateClientProxy.onTickClient(mc.thePlayer, var4, KeyboardClient.moveStrafe, KeyboardClient.moveForward);
+				ClientPacketHelper.onTickClient(mc.thePlayer, chestPlate, KeyboardClient.moveStrafe, KeyboardClient.moveForward);
 
 				if(mc.thePlayer.posY > 262.0D && !mc.thePlayer.capabilities.isCreativeMode)
 				{
@@ -90,15 +94,13 @@ public class ClientTickHandler implements ITickHandler
 		return mc != null && mc.gameSettings.showDebugInfo;
 	}
 
-	public void tickEnd(EnumSet var1, Object... var2)
+	public void tickEnd(EnumSet type, Object... tickData)
 	{
-		if(var1.contains(TickType.RENDER) && UltimateGraviSuite.displayHud && mc.theWorld != null && mc.inGameHasFocus)
+		if(type.contains(TickType.RENDER) && UltimateGraviSuite.displayHud && mc.theWorld != null && mc.inGameHasFocus)
 		{
-			Minecraft var10000 = mc;
-
 			if(!isDebugInfoEnabled())
 			{
-				ItemStack var6 = mc.thePlayer.inventory.armorItemInSlot(2);
+				ItemStack chestPlate = mc.thePlayer.inventory.armorItemInSlot(2);
 				int var8 = 0;
 				int var9 = 0;
 				int var10 = 0;
@@ -111,14 +113,14 @@ public class ClientTickHandler implements ITickHandler
 				int var4;
 				int var5;
 
-				if(var6 != null && var6.getItem() == UltimateGraviSuite.ultimategraviChestPlate)
+				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
 				{
-					var4 = UltimateGraviChestPlate.getCharge(var6);
+					var4 = UltimateGraviChestPlate.getCharge(chestPlate);
 					var5 = var4 * 100 / UltimateGraviChestPlate.maxCharge;
 					var16 = "Energy level: " + this.GetTextEnergyStatus(var5);
 					var13 = mc.fontRenderer.getStringWidth("Energy level: " + Integer.toString(var5) + "%");
 
-					if(isFlyActiveByMod && UltimateGraviChestPlate.readFlyStatus(var6))
+					if(isFlyActiveByMod && UltimateGraviChestPlate.readFlyStatus(chestPlate))
 					{
 						var15 = "\u00a7aGravitation engine ON";
 						var12 = mc.fontRenderer.getStringWidth("Gravitation engine ON");

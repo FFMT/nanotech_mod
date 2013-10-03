@@ -8,7 +8,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
-import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviChestPlateServerProxy;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateQuantumHelmet;
 
@@ -20,66 +19,66 @@ public class ServerTickHandler implements ITickHandler
 	public static Map lastUndressed = new HashMap();
 	public static Map isLastCreativeState = new HashMap();
 
-	public void tickStart(EnumSet var1, Object... var2)
+	public void tickStart(EnumSet type, Object... tickData)
 	{
 
-		if(var1.contains(TickType.PLAYER))
+		if(type.contains(TickType.PLAYER))
 		{
-			EntityPlayer var3 = (EntityPlayer)var2[0];
-			ItemStack var4 = var3.inventory.armorInventory[3];
+			EntityPlayer player = (EntityPlayer)tickData[0];
+			ItemStack helmet = player.inventory.armorInventory[3];
 
-			if(var4 != null && var4.getItem() == UltimateGraviSuite.theultimateSolarHelmet)
+			if(helmet != null && helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet))
 			{
-				UltimateQuantumHelmet.onTick(var3, var4);
+				UltimateQuantumHelmet.onTick(player, helmet);
 
-				if(checkNightVisionActiveByMode(var3))
+				if(checkNightVisionActiveByMode(player))
 				{
-					isINightVisionActiveByMod.put(var3, Boolean.valueOf(false));
+					isINightVisionActiveByMod.put(player, Boolean.valueOf(false));
 				}
 			}
-			ItemStack var5 = var3.inventory.armorInventory[2];
+			ItemStack chestPlate = player.inventory.armorInventory[2];
 
-			if(var5 != null && var5.getItem() == UltimateGraviSuite.ultimategraviChestPlate)
+			if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
 			{
-				if(var3.capabilities.isCreativeMode && !checkLastCreativeState(var3))
+				if(player.capabilities.isCreativeMode && !checkLastCreativeState(player))
 				{
-					isLastCreativeState.put(var3, Boolean.valueOf(true));
+					isLastCreativeState.put(player, Boolean.valueOf(true));
 				}
-				else if(!var3.capabilities.isCreativeMode && checkLastCreativeState(var3) && checkFlyActiveByMode(var3))
+				else if(!player.capabilities.isCreativeMode && checkLastCreativeState(player) && checkFlyActiveByMode(player))
 				{
-					var3.capabilities.allowFlying = true;
-					var3.capabilities.isFlying = true;
-					isLastCreativeState.put(var3, Boolean.valueOf(false));
-				}
-
-				UltimateGraviChestPlateServerProxy.onTickServer(var3, var5, 0.0F, 0.0F);
-
-				if(checkInvisibilityActiveByMode(var3))
-				{
-					isInvisibilityActiveByMod.put(var3, Boolean.valueOf(false));
+					player.capabilities.allowFlying = true;
+					player.capabilities.isFlying = true;
+					isLastCreativeState.put(player, Boolean.valueOf(false));
 				}
 
-				if(var3.posY > 262.0D && !var3.capabilities.isCreativeMode)
+				ServerPacketHelper.onTickServer(player, chestPlate, 0.0F, 0.0F);
+
+				if(checkInvisibilityActiveByMode(player))
 				{
-					var3.setPosition(var3.posX, 262.0D, var3.posZ);
+					isInvisibilityActiveByMod.put(player, Boolean.valueOf(false));
+				}
+
+				if(player.posY > 262.0D && !player.capabilities.isCreativeMode)
+				{
+					player.setPosition(player.posX, 262.0D, player.posZ);
 				}
 			}
-			else if(checkFlyActiveByMode(var3))
+			else if(checkFlyActiveByMode(player))
 			{
-				var3.capabilities.allowFlying = false;
-				var3.capabilities.isFlying = false;
-				isFlyActiveByMod.put(var3, Boolean.valueOf(false));
-				lastUndressed.put(var3, Boolean.valueOf(true));
+				player.capabilities.allowFlying = false;
+				player.capabilities.isFlying = false;
+				isFlyActiveByMod.put(player, Boolean.valueOf(false));
+				lastUndressed.put(player, Boolean.valueOf(true));
 			}
 		}
 
-		if(var1.contains(TickType.WORLDLOAD))
+		if(type.contains(TickType.WORLDLOAD))
 		{
 			;
 		}
 	}
 
-	public void tickEnd(EnumSet var1, Object... var2)
+	public void tickEnd(EnumSet type, Object... tickData)
 	{}
 
 	public EnumSet ticks()
@@ -92,28 +91,28 @@ public class ServerTickHandler implements ITickHandler
 		return "UltimateGraviSuite";
 	}
 
-	public static boolean checkLastUndressed(EntityPlayer var0)
+	public static boolean checkLastUndressed(EntityPlayer player)
 	{
-		return lastUndressed.containsKey(var0) ? ((Boolean)lastUndressed.get(var0)).booleanValue() : false;
+		return lastUndressed.containsKey(player) ? ((Boolean)lastUndressed.get(player)).booleanValue() : false;
 	}
 
-	public static boolean checkFlyActiveByMode(EntityPlayer var0)
+	public static boolean checkFlyActiveByMode(EntityPlayer player)
 	{
-		return isFlyActiveByMod.containsKey(var0) ? ((Boolean)isFlyActiveByMod.get(var0)).booleanValue() : false;
+		return isFlyActiveByMod.containsKey(player) ? ((Boolean)isFlyActiveByMod.get(player)).booleanValue() : false;
 	}
 
-	public static boolean checkInvisibilityActiveByMode(EntityPlayer var0)
+	public static boolean checkInvisibilityActiveByMode(EntityPlayer player)
 	{
-		return isInvisibilityActiveByMod.containsKey(var0) ? ((Boolean)isInvisibilityActiveByMod.get(var0)).booleanValue() : false;
+		return isInvisibilityActiveByMod.containsKey(player) ? ((Boolean)isInvisibilityActiveByMod.get(player)).booleanValue() : false;
 	}
 
-	public static boolean checkNightVisionActiveByMode(EntityPlayer var0)
+	public static boolean checkNightVisionActiveByMode(EntityPlayer player)
 	{
-		return isINightVisionActiveByMod.containsKey(var0) ? ((Boolean)isINightVisionActiveByMod.get(var0)).booleanValue() : false;
+		return isINightVisionActiveByMod.containsKey(player) ? ((Boolean)isINightVisionActiveByMod.get(player)).booleanValue() : false;
 	}
 
-	public static boolean checkLastCreativeState(EntityPlayer var0)
+	public static boolean checkLastCreativeState(EntityPlayer player)
 	{
-		return isLastCreativeState.containsKey(var0) ? ((Boolean)isLastCreativeState.get(var0)).booleanValue() : false;
+		return isLastCreativeState.containsKey(player) ? ((Boolean)isLastCreativeState.get(player)).booleanValue() : false;
 	}
 }
