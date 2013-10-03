@@ -13,7 +13,6 @@ public class Keyboard
 	private static Map forwardKeyState = new HashMap();
 	private static Map altKeyState = new HashMap();
 	private static Map modeKeyState = new HashMap();
-	private static Map flyKeyState = new HashMap();
 
 	public static boolean isBoostKeyDown(EntityPlayer player)
 	{
@@ -74,16 +73,6 @@ public class Keyboard
 
 		return false;
 	}
-	
-	public static boolean isFlyKeyDown(EntityPlayer player)
-	{
-		if(flyKeyState.containsKey(player))
-		{
-			return ((Boolean)flyKeyState.get(player)).booleanValue();
-		}
-
-		return false;
-	}
 
 	public void sendKeyUpdate(EntityPlayer player)
 	{}
@@ -96,7 +85,6 @@ public class Keyboard
 		forwardKeyState.put(player, Boolean.valueOf((i & 0x8) != 0));
 		jumpKeyState.put(player, Boolean.valueOf((i & 0x10) != 0));
 		sneakKeyState.put(player, Boolean.valueOf((i & 0x20) != 0));
-		flyKeyState.put(player, Boolean.valueOf((i & 0x40) != 0));
 
 		if((!isForwardKeyDown(player)) || ((!isJumpKeyDown(player)) || ((!isBoostKeyDown(player)) || (isSneakKeyDown(player)))))
 			;

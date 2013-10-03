@@ -48,7 +48,7 @@ public class ClientTickHandler implements ITickHandler
 					{
 						KeyboardClient.icModeKeyID = keyId;
 					}
-					
+
 					if(mc.gameSettings.keyBindings[keyId].keyDescription.equals("Gravi Fly Key"))
 					{
 						KeyboardClient.gravisuitFlyKeyID = keyId;
