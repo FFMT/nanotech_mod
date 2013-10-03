@@ -136,7 +136,7 @@ public class KeyboardClient extends Keyboard
 			return false;
 		}
 	}
-
+	
 	public static boolean isJumpKeyDown(EntityPlayer player)
 	{
 		return mc.gameSettings.keyBindJump.pressed;
@@ -151,6 +151,11 @@ public class KeyboardClient extends Keyboard
 	{
 		return mc.gameSettings.keyBindSneak.pressed;
 	}
+	
+	public static boolean isFlyKeyDown(EntityPlayer player)
+	{
+		return mc.gameSettings.keyBindings[gravisuitFlyKeyID].pressed;
+	}
 
 	public static void sendModeKey(EntityPlayer player)
 	{
@@ -159,7 +164,7 @@ public class KeyboardClient extends Keyboard
 
 	public void sendKeyUpdate(EntityPlayer player)
 	{
-		int keyId = (isBoostKeyDown(player) ? 1 : 0) << 0 | (isAltKeyDown(player) ? 1 : 0) << 1 | (isModeKeyPress(player) ? 1 : 0) << 2 | (isForwardKeyDown(player) ? 1 : 0) << 3 | (isJumpKeyDown(player) ? 1 : 0) << 4 | (isSneakKeyDown(player) ? 1 : 0) << 5;
+		int keyId = (isBoostKeyDown(player) ? 1 : 0) << 0 | (isAltKeyDown(player) ? 1 : 0) << 1 | (isModeKeyPress(player) ? 1 : 0) << 2 | (isForwardKeyDown(player) ? 1 : 0) << 3 | (isJumpKeyDown(player) ? 1 : 0) << 4 | (isSneakKeyDown(player) ? 1 : 0) << 5 | (isFlyKeyDown(player) ? 1 : 0) << 6;
 
 		if(keyId != lastKeyState)
 		{
