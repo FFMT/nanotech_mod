@@ -64,11 +64,6 @@ public class ClientProxy extends ServerProxy
 	public void registerSoundHandler()
 	{}
 
-	public int addArmor(String var1)
-	{
-		return RenderingRegistry.addNewArmourRendererPrefix(var1);
-	}
-
 	public static void sendPlayerMessage(EntityPlayer var0, String var1)
 	{
 		if(!mc.theWorld.isRemote)
