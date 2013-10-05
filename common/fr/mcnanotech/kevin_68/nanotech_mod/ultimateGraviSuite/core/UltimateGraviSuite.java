@@ -140,7 +140,7 @@ public class UltimateGraviSuite
 						ugslogger.fine("GregTech loaded");
 						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimatecircuit, 1), new Object[] {"ABC", "BDB", "CBA", 'A', GregTech_API.getGregTechItem(43, 1, 0), 'B', Items.getItem("advancedCircuit"), 'C', GregTech_API.getGregTechItem(3, 1, 0), 'D', GregTech_API.getGregTechBlock(1, 1, 4)}));
 						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimategraviChestPlate, 1), new Object[] {"SIS", "XGX", "SYS", 'I', GregTech_API.getGregTechItem(38, 1, 1), 'G', gravisuit, 'S', "itemSuperconductor", 'Y', GregTech_API.getGregTechBlock(1, 1, 4), 'X', ultimatecircuit}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateHelmet, 1), new Object[] {"SPS", "XUX", "SYS", 'S', new ItemStack(advsolar, 1, 2), 'X', ultimatecircuit, 'P', "itemSuperconductor", 'U', Items.getItem("quantumHelmet"), 'Y', GregTech_API.getGregTechBlock(1, 1, 4)}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateHelmet, 1), new Object[] {"PSP", "XUX", "SYS", 'P', new ItemStack(advsolar, 1, 2), 'X', ultimatecircuit, 'S', "itemSuperconductor", 'U', Items.getItem("quantumHelmet"), 'Y', GregTech_API.getGregTechBlock(1, 1, 4)}));
 						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateLeggings, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumLeggings"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimatecircuit}));
 						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateBoots, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumBoots"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimatecircuit}));
 					}
@@ -160,13 +160,14 @@ public class UltimateGraviSuite
 				ugslogger.fine("AdvancedSolarPanel loaded");
 				try
 				{
-					Block compactsolar = (Block)Class.forName("advsolar.AdvancedSolarPanel").getField("blockAdvSolarPanel").get(null);
+					Block advsolar = (Block)Class.forName("advsolar.AdvancedSolarPanel").getField("blockAdvSolarPanel").get(null);
+					Item ultiSolarHelmet = (Item)Class.forName("advsolar.AdvancedSolarPanel").getField("ultimateSolarHelmet").get(null);
 					if(Loader.isModLoaded("gregtech_addon"))
 					{
 						ugslogger.fine("GregTech loaded");
 						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimatecircuit, 1), new Object[] {"ABC", "BDB", "CBA", 'A', GregTech_API.getGregTechItem(43, 1, 0), 'B', Items.getItem("advancedCircuit"), 'C', GregTech_API.getGregTechItem(3, 1, 0), 'D', GregTech_API.getGregTechBlock(1, 1, 4)}));
 						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimategraviChestPlate, 1), new Object[] {"SIS", "XGX", "SYS", 'I', GregTech_API.getGregTechItem(38, 1, 1), 'G', gravisuit, 'S', "itemSuperconductor", 'Y', GregTech_API.getGregTechBlock(1, 1, 4), 'X', ultimatecircuit}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateHelmet, 1), new Object[] {"SPS", "XUX", "SYS", 'S', new ItemStack(compactsolar, 1, 2), 'X', ultimatecircuit, 'P', "itemSuperconductor", 'U', Items.getItem("quantumHelmet"), 'Y', GregTech_API.getGregTechBlock(1, 1, 4)}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateHelmet, 1), new Object[] {"SAS", "XUX", "SYS", 'A', new ItemStack(advsolar, 1, 2), 'X', ultimatecircuit, 'P', "itemSuperconductor", 'U', ultiSolarHelmet, 'Y', GregTech_API.getGregTechBlock(1, 1, 4)}));
 						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateLeggings, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumLeggings"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimatecircuit}));
 						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateBoots, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumBoots"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimatecircuit}));
 					}
