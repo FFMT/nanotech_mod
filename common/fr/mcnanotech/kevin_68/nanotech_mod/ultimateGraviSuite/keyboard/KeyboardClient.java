@@ -20,6 +20,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.network.ClientPack
 public class KeyboardClient extends Keyboard
 {
 	public static Minecraft mc = FMLClientHandler.instance().getClient();
+	public static KeyBinding flyKey = new KeyBinding("Ultimate Gravi Fly Key", 33);
 	public static KeyBinding invKey = new KeyBinding("Invisibility Ultimate Gravi Key", 34);
 	public static KeyBinding nightKey = new KeyBinding("Night vision Ultimate Solar Helmet Key", 35);
 	private static int lastKeyState = 0;
@@ -33,7 +34,7 @@ public class KeyboardClient extends Keyboard
 
 	public KeyboardClient()
 	{
-		KeyBindingRegistry.registerKeyBinding(new KeyHandler(new KeyBinding[] {mc.gameSettings.keyBindings[gravisuitFlyKeyID], invKey, nightKey}, new boolean[] {false, false, false})
+		KeyBindingRegistry.registerKeyBinding(new KeyHandler(new KeyBinding[] {flyKey, invKey, nightKey}, new boolean[] {false, false, false})
 		{
 			@Override
 			public String getLabel()
@@ -49,7 +50,7 @@ public class KeyboardClient extends Keyboard
 				ItemStack leggings = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(1);
 				ItemStack boots = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(0);
 				
-				if(tickEnd && kb.equals(mc.gameSettings.keyBindings[gravisuitFlyKeyID]) && KeyboardClient.mc.inGameHasFocus)
+				if(tickEnd && kb.equals(flyKey) && KeyboardClient.mc.inGameHasFocus)
 				{
 
 					if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
