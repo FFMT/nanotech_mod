@@ -20,15 +20,15 @@ public class ServerProxy
 		player.addChatMessage(message);
 	}
 
-	public static boolean sendPacket(EntityPlayer player, String var1, int var2)
+	public static boolean sendPacket(EntityPlayer player, String name, int id)
 	{
 		ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
 		DataOutputStream data = new DataOutputStream(byteArray);
 
 		try
 		{
-			data.writeUTF(var1);
-			data.writeInt(var2);
+			data.writeUTF(name);
+			data.writeInt(id);
 		}
 		catch(IOException exception)
 		{

@@ -33,26 +33,26 @@ public class ClientProxy extends ServerProxy
 	public static void registerKeys()
 	{}
 
-	public static boolean sendMyPacket(String var0, int var1)
+	public static boolean sendMyPacket(String name, int id)
 	{
-		ByteArrayOutputStream var2 = new ByteArrayOutputStream();
-		DataOutputStream var3 = new DataOutputStream(var2);
+		ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+		DataOutputStream dataOut = new DataOutputStream(byteArray);
 
 		try
 		{
-			var3.writeUTF(var0);
-			var3.writeInt(var1);
+			dataOut.writeUTF(name);
+			dataOut.writeInt(id);
 		}
-		catch(IOException var5)
+		catch(IOException exception)
 		{
-			var5.printStackTrace();
+			exception.printStackTrace();
 		}
 
-		Packet250CustomPayload var4 = new Packet250CustomPayload();
-		var4.channel = "gravisuite";
-		var4.data = var2.toByteArray();
-		var4.length = var4.data.length;
-		mc.thePlayer.sendQueue.addToSendQueue(var4);
+		Packet250CustomPayload customPacket = new Packet250CustomPayload();
+		customPacket.channel = "gravisuite";
+		customPacket.data = byteArray.toByteArray();
+		customPacket.length = customPacket.data.length;
+		mc.thePlayer.sendQueue.addToSendQueue(customPacket);
 		return true;
 	}
 
@@ -64,11 +64,11 @@ public class ClientProxy extends ServerProxy
 	public void registerSoundHandler()
 	{}
 
-	public static void sendPlayerMessage(EntityPlayer var0, String var1)
+	public static void sendPlayerMessage(EntityPlayer player, String message)
 	{
 		if(!mc.theWorld.isRemote)
 		{
-			var0.addChatMessage(var1);
+			player.addChatMessage(message);
 		}
 	}
 
