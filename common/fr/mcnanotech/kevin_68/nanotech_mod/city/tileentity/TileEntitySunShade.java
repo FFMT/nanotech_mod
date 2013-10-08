@@ -53,11 +53,11 @@ public class TileEntitySunShade extends TileEntity
 				{
 					if(j == 0 && k == 0)
 					{
-						this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityBlock.BlockSunShade.blockID, 3, 1);
+						this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityBlock.BlockSunShade.blockID, 3, 3);
 					}
 					else
 					{
-						this.worldObj.setBlock(xCoord + j, yCoord + 2, zCoord + k, NanotechCityBlock.BlockSunShade.blockID, 2, 1);
+						this.worldObj.setBlock(xCoord + j, yCoord + 2, zCoord + k, NanotechCityBlock.BlockSunShade.blockID, 2, 3);
 					}
 				}
 				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
@@ -76,7 +76,7 @@ public class TileEntitySunShade extends TileEntity
 				{
 					if(j == 0 && k == 0)
 					{
-						this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityBlock.BlockSunShade.blockID, 1, 1);
+						this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityBlock.BlockSunShade.blockID, 1, 3);
 					}
 					else
 					{

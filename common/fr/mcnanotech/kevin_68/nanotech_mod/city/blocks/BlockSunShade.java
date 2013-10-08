@@ -65,6 +65,17 @@ public class BlockSunShade extends Block
 					}
 				}
 			}
+
+			else if(metadata == 3)
+			{
+				TileEntity te = world.getBlockTileEntity(x, y - 2, z);
+				if(te != null && te instanceof TileEntitySunShade)
+				{
+					TileEntitySunShade tesunshade = (TileEntitySunShade)te;
+					tesunshade.switchSunShade();
+					return true;
+				}
+			}
 		}
 		return false;
 	}
@@ -209,7 +220,8 @@ public class BlockSunShade extends Block
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		blockIcon = iconregister.registerIcon("wool_colored_white"); // for particles
+		blockIcon = iconregister.registerIcon("wool_colored_white"); // for
+																		// particles
 		stick = iconregister.registerIcon("log_oak"); // for particles
 	}
 

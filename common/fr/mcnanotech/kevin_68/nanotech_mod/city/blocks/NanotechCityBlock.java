@@ -30,9 +30,9 @@ public class NanotechCityBlock
 		GameRegistry.registerBlock(BlockSpotLight, "BlockSpotLight");
 		GameRegistry.registerBlock(BlockTrail, "BlockTrail");
 		GameRegistry.registerBlock(BlockFountain, "blockFountain");
-		GameRegistry.registerBlock(BlockLamp, ItemBlockLamp.class, "BlockLamp", "Nanotech_mod_City");
+		GameRegistry.registerBlock(BlockLamp, "BlockLamp");
 		GameRegistry.registerBlock(BlockLampLight, "BlockLampLight");
-		GameRegistry.registerBlock(BlockSunShade, ItemBlockSunShade.class, "BlockSunShade", "Nanotech_mod_City");
+		GameRegistry.registerBlock(BlockSunShade, "BlockSunShade");
 		GameRegistry.registerBlock(BlockModernFence, ItemBlockModernFence.class, "blockModernFence", "Nanotech_mod_City");
 	}
 }
