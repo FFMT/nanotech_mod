@@ -32,10 +32,6 @@ public class BlockLamp extends Block
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int blockid, CreativeTabs creativeTabs, List list)
 	{
-		for(int metadatanumber = 0; metadatanumber < type.length; metadatanumber++)
-		{
-			list.add(new ItemStack(blockid, 1, metadatanumber));
-		}
 	}
 
 	@Override

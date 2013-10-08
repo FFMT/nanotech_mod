@@ -26,6 +26,7 @@ public class ItemSunShade extends Item
 				world.setBlock(x, y, z, NanotechCityBlock.BlockSunShade.blockID, 0, 3);
 				world.setBlock(x, y + 1, z, NanotechCityBlock.BlockSunShade.blockID, 1, 3);
 				world.setBlock(x, y + 2, z, NanotechCityBlock.BlockSunShade.blockID, 1, 3);
+				world.playSoundEffect(x, y, z, NanotechCityBlock.BlockSunShade.stepSound.getPlaceSound(), NanotechCityBlock.BlockSunShade.stepSound.getVolume(), NanotechCityBlock.BlockSunShade.stepSound.getPitch());
 				--stack.stackSize;
 				return true;
 			}
@@ -35,6 +36,7 @@ public class ItemSunShade extends Item
 				world.setBlock(x, y + 1, z, NanotechCityBlock.BlockSunShade.blockID, 0, 3);
 				world.setBlock(x, y + 2, z, NanotechCityBlock.BlockSunShade.blockID, 1, 3);
 				world.setBlock(x, y + 3, z, NanotechCityBlock.BlockSunShade.blockID, 1, 3);
+				world.playSoundEffect(x, y, z, NanotechCityBlock.BlockSunShade.stepSound.getPlaceSound(), NanotechCityBlock.BlockSunShade.stepSound.getVolume(), NanotechCityBlock.BlockSunShade.stepSound.getPitch());
 				--stack.stackSize;
 				return true;
 			}
