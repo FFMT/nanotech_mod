@@ -58,11 +58,6 @@ public class RenderTheDeath extends RenderLiving
 		super.doRenderLiving(mob, x, y, z, par8, par9);
 	}
 
-	public void doRenderLiving(EntityLiving entityliving, double x, double y, double z, float par8, float par9)
-	{
-		this.renderHealtBar((MobThedeath)entityliving, x, y, z, par8, par9);
-	}
-
 	public void doRender(Entity entity, double x, double y, double z, float par8, float par9)
 	{
 		this.renderHealtBar((MobThedeath)entity, x, y, z, par8, par9);
