@@ -1,12 +1,8 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.city.blocks;
 
-import java.util.List;
-import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
@@ -15,12 +11,10 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.city.items.NanotechCityItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySunShade;
 
 public class BlockSunShade extends Block
 {
-	public static String[] type = new String[] {"sunshade", "empty", "emptyFlat", "emptyTop"};
 	public Icon stick;
 
 	public BlockSunShade(int id, Material material)
@@ -79,10 +73,6 @@ public class BlockSunShade extends Block
 		}
 		return false;
 	}
-
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int blockid, CreativeTabs creativeTabs, List list)
-	{}
 
 	@Override
 	public TileEntity createTileEntity(World world, int metadata)
@@ -205,17 +195,6 @@ public class BlockSunShade extends Block
 	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion explosion)
 	{
 		this.onBlockDestroyedByPlayer(world, x, y, z, world.getBlockMetadata(x, y, z));
-	}
-
-	public int idDropped(int metadata, Random random, int par3)
-	{
-		return NanotechCityItem.sunShade.itemID;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public int idPicked(World world, int x, int y, int z)
-	{
-		return NanotechCityItem.sunShade.itemID;
 	}
 
 	public void registerIcons(IconRegister iconregister)

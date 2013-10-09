@@ -1,19 +1,41 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.city.items;
+package fr.mcnanotech.kevin_68.nanotech_mod.city.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotech_mod.city.blocks.NanotechCityBlock;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemSunShade extends Item
+public class ItemBlockSunShade extends ItemBlock
 {
-	public ItemSunShade(int id)
+	private Icon itemBlockIcon;
+	public ItemBlockSunShade(int id)
 	{
 		super(id);
 	}
-
+	
+    @SideOnly(Side.CLIENT)
+    public int getSpriteNumber()
+    {
+        return 1;
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public Icon getIconFromDamage(int metadata)
+    {
+        return itemBlockIcon;
+    }
+	
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IconRegister iconRegister)
+    {
+    	this.itemBlockIcon = iconRegister.registerIcon("nanotech_mod_city:sunShade");
+    }
+    
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float par8, float par9, float par10)
 	{
 		if(player.canPlayerEdit(x, y, z, side, stack) && player.canPlayerEdit(x, y + 1, z, side, stack) && player.canPlayerEdit(x, y + 2, z, side, stack))

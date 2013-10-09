@@ -9,10 +9,8 @@ tile.blockFountain.name=Fountain
 tile.blockLamp.name=BlockLamp
 tile.blockLampLight.name=BlockLampLight
 tile.modernFence.name=Modern Fence
-
-#Items
-item.lamp.name=Lamp
-item.sunShade.name=SunShade
+tile.sunShade.name=SunShade
+tile.lamp.name=Lamp
 
 #CreativeTab
 itemGroup.NanotechModCity=Nanotech mod City

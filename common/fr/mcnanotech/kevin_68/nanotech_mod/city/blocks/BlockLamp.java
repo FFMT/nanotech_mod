@@ -1,13 +1,8 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.city.blocks;
 
-import java.util.List;
-import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.Explosion;
@@ -15,24 +10,26 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.city.items.NanotechCityItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityLamp;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityLampLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 
 public class BlockLamp extends Block
 {
-	public static String[] type = new String[] {"lamp1", "empty", "lampLightOff"};
-
 	public BlockLamp(int id, Material material)
 	{
 		super(id, material);
 	}
-
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int blockid, CreativeTabs creativeTabs, List list)
-	{
-	}
+	
+    @SideOnly(Side.CLIENT)
+    public int getLightValue(IBlockAccess world, int x, int y, int z)
+    {
+    	if(world.getBlockMetadata(x, y, z) == 3)
+    	{
+    		return 15;
+    	}
+    	return 0;
+    }
 
 	@Override
 	public TileEntity createTileEntity(World world, int metadata)
@@ -41,7 +38,7 @@ public class BlockLamp extends Block
 		{
 			return new TileEntityLamp();
 		}
-		else if(metadata == 2)
+		else if(metadata == 2 || metadata == 3)
 		{
 			return new TileEntityLampLight();
 		}
@@ -53,7 +50,7 @@ public class BlockLamp extends Block
 
 	public boolean hasTileEntity(int metadata)
 	{
-		if(metadata == 0 || metadata == 2)
+		if(metadata == 0 || metadata == 2 || metadata == 3)
 		{
 			return true;
 		}
@@ -78,39 +75,20 @@ public class BlockLamp extends Block
 		return -1;
 	}
 
-	public void updateLight(World world, int x, int y, int z)
-	{
-		if(world.getBlockId(x, y, z) == this.blockID && world.getBlockMetadata(x, y, z) == 2 && !world.isDaytime())
-		{
-			world.setBlockToAir(x, y, z);
-			world.setBlock(x, y, z, NanotechCityBlock.BlockLampLight.blockID);
-		}
-	}
-
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata)
 	{
 		for(int i = -3; i < 4; ++i)
-
-			if(world.getBlockId(x, y + i, z) == this.blockID || world.getBlockId(x, y + i, z) == NanotechCityBlock.BlockLampLight.blockID)
+		{
+			if(world.getBlockId(x, y + i, z) == this.blockID)
 			{
 				world.setBlockToAir(x, y + i, z);
 			}
+		}
 	}
 
 	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion par5Explosion)
 	{
 		this.onBlockDestroyedByPlayer(world, x, y, z, world.getBlockMetadata(x, y, z));
-	}
-
-	public int idDropped(int metadata, Random random, int par3)
-	{
-		return NanotechCityItem.lamp.itemID;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public int idPicked(World world, int x, int y, int z)
-	{
-		return NanotechCityItem.lamp.itemID;
 	}
 
 	public Icon getIcon(int side, int metadata)
