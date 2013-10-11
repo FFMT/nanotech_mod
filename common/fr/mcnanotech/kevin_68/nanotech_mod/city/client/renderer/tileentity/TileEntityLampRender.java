@@ -24,14 +24,6 @@ public class TileEntityLampRender extends TileEntitySpecialRenderer
 		this.model = new ModelBlockLamp();
 	}
 
-	private void adjustRotatePivotViaMeta(World world, int x, int y, int z)
-	{
-		int meta = world.getBlockMetadata(x, y, z);
-		GL11.glPushMatrix();
-		GL11.glRotatef(meta * (-90), 0.0F, 0.0F, 1.0F);
-		GL11.glPopMatrix();
-	}
-
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float scale)
 	{

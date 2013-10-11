@@ -202,5 +202,4 @@ public class TileEntityFountain extends TileEntity
 	{
 		animated = b;
 	}
-
 }
