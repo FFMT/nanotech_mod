@@ -2,43 +2,34 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.world;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import cpw.mods.fml.common.IWorldGenerator;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class WorldGeneration implements IWorldGenerator
 {
+	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
-		switch(world.provider.dimensionId)
+		if(world.provider.dimensionId == Nanotech_mod.dimensionID)
 		{
-		case 19:
-			generateNanotechDim(world, random, chunkX * 16, chunkZ * 16);
+			if(random.nextInt(8) < 2)
+			{
+				(new WorldGenMinable(NanotechBlock.BlockNanoOre.blockID, 0, 10, Block.stone.blockID)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
+			}
+			
+			(new WorldGenMinable(NanotechBlock.BlockNanoOre.blockID, 1, 7, Block.stone.blockID)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
+
+			for(int i = 0; i < 2; i++)
+			{
+				(new WorldGenMinable(NanotechBlock.BlockFakeOre.blockID, 0, 6, Block.stone.blockID)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(32), chunkZ * 16 + random.nextInt(16));
+			}
+
+			(new WorldGenMinable(NanotechBlock.BlockFakeOre.blockID, 1, 4, Block.stone.blockID)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(16), chunkZ * 16 + random.nextInt(16));
 		}
-	}
-
-	private void generateNanotechDim(World world, Random random, int blockX, int blockZ)
-	{
-		int Xcoord2 = blockX + random.nextInt(1);
-		int Ycoord2 = random.nextInt(100);
-		int Zcoord2 = blockZ + random.nextInt(1);
-		(new WorldGenMinable(NanotechBlock.BlockNanoOre.blockID, 0, 10)).generate(world, random, Xcoord2, Ycoord2, Zcoord2);
-
-		int Xcoord3 = blockX + random.nextInt(16);
-		int Ycoord3 = random.nextInt(100);
-		int Zcoord3 = blockZ + random.nextInt(16);
-		(new WorldGenMinable(NanotechBlock.BlockNanoOre.blockID, 1, 7)).generate(world, random, Xcoord3, Ycoord3, Zcoord3);
-
-		int Xcoord4 = blockX + random.nextInt(16);
-		int Ycoord4 = random.nextInt(32);
-		int Zcoord4 = blockZ + random.nextInt(16);
-		(new WorldGenMinable(NanotechBlock.BlockFakeOre.blockID, 0, 6)).generate(world, random, Xcoord4, Ycoord4, Zcoord4);
-
-		int Xcoord5 = blockX + random.nextInt(16);
-		int Ycoord5 = random.nextInt(16);
-		int Zcoord5 = blockZ + random.nextInt(16);
-		(new WorldGenMinable(NanotechBlock.BlockFakeOre.blockID, 1, 4)).generate(world, random, Xcoord5, Ycoord5, Zcoord5);
 	}
 }

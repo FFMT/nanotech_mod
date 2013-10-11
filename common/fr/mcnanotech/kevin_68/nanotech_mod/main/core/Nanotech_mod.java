@@ -62,10 +62,11 @@ public class Nanotech_mod
 			ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemScytheID, ItemCrazyGlassesID, TeaSeedID, TeaID, DebugID, AltersID;
 
 	// Dimension ID
-	public static int dimensionID = 19;
+	public static int dimensionID;
+	public static int nanotechBiomeID;
 
 	// Biome statement
-	public static BiomeGenBase Nanotechbiome;
+	public static BiomeGenBase nanotechBiome;
 
 	// Recipe configuration
 	public static boolean HardRecipe;
@@ -178,6 +179,9 @@ public class Nanotech_mod
 			TeaID = cfg.getItem("Tea", 5023).getInt();
 			DebugID = cfg.getItem("Debug Item", 5024).getInt();
 			AltersID = cfg.getItem("Alters", 5025).getInt();
+			
+			dimensionID = cfg.get("World", "Dimension ID", 19).getInt();
+			nanotechBiomeID = cfg.get("World", "Biome ID", 100).getInt();
 
 			HardRecipe = cfg.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
 
@@ -246,11 +250,11 @@ public class Nanotech_mod
 	@EventHandler
 	public void InitNanotech_mod(FMLInitializationEvent event)
 	{
-		Nanotechbiome = new NanotechBiome(100).setBiomeName("Nanotechbiome").setTemperatureRainfall(1.2F, 0.9F);
+		nanotechBiome = new NanotechBiome(nanotechBiomeID).setBiomeName("Nanotechbiome").setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.1F, 0.4F);
 
 		DimensionManager.registerProviderType(dimensionID, NanotechWorldProvider.class, false);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
-
+		
 		GameRegistry.registerWorldGenerator(new WorldGeneration());
 
 		this.guiAndTileEntity();

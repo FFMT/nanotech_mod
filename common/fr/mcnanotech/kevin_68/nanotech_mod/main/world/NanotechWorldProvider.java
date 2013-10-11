@@ -9,7 +9,7 @@ public class NanotechWorldProvider extends WorldProvider
 {
 	public void registerWorldChunkManager()
 	{
-		this.worldChunkMgr = new WorldChunkManagerHell(Nanotech_mod.Nanotechbiome, 0.8F, 0.1F);
+		this.worldChunkMgr = new WorldChunkManagerHell(Nanotech_mod.nanotechBiome, 0.8F, 0.1F);
 		this.dimensionId = Nanotech_mod.dimensionID;
 	}
 

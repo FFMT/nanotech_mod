@@ -12,6 +12,8 @@ import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.Ev
 import java.util.List;
 import java.util.Random;
 
+import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
@@ -30,6 +32,7 @@ import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraft.world.gen.feature.MapGenScatteredFeature;
 import net.minecraft.world.gen.feature.WorldGenDungeons;
 import net.minecraft.world.gen.feature.WorldGenLakes;
+import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.structure.MapGenMineshaft;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.Event.Result;
@@ -39,35 +42,20 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 
 public class NanotechChunkProvider implements IChunkProvider
 {
-	/** RNG. */
 	private Random rand;
 
-	/** A NoiseGeneratorOctaves used in generating terrain */
 	private NoiseGeneratorOctaves noiseGen1;
-
-	/** A NoiseGeneratorOctaves used in generating terrain */
 	private NoiseGeneratorOctaves noiseGen2;
-
-	/** A NoiseGeneratorOctaves used in generating terrain */
 	private NoiseGeneratorOctaves noiseGen3;
-
-	/** A NoiseGeneratorOctaves used in generating terrain */
 	private NoiseGeneratorOctaves noiseGen4;
-
-	/** A NoiseGeneratorOctaves used in generating terrain */
 	public NoiseGeneratorOctaves noiseGen5;
-
-	/** A NoiseGeneratorOctaves used in generating terrain */
 	public NoiseGeneratorOctaves noiseGen6;
 	public NoiseGeneratorOctaves mobSpawnerNoise;
 
-	/** Reference to the World object. */
 	private World worldObj;
 
-	/** are map structures going to be generated (e.g. strongholds) */
 	private final boolean mapFeaturesEnabled;
 
-	/** Holds the overall noise array used in chunk generation */
 	private double[] noiseArray;
 	private double[] stoneNoise = new double[256];
 	private MapGenBase caveGenerator = new MapGenCaves();
@@ -82,34 +70,17 @@ public class NanotechChunkProvider implements IChunkProvider
 	private WorldModel6 worldgen6 = new WorldModel6();
 	private WorldModel7 worldgen7 = new WorldModel7();
 
-	/** Holds Mineshaft Generator */
 	private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
 	private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
-
-	/** Holds ravine generator */
 	private MapGenBase ravineGenerator = new MapGenRavine();
-
-	/** The biomes that are used to generate the chunk */
 	private BiomeGenBase[] biomesForGeneration;
-
-	/** A double array that hold terrain noise from noiseGen3 */
-	double[] noise3;
-
-	/** A double array that hold terrain noise */
+	
 	double[] noise1;
-
-	/** A double array that hold terrain noise from noiseGen2 */
 	double[] noise2;
-
-	/** A double array that hold terrain noise from noiseGen5 */
+	double[] noise3;
 	double[] noise5;
-
-	/** A double array that holds terrain noise from noiseGen6 */
 	double[] noise6;
 
-	/**
-	 * Used to store the 5x5 parabolic field that is used during terrain generation.
-	 */
 	float[] parabolicField;
 	int[][] field_73219_j = new int[32][32];
 
@@ -143,9 +114,6 @@ public class NanotechChunkProvider implements IChunkProvider
 		this.mobSpawnerNoise = noiseGens[6];
 	}
 
-	/**
-	 * Generates the shape of the terrain for the chunk though its all stone though the water is frozen if the temperature is low enough
-	 */
 	public void generateTerrain(int par1, int par2, byte[] par3ArrayOfByte)
 	{
 		byte var4 = 4;
@@ -220,9 +188,6 @@ public class NanotechChunkProvider implements IChunkProvider
 		}
 	}
 
-	/**
-	 * Replaces the stone that was placed in with blocks that match the biome
-	 */
 	public void replaceBlocksForBiome(int par1, int par2, byte[] par3ArrayOfByte, BiomeGenBase[] par4ArrayOfBiomeGenBase)
 	{
 		ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, par1, par2, par3ArrayOfByte, par4ArrayOfBiomeGenBase);
@@ -317,18 +282,11 @@ public class NanotechChunkProvider implements IChunkProvider
 		}
 	}
 
-	/**
-	 * loads or generates the chunk at the chunk location specified
-	 */
 	public Chunk loadChunk(int par1, int par2)
 	{
 		return this.provideChunk(par1, par2);
 	}
 
-	/**
-	 * Will return back a chunk, if it doesn't exist and its not a MP client it will generates all the blocks for the specified chunk from
-	 * the map seed and chunk seed
-	 */
 	public Chunk provideChunk(int chunkX, int chunkZ)
 	{
 		this.rand.setSeed((long)chunkX * 341873128712L + (long)chunkZ * 132897987541L);
@@ -351,9 +309,6 @@ public class NanotechChunkProvider implements IChunkProvider
 		return var4;
 	}
 
-	/**
-	 * generates a subset of the level's terrain data. Takes 7 arguments: the [empty] noise array, the position, and the size.
-	 */
 	private double[] initializeNoiseField(double[] par1ArrayOfDouble, int par2, int par3, int par4, int par5, int par6, int par7)
 	{
 		ChunkProviderEvent.InitNoiseField event = new ChunkProviderEvent.InitNoiseField(this, par1ArrayOfDouble, par2, par3, par4, par5, par6, par7);
@@ -506,17 +461,11 @@ public class NanotechChunkProvider implements IChunkProvider
 		return par1ArrayOfDouble;
 	}
 
-	/**
-	 * Checks to see if a chunk exists at x, y
-	 */
 	public boolean chunkExists(int par1, int par2)
 	{
 		return true;
 	}
 
-	/**
-	 * Populates chunk with ores etc etc
-	 */
 	public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
 	{
 		BlockSand.fallInstantly = true;
@@ -601,52 +550,32 @@ public class NanotechChunkProvider implements IChunkProvider
 		BlockSand.fallInstantly = false;
 	}
 
-	/**
-	 * Two modes of operation: if passed true, save all Chunks in one go. If passed false, save up to two chunks. Return true if all chunks
-	 * have been saved.
-	 */
 	public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate)
 	{
 		return true;
 	}
 
-	/**
-	 * Unloads the 100 oldest chunks from memory, due to a bug with chunkSet.add() never being called it thinks the list is always empty and
-	 * will not remove any chunks.
-	 */
 	public boolean unload100OldestChunks()
 	{
 		return false;
 	}
 
-	/**
-	 * Returns if the IChunkProvider supports saving.
-	 */
 	public boolean canSave()
 	{
 		return true;
 	}
 
-	/**
-	 * Converts the instance data to a readable string.
-	 */
 	public String makeString()
 	{
 		return "RandomLevelSource";
 	}
 
-	/**
-	 * Returns a list of creatures of the specified type that can spawn at the given location.
-	 */
 	public List getPossibleCreatures(EnumCreatureType par1EnumCreatureType, int par2, int par3, int par4)
 	{
 		BiomeGenBase var5 = this.worldObj.getBiomeGenForCoords(par2, par4);
 		return var5 == null ? null : (var5 == BiomeGenBase.swampland && par1EnumCreatureType == EnumCreatureType.monster && this.scatteredFeatureGenerator.hasStructureAt(par2, par3, par4) ? this.scatteredFeatureGenerator.getScatteredFeatureSpawnList() : var5.getSpawnableList(par1EnumCreatureType));
 	}
 
-	/**
-	 * Returns the location of the closest structure of the specified type. If not found returns null.
-	 */
 	public ChunkPosition findClosestStructure(World par1World, String par2Str, int par3, int par4, int par5)
 	{
 		return null;
@@ -666,38 +595,45 @@ public class NanotechChunkProvider implements IChunkProvider
 		}
 
 		// world gen
-		int Xcoord1 = chunkX * 16 + rand.nextInt(64);
-		int Ycoord1 = rand.nextInt(150);
-		int Zcoord1 = chunkZ * 16 + rand.nextInt(64);
-		worldgentree.generate(this.worldObj, rand, Xcoord1, Ycoord1, Zcoord1);
+		if(rand.nextInt(4) < 2)
+		{
+			worldgentree.generate(this.worldObj, rand, chunkX * 16 + rand.nextInt(16), rand.nextInt(150), chunkZ * 16 + rand.nextInt(16));
+		}
 
-		int Xcoord2 = chunkX * 16 + rand.nextInt(512);
-		int Ycoord2 = rand.nextInt(100);
-		int Zcoord2 = chunkZ * 16 + rand.nextInt(512);
-		worldgen1.generate(this.worldObj, rand, Xcoord2, Ycoord2, Zcoord2);
+		if(rand.nextInt(32) < 2)
+		{
+			worldgen1.generate(this.worldObj, rand, chunkX * 16 + rand.nextInt(16), rand.nextInt(100), chunkZ * 16 + rand.nextInt(16));
+		}
 
-		int Xcoord3 = chunkX * 16 + rand.nextInt(1024);
-		int Ycoord3 = rand.nextInt(100);
-		int Zcoord3 = chunkZ * 16 + rand.nextInt(1024);
-		worldgen2.generate(this.worldObj, rand, Xcoord3, Ycoord3, Zcoord3);
+		if(rand.nextInt(64) < 2)
+		{
+			worldgen2.generate(this.worldObj, rand, chunkX * 16 + rand.nextInt(16), rand.nextInt(100), chunkZ * 16 + rand.nextInt(16));
+		}
 
-		int Xcoord4 = chunkX * 16 + rand.nextInt(512);
-		int Ycoord4 = rand.nextInt(100);
-		int Zcoord4 = chunkZ * 16 + rand.nextInt(512);
-		worldgen3.generate(this.worldObj, rand, Xcoord4, Ycoord4, Zcoord4);
+		if(rand.nextInt(32) < 2)
+		{
+			worldgen3.generate(this.worldObj, rand, chunkX * 16 + rand.nextInt(16), rand.nextInt(100), chunkZ * 16 + rand.nextInt(16));
+		}
 
-		/*
-		 * int Xcoord5 = chunkX * 16 + rand.nextInt(512); int Ycoord5 = rand.nextInt(100); int Zcoord5 = chunkZ * 16 + rand.nextInt(512);
-		 * worldgen4.generate(this.worldObj, rand, Xcoord5, Ycoord5, Zcoord5); int Xcoord6 = chunkX * 16 + rand.nextInt(512); int Ycoord6 =
-		 * rand.nextInt(100); int Zcoord6 = chunkZ * 16 + rand.nextInt(512); worldgen5.generate(this.worldObj, rand, Xcoord6, Ycoord6,
-		 * Zcoord6); int Xcoord7 = chunkX * 16 + rand.nextInt(512); int Ycoord7 = rand.nextInt(100); int Zcoord7 = chunkZ * 16 +
-		 * rand.nextInt(512); worldgen6.generate(this.worldObj, rand, Xcoord7, Ycoord7, Zcoord7);
-		 */
+		if(rand.nextInt(32) < 2)
+		{
+			worldgen4.generate(this.worldObj, rand, chunkX * 16 + rand.nextInt(16), rand.nextInt(100), chunkZ * 16 + rand.nextInt(16));
+		}
 
-		int Xcoord8 = chunkX * 16 + rand.nextInt(512);
-		int Ycoord8 = rand.nextInt(100);
-		int Zcoord8 = chunkZ * 16 + rand.nextInt(512);
-		worldgen7.generate(this.worldObj, rand, Xcoord8, Ycoord8, Zcoord8);
+		if(rand.nextInt(32) < 2)
+		{
+			worldgen5.generate(this.worldObj, rand, chunkX * 16 + rand.nextInt(16), rand.nextInt(100), chunkZ * 16 + rand.nextInt(16));
+		}
+
+		if(rand.nextInt(32) < 2)
+		{
+			worldgen6.generate(this.worldObj, rand, chunkX * 16 + rand.nextInt(16), rand.nextInt(100), chunkZ * 16 + rand.nextInt(16));
+		}
+
+		if(rand.nextInt(32) < 2)
+		{
+			worldgen7.generate(this.worldObj, rand, chunkX * 16 + rand.nextInt(16), rand.nextInt(100), chunkZ * 16 + rand.nextInt(16));
+		}
 	}
 
 	@Override
