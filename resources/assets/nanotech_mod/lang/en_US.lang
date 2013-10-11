@@ -76,6 +76,7 @@ item.crazyGlasses.name=Crazy Glasses
 item.teaSeed.name=Tea Sapling
 item.tea.name=Tea
 item.debug.name=Debug
+item.alters.name=Alters
 
 #Entity
 entity.SuperZombie.name=Super Zombie
@@ -145,3 +146,4 @@ itemGroup.NanotechModItems=Nanotech mod Items
 deathMessage.sodium.0=%s was corroded by sodium
 deathMessage.sodium.1=%s the player did not respect the safety instructions by manipulating sodium
 deathMessage.sodium.2=%s wants to become a scientist, but it does not have the required skills
+deathMessage.alters.0=%s has done too much workouts ! 

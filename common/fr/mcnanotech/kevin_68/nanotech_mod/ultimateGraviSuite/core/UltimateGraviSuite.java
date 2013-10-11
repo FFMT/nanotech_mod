@@ -1,8 +1,9 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core;
 
+import ic2.api.item.Items;
+
 import java.util.logging.Logger;
 
-import ic2.api.item.Items;
 import net.minecraft.block.Block;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.Item;

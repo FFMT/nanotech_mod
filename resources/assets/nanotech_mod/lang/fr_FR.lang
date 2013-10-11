@@ -77,6 +77,7 @@ item.crazyGlasses.name=Lunette de fou
 item.teaSeed.name=Pousse de Thé
 item.tea.name=Thé
 item.debug.name=Debug
+item.alters.name=Altères
 
 #Entity
 entity.SuperZombie.name=Super Zombie
