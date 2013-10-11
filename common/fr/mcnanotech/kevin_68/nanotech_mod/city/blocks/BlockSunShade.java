@@ -1,12 +1,8 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.city.blocks;
 
-import java.util.List;
-import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
@@ -15,12 +11,10 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.city.items.NanotechCityItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySunShade;
 
 public class BlockSunShade extends Block
 {
-	public static String[] type = new String[] {"sunshade", "empty", "emptyFlat", "emptyTop"};
 	public Icon stick;
 
 	public BlockSunShade(int id, Material material)
@@ -65,13 +59,20 @@ public class BlockSunShade extends Block
 					}
 				}
 			}
+
+			else if(metadata == 3)
+			{
+				TileEntity te = world.getBlockTileEntity(x, y - 2, z);
+				if(te != null && te instanceof TileEntitySunShade)
+				{
+					TileEntitySunShade tesunshade = (TileEntitySunShade)te;
+					tesunshade.switchSunShade();
+					return true;
+				}
+			}
 		}
 		return false;
 	}
-
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int blockid, CreativeTabs creativeTabs, List list)
-	{}
 
 	@Override
 	public TileEntity createTileEntity(World world, int metadata)
@@ -196,33 +197,19 @@ public class BlockSunShade extends Block
 		this.onBlockDestroyedByPlayer(world, x, y, z, world.getBlockMetadata(x, y, z));
 	}
 
-	public int idDropped(int metadata, Random random, int par3)
-	{
-		return NanotechCityItem.sunShade.itemID;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public int idPicked(World world, int x, int y, int z)
-	{
-		return NanotechCityItem.sunShade.itemID;
-	}
-
 	public void registerIcons(IconRegister iconregister)
-	{
-		blockIcon = iconregister.registerIcon("wool_colored_white"); // for particles
-		stick = iconregister.registerIcon("log_oak"); // for particles
-	}
+	{}
 
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int metadata)
 	{
 		if(metadata == 2)
 		{
-			return blockIcon;
+			return Block.cloth.getIcon(0, 0);
 		}
 		else
 		{
-			return stick;
+			return Block.wood.getIcon(3, 0);
 		}
 	}
 

@@ -22,7 +22,7 @@ public class TileEntityFountain extends TileEntity
 	private String field_94048_i;
 
 	public float height = 6.0F;
-	public double width = 0.2D;
+	public float width = 0.2F;
 	public boolean rotate = false;
 	public boolean animated = false;
 
@@ -126,7 +126,7 @@ public class TileEntityFountain extends TileEntity
 	{
 		super.writeToNBT(nbtTagCompound);
 		nbtTagCompound.setFloat("FountainHeight", height);
-		nbtTagCompound.setDouble("FountainWidth", width);
+		nbtTagCompound.setFloat("FountainWidth", width);
 		nbtTagCompound.setBoolean("FountainRotate", rotate);
 		nbtTagCompound.setBoolean("FountainAnimated", animated);
 	}
@@ -135,7 +135,7 @@ public class TileEntityFountain extends TileEntity
 	{
 		super.readFromNBT(nbtTagCompound);
 		height = nbtTagCompound.getFloat("FountainHeight");
-		width = nbtTagCompound.getDouble("FountainWidth");
+		width = nbtTagCompound.getFloat("FountainWidth");
 		rotate = nbtTagCompound.getBoolean("FountainRotate");
 		animated = nbtTagCompound.getBoolean("FountainAnimated");
 	}
@@ -168,7 +168,7 @@ public class TileEntityFountain extends TileEntity
 		return height;
 	}
 
-	public double getWidth()
+	public float getWidth()
 	{
 		return width;
 	}
@@ -188,9 +188,9 @@ public class TileEntityFountain extends TileEntity
 		height = f;
 	}
 
-	public void setWidth(double d)
+	public void setWidth(float f)
 	{
-		width = d;
+		width = f;
 	}
 
 	public void setRotate(boolean b)

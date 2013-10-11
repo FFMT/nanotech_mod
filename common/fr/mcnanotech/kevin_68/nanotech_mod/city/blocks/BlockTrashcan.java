@@ -17,12 +17,10 @@ public class BlockTrashcan extends Block
 {
 	public Icon topIcon;
 	public Icon bottomIcon;
-	public Random random;
 
 	public BlockTrashcan(int id)
 	{
 		super(id, Material.iron);
-		this.random = new Random();
 	}
 
 	public void registerIcons(IconRegister iconregister)
@@ -60,7 +58,7 @@ public class BlockTrashcan extends Block
 
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		int prob = random.nextInt(100);
+		int prob = world.rand.nextInt(100);
 		if(entity instanceof EntityItem)
 		{
 			if(!world.isRemote)

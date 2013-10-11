@@ -8,7 +8,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.core.Nanotech_mod_City;
 public class NanotechCityBlock
 {
 	// Blocks statement
-	public static Block BlockTrashcan, BlockSpotLight, BlockTrail, BlockFountain, BlockLamp, BlockLampLight, BlockSunShade, BlockModernFence;
+	public static Block BlockTrashcan, BlockSpotLight, BlockTrail, BlockFountain, BlockLamp, BlockSunShade, BlockModernFence;
 
 	// Blocks Initialization
 	public static void initBlock()
@@ -17,9 +17,8 @@ public class NanotechCityBlock
 		BlockSpotLight = new BlockSpotLight(Nanotech_mod_City.BlockSpotLightID).setHardness(1.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("spotlight").setCreativeTab(Nanotech_mod_City.cityTab);
 		BlockTrail = new BlockTrail(Nanotech_mod_City.BlockTrailID, Material.ground).setHardness(1.0F).setResistance(1.0F).setUnlocalizedName("blockTrail").setStepSound(Block.soundGravelFootstep).setCreativeTab(Nanotech_mod_City.cityTab);
 		BlockFountain = new BlockFountain(Nanotech_mod_City.BlockFountainID).setUnlocalizedName("blockFountain").setCreativeTab(Nanotech_mod_City.cityTab);
-		BlockLamp = new BlockLamp(Nanotech_mod_City.BlockLampID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockLamp");
-		BlockLampLight = new BlockLampLight(Nanotech_mod_City.BlockLampLightID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("blockLampLight");
-		BlockSunShade = new BlockSunShade(Nanotech_mod_City.BlockSunShadeID, Material.wood).setHardness(2.0F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("sunShade");
+		BlockLamp = new BlockLamp(Nanotech_mod_City.BlockLampID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("lamp").setCreativeTab(Nanotech_mod_City.cityTab);
+		BlockSunShade = new BlockSunShade(Nanotech_mod_City.BlockSunShadeID, Material.wood).setHardness(2.0F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("sunShade").setCreativeTab(Nanotech_mod_City.cityTab);
 		BlockModernFence = new BlockModernFence(Nanotech_mod_City.BlockModernFenceID).setHardness(1.5F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("modernFence").setCreativeTab(Nanotech_mod_City.cityTab);
 	}
 
@@ -31,7 +30,6 @@ public class NanotechCityBlock
 		GameRegistry.registerBlock(BlockTrail, "BlockTrail");
 		GameRegistry.registerBlock(BlockFountain, "blockFountain");
 		GameRegistry.registerBlock(BlockLamp, ItemBlockLamp.class, "BlockLamp", "Nanotech_mod_City");
-		GameRegistry.registerBlock(BlockLampLight, "BlockLampLight");
 		GameRegistry.registerBlock(BlockSunShade, ItemBlockSunShade.class, "BlockSunShade", "Nanotech_mod_City");
 		GameRegistry.registerBlock(BlockModernFence, ItemBlockModernFence.class, "blockModernFence", "Nanotech_mod_City");
 	}

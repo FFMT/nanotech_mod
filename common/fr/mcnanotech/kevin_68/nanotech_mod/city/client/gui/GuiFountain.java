@@ -14,6 +14,7 @@ import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.city.container.ContainerFountain;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityFountain;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class GuiFountain extends GuiContainer
 {
@@ -48,21 +49,7 @@ public class GuiFountain extends GuiContainer
 		{
 			if(tileFoutain.getHeight() < 6.0F)
 			{
-				ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-				DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-
-				try
-				{
-					dataoutputstream.writeFloat(tileFoutain.getHeight() + 0.5F);
-					dataoutputstream.writeDouble(tileFoutain.getWidth());
-					dataoutputstream.writeBoolean(tileFoutain.getRotate());
-					dataoutputstream.writeBoolean(tileFoutain.getAnimated());
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|fount", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendFountainPacket(tileFoutain.getHeight() + 0.5F, tileFoutain.getWidth(), tileFoutain.getRotate(), tileFoutain.getAnimated());
 			}
 		}
 
@@ -70,42 +57,14 @@ public class GuiFountain extends GuiContainer
 		{
 			if(tileFoutain.getHeight() > 0.5F)
 			{
-				ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-				DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-
-				try
-				{
-					dataoutputstream.writeFloat(tileFoutain.getHeight() - 0.5F);
-					dataoutputstream.writeDouble(tileFoutain.getWidth());
-					dataoutputstream.writeBoolean(tileFoutain.getRotate());
-					dataoutputstream.writeBoolean(tileFoutain.getAnimated());
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|fount", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendFountainPacket(tileFoutain.getHeight() - 0.5F, tileFoutain.getWidth(), tileFoutain.getRotate(), tileFoutain.getAnimated());
 			}
 		}
 		else if(guibutton.id == 3)
 		{
 			if(tileFoutain.getWidth() < 0.5D)
 			{
-				ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-				DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-
-				try
-				{
-					dataoutputstream.writeFloat(tileFoutain.getHeight());
-					dataoutputstream.writeDouble(tileFoutain.getWidth() + 0.05D);
-					dataoutputstream.writeBoolean(tileFoutain.getRotate());
-					dataoutputstream.writeBoolean(tileFoutain.getAnimated());
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|fount", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendFountainPacket(tileFoutain.getHeight(), tileFoutain.getWidth() + 0.05F, tileFoutain.getRotate(), tileFoutain.getAnimated());
 			}
 		}
 
@@ -113,42 +72,14 @@ public class GuiFountain extends GuiContainer
 		{
 			if(tileFoutain.getWidth() > 0.05F)
 			{
-				ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-				DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-
-				try
-				{
-					dataoutputstream.writeFloat(tileFoutain.getHeight());
-					dataoutputstream.writeDouble(tileFoutain.getWidth() - 0.05F);
-					dataoutputstream.writeBoolean(tileFoutain.getRotate());
-					dataoutputstream.writeBoolean(tileFoutain.getAnimated());
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|fount", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendFountainPacket(tileFoutain.getHeight(), tileFoutain.getWidth() - 0.05F, tileFoutain.getRotate(), tileFoutain.getAnimated());
 			}
 		}
 		else if(guibutton.id == 5)
 		{
 			if(!tileFoutain.getRotate())
 			{
-				ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-				DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-
-				try
-				{
-					dataoutputstream.writeFloat(tileFoutain.getHeight());
-					dataoutputstream.writeDouble(tileFoutain.getWidth());
-					dataoutputstream.writeBoolean(true);
-					dataoutputstream.writeBoolean(tileFoutain.getAnimated());
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|fount", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendFountainPacket(tileFoutain.getHeight(), tileFoutain.getWidth(), true, tileFoutain.getAnimated());
 			}
 		}
 
@@ -156,21 +87,7 @@ public class GuiFountain extends GuiContainer
 		{
 			if(tileFoutain.getRotate())
 			{
-				ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-				DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-
-				try
-				{
-					dataoutputstream.writeFloat(tileFoutain.getHeight());
-					dataoutputstream.writeDouble(tileFoutain.getWidth());
-					dataoutputstream.writeBoolean(false);
-					dataoutputstream.writeBoolean(tileFoutain.getAnimated());
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|fount", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendFountainPacket(tileFoutain.getHeight(), tileFoutain.getWidth(), false, tileFoutain.getAnimated());
 			}
 		}
 
@@ -178,21 +95,7 @@ public class GuiFountain extends GuiContainer
 		{
 			if(!tileFoutain.getAnimated())
 			{
-				ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-				DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-
-				try
-				{
-					dataoutputstream.writeFloat(tileFoutain.getHeight());
-					dataoutputstream.writeDouble(tileFoutain.getWidth());
-					dataoutputstream.writeBoolean(tileFoutain.getRotate());
-					dataoutputstream.writeBoolean(true);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|fount", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendFountainPacket(tileFoutain.getHeight(), tileFoutain.getWidth(), tileFoutain.getRotate(), true);
 			}
 		}
 
@@ -200,22 +103,28 @@ public class GuiFountain extends GuiContainer
 		{
 			if(tileFoutain.getAnimated())
 			{
-				ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-				DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-
-				try
-				{
-					dataoutputstream.writeFloat(tileFoutain.getHeight());
-					dataoutputstream.writeDouble(tileFoutain.getWidth());
-					dataoutputstream.writeBoolean(tileFoutain.getRotate());
-					dataoutputstream.writeBoolean(false);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|fount", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendFountainPacket(tileFoutain.getHeight(), tileFoutain.getWidth(), tileFoutain.getRotate(), false);
 			}
+		}
+	}
+
+	private void sendFountainPacket(float height, float width, boolean doRotate, boolean isAnimated)
+	{
+		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
+		DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
+
+		try
+		{
+			dataoutputstream.writeFloat(height);
+			dataoutputstream.writeFloat(width);
+			dataoutputstream.writeBoolean(doRotate);
+			dataoutputstream.writeBoolean(isAnimated);
+			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|fount", bytearrayoutputstream.toByteArray()));
+		}
+		catch(Exception exception)
+		{
+			exception.printStackTrace();
+			Nanotech_mod.NanoLog.severe("Failed to send a packet from a fountain");
 		}
 	}
 

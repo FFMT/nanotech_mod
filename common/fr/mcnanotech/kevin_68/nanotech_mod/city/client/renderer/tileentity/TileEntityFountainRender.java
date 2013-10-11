@@ -44,7 +44,7 @@ public class TileEntityFountainRender extends TileEntitySpecialRenderer
 			byte b0 = 1;
 			double d3 = (double)f22 * 0.025D * (1.0D - (double)(b0 & 1) * 2.5D);
 			tessellator.startDrawingQuads();
-			double d4 = (double)b0 * tileentity.width;// taille
+			double d4 = (double)b0 * tileentity.getWidth();
 			double d5 = 0.5D + Math.cos(d3 + 2.356194490192345D) * d4;
 			double d6 = 0.5D + Math.sin(d3 + 2.356194490192345D) * d4;
 			double d7 = 0.5D + Math.cos(d3 + (Math.PI / 4D)) * d4;

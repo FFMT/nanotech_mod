@@ -18,7 +18,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.blocks.NanotechCityBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.city.items.NanotechCityItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.network.GuiHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.network.PacketHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityFountain;
@@ -41,17 +40,16 @@ public class Nanotech_mod_City
 	public static CommonProxy proxy;
 
 	// Block IDs
-	public static int BlockTrashcanID, BlockSpotLightID, BlockTrailID, BlockFountainID, BlockLampID, BlockLampLightID, BlockSunShadeID, BlockModernFenceID;
+	public static int BlockTrashcanID, BlockSpotLightID, BlockTrailID, BlockFountainID, BlockLampID, BlockSunShadeID, BlockModernFenceID;
 
 	// Item IDs
-	public static int ItemLampID, ItemSunShadeID;
 
 	public static CreativeTabs cityTab = new CreativeTabs("NanotechModCity")
 	{
 		@SideOnly(Side.CLIENT)
 		public int getTabIconItemIndex()
 		{
-			return NanotechCityItem.lamp.itemID;
+			return NanotechCityBlock.BlockLamp.blockID;
 		}
 	};
 
@@ -67,13 +65,8 @@ public class Nanotech_mod_City
 			BlockTrailID = cfg.getBlock("Trail", 1021).getInt();
 			BlockFountainID = cfg.getBlock("Fountain", 1023).getInt();
 			BlockLampID = cfg.getBlock("Lamp", 1024).getInt();
-			BlockLampLightID = cfg.getBlock("LampLight", 1025).getInt();
 			BlockSunShadeID = cfg.getBlock("SunShade", 1026).getInt();
 			BlockModernFenceID = cfg.getBlock("ModernFence", 1027).getInt();
-
-			ItemLampID = cfg.getItem("Lamp", 5150).getInt();
-			ItemSunShadeID = cfg.getItem("SunShade", 5151).getInt();
-
 		}
 		catch(Exception ex)
 		{
@@ -89,7 +82,6 @@ public class Nanotech_mod_City
 
 		NanotechCityBlock.initBlock();
 		NanotechCityBlock.blockRegistry();
-		NanotechCityItem.initItem();
 		NanotechCityAchievement.initAchievement();
 	}
 
@@ -114,8 +106,8 @@ public class Nanotech_mod_City
 		proxy.registerTileRenders();
 
 		// Recipe
-		GameRegistry.addRecipe(new ItemStack(NanotechCityItem.lamp, 1), new Object[] {"IDI", "GSG", "III", 'I', Item.ingotIron, 'D', Block.daylightSensor, 'G', Block.thinGlass, 'S', Block.glowStone});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityItem.sunShade, 1), new Object[] {"WWW", " S ", " S ", 'W', Block.cloth, 'S', Item.stick});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockLamp, 1), new Object[] {"IDI", "GSG", "III", 'I', Item.ingotIron, 'D', Block.daylightSensor, 'G', Block.thinGlass, 'S', Block.glowStone});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockSunShade, 1), new Object[] {"WWW", " S ", " S ", 'W', Block.cloth, 'S', Item.stick});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechCityBlock.BlockTrail, 1), new Object[] {Block.grass, Block.gravel});
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockFountain, 1), new Object[] {"S S", "SWS", "SPS", 'S', new ItemStack(Block.stoneSingleSlab, 0), 'W', Item.bucketWater, 'P', Block.pistonBase});
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockModernFence, 4), new Object[] {"I I", "III", "I I", 'I', Item.ingotIron});

@@ -5,7 +5,6 @@ import net.minecraft.util.AxisAlignedBB;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.blocks.BlockLamp;
-import fr.mcnanotech.kevin_68.nanotech_mod.city.blocks.BlockLampLight;
 
 public class TileEntityLampLight extends TileEntity
 {
@@ -16,16 +15,13 @@ public class TileEntityLampLight extends TileEntity
 		getLampTexture = texture();
 		if(this.worldObj != null && !this.worldObj.isRemote && this.worldObj.getTotalWorldTime() % 20L == 0L)
 		{
-			this.blockType = this.getBlockType();
-
-			if(this.blockType != null && this.blockType instanceof BlockLamp)
+			if(this.getBlockMetadata() == 2 && !worldObj.isDaytime())
 			{
-				((BlockLamp)this.blockType).updateLight(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+				worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 3, 3);
 			}
-
-			if(this.blockType != null && this.blockType instanceof BlockLampLight)
+			else if(this.getBlockMetadata() == 3 && worldObj.isDaytime())
 			{
-				((BlockLampLight)this.blockType).updateLight(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+				worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 2, 3);
 			}
 		}
 	}
@@ -38,7 +34,7 @@ public class TileEntityLampLight extends TileEntity
 
 	public String texture()
 	{
-		if(this.getBlockMetadata() == 0)
+		if(this.getBlockMetadata() == 3)
 		{
 			return "nanotech_mod_city:textures/blocks/BlockLampLightOn.png";
 		}
@@ -47,5 +43,4 @@ public class TileEntityLampLight extends TileEntity
 			return "nanotech_mod_city:textures/blocks/BlockLampLightOff.png";
 		}
 	}
-
 }
