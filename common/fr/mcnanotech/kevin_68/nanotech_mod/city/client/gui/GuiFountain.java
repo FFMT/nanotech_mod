@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.ResourceLocation;
@@ -152,7 +153,7 @@ public class GuiFountain extends GuiContainer
 			animPos = 10;
 		}
 
-		fontRenderer.drawString("Fountain", 6, 6, 4210752);
+		fontRenderer.drawString(I18n.getString("container.fountain"), 6, 6, 4210752);
 		fontRenderer.drawString(String.valueOf(tileFoutain.height), xSize / 2 - 5, ySize + -143, 4210752);
 		fontRenderer.drawString(String.valueOf(tileFoutain.width), xSize / 2 - 5, ySize + -121, 4210752);
 		fontRenderer.drawString(String.valueOf(tileFoutain.rotate), xSize / 2 - rotatePos, ySize + -99, 4210752);

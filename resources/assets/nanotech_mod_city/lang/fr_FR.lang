@@ -14,3 +14,6 @@ tile.lamp.name=Lampadaire
 
 #CreativeTabs
 itemGroup.NanotechModCity=Nanotech Mod City
+
+#Container
+container.fountain=Fontaine

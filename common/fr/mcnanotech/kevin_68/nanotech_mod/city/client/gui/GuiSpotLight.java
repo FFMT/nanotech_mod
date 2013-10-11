@@ -80,24 +80,13 @@ public class GuiSpotLight extends GuiContainer
 
 	protected void actionPerformed(GuiButton guibutton)
 	{
-		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-		DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
 		// Type : 0 = red, 1 = green, 2 = blue, 3 = dark red, 4 = dark green, 5
 		// = dark blue
 		if(guibutton.id == 0)
 		{
 			if(tileSpotLight.getRedValue() > 0)
 			{
-				try
-				{
-					dataoutputstream.writeInt(0);
-					dataoutputstream.writeInt(tileSpotLight.getRedValue() - 1);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getRedValue() - 1, 0);
 			}
 		}
 		if(guibutton.id == 1)
@@ -105,23 +94,11 @@ public class GuiSpotLight extends GuiContainer
 
 			if(tileSpotLight.getRedValue() > 10)
 			{
-				try
-				{
-					dataoutputstream.writeInt(0);
-					dataoutputstream.writeInt(tileSpotLight.getRedValue() - 10);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getRedValue() - 10, 0);
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 0); // red
-																			// type
-																			// =
-																			// 0
+				this.setToMin(0);
 			}
 		}
 		if(guibutton.id == 2)
@@ -129,85 +106,40 @@ public class GuiSpotLight extends GuiContainer
 
 			if(tileSpotLight.getRedValue() > 100)
 			{
-				try
-				{
-					dataoutputstream.writeInt(0);
-					dataoutputstream.writeInt(tileSpotLight.getRedValue() - 100);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getRedValue() - 100, 0);
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 0); // red
-																			// type
-																			// =
-																			// 0
+				this.setToMin(0);
 			}
 		}
 		if(guibutton.id == 3)
 		{
 			if(tileSpotLight.getRedValue() < 255)
 			{
-				try
-				{
-					dataoutputstream.writeInt(0);
-					dataoutputstream.writeInt(tileSpotLight.getRedValue() + 1);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getRedValue() + 1, 0);
 			}
 		}
 		if(guibutton.id == 4)
 		{
 			if(tileSpotLight.getRedValue() < 245)
 			{
-				try
-				{
-					dataoutputstream.writeInt(0);
-					dataoutputstream.writeInt(tileSpotLight.getRedValue() + 10);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getRedValue() + 10, 0);
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 0); // red
-																			// type
-																			// =
-																			// 0
+				this.setToMax(0);
 			}
 		}
 		if(guibutton.id == 5)
 		{
 			if(tileSpotLight.getRedValue() < 155)
 			{
-				try
-				{
-					dataoutputstream.writeInt(0);
-					dataoutputstream.writeInt(tileSpotLight.getRedValue() + 100);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getRedValue() + 100, 0);
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 0); // red
-																			// type
-																			// =
-																			// 0
+				this.setToMax(0);
 			}
 		}
 
@@ -215,124 +147,58 @@ public class GuiSpotLight extends GuiContainer
 		{
 			if(tileSpotLight.getGreenValue() > 0)
 			{
-				try
-				{
-					dataoutputstream.writeInt(1);
-					dataoutputstream.writeInt(tileSpotLight.getGreenValue() - 1);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getGreenValue() - 1, 1);
 			}
 		}
 		if(guibutton.id == 7)
 		{
 			if(tileSpotLight.getGreenValue() > 10)
 			{
-				try
-				{
-					dataoutputstream.writeInt(1);
-					dataoutputstream.writeInt(tileSpotLight.getGreenValue() - 10);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getGreenValue() - 10, 1);
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 1); // green
-																			// type
-																			// =
-																			// 1
+				this.setToMin(1);
 			}
 		}
 		if(guibutton.id == 8)
 		{
 			if(tileSpotLight.getGreenValue() > 100)
 			{
-				try
-				{
-					dataoutputstream.writeInt(1);
-					dataoutputstream.writeInt(tileSpotLight.getGreenValue() - 100);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getGreenValue() - 100, 1);
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 1); // green
-																			// type
-																			// =
-																			// 1
+				this.setToMin(1);
 			}
 		}
 		if(guibutton.id == 9)
 		{
 			if(tileSpotLight.getGreenValue() < 255)
 			{
-				try
-				{
-					dataoutputstream.writeInt(1);
-					dataoutputstream.writeInt(tileSpotLight.getGreenValue() + 1);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getGreenValue() + 1, 1);
 			}
 		}
 		if(guibutton.id == 10)
 		{
 			if(tileSpotLight.getGreenValue() < 245)
 			{
-				try
-				{
-					dataoutputstream.writeInt(1);
-					dataoutputstream.writeInt(tileSpotLight.getGreenValue() + 10);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getGreenValue() + 10, 1);
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 1); // green
-																			// type
-																			// =
-																			// 1
+				this.setToMax(1);
 			}
 		}
 		if(guibutton.id == 11)
 		{
 			if(tileSpotLight.getGreenValue() < 155)
 			{
-				try
-				{
-					dataoutputstream.writeInt(1);
-					dataoutputstream.writeInt(tileSpotLight.getGreenValue() + 100);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getGreenValue() + 100, 1);
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 1); // green
-																			// type
-																			// =
-																			// 1
+				this.setToMax(1);
 			}
 		}
 
@@ -340,124 +206,58 @@ public class GuiSpotLight extends GuiContainer
 		{
 			if(tileSpotLight.getBlueValue() > 0)
 			{
-				try
-				{
-					dataoutputstream.writeInt(2);
-					dataoutputstream.writeInt(tileSpotLight.getBlueValue() - 1);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getBlueValue() - 1, 2);
 			}
 		}
 		if(guibutton.id == 13)
 		{
 			if(tileSpotLight.getBlueValue() > 10)
 			{
-				try
-				{
-					dataoutputstream.writeInt(2);
-					dataoutputstream.writeInt(tileSpotLight.getBlueValue() - 10);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getBlueValue() - 10, 2);
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 2); // blue
-																			// type
-																			// =
-																			// 2
+				this.setToMin(2);
 			}
 		}
 		if(guibutton.id == 14)
 		{
 			if(tileSpotLight.getBlueValue() > 100)
 			{
-				try
-				{
-					dataoutputstream.writeInt(2);
-					dataoutputstream.writeInt(tileSpotLight.getBlueValue() - 100);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getBlueValue() - 100, 2);
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 2); // blue
-																			// type
-																			// =
-																			// 2
+				this.setToMin(2);
 			}
 		}
 		if(guibutton.id == 15)
 		{
 			if(tileSpotLight.getBlueValue() < 255)
 			{
-				try
-				{
-					dataoutputstream.writeInt(2);
-					dataoutputstream.writeInt(tileSpotLight.getBlueValue() + 1);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getBlueValue() + 1, 2);
 			}
 		}
 		if(guibutton.id == 16)
 		{
 			if(tileSpotLight.getBlueValue() < 245)
 			{
-				try
-				{
-					dataoutputstream.writeInt(2);
-					dataoutputstream.writeInt(tileSpotLight.getBlueValue() + 10);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getBlueValue() + 10, 2);
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 2); // blue
-																			// type
-																			// =
-																			// 2
+				this.setToMax(2);
 			}
 		}
 		if(guibutton.id == 17)
 		{
 			if(tileSpotLight.getBlueValue() < 155)
 			{
-				try
-				{
-					dataoutputstream.writeInt(2);
-					dataoutputstream.writeInt(tileSpotLight.getBlueValue() + 100);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getBlueValue() + 100, 2);
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 2); // blue
-																			// type
-																			// =
-																			// 2
+				this.setToMax(2);
 			}
 		}
 
@@ -465,16 +265,7 @@ public class GuiSpotLight extends GuiContainer
 		{
 			if(tileSpotLight.getDarkRedValue() > 0)
 			{
-				try
-				{
-					dataoutputstream.writeInt(3);
-					dataoutputstream.writeInt(tileSpotLight.getDarkRedValue() - 1);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkRedValue() - 1, 3);
 			}
 		}
 		if(guibutton.id == 19)
@@ -482,24 +273,11 @@ public class GuiSpotLight extends GuiContainer
 
 			if(tileSpotLight.getDarkRedValue() > 10)
 			{
-				try
-				{
-					dataoutputstream.writeInt(3);
-					dataoutputstream.writeInt(tileSpotLight.getDarkRedValue() - 10);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkRedValue() - 10, 3);
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 3); // dark
-																			// red
-																			// type
-																			// =
-																			// 3
+				this.setToMin(3);
 			}
 		}
 		if(guibutton.id == 20)
@@ -507,88 +285,40 @@ public class GuiSpotLight extends GuiContainer
 
 			if(tileSpotLight.getDarkRedValue() > 100)
 			{
-				try
-				{
-					dataoutputstream.writeInt(3);
-					dataoutputstream.writeInt(tileSpotLight.getDarkRedValue() - 100);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkRedValue() - 100, 3);
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 3); // dark
-																			// red
-																			// type
-																			// =
-																			// 3
+				this.setToMin(3);
 			}
 		}
 		if(guibutton.id == 21)
 		{
 			if(tileSpotLight.getDarkRedValue() < 255)
 			{
-				try
-				{
-					dataoutputstream.writeInt(3);
-					dataoutputstream.writeInt(tileSpotLight.getDarkRedValue() + 1);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkRedValue() + 1, 3);
 			}
 		}
 		if(guibutton.id == 22)
 		{
 			if(tileSpotLight.getDarkRedValue() < 245)
 			{
-				try
-				{
-					dataoutputstream.writeInt(3);
-					dataoutputstream.writeInt(tileSpotLight.getDarkRedValue() + 10);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkRedValue() + 10, 3);
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 3); // dark
-																			// red
-																			// type
-																			// =
-																			// 3
+				this.setToMax(3);
 			}
 		}
 		if(guibutton.id == 23)
 		{
 			if(tileSpotLight.getDarkRedValue() < 155)
 			{
-				try
-				{
-					dataoutputstream.writeInt(3);
-					dataoutputstream.writeInt(tileSpotLight.getDarkRedValue() + 100);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkRedValue() + 100, 3);
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 3); // dark
-																			// red
-																			// type
-																			// =
-																			// 3
+				this.setToMax(3);
 			}
 		}
 
@@ -596,128 +326,58 @@ public class GuiSpotLight extends GuiContainer
 		{
 			if(tileSpotLight.getDarkGreenValue() > 0)
 			{
-				try
-				{
-					dataoutputstream.writeInt(4);
-					dataoutputstream.writeInt(tileSpotLight.getDarkGreenValue() - 1);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkGreenValue() - 1, 4);
 			}
 		}
 		if(guibutton.id == 25)
 		{
 			if(tileSpotLight.getDarkGreenValue() > 10)
 			{
-				try
-				{
-					dataoutputstream.writeInt(4);
-					dataoutputstream.writeInt(tileSpotLight.getDarkGreenValue() - 10);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkGreenValue() - 10, 4);
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 4); // dark
-																			// green
-																			// type
-																			// =
-																			// 4
+				this.setToMin(4);
 			}
 		}
 		if(guibutton.id == 26)
 		{
 			if(tileSpotLight.getDarkGreenValue() > 100)
 			{
-				try
-				{
-					dataoutputstream.writeInt(4);
-					dataoutputstream.writeInt(tileSpotLight.getDarkGreenValue() - 100);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkGreenValue() - 100, 4);
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 4); // dark
-																			// green
-																			// type
-																			// =
-																			// 4
+				this.setToMin(4);
 			}
 		}
 		if(guibutton.id == 27)
 		{
 			if(tileSpotLight.getDarkGreenValue() < 255)
 			{
-				try
-				{
-					dataoutputstream.writeInt(4);
-					dataoutputstream.writeInt(tileSpotLight.getDarkGreenValue() + 1);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkGreenValue() + 1, 4);
 			}
 		}
 		if(guibutton.id == 28)
 		{
 			if(tileSpotLight.getDarkGreenValue() < 245)
 			{
-				try
-				{
-					dataoutputstream.writeInt(4);
-					dataoutputstream.writeInt(tileSpotLight.getDarkGreenValue() + 10);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkGreenValue() + 10, 4);
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 4); // dark
-																			// green
-																			// type
-																			// =
-																			// 4
+				this.setToMax(4);
 			}
 		}
 		if(guibutton.id == 29)
 		{
 			if(tileSpotLight.getDarkGreenValue() < 155)
 			{
-				try
-				{
-					dataoutputstream.writeInt(4);
-					dataoutputstream.writeInt(tileSpotLight.getDarkGreenValue() + 100);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkGreenValue() + 100, 4);
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 4); // dark
-																			// green
-																			// type
-																			// =
-																			// 4
+				this.setToMax(4);
 			}
 		}
 
@@ -725,128 +385,58 @@ public class GuiSpotLight extends GuiContainer
 		{
 			if(tileSpotLight.getDarkBlueValue() > 0)
 			{
-				try
-				{
-					dataoutputstream.writeInt(5);
-					dataoutputstream.writeInt(tileSpotLight.getDarkBlueValue() - 1);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkBlueValue() - 1, 5);
 			}
 		}
 		if(guibutton.id == 31)
 		{
 			if(tileSpotLight.getDarkBlueValue() > 10)
 			{
-				try
-				{
-					dataoutputstream.writeInt(5);
-					dataoutputstream.writeInt(tileSpotLight.getDarkBlueValue() - 10);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkBlueValue() - 10, 5);
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 5); // dark
-																			// blue
-																			// type
-																			// =
-																			// 5
+				this.setToMin(5);
 			}
 		}
 		if(guibutton.id == 32)
 		{
 			if(tileSpotLight.getDarkBlueValue() > 100)
 			{
-				try
-				{
-					dataoutputstream.writeInt(5);
-					dataoutputstream.writeInt(tileSpotLight.getDarkBlueValue() - 100);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkBlueValue() - 100, 5);
 			}
 			else
 			{
-				this.setToMin(bytearrayoutputstream, dataoutputstream, 5); // dark
-																			// blue
-																			// type
-																			// =
-																			// 5
+				this.setToMin(5);
 			}
 		}
 		if(guibutton.id == 33)
 		{
 			if(tileSpotLight.getDarkBlueValue() < 255)
 			{
-				try
-				{
-					dataoutputstream.writeInt(5);
-					dataoutputstream.writeInt(tileSpotLight.getDarkBlueValue() + 1);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkBlueValue() + 1, 5);
 			}
 		}
 		if(guibutton.id == 34)
 		{
 			if(tileSpotLight.getDarkBlueValue() < 245)
 			{
-				try
-				{
-					dataoutputstream.writeInt(5);
-					dataoutputstream.writeInt(tileSpotLight.getDarkBlueValue() + 10);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkBlueValue() + 10, 5);
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 5); // dark
-																			// blue
-																			// type
-																			// =
-																			// 5
+				this.setToMax(5);
 			}
 		}
 		if(guibutton.id == 35)
 		{
 			if(tileSpotLight.getDarkBlueValue() < 155)
 			{
-				try
-				{
-					dataoutputstream.writeInt(5);
-					dataoutputstream.writeInt(tileSpotLight.getDarkBlueValue() + 100);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
+				this.sendSpotLightPacket(tileSpotLight.getDarkBlueValue() + 100, 5);
 			}
 			else
 			{
-				this.setToMax(bytearrayoutputstream, dataoutputstream, 5); // dark
-																			// blue
-																			// type
-																			// =
-																			// 5
+				this.setToMax(5);
 			}
 		}
 	}
@@ -937,33 +527,30 @@ public class GuiSpotLight extends GuiContainer
 		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkBlueValue()), xSize / 2 - darkBluePos, ySize + -43, FFMTColor.darkBlueInt);
 	}
 
-	private void setToMax(ByteArrayOutputStream bytearrayoutputstream, DataOutputStream dataoutputstream, int type)
+	private void setToMax(int type)
 	{
-		try
-		{
-			dataoutputstream.writeInt(type);
-			dataoutputstream.writeInt(255);
-			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
-		}
-		catch(Exception exception)
-		{
-			exception.printStackTrace();
-			Nanotech_mod.NanoLog.severe("Failed to send SpotLight packet");
-		}
+		this.sendSpotLightPacket(255, type);
 	}
 
-	private void setToMin(ByteArrayOutputStream bytearrayoutputstream, DataOutputStream dataoutputstream, int type)
+	private void setToMin(int type)
 	{
+		this.sendSpotLightPacket(0, type);
+	}
+
+	private void sendSpotLightPacket(int value, int type)
+	{
+		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
+		DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
 		try
 		{
 			dataoutputstream.writeInt(type);
-			dataoutputstream.writeInt(0);
+			dataoutputstream.writeInt(value);
 			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
 		}
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.NanoLog.severe("Failed to send SpotLight packet");
+			Nanotech_mod.NanoLog.severe("Failed to send a packet from a SpotLight");
 		}
 	}
 
