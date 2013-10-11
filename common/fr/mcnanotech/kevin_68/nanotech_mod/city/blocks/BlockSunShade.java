@@ -198,22 +198,18 @@ public class BlockSunShade extends Block
 	}
 
 	public void registerIcons(IconRegister iconregister)
-	{
-		blockIcon = iconregister.registerIcon("wool_colored_white"); // for
-																		// particles
-		stick = iconregister.registerIcon("log_oak"); // for particles
-	}
+	{}
 
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int metadata)
 	{
 		if(metadata == 2)
 		{
-			return blockIcon;
+			return Block.cloth.getIcon(0, 0);
 		}
 		else
 		{
-			return stick;
+			return Block.wood.getIcon(3, 0);
 		}
 	}
 

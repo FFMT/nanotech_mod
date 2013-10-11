@@ -50,6 +50,8 @@ public class ItemBlockLamp extends ItemBlock
 				world.setBlock(x, y + 2, z, NanotechCityBlock.BlockLamp.blockID, 1, 3);
 				world.setBlock(x, y + 3, z, NanotechCityBlock.BlockLamp.blockID, 2, 3);
 				world.playSoundEffect(x, y, z, NanotechCityBlock.BlockLamp.stepSound.getPlaceSound(), NanotechCityBlock.BlockLamp.stepSound.getVolume(), NanotechCityBlock.BlockLamp.stepSound.getPitch());
+				--stack.stackSize;
+				return true;
 
 			}
 			if(world.isAirBlock(x, y + 1, z) && world.isAirBlock(x, y + 2, z) && world.isAirBlock(x, y + 3, z) && world.isAirBlock(x, y + 4, z) && side == 1 && player.canPlayerEdit(x, y + 4, z, side, stack))
@@ -62,14 +64,7 @@ public class ItemBlockLamp extends ItemBlock
 				--stack.stackSize;
 				return true;
 			}
-			else
-			{
-				return false;
-			}
 		}
-		else
-		{
-			return false;
-		}
+		return false;
 	}
 }

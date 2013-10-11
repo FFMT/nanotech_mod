@@ -79,7 +79,7 @@ public class PacketHandler implements IPacketHandler
 	{
 		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
 		float height;
-		double width;
+		float width;
 		boolean rotate;
 		boolean animated;
 
@@ -87,7 +87,7 @@ public class PacketHandler implements IPacketHandler
 		{
 			data = new DataInputStream(new ByteArrayInputStream(packet.data));
 			height = data.readFloat();
-			width = data.readDouble();
+			width = data.readFloat();
 			rotate = data.readBoolean();
 			animated = data.readBoolean();
 

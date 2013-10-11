@@ -15,7 +15,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityModernFence
 
 public class BlockModernFence extends BlockContainer
 {
-
 	public BlockModernFence(int id)
 	{
 		super(id, Material.iron);
