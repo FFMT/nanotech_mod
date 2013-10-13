@@ -28,37 +28,9 @@ public class ItemDisk extends ItemRecord
 		textureName = texture;
 	}
 
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int par7, float par8, float par9, float par10)
-	{
-		if(world.getBlockId(x, y, z) == Block.jukebox.blockID && world.getBlockMetadata(x, y, z) == 0)
-		{
-			if(world.isRemote)
-			{
-				return true;
-			}
-			else
-			{
-				((BlockJukeBox)Block.jukebox).insertRecord(world, x, y, z, stack);
-				world.playAuxSFXAtEntity((EntityPlayer)null, 1005, x, y, z, this.itemID);
-				--stack.stackSize;
-				return true;
-			}
-		}
-		else
-		{
-			return false;
-		}
-	}
-
 	public void registerIcons(IconRegister iconregister)
 	{
 		this.itemIcon = iconregister.registerIcon("nanotech_mod:" + textureName);
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
-	{
-		list.add(recordinfo);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -66,11 +38,4 @@ public class ItemDisk extends ItemRecord
 	{
 		return this.recordinfo;
 	}
-
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack stack)
-	{
-		return EnumRarity.rare;
-	}
-
 }
