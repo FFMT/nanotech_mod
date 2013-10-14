@@ -17,8 +17,10 @@ public class ItemNanomiteShovel extends ItemSpade
 		itemIcon = iconregister.registerIcon("nanotech_mod:nanomiteShovel");
 	}
 
-	public boolean getIsRepairable(ItemStack stack, ItemStack stack2)
+	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)
 	{
+		if(stack.getItem().equals(this) && repairItem.getItem().itemID == NanotechItem.ItemBase.itemID && repairItem.getItemDamage() == 14)
 		return true;
+		return false;
 	}
 }
