@@ -9,20 +9,22 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.util.StatCollector;
+import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class ItemBaseMetadata extends Item
 {
-	public static String[] type = new String[] {"siliconore", "stoneofdecrease", "mysteriousmaterial", "siliconplate", "mysteriousingot", "circuit", "advancedcircuit", "processor", "microprocessor", "camera", "detector", "engine", "nanomite", "nanomiteframe", "smallnanomite", "void"};
+	public static String[] type = new String[] {"siliconore", "stoneofdecrease", "mysteriousmaterial", "siliconplate", "mysteriousingot", "circuit", "advancedcircuit", "processor", "microprocessor", "camera", "detector", "engine", "nanomite", "nanomiteframe", "smallnanomite", "void", "portalActivator"};
 	private Icon[] iconbuffer;
 
 	public ItemBaseMetadata(int id)
 	{
 		super(id);
-		setHasSubtypes(true);
-		maxStackSize = 64;
+		this.setHasSubtypes(true);
+		this.maxStackSize = 64;
 		this.setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 	}
 
@@ -85,4 +87,69 @@ public class ItemBaseMetadata extends Item
 		}
 	}
 
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
+	{
+		if(stack.getItemDamage() == 16)
+		{
+			if(!world.isRemote && world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID)
+			{
+				if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 2, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 2, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 2, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
+				{
+					for(int i = 0; i < 3; i++)
+					{
+						world.setBlock(x, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
+						world.setBlock(x - 1, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
+					}
+					if(!player.capabilities.isCreativeMode)
+					{
+						stack.stackSize --;
+					}
+					return true;
+				}
+
+				if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 2, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 2, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 2, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
+				{
+					for(int i = 0; i < 3; i++)
+					{
+						world.setBlock(x, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
+						world.setBlock(x + 1, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
+					}
+					if(!player.capabilities.isCreativeMode)
+					{
+						stack.stackSize --;
+					}
+					return true;
+				}
+
+				if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 1, z - 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 2, z - 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 3, z - 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 1, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 2, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 3, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
+				{
+					for(int i = 0; i < 3; i++)
+					{
+						world.setBlock(x, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
+						world.setBlock(x, y + 1 + i, z - 1, NanotechBlock.BlockPortal.blockID);
+					}
+					if(!player.capabilities.isCreativeMode)
+					{
+						stack.stackSize --;
+					}
+					return true;
+				}
+
+				if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 1, z + 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 2, z + 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 3, z + 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 1, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 2, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 3, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
+				{
+					for(int i = 0; i < 3; i++)
+					{
+						world.setBlock(x, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
+						world.setBlock(x, y + 1 + i, z + 1, NanotechBlock.BlockPortal.blockID);
+					}
+					if(!player.capabilities.isCreativeMode)
+					{
+						stack.stackSize --;
+					}
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }

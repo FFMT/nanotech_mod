@@ -78,6 +78,7 @@ item.teaSeed.name=Pousse de Thé
 item.tea.name=Thé
 item.debug.name=Debug
 item.alters.name=Altères
+item.portalActivator=Activateur de portail
 
 #Entity
 entity.SuperZombie.name=Super Zombie

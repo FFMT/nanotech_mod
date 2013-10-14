@@ -28,44 +28,6 @@ public class ItemDebug extends Item
 	{
 
 		TileEntity tile = world.getBlockTileEntity(x, y, z);
-		if(!world.isRemote && world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID)
-		{
-			if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 2, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 2, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 2, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
-			{
-				for(int i = 0; i < 3; i++)
-				{
-					world.setBlock(x, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
-					world.setBlock(x - 1, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
-				}
-			}
-
-			if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 2, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 2, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 2, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
-			{
-				for(int i = 0; i < 3; i++)
-				{
-					world.setBlock(x, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
-					world.setBlock(x + 1, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
-				}
-			}
-
-			if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 1, z - 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 2, z - 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 3, z - 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 1, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 2, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 3, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
-			{
-				for(int i = 0; i < 3; i++)
-				{
-					world.setBlock(x, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
-					world.setBlock(x, y + 1 + i, z - 1, NanotechBlock.BlockPortal.blockID);
-				}
-			}
-
-			if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 1, z + 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 2, z + 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 3, z + 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 1, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 2, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 3, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
-			{
-				for(int i = 0; i < 3; i++)
-				{
-					world.setBlock(x, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
-					world.setBlock(x, y + 1 + i, z + 1, NanotechBlock.BlockPortal.blockID);
-				}
-			}
-		}
 		if(!world.isRemote)
 		{
 			player.addChatMessage(FFMTColor.gray + "-----------------------------------------------------");
