@@ -8,7 +8,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 public class NanotechBlock
 {
 	// Blocks statement
-	public static Block BlockPortal, BlockPortalFrame, BlockGrass, BlockFakeOre, BlockSpeed, BlockJumper, BlockMultiplier, BlockSmoker, BlockBarbedwire, BlockNanowood, BlockNanoleaves, BlockNanosaplings, BlockNanoplanks, BlockNanoOre, BlockConfusion, BlockFalling, Blocknotfalling, BlockSodium, BlockMossystone, BlockTheDeathHead, BlockTea;
+	public static Block BlockPortal, BlockPortalFrame, BlockGrass, BlockFakeOre, BlockSpeed, BlockJumper, BlockMultiplier, BlockSmoker, BlockBarbedwire, BlockNanowood, BlockNanoleaves, BlockNanosaplings, BlockNanoplanks, BlockNanoOre, BlockConfusion, BlockFalling, Blocknotfalling, BlockSodium, BlockMossystone, BlockTheDeathHead, BlockTea, BlockOnlineJukebox;
 
 	// Blocks Initialization
 	public static void initBlock()
@@ -34,6 +34,7 @@ public class NanotechBlock
 		BlockMossystone = new BlockBase(Nanotech_mod.BlockMossyStoneID, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("mossystone").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B).setTextureName("nanotech_mod:mossystone");
 		BlockTheDeathHead = new BlockTheDeathHead(Nanotech_mod.BlockTheDeathHeadID).setHardness(5.0F).setResistance(10.0F).setUnlocalizedName("theDeathHead").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockTea = new BlockTea(Nanotech_mod.BlockTeaID).setUnlocalizedName("blockTea");
+		BlockOnlineJukebox = new BlockOnlineJukebox(Nanotech_mod.BlockOnlineJukeboxID, Material.iron).setUnlocalizedName("OnlineJukebox").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 	}
 
 	// Blocks registry
@@ -60,5 +61,6 @@ public class NanotechBlock
 		GameRegistry.registerBlock(BlockMossystone, "BlockMossyStone");
 		GameRegistry.registerBlock(BlockTheDeathHead, "BlockTheDeathHead");
 		GameRegistry.registerBlock(BlockTea, "blockTea");
+		GameRegistry.registerBlock(BlockOnlineJukebox, "OnlineJukebox");
 	}
 }
