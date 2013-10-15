@@ -20,7 +20,7 @@ public class TileEntityListerJukebox extends TileEntity
 			System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
 			String str = music.replace(".ogg", "");
 			System.out.println(str);
-			this.worldObj.playRecord(str, xCoord, yCoord, zCoord);
+			this.worldObj.playRecord("nanotech_mod:" + str, xCoord, yCoord, zCoord);
 		}
 	}
 	

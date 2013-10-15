@@ -24,10 +24,10 @@ class GuiSlotMusic extends GuiSlot
     private final Map field_77253_h;
     final GuiListerJukebox listerGui;
     
-    public GuiSlotMusic(GuiListerJukebox par1GuiLanguage)
+    public GuiSlotMusic(GuiListerJukebox guiLister)
     {
-        super(par1GuiLanguage.getMc(), par1GuiLanguage.width, par1GuiLanguage.height, 32, par1GuiLanguage.height - 65 + 4, 18);
-        this.listerGui = par1GuiLanguage;
+        super(guiLister.getMc(), guiLister.width, guiLister.height, 32, guiLister.height - 65 + 4, 18);
+        this.listerGui = guiLister;
         this.field_77251_g = Lists.newArrayList();
         this.field_77253_h = Maps.newHashMap();
         

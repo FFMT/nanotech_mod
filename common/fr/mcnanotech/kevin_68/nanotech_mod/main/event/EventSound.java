@@ -35,10 +35,9 @@ public class EventSound
 	        
 	        for (int i = 0; i != fl.length; i++)
 	        {
-	        	System.out.println(fl[i].getName().replace(".\\assets\\nanotech_mod\\records\\", ""));
-	        	event.manager.addStreaming("nanotech_mod:" + fl[i].getName().replace(".\\assets\\nanotech_mod\\records\\", ""));
+	        	String soundName = fl[i].getName();
+	        	event.manager.addStreaming("nanotech_mod:" + soundName);
 	        }
-
 		}
 		catch(Exception e)
 		{
