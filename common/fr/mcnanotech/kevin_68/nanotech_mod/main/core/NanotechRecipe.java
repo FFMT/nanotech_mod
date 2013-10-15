@@ -41,6 +41,7 @@ public class NanotechRecipe
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.ItemBase, 1, 10), new Object[] {"WXW", "XCX", "WXW", 'W', Item.ingotGold, 'X', Block.pressurePlateStone, 'C', new ItemStack(NanotechItem.ItemBase, 1, 8)});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.ItemBase, 1, 11), new Object[] {"XWX", "WCW", "XWX", 'X', Block.stone, 'W', Item.redstone, 'C', new ItemStack(NanotechItem.ItemBase, 1, 8)});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.ItemBase, 1, 12), new Object[] {"XYX", "VCV", "XNX", 'X', new ItemStack(NanotechItem.ItemBase, 1, 13), 'Y', new ItemStack(NanotechItem.ItemBase, 1, 9), 'V', new ItemStack(NanotechItem.ItemBase, 1, 10), 'N', new ItemStack(NanotechItem.ItemBase, 1, 11)});
+		GameRegistry.addRecipe(new ItemStack(NanotechItem.ItemBase, 1, 16), new Object[] {"XDX", "DFD", "XDX", 'X', Item.flintAndSteel, 'D', Item.diamond, 'F', NanotechBlock.BlockPortalFrame});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitehelmet, 1), new Object[] {"XXX", "X X", 'X', new ItemStack(NanotechItem.ItemBase, 1, 14)});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomitechestplate, 1), new Object[] {"X X", "XXX", "XXX", 'X', new ItemStack(NanotechItem.ItemBase, 1, 14)});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanomiteleggings, 1), new Object[] {"XXX", "X X", "X X", 'X', new ItemStack(NanotechItem.ItemBase, 1, 14)});

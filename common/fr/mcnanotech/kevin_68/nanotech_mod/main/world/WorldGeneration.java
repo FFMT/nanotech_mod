@@ -17,7 +17,7 @@ public class WorldGeneration implements IWorldGenerator
 	{
 		if(world.provider.dimensionId == Nanotech_mod.dimensionID)
 		{
-			if(random.nextInt(8) < 2)
+			for(int i = 0; i < 4; i++)
 			{
 				(new WorldGenMinable(NanotechBlock.BlockNanoOre.blockID, 0, 10, Block.stone.blockID)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}

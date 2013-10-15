@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechTeleporter;
 
 public class BlockNanoPortal extends Block
 {
@@ -113,19 +114,41 @@ public class BlockNanoPortal extends Block
 			{
 				if(entity instanceof EntityPlayerMP)
 				{
-					EntityPlayerMP thePlayer = (EntityPlayerMP)entity;
-					thePlayer.timeUntilPortal = 10;
+					EntityPlayerMP player = (EntityPlayerMP)entity;
+					if(player.timeUntilPortal > 0)
+					{
+						player.timeUntilPortal = 10;
+					}
+					else
+					{
+						player.timeUntilPortal = 10;
+						player.mcServer.getConfigurationManager().transferPlayerToDimension(player, Nanotech_mod.dimensionID, new NanotechTeleporter(player.mcServer.worldServerForDimension(Nanotech_mod.dimensionID)));
+					}
 				}
-				entity.travelToDimension(Nanotech_mod.dimensionID);
+				else
+				{
+					entity.travelToDimension(Nanotech_mod.dimensionID);
+				}
 			}
 			else
 			{
 				if(entity instanceof EntityPlayerMP)
 				{
-					EntityPlayerMP thePlayer = (EntityPlayerMP)entity;
-					thePlayer.timeUntilPortal = 10;
+					EntityPlayerMP player = (EntityPlayerMP)entity;
+					if(player.timeUntilPortal > 0)
+					{
+						player.timeUntilPortal = 10;
+					}
+					else
+					{
+						player.timeUntilPortal = 10;
+						player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, new NanotechTeleporter(player.mcServer.worldServerForDimension(0)));
+					}
 				}
-				entity.travelToDimension(0);
+				else
+				{
+					entity.travelToDimension(0);
+				}
 			}
 		}
 	}
