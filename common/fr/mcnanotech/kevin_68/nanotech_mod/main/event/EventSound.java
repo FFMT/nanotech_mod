@@ -1,5 +1,8 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.event;
 
+import java.io.File;
+
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
@@ -22,6 +25,19 @@ public class EventSound
 			{
 				event.manager.addStreaming("nanotech_mod:YourSound" + i + ".ogg");
 			}
+			
+	        File di = new File(Minecraft.getMinecraft().mcDataDir, "/assets/nanotech_mod/records/");
+	        if (!di.exists())
+	        {
+	        	di.mkdirs();
+	        }
+	        File fl[] = di.listFiles();
+	        
+	        for (int i = 0; i != fl.length; i++)
+	        {
+	        	System.out.println(fl[i].getName().replace(".\\assets\\nanotech_mod\\records\\", ""));
+	        	event.manager.addStreaming("nanotech_mod:" + fl[i].getName().replace(".\\assets\\nanotech_mod\\records\\", ""));
+	        }
 
 		}
 		catch(Exception e)

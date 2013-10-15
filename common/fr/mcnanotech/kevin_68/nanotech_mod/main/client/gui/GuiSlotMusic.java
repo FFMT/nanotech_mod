@@ -22,7 +22,6 @@ class GuiSlotMusic extends GuiSlot
 {
     private final List field_77251_g;
     private final Map field_77253_h;
-
     final GuiListerJukebox listerGui;
     
     public GuiSlotMusic(GuiListerJukebox par1GuiLanguage)
@@ -32,7 +31,7 @@ class GuiSlotMusic extends GuiSlot
         this.field_77251_g = Lists.newArrayList();
         this.field_77253_h = Maps.newHashMap();
         
-        File di = new File(this.listerGui.getMc().mcDataDir + "/assets/records/");
+        File di = new File(this.listerGui.getMc().mcDataDir + "/assets/nanotech_mod/records/");
         File fl[] = di.listFiles();
         
         for (int i = 0; i != fl.length; i++)
@@ -44,28 +43,19 @@ class GuiSlotMusic extends GuiSlot
         
     }
 
-    /**
-     * Gets the size of the current slot list.
-     */
     protected int getSize()
     {
         return this.field_77251_g.size();
     }
 
-    /**
-     * the element in the slot that was clicked, boolean for wether it was double clicked or not
-     */
     protected void elementClicked(int par1, boolean par2)
     {
-        File di = new File(this.listerGui.getMc().mcDataDir + "/assets/records/");
+        File di = new File(this.listerGui.getMc().mcDataDir + "/assets/nanotech_mod/records/");
         File fl[] = di.listFiles();
     	System.out.println(fl[par1]);
     	this.listerGui.getTile().playMusic(fl[par1].getName());
     }
 
-    /**
-     * return the height of the content being scrolled
-     */
     protected int getContentHeight()
     {
         return this.getSize() * 18;
@@ -79,7 +69,7 @@ class GuiSlotMusic extends GuiSlot
     protected void drawSlot(int par1, int par2, int par3, int par4, Tessellator par5Tessellator)
     {
         this.listerGui.getFont().setBidiFlag(true);
-        this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.field_77253_h.get(this.field_77251_g.get(par1))).toString(), this.listerGui.width / 2, par3 + 1, 16777215);
+        this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.field_77253_h.get(this.field_77251_g.get(par1))).toString().replace(".ogg", "").replace(".\\assets\\nanotech_mod\\records\\", ""), this.listerGui.width / 2, par3 + 1, 16777215);
     }
 
 	@Override

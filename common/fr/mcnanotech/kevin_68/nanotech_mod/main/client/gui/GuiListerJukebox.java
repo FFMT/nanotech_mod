@@ -17,10 +17,9 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityListerJukeb
 @SideOnly(Side.CLIENT)
 public class GuiListerJukebox extends GuiScreen
 {
-    /** This GUI's language list. */
+
     private GuiSlotMusic languageList;
     public TileEntityListerJukebox tile;
-    /** This GUI's 'Done' button. */
     private GuiSmallButton doneButton;
 
     public GuiListerJukebox(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world)
