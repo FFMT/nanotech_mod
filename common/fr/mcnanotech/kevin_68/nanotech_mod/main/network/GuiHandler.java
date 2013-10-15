@@ -4,17 +4,17 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
-import fr.mcnanotech.kevin_68.nanotech_mod.city.container.ContainerOnlineJukebox;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiJumper;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiListerJukebox;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiMultiplier;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiOnlineJukebox;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiSmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerJumper;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerListerJukebox;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityListerJukebox;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityOnlineJukebox;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 
 public class GuiHandler implements IGuiHandler
@@ -35,9 +35,9 @@ public class GuiHandler implements IGuiHandler
 		{
 			return new ContainerMultiplier((TileEntityMultiplier)tileentity, player.inventory, world);
 		}
-		if(tileentity instanceof TileEntityOnlineJukebox)
+		if(tileentity instanceof TileEntityListerJukebox)
 		{
-			return new ContainerOnlineJukebox((TileEntityOnlineJukebox)tileentity, player.inventory, world);
+			return new ContainerListerJukebox((TileEntityListerJukebox)tileentity, player.inventory, world);
 		}
 
 		return null;
@@ -60,9 +60,9 @@ public class GuiHandler implements IGuiHandler
 		{
 			return new GuiMultiplier(player.inventory, (TileEntityMultiplier)tileentity, world);
 		}
-		if(tileentity instanceof TileEntityOnlineJukebox)
+		if(tileentity instanceof TileEntityListerJukebox)
 		{
-			return new GuiOnlineJukebox(player.inventory, (TileEntityOnlineJukebox)tileentity, world);
+			return new GuiListerJukebox(player.inventory, (TileEntityListerJukebox)tileentity, world);
 		}
 
 		return null;

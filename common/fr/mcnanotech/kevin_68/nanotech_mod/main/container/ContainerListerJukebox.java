@@ -1,28 +1,28 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.city.container;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityOnlineJukebox;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityListerJukebox;
 
-public class ContainerOnlineJukebox extends Container
+public class ContainerListerJukebox extends Container
 {
-	protected TileEntityOnlineJukebox tileOnlineJukebox;
+	protected TileEntityListerJukebox tileListerJukebox;
 	private World worldObj;
 
-	public ContainerOnlineJukebox(TileEntityOnlineJukebox tileEntity, InventoryPlayer inventoryPlayer, World world)
+	public ContainerListerJukebox(TileEntityListerJukebox tileEntity, InventoryPlayer inventoryPlayer, World world)
 	{
 		this.worldObj = world;
-		this.tileOnlineJukebox = tileEntity;
+		this.tileListerJukebox = tileEntity;
 		bindPlayerInventory(inventoryPlayer);
 	}
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player)
 	{
-		return tileOnlineJukebox.isUseableByPlayer(player);
+		return tileListerJukebox.isUseableByPlayer(player);
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer)
@@ -34,8 +34,8 @@ public class ContainerOnlineJukebox extends Container
 		}
 	}
 
-	public TileEntityOnlineJukebox getFountain()
+	public TileEntityListerJukebox getFountain()
 	{
-		return tileOnlineJukebox;
+		return tileListerJukebox;
 	}
 }

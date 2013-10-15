@@ -1,6 +1,5 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.items;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -8,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
 
 public class ItemAlters extends Item
 {

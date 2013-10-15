@@ -6,11 +6,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityOnlineJukebox;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityListerJukebox;
 
-public class BlockOnlineJukebox extends BlockContainer
+public class BlockListerJukebox extends BlockContainer
 {
-	public BlockOnlineJukebox(int par1, Material par2Material)
+	public BlockListerJukebox(int par1, Material par2Material)
 	{
 		super(par1, par2Material);
 	}
@@ -18,7 +18,7 @@ public class BlockOnlineJukebox extends BlockContainer
 	@Override
 	public TileEntity createNewTileEntity(World world)
 	{
-		return new TileEntityOnlineJukebox();
+		return new TileEntityListerJukebox();
 	}
 	
 	@Override
