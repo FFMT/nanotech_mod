@@ -61,7 +61,6 @@ public class WorldGeneration implements IWorldGenerator
 			{
 				worldgen4.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}
-		
 		}
 	}
 }
