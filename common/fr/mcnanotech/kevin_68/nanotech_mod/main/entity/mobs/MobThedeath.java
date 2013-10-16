@@ -117,7 +117,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 			if(entity != null)
 			{
-				if(this.posY < entity.posY || !this.isArmored() && this.posY < entity.posY + 5.0D)
+				if(this.posY < entity.posY && this.posY < entity.posY + 5.0D)
 				{
 					if(this.motionY < 0.0D)
 					{
@@ -187,7 +187,6 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 			}
 		}
 
-		boolean flag = this.isArmored();
 
 		for(j = 0; j < 3; ++j)
 		{
@@ -195,11 +194,6 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 			double d9 = this.func_82208_v(j);
 			double d10 = this.func_82213_w(j);
 			this.worldObj.spawnParticle("smoke", d8 + this.rand.nextGaussian() * 0.30000001192092896D, d9 + this.rand.nextGaussian() * 0.30000001192092896D, d10 + this.rand.nextGaussian() * 0.30000001192092896D, 0.0D, 0.0D, 0.0D);
-
-			if(flag && this.worldObj.rand.nextInt(4) == 0)
-			{
-				this.worldObj.spawnParticle("mobSpell", d8 + this.rand.nextGaussian() * 0.30000001192092896D, d9 + this.rand.nextGaussian() * 0.30000001192092896D, d10 + this.rand.nextGaussian() * 0.30000001192092896D, 0.699999988079071D, 0.699999988079071D, 0.5D);
-			}
 		}
 
 		if(this.func_82212_n() > 0)
@@ -551,17 +545,6 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		else
 		{
 			Entity entity;
-
-			if(this.isArmored())
-			{
-				entity = par1DamageSource.getSourceOfDamage();
-
-				if(entity instanceof EntityArrow)
-				{
-					return false;
-				}
-			}
-
 			entity = par1DamageSource.getEntity();
 
 			if(entity != null && !(entity instanceof EntityPlayer) && entity instanceof EntityLivingBase && ((EntityLivingBase)entity).getCreatureAttribute() == this.getCreatureAttribute())
@@ -658,11 +641,6 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	public void func_82211_c(int par1, int par2)
 	{
 		this.dataWatcher.updateObject(17 + par1, Integer.valueOf(par2));
-	}
-
-	public boolean isArmored()
-	{
-		return this.getHealth() <= this.getMaxHealth() / 2.0F;
 	}
 
 	public EnumCreatureAttribute getCreatureAttribute()
