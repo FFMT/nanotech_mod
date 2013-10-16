@@ -34,6 +34,7 @@ tile.sodium.name=Block of Sodium
 tile.mossystone.name=Mossy Stone
 tile.theDeathHead.name=The Death Head
 tile.blockTea.name=BlockTea
+tile.ListerJukebox.name=Lister Jukebox
 
 #Items
 item.siliconore.name=Silicon Ore

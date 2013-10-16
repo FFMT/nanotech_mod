@@ -34,7 +34,7 @@ public class NanotechBlock
 		BlockMossystone = new BlockBase(Nanotech_mod.BlockMossyStoneID, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("mossystone").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B).setTextureName("nanotech_mod:mossystone");
 		BlockTheDeathHead = new BlockTheDeathHead(Nanotech_mod.BlockTheDeathHeadID).setHardness(5.0F).setResistance(10.0F).setUnlocalizedName("theDeathHead").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockTea = new BlockTea(Nanotech_mod.BlockTeaID).setUnlocalizedName("blockTea");
-		BlockListerJukebox = new BlockListerJukebox(Nanotech_mod.BlockListerJukeboxID, Material.iron).setUnlocalizedName("ListerJukebox").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
+		BlockListerJukebox = new BlockListerJukebox(Nanotech_mod.BlockListerJukeboxID, Material.iron).setUnlocalizedName("ListerJukebox").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B).setTextureName("nanotech_mod:listerjukebox");
 	}
 
 	// Blocks registry

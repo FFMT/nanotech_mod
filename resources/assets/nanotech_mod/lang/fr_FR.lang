@@ -35,6 +35,7 @@ tile.mossystone.name=Roche moussue
 tile.theDeathHead.name=Tête de la Mort
 tile.blockTrail.name=Chemin
 tile.blockTea.name=BlockTea
+tile.ListerJukebox.name=Jukebox Listeur
 
 #Items
 item.siliconore.name=Minerai de silicium
