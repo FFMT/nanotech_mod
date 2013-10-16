@@ -8,13 +8,11 @@ import net.minecraft.potion.Potion;
 import net.minecraftforge.common.EnumHelper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.UtilDiskInfo;
 
 public class NanotechItem
 {
 	// Items statement
-	public static Item ItemBase, Superbottleofxp, Diamondbow, Emeraldbow, Nanomitebow, Nanomiteaxe, Nanomitepickaxe, Nanomiteshovel, Nanomitehoe, Nanomitesword, Nanomitehelmet, Nanomitechestplate, Nanomiteleggings, Nanomiteboots, Mysterioushelmet, Mysteriouschestplate, Mysteriousleggings, Mysteriousboots, Nanodisc, Yourmusicdisc, Yourmusicdisc2, Yourmusicdisc3, Yourmusicdisc4, Yourmusicdisc5,
-			Yourmusicdisc6, Yourmusicdisc7, Yourmusicdisc8, Yourmusicdisc9, Yourmusicdisc10, Yourmusicdisc11, Yourmusicdisc12, Yourmusicdisc13, Yourmusicdisc14, Yourmusicdisc15, Yourmusicdisc16, Edibleflesh, Rottenchunk, scythe, crazyGlasses, teaSeed, tea, debug, alters;
+	public static Item ItemBase, Superbottleofxp, Diamondbow, Emeraldbow, Nanomitebow, Nanomiteaxe, Nanomitepickaxe, Nanomiteshovel, Nanomitehoe, Nanomitesword, Nanomitehelmet, Nanomitechestplate, Nanomiteleggings, Nanomiteboots, Mysterioushelmet, Mysteriouschestplate, Mysteriousleggings, Mysteriousboots, Nanodisc, Edibleflesh, Rottenchunk, scythe, crazyGlasses, teaSeed, tea, debug, alters;
 
 	// Enum tools and armor material
 	public static EnumArmorMaterial EnumArmorMaterialMysterious = EnumHelper.addArmorMaterial("Mysterious", 50, new int[] {6, 6, 6, 6}, 15);
@@ -45,22 +43,6 @@ public class NanotechItem
 		Mysteriousleggings = new ItemMysteriousArmor(Nanotech_mod.ItemMysteriousLegginsID, EnumArmorMaterialMysterious, 1, 2).setUnlocalizedName("mysteriousLeggings").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		Mysteriousboots = new ItemMysteriousArmor(Nanotech_mod.ItemMysteriousBootsID, EnumArmorMaterialMysterious, 1, 3).setUnlocalizedName("mysteriousBoots").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		Nanodisc = new ItemDisk(Nanotech_mod.ItemNanoDiscID, "nanotech_mod:nanodisk", "JedBorg - Surprise", "nanodisk").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 1, "nanotech_mod:YourSound1", UtilDiskInfo.cdInfo[0], "disk1").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc2 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 2, "nanotech_mod:YourSound2", UtilDiskInfo.cdInfo[1], "disk2").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc3 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 3, "nanotech_mod:YourSound3", UtilDiskInfo.cdInfo[2], "disk3").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc4 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 4, "nanotech_mod:YourSound4", UtilDiskInfo.cdInfo[3], "disk4").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc5 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 5, "nanotech_mod:YourSound5", UtilDiskInfo.cdInfo[4], "disk5").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc6 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 6, "nanotech_mod:YourSound6", UtilDiskInfo.cdInfo[5], "disk6").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc7 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 7, "nanotech_mod:YourSound7", UtilDiskInfo.cdInfo[6], "disk7").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc8 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 8, "nanotech_mod:YourSound8", UtilDiskInfo.cdInfo[7], "disk8").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc9 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 9, "nanotech_mod:YourSound9", UtilDiskInfo.cdInfo[8], "disk9").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc10 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 10, "nanotech_mod:YourSound10", UtilDiskInfo.cdInfo[9], "disk10").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc11 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 11, "nanotech_mod:YourSound11", UtilDiskInfo.cdInfo[10], "disk11").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc12 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 12, "nanotech_mod:YourSound12", UtilDiskInfo.cdInfo[11], "disk12").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc13 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 13, "nanotech_mod:YourSound13", UtilDiskInfo.cdInfo[12], "disk13").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc14 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 14, "nanotech_mod:YourSound14", UtilDiskInfo.cdInfo[13], "disk12").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc15 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 15, "nanotech_mod:YourSound15", UtilDiskInfo.cdInfo[14], "disk15").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		Yourmusicdisc16 = new ItemDisk(Nanotech_mod.ItemNanoDiscID + 16, "nanotech_mod:YourSound16", UtilDiskInfo.cdInfo[15], "disk16").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		Edibleflesh = new ItemNanoFood(Nanotech_mod.ItemEdibleFleshID, 3, 0.6F, true).setUnlocalizedName("edibleFlesh").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		Rottenchunk = new ItemNanoFood(Nanotech_mod.ItemRottenChunkID, 1, 0.6F, true, Potion.hunger.id, 120, 0, 1.0F).setUnlocalizedName("rottenChunk").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		scythe = new ItemScythe(Nanotech_mod.ItemScytheID, EnumToolMaterialScythe).setUnlocalizedName("scythe").setFull3D().setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);

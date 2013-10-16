@@ -39,7 +39,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.AltersTickHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.CraftingHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.CrazyGlassesTickHandler;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.UtilDiskInfo;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechBiome;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGeneration;
@@ -124,7 +123,6 @@ public class Nanotech_mod
 		if(event.getSide().isClient())
 		{
 			MinecraftForge.EVENT_BUS.register(new EventSound());
-			UtilDiskInfo.readInfo();
 		}
 
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());

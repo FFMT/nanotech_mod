@@ -263,7 +263,7 @@ public class WorldModel4 extends WorldGenerator
 		world.setBlock(i + 4, j + 0, k + 1, Block.cobblestone.blockID);
 		world.setBlock(i + 4, j + 0, k + 2, Block.cobblestone.blockID);
 		world.setBlock(i + 4, j + 0, k + 3, Block.cobblestone.blockID);
-		world.setBlock(i + 4, j + 0, k + 4, -8);
+		world.setBlock(i + 4, j + 0, k + 4, NanotechBlock.BlockSodium.blockID);
 		world.setBlock(i + 4, j + 0, k + 5, Block.cobblestone.blockID);
 		world.setBlock(i + 4, j + 0, k + 6, Block.cobblestone.blockID);
 		world.setBlock(i + 4, j + 1, k + 0, Block.wood.blockID);

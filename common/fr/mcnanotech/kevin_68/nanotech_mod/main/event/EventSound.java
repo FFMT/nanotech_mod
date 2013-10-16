@@ -21,21 +21,32 @@ public class EventSound
 			event.manager.addSound("nanotech_mod:fly.ogg");
 			event.manager.addSound("nanotech_mod:CrazyGuy.ogg");
 			event.manager.addStreaming("nanotech_mod:nanodisk.ogg");
-			for(int i = 1; i < 17; i++)
-			{
-				event.manager.addStreaming("nanotech_mod:YourSound" + i + ".ogg");
-			}
 			
 	        File di = new File(Minecraft.getMinecraft().mcDataDir, "/assets/records/");
 	        if (!di.exists())
 	        {
 	        	di.mkdirs();
 	        }
+	        
 	        File fl[] = di.listFiles();
 	        
 	        for (int i = 0; i != fl.length; i++)
 	        {
 	        	String soundName = fl[i].getName();
+		        boolean isVanillaSound = 
+		        		soundName.equals("11.ogg") ||
+		        		soundName.equals("13.ogg") ||
+		        		soundName.equals("blocks.ogg") ||
+		        		soundName.equals("cat.ogg") ||
+		        		soundName.equals("chirp.ogg") ||
+		        		soundName.equals("far.ogg") ||
+		        		soundName.equals("mall.ogg") ||
+		        		soundName.equals("mellohi.ogg") ||
+		        		soundName.equals("stal.ogg") ||
+		        		soundName.equals("strad.ogg") ||
+		        		soundName.equals("wait.ogg") ||
+		        		soundName.equals("ward.ogg");
+		        if(!isVanillaSound)
 	        	event.manager.addStreaming(soundName);
 	        }
 		}

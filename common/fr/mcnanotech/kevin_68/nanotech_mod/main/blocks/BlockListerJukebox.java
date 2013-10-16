@@ -31,9 +31,9 @@ public class BlockListerJukebox extends BlockContainer
 			return false;
 		}
 
+		if(!world.isRemote)
 		player.openGui(Nanotech_mod.modInstance, 3, world, x, y, z);
 
 		return true;
 	}
-
 }

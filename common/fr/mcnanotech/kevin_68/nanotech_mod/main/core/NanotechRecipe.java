@@ -15,22 +15,6 @@ public class NanotechRecipe
 	{
 		// disk
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.Nanodisc, 1), new Object[] {"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.diamond)});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Yourmusicdisc, 1), new Object[] {"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 0)});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Yourmusicdisc2, 1), new Object[] {"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 1)});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Yourmusicdisc3, 1), new Object[] {"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 2)});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Yourmusicdisc4, 1), new Object[] {"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 3)});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Yourmusicdisc5, 1), new Object[] {"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 4)});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Yourmusicdisc6, 1), new Object[] {"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 5)});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Yourmusicdisc7, 1), new Object[] {"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 6)});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Yourmusicdisc8, 1), new Object[] {"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 7)});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Yourmusicdisc9, 1), new Object[] {"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 8)});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Yourmusicdisc10, 1), new Object[] {"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 9)});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Yourmusicdisc11, 1), new Object[] {"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 10)});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Yourmusicdisc12, 1), new Object[] {"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 11)});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Yourmusicdisc13, 1), new Object[] {"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 12)});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Yourmusicdisc14, 1), new Object[] {"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 13)});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Yourmusicdisc15, 1), new Object[] {"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 14)});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.Yourmusicdisc16, 1), new Object[] {"WZW", "ZXZ", "WZW", 'X', Block.obsidian, 'Z', Item.paper, 'W', new ItemStack(Item.dyePowder, 1, 15)});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechBlock.BlockNanoplanks, 4), new Object[] {NanotechBlock.BlockNanowood});
 
 		// items
