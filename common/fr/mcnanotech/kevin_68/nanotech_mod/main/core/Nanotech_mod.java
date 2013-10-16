@@ -36,9 +36,8 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityListerJukebox;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.AltersTickHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.CraftingHandler;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.CrazyGlassesTickHandler;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.TickHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechBiome;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGeneration;
@@ -55,11 +54,11 @@ public class Nanotech_mod
 	public static CommonProxy proxy;
 
 	// Block IDs
-	public static int BlockPortalID, BlockPortalFrameID, BlockGrassID, BlockFakeOreID, BlockSpeedID, BlockJumperID, BlockMultiplierID, BlockSmokerID, BlockBarbedWireID, BlockNanoWoodID, BlockNanoLeavesID, BlockNanoSaplingsID, BlockNanoPlanksID, BlockNanoOreID, BlockConfusionID, BlockFallingID, BlockNotFallingID, BlockSodiumID, BlockMossyStoneID, BlockTheDeathHeadID, BlockTeaID, BlockListerJukeboxID;
+	public static int BlockPortalID, BlockPortalFrameID, BlockGrassID, BlockFakeOreID, BlockSpeedID, BlockJumperID, BlockMultiplierID, BlockSmokerID, BlockBarbedWireID, BlockNanoWoodID, BlockNanoLeavesID, BlockNanoSaplingsID, BlockNanoPlanksID, BlockNanoOreID, BlockConfusionID, BlockFallingID, BlockNotFallingID, BlockSodiumID, BlockMossyStoneID, BlockTheDeathHeadID, BlockListerJukeboxID;
 
 	// Item IDs
 	public static int ItemNanotechID, ItemSuperBottleOfXpID, ItemDiamondBowID, ItemEmeraldBowID, ItemNanomiteBowID, ItemNanomiteAxeID, ItemNanomitePickaxeID, ItemNanomiteShovelID, ItemNanomiteHoeID, ItemNanomiteSwordID, ItemNanomiteHelmetID, ItemNanomiteChestPlateID, ItemNanomiteLegginsID, ItemNanomiteBootsID, ItemMysteriousHelmetID, ItemMysteriousChestPlateID, ItemMysteriousLegginsID,
-			ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemScytheID, ItemCrazyGlassesID, TeaSeedID, TeaID, DebugID, AltersID;
+			ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemScytheID, ItemCrazyGlassesID, DebugID, AltersID;
 
 	// Dimension ID
 	public static int dimensionID;
@@ -149,7 +148,6 @@ public class Nanotech_mod
 			BlockSodiumID = cfg.getBlock("Sodium", 1016).getInt();
 			BlockMossyStoneID = cfg.getBlock("Mossy Stone", 1017).getInt();
 			BlockTheDeathHeadID = cfg.getBlock("TheDeathHead", 1018).getInt();
-			BlockTeaID = cfg.getBlock("Tea", 1019).getInt();
 			BlockListerJukeboxID = cfg.getBlock("ListerJukebox", 1020).getInt();
 			
 			ItemNanotechID = cfg.getItem("Main Nanotech ID", 5000).getInt();
@@ -175,8 +173,6 @@ public class Nanotech_mod
 			ItemRottenChunkID = cfg.getItem("Chunk of rottenflesh", 5019).getInt();
 			ItemScytheID = cfg.getItem("Scythe", 5020).getInt();
 			ItemCrazyGlassesID = cfg.getItem("CrazyGlasses", 5021).getInt();
-			TeaSeedID = cfg.getItem("TeaSeed", 5022).getInt();
-			TeaID = cfg.getItem("Tea", 5023).getInt();
 			DebugID = cfg.getItem("Debug Item", 5024).getInt();
 			AltersID = cfg.getItem("Alters", 5025).getInt();
 			
@@ -269,8 +265,7 @@ public class Nanotech_mod
 		GameRegistry.registerPlayerTracker(new PlayerTracker());
 		GameRegistry.registerCraftingHandler(new CraftingHandler());
 
-		TickRegistry.registerTickHandler(new CrazyGlassesTickHandler(), Side.SERVER);
-		TickRegistry.registerTickHandler(new AltersTickHandler(), Side.SERVER);
+		TickRegistry.registerTickHandler(new TickHandler(), Side.SERVER);
 	}
 
 	@EventHandler

@@ -12,7 +12,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 public class NanotechItem
 {
 	// Items statement
-	public static Item ItemBase, Superbottleofxp, Diamondbow, Emeraldbow, Nanomitebow, Nanomiteaxe, Nanomitepickaxe, Nanomiteshovel, Nanomitehoe, Nanomitesword, Nanomitehelmet, Nanomitechestplate, Nanomiteleggings, Nanomiteboots, Mysterioushelmet, Mysteriouschestplate, Mysteriousleggings, Mysteriousboots, Nanodisc, Edibleflesh, Rottenchunk, scythe, crazyGlasses, teaSeed, tea, debug, alters;
+	public static Item ItemBase, Superbottleofxp, Diamondbow, Emeraldbow, Nanomitebow, Nanomiteaxe, Nanomitepickaxe, Nanomiteshovel, Nanomitehoe, Nanomitesword, Nanomitehelmet, Nanomitechestplate, Nanomiteleggings, Nanomiteboots, Mysterioushelmet, Mysteriouschestplate, Mysteriousleggings, Mysteriousboots, Nanodisc, Edibleflesh, Rottenchunk, scythe, crazyGlasses, debug, alters;
 
 	// Enum tools and armor material
 	public static EnumArmorMaterial EnumArmorMaterialMysterious = EnumHelper.addArmorMaterial("Mysterious", 50, new int[] {6, 6, 6, 6}, 15);
@@ -47,8 +47,6 @@ public class NanotechItem
 		Rottenchunk = new ItemNanoFood(Nanotech_mod.ItemRottenChunkID, 1, 0.6F, true, Potion.hunger.id, 120, 0, 1.0F).setUnlocalizedName("rottenChunk").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		scythe = new ItemScythe(Nanotech_mod.ItemScytheID, EnumToolMaterialScythe).setUnlocalizedName("scythe").setFull3D().setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		crazyGlasses = new ItemCrazyGlasses(Nanotech_mod.ItemCrazyGlassesID, EnumArmorMaterialCrazyGlasses, 1, 0).setUnlocalizedName("crazyGlasses").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		teaSeed = new ItemTeaSeed(Nanotech_mod.TeaSeedID, NanotechBlock.BlockTea.blockID, Block.tilledField.blockID).setUnlocalizedName("teaSeed").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		tea = new ItemTea(Nanotech_mod.TeaID).setUnlocalizedName("tea").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		debug = new ItemDebug(Nanotech_mod.DebugID).setUnlocalizedName("debug").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		alters = new ItemAlters(Nanotech_mod.AltersID).setUnlocalizedName("alters").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 	}

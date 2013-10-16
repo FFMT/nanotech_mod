@@ -6,9 +6,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechAchievement;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
-public class CrazyGlassesTickHandler implements ITickHandler
+public class TickHandler implements ITickHandler
 {
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData)
