@@ -57,13 +57,6 @@ public class NanotechChunkProvider implements IChunkProvider
 	private double[] stoneNoise = new double[256];
 	private MapGenBase caveGenerator = new MapGenCaves();
 
-	// World gen
-	private WorldGenNanoTree worldgentree = new WorldGenNanoTree(false);
-	private WorldModel1 worldgen1 = new WorldModel1();
-	private WorldModel2 worldgen2 = new WorldModel2();
-	private WorldModel3 worldgen3 = new WorldModel3();
-	private WorldModel4 worldgen4 = new WorldModel4();
-
 	private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
 	private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
 	private MapGenBase ravineGenerator = new MapGenRavine();
@@ -586,32 +579,6 @@ public class NanotechChunkProvider implements IChunkProvider
 		{
 			this.mineshaftGenerator.generate(this, this.worldObj, chunkX, chunkZ, (byte[])null);
 			this.scatteredFeatureGenerator.generate(this, this.worldObj, chunkX, chunkZ, (byte[])null);
-		}
-
-		// world gen
-		if(rand.nextInt(4) < 2)
-		{
-			worldgentree.generate(this.worldObj, rand, chunkX * 16 + rand.nextInt(16), rand.nextInt(150), chunkZ * 16 + rand.nextInt(16));
-		}
-
-		if(rand.nextInt(32) < 2)
-		{
-			worldgen1.generate(this.worldObj, rand, chunkX * 16 + rand.nextInt(16), rand.nextInt(100), chunkZ * 16 + rand.nextInt(16));
-		}
-
-		if(rand.nextInt(64) < 2)
-		{
-			worldgen2.generate(this.worldObj, rand, chunkX * 16 + rand.nextInt(16), rand.nextInt(100), chunkZ * 16 + rand.nextInt(16));
-		}
-
-		if(rand.nextInt(32) < 2)
-		{
-			worldgen3.generate(this.worldObj, rand, chunkX * 16 + rand.nextInt(16), rand.nextInt(100), chunkZ * 16 + rand.nextInt(16));
-		}
-
-		if(rand.nextInt(32) < 2)
-		{
-			worldgen4.generate(this.worldObj, rand, chunkX * 16 + rand.nextInt(16), rand.nextInt(100), chunkZ * 16 + rand.nextInt(16));
 		}
 	}
 
