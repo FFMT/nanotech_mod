@@ -63,9 +63,6 @@ public class NanotechChunkProvider implements IChunkProvider
 	private WorldModel2 worldgen2 = new WorldModel2();
 	private WorldModel3 worldgen3 = new WorldModel3();
 	private WorldModel4 worldgen4 = new WorldModel4();
-	private WorldModel5 worldgen5 = new WorldModel5();
-	private WorldModel6 worldgen6 = new WorldModel6();
-	private WorldModel7 worldgen7 = new WorldModel7();
 
 	private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
 	private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
@@ -615,21 +612,6 @@ public class NanotechChunkProvider implements IChunkProvider
 		if(rand.nextInt(32) < 2)
 		{
 			worldgen4.generate(this.worldObj, rand, chunkX * 16 + rand.nextInt(16), rand.nextInt(100), chunkZ * 16 + rand.nextInt(16));
-		}
-
-		if(rand.nextInt(32) < 2)
-		{
-			worldgen5.generate(this.worldObj, rand, chunkX * 16 + rand.nextInt(16), rand.nextInt(100), chunkZ * 16 + rand.nextInt(16));
-		}
-
-		if(rand.nextInt(32) < 2)
-		{
-			worldgen6.generate(this.worldObj, rand, chunkX * 16 + rand.nextInt(16), rand.nextInt(100), chunkZ * 16 + rand.nextInt(16));
-		}
-
-		if(rand.nextInt(32) < 2)
-		{
-			worldgen7.generate(this.worldObj, rand, chunkX * 16 + rand.nextInt(16), rand.nextInt(100), chunkZ * 16 + rand.nextInt(16));
 		}
 	}
 
