@@ -1,8 +1,5 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity;
 
-import java.io.IOException;
-
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 
@@ -17,10 +14,8 @@ public class TileEntityListerJukebox extends TileEntity
 	{
 		if (music != null && music.contains(".ogg"))
 		{
-			System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
 			String str = music.replace(".ogg", "");
-			System.out.println(str);
-			this.worldObj.playRecord("nanotech_mod:" + str, xCoord, yCoord, zCoord);
+			this.worldObj.playRecord(str, xCoord, yCoord, zCoord);
 		}
 	}
 	

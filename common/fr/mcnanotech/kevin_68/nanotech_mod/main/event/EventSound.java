@@ -26,7 +26,7 @@ public class EventSound
 				event.manager.addStreaming("nanotech_mod:YourSound" + i + ".ogg");
 			}
 			
-	        File di = new File(Minecraft.getMinecraft().mcDataDir, "/assets/nanotech_mod/records/");
+	        File di = new File(Minecraft.getMinecraft().mcDataDir, "/assets/records/");
 	        if (!di.exists())
 	        {
 	        	di.mkdirs();
@@ -36,7 +36,7 @@ public class EventSound
 	        for (int i = 0; i != fl.length; i++)
 	        {
 	        	String soundName = fl[i].getName();
-	        	event.manager.addStreaming("nanotech_mod:" + soundName);
+	        	event.manager.addStreaming(soundName);
 	        }
 		}
 		catch(Exception e)
