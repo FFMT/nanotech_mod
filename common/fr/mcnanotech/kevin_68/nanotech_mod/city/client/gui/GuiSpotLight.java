@@ -15,7 +15,7 @@ import org.lwjgl.opengl.GL11;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.container.ContainerSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
-import fr.minecraftforgefrance.ffmtapi.FFMTColor;
+import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
 
 public class GuiSpotLight extends GuiContainer
 {

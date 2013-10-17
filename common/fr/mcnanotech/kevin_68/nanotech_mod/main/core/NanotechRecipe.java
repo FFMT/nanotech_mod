@@ -7,7 +7,7 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
-import fr.minecraftforgefrance.ffmtapi.FFMTRegistry;
+import fr.minecraftforgefrance.ffmtlibs.FFMTRegistry;
 
 public class NanotechRecipe
 {

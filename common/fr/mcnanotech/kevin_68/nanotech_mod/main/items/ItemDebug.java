@@ -14,7 +14,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySunShade;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
-import fr.minecraftforgefrance.ffmtapi.FFMTColor;
+import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
 
 public class ItemDebug extends Item
 {

@@ -17,6 +17,10 @@ public class TileEntityListerJukebox extends TileEntity
 			String str = music.replace(".ogg", "");
 			this.worldObj.playRecord(str, xCoord, yCoord, zCoord);
 		}
+		else if (music != null && music.equals("nanodisk"))
+		{
+			this.worldObj.playRecord("nanotech_mod:" + music, xCoord, yCoord, zCoord);
+		}
 	}
 	
 	public void stopMusic()
