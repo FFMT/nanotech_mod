@@ -168,13 +168,13 @@ public class Nanotech_mod
 			ItemMysteriousChestPlateID = cfg.getItem("Mysterious Chestplate", 5015).getInt();
 			ItemMysteriousLegginsID = cfg.getItem("Mysterious Leggins", 5016).getInt();
 			ItemMysteriousBootsID = cfg.getItem("Mysterious Boots", 5017).getInt();
-			ItemNanoDiscID = cfg.getItem("Nanodisk (warning he use 18 ID)", 5100).getInt();
 			ItemEdibleFleshID = cfg.getItem("Edible Flesh", 5018).getInt();
 			ItemRottenChunkID = cfg.getItem("Chunk of rottenflesh", 5019).getInt();
 			ItemScytheID = cfg.getItem("Scythe", 5020).getInt();
 			ItemCrazyGlassesID = cfg.getItem("CrazyGlasses", 5021).getInt();
 			DebugID = cfg.getItem("Debug Item", 5024).getInt();
 			AltersID = cfg.getItem("Alters", 5025).getInt();
+			ItemNanoDiscID = cfg.getItem("Nanodisk", 5026).getInt();
 			
 			dimensionID = cfg.get("World", "Dimension ID", 19).getInt();
 			nanotechBiomeID = cfg.get("World", "Biome ID", 100).getInt();

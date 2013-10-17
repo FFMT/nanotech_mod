@@ -152,6 +152,7 @@
                 <exclude name ="assets\nanotech_mod_city\**.db" /> 
             </fileset>
             <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\city\"/>
+            <fileset dir="${mcp.dir}\src\minecraft" includes="mcmod.info" />
         </jar>
     </target>
 
@@ -163,6 +164,7 @@
                 <exclude name ="assets\ultimategravisuite\**.db" />
             </fileset>
             <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\ultimateGraviSuite\"/>
+            <fileset dir="${mcp.dir}\src\minecraft" includes="mcmod.info" />
         </jar>
     </target>
 
