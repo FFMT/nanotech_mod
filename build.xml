@@ -54,6 +54,9 @@
                 <include name="fr\mcnanotech\kevin_68\nanotech_mod\main\"/>
                 <include name="fr\mcnanotech\kevin_68\nanotech_mod\city\"/>
             </fileset>
+            <fileset dir="resources\">
+                <include name="mcmod.info"/>
+            </fileset>
         </copy>
     </target>
 
@@ -75,7 +78,7 @@
     <!-- Download FFMT API-->
     <target name="download_ffmtapi" unless="ffmtapi-exists">
         <mkdir dir="libs/"/>
-        <get src="http://dl.mcnanotech.fr/FFMT/API/download/${buildprop.ffmtapi}" dest="libs/" usetimestamp="True"/>
+        <get src="http://dl.mcnanotech.fr/FFMT/libs/${buildprop.ffmtapi}" dest="libs/" usetimestamp="True"/>
     </target>
 
     <!-- Extract FFMT API into bin -->
@@ -102,11 +105,14 @@
         </propertyfile>
         <replace file="${mcp.dir}\src\minecraft\fr\mcnanotech\kevin_68\nanotech_mod\main\core\Nanotech_mod.java" token="@VERSION@" value="${buildprop.ntm_version}" />
         <replace file="${mcp.dir}\src\minecraft\fr\mcnanotech\kevin_68\nanotech_mod\city\core\Nanotech_mod_City.java" token="@VERSION@" value="${buildprop.ntm_version}" />
+        <replace file="${mcp.dir}\src\minecraft\mcmod.info" token="@VERSION@" value="${buildprop.ntm_version}" />
+        <replace file="${mcp.dir}\src\minecraft\mcmod.info" token="@MC_VERSION@" value="${buildprop.mc}" />
 
         <propertyfile file="build.properties">
             <entry key="ugs_version" type="string" default="error"/>
         </propertyfile>
         <replace file="${mcp.dir}\src\minecraft\fr\mcnanotech\kevin_68\nanotech_mod\ultimateGraviSuite\core\UltimateGraviSuite.java" token="@GRAVI_VERSION@" value="${buildprop.ugs_version}" />
+        <replace file="${mcp.dir}\src\minecraft\mcmod.info" token="@GRAVI_VERSION@" value="${buildprop.ugs_version}" />
     </target>
 
     <!-- Recompile -->
@@ -137,8 +143,8 @@
                 <include name ="assets\nanotech_mod\**" /> 
                 <exclude name ="assets\nanotech_mod\**.db" /> 
             </fileset>
-            <fileset dir="resources\" includes="mcmod.info" />
             <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\main\"/>
+            <fileset dir="${mcp.dir}\src\minecraft" includes="mcmod.info" />
         </jar>
         <jar destfile="releases\Nanotech_mod-city-universal-${buildprop.ntm_version}.${env.BUILD_NUMBER}-mc${buildprop.mc}.jar">
             <fileset dir="resources\">
