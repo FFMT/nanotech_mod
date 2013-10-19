@@ -47,7 +47,7 @@ public class WorldGeneration implements IWorldGenerator
 				worldgen1.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}
 
-			if(random.nextInt(64) < 2)
+			if(random.nextInt(32) < 2)
 			{
 				worldgen2.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}

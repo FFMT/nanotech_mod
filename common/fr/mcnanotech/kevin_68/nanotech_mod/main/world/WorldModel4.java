@@ -311,7 +311,7 @@ public class WorldModel4 extends WorldGenerator
 		world.setBlock(x + 5, y + 0, z + 3, Block.pistonBase.blockID, 3, 3);
 		world.setBlock(x + 5, y + 0, z + 4, Block.cobblestone.blockID);
 		world.setBlock(x + 5, y + 0, z + 5, Block.cobblestone.blockID);
-		world.setBlock(x + 5, y + 0, z + 6, Block.cobblestone.blockID);
+		world.setBlockToAir(x + 5, y + 0, z + 6);
 		world.setBlockToAir(x + 5, y + 1, z + 0);
 		world.setBlockToAir(x + 5, y + 1, z + 1);
 		world.setBlockToAir(x + 5, y + 1, z + 2);
