@@ -208,6 +208,12 @@ public class ClientPacketHelper
 		}
 		else
 		{
+			if(KeyboardClient.isModeFlyDown(player))
+			{
+				ClientProxy.sendMyPacket("keyFLY", 1);
+				ClientPacketHelper.switchFlyModeClient(player, stack);
+			}
+			
 			if(ClientTickHandler.isLastUndressed)
 			{
 				UltimateGraviChestPlate.saveFlyStatus(stack, false);
@@ -217,6 +223,7 @@ public class ClientPacketHelper
 			if(UltimateGraviChestPlate.readFlyStatus(stack) || UltimateGraviChestPlate.readInvisibilityStatus(stack))
 			{
 				int var4 = UltimateGraviChestPlate.getCharge(stack);
+				
 
 				if(!player.capabilities.isCreativeMode)
 				{
@@ -254,12 +261,6 @@ public class ClientPacketHelper
 						if(KeyboardClient.isSneakKeyDown(player))
 						{
 							player.motionY -= (double)(UltimateGraviChestPlate.boostSpeed + 0.03F);
-						}
-						
-						if(Keyboard.isModeFlyDown(player))
-						{
-							ClientProxy.sendMyPacket("keyFLY", 1);
-							ClientPacketHelper.switchFlyModeClient(KeyboardClient.mc.thePlayer, stack);
 						}
 
 						if(!player.capabilities.isCreativeMode)
