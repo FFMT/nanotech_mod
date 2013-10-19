@@ -21,6 +21,7 @@ class GuiSlotMusic extends GuiSlot
 	private final List listList;
 	private final Map mapMap;
 	final GuiListerJukebox listerGui;
+	private final String cdDirectoryName;
 	
 	public GuiSlotMusic(GuiListerJukebox guiLister)
 	{
@@ -30,6 +31,7 @@ class GuiSlotMusic extends GuiSlot
 		this.mapMap = Maps.newHashMap();
 
 		File di = new File(this.listerGui.getMc().mcDataDir + "/assets/records/");
+		cdDirectoryName = di.getAbsolutePath();
 		File fl[] = di.listFiles();
 
 		for(int i = 0; i != fl.length; i++)
@@ -73,16 +75,16 @@ class GuiSlotMusic extends GuiSlot
 		this.listerGui.drawDefaultBackground();
 	}
 
-	protected void drawSlot(int par1, int par2, int par3, int par4, Tessellator tesselator)
+	protected void drawSlot(int slotId, int par2, int par3, int par4, Tessellator tesselator)
 	{
 		this.listerGui.getFont().setBidiFlag(true);
 		int color = 16777215;
 		
-		if(this.mapMap.get(this.listList.get(par1)).toString().equals("nanodisk"))
+		if(this.mapMap.get(this.listList.get(slotId)).toString().equals("nanodisk"))
 		{
 			color = FFMTColor.aquaInt;
 		}
-		this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.mapMap.get(this.listList.get(par1))).toString().replace(".ogg", "").replace(".\\assets\\records\\", "").replace("./assets/records/", ""), this.listerGui.width / 2, par3 + 1, color);
+		this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.mapMap.get(this.listList.get(slotId))).toString().replace(".ogg", "").replace(cdDirectoryName + File.separator, ""), this.listerGui.width / 2, par3 + 1, color);
 	}
 
 	@Override
