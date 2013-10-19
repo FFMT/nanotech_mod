@@ -210,12 +210,12 @@ public class ServerPacketHelper
 
 		if(UltimateGraviChestPlate.readFlyStatus(stack) || UltimateGraviChestPlate.readInvisibilityStatus(stack))
 		{
-			NBTTagCompound var4 = UltimateGraviSuite.getOrCreateNbtData(stack);
-			int var5 = UltimateGraviChestPlate.getCharge(stack);
+			NBTTagCompound tagCompound = UltimateGraviSuite.getOrCreateNbtData(stack);
+			int charge = UltimateGraviChestPlate.getCharge(stack);
 
 			if(!player.capabilities.isCreativeMode)
 			{
-				if(var5 < UltimateGraviChestPlate.dischargeOnTick)
+				if(charge < UltimateGraviChestPlate.dischargeOnTick)
 				{
 					ServerProxy.sendPlayerMessage(player, "\u00a7cWarning ! Your\'s energy cell is depleted ! Gravitation engine shutdown !");
 					switchFlyModeServer(player, stack);
@@ -233,7 +233,7 @@ public class ServerPacketHelper
 			{
 				boostModeServer(player, stack, var2, var3);
 
-				if(var5 <= UltimateGraviChestPlate.dischargeOnTick * UltimateGraviChestPlate.boostMultiplier && !player.capabilities.isCreativeMode)
+				if(charge <= UltimateGraviChestPlate.dischargeOnTick * UltimateGraviChestPlate.boostMultiplier && !player.capabilities.isCreativeMode)
 				{
 					ServerProxy.sendPlayerMessage(player, "Not enough energy to boost !");
 				}

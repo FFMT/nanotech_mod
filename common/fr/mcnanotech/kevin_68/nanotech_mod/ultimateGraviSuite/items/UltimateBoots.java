@@ -127,35 +127,35 @@ public class UltimateBoots extends ItemArmor implements IElectricItem, IMetalArm
 		int var11;
 		boolean var6 = true;
 
-		float var7 = jumpChargeMap.containsKey(player) ? ((Float)jumpChargeMap.get(player)).floatValue() : 1.0F;
+		float jumpCharge = jumpChargeMap.containsKey(player) ? ((Float)jumpChargeMap.get(player)).floatValue() : 1.0F;
 
-		if(ElectricItem.manager.canUse(stack, 1000) && player.onGround && var7 < 1.0F)
+		if(ElectricItem.manager.canUse(stack, 1000) && player.onGround && jumpCharge < 1.0F)
 		{
-			var7 = 1.0F;
+			jumpCharge = 1.0F;
 			ElectricItem.manager.use(stack, 1000, (EntityPlayer)null);
 			var4 = true;
 		}
 
-		if(player.motionY >= 0.0D && var7 > 0.0F && !player.isInWater())
+		if(player.motionY >= 0.0D && jumpCharge > 0.0F && !player.isInWater())
 		{
 			if(IC2.keyboard.isJumpKeyDown(player) && IC2.keyboard.isBoostKeyDown(player))
 			{
-				if(var7 == 1.0F)
+				if(jumpCharge == 1.0F)
 				{
 					player.motionX *= 5.0D;
 					player.motionZ *= 5.0D;
 				}
 
-				player.motionY += (double)(var7 * 0.45F);
-				var7 = (float)((double)var7 * 0.90D);
+				player.motionY += (double)(jumpCharge * 0.45F);
+				jumpCharge = (float)((double)jumpCharge * 0.90D);
 			}
-			else if(var7 < 1.0F)
+			else if(jumpCharge < 1.0F)
 			{
-				var7 = 0.0F;
+				jumpCharge = 0.0F;
 			}
 		}
 
-		jumpChargeMap.put(player, Float.valueOf(var7));
+		jumpChargeMap.put(player, Float.valueOf(jumpCharge));
 		IC2.platform.profilerEndSection();
 
 	}

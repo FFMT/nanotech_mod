@@ -62,20 +62,20 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 		}
 	}
 
-	public ArmorProperties getProperties(EntityLivingBase entity, ItemStack stack, DamageSource var3, double var4, int var6)
+	public ArmorProperties getProperties(EntityLivingBase entity, ItemStack stack, DamageSource source, double damage, int slot)
 	{
 
-		double var7 = this.getBaseAbsorptionRatio() * this.getDamageAbsorptionRatio();
-		int var9 = this.getEnergyPerDamage();
-		int var10 = var9 > 0 ? 25 * ElectricItem.manager.discharge(stack, Integer.MAX_VALUE, Integer.MAX_VALUE, true, true) / var9 : 0;
-		return new ArmorProperties(0, var7, var10);
+		double absorptionRatio = this.getBaseAbsorptionRatio() * this.getDamageAbsorptionRatio();
+		int energyPerDamage = this.getEnergyPerDamage();
+		int damageLimit = energyPerDamage > 0 ? 25 * ElectricItem.manager.discharge(stack, Integer.MAX_VALUE, Integer.MAX_VALUE, true, true) / energyPerDamage : 0;
+		return new ArmorProperties(0, absorptionRatio, damageLimit);
 	}
 
 	public static int getCharge(ItemStack stack)
 	{
-		NBTTagCompound var1 = UltimateGraviSuite.getOrCreateNbtData(stack);
-		int var2 = var1.getInteger("charge");
-		return var2;
+		NBTTagCompound nbttagcompound = UltimateGraviSuite.getOrCreateNbtData(stack);
+		int charge = nbttagcompound.getInteger("charge");
+		return charge;
 	}
 
 	@Override
@@ -96,7 +96,6 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 		}
 
 		this.getArmorTexture(stack, player, 1, 1);
-
 		IC2.platform.profilerEndSection();
 	}
 

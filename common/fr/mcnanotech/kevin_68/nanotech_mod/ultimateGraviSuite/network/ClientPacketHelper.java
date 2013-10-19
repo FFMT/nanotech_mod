@@ -11,6 +11,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateBoot
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateGraviChestPlate;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateLeggings;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateQuantumHelmet;
+import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.keyboard.Keyboard;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.keyboard.KeyboardClient;
 
 public class ClientPacketHelper
@@ -253,6 +254,12 @@ public class ClientPacketHelper
 						if(KeyboardClient.isSneakKeyDown(player))
 						{
 							player.motionY -= (double)(UltimateGraviChestPlate.boostSpeed + 0.03F);
+						}
+						
+						if(Keyboard.isModeFlyDown(player))
+						{
+							ClientProxy.sendMyPacket("keyFLY", 1);
+							ClientPacketHelper.switchFlyModeClient(KeyboardClient.mc.thePlayer, stack);
 						}
 
 						if(!player.capabilities.isCreativeMode)
