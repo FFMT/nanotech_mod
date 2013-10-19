@@ -211,7 +211,7 @@ public class ClientPacketHelper
 			if(KeyboardClient.isModeFlyDown(player))
 			{
 				ClientProxy.sendMyPacket("keyFLY", 1);
-				//ClientPacketHelper.switchFlyModeClient(player, stack);
+				ClientPacketHelper.switchFlyModeClient(KeyboardClient.mc.thePlayer, stack);
 			}
 			
 			if(ClientTickHandler.isLastUndressed)
