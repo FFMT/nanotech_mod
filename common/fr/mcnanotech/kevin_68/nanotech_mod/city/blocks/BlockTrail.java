@@ -287,7 +287,7 @@ public class BlockTrail extends BlockContainer
 		this.leftRight = iconRegister.registerIcon("nanotech_mod_city:trailLeftRight");
 		this.leftBottom = iconRegister.registerIcon("nanotech_mod_city:trailLeftBottom");
 		this.leftBottomRight = iconRegister.registerIcon("nanotech_mod_city:trailLeftBottomRight");
-		this.rightBottom = iconRegister.registerIcon("nanotech_mod_city:trailRightbottom");
+		this.rightBottom = iconRegister.registerIcon("nanotech_mod_city:trailRightBottom");
 		this.left = iconRegister.registerIcon("nanotech_mod_city:trailLeft");
 		this.bottom = iconRegister.registerIcon("nanotech_mod_city:trailBottom");
 		this.right = iconRegister.registerIcon("nanotech_mod_city:trailRight");
