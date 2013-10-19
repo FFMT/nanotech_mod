@@ -63,10 +63,10 @@ public class Nanotech_mod_City
 			BlockTrashcanID = cfg.getBlock("Trash can", 1100).getInt();
 			BlockSpotLightID = cfg.getBlock("SpotLight", 1101).getInt();
 			BlockTrailID = cfg.getBlock("Trail", 1021).getInt();
-			BlockFountainID = cfg.getBlock("Fountain", 1023).getInt();
-			BlockLampID = cfg.getBlock("Lamp", 1024).getInt();
-			BlockSunShadeID = cfg.getBlock("SunShade", 1026).getInt();
-			BlockModernFenceID = cfg.getBlock("ModernFence", 1027).getInt();
+			BlockFountainID = cfg.getBlock("Fountain", 1022).getInt();
+			BlockLampID = cfg.getBlock("Lamp", 1023).getInt();
+			BlockSunShadeID = cfg.getBlock("SunShade", 1024).getInt();
+			BlockModernFenceID = cfg.getBlock("ModernFence", 1025).getInt();
 		}
 		catch(Exception ex)
 		{

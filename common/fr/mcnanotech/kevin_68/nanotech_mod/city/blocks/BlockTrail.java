@@ -1,7 +1,6 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.city.blocks;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
@@ -12,7 +11,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrail;
 
-public class BlockTrail extends BlockContainer
+public class BlockTrail extends Block
 {
 	private Icon top, left, bottom, right, topRight, topLeft, topBottom, topLeftBottom, topRightBottom, topLeftRight, leftRight, leftBottom, leftBottomRight, rightBottom, all, topRightDTR, topLeftDTL, leftBottomDBL, rightBottomDBR, topLeftBottomDTL, topLeftBottomDBL, topLeftBottomDTLBL, topRightBottomDTR, topRightBottomDBR, topRightBottomDTRBR, topLeftRightDTL, topLeftRightDTR, topLeftRightDTLTR,
 			leftBottomRightDBL, leftBottomRightDBR, leftBottomRightDBLBR, allDTL, allDTR, allDBL, allDBR, allDTLTR, allDTLBL, allDTLBR, allDTRBL, allDTRBR, allDBLBR, allDTLTRBR, allDTRBRBL, allDBRBLTL, allDBLTLTR, allDTLTRBLBR, nothing, empty, handIcon;
@@ -22,9 +21,14 @@ public class BlockTrail extends BlockContainer
 		super(id, material);
 	}
 
-	public TileEntity createNewTileEntity(World world)
+	public TileEntity createTileEntity(World world, int metadata)
 	{
 		return new TileEntityTrail();
+	}
+
+	public boolean hasTileEntity(int metadata)
+	{
+		return true;
 	}
 
 	@Override
@@ -159,10 +163,6 @@ public class BlockTrail extends BlockContainer
 			{
 				return this.leftBottomRightDBL;
 			}
-			if(blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z + 1) == this.blockID)
-			{
-				return this.leftBottomRightDBL;
-			}
 			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z - 1) == this.blockID)
 			{
 				return this.topLeftRightDTR;
@@ -271,7 +271,6 @@ public class BlockTrail extends BlockContainer
 			return this.nothing;
 
 		}
-
 		return this.empty;
 	}
 

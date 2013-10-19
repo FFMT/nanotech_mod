@@ -4,10 +4,9 @@
 #Blocks
 tile.trashcan.name=Trash can
 tile.spotlight.name=SpotLight
-tile.blockTrail.name=BlockTrail
-tile.blockFountain.name=Fountain
-tile.blockLamp.name=BlockLamp
-tile.blockLampLight.name=BlockLampLight
+tile.trail.name=Trail
+tile.fountain.name=Fountain
+tile.lamp.name=BlockLamp
 tile.modernFence.name=Modern Fence
 tile.sunShade.name=SunShade
 tile.lamp.name=Lamp
