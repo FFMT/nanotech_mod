@@ -47,23 +47,41 @@ public class TileEntitySunShade extends TileEntity
 	{
 		if(this.worldObj.getBlockMetadata(xCoord, yCoord + 2, zCoord) == 1)
 		{
+			boolean canOpen = true;
 			for(int j = -1; j < 2; ++j)
 			{
 				for(int k = -1; k < 2; ++k)
 				{
-					if(j == 0 && k == 0)
+					if(j != 0 || k != 0)
 					{
-						this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityBlock.BlockSunShade.blockID, 3, 3);
-					}
-					else
-					{
-						this.worldObj.setBlock(xCoord + j, yCoord + 2, zCoord + k, NanotechCityBlock.BlockSunShade.blockID, 2, 3);
+						if(!this.worldObj.isAirBlock(xCoord + j, yCoord + 2, zCoord + k))
+						{
+							canOpen = false;
+							return;
+						}
 					}
 				}
-				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+			}
+			if(canOpen)
+			{
+				for(int j = -1; j < 2; ++j)
+				{
+					for(int k = -1; k < 2; ++k)
+					{
+						if(j == 0 && k == 0)
+						{
+							this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityBlock.BlockSunShade.blockID, 3, 3);
+						}
+						else
+						{
+							this.worldObj.setBlock(xCoord + j, yCoord + 2, zCoord + k, NanotechCityBlock.BlockSunShade.blockID, 2, 3);
+						}
+					}
+					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+				}
+				this.isOpen = true;
 			}
 		}
-		this.isOpen = true;
 	}
 
 	public void closeSunShade()
