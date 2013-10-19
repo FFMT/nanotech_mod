@@ -8,7 +8,6 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
-import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.ClientProxy;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateGraviChestPlate;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateQuantumHelmet;
@@ -111,19 +110,14 @@ public class ClientTickHandler implements ITickHandler
 				String var16 = "";
 				String var15 = "";
 				byte var14 = 3;
+				int var4;
 				int var5;
 
 				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
 				{
-					if(KeyboardClient.isModeFlyDown(KeyboardClient.mc.thePlayer))
-					{
-						ClientProxy.sendMyPacket("keyFLY", 1);
-						ClientPacketHelper.switchFlyModeClient(KeyboardClient.mc.thePlayer, chestPlate);
-					}
-					
-					int charge = UltimateGraviChestPlate.getCharge(chestPlate);
-					var5 = charge * 100 / UltimateGraviChestPlate.maxCharge;
-					var16 = "Energy level: " + this.getTextEnergyStatus(var5);
+					var4 = UltimateGraviChestPlate.getCharge(chestPlate);
+					var5 = var4 * 100 / UltimateGraviChestPlate.maxCharge;
+					var16 = "Energy level: " + this.GetTextEnergyStatus(var5);
 					var13 = mc.fontRenderer.getStringWidth("Energy level: " + Integer.toString(var5) + "%");
 
 					if(isFlyActiveByMod && UltimateGraviChestPlate.readFlyStatus(chestPlate))
@@ -201,7 +195,7 @@ public class ClientTickHandler implements ITickHandler
 		return EnumSet.of(TickType.WORLD, TickType.WORLDLOAD, TickType.CLIENT, TickType.RENDER);
 	}
 
-	public String getTextEnergyStatus(int var1)
+	public String GetTextEnergyStatus(int var1)
 	{
 		return var1 <= 10 && var1 > 5 ? "\u00a76" + Integer.toString(var1) + "%" : (var1 <= 5 ? "\u00a7c" + Integer.toString(var1) + "%" : Integer.toString(var1) + "%");
 	}

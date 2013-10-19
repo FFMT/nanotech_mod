@@ -20,7 +20,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.network.ClientPack
 public class KeyboardClient extends Keyboard
 {
 	public static Minecraft mc = FMLClientHandler.instance().getClient();
-	//public static KeyBinding flyKey = new KeyBinding("Ultimate Gravi Fly Key", 33);
+	public static KeyBinding flyKey = new KeyBinding("Ultimate Gravi Fly Key", 33);
 	public static KeyBinding invKey = new KeyBinding("Invisibility Ultimate Gravi Key", 34);
 	public static KeyBinding nightKey = new KeyBinding("Night vision Ultimate Solar Helmet Key", 35);
 	private static int lastKeyState = 0;
@@ -34,7 +34,7 @@ public class KeyboardClient extends Keyboard
 
 	public KeyboardClient()
 	{
-		KeyBindingRegistry.registerKeyBinding(new KeyHandler(new KeyBinding[] {invKey, nightKey}, new boolean[] {false, false, false})
+		KeyBindingRegistry.registerKeyBinding(new KeyHandler(new KeyBinding[] {flyKey, invKey, nightKey}, new boolean[] {false, false, false})
 		{
 			@Override
 			public String getLabel()
@@ -49,6 +49,16 @@ public class KeyboardClient extends Keyboard
 				ItemStack chestPlate = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(2);
 				ItemStack leggings = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(1);
 				ItemStack boots = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(0);
+				
+				if(tickEnd && kb.equals(flyKey) && KeyboardClient.mc.inGameHasFocus)
+				{
+
+					if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
+					{
+						ClientProxy.sendMyPacket("keyFLY", 1);
+						ClientPacketHelper.switchFlyModeClient(KeyboardClient.mc.thePlayer, chestPlate);
+					}
+				}
 
 				if(tickEnd && kb.equals(KeyboardClient.invKey) && KeyboardClient.mc.inGameHasFocus)
 				{
@@ -128,11 +138,6 @@ public class KeyboardClient extends Keyboard
 		}
 	}
 	
-	public static boolean isFlyKeyDown(EntityPlayer player)
-	{
-		return mc.gameSettings.keyBindings[gravisuitFlyKeyID].pressed;
-	}
-	
 	public static boolean isJumpKeyDown(EntityPlayer player)
 	{
 		return mc.gameSettings.keyBindJump.pressed;
@@ -155,7 +160,7 @@ public class KeyboardClient extends Keyboard
 
 	public void sendKeyUpdate(EntityPlayer player)
 	{
-		int keyId = (isBoostKeyDown(player) ? 1 : 0) << 0 | (isAltKeyDown(player) ? 1 : 0) << 1 | (isModeKeyPress(player) ? 1 : 0) << 2 | (isForwardKeyDown(player) ? 1 : 0) << 3 | (isJumpKeyDown(player) ? 1 : 0) << 4 | (isSneakKeyDown(player) ? 1 : 0) << 5 | (isFlyKeyDown(player) ? 1 : 0) << 6;
+		int keyId = (isBoostKeyDown(player) ? 1 : 0) << 0 | (isAltKeyDown(player) ? 1 : 0) << 1 | (isModeKeyPress(player) ? 1 : 0) << 2 | (isForwardKeyDown(player) ? 1 : 0) << 3 | (isJumpKeyDown(player) ? 1 : 0) << 4 | (isSneakKeyDown(player) ? 1 : 0) << 5;
 
 		if(keyId != lastKeyState)
 		{

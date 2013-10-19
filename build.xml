@@ -25,8 +25,8 @@
         <!-- setup -->
         <mkdir dir="..\forgetemp"/>
         <unzip dest="..\forgetemp" src="..\${forge.name}"/>
-        <mkdir dir="${forge.dir}\${forge_version.forge_version}\"/>
-        <move todir="${forge.dir}\${forge_version.forge_version}\">
+        <mkdir dir="${forge.dir}\${buildprop.forge}\"/>
+        <move todir="${forge.dir}\${buildprop.forge}\">
             <fileset dir="..\forgetemp\forge">
             </fileset>
         </move>
