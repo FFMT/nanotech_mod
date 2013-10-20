@@ -10,9 +10,9 @@ public class RenderMobFly extends RenderLiving
 {
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod:textures/entity/fly.png");
 
-	public RenderMobFly(ModelFly model, float f)
+	public RenderMobFly(ModelFly model, float shadow)
 	{
-		super(new ModelFly(), 0.5F);
+		super(new ModelFly(), shadow);
 	}
 
 	protected ResourceLocation getFlyTexture(MobFly entity)
