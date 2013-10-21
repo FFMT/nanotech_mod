@@ -29,25 +29,25 @@ public class TileEntityModernFenceRender extends TileEntitySpecialRenderer
 	{
 		TileEntityModernFence te = (TileEntityModernFence)tileentity;
 		if(te.render[0])
-			this.renderTileEntityAtBlockModernFence0((TileEntityModernFence)tileentity, x, y, z, scale);
+			this.renderTileEntityAtBlockModernFence((TileEntityModernFence)tileentity, x, y, z, scale, 90F);
 		if(te.render[1])
-			this.renderTileEntityAtBlockModernFence1((TileEntityModernFence)tileentity, x, y, z, scale);
+			this.renderTileEntityAtBlockModernFence((TileEntityModernFence)tileentity, x, y, z, scale, 270F);
 		if(te.render[2])
-			this.renderTileEntityAtBlockModernFence2((TileEntityModernFence)tileentity, x, y, z, scale);
+			this.renderTileEntityAtBlockModernFence((TileEntityModernFence)tileentity, x, y, z, scale, 0F);
 		if(te.render[3])
-			this.renderTileEntityAtBlockModernFence3((TileEntityModernFence)tileentity, x, y, z, scale);
+			this.renderTileEntityAtBlockModernFence((TileEntityModernFence)tileentity, x, y, z, scale, 180F);
 		if(te.render[4])
-			this.renderTileEntityAtBlockModernFence4((TileEntityModernFence)tileentity, x, y, z, scale);
+			this.renderTileEntityAtBlockModernFence((TileEntityModernFence)tileentity, x, y, z, scale, 225F);
 		if(te.render[5])
-			this.renderTileEntityAtBlockModernFence5((TileEntityModernFence)tileentity, x, y, z, scale);
+			this.renderTileEntityAtBlockModernFence((TileEntityModernFence)tileentity, x, y, z, scale, 135F);
 		if(te.render[6])
-			this.renderTileEntityAtBlockModernFence6((TileEntityModernFence)tileentity, x, y, z, scale);
+			this.renderTileEntityAtBlockModernFence((TileEntityModernFence)tileentity, x, y, z, scale, 315F);
 		if(te.render[7])
-			this.renderTileEntityAtBlockModernFence7((TileEntityModernFence)tileentity, x, y, z, scale);
-		this.renderTileEntityAtBlockModernFence((TileEntityModernFence)tileentity, x, y, z, scale);
+			this.renderTileEntityAtBlockModernFence((TileEntityModernFence)tileentity, x, y, z, scale, 45F);
+		this.renderTileEntityAtBlockModernFenceBase((TileEntityModernFence)tileentity, x, y, z, scale);
 	}
 
-	public void renderTileEntityAtBlockModernFence(TileEntityModernFence tileentity, double x, double y, double z, float scale)
+	public void renderTileEntityAtBlockModernFenceBase(TileEntityModernFence tileentity, double x, double y, double z, float scale)
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
@@ -60,90 +60,13 @@ public class TileEntityModernFenceRender extends TileEntitySpecialRenderer
 		GL11.glPopMatrix();
 	}
 
-	public void renderTileEntityAtBlockModernFence0(TileEntityModernFence tileentity, double x, double y, double z, float scale)
+	public void renderTileEntityAtBlockModernFence(TileEntityModernFence tileentity, double x, double y, double z, float scale, float angle)
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
 		this.bindTexture(texture);
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
-		this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-		GL11.glPopMatrix();
-	}
-
-	public void renderTileEntityAtBlockModernFence1(TileEntityModernFence tileentity, double x, double y, double z, float scale)
-	{
-		GL11.glPushMatrix();
-		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
-		this.bindTexture(texture);
-		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		GL11.glRotatef(270F, 0.0F, 1.0F, 0.0F);
-		this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-		GL11.glPopMatrix();
-	}
-
-	public void renderTileEntityAtBlockModernFence2(TileEntityModernFence tileentity, double x, double y, double z, float scale)
-	{
-		GL11.glPushMatrix();
-		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
-		this.bindTexture(texture);
-		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		GL11.glRotatef(0F, 0.0F, 1.0F, 0.0F);
-		this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-		GL11.glPopMatrix();
-	}
-
-	public void renderTileEntityAtBlockModernFence3(TileEntityModernFence tileentity, double x, double y, double z, float scale)
-	{
-		GL11.glPushMatrix();
-		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
-		this.bindTexture(texture);
-		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
-		this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-		GL11.glPopMatrix();
-	}
-
-	public void renderTileEntityAtBlockModernFence4(TileEntityModernFence tileentity, double x, double y, double z, float scale)
-	{
-		GL11.glPushMatrix();
-		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
-		this.bindTexture(texture);
-		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		GL11.glRotatef(225F, 0.0F, 1.0F, 0.0F);
-		this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-		GL11.glPopMatrix();
-	}
-
-	public void renderTileEntityAtBlockModernFence5(TileEntityModernFence tileentity, double x, double y, double z, float scale)
-	{
-		GL11.glPushMatrix();
-		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
-		this.bindTexture(texture);
-		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		GL11.glRotatef(135F, 0.0F, 1.0F, 0.0F);
-		this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-		GL11.glPopMatrix();
-	}
-
-	public void renderTileEntityAtBlockModernFence6(TileEntityModernFence tileentity, double x, double y, double z, float scale)
-	{
-		GL11.glPushMatrix();
-		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
-		this.bindTexture(texture);
-		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		GL11.glRotatef(315F, 0.0F, 1.0F, 0.0F);
-		this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-		GL11.glPopMatrix();
-	}
-
-	public void renderTileEntityAtBlockModernFence7(TileEntityModernFence tileentity, double x, double y, double z, float scale)
-	{
-		GL11.glPushMatrix();
-		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
-		this.bindTexture(texture);
-		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		GL11.glRotatef(45F, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(angle, 0.0F, 1.0F, 0.0F);
 		this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		GL11.glPopMatrix();
 	}

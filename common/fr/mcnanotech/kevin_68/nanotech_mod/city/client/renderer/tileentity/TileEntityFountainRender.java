@@ -15,7 +15,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityFountain;
 @SideOnly(Side.CLIENT)
 public class TileEntityFountainRender extends TileEntitySpecialRenderer
 {
-	protected static final ResourceLocation texture = new ResourceLocation("textures/misc/underwater.png");
+	protected static final ResourceLocation texture = new ResourceLocation("textures/blocks/water_flow.png");
 
 	public void renderTileEntitySpotLightAt(TileEntityFountain tileentity, double x, double y, double z, float par8)
 	{
@@ -29,6 +29,8 @@ public class TileEntityFountainRender extends TileEntitySpecialRenderer
 			GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, 10497.0F);
 			GL11.glDisable(GL11.GL_LIGHTING);
 			GL11.glDisable(GL11.GL_CULL_FACE);
+			GL11.glDisable(GL11.GL_BLEND);
+			GL11.glDepthMask(true);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 			float f2 = (float)(tileentity.getWorldObj().getTotalWorldTime() / 2) + par8;
 			float f22;
