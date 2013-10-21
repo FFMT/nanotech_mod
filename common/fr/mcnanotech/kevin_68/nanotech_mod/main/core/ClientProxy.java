@@ -5,6 +5,8 @@ import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiOverlay;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelCrazyGuy;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelCreeperDriller;
@@ -40,6 +42,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperSkeleton;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperZombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.NanotechClientTickHandler;
 
 public class ClientProxy extends CommonProxy
 {
@@ -66,5 +69,11 @@ public class ClientProxy extends CommonProxy
 	public void registerOverlay()
 	{
 		MinecraftForge.EVENT_BUS.register(new GuiOverlay(Minecraft.getMinecraft()));
+	}
+	
+	@Override
+	public void registerTickHandler()
+	{
+		TickRegistry.registerTickHandler(new NanotechClientTickHandler(), Side.CLIENT);
 	}
 }

@@ -16,7 +16,7 @@ public class ItemAlters extends Item
 		super(par1);
 	}
 
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
 		int highest = 0;
 
@@ -34,7 +34,7 @@ public class ItemAlters extends Item
 		{
 			player.attackEntityFrom(NanotechDamageSource.altersDamage, 6.0F);
 		}
-		return true;
+		return stack;
 	}
 
 	public int amplifyEffect(EntityPlayer player, Potion potion)
@@ -64,5 +64,4 @@ public class ItemAlters extends Item
 	{
 		this.itemIcon = iconregister.registerIcon("nanotech_mod:altersItem");
 	}
-
 }

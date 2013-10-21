@@ -19,8 +19,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.TickRegistry;
-import cpw.mods.fml.relauncher.Side;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabItems;
@@ -37,7 +35,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityListerJukeb
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.CraftingHandler;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.TickHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechBiome;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGeneration;
@@ -265,7 +262,7 @@ public class Nanotech_mod
 		GameRegistry.registerPlayerTracker(new PlayerTracker());
 		GameRegistry.registerCraftingHandler(new CraftingHandler());
 
-		TickRegistry.registerTickHandler(new TickHandler(), Side.SERVER);
+		proxy.registerTickHandler();
 	}
 
 	@EventHandler
