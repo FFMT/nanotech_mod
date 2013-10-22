@@ -25,6 +25,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.NanotechMobs;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventBonemeal;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventSound;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.event.LivingEvent;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.PlayerEvent;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.PlayerTracker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
@@ -258,6 +259,7 @@ public class Nanotech_mod
 
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
 		MinecraftForge.EVENT_BUS.register(new PlayerEvent());
+		MinecraftForge.EVENT_BUS.register(new LivingEvent());
 
 		GameRegistry.registerPlayerTracker(new PlayerTracker());
 		GameRegistry.registerCraftingHandler(new CraftingHandler());

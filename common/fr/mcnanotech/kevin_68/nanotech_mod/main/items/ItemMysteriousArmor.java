@@ -18,7 +18,6 @@ public class ItemMysteriousArmor extends ItemArmor
 	public ItemMysteriousArmor(int id, EnumArmorMaterial enumArmorMaterial, int slot, int layer)
 	{
 		super(id, enumArmorMaterial, slot, layer);
-		MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -42,25 +41,6 @@ public class ItemMysteriousArmor extends ItemArmor
 		else
 		{
 			return "nanotech_mod:textures/armor/Mysteriousarmor.png";
-		}
-	}
-
-	@ForgeSubscribe
-	public void livingFall(LivingFallEvent event)
-	{
-
-		if((event.entity instanceof EntityPlayer))
-		{
-			EntityPlayer player = (EntityPlayer)event.entity;
-			ItemStack armorb = player.inventory.armorInventory[0];
-
-			if((armorb != null) && (armorb.getItem() == NanotechItem.Mysteriousboots))
-			{
-				if(!(event.entityLiving instanceof EntityPlayer))
-					return;
-				EntityPlayer eventPlayer = (EntityPlayer)event.entityLiving;
-				event.distance = 0F;
-			}
 		}
 	}
 
