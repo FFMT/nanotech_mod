@@ -15,7 +15,6 @@ public class LivingEvent
 
 		if(boots != null && boots.getItem().equals(NanotechItem.Mysteriousboots))
 		{
-			System.out.println(event.distance);
 			boots.damageItem((int)(event.distance / 8), event.entityLiving);
 			if(boots.stackSize == 0)
 			{
