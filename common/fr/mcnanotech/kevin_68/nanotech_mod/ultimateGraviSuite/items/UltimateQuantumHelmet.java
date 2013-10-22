@@ -373,7 +373,7 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 	@Override
 	public int getMaxCharge(ItemStack stack)
 	{
-		return 10000000;
+		return 60000000;
 	}
 
 	@Override

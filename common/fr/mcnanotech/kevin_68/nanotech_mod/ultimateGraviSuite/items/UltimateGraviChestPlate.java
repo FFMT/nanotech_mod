@@ -29,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem, IMetalArmor, ISpecialArmor
 {
 	public static int minCharge;
-	public static int maxCharge = 10000000;
+	public static int maxCharge = 60000000;
 	public static int dischargeOnTick;
 	public static float boostSpeed;
 	public static int boostMultiplier;

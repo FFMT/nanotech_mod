@@ -208,7 +208,7 @@ public class UltimateLeggings extends ItemArmor implements IElectricItem, IMetal
 	@Override
 	public int getMaxCharge(ItemStack stack)
 	{
-		return 10000000;
+		return 60000000;
 	}
 
 	@Override

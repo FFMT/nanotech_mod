@@ -18,6 +18,6 @@ public class CommonProxy
 	
 	public void registerTickHandler()
 	{
-		TickRegistry.registerTickHandler(new NanotechServerTickHandler(), Side.SERVER);
+
 	}
 }
