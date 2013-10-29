@@ -8,7 +8,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 public class NanotechBlock
 {
 	// Blocks statement
-	public static Block BlockPortal, BlockPortalFrame, BlockGrass, BlockFakeOre, BlockSpeed, BlockJumper, BlockMultiplier, BlockSmoker, BlockBarbedwire, BlockNanowood, BlockNanoleaves, BlockNanosaplings, BlockNanoplanks, BlockNanoOre, BlockConfusion, BlockFalling, Blocknotfalling, BlockSodium, BlockMossystone, BlockTheDeathHead, BlockListerJukebox;
+	public static Block BlockPortal, BlockPortalFrame, BlockGrass, BlockFakeOre, BlockSpeed, BlockJumper, BlockMultiplier, BlockSmoker, BlockBarbedwire, BlockNanowood, BlockNanoleaves, BlockNanosaplings, BlockNanoplanks, BlockNanoOre, BlockConfusion, BlockFalling, Blocknotfalling, BlockSodium, BlockMossystone, BlockTheDeathHead, BlockListerJukebox, BlockLiquidNitrogen;
 
 	// Blocks Initialization
 	public static void initBlock()
@@ -34,6 +34,18 @@ public class NanotechBlock
 		BlockMossystone = new BlockBase(Nanotech_mod.BlockMossyStoneID, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("mossystone").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B).setTextureName("nanotech_mod:mossystone");
 		BlockTheDeathHead = new BlockTheDeathHead(Nanotech_mod.BlockTheDeathHeadID).setHardness(5.0F).setResistance(10.0F).setUnlocalizedName("theDeathHead").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		BlockListerJukebox = new BlockListerJukebox(Nanotech_mod.BlockListerJukeboxID, Material.iron).setUnlocalizedName("ListerJukebox").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B).setTextureName("nanotech_mod:listerjukebox");
+		
+		
+		if(Nanotech_mod.liquidNitrogen.getBlockID() == -1)
+		{
+			BlockLiquidNitrogen = new BlockLiquidNitrogen(Nanotech_mod.BlockLiquidNitrogenID, Nanotech_mod.liquidNitrogen, Material.water).setUnlocalizedName("blockLiquidNitrogen");
+			GameRegistry.registerBlock(BlockLiquidNitrogen, "blockLiquidNitrogen");
+			Nanotech_mod.liquidNitrogen.setBlockID(BlockLiquidNitrogen);
+		}
+		else
+		{
+			BlockLiquidNitrogen = Block.blocksList[Nanotech_mod.liquidNitrogen.getBlockID()];
+		}
 	}
 
 	// Blocks registry

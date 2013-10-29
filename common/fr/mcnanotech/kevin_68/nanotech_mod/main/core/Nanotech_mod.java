@@ -8,6 +8,9 @@ import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidContainerRegistry;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -25,11 +28,13 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.NanotechMobs;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.event.BucketEvent;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventBonemeal;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventSound;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.LivingEvent;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.PlayerEvent;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.PlayerTracker;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.event.TextureEvent;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.network.GuiHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.network.PacketHandler;
@@ -53,13 +58,17 @@ public class Nanotech_mod
 	// Proxy
 	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotech_mod.main.core.ClientProxy", serverSide = "fr.mcnanotech.kevin_68.nanotech_mod.main.core.CommonProxy")
 	public static CommonProxy proxy;
+	
+	//Fluid
+	public static Fluid liquidNitrogen;
 
 	// Block IDs
-	public static int BlockPortalID, BlockPortalFrameID, BlockGrassID, BlockFakeOreID, BlockSpeedID, BlockJumperID, BlockMultiplierID, BlockSmokerID, BlockBarbedWireID, BlockNanoWoodID, BlockNanoLeavesID, BlockNanoSaplingsID, BlockNanoPlanksID, BlockNanoOreID, BlockConfusionID, BlockFallingID, BlockNotFallingID, BlockSodiumID, BlockMossyStoneID, BlockTheDeathHeadID, BlockListerJukeboxID;
+	public static int BlockPortalID, BlockPortalFrameID, BlockGrassID, BlockFakeOreID, BlockSpeedID, BlockJumperID, BlockMultiplierID, BlockSmokerID, BlockBarbedWireID, BlockNanoWoodID, BlockNanoLeavesID, BlockNanoSaplingsID, BlockNanoPlanksID, BlockNanoOreID, BlockConfusionID, BlockFallingID, BlockNotFallingID, BlockSodiumID, BlockMossyStoneID, BlockTheDeathHeadID, BlockListerJukeboxID,
+			BlockLiquidNitrogenID;
 
 	// Item IDs
 	public static int ItemNanotechID, ItemSuperBottleOfXpID, ItemDiamondBowID, ItemEmeraldBowID, ItemNanomiteBowID, ItemNanomiteAxeID, ItemNanomitePickaxeID, ItemNanomiteShovelID, ItemNanomiteHoeID, ItemNanomiteSwordID, ItemNanomiteHelmetID, ItemNanomiteChestPlateID, ItemNanomiteLegginsID, ItemNanomiteBootsID, ItemMysteriousHelmetID, ItemMysteriousChestPlateID, ItemMysteriousLegginsID,
-			ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemScytheID, ItemCrazyGlassesID, DebugID, AltersID;
+			ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemScytheID, ItemCrazyGlassesID, DebugID, AltersID, NitrogenBucketID;
 
 	// Dimension ID
 	public static int dimensionID;
@@ -150,6 +159,7 @@ public class Nanotech_mod
 			BlockMossyStoneID = cfg.getBlock("Mossy Stone", 1017).getInt();
 			BlockTheDeathHeadID = cfg.getBlock("TheDeathHead", 1018).getInt();
 			BlockListerJukeboxID = cfg.getBlock("ListerJukebox", 1020).getInt();
+			BlockLiquidNitrogenID = cfg.getBlock("Block Liquid Nitrogen", 1021).getInt();
 			
 			ItemNanotechID = cfg.getItem("Main Nanotech ID", 5000).getInt();
 			ItemSuperBottleOfXpID = cfg.getItem("Super Bottle of xp", 5001).getInt();
@@ -175,7 +185,8 @@ public class Nanotech_mod
 			ItemCrazyGlassesID = cfg.getItem("CrazyGlasses", 5021).getInt();
 			DebugID = cfg.getItem("Debug Item", 5024).getInt();
 			AltersID = cfg.getItem("Alters", 5025).getInt();
-			ItemNanoDiscID = cfg.getItem("Nanodisk", 5026).getInt();
+			ItemNanoDiscID = cfg.getItem("Nanodisc", 5026).getInt();
+			NitrogenBucketID = cfg.getItem("Liquid Nitrogen Bucket", 5027).getInt();
 			
 			dimensionID = cfg.get("World", "Dimension ID", 19).getInt();
 			nanotechBiomeID = cfg.get("World", "Biome ID", 100).getInt();
@@ -236,11 +247,20 @@ public class Nanotech_mod
 				cfg.save();
 			}
 		}
+		
 		NanotechDamageSource.loadDamageSource();
+		
+		liquidNitrogen = new Fluid("liquidNitrogen").setDensity(4000).setViscosity(500).setTemperature(286).setLuminosity(10).setUnlocalizedName("liquidNitrogen");
+		FluidRegistry.registerFluid(liquidNitrogen);
+		liquidNitrogen = FluidRegistry.getFluid("liquidNitrogen");
+	    
 		NanotechBlock.initBlock();
 		NanotechBlock.blockRegistry();
 		NanotechItem.initItem();
 		NanotechAchievement.initAchievement();
+		
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidNitrogen", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(NanotechItem.nitrogenBucket), FluidContainerRegistry.EMPTY_BUCKET);
+		
 	}
 
 	// Initialization
@@ -263,6 +283,8 @@ public class Nanotech_mod
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
 		MinecraftForge.EVENT_BUS.register(new PlayerEvent());
 		MinecraftForge.EVENT_BUS.register(new LivingEvent());
+		MinecraftForge.EVENT_BUS.register(new TextureEvent());
+		MinecraftForge.EVENT_BUS.register(new BucketEvent());
 
 		GameRegistry.registerPlayerTracker(new PlayerTracker());
 		GameRegistry.registerCraftingHandler(new CraftingHandler());
