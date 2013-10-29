@@ -46,6 +46,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.CraftingHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.NanotechServerTickHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechBiome;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechWorldProvider;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NitrogenOcean;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGeneration;
 
 @Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "@VERSION@")
@@ -72,10 +73,11 @@ public class Nanotech_mod
 
 	// Dimension ID
 	public static int dimensionID;
-	public static int nanotechBiomeID;
+	public static int nanotechBiomeID, nitrogenOceanID;
 
 	// Biome statement
 	public static BiomeGenBase nanotechBiome;
+	public static BiomeGenBase nitrogenOcean;
 
 	// Recipe configuration
 	public static boolean HardRecipe;
@@ -190,6 +192,7 @@ public class Nanotech_mod
 
 			dimensionID = cfg.get("World", "Dimension ID", 19).getInt();
 			nanotechBiomeID = cfg.get("World", "Biome ID", 100).getInt();
+			nitrogenOceanID = cfg.get("World", "Nitrogen Ocean", 101).getInt();
 
 			HardRecipe = cfg.get(CATEGORY_Other, "Hard recipes", false).getBoolean(false);
 
@@ -265,7 +268,8 @@ public class Nanotech_mod
 	public void InitNanotech_mod(FMLInitializationEvent event)
 	{
 		nanotechBiome = new NanotechBiome(nanotechBiomeID).setBiomeName("Nanotechbiome").setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.1F, 0.4F);
-
+		nitrogenOcean = new NitrogenOcean(nitrogenOceanID).setBiomeName("NitrogenOcean").setTemperatureRainfall(0.2F, 0.0F).setMinMaxHeight(-0.5F, 0.3F);
+		
 		DimensionManager.registerProviderType(dimensionID, NanotechWorldProvider.class, false);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
 

@@ -36,6 +36,7 @@ import net.minecraftforge.event.Event.Result;
 import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 
 public class NanotechChunkProvider implements IChunkProvider
 {
@@ -153,7 +154,7 @@ public class NanotechChunkProvider implements IChunkProvider
 								}
 								else if(var12 * 8 + var31 < var6)
 								{
-									par3ArrayOfByte[var43 += var44] = (byte)Block.waterStill.blockID;
+									par3ArrayOfByte[var43 += var44] = (byte)NanotechBlock.liquidNitrogen.blockID;
 								}
 								else
 								{
@@ -236,7 +237,7 @@ public class NanotechChunkProvider implements IChunkProvider
 									}
 									else
 									{
-										var14 = (byte)Block.waterStill.blockID;
+										var14 = (byte)NanotechBlock.liquidNitrogen.blockID;
 									}
 								}
 
@@ -482,7 +483,7 @@ public class NanotechChunkProvider implements IChunkProvider
 			var12 = var4 + this.rand.nextInt(16) + 8;
 			var13 = this.rand.nextInt(128);
 			var14 = var5 + this.rand.nextInt(16) + 8;
-			(new WorldGenLakes(Block.waterStill.blockID)).generate(this.worldObj, this.rand, var12, var13, var14);
+			(new WorldGenLakes(NanotechBlock.liquidNitrogen.blockID)).generate(this.worldObj, this.rand, var12, var13, var14);
 		}
 
 		if(TerrainGen.populate(par1IChunkProvider, worldObj, rand, par2, par3, var11, LAVA) && !var11 && this.rand.nextInt(8) == 0)
