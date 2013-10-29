@@ -249,7 +249,7 @@ public class Nanotech_mod
 		}
 
 		NanotechDamageSource.loadDamageSource();
-		liquidNitrogen = new Fluid("liquidnitrogen").setDensity(4000).setViscosity(500).setTemperature(286).setLuminosity(10).setUnlocalizedName("liquidNitrogen");
+		liquidNitrogen = new Fluid("liquidnitrogen").setDensity(4000).setViscosity(500).setTemperature(77).setLuminosity(0).setUnlocalizedName("liquidNitrogen");
 		FluidRegistry.registerFluid(liquidNitrogen);
 		liquidNitrogen = FluidRegistry.getFluid("liquidnitrogen");
 		NanotechBlock.initBlock();
