@@ -1,6 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.items;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -12,7 +13,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.items.ItemDebugMode
 
 public class ItemDebugRender implements IItemRenderer
 {
-
 	protected ItemDebugModel model;
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/items/debug.png");
 
@@ -35,7 +35,6 @@ public class ItemDebugRender implements IItemRenderer
 		default:
 			return false;
 		}
-
 	}
 
 	@Override
@@ -56,6 +55,7 @@ public class ItemDebugRender implements IItemRenderer
 			GL11.glTranslatef(0.4F, -0.6F, 0.0F);
 			model.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 			GL11.glPopMatrix();
+			break;
 		}
 		case EQUIPPED_FIRST_PERSON:
 		{
@@ -64,18 +64,24 @@ public class ItemDebugRender implements IItemRenderer
 			GL11.glTranslatef(0.4F, -0.6F, 0.0F);
 			model.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 			GL11.glPopMatrix();
+			break;
 		}
 		case ENTITY:
 		{
 			GL11.glPushMatrix();
 			Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 			GL11.glTranslatef(0.4F, -0.6F, 0.0F);
+			if(RenderItem.renderInFrame)
+			{
+				GL11.glScalef(1.2F, 1.2F, 1.2F);
+				GL11.glTranslatef(-0.35F, -0.35F, 0.05F);
+			}
 			model.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 			GL11.glPopMatrix();
+
 		}
 		default:
 			break;
 		}
 	}
-
 }

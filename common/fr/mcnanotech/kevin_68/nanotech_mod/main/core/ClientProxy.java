@@ -28,7 +28,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderSuperCreep
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderSuperEnderman;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderSuperZombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderTheDeath;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.items.ItemAletersRender;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.items.ItemAltersRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.items.ItemDebugRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.items.ItemScytheRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCrazyGuy;
@@ -62,7 +62,7 @@ public class ClientProxy extends CommonProxy
 
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.scythe.itemID, (IItemRenderer)new ItemScytheRender());
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.debug.itemID, (IItemRenderer)new ItemDebugRender());
-		MinecraftForgeClient.registerItemRenderer(NanotechItem.alters.itemID, (IItemRenderer)new ItemAletersRender());
+		MinecraftForgeClient.registerItemRenderer(NanotechItem.alters.itemID, (IItemRenderer)new ItemAltersRender());
 	}
 
 	@Override
