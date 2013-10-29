@@ -201,3 +201,6 @@ itemGroup.NanotechModItems=Items de Nanotech mod
 deathMessage.sodium.0=%s a été rongé(e) par le sodium
 deathMessage.sodium.1=%s n'a pas respecté les consignes de sécurité en manipulant du sodium
 deathMessage.sodium.2=%s veut devenir scientifique mais n'a pas les compétences requises
+deathMessage.alters.0=%s a fait trop d'effort ! 
+deathMessage.nitrogen.0=%s a gelé sur place!
+

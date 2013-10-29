@@ -201,3 +201,4 @@ deathMessage.sodium.0=%s was corroded by sodium
 deathMessage.sodium.1=%s the player did not respect the safety instructions by manipulating sodium
 deathMessage.sodium.2=%s wants to become a scientist, but it does not have the required skills
 deathMessage.alters.0=%s has done too much workouts ! 
+deathMessage.nitrogen.0=%s stayed frozen in liquid nitrogen !
