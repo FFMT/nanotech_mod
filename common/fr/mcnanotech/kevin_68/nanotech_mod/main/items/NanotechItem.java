@@ -1,6 +1,5 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.items;
 
-import net.minecraft.block.Block;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
