@@ -34,7 +34,6 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 	public NanotechWorldChunkManager(long seed, WorldType worldtype)
 	{
 		this();
-		// i changed this to my GenLayerTutorial
 		GenLayer[] agenlayer = NanotechGenLayer.makeTheWorld(seed);
 		this.myGenBiomes = agenlayer[0];
 		this.myBiomeIndexLayer = agenlayer[1];
@@ -45,17 +44,11 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 		this(world.getSeed(), world.provider.terrainType);
 	}
 
-	/**
-	 * Gets the list of valid biomes for the player to spawn in.
-	 */
 	public List<BiomeGenBase> getBiomesToSpawnIn()
 	{
 		return this.myBiomesToSpawnIn;
 	}
 
-	/**
-	 * Returns the BiomeGenBase related to the x, z position on the world.
-	 */
 	public BiomeGenBase getBiomeGenAt(int x, int z)
 	{
 		BiomeGenBase biome = this.myBiomeCache.getBiomeGenAt(x, z);
@@ -67,10 +60,6 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 		return biome;
 	}
 
-	/**
-	 * Returns a list of rainfall values for the specified blocks. Args:
-	 * listToReuse, x, z, width, length.
-	 */
 	public float[] getRainfall(float[] par1ArrayOfFloat, int par2, int par3, int par4, int par5)
 	{
 		IntCache.resetIntCache();
@@ -97,19 +86,12 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 		return par1ArrayOfFloat;
 	}
 
-	/**
-	 * Return an adjusted version of a given temperature based on the y height
-	 */
 	@SideOnly(Side.CLIENT)
 	public float getTemperatureAtHeight(float par1, int par2)
 	{
 		return par1;
 	}
 
-	/**
-	 * Returns a list of temperatures to use for the specified blocks. Args:
-	 * listToReuse, x, y, width, length
-	 */
 	public float[] getTemperatures(float[] par1ArrayOfFloat, int par2, int par3, int par4, int par5)
 	{
 		IntCache.resetIntCache();
@@ -136,9 +118,6 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 		return par1ArrayOfFloat;
 	}
 
-	/**
-	 * Returns an array of biomes for the location input.
-	 */
 	public BiomeGenBase[] getBiomesForGeneration(BiomeGenBase[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5)
 	{
 		IntCache.resetIntCache();
@@ -158,7 +137,6 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 			}
 			else
 			{
-				// Change this to a biome
 				par1ArrayOfBiomeGenBase[i] = Nanotech_mod.nanotechBiome;
 			}
 		}
@@ -166,21 +144,11 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 		return par1ArrayOfBiomeGenBase;
 	}
 
-	/**
-	 * Returns biomes to use for the blocks and loads the other data like
-	 * temperature and humidity onto the WorldChunkManager Args: oldBiomeList,
-	 * x, z, width, depth
-	 */
 	public BiomeGenBase[] loadBlockGeneratorData(BiomeGenBase[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5)
 	{
 		return this.getBiomeGenAt(par1ArrayOfBiomeGenBase, par2, par3, par4, par5, true);
 	}
 
-	/**
-	 * Return a list of biomes for the specified blocks. Args: listToReuse, x,
-	 * y, width, length, cacheFlag (if false, don't check biomeCache to avoid
-	 * infinite loop in BiomeCacheBlock)
-	 */
 	public BiomeGenBase[] getBiomeGenAt(BiomeGenBase[] par1ArrayOfBiomeGenBase, int x, int y, int width, int length, boolean cacheFlag)
 	{
 		IntCache.resetIntCache();
@@ -208,7 +176,6 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 				}
 				else
 				{
-					// Change this to a biome
 					par1ArrayOfBiomeGenBase[i] = Nanotech_mod.nanotechBiome;
 				}
 			}
@@ -217,9 +184,6 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 		}
 	}
 
-	/**
-	 * checks given Chunk's Biomes against List of allowed ones
-	 */
 	public boolean areBiomesViable(int par1, int par2, int par3, List par4List)
 	{
 		IntCache.resetIntCache();
@@ -244,11 +208,6 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 		return true;
 	}
 
-	/**
-	 * Finds a valid position within a range, that is in one of the listed
-	 * biomes. Searches {par1,par2} +-par3 blocks. Strongly favors positive y
-	 * positions.
-	 */
 	public ChunkPosition findBiomePosition(int par1, int par2, int par3, List par4List, Random par5Random)
 	{
 		IntCache.resetIntCache();
@@ -278,9 +237,6 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 		return chunkposition;
 	}
 
-	/**
-	 * Calls the WorldChunkManager's biomeCache.cleanupCache()
-	 */
 	public void cleanupCache()
 	{
 		this.myBiomeCache.cleanupCache();

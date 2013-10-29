@@ -39,7 +39,7 @@ public class NanotechWorldProvider extends WorldProvider
 	@Override
 	public Vec3 getSkyColor(Entity cameraEntity, float partialTicks)
 	{
-		return this.worldObj.getWorldVec3Pool().getVecFromPool(0, 0, 0.5);
+		return this.worldObj.getWorldVec3Pool().getVecFromPool(0.2, 0.2, 0.2);
 	}
 
 	@Override

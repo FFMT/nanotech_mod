@@ -32,7 +32,6 @@ public abstract class NanotechGenLayer extends GenLayer
 
 		GenLayer biomes = new NanotechBiomeGenLayer(1L);
 
-		// more GenLayerZoom = bigger biomes
 		biomes = new GenLayerZoom(1000L, biomes);
 		biomes = new GenLayerZoom(1001L, biomes);
 
