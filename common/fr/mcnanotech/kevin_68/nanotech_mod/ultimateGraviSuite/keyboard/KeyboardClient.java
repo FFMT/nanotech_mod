@@ -45,14 +45,14 @@ public class KeyboardClient extends Keyboard
 			@Override
 			public void keyDown(EnumSet types, KeyBinding kb, boolean tickEnd, boolean isRepeat)
 			{
-				if(tickEnd)
+				if(tickEnd && mc.inGameHasFocus)
 				{
-					ItemStack helmet = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(3);
-					ItemStack chestPlate = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(2);
-					ItemStack leggings = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(1);
-					ItemStack boots = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(0);
+					ItemStack helmet = mc.thePlayer.inventory.armorItemInSlot(3);
+					ItemStack chestPlate = mc.thePlayer.inventory.armorItemInSlot(2);
+					ItemStack leggings = mc.thePlayer.inventory.armorItemInSlot(1);
+					ItemStack boots = mc.thePlayer.inventory.armorItemInSlot(0);
 					
-					if(kb.equals(flyKey) && KeyboardClient.mc.inGameHasFocus)
+					if(kb.equals(flyKey))
 					{
 
 						if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
@@ -62,7 +62,7 @@ public class KeyboardClient extends Keyboard
 						}
 					}
 
-					if(kb.equals(KeyboardClient.invKey) && KeyboardClient.mc.inGameHasFocus)
+					if(kb.equals(KeyboardClient.invKey))
 					{
 						if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
 						{
@@ -89,7 +89,7 @@ public class KeyboardClient extends Keyboard
 						}
 					}
 
-					if(kb.equals(KeyboardClient.nightKey) && KeyboardClient.mc.inGameHasFocus)
+					if(kb.equals(KeyboardClient.nightKey))
 					{
 						if(helmet != null && helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet))
 						{
