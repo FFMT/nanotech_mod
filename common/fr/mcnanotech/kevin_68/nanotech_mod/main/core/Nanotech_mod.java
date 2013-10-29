@@ -280,7 +280,7 @@ public class Nanotech_mod
 
 		GameRegistry.registerWorldGenerator(new WorldGeneration());
 
-		freeze = new NanotechPotion(30, true, 16262179).setPotionName("potion.freeze").setIconIndex(0, 0).func_111184_a(SharedMonsterAttributes.movementSpeed, "7107DE5E-7CE8-4030-940E-514C1F160890", -0.20000000596046448D, 2);
+		freeze = new NanotechPotion(30, true, 3035801).setPotionName("potion.freeze").setIconIndex(0, 0).func_111184_a(SharedMonsterAttributes.movementSpeed, "7107DE5E-7CE8-4030-940E-514C1F160890", -0.50000000596046448D, 2);
 		
 		this.guiAndTileEntity();
 		NanotechMobs.mobs();

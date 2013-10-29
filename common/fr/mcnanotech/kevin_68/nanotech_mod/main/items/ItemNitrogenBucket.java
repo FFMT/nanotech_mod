@@ -1,16 +1,36 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.items;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
 
 public class ItemNitrogenBucket extends ItemBucket
 {
 	public ItemNitrogenBucket(int id, int fluidId)
 	{
 		super(id, fluidId);
+	}
+
+	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player)
+	{
+		if(!player.capabilities.isCreativeMode)
+		{
+			--stack.stackSize;
+		}
+
+		if(!world.isRemote)
+		{
+			player.attackEntityFrom(NanotechDamageSource.nitrogenDamage, 150);
+		}
+
+		return stack.stackSize <= 0 ? new ItemStack(Item.bucketEmpty) : stack;
+
 	}
 
 	public boolean tryPlaceContainedLiquid(World world, int x, int y, int z)
@@ -43,5 +63,21 @@ public class ItemNitrogenBucket extends ItemBucket
 			}
 			return true;
 		}
+	}
+
+	public int getMaxItemUseDuration(ItemStack par1ItemStack)
+	{
+		return 32;
+	}
+
+	public EnumAction getItemUseAction(ItemStack par1ItemStack)
+	{
+		return EnumAction.drink;
+	}
+
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+	{
+		par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
+		return par1ItemStack;
 	}
 }

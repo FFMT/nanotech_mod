@@ -53,12 +53,23 @@ public class BlockLiquidNitrogen extends BlockFluidClassic
 		}
 		return super.displaceIfPossible(world, x, y, z);
 	}
-	
+
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		if (entity instanceof EntityLivingBase)
+		if(entity instanceof EntityLivingBase)
 		{
 			((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Nanotech_mod.freeze.id, 500, 0));
+		}
+	}
+
+	public void randomDisplayTick(World world, int x, int y, int z, Random random)
+	{
+		if(world.isAirBlock(x, y + 1, z))
+		{
+			float f = (float)x + random.nextFloat();
+			float f1 = (float)y + random.nextFloat() * 0.5F + 0.5F;
+			float f2 = (float)z + random.nextFloat();
+			world.spawnParticle("cloud", (double)f, (double)f1, (double)f2, 0.0D, 0.1D, 0.0D);
 		}
 	}
 
