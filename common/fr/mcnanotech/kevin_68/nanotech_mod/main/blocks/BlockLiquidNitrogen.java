@@ -28,8 +28,8 @@ public class BlockLiquidNitrogen extends BlockFluidClassic
 
 	public void registerIcons(IconRegister register)
 	{
-		stillIcon = register.registerIcon("nanotech_mod:liquid_nitrogen_still");
-		flowingIcon = register.registerIcon("nanotech_mod:liquid_nitrogen_flow");
+		stillIcon = register.registerIcon("nanotech_mod:nitrogen_still");
+		flowingIcon = register.registerIcon("nanotech_mod:nitrogen_flow");
 	}
 
 	public boolean canDisplace(IBlockAccess world, int x, int y, int z)

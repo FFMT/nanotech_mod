@@ -268,7 +268,7 @@ public class Nanotech_mod
 	public void InitNanotech_mod(FMLInitializationEvent event)
 	{
 		nanotechBiome = new NanotechBiome(nanotechBiomeID).setBiomeName("Nanotechbiome").setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.1F, 0.4F);
-		nitrogenOcean = new NitrogenOcean(nitrogenOceanID).setBiomeName("NitrogenOcean").setTemperatureRainfall(0.2F, 0.0F).setMinMaxHeight(-0.5F, 0.3F);
+		nitrogenOcean = new NitrogenOcean(nitrogenOceanID).setBiomeName("NitrogenOcean").setTemperatureRainfall(-15.0F, -10.0F).setMinMaxHeight(-0.5F, 0.3F);
 		
 		DimensionManager.registerProviderType(dimensionID, NanotechWorldProvider.class, false);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
