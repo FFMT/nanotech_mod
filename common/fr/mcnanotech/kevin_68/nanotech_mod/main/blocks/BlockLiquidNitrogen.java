@@ -2,11 +2,14 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
 import java.util.Random;
 
+import cpw.mods.fml.common.Loader;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
@@ -14,6 +17,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
 
 public class BlockLiquidNitrogen extends BlockFluidClassic
 {
@@ -58,7 +63,26 @@ public class BlockLiquidNitrogen extends BlockFluidClassic
 	{
 		if(entity instanceof EntityLivingBase)
 		{
-			((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Nanotech_mod.freeze.id, 500, 0));
+			EntityLivingBase living = (EntityLivingBase)entity;
+			ItemStack helmet = living.getCurrentItemOrArmor(4);
+			ItemStack chestPlate = living.getCurrentItemOrArmor(3);
+			ItemStack leggings = living.getCurrentItemOrArmor(2);
+			ItemStack boots = living.getCurrentItemOrArmor(1);
+			if(helmet != null && chestPlate != null && leggings != null && boots != null)
+			{
+				if(helmet.equals(NanotechItem.mysteriousHelmet) && chestPlate.equals(NanotechItem.mysteriousChestPlate) && leggings.equals(NanotechItem.mysteriousLeggings) && boots.equals(NanotechItem.mysteriousBoots))
+				{
+					return;
+				}
+				if(Loader.isModLoaded("UltimateGraviSuite"))
+				{
+					if(helmet.equals(UltimateGraviSuite.ultimategraviChestPlate) && chestPlate.equals(UltimateGraviSuite.ultimategraviChestPlate) && leggings.equals(UltimateGraviSuite.ultimateLeggings) && boots.equals(UltimateGraviSuite.ultimateBoots))
+					{
+						return;
+					}
+				}
+			}
+			living.addPotionEffect(new PotionEffect(Nanotech_mod.freeze.id, 500, 0));
 		}
 	}
 

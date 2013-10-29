@@ -114,7 +114,7 @@ public class BlockSunShade extends Block
 		return -1;
 	}
 
-	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata)
+	public void breakBlock(World world, int x, int y, int z, int id, int metadata)
 	{
 		if(metadata == 0)
 		{
@@ -186,15 +186,7 @@ public class BlockSunShade extends Block
 		{
 			world.setBlock(x, y, z, this.blockID, 2, 1);
 		}
-		else
-		{
-			super.onBlockDestroyedByPlayer(world, x, y, z, metadata);
-		}
-	}
-
-	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion explosion)
-	{
-		this.onBlockDestroyedByPlayer(world, x, y, z, world.getBlockMetadata(x, y, z));
+		super.breakBlock(world, x, y, z, id, metadata);
 	}
 
 	public void registerIcons(IconRegister iconregister)

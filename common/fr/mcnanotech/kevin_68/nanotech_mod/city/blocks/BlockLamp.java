@@ -74,9 +74,9 @@ public class BlockLamp extends Block
 	{
 		return -1;
 	}
-
-	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata)
-	{
+	
+    public void breakBlock(World world, int x, int y, int z, int id, int metadata)
+    {
 		for(int i = -3; i < 4; ++i)
 		{
 			if(world.getBlockId(x, y + i, z) == this.blockID)
@@ -84,12 +84,8 @@ public class BlockLamp extends Block
 				world.setBlockToAir(x, y + i, z);
 			}
 		}
-	}
-
-	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion par5Explosion)
-	{
-		this.onBlockDestroyedByPlayer(world, x, y, z, world.getBlockMetadata(x, y, z));
-	}
+    	super.breakBlock(world, x, y, z, id, metadata);
+    }
 
 	public Icon getIcon(int side, int metadata)
 	{

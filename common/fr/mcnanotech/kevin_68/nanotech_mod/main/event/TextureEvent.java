@@ -13,10 +13,8 @@ public class TextureEvent
 	@SideOnly(Side.CLIENT)
 	public void onPostTextureStitch(TextureStitchEvent.Post event)
 	{
-
 		if(event.map.textureType == 0)
 		{
-
 			Nanotech_mod.liquidNitrogen.setIcons(NanotechBlock.liquidNitrogen.getBlockTextureFromSide(1),
 			NanotechBlock.liquidNitrogen.getBlockTextureFromSide(2));
 		}

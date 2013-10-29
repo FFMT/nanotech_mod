@@ -23,6 +23,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.network.PacketHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityFountain;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityLamp;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityLampLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityModernFence;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySunShade;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrail;
@@ -95,12 +96,13 @@ public class Nanotech_mod_City
 		NetworkRegistry.instance().registerChannel(new PacketHandler(), "nanotechmodcity");
 
 		// TileEntity
-		GameRegistry.registerTileEntity(TileEntitySpotLight.class, "TileEntitySpotLight");
-		GameRegistry.registerTileEntity(TileEntityTrail.class, "TileEntityTrail");
-		GameRegistry.registerTileEntity(TileEntityFountain.class, "TileEntityFountain");
-		GameRegistry.registerTileEntity(TileEntityLamp.class, "TileEntityLamp");
-		GameRegistry.registerTileEntity(TileEntityLampLight.class, "TileEntityLampLight");
-		GameRegistry.registerTileEntity(TileEntitySunShade.class, "TileEntitySunShade");
+		GameRegistry.registerTileEntity(TileEntitySpotLight.class, "SpotLight");
+		GameRegistry.registerTileEntity(TileEntityTrail.class, "Trail");
+		GameRegistry.registerTileEntity(TileEntityFountain.class, "Fountain");
+		GameRegistry.registerTileEntity(TileEntityLamp.class, "Lamp");
+		GameRegistry.registerTileEntity(TileEntityLampLight.class, "LampLight");
+		GameRegistry.registerTileEntity(TileEntitySunShade.class, "SunShade");
+		GameRegistry.registerTileEntity(TileEntityModernFence.class, "ModernFence");
 
 		// Render
 		proxy.registerTileRenders();
