@@ -17,22 +17,6 @@ public class ItemNitrogenBucket extends ItemBucket
 		super(id, fluidId);
 	}
 
-	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player)
-	{
-		if(!player.capabilities.isCreativeMode)
-		{
-			--stack.stackSize;
-		}
-
-		if(!world.isRemote)
-		{
-			player.attackEntityFrom(NanotechDamageSource.nitrogenDamage, 150);
-		}
-
-		return stack.stackSize <= 0 ? new ItemStack(Item.bucketEmpty) : stack;
-
-	}
-
 	public boolean tryPlaceContainedLiquid(World world, int x, int y, int z)
 	{
 		Material material = world.getBlockMaterial(x, y, z);
@@ -63,21 +47,5 @@ public class ItemNitrogenBucket extends ItemBucket
 			}
 			return true;
 		}
-	}
-
-	public int getMaxItemUseDuration(ItemStack stack)
-	{
-		return 32;
-	}
-
-	public EnumAction getItemUseAction(ItemStack stack)
-	{
-		return EnumAction.drink;
-	}
-
-	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
-	{
-		player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
-		return stack;
 	}
 }
