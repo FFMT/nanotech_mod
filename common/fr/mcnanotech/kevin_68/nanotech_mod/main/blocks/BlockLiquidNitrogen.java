@@ -61,7 +61,12 @@ public class BlockLiquidNitrogen extends BlockFluidClassic
 					for(int z1 = -3; z1 < 4; z1++)
 					{
 						boolean dofreeze = true;
-						if((x1 == -3 && z1 == -3) || (x1 == 3 && z1 == 3) || (x1 == -2 && z1 == -3) || (x1 == -2 && z1 == -3) || (x1 == 2 && z1 == 3) || (x1 == 3 && z1 == 2) || (x1 == -3 && y1 == -3) || (x1 == 3 && y1 == -3) || (x1 == -3 && y1 == 3) || (x1 == 3 && y1 == 3) || (z1 == -3 && y1 == -3) || (z1 == 3 && y1 == -3) || (z1 == -3 && y1 == 3) || (z1 == 3 && y1 == 3))
+						// x - z
+						if((x1 == -3 && z1 == -3) || (x1 == -2 && z1 == -3) || (x1 == -3 && z1 == -2) || (x1 == 3 && z1 == 3) || (x1 == 3 && z1 == 2) || (x1 == 2 && z1 == 3) || (x1 == 3 && z1 == -3) || (x1 == 3 && z1 == -2) || (x1 == 2 && z1 == -3) || (x1 == -3 && z1 == 3) || (x1 == -3 && z1 == 2) || (x1 == -2 && z1 == 3)
+						// x - y
+						|| (x1 == -3 && y1 == -3) || (x1 == -2 && y1 == -3) || (x1 == -3 && y1 == -2) || (x1 == 3 && y1 == 3) || (x1 == 3 && y1 == 2) || (x1 == 2 && y1 == 3) || (x1 == 3 && y1 == -3) || (x1 == 3 && y1 == -2) || (x1 == 2 && y1 == -3) || (x1 == -3 && y1 == 3) || (x1 == -3 && y1 == 2) || (x1 == -2 && y1 == 3)
+						// y - z
+						|| (y1 == -3 && z1 == -3) || (y1 == -2 && z1 == -3) || (y1 == -3 && z1 == -2) || (y1 == 3 && z1 == 3) || (y1 == 3 && z1 == 2) || (y1 == 2 && z1 == 3) || (y1 == 3 && z1 == -3) || (y1 == 3 && z1 == -2) || (y1 == 2 && z1 == -3) || (y1 == -3 && z1 == 3) || (y1 == -3 && z1 == 2) || (y1 == -2 && z1 == 3))
 						{
 							dofreeze = false;
 						}
@@ -78,7 +83,7 @@ public class BlockLiquidNitrogen extends BlockFluidClassic
 								else
 									world.setBlock(x + x1, y + y1, z + z1, Block.cobblestone.blockID);
 							}
-							if(world.getBlockId(x + x1, y + y1, z + z1) == Block.waterMoving.blockID || world.getBlockId(x, y + y1, z) == Block.waterStill.blockID)
+							if(world.getBlockId(x + x1, y + y1, z + z1) == Block.waterMoving.blockID || world.getBlockId(x + x1, y + y1, z + z1) == Block.waterStill.blockID)
 								world.setBlock(x + x1, y + y1, z + z1, Block.ice.blockID);
 						}
 					}

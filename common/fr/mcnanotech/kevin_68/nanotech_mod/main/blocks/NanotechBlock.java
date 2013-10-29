@@ -34,11 +34,11 @@ public class NanotechBlock
 		sodium = new BlockSodium(Nanotech_mod.BlockSodiumID, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("sodium").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B).setTextureName("nanotech_mod:sodium");
 		mossystone = new BlockBase(Nanotech_mod.BlockMossyStoneID, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("mossystone").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B).setTextureName("nanotech_mod:mossystone");
 		theDeathHead = new BlockTheDeathHead(Nanotech_mod.BlockTheDeathHeadID).setHardness(5.0F).setResistance(10.0F).setUnlocalizedName("theDeathHead").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
-		listerJukebox = new BlockListerJukebox(Nanotech_mod.BlockListerJukeboxID, Material.iron).setUnlocalizedName("ListerJukebox").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B).setTextureName("nanotech_mod:listerjukebox");
+		listerJukebox = new BlockListerJukebox(Nanotech_mod.BlockListerJukeboxID, Material.iron).setUnlocalizedName("listerJukebox").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B).setTextureName("nanotech_mod:listerjukebox");
 
 		if(Nanotech_mod.liquidNitrogen.getBlockID() == -1)
 		{
-			liquidNitrogen = new BlockLiquidNitrogen(Nanotech_mod.BlockLiquidNitrogenID, Nanotech_mod.liquidNitrogen, Material.water).setUnlocalizedName("blockLiquidNitrogen");
+			liquidNitrogen = new BlockLiquidNitrogen(Nanotech_mod.BlockLiquidNitrogenID, Nanotech_mod.liquidNitrogen, Material.water).setUnlocalizedName("liquidNitrogen");
 			GameRegistry.registerBlock(liquidNitrogen, "blockLiquidNitrogen");
 			Nanotech_mod.liquidNitrogen.setBlockID(liquidNitrogen);
 		}

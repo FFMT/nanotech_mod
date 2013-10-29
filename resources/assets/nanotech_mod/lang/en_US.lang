@@ -33,8 +33,11 @@ tile.notfallingsand.name=Not Falling Sand
 tile.sodium.name=Block of Sodium
 tile.mossystone.name=Mossy Stone
 tile.theDeathHead.name=The Death Head
-tile.blockTea.name=BlockTea
-tile.ListerJukebox.name=Lister Jukebox
+tile.listerJukebox.name=Lister Jukebox
+tile.liquidNitrogen.name=Liquid Nitrogen
+
+#Fluid
+fluid.liquidnitrogen=Liquid Nitrogen
 
 #Items
 item.siliconore.name=Silicon Ore
@@ -74,11 +77,10 @@ item.edibleFlesh.name=Edible Flesh
 item.rottenChunk.name=Chunk of Rotten flesh
 item.scythe.name=Scythe
 item.crazyGlasses.name=Crazy Glasses
-item.teaSeed.name=Tea Sapling
-item.tea.name=Tea
 item.debug.name=Debug
 item.alters.name=Alters
 item.portalActivator.name=Portal Activator
+item.nitrogenBucket.name=Nitrogen Bucket
 
 #Entity
 entity.SuperZombie.name=Super Zombie
@@ -200,4 +202,4 @@ itemGroup.NanotechModItems=Nanotech mod Items
 deathMessage.sodium.0=%s was corroded by sodium
 deathMessage.sodium.1=%s the player did not respect the safety instructions by manipulating sodium
 deathMessage.sodium.2=%s wants to become a scientist, but it does not have the required skills
-deathMessage.alters.0=%s has done too much workouts ! 
+deathMessage.alters.0=%s has done too much workouts !

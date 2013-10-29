@@ -34,8 +34,11 @@ tile.sodium.name=Bloc de sodium
 tile.mossystone.name=Roche moussue
 tile.theDeathHead.name=Tête de la Mort
 tile.blockTrail.name=Chemin
-tile.blockTea.name=BlockTea
-tile.ListerJukebox.name=Jukebox Listeur
+tile.listerJukebox.name=Jukebox Listeur
+tile.liquidNitrogen.name=Azote liquide
+
+#Fluid
+fluid.liquidnitrogen=Azote liquide
 
 #Items
 item.siliconore.name=Minerai de silicium
@@ -75,11 +78,10 @@ item.edibleFlesh.name=Chaire commestible
 item.rottenChunk.name=Gros morceau de chaire putréfié
 item.scythe.name=Faux
 item.crazyGlasses.name=Lunette de fou
-item.teaSeed.name=Pousse de Thé
-item.tea.name=Thé
 item.debug.name=Debug
 item.alters.name=Altères
 item.portalActivator.name=Activateur de portail
+item.nitrogenBucket.name=Seau d'azote
 
 #Entity
 entity.SuperZombie.name=Super Zombie
@@ -201,3 +203,4 @@ itemGroup.NanotechModItems=Items de Nanotech mod
 deathMessage.sodium.0=%s a été rongé(e) par le sodium
 deathMessage.sodium.1=%s n'a pas respecté les consignes de sécurité en manipulant du sodium
 deathMessage.sodium.2=%s veut devenir scientifique mais n'a pas les compétences requises
+deathMessage.alters.0=%s a fait trop de séances d'entraînement !
