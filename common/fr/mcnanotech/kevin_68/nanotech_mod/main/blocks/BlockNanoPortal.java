@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.UtilEntityTeleporter;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechTeleporter;
 
 public class BlockNanoPortal extends Block
@@ -127,7 +128,7 @@ public class BlockNanoPortal extends Block
 				}
 				else
 				{
-					entity.travelToDimension(Nanotech_mod.dimensionID);
+					UtilEntityTeleporter.teleportToDim(entity, Nanotech_mod.dimensionID);
 				}
 			}
 			else
@@ -147,7 +148,7 @@ public class BlockNanoPortal extends Block
 				}
 				else
 				{
-					entity.travelToDimension(0);
+					UtilEntityTeleporter.teleportToDim(entity, 0);
 				}
 			}
 		}
