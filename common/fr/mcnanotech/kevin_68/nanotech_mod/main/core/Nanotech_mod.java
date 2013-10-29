@@ -58,8 +58,8 @@ public class Nanotech_mod
 	// Proxy
 	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotech_mod.main.core.ClientProxy", serverSide = "fr.mcnanotech.kevin_68.nanotech_mod.main.core.CommonProxy")
 	public static CommonProxy proxy;
-	
-	//Fluid
+
+	// Fluid
 	public static Fluid liquidNitrogen;
 
 	// Block IDs
@@ -159,8 +159,8 @@ public class Nanotech_mod
 			BlockMossyStoneID = cfg.getBlock("Mossy Stone", 1017).getInt();
 			BlockTheDeathHeadID = cfg.getBlock("TheDeathHead", 1018).getInt();
 			BlockListerJukeboxID = cfg.getBlock("ListerJukebox", 1020).getInt();
-			BlockLiquidNitrogenID = cfg.getBlock("Block Liquid Nitrogen", 1021).getInt();
-			
+			BlockLiquidNitrogenID = cfg.getTerrainBlock("block", "Block Liquid Nitrogen", 251, "used in terrain gen, ID must be less than 256").getInt();
+
 			ItemNanotechID = cfg.getItem("Main Nanotech ID", 5000).getInt();
 			ItemSuperBottleOfXpID = cfg.getItem("Super Bottle of xp", 5001).getInt();
 			ItemDiamondBowID = cfg.getItem("Diamond bow", 5002).getInt();
@@ -187,7 +187,7 @@ public class Nanotech_mod
 			AltersID = cfg.getItem("Alters", 5025).getInt();
 			ItemNanoDiscID = cfg.getItem("Nanodisc", 5026).getInt();
 			NitrogenBucketID = cfg.getItem("Liquid Nitrogen Bucket", 5027).getInt();
-			
+
 			dimensionID = cfg.get("World", "Dimension ID", 19).getInt();
 			nanotechBiomeID = cfg.get("World", "Biome ID", 100).getInt();
 
@@ -247,20 +247,17 @@ public class Nanotech_mod
 				cfg.save();
 			}
 		}
-		
+
 		NanotechDamageSource.loadDamageSource();
-		
-		liquidNitrogen = new Fluid("liquidNitrogen").setDensity(4000).setViscosity(500).setTemperature(286).setLuminosity(10).setUnlocalizedName("liquidNitrogen");
+		liquidNitrogen = new Fluid("liquidnitrogen").setDensity(4000).setViscosity(500).setTemperature(286).setLuminosity(10).setUnlocalizedName("liquidNitrogen");
 		FluidRegistry.registerFluid(liquidNitrogen);
-		liquidNitrogen = FluidRegistry.getFluid("liquidNitrogen");
-	    
+		liquidNitrogen = FluidRegistry.getFluid("liquidnitrogen");
 		NanotechBlock.initBlock();
 		NanotechBlock.blockRegistry();
 		NanotechItem.initItem();
 		NanotechAchievement.initAchievement();
-		
-		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidNitrogen", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(NanotechItem.nitrogenBucket), FluidContainerRegistry.EMPTY_BUCKET);
-		
+
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidnitrogen", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(NanotechItem.nitrogenBucket), FluidContainerRegistry.EMPTY_BUCKET);
 	}
 
 	// Initialization
@@ -271,7 +268,7 @@ public class Nanotech_mod
 
 		DimensionManager.registerProviderType(dimensionID, NanotechWorldProvider.class, false);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
-		
+
 		GameRegistry.registerWorldGenerator(new WorldGeneration());
 
 		this.guiAndTileEntity();
