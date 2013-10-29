@@ -2,8 +2,6 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
 import java.util.Random;
 
-import cpw.mods.fml.common.Loader;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -16,7 +14,9 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
+import cpw.mods.fml.common.Loader;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
 
@@ -61,29 +61,39 @@ public class BlockLiquidNitrogen extends BlockFluidClassic
 
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		if(entity instanceof EntityLivingBase)
+		if(entity instanceof EntityLivingBase && !world.isRemote)
 		{
 			EntityLivingBase living = (EntityLivingBase)entity;
-			ItemStack helmet = living.getCurrentItemOrArmor(4);
-			ItemStack chestPlate = living.getCurrentItemOrArmor(3);
-			ItemStack leggings = living.getCurrentItemOrArmor(2);
-			ItemStack boots = living.getCurrentItemOrArmor(1);
-			if(helmet != null && chestPlate != null && leggings != null && boots != null)
-			{
-				if(helmet.equals(NanotechItem.mysteriousHelmet) && chestPlate.equals(NanotechItem.mysteriousChestPlate) && leggings.equals(NanotechItem.mysteriousLeggings) && boots.equals(NanotechItem.mysteriousBoots))
-				{
-					return;
-				}
-				if(Loader.isModLoaded("UltimateGraviSuite"))
-				{
-					if(helmet.equals(UltimateGraviSuite.ultimategraviChestPlate) && chestPlate.equals(UltimateGraviSuite.ultimategraviChestPlate) && leggings.equals(UltimateGraviSuite.ultimateLeggings) && boots.equals(UltimateGraviSuite.ultimateBoots))
-					{
-						return;
-					}
-				}
-			}
+			if(this.doEffect(living))
 			living.addPotionEffect(new PotionEffect(Nanotech_mod.freeze.id, 500, 0));
 		}
+	}
+	
+	private boolean doEffect(EntityLivingBase living)
+	{
+		ItemStack helmet = living.getCurrentItemOrArmor(4);
+		ItemStack chestPlate = living.getCurrentItemOrArmor(3);
+		ItemStack leggings = living.getCurrentItemOrArmor(2);
+		ItemStack boots = living.getCurrentItemOrArmor(1);
+		if(helmet != null && chestPlate != null && leggings != null && boots != null)
+		{
+			if(helmet.getItem().equals(NanotechItem.mysteriousHelmet) && chestPlate.getItem().equals(NanotechItem.mysteriousChestPlate) && leggings.getItem().equals(NanotechItem.mysteriousLeggings) && boots.getItem().equals(NanotechItem.mysteriousBoots))
+			{
+				return false;
+			}
+			if(Loader.isModLoaded("UltimateGraviSuite"))
+			{
+				if(helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet) && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate) && leggings.getItem().equals(UltimateGraviSuite.ultimateLeggings) && boots.getItem().equals(UltimateGraviSuite.ultimateBoots))
+				{
+					return false;
+				}
+			}
+		}
+		if(living instanceof MobThedeath)
+		{
+			return false;
+		}
+		return true;
 	}
 
 	public void randomDisplayTick(World world, int x, int y, int z, Random random)
