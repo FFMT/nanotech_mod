@@ -45,54 +45,57 @@ public class KeyboardClient extends Keyboard
 			@Override
 			public void keyDown(EnumSet types, KeyBinding kb, boolean tickEnd, boolean isRepeat)
 			{
-				ItemStack helmet = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(3);
-				ItemStack chestPlate = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(2);
-				ItemStack leggings = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(1);
-				ItemStack boots = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(0);
-				
-				if(tickEnd && kb.equals(flyKey) && KeyboardClient.mc.inGameHasFocus)
+				if(tickEnd)
 				{
-
-					if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
+					ItemStack helmet = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(3);
+					ItemStack chestPlate = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(2);
+					ItemStack leggings = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(1);
+					ItemStack boots = KeyboardClient.mc.thePlayer.inventory.armorItemInSlot(0);
+					
+					if(kb.equals(flyKey) && KeyboardClient.mc.inGameHasFocus)
 					{
-						ClientProxy.sendMyPacket("keyFLY", 1);
-						ClientPacketHelper.switchFlyModeClient(KeyboardClient.mc.thePlayer, chestPlate);
+
+						if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
+						{
+							ClientProxy.sendMyPacket("keyFLY", 1);
+							ClientPacketHelper.switchFlyModeClient(KeyboardClient.mc.thePlayer, chestPlate);
+						}
 					}
-				}
 
-				if(tickEnd && kb.equals(KeyboardClient.invKey) && KeyboardClient.mc.inGameHasFocus)
-				{
-					if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
+					if(kb.equals(KeyboardClient.invKey) && KeyboardClient.mc.inGameHasFocus)
 					{
-						ClientProxy.sendMyPacket("keyInv", 1);
-						ClientPacketHelper.switchInvisibleModeClient(KeyboardClient.mc.thePlayer, chestPlate);
-
-						if(leggings != null && leggings.getItem().equals(UltimateGraviSuite.ultimateLeggings))
+						if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
 						{
-							ClientProxy.sendMyPacket("keyInvLeg", 1);
-							ClientPacketHelper.switchInvisibleModeClient(KeyboardClient.mc.thePlayer, leggings);
-						}
+							ClientProxy.sendMyPacket("keyInv", 1);
+							ClientPacketHelper.switchInvisibleModeClient(KeyboardClient.mc.thePlayer, chestPlate);
 
-						if(boots != null && boots.getItem().equals(UltimateGraviSuite.ultimateBoots))
-						{
-							ClientProxy.sendMyPacket("keyInvBoo", 1);
-							ClientPacketHelper.switchInvisibleModeClient(KeyboardClient.mc.thePlayer, boots);
-						}
+							if(leggings != null && leggings.getItem().equals(UltimateGraviSuite.ultimateLeggings))
+							{
+								ClientProxy.sendMyPacket("keyInvLeg", 1);
+								ClientPacketHelper.switchInvisibleModeClient(KeyboardClient.mc.thePlayer, leggings);
+							}
 
+							if(boots != null && boots.getItem().equals(UltimateGraviSuite.ultimateBoots))
+							{
+								ClientProxy.sendMyPacket("keyInvBoo", 1);
+								ClientPacketHelper.switchInvisibleModeClient(KeyboardClient.mc.thePlayer, boots);
+							}
+
+							if(helmet != null && helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet))
+							{
+								ClientProxy.sendMyPacket("keyInvHel", 1);
+								ClientPacketHelper.switchInvisibleModeClient(KeyboardClient.mc.thePlayer, helmet);
+							}
+						}
+					}
+
+					if(kb.equals(KeyboardClient.nightKey) && KeyboardClient.mc.inGameHasFocus)
+					{
 						if(helmet != null && helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet))
 						{
-							ClientProxy.sendMyPacket("keyInvHel", 1);
-							ClientPacketHelper.switchInvisibleModeClient(KeyboardClient.mc.thePlayer, helmet);
+							ClientProxy.sendMyPacket("keyNight", 1);
+							ClientPacketHelper.switchNightVisionModeClient(KeyboardClient.mc.thePlayer, helmet);
 						}
-					}
-				}
-
-				if(tickEnd && kb.equals(KeyboardClient.nightKey) && KeyboardClient.mc.inGameHasFocus)
-				{
-					if(helmet != null && helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet))
-					{
-						ClientProxy.sendMyPacket("keyNight", 1);
-						ClientPacketHelper.switchNightVisionModeClient(KeyboardClient.mc.thePlayer, helmet);
 					}
 				}
 			}
