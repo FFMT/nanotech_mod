@@ -49,7 +49,7 @@ public class Nanotech_mod_City
 		@SideOnly(Side.CLIENT)
 		public int getTabIconItemIndex()
 		{
-			return NanotechCityBlock.BlockLamp.blockID;
+			return NanotechCityBlock.lamp.blockID;
 		}
 	};
 
@@ -106,13 +106,13 @@ public class Nanotech_mod_City
 		proxy.registerTileRenders();
 
 		// Recipe
-		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockLamp, 1), new Object[] {"IDI", "GSG", "III", 'I', Item.ingotIron, 'D', Block.daylightSensor, 'G', Block.thinGlass, 'S', Block.glowStone});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockSunShade, 1), new Object[] {"WWW", " S ", " S ", 'W', Block.cloth, 'S', Item.stick});
-		GameRegistry.addShapelessRecipe(new ItemStack(NanotechCityBlock.BlockTrail, 1), new Object[] {Block.grass, Block.gravel});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockFountain, 1), new Object[] {"S S", "SWS", "SPS", 'S', new ItemStack(Block.stoneSingleSlab, 0), 'W', Item.bucketWater, 'P', Block.pistonBase});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockModernFence, 4), new Object[] {"I I", "III", "I I", 'I', Item.ingotIron});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockTrashcan, 1), new Object[] {"I I", "ICI", "III", 'I', Item.ingotIron, 'C', Block.cactus});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.BlockSpotLight), new Object[] {"OAO", "RGB", "OAO", 'O', Block.obsidian, 'A', Block.glass, 'R', new ItemStack(Item.dyePowder, 1, 1), 'G', new ItemStack(Item.dyePowder, 1, 2), 'B', new ItemStack(Item.dyePowder, 1, 4)});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.lamp, 1), new Object[] {"IDI", "GSG", "III", 'I', Item.ingotIron, 'D', Block.daylightSensor, 'G', Block.thinGlass, 'S', Block.glowStone});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.sunShade, 1), new Object[] {"WWW", " S ", " S ", 'W', Block.cloth, 'S', Item.stick});
+		GameRegistry.addShapelessRecipe(new ItemStack(NanotechCityBlock.trail, 1), new Object[] {Block.grass, Block.gravel});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.fountain, 1), new Object[] {"S S", "SWS", "SPS", 'S', new ItemStack(Block.stoneSingleSlab, 0), 'W', Item.bucketWater, 'P', Block.pistonBase});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.modernFence, 4), new Object[] {"I I", "III", "I I", 'I', Item.ingotIron});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.trashcan, 1), new Object[] {"I I", "ICI", "III", 'I', Item.ingotIron, 'C', Block.cactus});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.spotLight), new Object[] {"OAO", "RGB", "OAO", 'O', Block.obsidian, 'A', Block.glass, 'R', new ItemStack(Item.dyePowder, 1, 1), 'G', new ItemStack(Item.dyePowder, 1, 2), 'B', new ItemStack(Item.dyePowder, 1, 4)});
 
 	}
 

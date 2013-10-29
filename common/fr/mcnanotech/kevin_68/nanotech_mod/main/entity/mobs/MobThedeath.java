@@ -524,7 +524,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 	protected void dropFewItems(boolean killbyplayer, int lootinglevel)
 	{
-		entityDropItem(new ItemStack(NanotechItem.ItemBase, 25, 2), 0.0F);
+		entityDropItem(new ItemStack(NanotechItem.itemBase, 25, 2), 0.0F);
 		dropItem(Item.diamond.itemID, 18);
 		dropItem(Item.netherStar.itemID, 1);
 		dropItem(NanotechItem.scythe.itemID, 1);

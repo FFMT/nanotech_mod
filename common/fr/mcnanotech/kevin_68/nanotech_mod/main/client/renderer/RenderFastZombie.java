@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelMobFastZombie;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobFastzombie;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobFastZombie;
 
 public class RenderFastZombie extends RenderLiving
 {
@@ -15,7 +15,7 @@ public class RenderFastZombie extends RenderLiving
 		super(new ModelMobFastZombie(), 0.5F);
 	}
 
-	protected ResourceLocation getFastTexture(MobFastzombie entity)
+	protected ResourceLocation getFastTexture(MobFastZombie entity)
 	{
 		return texture;
 	}
@@ -23,6 +23,6 @@ public class RenderFastZombie extends RenderLiving
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.getFastTexture((MobFastzombie)entity);
+		return this.getFastTexture((MobFastZombie)entity);
 	}
 }

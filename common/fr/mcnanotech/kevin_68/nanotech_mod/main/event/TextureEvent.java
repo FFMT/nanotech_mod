@@ -17,8 +17,8 @@ public class TextureEvent
 		if(event.map.textureType == 0)
 		{
 
-			Nanotech_mod.liquidNitrogen.setIcons(NanotechBlock.BlockLiquidNitrogen.getBlockTextureFromSide(1),
-			NanotechBlock.BlockLiquidNitrogen.getBlockTextureFromSide(2));
+			Nanotech_mod.liquidNitrogen.setIcons(NanotechBlock.liquidNitrogen.getBlockTextureFromSide(1),
+			NanotechBlock.liquidNitrogen.getBlockTextureFromSide(2));
 		}
 	}
 }

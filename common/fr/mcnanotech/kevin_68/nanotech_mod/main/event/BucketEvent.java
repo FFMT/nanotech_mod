@@ -15,7 +15,7 @@ public class BucketEvent
 		int id = event.world.getBlockId(event.target.blockX, event.target.blockY, event.target.blockZ);
 		int metadata = event.world.getBlockMetadata(event.target.blockX, event.target.blockY, event.target.blockZ);
 
-		if(id == NanotechBlock.BlockLiquidNitrogen.blockID && metadata == 0)
+		if(id == NanotechBlock.liquidNitrogen.blockID && metadata == 0)
 		{
 			event.world.setBlockToAir(event.target.blockX, event.target.blockY, event.target.blockZ);
 			event.result = new ItemStack(NanotechItem.nitrogenBucket);

@@ -57,7 +57,7 @@ public class NanotechTeleporter extends Teleporter
 						int i2 = k + i1 * b1 - l * b0;
 						boolean flag = j1 < 0;
 
-						this.worldServerInstance.setBlock(k1, l1, i2, flag ? NanotechBlock.BlockPortalFrame.blockID : 0);
+						this.worldServerInstance.setBlock(k1, l1, i2, flag ? NanotechBlock.portalFrame.blockID : 0);
 					}
 				}
 			}
@@ -99,9 +99,9 @@ public class NanotechTeleporter extends Teleporter
 					double d6 = (double)l1 + 0.5D - entity.posZ;
 					for(int i2 = this.worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2)
 					{
-						if(this.worldServerInstance.getBlockId(k1, i2, l1) == NanotechBlock.BlockPortal.blockID)
+						if(this.worldServerInstance.getBlockId(k1, i2, l1) == NanotechBlock.portal.blockID)
 						{
-							while(this.worldServerInstance.getBlockId(k1, i2 - 1, l1) == NanotechBlock.BlockPortal.blockID)
+							while(this.worldServerInstance.getBlockId(k1, i2 - 1, l1) == NanotechBlock.portal.blockID)
 							{
 								--i2;
 							}
@@ -130,19 +130,19 @@ public class NanotechTeleporter extends Teleporter
 			double d9 = (double)j + 0.5D;
 			d4 = (double)k + 0.5D;
 			int j2 = -1;
-			if(this.worldServerInstance.getBlockId(i - 1, j, k) == NanotechBlock.BlockPortal.blockID)
+			if(this.worldServerInstance.getBlockId(i - 1, j, k) == NanotechBlock.portal.blockID)
 			{
 				j2 = 2;
 			}
-			if(this.worldServerInstance.getBlockId(i + 1, j, k) == NanotechBlock.BlockPortal.blockID)
+			if(this.worldServerInstance.getBlockId(i + 1, j, k) == NanotechBlock.portal.blockID)
 			{
 				j2 = 0;
 			}
-			if(this.worldServerInstance.getBlockId(i, j, k - 1) == NanotechBlock.BlockPortal.blockID)
+			if(this.worldServerInstance.getBlockId(i, j, k - 1) == NanotechBlock.portal.blockID)
 			{
 				j2 = 3;
 			}
-			if(this.worldServerInstance.getBlockId(i, j, k + 1) == NanotechBlock.BlockPortal.blockID)
+			if(this.worldServerInstance.getBlockId(i, j, k + 1) == NanotechBlock.portal.blockID)
 			{
 				j2 = 1;
 			}
@@ -393,7 +393,7 @@ public class NanotechTeleporter extends Teleporter
 						i4 = j2 + (i3 - 1) * l5 - k2 * k5;
 						flag = l2 < 0;
 
-						this.worldServerInstance.setBlock(k3, j3, i4, flag ? NanotechBlock.BlockPortalFrame.blockID : 0);
+						this.worldServerInstance.setBlock(k3, j3, i4, flag ? NanotechBlock.portalFrame.blockID : 0);
 					}
 				}
 			}
@@ -409,7 +409,7 @@ public class NanotechTeleporter extends Teleporter
 					i4 = j2 + (i3 - 1) * l5;
 					flag = i3 == 0 || i3 == 3 || l2 == -1 || l2 == 3;
 
-					this.worldServerInstance.setBlock(k3, j3, i4, flag ? NanotechBlock.BlockPortalFrame.blockID : NanotechBlock.BlockPortal.blockID, 0, 2);
+					this.worldServerInstance.setBlock(k3, j3, i4, flag ? NanotechBlock.portalFrame.blockID : NanotechBlock.portal.blockID, 0, 2);
 				}
 			}
 			for(i3 = 0; i3 < 4; ++i3)

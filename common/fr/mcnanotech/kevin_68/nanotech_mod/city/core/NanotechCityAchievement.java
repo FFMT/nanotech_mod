@@ -10,9 +10,9 @@ public class NanotechCityAchievement
 
 	public static void initAchievement()
 	{
-		blockSpotLight = new Achievement(12581, "blockSpotLight", 1, -1, NanotechCityBlock.BlockSpotLight, NanotechAchievement.getInstallModAchievement()).registerAchievement();
-		blockTrail = new Achievement(12582, "blockTrail", 1, -2, NanotechCityBlock.BlockTrail, NanotechAchievement.getInstallModAchievement()).registerAchievement();
-		blockTrashCan = new Achievement(12583, "blockTrashCan", 1, -3, NanotechCityBlock.BlockTrashcan, NanotechAchievement.getInstallModAchievement()).registerAchievement();
+		blockSpotLight = new Achievement(12581, "blockSpotLight", 1, -1, NanotechCityBlock.spotLight, NanotechAchievement.getInstallModAchievement()).registerAchievement();
+		blockTrail = new Achievement(12582, "blockTrail", 1, -2, NanotechCityBlock.trail, NanotechAchievement.getInstallModAchievement()).registerAchievement();
+		blockTrashCan = new Achievement(12583, "blockTrashCan", 1, -3, NanotechCityBlock.trashcan, NanotechAchievement.getInstallModAchievement()).registerAchievement();
 	}
 
 	public static void addAchievementInPage()

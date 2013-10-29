@@ -34,7 +34,7 @@ public class ItemMysteriousArmor extends ItemArmor
 
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
 	{
-		if(stack.itemID == NanotechItem.Mysteriousleggings.itemID)
+		if(stack.itemID == NanotechItem.mysteriousLeggings.itemID)
 		{
 			return "nanotech_mod:textures/armor/Mysteriousarmor2.png";
 		}

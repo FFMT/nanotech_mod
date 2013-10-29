@@ -19,9 +19,9 @@ import net.minecraft.item.Item;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
-public class MobFastzombie extends EntityMob
+public class MobFastZombie extends EntityMob
 {
-	public MobFastzombie(World world)
+	public MobFastZombie(World world)
 	{
 		super(world);
 		this.getNavigator().setBreakDoors(true);
@@ -93,7 +93,7 @@ public class MobFastzombie extends EntityMob
 
 	protected int getDropItemId()
 	{
-		return NanotechItem.Edibleflesh.itemID;
+		return NanotechItem.edibleFlesh.itemID;
 	}
 
 	protected void dropRareDrop(int par1)

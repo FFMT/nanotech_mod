@@ -13,55 +13,55 @@ public class CraftingHandler implements ICraftingHandler
 	@Override
 	public void onCrafting(EntityPlayer player, ItemStack stack, IInventory craftMatrix)
 	{
-		if(stack.itemID == NanotechBlock.BlockBarbedwire.blockID)
+		if(stack.itemID == NanotechBlock.barbedwire.blockID)
 		{
 			player.triggerAchievement(NanotechAchievement.blockBarbedWire);
 		}
-		if(stack.itemID == NanotechBlock.BlockConfusion.blockID)
+		if(stack.itemID == NanotechBlock.confusion.blockID)
 		{
 			player.triggerAchievement(NanotechAchievement.blockConfusion);
 		}
-		if(stack.itemID == NanotechBlock.BlockFalling.blockID)
+		if(stack.itemID == NanotechBlock.notfalling.blockID)
 		{
 			player.triggerAchievement(NanotechAchievement.blockFalling);
 		}
-		if(stack.itemID == NanotechBlock.BlockJumper.blockID && stack.getItemDamage() == 0)
+		if(stack.itemID == NanotechBlock.jumper.blockID && stack.getItemDamage() == 0)
 		{
 			player.triggerAchievement(NanotechAchievement.blockJumper);
 		}
-		if(stack.itemID == NanotechBlock.BlockJumper.blockID && stack.getItemDamage() == 1)
+		if(stack.itemID == NanotechBlock.jumper.blockID && stack.getItemDamage() == 1)
 		{
 			player.triggerAchievement(NanotechAchievement.blockJumperAdv);
 		}
-		if(stack.itemID == NanotechBlock.BlockMossystone.blockID)
+		if(stack.itemID == NanotechBlock.mossystone.blockID)
 		{
 			player.triggerAchievement(NanotechAchievement.blockMossyStone);
 		}
-		if(stack.itemID == NanotechBlock.Blocknotfalling.blockID)
+		if(stack.itemID == NanotechBlock.notfalling.blockID)
 		{
 			player.triggerAchievement(NanotechAchievement.blockNotFalling);
 		}
-		if(stack.itemID == NanotechBlock.BlockPortalFrame.blockID)
+		if(stack.itemID == NanotechBlock.portalFrame.blockID)
 		{
 			player.triggerAchievement(NanotechAchievement.blockPortalFrame);
 		}
-		if(stack.itemID == NanotechBlock.BlockSmoker.blockID)
+		if(stack.itemID == NanotechBlock.smoker.blockID)
 		{
 			player.triggerAchievement(NanotechAchievement.blockSmoker);
 		}
-		if(stack.itemID == NanotechBlock.BlockSpeed.blockID && stack.getItemDamage() == 0)
+		if(stack.itemID == NanotechBlock.speed.blockID && stack.getItemDamage() == 0)
 		{
 			player.triggerAchievement(NanotechAchievement.blockSpeed);
 		}
-		if(stack.itemID == NanotechBlock.BlockSpeed.blockID && stack.getItemDamage() == 1)
+		if(stack.itemID == NanotechBlock.speed.blockID && stack.getItemDamage() == 1)
 		{
 			player.triggerAchievement(NanotechAchievement.blockSlow);
 		}
-		if(stack.itemID == NanotechBlock.BlockTheDeathHead.blockID)
+		if(stack.itemID == NanotechBlock.theDeathHead.blockID)
 		{
 			player.triggerAchievement(NanotechAchievement.blockTheDeath);
 		}
-		if(stack.itemID == NanotechBlock.BlockListerJukebox.blockID)
+		if(stack.itemID == NanotechBlock.listerJukebox.blockID)
 		{
 			player.triggerAchievement(NanotechAchievement.blockListerJukebox);
 		}
@@ -70,7 +70,7 @@ public class CraftingHandler implements ICraftingHandler
 		{
 			player.triggerAchievement(NanotechAchievement.itemAlters);
 		}
-		if(stack.itemID == NanotechItem.ItemBase.itemID)
+		if(stack.itemID == NanotechItem.itemBase.itemID)
 		{
 			switch(stack.getItemDamage())
 			{
@@ -102,27 +102,27 @@ public class CraftingHandler implements ICraftingHandler
 				return;
 			}
 		}
-		if(stack.itemID == NanotechItem.Diamondbow.itemID)
+		if(stack.itemID == NanotechItem.diamondBow.itemID)
 		{
 			player.triggerAchievement(NanotechAchievement.itemDiamondBow);
 		}
-		if(stack.itemID == NanotechItem.Emeraldbow.itemID)
+		if(stack.itemID == NanotechItem.emeraldBow.itemID)
 		{
 			player.triggerAchievement(NanotechAchievement.itemEmeraldBow);
 		}
-		if(stack.itemID == NanotechItem.Nanomitebow.itemID)
+		if(stack.itemID == NanotechItem.nanomiteBow.itemID)
 		{
 			player.triggerAchievement(NanotechAchievement.itemNanomiteBow);
 		}
-		if(stack.itemID == NanotechItem.Mysteriousboots.itemID || stack.itemID == NanotechItem.Mysteriouschestplate.itemID || stack.itemID == NanotechItem.Mysterioushelmet.itemID || stack.itemID == NanotechItem.Mysteriousleggings.itemID)
+		if(stack.itemID == NanotechItem.mysteriousBoots.itemID || stack.itemID == NanotechItem.mysteriousChestPlate.itemID || stack.itemID == NanotechItem.mysteriousHelmet.itemID || stack.itemID == NanotechItem.mysteriousLeggings.itemID)
 		{
 			player.triggerAchievement(NanotechAchievement.itemMysteriousArmor);
 		}
-		if(stack.itemID == NanotechItem.Nanomiteboots.itemID || stack.itemID == NanotechItem.Nanomitechestplate.itemID || stack.itemID == NanotechItem.Nanomitehelmet.itemID || stack.itemID == NanotechItem.Nanomiteleggings.itemID)
+		if(stack.itemID == NanotechItem.nanomiteBoots.itemID || stack.itemID == NanotechItem.nanomiteChestPlate.itemID || stack.itemID == NanotechItem.nanomiteHelmet.itemID || stack.itemID == NanotechItem.nanomiteLeggings.itemID)
 		{
 			player.triggerAchievement(NanotechAchievement.itemNanomiteArmor);
 		}
-		if(stack.itemID == NanotechItem.Nanomitepickaxe.itemID || stack.itemID == NanotechItem.Nanomiteaxe.itemID || stack.itemID == NanotechItem.Nanomiteshovel.itemID || stack.itemID == NanotechItem.Nanomitehoe.itemID || stack.itemID == NanotechItem.Nanomitesword.itemID)
+		if(stack.itemID == NanotechItem.nanomitePickaxe.itemID || stack.itemID == NanotechItem.nanomiteAxe.itemID || stack.itemID == NanotechItem.nanomiteShovel.itemID || stack.itemID == NanotechItem.nanomiteHoe.itemID || stack.itemID == NanotechItem.nanomiteSword.itemID)
 		{
 			player.triggerAchievement(NanotechAchievement.itemNanomiteTool);
 		}
@@ -132,7 +132,7 @@ public class CraftingHandler implements ICraftingHandler
 	@Override
 	public void onSmelting(EntityPlayer player, ItemStack stack)
 	{
-		if(stack.itemID == NanotechItem.ItemBase.itemID)
+		if(stack.itemID == NanotechItem.itemBase.itemID)
 		{
 			switch(stack.getItemDamage())
 			{

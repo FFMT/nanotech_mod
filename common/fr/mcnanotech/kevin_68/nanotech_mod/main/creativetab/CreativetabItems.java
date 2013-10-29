@@ -15,6 +15,6 @@ public class CreativetabItems extends CreativeTabs
 	@SideOnly(Side.CLIENT)
 	public int getTabIconItemIndex()
 	{
-		return NanotechItem.Nanomitebow.itemID;
+		return NanotechItem.nanomiteBow.itemID;
 	}
 }

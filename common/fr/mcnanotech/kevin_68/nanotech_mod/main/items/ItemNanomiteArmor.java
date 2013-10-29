@@ -20,7 +20,7 @@ public class ItemNanomiteArmor extends ItemArmor
 
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
 	{
-		if(stack.itemID == NanotechItem.Nanomiteleggings.itemID)
+		if(stack.itemID == NanotechItem.nanomiteLeggings.itemID)
 		{
 			return "nanotech_mod:textures/armor/Nanomitearmor2.png";
 		}
@@ -32,7 +32,7 @@ public class ItemNanomiteArmor extends ItemArmor
 
 	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)
 	{
-		if(stack.getItem().equals(this) && repairItem.getItem().itemID == NanotechItem.ItemBase.itemID && repairItem.getItemDamage() == 14)
+		if(stack.getItem().equals(this) && repairItem.getItem().itemID == NanotechItem.itemBase.itemID && repairItem.getItemDamage() == 14)
 		return true;
 		return false;
 	}

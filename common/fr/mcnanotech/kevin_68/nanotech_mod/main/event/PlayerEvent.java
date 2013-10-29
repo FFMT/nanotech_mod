@@ -20,11 +20,11 @@ public class PlayerEvent
 		{
 			event.entityPlayer.triggerAchievement(NanotechAchievement.itemCrazyGlasses);
 		}
-		if(event.item.getEntityItem().isItemEqual(new ItemStack(NanotechItem.ItemBase, 1, 2)))
+		if(event.item.getEntityItem().isItemEqual(new ItemStack(NanotechItem.itemBase, 1, 2)))
 		{
 			event.entityPlayer.triggerAchievement(NanotechAchievement.getMysteriousMat);
 		}
-		if(event.item.getEntityItem().isItemEqual(new ItemStack(NanotechBlock.BlockNanoOre, 1, 1)))
+		if(event.item.getEntityItem().isItemEqual(new ItemStack(NanotechBlock.nanoOre, 1, 1)))
 		{
 			event.entityPlayer.triggerAchievement(NanotechAchievement.blockSiliconOre);
 		}

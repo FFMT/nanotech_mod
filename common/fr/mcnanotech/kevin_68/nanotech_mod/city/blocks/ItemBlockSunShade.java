@@ -45,20 +45,20 @@ public class ItemBlockSunShade extends ItemBlock
 
 			if(isReplaceable && world.isAirBlock(x, y + 1, z) && world.isAirBlock(x, y + 2, z))
 			{
-				world.setBlock(x, y, z, NanotechCityBlock.BlockSunShade.blockID, 0, 3);
-				world.setBlock(x, y + 1, z, NanotechCityBlock.BlockSunShade.blockID, 1, 3);
-				world.setBlock(x, y + 2, z, NanotechCityBlock.BlockSunShade.blockID, 1, 3);
-				world.playSoundEffect(x, y, z, NanotechCityBlock.BlockSunShade.stepSound.getPlaceSound(), NanotechCityBlock.BlockSunShade.stepSound.getVolume(), NanotechCityBlock.BlockSunShade.stepSound.getPitch());
+				world.setBlock(x, y, z, NanotechCityBlock.sunShade.blockID, 0, 3);
+				world.setBlock(x, y + 1, z, NanotechCityBlock.sunShade.blockID, 1, 3);
+				world.setBlock(x, y + 2, z, NanotechCityBlock.sunShade.blockID, 1, 3);
+				world.playSoundEffect(x, y, z, NanotechCityBlock.sunShade.stepSound.getPlaceSound(), NanotechCityBlock.sunShade.stepSound.getVolume(), NanotechCityBlock.sunShade.stepSound.getPitch());
 				--stack.stackSize;
 				return true;
 			}
 
 			else if(world.isAirBlock(x, y + 1, z) && world.isAirBlock(x, y + 2, z) && world.isAirBlock(x, y + 3, z) && side == 1 && player.canPlayerEdit(x, y + 3, z, side, stack))
 			{
-				world.setBlock(x, y + 1, z, NanotechCityBlock.BlockSunShade.blockID, 0, 3);
-				world.setBlock(x, y + 2, z, NanotechCityBlock.BlockSunShade.blockID, 1, 3);
-				world.setBlock(x, y + 3, z, NanotechCityBlock.BlockSunShade.blockID, 1, 3);
-				world.playSoundEffect(x, y, z, NanotechCityBlock.BlockSunShade.stepSound.getPlaceSound(), NanotechCityBlock.BlockSunShade.stepSound.getVolume(), NanotechCityBlock.BlockSunShade.stepSound.getPitch());
+				world.setBlock(x, y + 1, z, NanotechCityBlock.sunShade.blockID, 0, 3);
+				world.setBlock(x, y + 2, z, NanotechCityBlock.sunShade.blockID, 1, 3);
+				world.setBlock(x, y + 3, z, NanotechCityBlock.sunShade.blockID, 1, 3);
+				world.playSoundEffect(x, y, z, NanotechCityBlock.sunShade.stepSound.getPlaceSound(), NanotechCityBlock.sunShade.stepSound.getVolume(), NanotechCityBlock.sunShade.stepSound.getPitch());
 				--stack.stackSize;
 				return true;
 			}

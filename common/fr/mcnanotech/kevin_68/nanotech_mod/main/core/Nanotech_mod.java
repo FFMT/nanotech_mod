@@ -324,16 +324,16 @@ public class Nanotech_mod
 	// Forge dictionary
 	public void forgeDictionary()
 	{
-		OreDictionary.registerOre("logWood", new ItemStack(NanotechBlock.BlockNanowood));
-		OreDictionary.registerOre("plankWood", new ItemStack(NanotechBlock.BlockNanoplanks));
-		OreDictionary.registerOre("treeSapling", new ItemStack(NanotechBlock.BlockNanosaplings));
-		OreDictionary.registerOre("treeLeaves", new ItemStack(NanotechBlock.BlockNanoleaves));
+		OreDictionary.registerOre("logWood", new ItemStack(NanotechBlock.nanoWood));
+		OreDictionary.registerOre("plankWood", new ItemStack(NanotechBlock.nanoPlanks));
+		OreDictionary.registerOre("treeSapling", new ItemStack(NanotechBlock.nanoSaplings));
+		OreDictionary.registerOre("treeLeaves", new ItemStack(NanotechBlock.nanoLeaves));
 	}
 
 	// Other code -Shovel on grass
 	public void other()
 	{
-		MinecraftForge.setBlockHarvestLevel(NanotechBlock.BlockGrass, "shovel", 2);
-		MinecraftForge.setBlockHarvestLevel(NanotechBlock.Blocknotfalling, "shovel", 2);
+		MinecraftForge.setBlockHarvestLevel(NanotechBlock.nanoGrass, "shovel", 2);
+		MinecraftForge.setBlockHarvestLevel(NanotechBlock.notfalling, "shovel", 2);
 	}
 }

@@ -92,5 +92,4 @@ public class ItemScytheRender implements IItemRenderer
 			break;
 		}
 	}
-
 }

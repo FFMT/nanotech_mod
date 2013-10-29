@@ -17,7 +17,7 @@ public class NanotechMobs
 
 		if(Nanotech_mod.FastZombie)
 		{
-			FFMTEntityHelper.addMob(MobFastzombie.class, "FastZombie", 1, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.blueInt, FFMTColor.redInt, Nanotech_mod.FastZombieProb, Nanotech_mod.FastZombieMin, Nanotech_mod.FastZombieMax, EnumCreatureType.monster, Nanotech_mod.nanotechBiome);
+			FFMTEntityHelper.addMob(MobFastZombie.class, "FastZombie", 1, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.blueInt, FFMTColor.redInt, Nanotech_mod.FastZombieProb, Nanotech_mod.FastZombieMin, Nanotech_mod.FastZombieMax, EnumCreatureType.monster, Nanotech_mod.nanotechBiome);
 		}
 
 		if(Nanotech_mod.SuperSkeleton)

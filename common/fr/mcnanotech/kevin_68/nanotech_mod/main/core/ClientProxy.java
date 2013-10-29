@@ -33,7 +33,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.items.ItemDebugR
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.items.ItemScytheRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCrazyGuy;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCreeperDriller;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobFastzombie;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobFastZombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobFly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobFlyingCreeper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperCreeper;
@@ -55,7 +55,7 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(MobSuperEnderman.class, new RenderSuperEnderman(new ModelSuperEnderman(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(MobSuperZombie.class, new RenderSuperZombie(new ModelSuperZombie(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(MobCreeperDriller.class, new RenderCreeperDriller(new ModelCreeperDriller(), 0.5F));
-		RenderingRegistry.registerEntityRenderingHandler(MobFastzombie.class, new RenderFastZombie(new ModelMobFastZombie(), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(MobFastZombie.class, new RenderFastZombie(new ModelMobFastZombie(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(MobFly.class, new RenderMobFly(new ModelFly(), 0.05F));
 		RenderingRegistry.registerEntityRenderingHandler(MobFlyingCreeper.class, new RenderFlyingCreeper(new ModelFlyingCreeper(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(MobCrazyGuy.class, new RenderCrazyGuy(new ModelCrazyGuy(), 0.5F));

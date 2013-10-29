@@ -39,7 +39,7 @@ public class ItemEmeraldBow extends ItemBow
 
 	public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
 	{
-		if(usingItem != null && usingItem.getItem().itemID == NanotechItem.Emeraldbow.itemID)
+		if(usingItem != null && usingItem.getItem().itemID == NanotechItem.emeraldBow.itemID)
 		{
 			int k = usingItem.getMaxItemUseDuration() - useRemaining;
 			if(k >= 18)

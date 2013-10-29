@@ -39,7 +39,7 @@ public class ItemDiamondBow extends ItemBow
 
 	public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
 	{
-		if(usingItem != null && usingItem.getItem().itemID == NanotechItem.Diamondbow.itemID)
+		if(usingItem != null && usingItem.getItem().itemID == NanotechItem.diamondBow.itemID)
 		{
 			int k = usingItem.getMaxItemUseDuration() - useRemaining;
 			if(k >= 18)

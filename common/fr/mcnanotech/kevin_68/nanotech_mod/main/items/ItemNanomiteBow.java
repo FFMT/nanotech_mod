@@ -39,7 +39,7 @@ public class ItemNanomiteBow extends ItemBow
 
 	public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
 	{
-		if(usingItem != null && usingItem.getItem().itemID == NanotechItem.Nanomitebow.itemID)
+		if(usingItem != null && usingItem.getItem().itemID == NanotechItem.nanomiteBow.itemID)
 		{
 			int k = usingItem.getMaxItemUseDuration() - useRemaining;
 			if(k >= 5)

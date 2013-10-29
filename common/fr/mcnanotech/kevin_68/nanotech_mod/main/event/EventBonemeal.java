@@ -13,13 +13,13 @@ public class EventBonemeal
 	@ForgeSubscribe
 	public void onUseBonemeal(BonemealEvent event)
 	{
-		if(event.ID == NanotechBlock.BlockNanosaplings.blockID)
+		if(event.ID == NanotechBlock.nanoSaplings.blockID)
 		{
 			if(!event.world.isRemote)
 			{
 				if(counter > event.world.rand.nextInt(2) + 2)
 				{
-					((BlockNanoSaplings)NanotechBlock.BlockNanosaplings).growTree(event.world, event.X, event.Y, event.Z, event.world.rand);
+					((BlockNanoSaplings)NanotechBlock.nanoSaplings).growTree(event.world, event.X, event.Y, event.Z, event.world.rand);
 					event.setResult(Result.ALLOW);
 					counter = 0;
 				}

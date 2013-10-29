@@ -13,7 +13,7 @@ public class LivingEvent
 	{
 		ItemStack boots = event.entityLiving.getCurrentItemOrArmor(1);
 
-		if(boots != null && boots.getItem().equals(NanotechItem.Mysteriousboots))
+		if(boots != null && boots.getItem().equals(NanotechItem.mysteriousBoots))
 		{
 			boots.damageItem((int)(event.distance / 8), event.entityLiving);
 			if(boots.stackSize == 0)

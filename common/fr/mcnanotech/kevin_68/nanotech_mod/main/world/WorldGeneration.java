@@ -25,17 +25,17 @@ public class WorldGeneration implements IWorldGenerator
 		{
 			for(int i = 0; i < 4; i++)
 			{
-				(new WorldGenMinable(NanotechBlock.BlockNanoOre.blockID, 0, 10, Block.stone.blockID)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
+				(new WorldGenMinable(NanotechBlock.nanoOre.blockID, 0, 10, Block.stone.blockID)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}
 			
-			(new WorldGenMinable(NanotechBlock.BlockNanoOre.blockID, 1, 7, Block.stone.blockID)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
+			(new WorldGenMinable(NanotechBlock.nanoOre.blockID, 1, 7, Block.stone.blockID)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 
 			for(int i = 0; i < 2; i++)
 			{
-				(new WorldGenMinable(NanotechBlock.BlockFakeOre.blockID, 0, 6, Block.stone.blockID)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(32), chunkZ * 16 + random.nextInt(16));
+				(new WorldGenMinable(NanotechBlock.fakeOre.blockID, 0, 6, Block.stone.blockID)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(32), chunkZ * 16 + random.nextInt(16));
 			}
 
-			(new WorldGenMinable(NanotechBlock.BlockFakeOre.blockID, 1, 4, Block.stone.blockID)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(16), chunkZ * 16 + random.nextInt(16));
+			(new WorldGenMinable(NanotechBlock.fakeOre.blockID, 1, 4, Block.stone.blockID)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(16), chunkZ * 16 + random.nextInt(16));
 			// world gen
 			if(random.nextInt(4) < 3)
 			{

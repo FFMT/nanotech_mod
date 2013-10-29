@@ -11,7 +11,7 @@ public class WorldModel4 extends WorldGenerator
 {
 	protected int[] GetValidSpawnBlocks()
 	{
-		return new int[] {Block.stone.blockID, Block.dirt.blockID, NanotechBlock.BlockGrass.blockID};
+		return new int[] {Block.stone.blockID, Block.dirt.blockID, NanotechBlock.nanoGrass.blockID};
 	}
 
 	public boolean LocationIsValidSpawn(World world, int x, int y, int z)
@@ -261,7 +261,7 @@ public class WorldModel4 extends WorldGenerator
 		world.setBlock(x + 4, y + 0, z + 1, Block.cobblestone.blockID);
 		world.setBlock(x + 4, y + 0, z + 2, Block.cobblestone.blockID);
 		world.setBlock(x + 4, y + 0, z + 3, Block.cobblestone.blockID);
-		world.setBlock(x + 4, y + 0, z + 4, NanotechBlock.BlockSodium.blockID);
+		world.setBlock(x + 4, y + 0, z + 4, NanotechBlock.sodium.blockID);
 		world.setBlock(x + 4, y + 0, z + 5, Block.cobblestone.blockID);
 		world.setBlock(x + 4, y + 0, z + 6, Block.cobblestone.blockID);
 		world.setBlock(x + 4, y + 1, z + 0, Block.wood.blockID);

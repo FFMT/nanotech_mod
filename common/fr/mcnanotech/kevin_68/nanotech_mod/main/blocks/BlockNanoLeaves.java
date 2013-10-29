@@ -77,7 +77,7 @@ public class BlockNanoLeaves extends BlockLeaves implements IShearable
 
 	public int idDropped(int metadata, Random random, int par3)
 	{
-		return NanotechBlock.BlockNanosaplings.blockID;
+		return NanotechBlock.nanoSaplings.blockID;
 	}
 
 	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int par5, float par6, int par7)

@@ -50,7 +50,7 @@ public class BlockNanoSaplings extends BlockSapling
 	@Override
 	protected boolean canThisPlantGrowOnThisBlockID(int blockid)
 	{
-		return blockid == Block.grass.blockID || blockid == Block.dirt.blockID || blockid == Block.tilledField.blockID || blockid == NanotechBlock.BlockGrass.blockID;
+		return blockid == Block.grass.blockID || blockid == Block.dirt.blockID || blockid == Block.tilledField.blockID || blockid == NanotechBlock.nanoGrass.blockID;
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -59,7 +59,7 @@ public class WorldGenNanoTree extends WorldGenerator
 					if(i1 >= 0 && i1 < 256)
 					{
 						int i3 = world.getBlockId(k1, i1, i2);
-						if(i3 != 0 && i3 != NanotechBlock.BlockNanoleaves.blockID && i3 != Block.grass.blockID && i3 != NanotechBlock.BlockNanowood.blockID && i3 != Block.dirt.blockID && i3 != NanotechBlock.BlockGrass.blockID)
+						if(i3 != 0 && i3 != NanotechBlock.nanoLeaves.blockID && i3 != Block.grass.blockID && i3 != NanotechBlock.nanoWood.blockID && i3 != Block.dirt.blockID && i3 != NanotechBlock.nanoGrass.blockID)
 						{
 							flag = false;
 						}
@@ -79,12 +79,12 @@ public class WorldGenNanoTree extends WorldGenerator
 
 		int j1 = world.getBlockId(i, j - 1, k);
 
-		if(j1 != Block.dirt.blockID && j1 != Block.grass.blockID && j1 != NanotechBlock.BlockGrass.blockID || j >= 256 - l - 1)
+		if(j1 != Block.dirt.blockID && j1 != Block.grass.blockID && j1 != NanotechBlock.nanoGrass.blockID || j >= 256 - l - 1)
 		{
 			return false;
 		}
 
-		func_50073_a(world, i, j - 1, k, NanotechBlock.BlockNanowood.blockID);
+		func_50073_a(world, i, j - 1, k, NanotechBlock.nanoWood.blockID);
 		byte byte1 = 3;
 		int l1 = 0;
 
@@ -103,7 +103,7 @@ public class WorldGenNanoTree extends WorldGenerator
 
 					if((Math.abs(i5) != i4 || Math.abs(l5) != i4 || random.nextInt(2) != 0 && j3 != 0) && !Block.opaqueCubeLookup[world.getBlockId(k4, j2, k5)])
 					{
-						setBlockAndMetadata(world, k4, j2, k5, NanotechBlock.BlockNanoleaves.blockID, 0);
+						setBlockAndMetadata(world, k4, j2, k5, NanotechBlock.nanoLeaves.blockID, 0);
 					}
 				}
 			}
@@ -113,12 +113,12 @@ public class WorldGenNanoTree extends WorldGenerator
 		{
 			int k3 = world.getBlockId(i, j + k2, k);
 
-			if(k3 != 0 && k3 != NanotechBlock.BlockNanoleaves.blockID)
+			if(k3 != 0 && k3 != NanotechBlock.nanoLeaves.blockID)
 			{
 				continue;
 			}
 
-			setBlockAndMetadata(world, i, j + k2, k, NanotechBlock.BlockNanowood.blockID, field_48201_c);
+			setBlockAndMetadata(world, i, j + k2, k, NanotechBlock.nanoWood.blockID, field_48201_c);
 
 			if(!field_48200_b || k2 <= 0)
 			{
@@ -157,7 +157,7 @@ public class WorldGenNanoTree extends WorldGenerator
 				{
 					for(int j5 = k - j4; j5 <= k + j4; j5++)
 					{
-						if(world.getBlockId(l4, l2, j5) != NanotechBlock.BlockNanowood.blockID)
+						if(world.getBlockId(l4, l2, j5) != NanotechBlock.nanoWood.blockID)
 						{
 							continue;
 						}

@@ -72,7 +72,7 @@ public class BlockGrass extends Block
 
 					if((world.getBlockId(var7, var8, var9) == Block.dirt.blockID && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlockId(var7, var8, var9) == Block.grass.blockID && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlockId(var7, var8, var9) == Block.mycelium.blockID && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlockId(var7, var8, var9) == Block.tilledField.blockID && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2))
 					{
-						world.setBlock(var7, var8, var9, NanotechBlock.BlockGrass.blockID, 0, 3);
+						world.setBlock(var7, var8, var9, NanotechBlock.nanoGrass.blockID, 0, 3);
 					}
 				}
 			}

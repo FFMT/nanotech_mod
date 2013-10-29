@@ -91,14 +91,14 @@ public class ItemBaseMetadata extends Item
 	{
 		if(stack.getItemDamage() == 16)
 		{
-			if(!world.isRemote && world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID)
+			if(!world.isRemote && world.getBlockId(x, y, z) == NanotechBlock.portalFrame.blockID)
 			{
-				if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 2, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 2, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 2, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
+				if(world.getBlockId(x, y, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x - 1, y, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x - 2, y + 1, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x - 2, y + 2, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x - 2, y + 3, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x + 1, y + 1, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x + 1, y + 2, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x + 1, y + 3, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x - 1, y + 4, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.portalFrame.blockID)
 				{
 					for(int i = 0; i < 3; i++)
 					{
-						world.setBlock(x, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
-						world.setBlock(x - 1, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
+						world.setBlock(x, y + 1 + i, z, NanotechBlock.portal.blockID);
+						world.setBlock(x - 1, y + 1 + i, z, NanotechBlock.portal.blockID);
 					}
 					if(!player.capabilities.isCreativeMode)
 					{
@@ -107,12 +107,12 @@ public class ItemBaseMetadata extends Item
 					return true;
 				}
 
-				if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 2, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 2, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 2, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y + 1, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y + 2, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x - 1, y + 3, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x + 1, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
+				if(world.getBlockId(x, y, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x + 1, y, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x + 2, y + 1, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x + 2, y + 2, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x + 2, y + 3, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x - 1, y + 1, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x - 1, y + 2, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x - 1, y + 3, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x + 1, y + 4, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.portalFrame.blockID)
 				{
 					for(int i = 0; i < 3; i++)
 					{
-						world.setBlock(x, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
-						world.setBlock(x + 1, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
+						world.setBlock(x, y + 1 + i, z, NanotechBlock.portal.blockID);
+						world.setBlock(x + 1, y + 1 + i, z, NanotechBlock.portal.blockID);
 					}
 					if(!player.capabilities.isCreativeMode)
 					{
@@ -121,12 +121,12 @@ public class ItemBaseMetadata extends Item
 					return true;
 				}
 
-				if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 1, z - 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 2, z - 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 3, z - 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 1, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 2, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 3, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
+				if(world.getBlockId(x, y, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y, z - 1) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 1, z - 2) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 2, z - 2) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 3, z - 2) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 1, z + 1) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 2, z + 1) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 3, z + 1) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 4, z - 1) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.portalFrame.blockID)
 				{
 					for(int i = 0; i < 3; i++)
 					{
-						world.setBlock(x, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
-						world.setBlock(x, y + 1 + i, z - 1, NanotechBlock.BlockPortal.blockID);
+						world.setBlock(x, y + 1 + i, z, NanotechBlock.portal.blockID);
+						world.setBlock(x, y + 1 + i, z - 1, NanotechBlock.portal.blockID);
 					}
 					if(!player.capabilities.isCreativeMode)
 					{
@@ -135,12 +135,12 @@ public class ItemBaseMetadata extends Item
 					return true;
 				}
 
-				if(world.getBlockId(x, y, z) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 1, z + 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 2, z + 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 3, z + 2) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 1, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 2, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 3, z - 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z + 1) == NanotechBlock.BlockPortalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.BlockPortalFrame.blockID)
+				if(world.getBlockId(x, y, z) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y, z + 1) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 1, z + 2) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 2, z + 2) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 3, z + 2) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 1, z - 1) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 2, z - 1) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 3, z - 1) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 4, z + 1) == NanotechBlock.portalFrame.blockID && world.getBlockId(x, y + 4, z) == NanotechBlock.portalFrame.blockID)
 				{
 					for(int i = 0; i < 3; i++)
 					{
-						world.setBlock(x, y + 1 + i, z, NanotechBlock.BlockPortal.blockID);
-						world.setBlock(x, y + 1 + i, z + 1, NanotechBlock.BlockPortal.blockID);
+						world.setBlock(x, y + 1 + i, z, NanotechBlock.portal.blockID);
+						world.setBlock(x, y + 1 + i, z + 1, NanotechBlock.portal.blockID);
 					}
 					if(!player.capabilities.isCreativeMode)
 					{

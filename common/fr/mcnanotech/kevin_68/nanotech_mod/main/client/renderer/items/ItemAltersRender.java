@@ -13,7 +13,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.items.ItemAltersMod
 
 public class ItemAltersRender implements IItemRenderer
 {
-
 	protected ItemAltersModel model;
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/items/alters.png");
 

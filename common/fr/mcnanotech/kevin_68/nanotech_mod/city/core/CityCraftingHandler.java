@@ -11,15 +11,15 @@ public class CityCraftingHandler implements ICraftingHandler
 	@Override
 	public void onCrafting(EntityPlayer player, ItemStack stack, IInventory craftMatrix)
 	{
-		if(stack.itemID == NanotechCityBlock.BlockSpotLight.blockID)
+		if(stack.itemID == NanotechCityBlock.spotLight.blockID)
 		{
 			player.triggerAchievement(NanotechCityAchievement.blockSpotLight);
 		}
-		if(stack.itemID == NanotechCityBlock.BlockTrail.blockID)
+		if(stack.itemID == NanotechCityBlock.trail.blockID)
 		{
 			player.triggerAchievement(NanotechCityAchievement.blockTrail);
 		}
-		if(stack.itemID == NanotechCityBlock.BlockTrashcan.blockID)
+		if(stack.itemID == NanotechCityBlock.trashcan.blockID)
 		{
 			player.triggerAchievement(NanotechCityAchievement.blockTrashCan);
 		}

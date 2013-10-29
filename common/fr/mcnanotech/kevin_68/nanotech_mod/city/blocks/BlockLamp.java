@@ -93,7 +93,7 @@ public class BlockLamp extends Block
 
 	public Icon getIcon(int side, int metadata)
 	{
-		return NanotechBlock.BlockJumper.getIcon(0, 0);
+		return NanotechBlock.jumper.getIcon(0, 0);
 	}
 
 	public void registerIcons(IconRegister iconregister)
