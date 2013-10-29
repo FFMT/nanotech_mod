@@ -5,11 +5,15 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class BlockLiquidNitrogen extends BlockFluidClassic
 {
@@ -48,6 +52,25 @@ public class BlockLiquidNitrogen extends BlockFluidClassic
 			return false;
 		}
 		return super.displaceIfPossible(world, x, y, z);
+	}
+
+	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+	{
+		if(entity instanceof EntityLivingBase)
+		{
+			((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Nanotech_mod.freeze.id, 500, 0));
+		}
+	}
+
+	public void randomDisplayTick(World world, int x, int y, int z, Random random)
+	{
+		if(world.isAirBlock(x, y + 1, z))
+		{
+			float f = (float)x + random.nextFloat();
+			float f1 = (float)y + random.nextFloat() * 0.5F + 0.5F;
+			float f2 = (float)z + random.nextFloat();
+			world.spawnParticle("cloud", (double)f, (double)f1, (double)f2, 0.0D, 0.1D, 0.0D);
+		}
 	}
 
 	public void checkUpdate(World world, int x, int y, int z)

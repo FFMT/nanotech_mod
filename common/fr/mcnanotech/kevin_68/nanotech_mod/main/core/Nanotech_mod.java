@@ -2,7 +2,9 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 
 import java.util.logging.Logger;
 
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
@@ -126,6 +128,9 @@ public class Nanotech_mod
 
 	// log
 	public static Logger NanoLog;
+	
+	//Potion
+	public static Potion freeze;
 
 	@EventHandler
 	public void PreInitNanotech_mod(FMLPreInitializationEvent event)
@@ -241,7 +246,7 @@ public class Nanotech_mod
 		}
 		catch(Exception ex)
 		{
-			NanoLog.severe("Failed to load cfguration");
+			NanoLog.severe("Failed to load configuration");
 		}
 		finally
 		{
@@ -275,6 +280,8 @@ public class Nanotech_mod
 
 		GameRegistry.registerWorldGenerator(new WorldGeneration());
 
+		freeze = new NanotechPotion(30, true, 3035801).setPotionName("potion.freeze").setIconIndex(0, 0).func_111184_a(SharedMonsterAttributes.movementSpeed, "7107DE5E-7CE8-4030-940E-514C1F160890", -0.50000000596046448D, 2);
+		
 		this.guiAndTileEntity();
 		NanotechMobs.mobs();
 		proxy.registerModRenders();
