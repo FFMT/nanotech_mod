@@ -34,34 +34,33 @@ public class LivingEvent
 		if(event.entityLiving.isPotionActive(Nanotech_mod.freeze))
 		{
 			event.entityLiving.attackEntityFrom(NanotechDamageSource.nitrogenDamage, 1);
-			int blockId = event.entityLiving.worldObj.getBlockId((int)event.entityLiving.posX, (int)event.entityLiving.posY, (int)event.entityLiving.posZ);
+			int blockId = event.entityLiving.worldObj.getBlockId((int)event.entityLiving.posX - 1, (int)event.entityLiving.posY, (int)event.entityLiving.posZ);
 			if(blockId == Block.waterMoving.blockID || blockId == Block.waterStill.blockID)
 			{
-				event.entityLiving.worldObj.setBlock((int)event.entityLiving.posX, (int)event.entityLiving.posY, (int)event.entityLiving.posZ, Block.ice.blockID);
+				event.entityLiving.worldObj.setBlock((int)event.entityLiving.posX - 1, (int)event.entityLiving.posY, (int)event.entityLiving.posZ, Block.ice.blockID);
 			}
 			else if(blockId == Block.lavaStill.blockID || blockId == Block.lavaMoving.blockID)
 			{
 				event.entityLiving.removePotionEffect(30);
-				if(event.entityLiving.worldObj.getBlockMetadata((int)event.entityLiving.posX , (int)event.entityLiving.posY, (int)event.entityLiving.posZ) == 0)
-					event.entityLiving.worldObj.setBlock((int)event.entityLiving.posX, (int)event.entityLiving.posY, (int)event.entityLiving.posZ, Block.obsidian.blockID);
+				if(event.entityLiving.worldObj.getBlockMetadata((int)event.entityLiving.posX - 1, (int)event.entityLiving.posY, (int)event.entityLiving.posZ) == 0)
+					event.entityLiving.worldObj.setBlock((int)event.entityLiving.posX - 1, (int)event.entityLiving.posY, (int)event.entityLiving.posZ, Block.obsidian.blockID);
 				else
-					event.entityLiving.worldObj.setBlock((int)event.entityLiving.posX, (int)event.entityLiving.posY, (int)event.entityLiving.posZ, Block.cobblestone.blockID);
+					event.entityLiving.worldObj.setBlock((int)event.entityLiving.posX - 1, (int)event.entityLiving.posY, (int)event.entityLiving.posZ, Block.cobblestone.blockID);
 			}
-			
+
 			if(event.entityLiving.isBurning())
 			{
 				event.entityLiving.removePotionEffect(30);
 			}
 		}
 	}
-	
+
 	@ForgeSubscribe
 	public void onLivingDeath(LivingDeathEvent event)
 	{
 		if(event.source.equals(NanotechDamageSource.nitrogenDamage))
 		{
-			event.entityLiving.worldObj.setBlock((int)event.entityLiving.posX, (int)event.entityLiving.posY, (int)event.entityLiving.posZ, Block.ice.blockID);
-			event.entityLiving.worldObj.setBlock((int)event.entityLiving.posX, (int)event.entityLiving.posY + 1, (int)event.entityLiving.posZ, Block.ice.blockID);
+			event.entityLiving.worldObj.setBlock((int)(event.entityLiving.posX - 1), (int)event.entityLiving.posY, (int)event.entityLiving.posZ, Block.ice.blockID);
 		}
 	}
 }

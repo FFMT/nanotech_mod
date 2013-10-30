@@ -10,9 +10,9 @@ public class NanotechPotion extends Potion
 {
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/gui/potion/freeze.png");
 
-	protected NanotechPotion(int par1, boolean par2, int par3)
+	protected NanotechPotion(int id, boolean isBad, int color)
 	{
-		super(par1, par2, par3);
+		super(id, isBad, color);
 	}
 	
 	@Override

@@ -1,11 +1,13 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.utils;
 
 import java.util.EnumSet;
+import java.util.Random;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
 public class NanotechServerTickHandler implements ITickHandler
@@ -46,6 +48,18 @@ public class NanotechServerTickHandler implements ITickHandler
 						player.inventory.setInventorySlotContents(39, new ItemStack(NanotechItem.crazyGlasses));
 						player.inventory.consumeInventoryItem(NanotechItem.crazyGlasses.itemID);
 					}
+				}
+			}
+		}
+		for(int i = 0; i < player.inventory.getSizeInventory(); i++)
+		{
+			if(player.inventory.getStackInSlot(i) != null)
+			{
+				if(player.inventory.getStackInSlot(i).itemID == NanotechItem.nitrogenBucket.itemID)
+				{
+					Random rand = new Random();
+					if(rand.nextInt(100) < 2)
+					player.attackEntityFrom(NanotechDamageSource.nitrogenDamage, 1);
 				}
 			}
 		}
