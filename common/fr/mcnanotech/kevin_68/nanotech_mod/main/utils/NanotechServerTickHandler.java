@@ -15,7 +15,7 @@ public class NanotechServerTickHandler implements ITickHandler
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData)
 	{
-		
+
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class NanotechServerTickHandler implements ITickHandler
 				{
 					Random rand = new Random();
 					if(rand.nextInt(100) < 2)
-					player.attackEntityFrom(NanotechDamageSource.nitrogenDamage, 1);
+						player.attackEntityFrom(NanotechDamageSource.nitrogenDamage, 1);
 				}
 			}
 		}

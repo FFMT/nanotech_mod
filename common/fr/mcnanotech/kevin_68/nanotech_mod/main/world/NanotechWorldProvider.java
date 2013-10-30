@@ -3,7 +3,6 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.world;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.WorldProvider;
-import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 

@@ -12,6 +12,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 public class NanotechBiome extends BiomeGenBase
 {
 	private WorldGenNanoTree worldGenNanoTree = new WorldGenNanoTree(false);
+
 	public NanotechBiome(int id)
 	{
 		super(id);
@@ -36,9 +37,9 @@ public class NanotechBiome extends BiomeGenBase
 	{
 		return 0;
 	}
-	
-    public WorldGenerator getRandomWorldGenForTrees(Random rand)
-    {
-        return this.worldGenNanoTree;
-    }
+
+	public WorldGenerator getRandomWorldGenForTrees(Random rand)
+	{
+		return this.worldGenNanoTree;
+	}
 }

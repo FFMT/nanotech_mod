@@ -102,7 +102,7 @@ public class ItemBaseMetadata extends Item
 					}
 					if(!player.capabilities.isCreativeMode)
 					{
-						stack.stackSize --;
+						stack.stackSize--;
 					}
 					return true;
 				}
@@ -116,7 +116,7 @@ public class ItemBaseMetadata extends Item
 					}
 					if(!player.capabilities.isCreativeMode)
 					{
-						stack.stackSize --;
+						stack.stackSize--;
 					}
 					return true;
 				}
@@ -130,7 +130,7 @@ public class ItemBaseMetadata extends Item
 					}
 					if(!player.capabilities.isCreativeMode)
 					{
-						stack.stackSize --;
+						stack.stackSize--;
 					}
 					return true;
 				}
@@ -144,7 +144,7 @@ public class ItemBaseMetadata extends Item
 					}
 					if(!player.capabilities.isCreativeMode)
 					{
-						stack.stackSize --;
+						stack.stackSize--;
 					}
 					return true;
 				}

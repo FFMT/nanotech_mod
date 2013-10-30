@@ -20,7 +20,7 @@ public class ItemNanomiteHoe extends ItemHoe
 	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)
 	{
 		if(stack.getItem().equals(this) && repairItem.getItem().itemID == NanotechItem.itemBase.itemID && repairItem.getItemDamage() == 14)
-		return true;
+			return true;
 		return false;
 	}
 }

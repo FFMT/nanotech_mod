@@ -21,7 +21,7 @@ public class BlockListerJukebox extends BlockContainer
 	{
 		return new TileEntityListerJukebox();
 	}
-	
+
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t)
 	{
@@ -33,11 +33,11 @@ public class BlockListerJukebox extends BlockContainer
 		}
 
 		if(!world.isRemote)
-		player.openGui(Nanotech_mod.modInstance, 3, world, x, y, z);
+			player.openGui(Nanotech_mod.modInstance, 3, world, x, y, z);
 
 		return true;
 	}
-	
+
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata)
 	{
 		world.playRecord((String)null, x, y, z);

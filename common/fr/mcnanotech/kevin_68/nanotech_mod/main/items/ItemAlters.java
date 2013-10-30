@@ -59,7 +59,7 @@ public class ItemAlters extends Item
 		player.addPotionEffect(new PotionEffect(potion.id, 300, 0));
 		return 1;
 	}
-	
+
 	public void registerIcons(IconRegister iconregister)
 	{
 		this.itemIcon = iconregister.registerIcon("nanotech_mod:altersItem");

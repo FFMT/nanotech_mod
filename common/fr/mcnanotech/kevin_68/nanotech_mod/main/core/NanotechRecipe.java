@@ -47,16 +47,20 @@ public class NanotechRecipe
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.alters, 1), new Object[] {"ASA", 'A', Block.anvil, 'S', Item.stick});
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.listerJukebox, 1), new Object[] {"CCC", "JJJ", "CCC", 'C', NanotechItem.nanoDisc, 'J', Block.jukebox});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.reinforcedFishingRod, 1), new Object[] {Item.fishingRod, Item.ingotIron, Item.ingotIron});
-		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[]{"XXX", "XXX", "XXX", 'X', "itemSodium"}));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[]{"XXX", "XXX", "XXX", 'X', "dustSodium"}));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[]{"XXX", "XXX", "XXX", 'X', "ingotSodium"}));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[]{"XXX", "XXX", "XXX", 'X', "cellSodium"}));
-	
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.nanoFence, 4), new Object[] {"PSP", "PSP", 'P', NanotechBlock.nanoPlanks, 'S', Item.stick});
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.nanoSlabSingle, 6), new Object[] {"PPP", 'P', NanotechBlock.nanoPlanks});
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.nanoStairs, 4), new Object[] {"P  ", "PP ", "PPP", 'P', NanotechBlock.nanoPlanks});
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.nanoStairs, 4), new Object[] {"  P", " PP", "PPP", 'P', NanotechBlock.nanoPlanks});
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[] {"XXX", "XXX", "XXX", 'X', "itemSodium"}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[] {"XXX", "XXX", "XXX", 'X', "dustSodium"}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[] {"XXX", "XXX", "XXX", 'X', "ingotSodium"}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[] {"XXX", "XXX", "XXX", 'X', "cellSodium"}));
+
 		FFMTRegistry.addSmeltingWithMetadata(NanotechItem.itemBase.itemID, 17, new ItemStack(NanotechItem.itemBase, 1, 18), 0.1F);
 		FFMTRegistry.addSmeltingWithMetadata(NanotechItem.itemBase.itemID, 18, new ItemStack(NanotechItem.itemBase, 1, 19), 0.1F);
 		FFMTRegistry.addSmeltingWithMetadata(NanotechItem.itemBase.itemID, 19, new ItemStack(Item.fishRaw, 1), 0.1F);
-	
+
 	}
 
 	public static void InitNormalRecipes()

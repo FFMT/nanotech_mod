@@ -35,7 +35,7 @@ public class ItemBlockLamp extends ItemBlock
 	{
 		itemBlockIcon = iconRegister.registerIcon("nanotech_mod_city:lamp");
 	}
-	
+
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float par8, float par9, float par10)
 	{
 		if(player.canPlayerEdit(x, y, z, side, stack) && player.canPlayerEdit(x, y + 1, z, side, stack) && player.canPlayerEdit(x, y + 2, z, side, stack) && player.canPlayerEdit(x, y + 3, z, side, stack))

@@ -43,8 +43,8 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	private int[] field_82224_i = new int[2];
 	private int field_82222_j;
 	public int deathTicks = 0;
-	
-    private static final IEntitySelector attackEntitySelector = new EntityTheDeathAttackFilter();
+
+	private static final IEntitySelector attackEntitySelector = new EntityTheDeathAttackFilter();
 
 	public MobThedeath(World par1World)
 	{

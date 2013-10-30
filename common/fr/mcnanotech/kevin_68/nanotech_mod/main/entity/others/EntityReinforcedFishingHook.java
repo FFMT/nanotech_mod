@@ -64,7 +64,6 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 		this.ticksCatchable = 0;
 		this.bobber = null;
 		setSize(0.25F, 0.25F);
-		this.ignoreFrustumCheck = true;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -144,13 +143,13 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void setPositionAndRotation2(double x, double y, double z, float par7, float par8, int par9)
+	public void setPositionAndRotation2(double x, double y, double z, float yaw, float pitch, int par9)
 	{
 		this.fishX = x;
 		this.fishY = y;
 		this.fishZ = z;
-		this.fishYaw = par7;
-		this.fishPitch = par8;
+		this.fishYaw = yaw;
+		this.fishPitch = pitch;
 		this.fishPosRotationIncrements = par9;
 		this.motionX = this.velocityX;
 		this.motionY = this.velocityY;
@@ -181,7 +180,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 			double d3 = MathHelper.wrapAngleTo180_double(this.fishYaw - this.rotationYaw);
 			this.rotationYaw = ((float)(this.rotationYaw + d3 / this.fishPosRotationIncrements));
 			this.rotationPitch = ((float)(this.rotationPitch + (this.fishPitch - this.rotationPitch) / this.fishPosRotationIncrements));
-			this.fishPosRotationIncrements -= 1;
+			this.fishPosRotationIncrements--;
 			setPosition(d0, d1, d2);
 			setRotation(this.rotationYaw, this.rotationPitch);
 		}
@@ -191,7 +190,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 			{
 				ItemStack itemstack = this.angler.getCurrentEquippedItem();
 
-				if((this.angler.isDead) || (!this.angler.isEntityAlive()) || (itemstack == null) || !itemstack.getItem().equals(NanotechItem.reinforcedFishingRod) || (getDistanceSqToEntity(this.angler) > 4096.0D))
+				if((this.angler.isDead) || (!this.angler.isEntityAlive()) || (itemstack == null) || !itemstack.getItem().equals(NanotechItem.reinforcedFishingRod) || (getDistanceSqToEntity(this.angler) > 2048.0D))
 				{
 					setDead();
 					this.angler.fishEntity = null;
@@ -203,7 +202,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 					if(!this.bobber.isDead)
 					{
 						this.posX = this.bobber.posX;
-						this.posY = (this.bobber.boundingBox.minY + this.bobber.height * 0.8D);
+						this.posY = this.bobber.boundingBox.minY + (double)this.bobber.height * 0.8D;
 						this.posZ = this.bobber.posZ;
 						return;
 					}
@@ -214,7 +213,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 
 			if(this.shake > 0)
 			{
-				this.shake -= 1;
+				--this.shake;
 			}
 
 			if(this.inGround)
@@ -223,26 +222,25 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 
 				if(i == this.inTile)
 				{
-					this.ticksInGround += 1;
+					++this.ticksInGround;
 
 					if(this.ticksInGround == 1200)
 					{
-						setDead();
+						this.setDead();
 					}
-
 					return;
 				}
 
 				this.inGround = false;
-				this.motionX *= this.rand.nextFloat() * 0.2F;
-				this.motionY *= this.rand.nextFloat() * 0.2F;
-				this.motionZ *= this.rand.nextFloat() * 0.2F;
+				this.motionX *= (double)(this.rand.nextFloat() * 0.2F);
+				this.motionY *= (double)(this.rand.nextFloat() * 0.2F);
+				this.motionZ *= (double)(this.rand.nextFloat() * 0.2F);
 				this.ticksInGround = 0;
 				this.ticksInAir = 0;
 			}
 			else
 			{
-				this.ticksInAir += 1;
+				++this.ticksInAir;
 			}
 
 			Vec3 vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
@@ -259,22 +257,22 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 			Entity entity = null;
 			List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.addCoord(this.motionX, this.motionY, this.motionZ).expand(1.0D, 1.0D, 1.0D));
 			double d4 = 0.0D;
+			double d5;
 
-			for(int j = 0; j < list.size(); j++)
+			for(int j = 0; j < list.size(); ++j)
 			{
 				Entity entity1 = (Entity)list.get(j);
 
-				if((entity1.canBeCollidedWith()) && ((entity1 != this.angler) || (this.ticksInAir >= 5)))
+				if(entity1.canBeCollidedWith() && (entity1 != this.angler || this.ticksInAir >= 5))
 				{
 					float f = 0.3F;
-					AxisAlignedBB axisalignedbb = entity1.boundingBox.expand(f, f, f);
+					AxisAlignedBB axisalignedbb = entity1.boundingBox.expand((double)f, (double)f, (double)f);
 					MovingObjectPosition movingobjectposition1 = axisalignedbb.calculateIntercept(vec3, vec31);
 
 					if(movingobjectposition1 != null)
 					{
-						double d5 = vec3.distanceTo(movingobjectposition1.hitVec);
-
-						if((d5 < d4) || (d4 == 0.0D))
+						d5 = vec3.distanceTo(movingobjectposition1.hitVec);
+						if(d5 < d4 || d4 == 0.0D)
 						{
 							entity = entity1;
 							d4 = d5;
@@ -308,11 +306,15 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 
 			if(!this.inGround)
 			{
-				moveEntity(this.motionX, this.motionY, this.motionZ);
+				this.moveEntity(this.motionX, this.motionY, this.motionZ);
 				float f1 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
-				this.rotationYaw = ((float)(Math.atan2(this.motionX, this.motionZ) * 180.0D / 3.141592653589793D));
+				this.rotationYaw = (float)(Math.atan2(this.motionX, this.motionZ) * 180.0D / Math.PI);
 
-				for(this.rotationPitch = ((float)(Math.atan2(this.motionY, f1) * 180.0D / 3.141592653589793D)); this.rotationPitch - this.prevRotationPitch < -180.0F; this.prevRotationPitch -= 360.0F);
+				for(this.rotationPitch = (float)(Math.atan2(this.motionY, (double)f1) * 180.0D / Math.PI); this.rotationPitch - this.prevRotationPitch < -180.0F; this.prevRotationPitch -= 360.0F)
+				{
+					;
+				}
+
 				while(this.rotationPitch - this.prevRotationPitch >= 180.0F)
 				{
 					this.prevRotationPitch += 360.0F;
@@ -328,11 +330,11 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 					this.prevRotationYaw += 360.0F;
 				}
 
-				this.rotationPitch = (this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * 0.2F);
-				this.rotationYaw = (this.prevRotationYaw + (this.rotationYaw - this.prevRotationYaw) * 0.2F);
+				this.rotationPitch = this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * 0.2F;
+				this.rotationYaw = this.prevRotationYaw + (this.rotationYaw - this.prevRotationYaw) * 0.2F;
 				float f2 = 0.92F;
 
-				if((this.onGround) || (this.isCollidedHorizontally))
+				if(this.onGround || this.isCollidedHorizontally)
 				{
 					f2 = 0.5F;
 				}
@@ -340,10 +342,10 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 				byte b0 = 5;
 				double d6 = 0.0D;
 
-				for(int k = 0; k < b0; k++)
+				for(int k = 0; k < b0; ++k)
 				{
-					double d7 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (k + 0) / b0 - 0.125D + 0.125D;
-					double d8 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (k + 1) / b0 - 0.125D + 0.125D;
+					double d7 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (double)(k + 0) / (double)b0 - 0.125D + 0.125D;
+					double d8 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (double)(k + 1) / (double)b0 - 0.125D + 0.125D;
 					AxisAlignedBB axisalignedbb1 = AxisAlignedBB.getAABBPool().getAABB(this.boundingBox.minX, d7, this.boundingBox.minZ, this.boundingBox.maxX, d8, this.boundingBox.maxZ);
 
 					if(this.worldObj.isAABBInMaterial(axisalignedbb1, Material.water))
@@ -366,7 +368,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 				{
 					if(this.ticksCatchable > 0)
 					{
-						this.ticksCatchable -= 1;
+						--this.ticksCatchable;
 					}
 					else
 					{
@@ -408,10 +410,10 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 
 				if(this.ticksCatchable > 0)
 				{
-					this.motionY -= this.rand.nextFloat() * this.rand.nextFloat() * this.rand.nextFloat() * 0.2D;
+					this.motionY -= (double)(this.rand.nextFloat() * this.rand.nextFloat() * this.rand.nextFloat()) * 0.2D;
 				}
 
-				double d5 = d6 * 2.0D - 1.0D;
+				d5 = d6 * 2.0D - 1.0D;
 				this.motionY += 0.03999999910593033D * d5;
 
 				if(d6 > 0.0D)
@@ -428,24 +430,24 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 		}
 	}
 
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
+	public void writeEntityToNBT(NBTTagCompound nbtTag)
 	{
-		par1NBTTagCompound.setShort("xTile", (short)this.xTile);
-		par1NBTTagCompound.setShort("yTile", (short)this.yTile);
-		par1NBTTagCompound.setShort("zTile", (short)this.zTile);
-		par1NBTTagCompound.setByte("inTile", (byte)this.inTile);
-		par1NBTTagCompound.setByte("shake", (byte)this.shake);
-		par1NBTTagCompound.setByte("inGround", (byte)(this.inGround ? 1 : 0));
+		nbtTag.setShort("xTile", (short)this.xTile);
+		nbtTag.setShort("yTile", (short)this.yTile);
+		nbtTag.setShort("zTile", (short)this.zTile);
+		nbtTag.setByte("inTile", (byte)this.inTile);
+		nbtTag.setByte("shake", (byte)this.shake);
+		nbtTag.setByte("inGround", (byte)(this.inGround ? 1 : 0));
 	}
 
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
+	public void readEntityFromNBT(NBTTagCompound nbtTag)
 	{
-		this.xTile = par1NBTTagCompound.getShort("xTile");
-		this.yTile = par1NBTTagCompound.getShort("yTile");
-		this.zTile = par1NBTTagCompound.getShort("zTile");
-		this.inTile = (par1NBTTagCompound.getByte("inTile") & 0xFF);
-		this.shake = (par1NBTTagCompound.getByte("shake") & 0xFF);
-		this.inGround = (par1NBTTagCompound.getByte("inGround") == 1);
+		this.xTile = nbtTag.getShort("xTile");
+		this.yTile = nbtTag.getShort("yTile");
+		this.zTile = nbtTag.getShort("zTile");
+		this.inTile = nbtTag.getByte("inTile") & 255;
+		this.shake = nbtTag.getByte("shake") & 255;
+		this.inGround = nbtTag.getByte("inGround") == 1;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -489,7 +491,6 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 				}
 
 				EntityItem entityitem = new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, stack);
-
 				double d5 = this.angler.posX - this.posX;
 				double d6 = this.angler.posY - this.posY;
 				double d7 = this.angler.posZ - this.posZ;
@@ -558,7 +559,6 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 				}
 			}
 		}
-
 		return false;
 	}
 }

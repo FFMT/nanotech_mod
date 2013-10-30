@@ -16,7 +16,7 @@ public class WorldGeneration implements IWorldGenerator
 	private WorldModel2 worldgen2 = new WorldModel2();
 	private WorldModel3 worldgen3 = new WorldModel3();
 	private WorldModel4 worldgen4 = new WorldModel4();
-	
+
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
@@ -26,7 +26,7 @@ public class WorldGeneration implements IWorldGenerator
 			{
 				(new WorldGenMinable(NanotechBlock.nanoOre.blockID, 0, 10, Block.stone.blockID)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}
-			
+
 			(new WorldGenMinable(NanotechBlock.nanoOre.blockID, 1, 7, Block.stone.blockID)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 
 			for(int i = 0; i < 2; i++)
