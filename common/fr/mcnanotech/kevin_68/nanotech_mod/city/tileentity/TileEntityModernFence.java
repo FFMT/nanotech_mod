@@ -99,7 +99,7 @@ public class TileEntityModernFence extends TileEntity
 			Block block = Block.blocksList[l];
 			return block != null && block.blockMaterial.isOpaque() && block.renderAsNormalBlock() ? block.blockMaterial != Material.pumpkin : false;
 		}
-		else if (l == this.getBlockType().blockID)
+		else if(l == this.getBlockType().blockID)
 		{
 			return true;
 		}
@@ -108,7 +108,7 @@ public class TileEntityModernFence extends TileEntity
 			return false;
 		}
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public AxisAlignedBB getRenderBoundingBox()
 	{

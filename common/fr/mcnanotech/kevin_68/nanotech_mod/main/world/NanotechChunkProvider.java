@@ -62,7 +62,7 @@ public class NanotechChunkProvider implements IChunkProvider
 	private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
 	private MapGenBase ravineGenerator = new MapGenRavine();
 	private BiomeGenBase[] biomesForGeneration;
-	
+
 	double[] noise1;
 	double[] noise2;
 	double[] noise3;

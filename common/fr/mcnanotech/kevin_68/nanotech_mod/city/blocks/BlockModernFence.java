@@ -148,7 +148,7 @@ public class BlockModernFence extends BlockContainer
 		}
 		this.setBlockBounds(f, 0.0F, f2, f1, 1.0F, f3);
 	}
-	
+
 	public boolean isOpaqueCube()
 	{
 		return false;
@@ -178,7 +178,7 @@ public class BlockModernFence extends BlockContainer
 			Block block = Block.blocksList[l];
 			return block != null && block.blockMaterial.isOpaque() && block.renderAsNormalBlock() ? block.blockMaterial != Material.pumpkin : false;
 		}
-		else if (l == this.blockID)
+		else if(l == this.blockID)
 		{
 			return true;
 		}

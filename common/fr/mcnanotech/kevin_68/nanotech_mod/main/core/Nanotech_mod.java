@@ -2,9 +2,6 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 
 import java.util.logging.Logger;
 
-import net.minecraft.block.material.MapColor;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialLiquid;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -12,7 +9,6 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.Property;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -150,7 +146,7 @@ public class Nanotech_mod
 			nanoStairsID = cfg.getBlock("Nano Stairs", 1022).getInt();
 			nanoSlabSingleID = cfg.getBlock("Nano Slab Single", 1023).getInt();
 			nanoSlabDoubleID = cfg.getBlock("Nano Slab Double", 1024).getInt();
-			
+
 			nanotechItemID = cfg.getItem("Main Nanotech ID", 5000).getInt();
 			superBottleOfXpID = cfg.getItem("Super Bottle of xp", 5001).getInt();
 			diamondBowID = cfg.getItem("Diamond bow", 5002).getInt();
@@ -216,7 +212,7 @@ public class Nanotech_mod
 			crazyGuyProb = cfg.get(CATEGORY_MOB_SPAWN, "CrazyGuy Prob", 1).getInt();
 			crazyGuyMin = cfg.get(CATEGORY_MOB_SPAWN, "CrazyGuy Min", 1).getInt();
 			crazyGuyMax = cfg.get(CATEGORY_MOB_SPAWN, "CrazyGuy Max", 2, "Set the probability to 0 to disable the mob, max = maximum spawn group and min = minimum spawn group").getInt();
-		
+
 			structure1Prob = cfg.get(CATEGORY_WORLD, "Stucture 1 probability", 2).getInt();
 			structure2Prob = cfg.get(CATEGORY_WORLD, "Stucture 2 probability", 2).getInt();
 			structure3Prob = cfg.get(CATEGORY_WORLD, "Stucture 3 probability", 2).getInt();

@@ -12,16 +12,16 @@ public class ItemBlockModernFence extends ItemBlock
 	{
 		super(id);
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister iconRegister)
-    {
-        this.itemIcon = iconRegister.registerIcon("nanotech_mod_city:modernFence");
-    }
-    
-    @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int par1)
-    {
-        return itemIcon;
-    }
+
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister iconRegister)
+	{
+		this.itemIcon = iconRegister.registerIcon("nanotech_mod_city:modernFence");
+	}
+
+	@SideOnly(Side.CLIENT)
+	public Icon getIconFromDamage(int par1)
+	{
+		return itemIcon;
+	}
 }

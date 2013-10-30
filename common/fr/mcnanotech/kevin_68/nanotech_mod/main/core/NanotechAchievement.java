@@ -59,12 +59,11 @@ public class NanotechAchievement
 		itemMysteriousArmor = new Achievement(12614, "itemMysteriousArmor", 5, -4, new ItemStack(NanotechItem.mysteriousChestPlate, 1), itemMysteriousingot).registerAchievement().setSpecial();
 		itemNanomiteTool = new Achievement(12615, "itemNanomiteTool", -4, 3, new ItemStack(NanotechItem.nanomitePickaxe, 1), itemSmallNanomite).registerAchievement().setSpecial();
 		itemNanomiteArmor = new Achievement(12616, "itemNanomiteArmor", -5, 4, new ItemStack(NanotechItem.nanomiteChestPlate, 1), itemSmallNanomite).registerAchievement().setSpecial();
-		
-		pageNanotech = new AchievementPage("Nanotech_mod", installMod, blockBarbedWire, blockConfusion, blockFalling, blockJumper, blockJumperAdv, blockMossyStone, blockNotFalling, blockPortalFrame, blockSmoker, blockSpeed, blockSlow, blockTheDeath, blockSiliconOre, killTheDeath, killTheDeathWithCG, getScythe, getMysteriousMat, nanotechDim, blockListerJukebox, itemAlters, itemSiliconore, 
-				itemSiliconplate, itemCircuit, itemAdvancedcircuit, itemProcessor, itemMicroProcessor, itemCamera, itemDetector, itemEngine, itemNanomiteFrame, itemNanomite, itemSmallNanomite, itemStoneofdecrease, itemMysteriousingot, itemVoid, itemPortalActivator, itemCrazyGlasses, itemDiamondBow, itemEmeraldBow, itemNanomiteBow, itemMysteriousArmor, itemNanomiteTool, itemNanomiteArmor);
+
+		pageNanotech = new AchievementPage("Nanotech_mod", installMod, blockBarbedWire, blockConfusion, blockFalling, blockJumper, blockJumperAdv, blockMossyStone, blockNotFalling, blockPortalFrame, blockSmoker, blockSpeed, blockSlow, blockTheDeath, blockSiliconOre, killTheDeath, killTheDeathWithCG, getScythe, getMysteriousMat, nanotechDim, blockListerJukebox, itemAlters, itemSiliconore, itemSiliconplate, itemCircuit, itemAdvancedcircuit, itemProcessor, itemMicroProcessor, itemCamera, itemDetector, itemEngine, itemNanomiteFrame, itemNanomite, itemSmallNanomite, itemStoneofdecrease, itemMysteriousingot, itemVoid, itemPortalActivator, itemCrazyGlasses, itemDiamondBow, itemEmeraldBow, itemNanomiteBow, itemMysteriousArmor, itemNanomiteTool, itemNanomiteArmor);
 		AchievementPage.registerAchievementPage(pageNanotech);
 	}
-	
+
 	public static Achievement getInstallModAchievement()
 	{
 		return installMod;

@@ -11,7 +11,8 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 public class NanotechItem
 {
 	// Items statement
-	public static Item itemBase, superBottleOfXp, diamondBow, emeraldBow, nanomiteBow, nanomiteAxe, nanomitePickaxe, nanomiteShovel, nanomiteHoe, nanomiteSword, nanomiteHelmet, nanomiteChestPlate, nanomiteLeggings, nanomiteBoots, mysteriousHelmet, mysteriousChestPlate, mysteriousLeggings, mysteriousBoots, nanoDisc, edibleFlesh, rottenChunk, scythe, crazyGlasses, debug, alters, nitrogenBucket, reinforcedFishingRod;
+	public static Item itemBase, superBottleOfXp, diamondBow, emeraldBow, nanomiteBow, nanomiteAxe, nanomitePickaxe, nanomiteShovel, nanomiteHoe, nanomiteSword, nanomiteHelmet, nanomiteChestPlate, nanomiteLeggings, nanomiteBoots, mysteriousHelmet, mysteriousChestPlate, mysteriousLeggings, mysteriousBoots, nanoDisc, edibleFlesh, rottenChunk, scythe, crazyGlasses, debug, alters, nitrogenBucket,
+			reinforcedFishingRod;
 
 	// Enum tools and armor material
 	public static EnumArmorMaterial EnumArmorMaterialMysterious = EnumHelper.addArmorMaterial("Mysterious", 50, new int[] {6, 6, 6, 6}, 15);

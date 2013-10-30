@@ -1,14 +1,9 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.items;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
-import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
 
 public class ItemNitrogenBucket extends ItemBucket
 {

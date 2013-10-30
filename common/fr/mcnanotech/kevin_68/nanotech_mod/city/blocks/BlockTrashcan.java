@@ -21,7 +21,7 @@ public class BlockTrashcan extends Block
 	{
 		super(id, Material.iron);
 	}
-	
+
 	public void registerIcons(IconRegister iconregister)
 	{
 		blockIcon = iconregister.registerIcon("nanotech_mod_city:trash_can_side");

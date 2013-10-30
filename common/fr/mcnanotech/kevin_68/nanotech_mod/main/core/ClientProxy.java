@@ -60,9 +60,9 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(MobFly.class, new RenderMobFly(new ModelFly(), 0.05F));
 		RenderingRegistry.registerEntityRenderingHandler(MobFlyingCreeper.class, new RenderFlyingCreeper(new ModelFlyingCreeper(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(MobCrazyGuy.class, new RenderCrazyGuy(new ModelCrazyGuy(), 0.5F));
-		
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityReinforcedFishingHook.class, new RenderReinforcedFishingHook());
-		
+
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.scythe.itemID, new ItemScytheRender());
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.debug.itemID, new ItemDebugRender());
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.alters.itemID, new ItemAltersRender());
@@ -73,7 +73,7 @@ public class ClientProxy extends CommonProxy
 	{
 		MinecraftForge.EVENT_BUS.register(new GuiOverlay(Minecraft.getMinecraft()));
 	}
-	
+
 	@Override
 	public void registerTickHandler()
 	{

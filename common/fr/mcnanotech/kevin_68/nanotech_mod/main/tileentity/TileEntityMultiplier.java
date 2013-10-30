@@ -189,7 +189,7 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 	{
 		return false;
 	}
-	
+
 	private boolean isItemStackEqualWithoutQuantity(ItemStack stack, ItemStack stack2)
 	{
 		return stack.itemID != stack2.itemID ? false : (stack.getItemDamage() != stack2.getItemDamage() ? false : (stack.stackTagCompound == null && stack2.stackTagCompound != null ? false : stack.stackTagCompound == null || stack.stackTagCompound.equals(stack2.stackTagCompound)));

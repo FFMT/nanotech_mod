@@ -1,10 +1,10 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class NanotechPotion extends Potion
 {
@@ -14,12 +14,12 @@ public class NanotechPotion extends Potion
 	{
 		super(id, isBad, color);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean hasStatusIcon() 
-	{       
-	    Minecraft.getMinecraft().renderEngine.bindTexture(texture);
-	    return true;
+	public boolean hasStatusIcon()
+	{
+		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+		return true;
 	}
 }

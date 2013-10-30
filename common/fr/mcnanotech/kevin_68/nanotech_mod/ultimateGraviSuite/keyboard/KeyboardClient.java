@@ -51,7 +51,7 @@ public class KeyboardClient extends Keyboard
 					ItemStack chestPlate = mc.thePlayer.inventory.armorItemInSlot(2);
 					ItemStack leggings = mc.thePlayer.inventory.armorItemInSlot(1);
 					ItemStack boots = mc.thePlayer.inventory.armorItemInSlot(0);
-					
+
 					if(kb.equals(flyKey))
 					{
 
@@ -140,7 +140,7 @@ public class KeyboardClient extends Keyboard
 			return false;
 		}
 	}
-	
+
 	public static boolean isJumpKeyDown(EntityPlayer player)
 	{
 		return mc.gameSettings.keyBindJump.pressed;

@@ -5,7 +5,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -20,16 +19,16 @@ public class BlockLamp extends Block
 	{
 		super(id, material);
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public int getLightValue(IBlockAccess world, int x, int y, int z)
-    {
-    	if(world.getBlockMetadata(x, y, z) == 3)
-    	{
-    		return 15;
-    	}
-    	return 0;
-    }
+
+	@SideOnly(Side.CLIENT)
+	public int getLightValue(IBlockAccess world, int x, int y, int z)
+	{
+		if(world.getBlockMetadata(x, y, z) == 3)
+		{
+			return 15;
+		}
+		return 0;
+	}
 
 	@Override
 	public TileEntity createTileEntity(World world, int metadata)
@@ -74,9 +73,9 @@ public class BlockLamp extends Block
 	{
 		return -1;
 	}
-	
-    public void breakBlock(World world, int x, int y, int z, int id, int metadata)
-    {
+
+	public void breakBlock(World world, int x, int y, int z, int id, int metadata)
+	{
 		for(int i = -3; i < 4; ++i)
 		{
 			if(world.getBlockId(x, y + i, z) == this.blockID)
@@ -84,8 +83,8 @@ public class BlockLamp extends Block
 				world.setBlockToAir(x, y + i, z);
 			}
 		}
-    	super.breakBlock(world, x, y, z, id, metadata);
-    }
+		super.breakBlock(world, x, y, z, id, metadata);
+	}
 
 	public Icon getIcon(int side, int metadata)
 	{

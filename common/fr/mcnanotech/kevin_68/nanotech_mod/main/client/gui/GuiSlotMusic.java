@@ -3,7 +3,6 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import net.minecraft.client.gui.GuiSlot;
 import net.minecraft.client.renderer.Tessellator;
@@ -22,7 +21,7 @@ class GuiSlotMusic extends GuiSlot
 	private final Map mapMap;
 	final GuiListerJukebox listerGui;
 	private final String cdDirectoryName;
-	
+
 	public GuiSlotMusic(GuiListerJukebox guiLister)
 	{
 		super(guiLister.getMc(), guiLister.width, guiLister.height, 32, guiLister.height - 65 + 4, 18);
@@ -79,7 +78,7 @@ class GuiSlotMusic extends GuiSlot
 	{
 		this.listerGui.getFont().setBidiFlag(true);
 		int color = 16777215;
-		
+
 		if(this.mapMap.get(this.listList.get(slotId)).toString().equals("nanodisk"))
 		{
 			color = FFMTColor.aquaInt;

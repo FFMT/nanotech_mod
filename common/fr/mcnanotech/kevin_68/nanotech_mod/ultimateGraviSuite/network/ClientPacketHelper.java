@@ -11,7 +11,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateBoot
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateGraviChestPlate;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateLeggings;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateQuantumHelmet;
-import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.keyboard.Keyboard;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.keyboard.KeyboardClient;
 
 public class ClientPacketHelper
@@ -217,7 +216,6 @@ public class ClientPacketHelper
 			if(UltimateGraviChestPlate.readFlyStatus(stack) || UltimateGraviChestPlate.readInvisibilityStatus(stack))
 			{
 				int charge = UltimateGraviChestPlate.getCharge(stack);
-				
 
 				if(!player.capabilities.isCreativeMode)
 				{

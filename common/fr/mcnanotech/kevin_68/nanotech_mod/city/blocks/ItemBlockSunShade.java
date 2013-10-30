@@ -13,29 +13,30 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemBlockSunShade extends ItemBlock
 {
 	private Icon itemBlockIcon;
+
 	public ItemBlockSunShade(int id)
 	{
 		super(id);
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public int getSpriteNumber()
-    {
-        return 1;
-    }
-    
-    @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int metadata)
-    {
-        return itemBlockIcon;
-    }
-	
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister iconRegister)
-    {
-    	this.itemBlockIcon = iconRegister.registerIcon("nanotech_mod_city:sunShade");
-    }
-    
+
+	@SideOnly(Side.CLIENT)
+	public int getSpriteNumber()
+	{
+		return 1;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public Icon getIconFromDamage(int metadata)
+	{
+		return itemBlockIcon;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister iconRegister)
+	{
+		this.itemBlockIcon = iconRegister.registerIcon("nanotech_mod_city:sunShade");
+	}
+
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float par8, float par9, float par10)
 	{
 		if(player.canPlayerEdit(x, y, z, side, stack) && player.canPlayerEdit(x, y + 1, z, side, stack) && player.canPlayerEdit(x, y + 2, z, side, stack))

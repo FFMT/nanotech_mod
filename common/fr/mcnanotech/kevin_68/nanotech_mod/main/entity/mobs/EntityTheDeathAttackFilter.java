@@ -10,6 +10,6 @@ public class EntityTheDeathAttackFilter implements IEntitySelector
 	@Override
 	public boolean isEntityApplicable(Entity entity)
 	{
-        return entity instanceof EntityLivingBase && ((EntityLivingBase)entity).getCreatureAttribute() != EnumCreatureAttribute.UNDEAD;
+		return entity instanceof EntityLivingBase && ((EntityLivingBase)entity).getCreatureAttribute() != EnumCreatureAttribute.UNDEAD;
 	}
 }
