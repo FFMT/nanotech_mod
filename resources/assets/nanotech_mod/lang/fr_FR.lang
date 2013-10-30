@@ -36,6 +36,10 @@ tile.theDeathHead.name=Tête de la Mort
 tile.blockTrail.name=Chemin
 tile.listerJukebox.name=Jukebox Listeur
 tile.liquidNitrogen.name=Azote liquide
+tile.nanoStairs.name=Escalier nano
+tile.nanoFence.name=Barrière nano
+tile.nanoSlabSingle.nano.name=Dalle nano
+tile.nanoSlabDouble.nano.name=Double dalle nano
 
 #Fluid
 fluid.liquidnitrogen=Azote liquide
@@ -82,6 +86,10 @@ item.debug.name=Debug
 item.alters.name=Altères
 item.portalActivator.name=Activateur de portail
 item.nitrogenBucket.name=Seau d'azote
+item.reinforcedFishingRod.name=Canne à pêche renforcée
+item.fish_veryveryfrozen.name=Poisson très très gelé
+item.fish_veryfrozen.name=Poisson très gelé
+item.fish_frozen.name=Poisson surgelé
 
 #Entity
 entity.SuperZombie.name=Super Zombie

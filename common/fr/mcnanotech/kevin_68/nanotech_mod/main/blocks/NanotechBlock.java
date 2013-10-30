@@ -1,6 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
@@ -8,8 +9,8 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 public class NanotechBlock
 {
 	// Blocks statement
-	public static Block portal, portalFrame, nanoGrass, fakeOre, speed, jumper, multiplier, smoker, barbedwire, nanoWood, nanoLeaves, nanoSaplings, nanoPlanks, nanoOre, confusion, falling, notfalling, sodium, mossystone, theDeathHead, listerJukebox, liquidNitrogen, blockNanoStair,
-			nanoSlabSingle, nanoSlabDouble;
+	public static Block portal, portalFrame, nanoGrass, fakeOre, speed, jumper, multiplier, smoker, barbedwire, nanoWood, nanoLeaves, nanoSaplings, nanoPlanks, nanoOre, confusion, falling, notfalling, sodium, mossystone, theDeathHead, listerJukebox, liquidNitrogen, nanoStairs,
+			nanoSlabSingle, nanoSlabDouble, nanoFence;
 
 	// Blocks Initialization
 	public static void initBlock()
@@ -35,7 +36,11 @@ public class NanotechBlock
 		mossystone = new BlockBase(Nanotech_mod.mossyStoneID, Material.rock).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("mossystone").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B).setTextureName("nanotech_mod:mossystone");
 		theDeathHead = new BlockTheDeathHead(Nanotech_mod.theDeathHeadID).setHardness(5.0F).setResistance(10.0F).setUnlocalizedName("theDeathHead").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		listerJukebox = new BlockListerJukebox(Nanotech_mod.listerJukeboxID, Material.iron).setUnlocalizedName("listerJukebox").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B).setTextureName("nanotech_mod:listerjukebox");
-
+		nanoFence = new BlockFence(Nanotech_mod.nanoFenceID, "nanotech_mod:nanoplank", Material.wood).setUnlocalizedName("nanoFence").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
+		nanoStairs = new BlockNanoStairs(Nanotech_mod.nanoStairsID, nanoPlanks, 0).setUnlocalizedName("nanoStairs").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
+		nanoSlabSingle = new BlockNanoSteps(Nanotech_mod.nanoSlabSingleID, false).setUnlocalizedName("nanoSlabSingle").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
+		nanoSlabDouble = new BlockNanoSteps(Nanotech_mod.nanoSlabDoubleID, true).setUnlocalizedName("nanoSlabDouble");
+		
 		if(Nanotech_mod.liquidNitrogen.getBlockID() == -1)
 		{
 			liquidNitrogen = new BlockLiquidNitrogen(Nanotech_mod.liquidNitrogenID, Nanotech_mod.liquidNitrogen, Material.water).setUnlocalizedName("liquidNitrogen");
@@ -72,5 +77,9 @@ public class NanotechBlock
 		GameRegistry.registerBlock(mossystone, "BlockMossyStone");
 		GameRegistry.registerBlock(theDeathHead, "BlockTheDeathHead");
 		GameRegistry.registerBlock(listerJukebox, "ListerJukebox");
+		GameRegistry.registerBlock(nanoFence, "nanoFence");
+		GameRegistry.registerBlock(nanoStairs, "nanoStairs");
+		GameRegistry.registerBlock(nanoSlabSingle, ItemBlockNanoSteps.class, "BlockNanoSlabSingle", "Nanotech_mod");
+		GameRegistry.registerBlock(nanoSlabDouble, ItemBlockNanoSteps.class, "BlockNanoSlabDouble", "Nanotech_mod");
 	}
 }

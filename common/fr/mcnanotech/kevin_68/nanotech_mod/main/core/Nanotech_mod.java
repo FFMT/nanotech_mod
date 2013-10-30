@@ -26,6 +26,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -33,6 +34,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.NanotechMobs;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntityReinforcedFishingHook;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.BucketEvent;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventBonemeal;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventSound;
@@ -69,7 +71,7 @@ public class Nanotech_mod
 	public static Fluid liquidNitrogen;
 
 	// Block IDs
-	public static int portalID, portalFrameID, grassID, fakeOreID, speedID, jumperID, multiplierID, smokerID, barbedWireID, nanoWoodID, nanoLeavesID, nanoSaplingsID, nanoPlanksID, nanoOreID, confusionID, fallingID, notFallingID, sodiumID, mossyStoneID, theDeathHeadID, listerJukeboxID, liquidNitrogenID;
+	public static int portalID, portalFrameID, grassID, fakeOreID, speedID, jumperID, multiplierID, smokerID, barbedWireID, nanoWoodID, nanoLeavesID, nanoSaplingsID, nanoPlanksID, nanoOreID, confusionID, fallingID, notFallingID, sodiumID, mossyStoneID, theDeathHeadID, listerJukeboxID, liquidNitrogenID, nanoFenceID, nanoStairsID, nanoSlabSingleID, nanoSlabDoubleID;
 
 	// Item IDs
 	public static int nanotechItemID, superBottleOfXpID, diamondBowID, emeraldBowID, nanomiteBowID, nanomiteAxeID, nanomitePickaxeID, nanomiteShovelID, nanomiteHoeID, nanomiteSwordID, nanomiteHelmetID, nanomiteChestPlateID, nanomiteLegginsID, nanomiteBootsID, mysteriousHelmetID, mysteriousChestPlateID, mysteriousLegginsID, mysteriousBootsID, nanoDiscID, edibleFleshID, rottenChunkID, scytheID,
@@ -144,7 +146,11 @@ public class Nanotech_mod
 			theDeathHeadID = cfg.getBlock("TheDeathHead", 1018).getInt();
 			listerJukeboxID = cfg.getBlock("ListerJukebox", 1020).getInt();
 			liquidNitrogenID = cfg.getTerrainBlock("block", "Block Liquid Nitrogen", 251, "used in terrain gen, ID must be less than 256").getInt();
-
+			nanoFenceID = cfg.getBlock("Nano Fence", 1021).getInt();
+			nanoStairsID = cfg.getBlock("Nano Stairs", 1022).getInt();
+			nanoSlabSingleID = cfg.getBlock("Nano Slab Single", 1023).getInt();
+			nanoSlabDoubleID = cfg.getBlock("Nano Slab Double", 1024).getInt();
+			
 			nanotechItemID = cfg.getItem("Main Nanotech ID", 5000).getInt();
 			superBottleOfXpID = cfg.getItem("Super Bottle of xp", 5001).getInt();
 			diamondBowID = cfg.getItem("Diamond bow", 5002).getInt();
@@ -244,8 +250,8 @@ public class Nanotech_mod
 	@EventHandler
 	public void InitNanotech_mod(FMLInitializationEvent event)
 	{
-		nanotechBiome = new NanotechBiome(nanotechBiomeID).setBiomeName("Nanotechbiome").setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.1F, 0.2F);
-		nitrogenOcean = new NitrogenOcean(nitrogenOceanID).setBiomeName("NitrogenOcean").setTemperatureRainfall(-15.0F, -10.0F).setMinMaxHeight(-0.5F, 0.3F);
+		nanotechBiome = new NanotechBiome(nanotechBiomeID).setBiomeName("Nanotechbiome").setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.0F, 0.1F);
+		nitrogenOcean = new NitrogenOcean(nitrogenOceanID).setBiomeName("NitrogenOcean").setTemperatureRainfall(-15.0F, -10.0F).setMinMaxHeight(-0.5F, 0.0F);
 
 		DimensionManager.registerProviderType(dimensionID, NanotechWorldProvider.class, false);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
@@ -256,6 +262,7 @@ public class Nanotech_mod
 
 		this.guiAndTileEntity();
 		NanotechMobs.mobs();
+		EntityRegistry.registerModEntity(EntityReinforcedFishingHook.class, "EntityReinforcedFishingHook", 2048, this, 64, 10, true);
 		proxy.registerModRenders();
 		this.forgeDictionary();
 		this.other();

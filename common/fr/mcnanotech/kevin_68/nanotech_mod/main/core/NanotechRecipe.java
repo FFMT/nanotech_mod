@@ -46,6 +46,7 @@ public class NanotechRecipe
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.jumper, 1, 1), new Object[] {"FBF", 'B', new ItemStack(NanotechBlock.jumper, 1, 0), 'F', Item.feather});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.alters, 1), new Object[] {"ASA", 'A', Block.anvil, 'S', Item.stick});
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.listerJukebox, 1), new Object[] {"CCC", "JJJ", "CCC", 'C', NanotechItem.nanoDisc, 'J', Block.jukebox});
+		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.reinforcedFishingRod, 1), new Object[] {Item.fishingRod, Item.ingotIron, Item.ingotIron});
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[]{"XXX", "XXX", "XXX", 'X', "itemSodium"}));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[]{"XXX", "XXX", "XXX", 'X', "dustSodium"}));

@@ -35,6 +35,10 @@ tile.mossystone.name=Mossy Stone
 tile.theDeathHead.name=The Death Head
 tile.listerJukebox.name=Lister Jukebox
 tile.liquidNitrogen.name=Liquid Nitrogen
+tile.nanoStairs.name=Nano Stairs
+tile.nanoFence.name=Nano Fence
+tile.nanoSlabSingle.nano.name=Nano slab
+tile.nanoSlabDouble.nano.name=Nano double slab
 
 #Fluid
 fluid.liquidnitrogen=Liquid Nitrogen
@@ -81,6 +85,10 @@ item.debug.name=Debug
 item.alters.name=Alters
 item.portalActivator.name=Portal Activator
 item.nitrogenBucket.name=Nitrogen Bucket
+item.reinforcedFishingRod.name=Reinforced Fishing Rod
+item.fish_veryveryfrozen.name=Very very frozen fish
+item.fish_veryfrozen.name=Very frozen fish
+item.fish_frozen.name=Frozen fish
 
 #Entity
 entity.SuperZombie.name=Super Zombie
