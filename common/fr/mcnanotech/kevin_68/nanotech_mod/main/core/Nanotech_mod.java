@@ -56,7 +56,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NitrogenOcean;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGeneration;
 
-@Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "@VERSION@")
+@Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "@VERSION@", dependencies="required-after:FFMTLIBS")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTM|smoker", "NTM|jumper"}, packetHandler = PacketHandler.class)
 public class Nanotech_mod
 {
@@ -260,10 +260,13 @@ public class Nanotech_mod
 
 		freeze = new NanotechPotion(30, true, 3035801).setPotionName("potion.freeze").setIconIndex(0, 0).func_111184_a(SharedMonsterAttributes.movementSpeed, "7107DE5E-7CE8-4030-940E-514C1F160890", -0.50000000596046448D, 2);
 
+		proxy.registerItemRenders();
 		this.guiAndTileEntity();
 		NanotechMobs.mobs();
-		EntityRegistry.registerModEntity(EntityReinforcedFishingHook.class, "EntityReinforcedFishingHook", 2048, this, 64, 10, true);
 		proxy.registerModRenders();
+		
+		EntityRegistry.registerGlobalEntityID(EntityReinforcedFishingHook.class, "EntityReinforcedFishingHook", 2048);
+		proxy.registerEntityRenders();
 		this.forgeDictionary();
 		this.other();
 

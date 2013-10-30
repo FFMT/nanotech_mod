@@ -1,84 +1,80 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.items;
 
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemFishingRod;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntityReinforcedFishingHook;
 
-public class ItemReinforcedFishingRod extends Item
+public class ItemReinforcedFishingRod extends ItemFishingRod
 {
-    @SideOnly(Side.CLIENT)
-    private Icon theIcon;
-    private boolean isFishing = false;
-    
-    public ItemReinforcedFishingRod(int par1)
-    {
-        super(par1);
-        this.setMaxDamage(64);
-        this.setMaxStackSize(1);
-    }
+	private Icon theIcon;
 
-    @SideOnly(Side.CLIENT)
-    public boolean isFull3D()
-    {
-        return true;
-    }
+	public ItemReinforcedFishingRod(int id)
+	{
+		super(id);
+		this.setMaxDamage(128);
+	}
 
-    @SideOnly(Side.CLIENT)
-    public boolean shouldRotateAroundWhenRendering()
-    {
-        return true;
-    }
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
+	{
+		if(player.fishEntity != null)
+		{
+			int i = player.fishEntity.catchFish();
+			stack.damageItem(i, player);
+			player.swingItem();
+			if(!stack.hasTagCompound())
+			{
+				stack.setTagCompound(new NBTTagCompound());
+			}
+			NBTTagCompound tag = stack.getTagCompound();
+			tag.setBoolean("using", false);
+		}
+		else
+		{
+			world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
-    public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
-    {
-        if (par3EntityPlayer.fishEntity != null)
-        {
-            int i = par3EntityPlayer.fishEntity.catchFish();
-            par1ItemStack.damageItem(i, par3EntityPlayer);
-            par3EntityPlayer.swingItem();
-            isFishing = true;
-        }
-        else
-        {
-            par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+			if(!world.isRemote)
+			{
+				world.spawnEntityInWorld(new EntityReinforcedFishingHook(world, player));
+			}
+			if(!stack.hasTagCompound())
+			{
+				stack.setTagCompound(new NBTTagCompound());
+			}
+			NBTTagCompound tag = stack.getTagCompound();
+			tag.setBoolean("using", true);
+			player.swingItem();
+		}
+		return stack;
+	}
 
-            if (!par2World.isRemote)
-            {
-                par2World.spawnEntityInWorld(new EntityReinforcedFishingHook(par2World, par3EntityPlayer));
-            }
-            isFishing = false;
-            par3EntityPlayer.swingItem();
-        }
+	public void registerIcons(IconRegister par1IconRegister)
+	{
+		this.itemIcon = par1IconRegister.registerIcon(this.getIconString() + "_uncast");
+		this.theIcon = par1IconRegister.registerIcon(this.getIconString() + "_cast");
+	}
 
-        return par1ItemStack;
-    }
+	@Override
+	public Icon getIcon(ItemStack stack, int multiPassRender)
+	{
+		if(!stack.hasTagCompound())
+		{
+			stack.setTagCompound(new NBTTagCompound());
+		}
+		NBTTagCompound tag = stack.getTagCompound();
 
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
-    {
-        this.itemIcon = par1IconRegister.registerIcon(this.getIconString() + "_uncast");
-        this.theIcon = par1IconRegister.registerIcon(this.getIconString() + "_cast");
-    }
-    
-    @Override
-    @SideOnly(Side.CLIENT)
-    public Icon getIcon(ItemStack stack, int multiPassRender)
-    {
-    	if (isFishing)
-    	{
-    		return itemIcon;	
-    	}
-    	else
-    	{
-    		return theIcon;
-    	}
-    }
+		if(tag.hasKey("using"))
+		{
+			boolean using = tag.getBoolean("using");
+			if(!using)
+			{
+				return itemIcon;
+			}
+		}
+		return theIcon;
+	}
 }
-

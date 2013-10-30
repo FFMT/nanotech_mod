@@ -67,16 +67,16 @@ public class BlockLiquidNitrogen extends BlockFluidClassic
 		{
 			EntityLivingBase living = (EntityLivingBase)entity;
 			if(this.doEffect(living))
-			living.addPotionEffect(new PotionEffect(Nanotech_mod.freeze.id, 500, 0));
+				living.addPotionEffect(new PotionEffect(Nanotech_mod.freeze.id, 500, 0));
 		}
-		
-		if (entity instanceof EntityFishHook && !(entity instanceof EntityReinforcedFishingHook))
+
+		if(entity instanceof EntityFishHook && !(entity instanceof EntityReinforcedFishingHook) && !world.isRemote)
 		{
 			EntityFishHook fishHook = (EntityFishHook)entity;
 			fishHook.setDead();
 		}
 	}
-	
+
 	private boolean doEffect(EntityLivingBase living)
 	{
 		ItemStack helmet = living.getCurrentItemOrArmor(4);
