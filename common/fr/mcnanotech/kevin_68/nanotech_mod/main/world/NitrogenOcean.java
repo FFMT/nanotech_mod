@@ -5,9 +5,9 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class NitrogenOcean extends BiomeGenBase
 {
-    public NitrogenOcean(int par1)
+    public NitrogenOcean(int id)
     {
-        super(par1);
+        super(id);
 		this.spawnableCreatureList.clear();
 		this.spawnableWaterCreatureList.clear();
 		this.topBlock = (byte)NanotechBlock.nanoGrass.blockID;

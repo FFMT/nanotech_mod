@@ -29,7 +29,7 @@ public class MobSuperCreeper extends EntityMob
 	private int lastActiveTime;
 	private int timeSinceIgnited;
 	private int field_82225_f = 30;
-	private int explosionRadius = Nanotech_mod.ExplosionRadius;
+	private int explosionRadius = Nanotech_mod.explosionRadius;
 
 	public MobSuperCreeper(World world)
 	{

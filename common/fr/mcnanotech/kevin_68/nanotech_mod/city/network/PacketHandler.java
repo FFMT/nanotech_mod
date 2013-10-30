@@ -64,14 +64,14 @@ public class PacketHandler implements IPacketHandler
 				tileSpotLight.setDarkBlueValue(color);
 				break;
 			default:
-				Nanotech_mod.NanoLog.severe("A SpotLight packet has a bad type, this is a bug");
+				Nanotech_mod.nanoLog.severe("A SpotLight packet has a bad type, this is a bug");
 			}
 			player.worldObj.markBlockForUpdate(tileSpotLight.xCoord, tileSpotLight.yCoord, tileSpotLight.zCoord);
 		}
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.NanoLog.severe("Failed to handle SpotLight packet");
+			Nanotech_mod.nanoLog.severe("Failed to handle SpotLight packet");
 		}
 	}
 
@@ -102,7 +102,7 @@ public class PacketHandler implements IPacketHandler
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.NanoLog.severe("Failed to handle Fountain packet");
+			Nanotech_mod.nanoLog.severe("Failed to handle Fountain packet");
 		}
 	}
 }

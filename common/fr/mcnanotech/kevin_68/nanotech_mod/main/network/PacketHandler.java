@@ -48,7 +48,7 @@ public class PacketHandler implements IPacketHandler
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.NanoLog.severe("Failed to handle smoker packet");
+			Nanotech_mod.nanoLog.severe("Failed to handle smoker packet");
 		}
 	}
 
@@ -68,7 +68,7 @@ public class PacketHandler implements IPacketHandler
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.NanoLog.severe("Failed to handle jumper packet");
+			Nanotech_mod.nanoLog.severe("Failed to handle jumper packet");
 		}
 	}
 }

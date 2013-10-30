@@ -12,7 +12,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class WorldGeneration implements IWorldGenerator
 {
-	private WorldGenNanoTree worldgentree = new WorldGenNanoTree(false);
 	private WorldModel1 worldgen1 = new WorldModel1();
 	private WorldModel2 worldgen2 = new WorldModel2();
 	private WorldModel3 worldgen3 = new WorldModel3();
@@ -37,27 +36,23 @@ public class WorldGeneration implements IWorldGenerator
 
 			(new WorldGenMinable(NanotechBlock.fakeOre.blockID, 1, 4, Block.stone.blockID)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(16), chunkZ * 16 + random.nextInt(16));
 			// world gen
-			if(random.nextInt(4) < 3)
-			{
-				worldgentree.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(150), chunkZ * 16 + random.nextInt(16));
-			}
 
-			if(random.nextInt(32) < 2)
+			if(random.nextInt(32) < 2 * Nanotech_mod.structure1Prob)
 			{
 				worldgen1.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}
 
-			if(random.nextInt(32) < 2)
+			if(random.nextInt(32) < 2 * Nanotech_mod.structure2Prob)
 			{
 				worldgen2.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}
 
-			if(random.nextInt(32) < 2)
+			if(random.nextInt(32) < 2 * Nanotech_mod.structure3Prob)
 			{
 				worldgen3.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}
 
-			if(random.nextInt(32) < 2)
+			if(random.nextInt(32) < 2 * Nanotech_mod.structure4Prob)
 			{
 				worldgen4.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}

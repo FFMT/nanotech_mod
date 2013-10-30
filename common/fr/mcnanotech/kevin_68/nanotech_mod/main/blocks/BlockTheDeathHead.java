@@ -8,6 +8,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
 
 public class BlockTheDeathHead extends Block
@@ -33,109 +34,112 @@ public class BlockTheDeathHead extends Block
 
 		super.onBlockAdded(world, x, y, z);
 
-		if(world.getBlockId(x, y - 1, z) == redID && world.getBlockId(x, y - 2, z) == netherID && world.getBlockId(x, y - 3, z) == netherID && world.getBlockId(x, y - 4, z) == netherID)
+		if(Nanotech_mod.theDeathSpawn)
 		{
-			boolean flag0 = world.getBlockId(x - 1, y - 1, z) == obsiID && world.getBlockId(x - 1, y - 2, z) == obsiID && world.getBlockId(x - 1, y - 3, z) == obsiID && world.getBlockId(x - 1, y - 4, z) == obsiID && world.getBlockId(x - 1, y - 1, z + 1) == obsiID && world.getBlockId(x - 1, y - 1, z - 1) == obsiID && world.getBlockId(x - 1, y - 2, z + 1) == obsiID && world.getBlockId(x - 1, y - 2, z - 1) == obsiID && world.getBlockId(x - 1, y - 3, z + 1) == obsiID && world.getBlockId(x, y - 1, z + 1) == netherID && world.getBlockId(x, y - 1, z - 1) == netherID && world.getBlockId(x, y - 1, z + 2) == netherID && world.getBlockId(x, y - 1, z - 2) == netherID && world.getBlockId(x - 1, y - 1, z + 2) == obsiID && world.getBlockId(x - 1, y - 1, z - 2) == obsiID && world.getBlockId(x - 1, y - 2, z + 2) == obsiID && world.getBlockId(x - 1, y - 2, z - 2) == obsiID;
-			boolean flag1 = world.getBlockId(x + 1, y - 1, z) == obsiID && world.getBlockId(x + 1, y - 2, z) == obsiID && world.getBlockId(x + 1, y - 3, z) == obsiID && world.getBlockId(x + 1, y - 4, z) == obsiID && world.getBlockId(x + 1, y - 1, z - 1) == obsiID && world.getBlockId(x + 1, y - 1, z + 1) == obsiID && world.getBlockId(x + 1, y - 2, z - 1) == obsiID && world.getBlockId(x + 1, y - 2, z + 1) == obsiID && world.getBlockId(x + 1, y - 3, z - 1) == obsiID && world.getBlockId(x, y - 1, z - 1) == netherID && world.getBlockId(x, y - 1, z + 1) == netherID && world.getBlockId(x, y - 1, z - 2) == netherID && world.getBlockId(x, y - 1, z + 2) == netherID && world.getBlockId(x + 1, y - 1, z - 2) == obsiID && world.getBlockId(x + 1, y - 1, z + 2) == obsiID && world.getBlockId(x + 1, y - 2, z - 2) == obsiID && world.getBlockId(x + 1, y - 2, z + 2) == obsiID;
-			boolean flag2 = world.getBlockId(x, y - 1, z - 1) == obsiID && world.getBlockId(x, y - 2, z - 1) == obsiID && world.getBlockId(x, y - 3, z - 1) == obsiID && world.getBlockId(x, y - 4, z - 1) == obsiID && world.getBlockId(x + 1, y - 1, z - 1) == obsiID && world.getBlockId(x - 1, y - 1, z - 1) == obsiID && world.getBlockId(x + 1, y - 2, z - 1) == obsiID && world.getBlockId(x - 1, y - 2, z - 1) == obsiID && world.getBlockId(x + 1, y - 3, z - 1) == obsiID && world.getBlockId(x + 1, y - 1, z) == netherID && world.getBlockId(x - 1, y - 1, z) == netherID && world.getBlockId(x + 2, y - 1, z) == netherID && world.getBlockId(x - 2, y - 1, z) == netherID && world.getBlockId(x + 2, y - 1, z - 1) == obsiID && world.getBlockId(x - 2, y - 1, z - 1) == obsiID && world.getBlockId(x + 2, y - 2, z - 1) == obsiID && world.getBlockId(x - 2, y - 2, z - 1) == obsiID;
-			boolean flag3 = world.getBlockId(x, y - 1, z + 1) == obsiID && world.getBlockId(x, y - 2, z + 1) == obsiID && world.getBlockId(x, y - 3, z + 1) == obsiID && world.getBlockId(x, y - 4, z + 1) == obsiID && world.getBlockId(x - 1, y - 1, z + 1) == obsiID && world.getBlockId(x + 1, y - 1, z + 1) == obsiID && world.getBlockId(x - 1, y - 2, z + 1) == obsiID && world.getBlockId(x + 1, y - 2, z + 1) == obsiID && world.getBlockId(x - 1, y - 3, z + 1) == obsiID && world.getBlockId(x - 1, y - 1, z) == netherID && world.getBlockId(x + 1, y - 1, z) == netherID && world.getBlockId(x - 2, y - 1, z) == netherID && world.getBlockId(x + 2, y - 1, z) == netherID && world.getBlockId(x - 2, y - 1, z + 1) == obsiID && world.getBlockId(x + 2, y - 1, z + 1) == obsiID && world.getBlockId(x - 2, y - 2, z + 1) == obsiID && world.getBlockId(x + 2, y - 2, z + 1) == obsiID;
-
-			if(flag0 || flag1 || flag2 || flag3)
+			if(world.getBlockId(x, y - 1, z) == redID && world.getBlockId(x, y - 2, z) == netherID && world.getBlockId(x, y - 3, z) == netherID && world.getBlockId(x, y - 4, z) == netherID)
 			{
-				world.setBlockToAir(x, y, z);
-				world.setBlockToAir(x, y - 1, z);
-				world.setBlockToAir(x, y - 2, z);
-				world.setBlockToAir(x, y - 3, z);
-				world.setBlockToAir(x, y - 4, z);
+				boolean flag0 = world.getBlockId(x - 1, y - 1, z) == obsiID && world.getBlockId(x - 1, y - 2, z) == obsiID && world.getBlockId(x - 1, y - 3, z) == obsiID && world.getBlockId(x - 1, y - 4, z) == obsiID && world.getBlockId(x - 1, y - 1, z + 1) == obsiID && world.getBlockId(x - 1, y - 1, z - 1) == obsiID && world.getBlockId(x - 1, y - 2, z + 1) == obsiID && world.getBlockId(x - 1, y - 2, z - 1) == obsiID && world.getBlockId(x - 1, y - 3, z + 1) == obsiID && world.getBlockId(x, y - 1, z + 1) == netherID && world.getBlockId(x, y - 1, z - 1) == netherID && world.getBlockId(x, y - 1, z + 2) == netherID && world.getBlockId(x, y - 1, z - 2) == netherID && world.getBlockId(x - 1, y - 1, z + 2) == obsiID && world.getBlockId(x - 1, y - 1, z - 2) == obsiID && world.getBlockId(x - 1, y - 2, z + 2) == obsiID && world.getBlockId(x - 1, y - 2, z - 2) == obsiID;
+				boolean flag1 = world.getBlockId(x + 1, y - 1, z) == obsiID && world.getBlockId(x + 1, y - 2, z) == obsiID && world.getBlockId(x + 1, y - 3, z) == obsiID && world.getBlockId(x + 1, y - 4, z) == obsiID && world.getBlockId(x + 1, y - 1, z - 1) == obsiID && world.getBlockId(x + 1, y - 1, z + 1) == obsiID && world.getBlockId(x + 1, y - 2, z - 1) == obsiID && world.getBlockId(x + 1, y - 2, z + 1) == obsiID && world.getBlockId(x + 1, y - 3, z - 1) == obsiID && world.getBlockId(x, y - 1, z - 1) == netherID && world.getBlockId(x, y - 1, z + 1) == netherID && world.getBlockId(x, y - 1, z - 2) == netherID && world.getBlockId(x, y - 1, z + 2) == netherID && world.getBlockId(x + 1, y - 1, z - 2) == obsiID && world.getBlockId(x + 1, y - 1, z + 2) == obsiID && world.getBlockId(x + 1, y - 2, z - 2) == obsiID && world.getBlockId(x + 1, y - 2, z + 2) == obsiID;
+				boolean flag2 = world.getBlockId(x, y - 1, z - 1) == obsiID && world.getBlockId(x, y - 2, z - 1) == obsiID && world.getBlockId(x, y - 3, z - 1) == obsiID && world.getBlockId(x, y - 4, z - 1) == obsiID && world.getBlockId(x + 1, y - 1, z - 1) == obsiID && world.getBlockId(x - 1, y - 1, z - 1) == obsiID && world.getBlockId(x + 1, y - 2, z - 1) == obsiID && world.getBlockId(x - 1, y - 2, z - 1) == obsiID && world.getBlockId(x + 1, y - 3, z - 1) == obsiID && world.getBlockId(x + 1, y - 1, z) == netherID && world.getBlockId(x - 1, y - 1, z) == netherID && world.getBlockId(x + 2, y - 1, z) == netherID && world.getBlockId(x - 2, y - 1, z) == netherID && world.getBlockId(x + 2, y - 1, z - 1) == obsiID && world.getBlockId(x - 2, y - 1, z - 1) == obsiID && world.getBlockId(x + 2, y - 2, z - 1) == obsiID && world.getBlockId(x - 2, y - 2, z - 1) == obsiID;
+				boolean flag3 = world.getBlockId(x, y - 1, z + 1) == obsiID && world.getBlockId(x, y - 2, z + 1) == obsiID && world.getBlockId(x, y - 3, z + 1) == obsiID && world.getBlockId(x, y - 4, z + 1) == obsiID && world.getBlockId(x - 1, y - 1, z + 1) == obsiID && world.getBlockId(x + 1, y - 1, z + 1) == obsiID && world.getBlockId(x - 1, y - 2, z + 1) == obsiID && world.getBlockId(x + 1, y - 2, z + 1) == obsiID && world.getBlockId(x - 1, y - 3, z + 1) == obsiID && world.getBlockId(x - 1, y - 1, z) == netherID && world.getBlockId(x + 1, y - 1, z) == netherID && world.getBlockId(x - 2, y - 1, z) == netherID && world.getBlockId(x + 2, y - 1, z) == netherID && world.getBlockId(x - 2, y - 1, z + 1) == obsiID && world.getBlockId(x + 2, y - 1, z + 1) == obsiID && world.getBlockId(x - 2, y - 2, z + 1) == obsiID && world.getBlockId(x + 2, y - 2, z + 1) == obsiID;
 
-				if(flag0)
+				if(flag0 || flag1 || flag2 || flag3)
 				{
-					world.setBlockToAir(x - 1, y - 1, z);
-					world.setBlockToAir(x - 1, y - 2, z);
-					world.setBlockToAir(x - 1, y - 3, z);
-					world.setBlockToAir(x - 1, y - 4, z);
-					world.setBlockToAir(x - 1, y - 1, z + 1);
-					world.setBlockToAir(x - 1, y - 2, z + 1);
-					world.setBlockToAir(x - 1, y - 3, z + 1);
-					world.setBlockToAir(x - 1, y - 1, z - 1);
-					world.setBlockToAir(x - 1, y - 2, z - 1);
-					world.setBlockToAir(x - 1, y - 3, z - 1);
-					world.setBlockToAir(x, y - 1, z + 1);
-					world.setBlockToAir(x, y - 1, z - 1);
-					world.setBlockToAir(x, y - 1, z + 2);
-					world.setBlockToAir(x, y - 1, z - 2);
-					world.setBlockToAir(x - 1, y - 1, z + 2);
-					world.setBlockToAir(x - 1, y - 1, z - 2);
-					world.setBlockToAir(x - 1, y - 2, z + 2);
-					world.setBlockToAir(x - 1, y - 2, z - 2);
-				}
-				else if(flag1)
-				{
-					world.setBlockToAir(x + 1, y - 1, z);
-					world.setBlockToAir(x + 1, y - 2, z);
-					world.setBlockToAir(x + 1, y - 3, z);
-					world.setBlockToAir(x + 1, y - 4, z);
-					world.setBlockToAir(x + 1, y - 1, z - 1);
-					world.setBlockToAir(x + 1, y - 2, z - 1);
-					world.setBlockToAir(x + 1, y - 3, z - 1);
-					world.setBlockToAir(x + 1, y - 1, z + 1);
-					world.setBlockToAir(x + 1, y - 2, z + 1);
-					world.setBlockToAir(x + 1, y - 3, z + 1);
-					world.setBlockToAir(x, y - 1, z - 1);
-					world.setBlockToAir(x, y - 1, z + 1);
-					world.setBlockToAir(x, y - 1, z - 2);
-					world.setBlockToAir(x, y - 1, z + 2);
-					world.setBlockToAir(x + 1, y - 1, z - 2);
-					world.setBlockToAir(x + 1, y - 1, z + 2);
-					world.setBlockToAir(x + 1, y - 2, z - 2);
-					world.setBlockToAir(x + 1, y - 2, z + 2);
-				}
-				else if(flag2)
-				{
-					world.setBlockToAir(x, y - 1, z - 1);
-					world.setBlockToAir(x, y - 2, z - 1);
-					world.setBlockToAir(x, y - 3, z - 1);
-					world.setBlockToAir(x, y - 4, z - 1);
-					world.setBlockToAir(x + 1, y - 1, z - 1);
-					world.setBlockToAir(x + 1, y - 2, z - 1);
-					world.setBlockToAir(x + 1, y - 3, z - 1);
-					world.setBlockToAir(x - 1, y - 1, z - 1);
-					world.setBlockToAir(x - 1, y - 2, z - 1);
-					world.setBlockToAir(x - 1, y - 3, z - 1);
-					world.setBlockToAir(x + 1, y - 1, z);
-					world.setBlockToAir(x - 1, y - 1, z);
-					world.setBlockToAir(x + 2, y - 1, z);
-					world.setBlockToAir(x - 2, y - 1, z);
-					world.setBlockToAir(x - 2, y - 1, z - 1);
-					world.setBlockToAir(x + 2, y - 1, z - 1);
-					world.setBlockToAir(x - 2, y - 2, z - 1);
-					world.setBlockToAir(x + 2, y - 2, z - 1);
-				}
-				else
-				{
-					world.setBlockToAir(x, y - 1, z + 1);
-					world.setBlockToAir(x, y - 2, z + 1);
-					world.setBlockToAir(x, y - 3, z + 1);
-					world.setBlockToAir(x, y - 4, z + 1);
-					world.setBlockToAir(x - 1, y - 1, z + 1);
-					world.setBlockToAir(x - 1, y - 2, z + 1);
-					world.setBlockToAir(x - 1, y - 3, z + 1);
-					world.setBlockToAir(x + 1, y - 1, z + 1);
-					world.setBlockToAir(x + 1, y - 2, z + 1);
-					world.setBlockToAir(x + 1, y - 3, z + 1);
-					world.setBlockToAir(x - 1, y - 1, z);
-					world.setBlockToAir(x + 1, y - 1, z);
-					world.setBlockToAir(x - 2, y - 1, z);
-					world.setBlockToAir(x + 2, y - 1, z);
-					world.setBlockToAir(x + 2, y - 1, z + 1);
-					world.setBlockToAir(x - 2, y - 1, z + 1);
-					world.setBlockToAir(x + 2, y - 2, z + 1);
-					world.setBlockToAir(x - 2, y - 2, z + 1);
-				}
+					world.setBlockToAir(x, y, z);
+					world.setBlockToAir(x, y - 1, z);
+					world.setBlockToAir(x, y - 2, z);
+					world.setBlockToAir(x, y - 3, z);
+					world.setBlockToAir(x, y - 4, z);
 
-				MobThedeath mobTheDeath = new MobThedeath(world);
-				mobTheDeath.setLocationAndAngles((double)x + 0.5D, (double)y - 1.95D, (double)z + 0.5D, 0.0F, 0.0F);
-				world.spawnEntityInWorld(mobTheDeath);
+					if(flag0)
+					{
+						world.setBlockToAir(x - 1, y - 1, z);
+						world.setBlockToAir(x - 1, y - 2, z);
+						world.setBlockToAir(x - 1, y - 3, z);
+						world.setBlockToAir(x - 1, y - 4, z);
+						world.setBlockToAir(x - 1, y - 1, z + 1);
+						world.setBlockToAir(x - 1, y - 2, z + 1);
+						world.setBlockToAir(x - 1, y - 3, z + 1);
+						world.setBlockToAir(x - 1, y - 1, z - 1);
+						world.setBlockToAir(x - 1, y - 2, z - 1);
+						world.setBlockToAir(x - 1, y - 3, z - 1);
+						world.setBlockToAir(x, y - 1, z + 1);
+						world.setBlockToAir(x, y - 1, z - 1);
+						world.setBlockToAir(x, y - 1, z + 2);
+						world.setBlockToAir(x, y - 1, z - 2);
+						world.setBlockToAir(x - 1, y - 1, z + 2);
+						world.setBlockToAir(x - 1, y - 1, z - 2);
+						world.setBlockToAir(x - 1, y - 2, z + 2);
+						world.setBlockToAir(x - 1, y - 2, z - 2);
+					}
+					else if(flag1)
+					{
+						world.setBlockToAir(x + 1, y - 1, z);
+						world.setBlockToAir(x + 1, y - 2, z);
+						world.setBlockToAir(x + 1, y - 3, z);
+						world.setBlockToAir(x + 1, y - 4, z);
+						world.setBlockToAir(x + 1, y - 1, z - 1);
+						world.setBlockToAir(x + 1, y - 2, z - 1);
+						world.setBlockToAir(x + 1, y - 3, z - 1);
+						world.setBlockToAir(x + 1, y - 1, z + 1);
+						world.setBlockToAir(x + 1, y - 2, z + 1);
+						world.setBlockToAir(x + 1, y - 3, z + 1);
+						world.setBlockToAir(x, y - 1, z - 1);
+						world.setBlockToAir(x, y - 1, z + 1);
+						world.setBlockToAir(x, y - 1, z - 2);
+						world.setBlockToAir(x, y - 1, z + 2);
+						world.setBlockToAir(x + 1, y - 1, z - 2);
+						world.setBlockToAir(x + 1, y - 1, z + 2);
+						world.setBlockToAir(x + 1, y - 2, z - 2);
+						world.setBlockToAir(x + 1, y - 2, z + 2);
+					}
+					else if(flag2)
+					{
+						world.setBlockToAir(x, y - 1, z - 1);
+						world.setBlockToAir(x, y - 2, z - 1);
+						world.setBlockToAir(x, y - 3, z - 1);
+						world.setBlockToAir(x, y - 4, z - 1);
+						world.setBlockToAir(x + 1, y - 1, z - 1);
+						world.setBlockToAir(x + 1, y - 2, z - 1);
+						world.setBlockToAir(x + 1, y - 3, z - 1);
+						world.setBlockToAir(x - 1, y - 1, z - 1);
+						world.setBlockToAir(x - 1, y - 2, z - 1);
+						world.setBlockToAir(x - 1, y - 3, z - 1);
+						world.setBlockToAir(x + 1, y - 1, z);
+						world.setBlockToAir(x - 1, y - 1, z);
+						world.setBlockToAir(x + 2, y - 1, z);
+						world.setBlockToAir(x - 2, y - 1, z);
+						world.setBlockToAir(x - 2, y - 1, z - 1);
+						world.setBlockToAir(x + 2, y - 1, z - 1);
+						world.setBlockToAir(x - 2, y - 2, z - 1);
+						world.setBlockToAir(x + 2, y - 2, z - 1);
+					}
+					else
+					{
+						world.setBlockToAir(x, y - 1, z + 1);
+						world.setBlockToAir(x, y - 2, z + 1);
+						world.setBlockToAir(x, y - 3, z + 1);
+						world.setBlockToAir(x, y - 4, z + 1);
+						world.setBlockToAir(x - 1, y - 1, z + 1);
+						world.setBlockToAir(x - 1, y - 2, z + 1);
+						world.setBlockToAir(x - 1, y - 3, z + 1);
+						world.setBlockToAir(x + 1, y - 1, z + 1);
+						world.setBlockToAir(x + 1, y - 2, z + 1);
+						world.setBlockToAir(x + 1, y - 3, z + 1);
+						world.setBlockToAir(x - 1, y - 1, z);
+						world.setBlockToAir(x + 1, y - 1, z);
+						world.setBlockToAir(x - 2, y - 1, z);
+						world.setBlockToAir(x + 2, y - 1, z);
+						world.setBlockToAir(x + 2, y - 1, z + 1);
+						world.setBlockToAir(x - 2, y - 1, z + 1);
+						world.setBlockToAir(x + 2, y - 2, z + 1);
+						world.setBlockToAir(x - 2, y - 2, z + 1);
+					}
+
+					MobThedeath mobTheDeath = new MobThedeath(world);
+					mobTheDeath.setLocationAndAngles((double)x + 0.5D, (double)y - 1.95D, (double)z + 0.5D, 0.0F, 0.0F);
+					world.spawnEntityInWorld(mobTheDeath);
+				}
 			}
 		}
 	}
@@ -230,6 +234,5 @@ public class BlockTheDeathHead extends Block
 		{
 			return this.side;
 		}
-
 	}
 }

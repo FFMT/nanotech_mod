@@ -41,7 +41,7 @@ public class Nanotech_mod_City
 	public static CommonProxy proxy;
 
 	// Block IDs
-	public static int BlockTrashcanID, BlockSpotLightID, BlockTrailID, BlockFountainID, BlockLampID, BlockSunShadeID, BlockModernFenceID;
+	public static int trashcanID, spotLightID, trailID, fountainID, lampID, sunShadeID, modernFenceID;
 
 	// Item IDs
 
@@ -61,17 +61,17 @@ public class Nanotech_mod_City
 		try
 		{
 			cfg.load();
-			BlockTrashcanID = cfg.getBlock("Trash can", 1100).getInt();
-			BlockSpotLightID = cfg.getBlock("SpotLight", 1101).getInt();
-			BlockTrailID = cfg.getBlock("Trail", 1021).getInt();
-			BlockFountainID = cfg.getBlock("Fountain", 1022).getInt();
-			BlockLampID = cfg.getBlock("Lamp", 1023).getInt();
-			BlockSunShadeID = cfg.getBlock("SunShade", 1024).getInt();
-			BlockModernFenceID = cfg.getBlock("ModernFence", 1025).getInt();
+			trashcanID = cfg.getBlock("Trash can", 1100).getInt();
+			spotLightID = cfg.getBlock("SpotLight", 1101).getInt();
+			trailID = cfg.getBlock("Trail", 1021).getInt();
+			fountainID = cfg.getBlock("Fountain", 1022).getInt();
+			lampID = cfg.getBlock("Lamp", 1023).getInt();
+			sunShadeID = cfg.getBlock("SunShade", 1024).getInt();
+			modernFenceID = cfg.getBlock("ModernFence", 1025).getInt();
 		}
 		catch(Exception ex)
 		{
-			Nanotech_mod.NanoLog.severe("Failed to load configuration");
+			Nanotech_mod.nanoLog.severe("Failed to load configuration");
 		}
 		finally
 		{

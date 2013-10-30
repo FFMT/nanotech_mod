@@ -550,7 +550,7 @@ public class GuiSpotLight extends GuiContainer
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.NanoLog.severe("Failed to send a packet from a SpotLight");
+			Nanotech_mod.nanoLog.severe("Failed to send a packet from a SpotLight");
 		}
 	}
 

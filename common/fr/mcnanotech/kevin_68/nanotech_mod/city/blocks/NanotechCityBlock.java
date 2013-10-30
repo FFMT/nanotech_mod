@@ -13,13 +13,13 @@ public class NanotechCityBlock
 	// Blocks Initialization
 	public static void initBlock()
 	{
-		trashcan = new BlockTrashcan(Nanotech_mod_City.BlockTrashcanID).setHardness(0.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("trashcan").setCreativeTab(Nanotech_mod_City.cityTab);
-		spotLight = new BlockSpotLight(Nanotech_mod_City.BlockSpotLightID).setHardness(1.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("spotlight").setCreativeTab(Nanotech_mod_City.cityTab);
-		trail = new BlockTrail(Nanotech_mod_City.BlockTrailID, Material.ground).setHardness(1.0F).setResistance(1.0F).setUnlocalizedName("trail").setStepSound(Block.soundGravelFootstep).setCreativeTab(Nanotech_mod_City.cityTab);
-		fountain = new BlockFountain(Nanotech_mod_City.BlockFountainID).setUnlocalizedName("fountain").setCreativeTab(Nanotech_mod_City.cityTab);
-		lamp = new BlockLamp(Nanotech_mod_City.BlockLampID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("lamp").setCreativeTab(Nanotech_mod_City.cityTab);
-		sunShade = new BlockSunShade(Nanotech_mod_City.BlockSunShadeID, Material.wood).setHardness(2.0F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("sunShade").setCreativeTab(Nanotech_mod_City.cityTab);
-		modernFence = new BlockModernFence(Nanotech_mod_City.BlockModernFenceID).setHardness(1.5F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("modernFence").setCreativeTab(Nanotech_mod_City.cityTab);
+		trashcan = new BlockTrashcan(Nanotech_mod_City.trashcanID).setHardness(0.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("trashcan").setCreativeTab(Nanotech_mod_City.cityTab);
+		spotLight = new BlockSpotLight(Nanotech_mod_City.spotLightID).setHardness(1.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("spotlight").setCreativeTab(Nanotech_mod_City.cityTab);
+		trail = new BlockTrail(Nanotech_mod_City.trailID, Material.ground).setHardness(1.0F).setResistance(1.0F).setUnlocalizedName("trail").setStepSound(Block.soundGravelFootstep).setCreativeTab(Nanotech_mod_City.cityTab);
+		fountain = new BlockFountain(Nanotech_mod_City.fountainID).setUnlocalizedName("fountain").setCreativeTab(Nanotech_mod_City.cityTab);
+		lamp = new BlockLamp(Nanotech_mod_City.lampID, Material.iron).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("lamp").setCreativeTab(Nanotech_mod_City.cityTab);
+		sunShade = new BlockSunShade(Nanotech_mod_City.sunShadeID, Material.wood).setHardness(2.0F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("sunShade").setCreativeTab(Nanotech_mod_City.cityTab);
+		modernFence = new BlockModernFence(Nanotech_mod_City.modernFenceID).setHardness(1.5F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("modernFence").setCreativeTab(Nanotech_mod_City.cityTab);
 	}
 
 	// Blocks registry

@@ -125,7 +125,7 @@ public class GuiFountain extends GuiContainer
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.NanoLog.severe("Failed to send a packet from a fountain");
+			Nanotech_mod.nanoLog.severe("Failed to send a packet from a fountain");
 		}
 	}
 

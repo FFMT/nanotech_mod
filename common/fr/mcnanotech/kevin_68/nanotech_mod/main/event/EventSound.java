@@ -52,7 +52,7 @@ public class EventSound
 		}
 		catch(Exception e)
 		{
-			Nanotech_mod.NanoLog.severe("Failed to register event sounds");
+			Nanotech_mod.nanoLog.severe("Failed to register event sounds");
 		}
 	}
 }

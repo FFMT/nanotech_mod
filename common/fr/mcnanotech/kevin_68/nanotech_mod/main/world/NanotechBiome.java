@@ -1,13 +1,17 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.world;
 
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 
 public class NanotechBiome extends BiomeGenBase
 {
+	private WorldGenNanoTree worldGenNanoTree = new WorldGenNanoTree(false);
 	public NanotechBiome(int id)
 	{
 		super(id);
@@ -32,4 +36,9 @@ public class NanotechBiome extends BiomeGenBase
 	{
 		return 0;
 	}
+	
+    public WorldGenerator getRandomWorldGenForTrees(Random rand)
+    {
+        return this.worldGenNanoTree;
+    }
 }
