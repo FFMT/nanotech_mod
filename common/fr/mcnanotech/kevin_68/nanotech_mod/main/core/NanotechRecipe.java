@@ -47,6 +47,10 @@ public class NanotechRecipe
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.alters, 1), new Object[] {"ASA", 'A', Block.anvil, 'S', Item.stick});
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.listerJukebox, 1), new Object[] {"CCC", "JJJ", "CCC", 'C', NanotechItem.nanoDisc, 'J', Block.jukebox});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.reinforcedFishingRod, 1), new Object[] {Item.fishingRod, Item.ingotIron, Item.ingotIron});
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.nanoFence, 4), new Object[] {"PSP", "PSP", 'P', NanotechBlock.nanoPlanks, 'S', Item.stick});
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.nanoSlabSingle, 6), new Object[] {"PPP", 'P', NanotechBlock.nanoPlanks});
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.nanoStairs, 4), new Object[] {"P  ", "PP ", "PPP", 'P', NanotechBlock.nanoPlanks});
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.nanoStairs, 4), new Object[] {"  P", " PP", "PPP", 'P', NanotechBlock.nanoPlanks});
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[]{"XXX", "XXX", "XXX", 'X', "itemSodium"}));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[]{"XXX", "XXX", "XXX", 'X', "dustSodium"}));
