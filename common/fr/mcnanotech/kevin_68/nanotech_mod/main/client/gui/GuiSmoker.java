@@ -85,7 +85,7 @@ public class GuiSmoker extends GuiContainer
 		int y = (height - ySize) / 2;
 		fontRenderer.drawString("Smoke Block", 6, 6, 4210752);
 		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 6, ySize - 96 + 2, 4210752);
-		fontRenderer.drawString(String.valueOf(tileSmoker.Smokepower), x, y, 4210752);
+		fontRenderer.drawString(String.valueOf(tileSmoker.Smokepower), xSize / 2 + 30, ySize - 128, 4210752);
 	}
 
 	@Override
