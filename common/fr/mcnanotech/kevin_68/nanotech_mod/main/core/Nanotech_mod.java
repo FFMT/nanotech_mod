@@ -2,6 +2,9 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 
 import java.util.logging.Logger;
 
+import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialLiquid;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -71,7 +74,7 @@ public class Nanotech_mod
 
 	// Item IDs
 	public static int ItemNanotechID, ItemSuperBottleOfXpID, ItemDiamondBowID, ItemEmeraldBowID, ItemNanomiteBowID, ItemNanomiteAxeID, ItemNanomitePickaxeID, ItemNanomiteShovelID, ItemNanomiteHoeID, ItemNanomiteSwordID, ItemNanomiteHelmetID, ItemNanomiteChestPlateID, ItemNanomiteLegginsID, ItemNanomiteBootsID, ItemMysteriousHelmetID, ItemMysteriousChestPlateID, ItemMysteriousLegginsID,
-			ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemScytheID, ItemCrazyGlassesID, DebugID, AltersID, NitrogenBucketID;
+			ItemMysteriousBootsID, ItemNanoDiscID, ItemEdibleFleshID, ItemRottenChunkID, ItemScytheID, ItemCrazyGlassesID, DebugID, AltersID, NitrogenBucketID, ReinforcedFishingRodID;
 
 	// Dimension ID
 	public static int dimensionID;
@@ -194,6 +197,7 @@ public class Nanotech_mod
 			AltersID = cfg.getItem("Alters", 5025).getInt();
 			ItemNanoDiscID = cfg.getItem("Nanodisc", 5026).getInt();
 			NitrogenBucketID = cfg.getItem("Liquid Nitrogen Bucket", 5027).getInt();
+			ReinforcedFishingRodID = cfg.getItem("Reinforced Fishing Rod", 5028).getInt();
 
 			dimensionID = cfg.get("World", "Dimension ID", 19).getInt();
 			nanotechBiomeID = cfg.get("World", "Biome ID", 100).getInt();

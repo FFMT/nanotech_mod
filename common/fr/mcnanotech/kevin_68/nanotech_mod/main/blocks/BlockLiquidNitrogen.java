@@ -7,6 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.Icon;
@@ -17,6 +18,7 @@ import net.minecraftforge.fluids.Fluid;
 import cpw.mods.fml.common.Loader;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntityReinforcedFishingHook;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
 
@@ -66,6 +68,12 @@ public class BlockLiquidNitrogen extends BlockFluidClassic
 			EntityLivingBase living = (EntityLivingBase)entity;
 			if(this.doEffect(living))
 			living.addPotionEffect(new PotionEffect(Nanotech_mod.freeze.id, 500, 0));
+		}
+		
+		if (entity instanceof EntityFishHook && !(entity instanceof EntityReinforcedFishingHook))
+		{
+			EntityFishHook fishHook = (EntityFishHook)entity;
+			fishHook.setDead();
 		}
 	}
 	

@@ -34,7 +34,7 @@ public class ItemNitrogenBucket extends ItemBucket
 
 				for(int l = 0; l < 8; ++l)
 				{
-					world.spawnParticle("largesmoke", (double)x + Math.random(), (double)y + Math.random(), (double)z + Math.random(), 0.0D, 0.0D, 0.0D);
+					world.spawnParticle("cloud", (double)x + Math.random(), (double)y + Math.random(), (double)z + Math.random(), 0.0D, 0.0D, 0.0D);
 				}
 			}
 			else

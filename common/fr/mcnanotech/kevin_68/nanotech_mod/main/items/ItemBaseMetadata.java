@@ -17,7 +17,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class ItemBaseMetadata extends Item
 {
-	public static String[] type = new String[] {"siliconore", "stoneofdecrease", "mysteriousmaterial", "siliconplate", "mysteriousingot", "circuit", "advancedcircuit", "processor", "microprocessor", "camera", "detector", "engine", "nanomite", "nanomiteframe", "smallnanomite", "plug", "portalActivator"};
+	public static String[] type = new String[] {"siliconore", "stoneofdecrease", "mysteriousmaterial", "siliconplate", "mysteriousingot", "circuit", "advancedcircuit", "processor", "microprocessor", "camera", "detector", "engine", "nanomite", "nanomiteframe", "smallnanomite", "plug", "portalActivator", "veryveryfrozenfish", "veryfrozenfish", "frozenfish"};
 	private Icon[] iconbuffer;
 
 	public ItemBaseMetadata(int id)
