@@ -12,6 +12,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGravi
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateGraviChestPlate;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateQuantumHelmet;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.keyboard.KeyboardClient;
+import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
 
 public class ClientTickHandler implements ITickHandler
 {
@@ -111,15 +112,14 @@ public class ClientTickHandler implements ITickHandler
 				String var15 = "";
 				byte var14 = 3;
 				int charge;
-				int percentage;
+				long percentage;
 
 				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
 				{
 					charge = UltimateGraviChestPlate.getCharge(chestPlate);
-					System.out.println(charge / UltimateGraviChestPlate.maxCharge);
-					percentage = (charge / UltimateGraviChestPlate.maxCharge) * 100;
-					var16 = "Energy level: " + this.GetTextEnergyStatus(percentage);
-					var13 = mc.fontRenderer.getStringWidth("Energy level: " + Integer.toString(percentage) + "%");
+					percentage = (charge * 100) / UltimateGraviChestPlate.maxCharge;
+					var16 = "Energy level: " + this.getTextEnergyStatus(percentage);
+					var13 = mc.fontRenderer.getStringWidth("Energy level: " + Long.toString(percentage) + "%");
 
 					if(isFlyActiveByMod && UltimateGraviChestPlate.readFlyStatus(chestPlate))
 					{
@@ -196,12 +196,19 @@ public class ClientTickHandler implements ITickHandler
 		return EnumSet.of(TickType.WORLD, TickType.WORLDLOAD, TickType.CLIENT, TickType.RENDER);
 	}
 
-	public String GetTextEnergyStatus(int var1)
+	public String getTextEnergyStatus(long percentage)
 	{
-		return var1 <= 10 && var1 > 5 ? "\u00a76" + Integer.toString(var1) + "%" : (var1 <= 5 ? "\u00a7c" + Integer.toString(var1) + "%" : Integer.toString(var1) + "%");
+		String color;
+		if(percentage <= 10 && percentage > 5)
+			color = FFMTColor.gold;
+		else if(percentage <= 5)
+			color = FFMTColor.red;
+		else
+			color = FFMTColor.green;
+		return color + Long.toString(percentage) + "%";
 	}
 
-	public String GetUSHGenerateStatus()
+	public String getUSHGenerateStatus()
 	{
 		return UltimateQuantumHelmet.sunIsUp && UltimateQuantumHelmet.skyIsVisible ? "\u00a7eday (" + UltimateQuantumHelmet.genDay + " eu)" : (UltimateQuantumHelmet.skyIsVisible ? "\u00a73night (" + UltimateQuantumHelmet.genNight + " eu)" : "\u00a7cno sky");
 	}
