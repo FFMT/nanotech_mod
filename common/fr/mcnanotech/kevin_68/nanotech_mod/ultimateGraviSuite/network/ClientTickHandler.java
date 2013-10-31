@@ -110,15 +110,16 @@ public class ClientTickHandler implements ITickHandler
 				String var16 = "";
 				String var15 = "";
 				byte var14 = 3;
-				int var4;
-				int var5;
+				int charge;
+				int percentage;
 
 				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
 				{
-					var4 = UltimateGraviChestPlate.getCharge(chestPlate);
-					var5 = var4 * 100 / UltimateGraviChestPlate.maxCharge;
-					var16 = "Energy level: " + this.GetTextEnergyStatus(var5);
-					var13 = mc.fontRenderer.getStringWidth("Energy level: " + Integer.toString(var5) + "%");
+					charge = UltimateGraviChestPlate.getCharge(chestPlate);
+					System.out.println(charge / UltimateGraviChestPlate.maxCharge);
+					percentage = (charge / UltimateGraviChestPlate.maxCharge) * 100;
+					var16 = "Energy level: " + this.GetTextEnergyStatus(percentage);
+					var13 = mc.fontRenderer.getStringWidth("Energy level: " + Integer.toString(percentage) + "%");
 
 					if(isFlyActiveByMod && UltimateGraviChestPlate.readFlyStatus(chestPlate))
 					{

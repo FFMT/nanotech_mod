@@ -3,8 +3,11 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -142,6 +145,12 @@ public class BlockTheDeathHead extends Block
 				}
 			}
 		}
+	}
+
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
+	{
+		int direction = MathHelper.floor_double((double)(living.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
+		world.setBlockMetadataWithNotify(x, y, z, direction, 2);
 	}
 
 	@SideOnly(Side.CLIENT)

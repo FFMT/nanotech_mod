@@ -212,7 +212,8 @@ public class Nanotech_mod
 			crazyGuyProb = cfg.get(CATEGORY_MOB_SPAWN, "CrazyGuy Prob", 1).getInt();
 			crazyGuyMin = cfg.get(CATEGORY_MOB_SPAWN, "CrazyGuy Min", 1).getInt();
 			crazyGuyMax = cfg.get(CATEGORY_MOB_SPAWN, "CrazyGuy Max", 2, "Set the probability to 0 to disable the mob, max = maximum spawn group and min = minimum spawn group").getInt();
-
+			theDeathSpawn = cfg.get(CATEGORY_MOB_SPAWN, "Enable TheDeath", true).getBoolean(true);
+			
 			structure1Prob = cfg.get(CATEGORY_WORLD, "Stucture 1 probability", 2).getInt();
 			structure2Prob = cfg.get(CATEGORY_WORLD, "Stucture 2 probability", 2).getInt();
 			structure3Prob = cfg.get(CATEGORY_WORLD, "Stucture 3 probability", 2).getInt();
