@@ -16,6 +16,7 @@ public class WorldGeneration implements IWorldGenerator
 	private WorldModel2 worldgen2 = new WorldModel2();
 	private WorldModel3 worldgen3 = new WorldModel3();
 	private WorldModel4 worldgen4 = new WorldModel4();
+	private WorldModel5 worldgen5 = new WorldModel5();
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
@@ -55,6 +56,11 @@ public class WorldGeneration implements IWorldGenerator
 			if(random.nextInt(32) < 2 * Nanotech_mod.structure4Prob)
 			{
 				worldgen4.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
+			}
+			
+			if(random.nextInt(32) < 2 * Nanotech_mod.structure5Prob)
+			{
+				worldgen5.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}
 		}
 	}

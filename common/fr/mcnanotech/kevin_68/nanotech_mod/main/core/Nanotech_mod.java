@@ -67,7 +67,7 @@ public class Nanotech_mod
 	public static Fluid liquidNitrogen;
 
 	// Block IDs
-	public static int portalID, portalFrameID, grassID, fakeOreID, speedID, jumperID, multiplierID, smokerID, barbedWireID, nanoWoodID, nanoLeavesID, nanoSaplingsID, nanoPlanksID, nanoOreID, confusionID, fallingID, notFallingID, sodiumID, mossyStoneID, theDeathHeadID, listerJukeboxID, liquidNitrogenID, nanoFenceID, nanoStairsID, nanoSlabSingleID, nanoSlabDoubleID;
+	public static int portalID, portalFrameID, grassID, fakeOreID, speedID, jumperID, multiplierID, smokerID, barbedWireID, nanoWoodID, nanoLeavesID, nanoSaplingsID, nanoPlanksID, nanoOreID, confusionID, fallingID, notFallingID, sodiumID, mossyStoneID, theDeathHeadID, listerJukeboxID, liquidNitrogenID, nanoFenceID, nanoStairsID, nanoSlabSingleID, nanoSlabDoubleID, nukeID;
 
 	// Item IDs
 	public static int nanotechItemID, superBottleOfXpID, diamondBowID, emeraldBowID, nanomiteBowID, nanomiteAxeID, nanomitePickaxeID, nanomiteShovelID, nanomiteHoeID, nanomiteSwordID, nanomiteHelmetID, nanomiteChestPlateID, nanomiteLegginsID, nanomiteBootsID, mysteriousHelmetID, mysteriousChestPlateID, mysteriousLegginsID, mysteriousBootsID, nanoDiscID, edibleFleshID, rottenChunkID, scytheID,
@@ -76,7 +76,7 @@ public class Nanotech_mod
 	// Dimension and biome
 	public static int dimensionID;
 	public static int nanotechBiomeID, nitrogenOceanID;
-	public static int structure1Prob, structure2Prob, structure3Prob, structure4Prob;
+	public static int structure1Prob, structure2Prob, structure3Prob, structure4Prob, structure5Prob;
 
 	// Biome statement
 	public static BiomeGenBase nanotechBiome;
@@ -146,6 +146,7 @@ public class Nanotech_mod
 			nanoStairsID = cfg.getBlock("Nano Stairs", 1022).getInt();
 			nanoSlabSingleID = cfg.getBlock("Nano Slab Single", 1023).getInt();
 			nanoSlabDoubleID = cfg.getBlock("Nano Slab Double", 1024).getInt();
+			nukeID = cfg.getBlock("Nuke", 1025).getInt();
 
 			nanotechItemID = cfg.getItem("Main Nanotech ID", 5000).getInt();
 			superBottleOfXpID = cfg.getItem("Super Bottle of xp", 5001).getInt();
@@ -213,11 +214,11 @@ public class Nanotech_mod
 			crazyGuyMin = cfg.get(CATEGORY_MOB_SPAWN, "CrazyGuy Min", 1).getInt();
 			crazyGuyMax = cfg.get(CATEGORY_MOB_SPAWN, "CrazyGuy Max", 2, "Set the probability to 0 to disable the mob, max = maximum spawn group and min = minimum spawn group").getInt();
 			theDeathSpawn = cfg.get(CATEGORY_MOB_SPAWN, "Enable TheDeath", true).getBoolean(true);
-			
-			structure1Prob = cfg.get(CATEGORY_WORLD, "Stucture 1 probability", 2).getInt();
-			structure2Prob = cfg.get(CATEGORY_WORLD, "Stucture 2 probability", 2).getInt();
-			structure3Prob = cfg.get(CATEGORY_WORLD, "Stucture 3 probability", 2).getInt();
-			structure4Prob = cfg.get(CATEGORY_WORLD, "Stucture 4 probability", 2).getInt();
+			structure1Prob = cfg.get(CATEGORY_WORLD, "Structure 1 probability", 2).getInt();
+			structure2Prob = cfg.get(CATEGORY_WORLD, "Structure 2 probability", 2).getInt();
+			structure3Prob = cfg.get(CATEGORY_WORLD, "Structure 3 probability", 2).getInt();
+			structure4Prob = cfg.get(CATEGORY_WORLD, "Structure 4 probability", 2).getInt();
+			structure5Prob = cfg.get(CATEGORY_WORLD, "Structure 5 probability", 2).getInt();
 		}
 		catch(Exception ex)
 		{

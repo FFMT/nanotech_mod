@@ -478,7 +478,7 @@ public class NanotechChunkProvider implements IChunkProvider
 		int var13;
 		int var14;
 
-		if(TerrainGen.populate(par1IChunkProvider, worldObj, rand, par2, par3, var11, LAKE) && !var11 && this.rand.nextInt(4) == 0)
+		if(TerrainGen.populate(par1IChunkProvider, worldObj, rand, par2, par3, var11, LAKE) && !var11 && this.rand.nextInt(16) == 0)
 		{
 			var12 = var4 + this.rand.nextInt(16) + 8;
 			var13 = this.rand.nextInt(128);
