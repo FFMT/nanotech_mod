@@ -14,13 +14,13 @@ tile.jumperadvanced.name=Advanced Jumper
 tile.multiplier.name=Multiplier
 tile.smoker.name=Smoker
 tile.barbedwire.name=Barbed wire
-tile.nanowood.name=Nano wood
-tile.nanoleaves.name=Nano leaves
-tile.nanoplanks.name=Nano planks
-tile.nanosaplings.name=Nano saplings
-tile.ore.silicon.name=Silicon ore
-tile.ore.decrease.name=Stone of decrease
-tile.confusion.name=Block of confusion
+tile.nanowood.name=Nano Wood
+tile.nanoleaves.name=Nano Leaves
+tile.nanoplanks.name=Nano Planks
+tile.nanosaplings.name=Nano Saplings
+tile.ore.silicon.name=Silicon Ore
+tile.ore.decrease.name=Stone Of Decrease
+tile.confusion.name=Block Of Confusion
 tile.fallingstone.name=Falling Stone
 tile.fallingstonebrick.name=Falling Stone Bricks
 tile.fallingcrackedstonebrick.name=Falling Cracked Stone Bricks
@@ -37,15 +37,18 @@ tile.listerJukebox.name=Lister Jukebox
 tile.liquidNitrogen.name=Liquid Nitrogen
 tile.nanoStairs.name=Nano Stairs
 tile.nanoFence.name=Nano Fence
-tile.nanoSlabSingle.nano.name=Nano slab
-tile.nanoSlabDouble.nano.name=Nano double slab
+tile.nanoSlabSingle.nano.name=Nano Slab
+tile.nanoSlabDouble.nano.name=Nano Double Slab
+tile.nuke.name=Nuke
+tile.nukeBuildingBlock.name=Nuke Structure
+tile.nukeBuildingStairs.name=Nuke Structure Stairs
 
 #Fluid
 fluid.liquidnitrogen=Liquid Nitrogen
 
 #Items
 item.siliconore.name=Silicon Ore
-item.stoneofdecrease.name=Stone of Decrease
+item.stoneofdecrease.name=Decrease Dust
 item.mysteriousmaterial.name=Mysterious Material
 item.siliconplate.name=Silicon Plate
 item.mysteriousingot.name=Mysterious Ingot

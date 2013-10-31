@@ -40,13 +40,16 @@ tile.nanoStairs.name=Escalier nano
 tile.nanoFence.name=Barrière nano
 tile.nanoSlabSingle.nano.name=Dalle nano
 tile.nanoSlabDouble.nano.name=Double dalle nano
+tile.nuke.name=Bombe nucléaire
+tile.nukeBuildingBlock.name=Structure de bombe nucléaire
+tile.nukeBuildingStairs.name=Escalier de structure de bombe nucléaire
 
 #Fluid
 fluid.liquidnitrogen=Azote liquide
 
 #Items
 item.siliconore.name=Minerai de silicium
-item.stoneofdecrease.name=Pierre de reduction
+item.stoneofdecrease.name=Poudre de reduction
 item.mysteriousmaterial.name=Matière mystérieuse
 item.siliconplate.name=Plaque de silicium
 item.mysteriousingot.name=Lingot mystérieux
