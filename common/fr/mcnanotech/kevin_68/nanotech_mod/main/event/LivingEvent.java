@@ -64,7 +64,7 @@ public class LivingEvent
 			event.entityLiving.worldObj.setBlock((int)(event.entityLiving.posX - 1), (int)event.entityLiving.posY, (int)event.entityLiving.posZ, Block.ice.blockID);
 		}
 	}
-	
+
 	@ForgeSubscribe
 	public void onLivingHurt(LivingHurtEvent event)
 	{

@@ -42,7 +42,7 @@ public class NanotechBlock
 		nuke = new BlockNuke(Nanotech_mod.nukeID).setUnlocalizedName("nuke").setTextureName("nanotech_mod:nukebuilding");
 		nukeBuildingBlock = new BlockBuildingNuke(1026).setUnlocalizedName("nukeBuildingBlock").setTextureName("nanotech_mod:nukebuilding");
 		nukeBuildingStairs = new BlockNanoStairs(1027, nukeBuildingBlock, 0).setUnlocalizedName("nukeBuildingStairs");
-		
+
 		if(Nanotech_mod.liquidNitrogen.getBlockID() == -1)
 		{
 			liquidNitrogen = new BlockLiquidNitrogen(Nanotech_mod.liquidNitrogenID, Nanotech_mod.liquidNitrogen, Material.water).setUnlocalizedName("liquidNitrogen");

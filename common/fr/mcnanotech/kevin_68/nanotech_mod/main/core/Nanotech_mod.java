@@ -52,7 +52,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NitrogenOcean;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGeneration;
 
-@Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "@VERSION@", dependencies="required-after:FFMTLIBS")
+@Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "@VERSION@", dependencies = "required-after:FFMTLIBS")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTM|smoker", "NTM|jumper"}, packetHandler = PacketHandler.class)
 public class Nanotech_mod
 {
@@ -262,7 +262,7 @@ public class Nanotech_mod
 		this.guiAndTileEntity();
 		NanotechMobs.mobs();
 		proxy.registerModRenders();
-		
+
 		EntityRegistry.registerGlobalEntityID(EntityReinforcedFishingHook.class, "EntityReinforcedFishingHook", 2048);
 		proxy.registerEntityRenders();
 		this.forgeDictionary();

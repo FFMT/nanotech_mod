@@ -6,12 +6,12 @@ public class CommonProxy
 	{
 
 	}
-	
+
 	public void registerEntityRenders()
 	{
 
 	}
-	
+
 	public void registerItemRenders()
 	{
 

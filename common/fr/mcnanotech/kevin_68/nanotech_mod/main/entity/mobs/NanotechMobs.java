@@ -3,10 +3,9 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs;
 import java.util.Calendar;
 import java.util.Date;
 
-import cpw.mods.fml.common.registry.EntityRegistry;
-
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
 import fr.minecraftforgefrance.ffmtlibs.entityhelper.FFMTEntityHelper;
@@ -64,10 +63,10 @@ public class NanotechMobs
 		{
 			FFMTEntityHelper.addMob(MobCrazyGuy.class, "CrazyGuy", 10, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.redInt, FFMTColor.yellowInt, Nanotech_mod.crazyGuyProb, Nanotech_mod.crazyGuyMin, Nanotech_mod.crazyGuyMax, EnumCreatureType.creature, BiomeGenBase.plains, BiomeGenBase.extremeHills, BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.icePlains, BiomeGenBase.jungle, BiomeGenBase.beach, BiomeGenBase.desertHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forestHills, BiomeGenBase.iceMountains, BiomeGenBase.jungleHills, BiomeGenBase.taigaHills, Nanotech_mod.nanotechBiome);
 		}
-		
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date());
-        
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(new Date());
+
 		if(calendar.get(2) + 1 == 10 && calendar.get(5) == 31)
 		{
 			EntityRegistry.addSpawn(MobSuperZombie.class, Nanotech_mod.superZombieProb, Nanotech_mod.superZombieMin, Nanotech_mod.superZombieMax, EnumCreatureType.monster, BiomeGenBase.plains, BiomeGenBase.extremeHills, BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.icePlains, BiomeGenBase.jungle, BiomeGenBase.beach, BiomeGenBase.desertHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forestHills, BiomeGenBase.iceMountains, BiomeGenBase.jungleHills, BiomeGenBase.taigaHills);
@@ -76,12 +75,11 @@ public class NanotechMobs
 			EntityRegistry.addSpawn(MobSuperCreeper.class, Nanotech_mod.superCreeperProb, Nanotech_mod.superCreeperMin, Nanotech_mod.superCreeperMax, EnumCreatureType.monster, BiomeGenBase.plains, BiomeGenBase.extremeHills, BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.icePlains, BiomeGenBase.jungle, BiomeGenBase.beach, BiomeGenBase.desertHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forestHills, BiomeGenBase.iceMountains, BiomeGenBase.jungleHills, BiomeGenBase.taigaHills);
 			EntityRegistry.addSpawn(MobSuperEnderman.class, Nanotech_mod.superEndermanProb, Nanotech_mod.superEndermanMin, Nanotech_mod.superEndermanMax, EnumCreatureType.monster, BiomeGenBase.plains, BiomeGenBase.extremeHills, BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.icePlains, BiomeGenBase.jungle, BiomeGenBase.beach, BiomeGenBase.desertHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forestHills, BiomeGenBase.iceMountains, BiomeGenBase.jungleHills, BiomeGenBase.taigaHills);
 			EntityRegistry.addSpawn(MobCreeperDriller.class, Nanotech_mod.creeperDrillerProb, Nanotech_mod.creeperDrillerMin, Nanotech_mod.creeperDrillerMax, EnumCreatureType.monster, BiomeGenBase.plains, BiomeGenBase.extremeHills, BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.icePlains, BiomeGenBase.jungle, BiomeGenBase.beach, BiomeGenBase.desertHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forestHills, BiomeGenBase.iceMountains, BiomeGenBase.jungleHills, BiomeGenBase.taigaHills);
-			EntityRegistry.addSpawn(MobFlyingCreeper.class, Nanotech_mod.flyingCreeperProb, Nanotech_mod.flyingCreeperMin, Nanotech_mod.flyingCreeperMax, EnumCreatureType.monster, BiomeGenBase.plains, BiomeGenBase.extremeHills, BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.icePlains, BiomeGenBase.jungle, BiomeGenBase.beach, BiomeGenBase.desertHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forestHills, BiomeGenBase.iceMountains, BiomeGenBase.jungleHills, BiomeGenBase.taigaHills);	
-			
-			
+			EntityRegistry.addSpawn(MobFlyingCreeper.class, Nanotech_mod.flyingCreeperProb, Nanotech_mod.flyingCreeperMin, Nanotech_mod.flyingCreeperMax, EnumCreatureType.monster, BiomeGenBase.plains, BiomeGenBase.extremeHills, BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.icePlains, BiomeGenBase.jungle, BiomeGenBase.beach, BiomeGenBase.desertHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forestHills, BiomeGenBase.iceMountains, BiomeGenBase.jungleHills, BiomeGenBase.taigaHills);
+
 			System.out.println("It's halloween, monster are coming");
 		}
-	
+
 	}
-	
+
 }
