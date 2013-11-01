@@ -27,6 +27,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityModernFence
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySunShade;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrail;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrashCan;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 @Mod(modid = "Nanotech_mod_City", name = "Nanotech mod City", version = "@VERSION@")
@@ -103,6 +104,7 @@ public class Nanotech_mod_City
 		GameRegistry.registerTileEntity(TileEntityLampLight.class, "LampLight");
 		GameRegistry.registerTileEntity(TileEntitySunShade.class, "SunShade");
 		GameRegistry.registerTileEntity(TileEntityModernFence.class, "ModernFence");
+		GameRegistry.registerTileEntity(TileEntityTrashCan.class, "Trashcan");
 
 		// Render
 		proxy.registerTileRenders();

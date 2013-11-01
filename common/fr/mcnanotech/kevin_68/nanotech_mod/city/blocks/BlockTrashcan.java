@@ -8,15 +8,14 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrashCan;
 
 public class BlockTrashcan extends Block
 {
-	public Icon topIcon;
-	public Icon bottomIcon;
-
 	public BlockTrashcan(int id)
 	{
 		super(id, Material.iron);
@@ -25,13 +24,6 @@ public class BlockTrashcan extends Block
 	public void registerIcons(IconRegister iconregister)
 	{
 		blockIcon = iconregister.registerIcon("nanotech_mod_city:trash_can_side");
-		topIcon = iconregister.registerIcon("nanotech_mod_city:trash_can_top");
-		bottomIcon = iconregister.registerIcon("nanotech_mod_city:trash_can_bottom");
-	}
-
-	public Icon getIcon(int side, int metadata)
-	{
-		return side == 1 ? topIcon : (side == 0 ? bottomIcon : blockIcon);
 	}
 
 	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axisalignedBB, List list, Entity entity)
@@ -71,6 +63,23 @@ public class BlockTrashcan extends Block
 		}
 	}
 
+	public TileEntity createTileEntity(World world, int metadata)
+	{
+		return new TileEntityTrashCan();
+	}
+
+	public boolean hasTileEntity(int metadata)
+	{
+		return true;
+	}
+
+	@Override
+	public int getRenderType()
+	{
+		return -1;
+	}
+
+	@Override
 	public boolean isOpaqueCube()
 	{
 		return false;
