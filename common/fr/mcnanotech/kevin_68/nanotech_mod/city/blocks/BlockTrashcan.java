@@ -23,7 +23,7 @@ public class BlockTrashcan extends Block
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		blockIcon = iconregister.registerIcon("nanotech_mod_city:trash_can_side");
+		blockIcon = iconregister.registerIcon("nanotech_mod_city:trash_can");
 	}
 
 	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axisalignedBB, List list, Entity entity)
