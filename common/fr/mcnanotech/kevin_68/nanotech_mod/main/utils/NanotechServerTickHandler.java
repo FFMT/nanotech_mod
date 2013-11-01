@@ -40,7 +40,7 @@ public class NanotechServerTickHandler implements ITickHandler
 				}
 			}
 		}
-		else if(player.inventory.armorItemInSlot(3).itemID != NanotechItem.crazyGlasses.itemID)
+		else if(player.inventory.armorItemInSlot(3) != null && player.inventory.armorItemInSlot(3).itemID != NanotechItem.crazyGlasses.itemID)
 		{
 			for(int i = 0; i < player.inventory.getSizeInventory(); i++)
 			{
