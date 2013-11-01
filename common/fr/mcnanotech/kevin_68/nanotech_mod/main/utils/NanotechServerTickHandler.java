@@ -3,12 +3,16 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.utils;
 import java.util.EnumSet;
 import java.util.Random;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.ITickHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.TickType;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
 
 public class NanotechServerTickHandler implements ITickHandler
 {
@@ -22,7 +26,7 @@ public class NanotechServerTickHandler implements ITickHandler
 	public void tickEnd(EnumSet<TickType> type, Object... tickData)
 	{
 		EntityPlayer player = (EntityPlayer)tickData[0];
-		if(player.inventory.armorItemInSlot(3) == null)
+		if(player.inventory.armorItemInSlot(3) == null && !player.capabilities.isCreativeMode)
 		{
 			for(int i = 0; i < player.inventory.getSizeInventory(); i++)
 			{
@@ -58,11 +62,34 @@ public class NanotechServerTickHandler implements ITickHandler
 				if(player.inventory.getStackInSlot(i).itemID == NanotechItem.nitrogenBucket.itemID)
 				{
 					Random rand = new Random();
-					if(rand.nextInt(100) < 2)
+					if(rand.nextInt(100) < 2 && this.doEffect(player))
 						player.attackEntityFrom(NanotechDamageSource.nitrogenDamage, 1);
 				}
 			}
 		}
+	}
+	
+	private boolean doEffect(EntityPlayer player)
+	{
+		ItemStack helmet = player.getCurrentItemOrArmor(4);
+		ItemStack chestPlate = player.getCurrentItemOrArmor(3);
+		ItemStack leggings = player.getCurrentItemOrArmor(2);
+		ItemStack boots = player.getCurrentItemOrArmor(1);
+		if(helmet != null && chestPlate != null && leggings != null && boots != null)
+		{
+			if(helmet.getItem().equals(NanotechItem.mysteriousHelmet) && chestPlate.getItem().equals(NanotechItem.mysteriousChestPlate) && leggings.getItem().equals(NanotechItem.mysteriousLeggings) && boots.getItem().equals(NanotechItem.mysteriousBoots))
+			{
+				return false;
+			}
+			if(Loader.isModLoaded("UltimateGraviSuite"))
+			{
+				if(helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet) && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate) && leggings.getItem().equals(UltimateGraviSuite.ultimateLeggings) && boots.getItem().equals(UltimateGraviSuite.ultimateBoots))
+				{
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 	@Override
