@@ -183,7 +183,7 @@ public class BlockSunShade extends Block
 		}
 		else if(metadata == 2)
 		{
-			world.setBlock(x, y, z, this.blockID, 2, 1);
+			super.breakBlock(world, x, y, z, id, metadata);
 		}
 		super.breakBlock(world, x, y, z, id, metadata);
 	}
