@@ -12,6 +12,7 @@ public class NanotechDamageSource extends DamageSource
 	public static DamageSource sodiumDamage;
 	public static DamageSource altersDamage;
 	public static DamageSource nitrogenDamage;
+	public static DamageSource barbedWireDamage;
 	public Random rand = new Random();
 
 	protected NanotechDamageSource(String par1Str)
@@ -24,6 +25,7 @@ public class NanotechDamageSource extends DamageSource
 		sodiumDamage = new NanotechDamageSource("sodium").setDamageBypassesArmor();
 		altersDamage = new NanotechDamageSource("alters").setDamageBypassesArmor();
 		nitrogenDamage = new NanotechDamageSource("nitrogen").setDamageBypassesArmor();
+		barbedWireDamage = new NanotechDamageSource("barbedWire");
 	}
 
 	public ChatMessageComponent getDeathMessage(EntityLivingBase livingBase)
