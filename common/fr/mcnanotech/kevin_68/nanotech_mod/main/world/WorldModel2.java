@@ -9,7 +9,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 
 public class WorldModel2 extends WorldGenerator
 {
-	protected int[] GetValidSpawnBlocks()
+	protected int[] getValidSpawnBlocks()
 	{
 		return new int[] {Block.stone.blockID, Block.dirt.blockID, NanotechBlock.nanoGrass.blockID, Block.snow.blockID};
 	}
@@ -32,11 +32,11 @@ public class WorldModel2 extends WorldGenerator
 		y += distanceToAir - 1;
 
 		int blockID = world.getBlockId(x, y, z);
-		int blockIDAbove = world.getBlockId(x, y + 1, z);
+		boolean isAirAbove = world.isAirBlock(x, y + 1, z);
 		int blockIDBelow = world.getBlockId(x, y - 1, z);
-		for(int valideId : GetValidSpawnBlocks())
+		for(int valideId : getValidSpawnBlocks())
 		{
-			if(blockIDAbove != 0)
+			if(!isAirAbove)
 			{
 				return false;
 			}

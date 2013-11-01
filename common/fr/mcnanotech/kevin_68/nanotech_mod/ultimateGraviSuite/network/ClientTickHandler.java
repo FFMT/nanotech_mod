@@ -117,7 +117,7 @@ public class ClientTickHandler implements ITickHandler
 				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
 				{
 					charge = UltimateGraviChestPlate.getCharge(chestPlate);
-					percentage = (charge * 100) / UltimateGraviChestPlate.maxCharge;
+					percentage = (long)(((long)charge * 100.0D) / UltimateGraviChestPlate.maxCharge);
 					var16 = "Energy level: " + this.getTextEnergyStatus(percentage);
 					var13 = mc.fontRenderer.getStringWidth("Energy level: " + Long.toString(percentage) + "%");
 

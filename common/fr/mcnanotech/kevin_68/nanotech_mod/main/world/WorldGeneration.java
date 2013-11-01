@@ -58,7 +58,7 @@ public class WorldGeneration implements IWorldGenerator
 				worldgen4.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}
 
-			if(random.nextInt(32) < Nanotech_mod.structure5Prob)
+			if(random.nextInt(32) < 2 * Nanotech_mod.structure5Prob)
 			{
 				worldgen5.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}

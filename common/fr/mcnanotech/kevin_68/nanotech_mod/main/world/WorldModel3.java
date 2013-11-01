@@ -32,11 +32,11 @@ public class WorldModel3 extends WorldGenerator
 		y += distanceToAir - 1;
 
 		int blockID = world.getBlockId(x, y, z);
-		int blockIDAbove = world.getBlockId(x, y + 1, z);
+		boolean isAirAbove = world.isAirBlock(x, y + 1, z);
 		int blockIDBelow = world.getBlockId(x, y - 1, z);
 		for(int valideId : GetValidSpawnBlocks())
 		{
-			if(blockIDAbove != 0)
+			if(!isAirAbove)
 			{
 				return false;
 			}

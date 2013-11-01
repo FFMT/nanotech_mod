@@ -30,6 +30,10 @@ public class WorldGenNanoTree extends WorldGenerator
 
 	public boolean generate(World world, Random random, int i, int j, int k)
 	{
+		if(!world.isAirBlock(i, j + 2, k))
+		{
+			return false;
+		}
 		int l = random.nextInt(3) + field_48202_a;
 		boolean flag = true;
 
