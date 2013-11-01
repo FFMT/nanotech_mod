@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -112,8 +113,18 @@ public class BlockSunShade extends Block
 	{
 		return -1;
 	}
+	
+    public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata)
+    {
+    	this.removeBlock(world, x, y, z, metadata);
+    }
+    
+    public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion explosion)
+    {
+    	this.removeBlock(world, x, y, z, world.getBlockMetadata(x, y, z));
+    }
 
-	public void breakBlock(World world, int x, int y, int z, int id, int metadata)
+	public void removeBlock(World world, int x, int y, int z, int metadata)
 	{
 		if(metadata == 0)
 		{
@@ -185,7 +196,6 @@ public class BlockSunShade extends Block
 		{
 			super.breakBlock(world, x, y, z, id, metadata);
 		}
-		super.breakBlock(world, x, y, z, id, metadata);
 	}
 
 	public void registerIcons(IconRegister iconregister)
