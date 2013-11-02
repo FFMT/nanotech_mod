@@ -28,8 +28,8 @@ public class MobCreeperDriller extends EntityMob
 	private int lastActiveTime;
 
 	private int timeSinceIgnited;
-	private int field_82225_f = 20;
-	private int field_82226_g = 3;
+	private int fuseTime = 20;
+	private int explosionRadius = 3;
 
 	public MobCreeperDriller(World world)
 	{
@@ -58,19 +58,19 @@ public class MobCreeperDriller extends EntityMob
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
 	}
 
-	public int func_82143_as()
-	{
-		return this.getAttackTarget() == null ? 3 : 3 + (int)(this.getHealth() - 1.0F);
-	}
+    public int getMaxSafePointTries()
+    {
+        return this.getAttackTarget() == null ? 3 : 3 + (int)(this.getHealth() - 1.0F);
+    }
 
 	protected void fall(float damage)
 	{
 		super.fall(damage);
 		this.timeSinceIgnited = (int)((float)this.timeSinceIgnited + damage * 1.5F);
 
-		if(this.timeSinceIgnited > this.field_82225_f - 5)
+		if(this.timeSinceIgnited > this.fuseTime - 5)
 		{
-			this.timeSinceIgnited = this.field_82225_f - 5;
+			this.timeSinceIgnited = this.fuseTime - 5;
 		}
 	}
 
@@ -90,8 +90,8 @@ public class MobCreeperDriller extends EntityMob
 			nbttagcompound.setBoolean("powered", true);
 		}
 
-		nbttagcompound.setShort("Fuse", (short)this.field_82225_f);
-		nbttagcompound.setByte("ExplosionRadius", (byte)this.field_82226_g);
+		nbttagcompound.setShort("Fuse", (short)this.fuseTime);
+		nbttagcompound.setByte("ExplosionRadius", (byte)this.explosionRadius);
 	}
 
 	public void readEntityFromNBT(NBTTagCompound nbttagcompound)
@@ -101,12 +101,12 @@ public class MobCreeperDriller extends EntityMob
 
 		if(nbttagcompound.hasKey("Fuse"))
 		{
-			this.field_82225_f = nbttagcompound.getShort("Fuse");
+			this.fuseTime = nbttagcompound.getShort("Fuse");
 		}
 
 		if(nbttagcompound.hasKey("ExplosionRadius"))
 		{
-			this.field_82226_g = nbttagcompound.getByte("ExplosionRadius");
+			this.explosionRadius = nbttagcompound.getByte("ExplosionRadius");
 		}
 	}
 
@@ -138,9 +138,9 @@ public class MobCreeperDriller extends EntityMob
 				this.timeSinceIgnited = 0;
 			}
 
-			if(this.timeSinceIgnited >= this.field_82225_f)
+			if(this.timeSinceIgnited >= this.fuseTime)
 			{
-				this.timeSinceIgnited = this.field_82225_f;
+				this.timeSinceIgnited = this.fuseTime;
 
 				if(!this.worldObj.isRemote)
 				{
@@ -148,11 +148,11 @@ public class MobCreeperDriller extends EntityMob
 
 					if(this.getPowered())
 					{
-						this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)(this.field_82226_g * 0.5), var2);
+						this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)(this.explosionRadius * 0.5), var2);
 					}
 					else
 					{
-						this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)(this.field_82226_g * 0.5), var2);
+						this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)(this.explosionRadius * 0.5), var2);
 					}
 					if(Nanotech_mod.multipleExplosion = false)
 					{
@@ -202,7 +202,7 @@ public class MobCreeperDriller extends EntityMob
 	@SideOnly(Side.CLIENT)
 	public float setCreeperFlashTime(float time)
 	{
-		return ((float)this.lastActiveTime + (float)(this.timeSinceIgnited - this.lastActiveTime) * time) / (float)(this.field_82225_f - 2);
+		return ((float)this.lastActiveTime + (float)(this.timeSinceIgnited - this.lastActiveTime) * time) / (float)(this.fuseTime - 2);
 	}
 
 	protected int getDropItemId()
