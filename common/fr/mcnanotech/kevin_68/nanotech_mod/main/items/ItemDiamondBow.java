@@ -54,65 +54,64 @@ public class ItemDiamondBow extends ItemBow
 
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int itemInUseCount)
 	{
-		int var6 = this.getMaxItemUseDuration(stack) - itemInUseCount;
+		int charge = this.getMaxItemUseDuration(stack) - itemInUseCount;
 
-		ArrowLooseEvent event = new ArrowLooseEvent(player, stack, var6);
+		ArrowLooseEvent event = new ArrowLooseEvent(player, stack, charge);
 		MinecraftForge.EVENT_BUS.post(event);
 		if(event.isCanceled())
 		{
 			return;
 		}
-		var6 = event.charge;
+		charge = event.charge;
+		
+		boolean creativeOrInfinity = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, stack) > 0;
 
-		boolean var5 = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, stack) > 0;
-
-		if(var5 || player.inventory.hasItem(Item.arrow.itemID))
+		if(creativeOrInfinity || player.inventory.hasItem(Item.arrow.itemID))
 		{
-			float var7 = (float)var6 / 20.0F;
-			var7 = (var7 * var7 + var7 * 2.0F) / 3.0F;
+			float power = 1000000000000000000F;
 
-			if((double)var7 < 0.1D)
+			if((double)power < 0.1D)
 			{
 				return;
 			}
 
-			if(var7 > 1.0F)
+			if(power > 1.0F)
 			{
-				var7 = 1.0F;
+				power = 1.0F;
 			}
 
-			EntityArrow var8 = new EntityArrow(world, player, var7 * 4.0F);
+			EntityArrow arrow = new EntityArrow(world, player, power * 4.0F);
 
-			if(var7 == 1.0F)
+			if(power == 1.0F)
 			{
-				var8.setIsCritical(true);
+				arrow.setIsCritical(true);
 			}
 
 			int var9 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, stack);
 
 			if(var9 > 0)
 			{
-				var8.setDamage(var8.getDamage() + (double)var9 * 0.5D + 0.5D);
+				arrow.setDamage(arrow.getDamage() + (double)var9 * 0.5D + 0.5D);
 			}
 
 			int var10 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, stack);
 
 			if(var10 > 0)
 			{
-				var8.setKnockbackStrength(var10);
+				arrow.setKnockbackStrength(var10);
 			}
 
 			if(EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, stack) > 0)
 			{
-				var8.setFire(100);
+				arrow.setFire(100);
 			}
 
 			stack.damageItem(1, player);
-			world.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + var7 * 0.5F);
+			world.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + power * 0.5F);
 
-			if(var5)
+			if(creativeOrInfinity)
 			{
-				var8.canBePickedUp = 2;
+				arrow.canBePickedUp = 2;
 			}
 			else
 			{
@@ -121,7 +120,7 @@ public class ItemDiamondBow extends ItemBow
 
 			if(!world.isRemote)
 			{
-				world.spawnEntityInWorld(var8);
+				world.spawnEntityInWorld(arrow);
 			}
 		}
 	}
@@ -133,7 +132,7 @@ public class ItemDiamondBow extends ItemBow
 
 	public int getMaxItemUseDuration(ItemStack stack)
 	{
-		return 144000;
+		return 1000;
 	}
 
 	public EnumAction getItemUseAction(ItemStack stack)
@@ -162,5 +161,4 @@ public class ItemDiamondBow extends ItemBow
 	{
 		return 1;
 	}
-
 }
