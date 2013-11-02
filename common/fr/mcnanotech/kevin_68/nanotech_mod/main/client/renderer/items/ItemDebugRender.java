@@ -78,7 +78,7 @@ public class ItemDebugRender implements IItemRenderer
 			}
 			model.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 			GL11.glPopMatrix();
-
+			break;
 		}
 		default:
 			break;

@@ -28,7 +28,7 @@ public class NanotechItem
 		superBottleOfXp = new ItemSuperbottleofxp(Nanotech_mod.superBottleOfXpID).setUnlocalizedName("superbottleofxp").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		diamondBow = new ItemDiamondBow(Nanotech_mod.diamondBowID).setUnlocalizedName("diamondbow").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I).setFull3D();
 		emeraldBow = new ItemEmeraldBow(Nanotech_mod.emeraldBowID).setUnlocalizedName("emeraldbow").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I).setFull3D();
-		nanomiteBow = new ItemNanomiteBow(Nanotech_mod.nanomiteBowID).setUnlocalizedName("nanomitebow").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I).setFull3D();
+		nanomiteBow = new ItemNanomiteArrowGun(Nanotech_mod.nanomiteBowID).setUnlocalizedName("nanomitebow").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I).setFull3D();
 		nanomiteHelmet = new ItemNanomiteArmor(Nanotech_mod.nanomiteHelmetID, EnumArmorMaterialNanomite, 1, 0).setUnlocalizedName("nanomiteHelmet").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		nanomiteChestPlate = new ItemNanomiteArmor(Nanotech_mod.nanomiteChestPlateID, EnumArmorMaterialNanomite, 1, 1).setUnlocalizedName("nanomiteChestPlate").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		nanomiteLeggings = new ItemNanomiteArmor(Nanotech_mod.nanomiteLegginsID, EnumArmorMaterialNanomite, 1, 2).setUnlocalizedName("nanomiteLegs").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
