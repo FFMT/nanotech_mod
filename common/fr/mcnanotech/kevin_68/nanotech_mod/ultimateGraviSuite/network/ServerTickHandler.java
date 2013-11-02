@@ -38,7 +38,7 @@ public class ServerTickHandler implements ITickHandler
 			}
 			ItemStack chestPlate = player.inventory.armorInventory[2];
 
-			if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
+			if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimateGraviChestPlate))
 			{
 				if(player.capabilities.isCreativeMode && !checkLastCreativeState(player))
 				{
@@ -71,11 +71,6 @@ public class ServerTickHandler implements ITickHandler
 				lastUndressed.put(player, Boolean.valueOf(true));
 			}
 		}
-
-		if(type.contains(TickType.WORLDLOAD))
-		{
-			;
-		}
 	}
 
 	public void tickEnd(EnumSet type, Object... tickData)
@@ -83,7 +78,7 @@ public class ServerTickHandler implements ITickHandler
 
 	public EnumSet ticks()
 	{
-		return EnumSet.of(TickType.WORLDLOAD, TickType.PLAYER);
+		return EnumSet.of(TickType.PLAYER);
 	}
 
 	public String getLabel()

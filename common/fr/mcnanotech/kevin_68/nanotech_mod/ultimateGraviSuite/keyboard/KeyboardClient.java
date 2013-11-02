@@ -55,7 +55,7 @@ public class KeyboardClient extends Keyboard
 					if(kb.equals(flyKey))
 					{
 
-						if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
+						if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimateGraviChestPlate))
 						{
 							ClientProxy.sendMyPacket("keyFLY", 1);
 							ClientPacketHelper.switchFlyModeClient(KeyboardClient.mc.thePlayer, chestPlate);
@@ -64,7 +64,7 @@ public class KeyboardClient extends Keyboard
 
 					if(kb.equals(KeyboardClient.invKey))
 					{
-						if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
+						if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimateGraviChestPlate))
 						{
 							ClientProxy.sendMyPacket("keyInv", 1);
 							ClientPacketHelper.switchInvisibleModeClient(KeyboardClient.mc.thePlayer, chestPlate);

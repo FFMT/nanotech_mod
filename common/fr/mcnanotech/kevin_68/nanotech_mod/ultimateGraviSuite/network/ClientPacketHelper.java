@@ -4,6 +4,7 @@ import ic2.api.item.ElectricItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 import cpw.mods.fml.client.FMLClientHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.ClientProxy;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
@@ -29,7 +30,7 @@ public class ClientPacketHelper
 				player.capabilities.isFlying = false;
 			}
 
-			ClientProxy.sendPlayerMessage(player, "\u00a7cGravitation engine OFF");
+			ClientProxy.sendPlayerMessage(player, StatCollector.translateToLocal("gravi.fly.off"));
 			ClientTickHandler.isFlyActiveByMod = false;
 			UltimateGraviChestPlate.saveFlyStatus(stack, false);
 		}
@@ -39,11 +40,11 @@ public class ClientPacketHelper
 
 			if(charge < UltimateGraviChestPlate.minCharge && !player.capabilities.isCreativeMode)
 			{
-				ClientProxy.sendPlayerMessage(player, "Not enough energy to run Gravitation engine !");
+				ClientProxy.sendPlayerMessage(player, StatCollector.translateToLocal("gravi.fly.noenergy"));
 			}
 			else
 			{
-				ClientProxy.sendPlayerMessage(player, "\u00a7aGravitation engine ON");
+				ClientProxy.sendPlayerMessage(player, StatCollector.translateToLocal("gravi.fly.on"));
 				player.capabilities.allowFlying = true;
 				player.capabilities.isFlying = true;
 				ClientTickHandler.isFlyActiveByMod = true;
@@ -56,26 +57,26 @@ public class ClientPacketHelper
 
 	public static boolean switchInvisibleModeClient(EntityPlayer player, ItemStack stack)
 	{
-		if(stack.getItem() == UltimateGraviSuite.ultimategraviChestPlate)
+		if(stack.getItem() == UltimateGraviSuite.ultimateGraviChestPlate)
 		{
 			if(UltimateGraviChestPlate.readInvisibilityStatus(stack))
 			{
-				ClientProxy.sendPlayerMessage(player, "\u00a7cInvisibility OFF");
+				ClientProxy.sendPlayerMessage(player, StatCollector.translateToLocal("gravi.inv.on"));
 				ClientTickHandler.isInvisibilityActiveByMod = false;
 				UltimateGraviChestPlate.saveInvisibilityStatus(stack, false);
 
 			}
 			else
 			{
-				int var2 = UltimateGraviChestPlate.getCharge(stack);
+				int charge = UltimateGraviChestPlate.getCharge(stack);
 
-				if(var2 < UltimateGraviChestPlate.minCharge && !player.capabilities.isCreativeMode)
+				if(charge < UltimateGraviChestPlate.minCharge && !player.capabilities.isCreativeMode)
 				{
-					ClientProxy.sendPlayerMessage(player, "Not enough energy to be invisible !");
+					ClientProxy.sendPlayerMessage(player, StatCollector.translateToLocal("gravi.inv.noenergy"));
 				}
 				else
 				{
-					ClientProxy.sendPlayerMessage(player, "\u00a7aInvisibility ON");
+					ClientProxy.sendPlayerMessage(player, StatCollector.translateToLocal("gravi.inv.on"));
 					ClientTickHandler.isInvisibilityActiveByMod = true;
 					UltimateGraviChestPlate.saveInvisibilityStatus(stack, true);
 				}
@@ -130,22 +131,22 @@ public class ClientPacketHelper
 	{
 		if(UltimateQuantumHelmet.readNightVisionStatus(stack))
 		{
-			ClientProxy.sendPlayerMessage(player, "\u00a7cNight vision OFF");
+			ClientProxy.sendPlayerMessage(player, StatCollector.translateToLocal("helmet.night.off"));
 			ClientTickHandler.isINightVisionActiveByMod = false;
 			UltimateQuantumHelmet.saveNightVisionStatus(stack, false);
 
 		}
 		else
 		{
-			int var2 = UltimateQuantumHelmet.getCharge(stack);
+			int charge = UltimateQuantumHelmet.getCharge(stack);
 
-			if(var2 < UltimateQuantumHelmet.minCharge && !player.capabilities.isCreativeMode)
+			if(charge < UltimateQuantumHelmet.minCharge && !player.capabilities.isCreativeMode)
 			{
-				ClientProxy.sendPlayerMessage(player, "Not enough energy to be invisible !");
+				ClientProxy.sendPlayerMessage(player, StatCollector.translateToLocal("helmet.night.noenergy"));
 			}
 			else
 			{
-				ClientProxy.sendPlayerMessage(player, "\u00a7aNight vision ON");
+				ClientProxy.sendPlayerMessage(player, StatCollector.translateToLocal("helmet.night.on"));
 				ClientTickHandler.isINightVisionActiveByMod = true;
 				UltimateQuantumHelmet.saveNightVisionStatus(stack, true);
 			}
@@ -221,7 +222,7 @@ public class ClientPacketHelper
 				{
 					if(charge < UltimateGraviChestPlate.dischargeOnTick)
 					{
-						ClientProxy.sendPlayerMessage(player, "\u00a7cWarning ! Your\'s energy cell is depleted ! Gravitation engine shutdown !");
+						ClientProxy.sendPlayerMessage(player, StatCollector.translateToLocal("gravi.fly.outofenergy"));
 						switchFlyModeClient(player, stack);
 						switchInvisibleModeClient(player, stack);
 					}
@@ -239,7 +240,7 @@ public class ClientPacketHelper
 
 					if(charge <= UltimateGraviChestPlate.dischargeOnTick * UltimateGraviChestPlate.boostMultiplier && !player.capabilities.isCreativeMode)
 					{
-						ClientProxy.sendPlayerMessage(player, "Not enough energy to boost !");
+						ClientProxy.sendPlayerMessage(player, StatCollector.translateToLocal("gravi.fly.boost.noenergy"));
 					}
 					else
 					{
@@ -271,7 +272,7 @@ public class ClientPacketHelper
 				{
 					if(charge < UltimateQuantumHelmet.dischargeOnTick)
 					{
-						ClientProxy.sendPlayerMessage(player, "\u00a7cWarning ! Your\'s energy cell is depleted ! Gravitation engine shutdown !");
+						ClientProxy.sendPlayerMessage(player, StatCollector.translateToLocal("gravi.fly.outofenergy"));
 						switchNightVisionModeClient(player, stack);
 					}
 					else

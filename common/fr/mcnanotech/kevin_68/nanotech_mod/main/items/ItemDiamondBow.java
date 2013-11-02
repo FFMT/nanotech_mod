@@ -153,7 +153,6 @@ public class ItemDiamondBow extends ItemBow
 		{
 			player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
 		}
-
 		return stack;
 	}
 

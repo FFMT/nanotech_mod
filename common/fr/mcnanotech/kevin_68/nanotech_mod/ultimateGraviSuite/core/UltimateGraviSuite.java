@@ -46,16 +46,16 @@ public class UltimateGraviSuite
 	public static Keyboard keyboard;
 
 	// Items
-	public static Item ultimategraviChestPlate;
+	public static Item ultimateGraviChestPlate;
 	public static Item ultimateHelmet;
-	public static Item ultimatecircuit;
+	public static Item ultimateCircuit;
 	public static Item ultimateLeggings;
 	public static Item ultimateBoots;
 
 	// Items ID
-	public static int ultimategraviChestPlateID;
-	public static int theultimateSolarHelmetID;
-	public static int ultimatecircuitID;
+	public static int ultimateGraviChestPlateID;
+	public static int ultimateHelmetID;
+	public static int ultimateCircuitID;
 	public static int ultimateLeggingsID;
 	public static int ultimateBootsID;
 
@@ -80,9 +80,9 @@ public class UltimateGraviSuite
 		try
 		{
 			cfg.load();
-			ultimategraviChestPlateID = cfg.get("Items", "ultimategraviChestPlateID", 5500).getInt();
-			theultimateSolarHelmetID = cfg.get("Items", "ultimateSolarHelmetID", 5501).getInt();
-			ultimatecircuitID = cfg.get("Items", "ultimatecircuitID", 5502).getInt();
+			ultimateGraviChestPlateID = cfg.get("Items", "ultimategraviChestPlateID", 5500).getInt();
+			ultimateHelmetID = cfg.get("Items", "ultimateSolarHelmetID", 5501).getInt();
+			ultimateCircuitID = cfg.get("Items", "ultimatecircuitID", 5502).getInt();
 			ultimateLeggingsID = cfg.get("Items", "ultimateLeggingsID", 5503).getInt();
 			ultimateBootsID = cfg.get("Items", "ultimateBootsID", 5504).getInt();
 
@@ -105,12 +105,12 @@ public class UltimateGraviSuite
 	@EventHandler
 	public void load(FMLInitializationEvent event)
 	{
-		ultimategraviChestPlate = new UltimateGraviChestPlate(ultimategraviChestPlateID, EnumArmorMaterial.DIAMOND, 0, 1).setUnlocalizedName("ultimategraviChestPlate");
-		ultimateHelmet = new UltimateQuantumHelmet(theultimateSolarHelmetID, EnumArmorMaterial.DIAMOND, 0, 0).setUnlocalizedName("theUltimateSolarHelmet");
+		ultimateGraviChestPlate = new UltimateGraviChestPlate(ultimateGraviChestPlateID, EnumArmorMaterial.DIAMOND, 0, 1).setUnlocalizedName("ultimategraviChestPlate");
+		ultimateHelmet = new UltimateQuantumHelmet(ultimateHelmetID, EnumArmorMaterial.DIAMOND, 0, 0).setUnlocalizedName("ultimateSolarHelmet");
 		ultimateLeggings = new UltimateLeggings(ultimateLeggingsID, EnumArmorMaterial.DIAMOND, 0, 2).setUnlocalizedName("ultimateLeggings");
 		ultimateBoots = new UltimateBoots(ultimateBootsID, EnumArmorMaterial.DIAMOND, 0, 3).setUnlocalizedName("ultimateBoots");
 
-		ultimatecircuit = new UltimateCircuit(ultimatecircuitID).setUnlocalizedName("ultimateCircuit").setTextureName("ultimategravisuite:ultimateCircuit");
+		ultimateCircuit = new UltimateCircuit(ultimateCircuitID).setUnlocalizedName("ultimateCircuit").setTextureName("ultimategravisuite:ultimateCircuit");
 
 		TickRegistry.registerTickHandler(new ServerTickHandler(), Side.SERVER);
 		proxy.initCore();
@@ -139,19 +139,19 @@ public class UltimateGraviSuite
 					if(Loader.isModLoaded("gregtech_addon"))
 					{
 						ugslogger.fine("GregTech loaded");
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimatecircuit, 1), new Object[] {"ABC", "BDB", "CBA", 'A', GregTech_API.getGregTechItem(43, 1, 0), 'B', Items.getItem("advancedCircuit"), 'C', GregTech_API.getGregTechItem(3, 1, 0), 'D', GregTech_API.getGregTechBlock(1, 1, 4)}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimategraviChestPlate, 1), new Object[] {"SIS", "XGX", "SYS", 'I', GregTech_API.getGregTechItem(38, 1, 1), 'G', gravisuit, 'S', "itemSuperconductor", 'Y', GregTech_API.getGregTechBlock(1, 1, 4), 'X', ultimatecircuit}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateHelmet, 1), new Object[] {"PSP", "XUX", "SYS", 'P', new ItemStack(compactsolar, 1, 2), 'X', ultimatecircuit, 'S', "itemSuperconductor", 'U', Items.getItem("quantumHelmet"), 'Y', GregTech_API.getGregTechBlock(1, 1, 4)}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateLeggings, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumLeggings"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimatecircuit}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateBoots, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumBoots"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimatecircuit}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateCircuit, 1), new Object[] {"ABC", "BDB", "CBA", 'A', GregTech_API.getGregTechItem(43, 1, 0), 'B', Items.getItem("advancedCircuit"), 'C', GregTech_API.getGregTechItem(3, 1, 0), 'D', GregTech_API.getGregTechBlock(1, 1, 4)}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateGraviChestPlate, 1), new Object[] {"SIS", "XGX", "SYS", 'I', GregTech_API.getGregTechItem(38, 1, 1), 'G', gravisuit, 'S', "itemSuperconductor", 'Y', GregTech_API.getGregTechBlock(1, 1, 4), 'X', ultimateCircuit}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateHelmet, 1), new Object[] {"PSP", "XUX", "SYS", 'P', new ItemStack(compactsolar, 1, 2), 'X', ultimateCircuit, 'S', "itemSuperconductor", 'U', Items.getItem("quantumHelmet"), 'Y', GregTech_API.getGregTechBlock(1, 1, 4)}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateLeggings, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumLeggings"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimateCircuit}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateBoots, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumBoots"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimateCircuit}));
 					}
 					else
 					{
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimatecircuit, 1), new Object[] {"IAL", "AMA", "LAI", 'I', Items.getItem("iridiumPlate"), 'A', Items.getItem("advancedCircuit"), 'L', Items.getItem("lapotronCrystal"), 'M', Items.getItem("advancedMachine")}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimategraviChestPlate, 1), new Object[] {"SNS", "UGU", "SMS", 'N', Item.netherStar, 'G', gravisuit, 'S', "itemSuperconductor", 'M', Items.getItem("advancedMachine"), 'U', ultimatecircuit}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateHelmet, 1), new Object[] {"PSP", "XUX", "SYS", 'P', new ItemStack(compactsolar, 1, 2), 'X', ultimatecircuit, 'S', "itemSuperconductor", 'U', Items.getItem("quantumHelmet"), 'Y', Items.getItem("advancedMachine")}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateLeggings, 1), new Object[] {"SDS", "UQU", "IMI", 'S', "itemSuperconductor", 'D', Items.getItem("lapotronCrystal"), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumLeggings"), 'M', Items.getItem("advancedMachine"), 'U', ultimatecircuit}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateBoots, 1), new Object[] {"SDS", "UQU", "IMI", 'S', "itemSuperconductor", 'D', Items.getItem("lapotronCrystal"), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumBoots"), 'M', Items.getItem("advancedMachine"), 'U', ultimatecircuit}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateCircuit, 1), new Object[] {"IAL", "AMA", "LAI", 'I', Items.getItem("iridiumPlate"), 'A', Items.getItem("advancedCircuit"), 'L', Items.getItem("lapotronCrystal"), 'M', Items.getItem("advancedMachine")}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateGraviChestPlate, 1), new Object[] {"SNS", "UGU", "SMS", 'N', Item.netherStar, 'G', gravisuit, 'S', "itemSuperconductor", 'M', Items.getItem("advancedMachine"), 'U', ultimateCircuit}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateHelmet, 1), new Object[] {"PSP", "XUX", "SYS", 'P', new ItemStack(compactsolar, 1, 2), 'X', ultimateCircuit, 'S', "itemSuperconductor", 'U', Items.getItem("quantumHelmet"), 'Y', Items.getItem("advancedMachine")}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateLeggings, 1), new Object[] {"SDS", "UQU", "IMI", 'S', "itemSuperconductor", 'D', Items.getItem("lapotronCrystal"), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumLeggings"), 'M', Items.getItem("advancedMachine"), 'U', ultimateCircuit}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateBoots, 1), new Object[] {"SDS", "UQU", "IMI", 'S', "itemSuperconductor", 'D', Items.getItem("lapotronCrystal"), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumBoots"), 'M', Items.getItem("advancedMachine"), 'U', ultimateCircuit}));
 					}
 				}
 				catch(Exception ex)
@@ -170,19 +170,19 @@ public class UltimateGraviSuite
 					if(Loader.isModLoaded("gregtech_addon"))
 					{
 						ugslogger.fine("GregTech loaded");
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimatecircuit, 1), new Object[] {"ABC", "BDB", "CBA", 'A', GregTech_API.getGregTechItem(43, 1, 0), 'B', Items.getItem("advancedCircuit"), 'C', GregTech_API.getGregTechItem(3, 1, 0), 'D', GregTech_API.getGregTechBlock(1, 1, 4)}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimategraviChestPlate, 1), new Object[] {"SIS", "XGX", "SYS", 'I', GregTech_API.getGregTechItem(38, 1, 1), 'G', gravisuit, 'S', "itemSuperconductor", 'Y', GregTech_API.getGregTechBlock(1, 1, 4), 'X', ultimatecircuit}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateHelmet, 1), new Object[] {"SAS", "XUX", "SYS", 'A', new ItemStack(advsolar, 1, 2), 'X', ultimatecircuit, 'P', "itemSuperconductor", 'U', ultiSolarHelmet, 'Y', GregTech_API.getGregTechBlock(1, 1, 4)}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateLeggings, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumLeggings"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimatecircuit}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateBoots, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumBoots"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimatecircuit}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateCircuit, 1), new Object[] {"ABC", "BDB", "CBA", 'A', GregTech_API.getGregTechItem(43, 1, 0), 'B', Items.getItem("advancedCircuit"), 'C', GregTech_API.getGregTechItem(3, 1, 0), 'D', GregTech_API.getGregTechBlock(1, 1, 4)}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateGraviChestPlate, 1), new Object[] {"SIS", "XGX", "SYS", 'I', GregTech_API.getGregTechItem(38, 1, 1), 'G', gravisuit, 'S', "itemSuperconductor", 'Y', GregTech_API.getGregTechBlock(1, 1, 4), 'X', ultimateCircuit}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateHelmet, 1), new Object[] {"SAS", "XUX", "SYS", 'A', new ItemStack(advsolar, 1, 2), 'X', ultimateCircuit, 'P', "itemSuperconductor", 'U', ultiSolarHelmet, 'Y', GregTech_API.getGregTechBlock(1, 1, 4)}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateLeggings, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumLeggings"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimateCircuit}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateBoots, 1), new Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumBoots"), 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimateCircuit}));
 					}
 					else
 					{
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimatecircuit, 1), new Object[] {"IAL", "AMA", "LAI", 'I', Items.getItem("iridiumPlate"), 'A', Items.getItem("advancedCircuit"), 'L', Items.getItem("lapotronCrystal"), 'M', Items.getItem("advancedMachine")}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimategraviChestPlate, 1), new Object[] {"SNS", "UGU", "SMS", 'N', Item.netherStar, 'G', gravisuit, 'S', "itemSuperconductor", 'M', Items.getItem("advancedMachine"), 'U', ultimatecircuit}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateHelmet, 1), new Object[] {"SAS", "XUX", "SYS", 'A', new ItemStack(advsolar, 1, 2), 'X', ultimatecircuit, 'S', "itemSuperconductor", 'U', ultiSolarHelmet, 'Y', Items.getItem("advancedMachine")}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateLeggings, 1), new Object[] {"SDS", "UQU", "IMI", 'S', "itemSuperconductor", 'D', Items.getItem("lapotronCrystal"), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumLeggings"), 'M', Items.getItem("advancedMachine"), 'U', ultimatecircuit}));
-						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateBoots, 1), new Object[] {"SDS", "UQU", "IMI", 'S', "itemSuperconductor", 'D', Items.getItem("lapotronCrystal"), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumBoots"), 'M', Items.getItem("advancedMachine"), 'U', ultimatecircuit}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateCircuit, 1), new Object[] {"IAL", "AMA", "LAI", 'I', Items.getItem("iridiumPlate"), 'A', Items.getItem("advancedCircuit"), 'L', Items.getItem("lapotronCrystal"), 'M', Items.getItem("advancedMachine")}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateGraviChestPlate, 1), new Object[] {"SNS", "UGU", "SMS", 'N', Item.netherStar, 'G', gravisuit, 'S', "itemSuperconductor", 'M', Items.getItem("advancedMachine"), 'U', ultimateCircuit}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateHelmet, 1), new Object[] {"SAS", "XUX", "SYS", 'A', new ItemStack(advsolar, 1, 2), 'X', ultimateCircuit, 'S', "itemSuperconductor", 'U', ultiSolarHelmet, 'Y', Items.getItem("advancedMachine")}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateLeggings, 1), new Object[] {"SDS", "UQU", "IMI", 'S', "itemSuperconductor", 'D', Items.getItem("lapotronCrystal"), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumLeggings"), 'M', Items.getItem("advancedMachine"), 'U', ultimateCircuit}));
+						GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateBoots, 1), new Object[] {"SDS", "UQU", "IMI", 'S', "itemSuperconductor", 'D', Items.getItem("lapotronCrystal"), 'I', Items.getItem("iridiumPlate"), 'Q', Items.getItem("quantumBoots"), 'M', Items.getItem("advancedMachine"), 'U', ultimateCircuit}));
 					}
 				}
 				catch(Exception ex)

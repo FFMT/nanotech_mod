@@ -25,7 +25,7 @@ public class ClientPacketHandler extends ServerPacketHandler
 			if(packetType.equalsIgnoreCase("setFlyStatus"))
 			{
 
-				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
+				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimateGraviChestPlate))
 				{
 					ClientPacketHelper.firstLoadClient(ClientProxy.mc.thePlayer, chestPlate);
 				}
@@ -33,7 +33,7 @@ public class ClientPacketHandler extends ServerPacketHandler
 
 			if(packetType.equalsIgnoreCase("setInvisibilityStatus"))
 			{
-				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
+				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimateGraviChestPlate))
 				{
 					ClientPacketHelper.firstLoadClient(ClientProxy.mc.thePlayer, chestPlate);
 				}

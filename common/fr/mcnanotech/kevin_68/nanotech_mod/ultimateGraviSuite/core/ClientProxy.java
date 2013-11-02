@@ -26,11 +26,7 @@ public class ClientProxy extends ServerProxy
 	{
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 		MinecraftForge.EVENT_BUS.register(this);
-		registerKeys();
 	}
-
-	public static void registerKeys()
-	{}
 
 	public static boolean sendMyPacket(String name, int id)
 	{

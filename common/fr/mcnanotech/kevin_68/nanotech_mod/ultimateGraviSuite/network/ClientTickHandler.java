@@ -5,6 +5,7 @@ import java.util.EnumSet;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
@@ -60,7 +61,7 @@ public class ClientTickHandler implements ITickHandler
 			UltimateGraviSuite.keyboard.sendKeyUpdate(mc.thePlayer);
 			ItemStack chestPlate = mc.thePlayer.inventory.armorInventory[2];
 
-			if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
+			if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimateGraviChestPlate))
 			{
 				if(mc.thePlayer.capabilities.isCreativeMode && !isLastCreativeState)
 				{
@@ -108,30 +109,30 @@ public class ClientTickHandler implements ITickHandler
 				int var11 = 0;
 				int var12 = 0;
 				int var13 = 0;
-				String var16 = "";
-				String var15 = "";
+				String graviPercentage = "";
+				String graviStatus = "";
 				byte var14 = 3;
 				int charge;
 				long percentage;
 
-				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
+				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimateGraviChestPlate))
 				{
 					charge = UltimateGraviChestPlate.getCharge(chestPlate);
 					percentage = (long)(((long)charge * 100.0D) / UltimateGraviChestPlate.maxCharge);
-					var16 = "Energy level: " + this.getTextEnergyStatus(percentage);
-					var13 = mc.fontRenderer.getStringWidth("Energy level: " + Long.toString(percentage) + "%");
+					graviPercentage = StatCollector.translateToLocalFormatted("gravi.energy.level", getTextEnergyStatus(percentage));
+					var13 = mc.fontRenderer.getStringWidth(graviPercentage);
 
 					if(isFlyActiveByMod && UltimateGraviChestPlate.readFlyStatus(chestPlate))
 					{
-						var15 = "\u00a7aGravitation engine ON";
-						var12 = mc.fontRenderer.getStringWidth("Gravitation engine ON");
+						graviStatus = StatCollector.translateToLocal("gravi.fly.on");
+						var12 = mc.fontRenderer.getStringWidth(graviStatus);
 					}
 					else
 					{
-						var15 = "";
+						graviStatus = "";
 					}
 				}
-				if(var16 != "")
+				if(graviPercentage != "")
 				{
 					ScaledResolution var25 = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
 					int var26 = var25.getScaledWidth();
@@ -147,7 +148,7 @@ public class ClientTickHandler implements ITickHandler
 
 					if(UltimateGraviSuite.hudPos == 2)
 					{
-						if(var15 != "")
+						if(graviStatus != "")
 						{
 							var8 = var26 - var12 - 2;
 						}
@@ -167,7 +168,7 @@ public class ClientTickHandler implements ITickHandler
 
 					if(UltimateGraviSuite.hudPos == 4)
 					{
-						if(var15 != "")
+						if(graviStatus != "")
 						{
 							var8 = var26 - var12 - 2;
 						}
@@ -177,14 +178,14 @@ public class ClientTickHandler implements ITickHandler
 						var11 = var9 - var14 - mc.fontRenderer.FONT_HEIGHT;
 					}
 
-					if(var15 != "")
+					if(graviStatus != "")
 					{
-						mc.ingameGUI.drawString(mc.fontRenderer, var15, var8, var9, 16777215);
-						mc.ingameGUI.drawString(mc.fontRenderer, var16, var10, var11, 16777215);
+						mc.ingameGUI.drawString(mc.fontRenderer, graviStatus, var8, var9, 16777215);
+						mc.ingameGUI.drawString(mc.fontRenderer, graviPercentage, var10, var11, 16777215);
 					}
 					else
 					{
-						mc.ingameGUI.drawString(mc.fontRenderer, var16, var10, var9, 16777215);
+						mc.ingameGUI.drawString(mc.fontRenderer, graviPercentage, var10, var9, 16777215);
 					}
 				}
 			}
@@ -206,11 +207,6 @@ public class ClientTickHandler implements ITickHandler
 		else
 			color = FFMTColor.green;
 		return color + Long.toString(percentage) + "%";
-	}
-
-	public String getUSHGenerateStatus()
-	{
-		return UltimateQuantumHelmet.sunIsUp && UltimateQuantumHelmet.skyIsVisible ? "\u00a7eday (" + UltimateQuantumHelmet.genDay + " eu)" : (UltimateQuantumHelmet.skyIsVisible ? "\u00a73night (" + UltimateQuantumHelmet.genNight + " eu)" : "\u00a7cno sky");
 	}
 
 	public String getLabel()

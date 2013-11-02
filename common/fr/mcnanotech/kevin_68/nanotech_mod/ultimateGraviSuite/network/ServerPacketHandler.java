@@ -29,7 +29,7 @@ public class ServerPacketHandler implements IPacketHandler
 				dataInt = data.readInt();
 				ItemStack chestPlate = playerMP.inventory.armorInventory[2];
 
-				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
+				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimateGraviChestPlate))
 				{
 					ServerPacketHelper.switchFlyModeServer(playerMP, chestPlate);
 				}
@@ -43,7 +43,7 @@ public class ServerPacketHandler implements IPacketHandler
 				ItemStack chestPlate = playerMP.inventory.armorInventory[2];
 				ItemStack helmet = playerMP.inventory.armorInventory[3];
 
-				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
+				if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuite.ultimateGraviChestPlate))
 				{
 					ServerPacketHelper.switchInvisibleModeServer(playerMP, chestPlate);
 				}
@@ -81,7 +81,7 @@ public class ServerPacketHandler implements IPacketHandler
 			{
 				chestplate = playerMP.inventory.armorInventory[2];
 
-				if(chestplate != null && chestplate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate))
+				if(chestplate != null && chestplate.getItem().equals(UltimateGraviSuite.ultimateGraviChestPlate))
 				{
 					ServerPacketHelper.firstLoadServer(playerMP, chestplate);
 				}

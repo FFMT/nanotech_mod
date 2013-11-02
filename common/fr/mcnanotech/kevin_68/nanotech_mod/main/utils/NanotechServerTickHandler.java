@@ -83,7 +83,7 @@ public class NanotechServerTickHandler implements ITickHandler
 			}
 			if(Loader.isModLoaded("UltimateGraviSuite"))
 			{
-				if(helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet) && chestPlate.getItem().equals(UltimateGraviSuite.ultimategraviChestPlate) && leggings.getItem().equals(UltimateGraviSuite.ultimateLeggings) && boots.getItem().equals(UltimateGraviSuite.ultimateBoots))
+				if(helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet) && chestPlate.getItem().equals(UltimateGraviSuite.ultimateGraviChestPlate) && leggings.getItem().equals(UltimateGraviSuite.ultimateLeggings) && boots.getItem().equals(UltimateGraviSuite.ultimateBoots))
 				{
 					return false;
 				}
