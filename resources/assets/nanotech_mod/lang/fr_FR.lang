@@ -116,6 +116,11 @@ info.void.1=Item pour barrel vide
 info.void.2=100% cobblestone
 info.void.3=100% recyclable
 
+nanomiteGun.manual=Mode de tire : manuel
+nanomiteGun.auto.slow=Mode de tire : automatique (lent)
+nanomiteGun.auto.fast=Mode de tire : automatique (rapide)
+nanomiteGun.auto.detect=Mode de tire : automatique (détection de mob)
+
 #Achievement
 achievement.installMod=Install Nanotech_mod
 achievement.installMod.desc=Merci de l'avoir installé!

@@ -115,6 +115,11 @@ info.void.1=Item for empty barrel
 info.void.2=100 % cobblestone
 info.void.3=100 % recyclable
 
+nanomiteGun.manual=Shoot mode : Manual
+nanomiteGun.auto.slow=Shoot mode : Automatic (slow)
+nanomiteGun.auto.fast=Shoot mode : Automatic (fast)
+nanomiteGun.auto.detect=Shoot mode : Automatic (mob detection)
+
 #Achievement
 achievement.installMod=Install Nanotech_mod
 achievement.installMod.desc=Thank's for download!
