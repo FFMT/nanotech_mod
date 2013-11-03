@@ -1,6 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
@@ -13,8 +14,8 @@ public class CreativetabItems extends CreativeTabs
 	}
 
 	@SideOnly(Side.CLIENT)
-	public int getTabIconItemIndex()
+	public ItemStack getIconItemStack()
 	{
-		return NanotechItem.nanomiteBow.itemID;
+		return new ItemStack(NanotechItem.itemBase.itemID, 1, 12);
 	}
 }

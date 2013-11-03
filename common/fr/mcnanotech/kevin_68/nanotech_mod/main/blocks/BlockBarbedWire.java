@@ -1,13 +1,12 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
 
 public class BlockBarbedWire extends Block
 {

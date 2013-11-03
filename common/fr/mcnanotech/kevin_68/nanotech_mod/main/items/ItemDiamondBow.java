@@ -63,7 +63,7 @@ public class ItemDiamondBow extends ItemBow
 			return;
 		}
 		charge = event.charge;
-		
+
 		boolean creativeOrInfinity = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, stack) > 0;
 
 		if(creativeOrInfinity || player.inventory.hasItem(Item.arrow.itemID))

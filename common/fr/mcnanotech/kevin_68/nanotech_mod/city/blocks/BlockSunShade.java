@@ -113,16 +113,16 @@ public class BlockSunShade extends Block
 	{
 		return -1;
 	}
-	
-    public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata)
-    {
-    	this.removeBlock(world, x, y, z, metadata);
-    }
-    
-    public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion explosion)
-    {
-    	this.removeBlock(world, x, y, z, world.getBlockMetadata(x, y, z));
-    }
+
+	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata)
+	{
+		this.removeBlock(world, x, y, z, metadata);
+	}
+
+	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion explosion)
+	{
+		this.removeBlock(world, x, y, z, world.getBlockMetadata(x, y, z));
+	}
 
 	public void removeBlock(World world, int x, int y, int z, int metadata)
 	{

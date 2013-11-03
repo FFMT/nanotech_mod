@@ -31,6 +31,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.NanotechMobs;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntityReinforcedFishingHook;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntitySuperBottleOfXp;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.BucketEvent;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventBonemeal;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventSound;
@@ -71,7 +72,7 @@ public class Nanotech_mod
 
 	// Item IDs
 	public static int nanotechItemID, superBottleOfXpID, diamondBowID, emeraldBowID, nanomiteBowID, nanomiteAxeID, nanomitePickaxeID, nanomiteShovelID, nanomiteHoeID, nanomiteSwordID, nanomiteHelmetID, nanomiteChestPlateID, nanomiteLegginsID, nanomiteBootsID, mysteriousHelmetID, mysteriousChestPlateID, mysteriousLegginsID, mysteriousBootsID, nanoDiscID, edibleFleshID, rottenChunkID, scytheID,
-			crazyGlassesID, debugID, altersID, nitrogenBucketID, reinforcedFishingRodID;
+			crazyGlassesID, debugID, altersID, nitrogenBucketID, reinforcedFishingRodID, crazyGlassesGunID;
 
 	// Dimension and biome
 	public static int dimensionID;
@@ -175,6 +176,7 @@ public class Nanotech_mod
 			nanoDiscID = cfg.getItem("Nanodisc", 5026).getInt();
 			nitrogenBucketID = cfg.getItem("Liquid Nitrogen Bucket", 5027).getInt();
 			reinforcedFishingRodID = cfg.getItem("Reinforced Fishing Rod", 5028).getInt();
+			crazyGlassesGunID = cfg.getItem("Crazy Glasses Gun", 5029).getInt();
 
 			dimensionID = cfg.get("World", "Dimension ID", 19).getInt();
 			nanotechBiomeID = cfg.get("World", "Biome ID", 100).getInt();
@@ -264,6 +266,8 @@ public class Nanotech_mod
 		proxy.registerModRenders();
 
 		EntityRegistry.registerGlobalEntityID(EntityReinforcedFishingHook.class, "EntityReinforcedFishingHook", 2048);
+		EntityRegistry.registerGlobalEntityID(EntitySuperBottleOfXp.class, "EntitySuperBottleOfXp", 2049);
+
 		proxy.registerEntityRenders();
 		this.forgeDictionary();
 		this.other();

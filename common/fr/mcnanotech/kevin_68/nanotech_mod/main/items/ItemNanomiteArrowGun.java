@@ -117,28 +117,28 @@ public class ItemNanomiteArrowGun extends ItemBow
 						List entityTagetList = world.selectEntitiesWithinAABB(Entity.class, player.boundingBox.expand(64.0D, 64.0D, 64.0D), livingFilter);
 						for(int i = 0; i < entityTagetList.size(); i++)
 						{
-				            Entity entityTarget = (Entity)entityTagetList.get(i);
-				            if (entityTarget != player && entityTarget instanceof EntityLivingBase)
-				            {
-				            	EntityLivingBase entityLivingTarget = (EntityLivingBase)entityTarget;
-				                Vec3 vec3 = player.getLook(1.0F).normalize();
-				                Vec3 vec31 = entityLivingTarget.worldObj.getWorldVec3Pool().getVecFromPool(entityLivingTarget.posX - player.posX, entityLivingTarget.boundingBox.minY + (double)(entityLivingTarget.height / 2.0F) - (player.posY + (double)player.getEyeHeight()), entityLivingTarget.posZ - player.posZ);
-				                double d0 = vec31.lengthVector();
-				                vec31 = vec31.normalize();
-				                double d1 = vec3.dotProduct(vec31);
-				                if(d1 > 1.0D - 0.025D / d0 && player.canEntityBeSeen(entityLivingTarget))
-				                {
-				                	if(this.timer == 0)
-				                	{
-					                	this.shot(stack, world, player);
-					                	this.timer = 6;
-				                	}
-				                	else
-				                	{
-				                		this.timer --;
-				                	}
-				                }
-				            }
+							Entity entityTarget = (Entity)entityTagetList.get(i);
+							if(entityTarget != player && entityTarget instanceof EntityLivingBase)
+							{
+								EntityLivingBase entityLivingTarget = (EntityLivingBase)entityTarget;
+								Vec3 vec3 = player.getLook(1.0F).normalize();
+								Vec3 vec31 = entityLivingTarget.worldObj.getWorldVec3Pool().getVecFromPool(entityLivingTarget.posX - player.posX, entityLivingTarget.boundingBox.minY + (double)(entityLivingTarget.height / 2.0F) - (player.posY + (double)player.getEyeHeight()), entityLivingTarget.posZ - player.posZ);
+								double d0 = vec31.lengthVector();
+								vec31 = vec31.normalize();
+								double d1 = vec3.dotProduct(vec31);
+								if(d1 > 1.0D - 0.025D / d0 && player.canEntityBeSeen(entityLivingTarget))
+								{
+									if(this.timer == 0)
+									{
+										this.shot(stack, world, player);
+										this.timer = 6;
+									}
+									else
+									{
+										this.timer--;
+									}
+								}
+							}
 						}
 					}
 				}

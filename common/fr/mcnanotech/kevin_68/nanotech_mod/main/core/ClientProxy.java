@@ -2,6 +2,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderFish;
+import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -43,6 +44,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperSkeleton;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperZombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntityReinforcedFishingHook;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntitySuperBottleOfXp;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.NanotechClientTickHandler;
 
@@ -67,6 +69,7 @@ public class ClientProxy extends CommonProxy
 	public void registerEntityRenders()
 	{
 		RenderingRegistry.registerEntityRenderingHandler(EntityReinforcedFishingHook.class, new RenderFish());
+		RenderingRegistry.registerEntityRenderingHandler(EntitySuperBottleOfXp.class, new RenderSnowball(NanotechItem.superBottleOfXp));
 	}
 
 	@Override

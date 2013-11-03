@@ -40,7 +40,7 @@ public class BlockConfusion extends Block
 			}
 		}
 	}
-	
+
 	private boolean doEffect(EntityPlayer player)
 	{
 		ItemStack helmet = player.getCurrentItemOrArmor(4);

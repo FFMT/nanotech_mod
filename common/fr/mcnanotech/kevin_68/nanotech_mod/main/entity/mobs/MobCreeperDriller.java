@@ -58,10 +58,10 @@ public class MobCreeperDriller extends EntityMob
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
 	}
 
-    public int getMaxSafePointTries()
-    {
-        return this.getAttackTarget() == null ? 3 : 3 + (int)(this.getHealth() - 1.0F);
-    }
+	public int getMaxSafePointTries()
+	{
+		return this.getAttackTarget() == null ? 3 : 3 + (int)(this.getHealth() - 1.0F);
+	}
 
 	protected void fall(float damage)
 	{

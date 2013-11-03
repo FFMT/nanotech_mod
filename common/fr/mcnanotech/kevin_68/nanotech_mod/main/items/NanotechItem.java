@@ -12,7 +12,7 @@ public class NanotechItem
 {
 	// Items statement
 	public static Item itemBase, superBottleOfXp, diamondBow, emeraldBow, nanomiteBow, nanomiteAxe, nanomitePickaxe, nanomiteShovel, nanomiteHoe, nanomiteSword, nanomiteHelmet, nanomiteChestPlate, nanomiteLeggings, nanomiteBoots, mysteriousHelmet, mysteriousChestPlate, mysteriousLeggings, mysteriousBoots, nanoDisc, edibleFlesh, rottenChunk, scythe, crazyGlasses, debug, alters, nitrogenBucket,
-			reinforcedFishingRod;
+			reinforcedFishingRod, crazyGlassesGun;
 
 	// Enum tools and armor material
 	public static EnumArmorMaterial EnumArmorMaterialMysterious = EnumHelper.addArmorMaterial("Mysterious", 50, new int[] {6, 6, 6, 6}, 15);
@@ -49,7 +49,8 @@ public class NanotechItem
 		crazyGlasses = new ItemCrazyGlasses(Nanotech_mod.crazyGlassesID, EnumArmorMaterialCrazyGlasses, 1, 0).setUnlocalizedName("crazyGlasses").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		debug = new ItemDebug(Nanotech_mod.debugID).setUnlocalizedName("debug").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		alters = new ItemAlters(Nanotech_mod.altersID).setUnlocalizedName("alters").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		nitrogenBucket = new ItemNitrogenBucket(Nanotech_mod.nitrogenBucketID, NanotechBlock.liquidNitrogen.blockID).setUnlocalizedName("nitrogenBucket").setTextureName("nanotech_mod:nitrogenbucket").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		nitrogenBucket = new ItemNitrogenBucket(Nanotech_mod.nitrogenBucketID, NanotechBlock.liquidNitrogen.blockID).setContainerItem(Item.bucketEmpty).setUnlocalizedName("nitrogenBucket").setTextureName("nanotech_mod:nitrogenbucket").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		reinforcedFishingRod = new ItemReinforcedFishingRod(Nanotech_mod.reinforcedFishingRodID).setUnlocalizedName("reinforcedFishingRod").setTextureName("nanotech_mod:reinforced_fishing_rod").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		crazyGlassesGun = new ItemCrazyGlassesGun(Nanotech_mod.crazyGlassesGunID).setUnlocalizedName("crazyGlassesGun").setTextureName("nanotech_mod:crazyglassesgun").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 	}
 }

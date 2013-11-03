@@ -3,14 +3,12 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.utils;
 import java.util.EnumSet;
 import java.util.Random;
 
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.TickType;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
 
@@ -68,7 +66,7 @@ public class NanotechServerTickHandler implements ITickHandler
 			}
 		}
 	}
-	
+
 	private boolean doEffect(EntityPlayer player)
 	{
 		ItemStack helmet = player.getCurrentItemOrArmor(4);
