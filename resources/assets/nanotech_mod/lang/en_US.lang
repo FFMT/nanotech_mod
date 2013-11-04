@@ -92,6 +92,8 @@ item.reinforcedFishingRod.name=Reinforced Fishing Rod
 item.fish_veryveryfrozen.name=Very very frozen fish
 item.fish_veryfrozen.name=Very frozen fish
 item.fish_frozen.name=Frozen fish
+item.crazyGlassesGun.name=Crazy Glasses Launcher
+item.cageCrazyGlasses.name=Caged Crazy Glasses
 
 #Entity
 entity.SuperZombie.name=Super Zombie

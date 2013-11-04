@@ -41,7 +41,7 @@ public class NanotechBlock
 		nanoSlabDouble = new BlockNanoSteps(Nanotech_mod.nanoSlabDoubleID, true).setUnlocalizedName("nanoSlabDouble");
 		nuke = new BlockNuke(Nanotech_mod.nukeID).setUnlocalizedName("nuke").setTextureName("nanotech_mod:nukebuilding");
 		nukeBuildingBlock = new BlockBuildingNuke(1026).setUnlocalizedName("nukeBuildingBlock").setTextureName("nanotech_mod:nukebuilding");
-		nukeBuildingStairs = new BlockNanoStairs(1027, nukeBuildingBlock, 0).setUnlocalizedName("nukeBuildingStairs");
+		nukeBuildingStairs = new BlockNanoStairs(1027, nukeBuildingBlock, 0).setUnlocalizedName("nukeBuildingStairs").setCreativeTab(null);
 
 		if(Nanotech_mod.liquidNitrogen.getBlockID() == -1)
 		{

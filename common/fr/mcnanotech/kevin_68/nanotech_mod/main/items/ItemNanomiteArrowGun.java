@@ -73,14 +73,14 @@ public class ItemNanomiteArrowGun extends ItemBow
 			{
 				if(!stack.getTagCompound().hasKey("Mode"))
 				{
-					this.shot(stack, world, player);
+					this.shoot(stack, world, player);
 					return stack;
 				}
 				else
 				{
 					if(stack.getTagCompound().getByte("Mode") == 0)
 					{
-						this.shot(stack, world, player);
+						this.shoot(stack, world, player);
 						return stack;
 					}
 				}
@@ -103,7 +103,7 @@ public class ItemNanomiteArrowGun extends ItemBow
 					{
 						if(this.timer == 0)
 						{
-							this.shot(stack, world, player);
+							this.shoot(stack, world, player);
 							this.timer = (mode == 1 ? 16 : 4);
 						}
 						else
@@ -130,7 +130,7 @@ public class ItemNanomiteArrowGun extends ItemBow
 								{
 									if(this.timer == 0)
 									{
-										this.shot(stack, world, player);
+										this.shoot(stack, world, player);
 										this.timer = 6;
 									}
 									else
@@ -146,7 +146,7 @@ public class ItemNanomiteArrowGun extends ItemBow
 		}
 	}
 
-	public void shot(ItemStack stack, World world, EntityPlayer player)
+	public void shoot(ItemStack stack, World world, EntityPlayer player)
 	{
 		boolean creativeOrInfinity = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, stack) > 0;
 

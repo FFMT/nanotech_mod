@@ -93,6 +93,8 @@ item.reinforcedFishingRod.name=Canne à pêche renforcée
 item.fish_veryveryfrozen.name=Poisson très très gelé
 item.fish_veryfrozen.name=Poisson très gelé
 item.fish_frozen.name=Poisson surgelé
+item.crazyGlassesGun.name=Lanceur de lunnette de fou
+item.cageCrazyGlasses.name=Lunnette de fou en cage
 
 #Entity
 entity.SuperZombie.name=Super Zombie
