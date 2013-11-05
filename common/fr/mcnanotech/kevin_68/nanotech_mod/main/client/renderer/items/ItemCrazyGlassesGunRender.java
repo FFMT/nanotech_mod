@@ -29,6 +29,8 @@ public class ItemCrazyGlassesGunRender implements IItemRenderer
 			return true;
 		case EQUIPPED_FIRST_PERSON:
 			return true;
+		case INVENTORY:
+			return true;
 		default:
 			return false;
 		}
@@ -67,6 +69,18 @@ public class ItemCrazyGlassesGunRender implements IItemRenderer
 			GL11.glRotatef(140F, 1.0F, 0.0F, 0.0F);
 			GL11.glTranslatef(0.0F, 0.0F, -0.8F);
 			model.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+			GL11.glPopMatrix();
+			break;
+		}
+		case INVENTORY:
+		{
+			GL11.glPushMatrix();
+			Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+			GL11.glRotatef(-50F, 0.0F, 1.0F, 0.0F);
+			GL11.glRotatef(-10F, 1.0F, 0.0F, 0.0F);
+			GL11.glTranslatef(0.0F, 12.5F, -14.5F);
+			GL11.glScalef(17F, 17F, 17F);
+			model.render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 			GL11.glPopMatrix();
 			break;
 		}
