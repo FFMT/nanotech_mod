@@ -57,34 +57,34 @@ public class NanotechItem
 	
 	public static void registerItem()
 	{
-		GameRegistry.registerItem(itemBase, "nanotechbase", "nanotech_mod");
-		GameRegistry.registerItem(superBottleOfXp, "superbottleofxp", "nanotech_mod");
-		GameRegistry.registerItem(diamondBow, "diamondbow", "nanotech_mod");
-		GameRegistry.registerItem(emeraldBow, "emeraldbow", "nanotech_mod");
-		GameRegistry.registerItem(nanomiteBow, "nanomitebow", "nanotech_mod");
-		GameRegistry.registerItem(nanomiteHelmet, "nanomiteHelmet", "nanotech_mod");
-		GameRegistry.registerItem(nanomiteChestPlate, "nanomiteChestPlate", "nanotech_mod");
-		GameRegistry.registerItem(nanomiteLeggings, "nanomiteLegs", "nanotech_mod");
-		GameRegistry.registerItem(nanomiteBoots, "nanomiteBoots", "nanotech_mod");
-		GameRegistry.registerItem(nanomiteSword, "nanomiteSword", "nanotech_mod");
-		GameRegistry.registerItem(nanomiteShovel, "nanomiteShovel", "nanotech_mod");
-		GameRegistry.registerItem(nanomitePickaxe, "nanomitePickaxe", "nanotech_mod");
-		GameRegistry.registerItem(nanomiteAxe, "nanomiteAxe", "nanotech_mod");
-		GameRegistry.registerItem(nanomiteHoe, "nanomiteHoe", "nanotech_mod");
-		GameRegistry.registerItem(mysteriousHelmet, "mysteriousHelmet", "nanotech_mod");
-		GameRegistry.registerItem(mysteriousChestPlate, "mysteriousChestPlate", "nanotech_mod");
-		GameRegistry.registerItem(mysteriousLeggings, "mysteriousLeggings", "nanotech_mod");
-		GameRegistry.registerItem(mysteriousBoots, "mysteriousBoots", "nanotech_mod");
-		GameRegistry.registerItem(nanoDisc, "nanoDisc", "nanotech_mod");
-		GameRegistry.registerItem(edibleFlesh, "edibleFlesh", "nanotech_mod");
-		GameRegistry.registerItem(rottenChunk, "rottenChunk", "nanotech_mod");
-		GameRegistry.registerItem(scythe, "scythe", "nanotech_mod");
-		GameRegistry.registerItem(crazyGlasses, "crazyGlasses", "nanotech_mod");
-		GameRegistry.registerItem(debug, "debug", "nanotech_mod");
-		GameRegistry.registerItem(alters, "alters", "nanotech_mod");
-		GameRegistry.registerItem(nitrogenBucket, "nitrogenBucket", "nanotech_mod");
-		GameRegistry.registerItem(reinforcedFishingRod, "reinforcedFishingRod", "nanotech_mod");
-		GameRegistry.registerItem(crazyGlassesGun, "crazyGlassesGun", "nanotech_mod");
+		GameRegistry.registerItem(itemBase, "nanotechbase", "Nanotech_mod");
+		GameRegistry.registerItem(superBottleOfXp, "superbottleofxp", "Nanotech_mod");
+		GameRegistry.registerItem(diamondBow, "diamondbow", "Nanotech_mod");
+		GameRegistry.registerItem(emeraldBow, "emeraldbow", "Nanotech_mod");
+		GameRegistry.registerItem(nanomiteBow, "nanomitebow", "Nanotech_mod");
+		GameRegistry.registerItem(nanomiteHelmet, "nanomiteHelmet", "Nanotech_mod");
+		GameRegistry.registerItem(nanomiteChestPlate, "nanomiteChestPlate", "Nanotech_mod");
+		GameRegistry.registerItem(nanomiteLeggings, "nanomiteLegs", "Nanotech_mod");
+		GameRegistry.registerItem(nanomiteBoots, "nanomiteBoots", "Nanotech_mod");
+		GameRegistry.registerItem(nanomiteSword, "nanomiteSword", "Nanotech_mod");
+		GameRegistry.registerItem(nanomiteShovel, "nanomiteShovel", "Nanotech_mod");
+		GameRegistry.registerItem(nanomitePickaxe, "nanomitePickaxe", "Nanotech_mod");
+		GameRegistry.registerItem(nanomiteAxe, "nanomiteAxe", "Nanotech_mod");
+		GameRegistry.registerItem(nanomiteHoe, "nanomiteHoe", "Nanotech_mod");
+		GameRegistry.registerItem(mysteriousHelmet, "mysteriousHelmet", "Nanotech_mod");
+		GameRegistry.registerItem(mysteriousChestPlate, "mysteriousChestPlate", "Nanotech_mod");
+		GameRegistry.registerItem(mysteriousLeggings, "mysteriousLeggings", "Nanotech_mod");
+		GameRegistry.registerItem(mysteriousBoots, "mysteriousBoots", "Nanotech_mod");
+		GameRegistry.registerItem(nanoDisc, "nanoDisc", "Nanotech_mod");
+		GameRegistry.registerItem(edibleFlesh, "edibleFlesh", "Nanotech_mod");
+		GameRegistry.registerItem(rottenChunk, "rottenChunk", "Nanotech_mod");
+		GameRegistry.registerItem(scythe, "scythe", "Nanotech_mod");
+		GameRegistry.registerItem(crazyGlasses, "crazyGlasses", "Nanotech_mod");
+		GameRegistry.registerItem(debug, "debug", "Nanotech_mod");
+		GameRegistry.registerItem(alters, "alters", "Nanotech_mod");
+		GameRegistry.registerItem(nitrogenBucket, "nitrogenBucket", "Nanotech_mod");
+		GameRegistry.registerItem(reinforcedFishingRod, "reinforcedFishingRod", "Nanotech_mod");
+		GameRegistry.registerItem(crazyGlassesGun, "crazyGlassesGun", "Nanotech_mod");
 
 	}
 }

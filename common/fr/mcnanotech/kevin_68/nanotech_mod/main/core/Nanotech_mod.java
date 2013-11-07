@@ -241,6 +241,7 @@ public class Nanotech_mod
 		NanotechBlock.initBlock();
 		NanotechBlock.blockRegistry();
 		NanotechItem.initItem();
+		NanotechItem.registerItem();
 		NanotechAchievement.initAchievement();
 
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidnitrogen", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(NanotechItem.nitrogenBucket), FluidContainerRegistry.EMPTY_BUCKET);
