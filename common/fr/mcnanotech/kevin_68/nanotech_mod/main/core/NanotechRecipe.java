@@ -108,14 +108,14 @@ public class NanotechRecipe
 	{
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 0), new Object[] {"XZX", "ZXZ", "XZX", 'X', Block.stone, 'Z', Block.gravel});
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 0), new Object[] {"XZX", "ZXZ", "XZX", 'X', Block.stone, 'Z', Block.sand});
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 1), new Object[] {"XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 0), 'Z', Block.gravel});
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 1), new Object[] {"XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 0), 'Z', Block.sand});
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 2), new Object[] {"XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 1), 'Z', Block.gravel});
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 2), new Object[] {"XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 1), 'Z', Block.sand});
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 3), new Object[] {"XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 2), 'Z', Block.gravel});
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 3), new Object[] {"XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 2), 'Z', Block.sand});
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 4), new Object[] {"XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 3), 'Z', Block.gravel});
-		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 4), new Object[] {"XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 3), 'Z', Block.sand});
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 1), new Object[] {"XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 1, 0), 'Z', Block.gravel});
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 1), new Object[] {"XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 1, 0), 'Z', Block.sand});
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 2), new Object[] {"XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 1, 1), 'Z', Block.gravel});
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 2), new Object[] {"XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 1, 1), 'Z', Block.sand});
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 3), new Object[] {"XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 1, 2), 'Z', Block.gravel});
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 3), new Object[] {"XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 1, 2), 'Z', Block.sand});
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 4), new Object[] {"XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 1, 3), 'Z', Block.gravel});
+		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 4), new Object[] {"XZX", "ZXZ", "XZX", 'X', new ItemStack(Block.stoneBrick, 1, 3), 'Z', Block.sand});
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 5), new Object[] {"XZX", "ZXZ", "XZX", 'X', Block.cobblestone, 'Z', Block.sand});
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 5), new Object[] {"XZX", "ZXZ", "XZX", 'X', Block.cobblestone, 'Z', Block.gravel});
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.falling, output, 6), new Object[] {"XZX", "ZXZ", "XZX", 'X', Block.cobblestoneMossy, 'Z', Block.sand});
