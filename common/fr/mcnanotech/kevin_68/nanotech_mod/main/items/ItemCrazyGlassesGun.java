@@ -44,14 +44,11 @@ public class ItemCrazyGlassesGun extends ItemBow
 
 			if(!stack.getTagCompound().hasKey("IsPlayingSound"))
 			{
-				System.out.println("IsPlaying:" + stack.getTagCompound().getBoolean("IsPlayingSound"));
 				stack.getTagCompound().setBoolean("IsPlayingSound", false);
 			}
 
 			if(stack.getTagCompound().hasKey("Charge"))
 			{
-				System.out.println("Reload:" + stack.getTagCompound().getBoolean("Reload"));
-				System.out.println("Charge:" + stack.getTagCompound().getByte("Charge"));
 				if(stack.getTagCompound().getByte("Charge") > 0)
 				{
 					if(!stack.getTagCompound().getBoolean("Reload"))
@@ -123,7 +120,6 @@ public class ItemCrazyGlassesGun extends ItemBow
 							{
 								timer++;
 							}
-							System.out.println("Timer:" + timer);
 						}
 					}
 					else
