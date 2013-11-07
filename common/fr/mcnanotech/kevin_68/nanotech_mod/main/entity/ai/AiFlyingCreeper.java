@@ -7,12 +7,11 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobFlyingCreeper;
 public class AiFlyingCreeper extends EntityAIBase
 {
 	MobFlyingCreeper swellingCreeper;
-
 	EntityLivingBase creeperAttackTarget;
 
-	public AiFlyingCreeper(MobFlyingCreeper mob)
+	public AiFlyingCreeper(MobFlyingCreeper par1EntityCreeper)
 	{
-		this.swellingCreeper = mob;
+		this.swellingCreeper = par1EntityCreeper;
 		this.setMutexBits(1);
 	}
 

@@ -9,10 +9,10 @@ public class AiCreeperDriller extends EntityAIBase
 	MobCreeperDriller swellingCreeper;
 	EntityLivingBase creeperAttackTarget;
 
-	public AiCreeperDriller(MobCreeperDriller mob)
+	public AiCreeperDriller(MobCreeperDriller par1EntityCreeper)
 	{
-		swellingCreeper = mob;
-		setMutexBits(1);
+		this.swellingCreeper = par1EntityCreeper;
+		this.setMutexBits(1);
 	}
 
 	public boolean shouldExecute()
@@ -29,26 +29,26 @@ public class AiCreeperDriller extends EntityAIBase
 
 	public void resetTask()
 	{
-		creeperAttackTarget = null;
+		this.creeperAttackTarget = null;
 	}
 
 	public void updateTask()
 	{
-		if(creeperAttackTarget == null)
+		if(this.creeperAttackTarget == null)
 		{
-			swellingCreeper.setCreeperState(-1);
+			this.swellingCreeper.setCreeperState(-1);
 		}
-		else if(swellingCreeper.getDistanceSqToEntity(creeperAttackTarget) > 49.0D)
+		else if(this.swellingCreeper.getDistanceSqToEntity(this.creeperAttackTarget) > 49.0D)
 		{
-			swellingCreeper.setCreeperState(-1);
+			this.swellingCreeper.setCreeperState(-1);
 		}
-		else if(!swellingCreeper.getEntitySenses().canSee(creeperAttackTarget))
+		else if(!this.swellingCreeper.getEntitySenses().canSee(this.creeperAttackTarget))
 		{
-			swellingCreeper.setCreeperState(-1);
+			this.swellingCreeper.setCreeperState(-1);
 		}
 		else
 		{
-			swellingCreeper.setCreeperState(1);
+			this.swellingCreeper.setCreeperState(1);
 		}
 	}
 }
