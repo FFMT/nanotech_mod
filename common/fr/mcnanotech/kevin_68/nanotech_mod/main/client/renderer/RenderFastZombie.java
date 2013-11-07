@@ -10,7 +10,7 @@ public class RenderFastZombie extends RenderLiving
 {
 	protected static final ResourceLocation texture = new ResourceLocation("textures/entity/zombie/zombie.png");
 
-	public RenderFastZombie(ModelMobFastZombie model, float f)
+	public RenderFastZombie()
 	{
 		super(new ModelMobFastZombie(), 0.5F);
 	}

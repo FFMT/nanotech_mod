@@ -10,7 +10,7 @@ public class RenderSuperZombie extends RenderLiving
 {
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/entity/superzombie.png");
 
-	public RenderSuperZombie(ModelSuperZombie model, float f)
+	public RenderSuperZombie()
 	{
 		super(new ModelSuperZombie(), 0.5F);
 	}

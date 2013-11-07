@@ -17,7 +17,7 @@ public class RenderSuperCreeper extends RenderLiving
 	private ModelBase model = new ModelSuperCreeper(2.0F);
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod:textures/entity/supercreeper.png");
 
-	public RenderSuperCreeper(ModelSuperCreeper model, float f)
+	public RenderSuperCreeper()
 	{
 		super(new ModelSuperCreeper(), 0.5F);
 	}

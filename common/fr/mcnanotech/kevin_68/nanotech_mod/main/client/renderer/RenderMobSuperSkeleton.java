@@ -10,7 +10,7 @@ public class RenderMobSuperSkeleton extends RenderLiving
 {
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod:textures/entity/superskeleton.png");
 
-	public RenderMobSuperSkeleton(ModelSuperSkeleton model, float f)
+	public RenderMobSuperSkeleton()
 	{
 		super(new ModelSuperSkeleton(), 0.5F);
 	}

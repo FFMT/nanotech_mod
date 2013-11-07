@@ -17,7 +17,7 @@ public class RenderCreeperDriller extends RenderLiving
 	private ModelBase model = new ModelCreeperDriller(2.0F);
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/entity/creeperforreur.png");
 
-	public RenderCreeperDriller(ModelCreeperDriller model, float f)
+	public RenderCreeperDriller()
 	{
 		super(new ModelCreeperDriller(), 0.5F);
 	}

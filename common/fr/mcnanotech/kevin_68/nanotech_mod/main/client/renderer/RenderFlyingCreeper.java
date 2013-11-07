@@ -17,7 +17,7 @@ public class RenderFlyingCreeper extends RenderLiving
 	private ModelBase model = new ModelFlyingCreeper();
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod:textures/entity/flyingcreeper.png");
 
-	public RenderFlyingCreeper(ModelFlyingCreeper model, float f)
+	public RenderFlyingCreeper()
 	{
 		super(new ModelFlyingCreeper(), 0.5F);
 	}

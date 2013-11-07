@@ -54,16 +54,16 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerModRenders()
 	{
-		RenderingRegistry.registerEntityRenderingHandler(MobThedeath.class, new RenderTheDeath(new ModelTheDeath(), 0.5F));
-		RenderingRegistry.registerEntityRenderingHandler(MobSuperCreeper.class, new RenderSuperCreeper(new ModelSuperCreeper(), 0.5F));
-		RenderingRegistry.registerEntityRenderingHandler(MobSuperSkeleton.class, new RenderMobSuperSkeleton(new ModelSuperSkeleton(), 0.5F));
-		RenderingRegistry.registerEntityRenderingHandler(MobSuperEnderman.class, new RenderSuperEnderman(new ModelSuperEnderman(), 0.5F));
-		RenderingRegistry.registerEntityRenderingHandler(MobSuperZombie.class, new RenderSuperZombie(new ModelSuperZombie(), 0.5F));
-		RenderingRegistry.registerEntityRenderingHandler(MobCreeperDriller.class, new RenderCreeperDriller(new ModelCreeperDriller(), 0.5F));
-		RenderingRegistry.registerEntityRenderingHandler(MobFastZombie.class, new RenderFastZombie(new ModelMobFastZombie(), 0.5F));
-		RenderingRegistry.registerEntityRenderingHandler(MobFly.class, new RenderMobFly(new ModelFly(), 0.05F));
-		RenderingRegistry.registerEntityRenderingHandler(MobFlyingCreeper.class, new RenderFlyingCreeper(new ModelFlyingCreeper(), 0.5F));
-		RenderingRegistry.registerEntityRenderingHandler(MobCrazyGuy.class, new RenderCrazyGuy(new ModelCrazyGuy(), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(MobThedeath.class, new RenderTheDeath());
+		RenderingRegistry.registerEntityRenderingHandler(MobSuperCreeper.class, new RenderSuperCreeper());
+		RenderingRegistry.registerEntityRenderingHandler(MobSuperSkeleton.class, new RenderMobSuperSkeleton());
+		RenderingRegistry.registerEntityRenderingHandler(MobSuperEnderman.class, new RenderSuperEnderman());
+		RenderingRegistry.registerEntityRenderingHandler(MobSuperZombie.class, new RenderSuperZombie());
+		RenderingRegistry.registerEntityRenderingHandler(MobCreeperDriller.class, new RenderCreeperDriller());
+		RenderingRegistry.registerEntityRenderingHandler(MobFastZombie.class, new RenderFastZombie());
+		RenderingRegistry.registerEntityRenderingHandler(MobFly.class, new RenderMobFly(0.05F));
+		RenderingRegistry.registerEntityRenderingHandler(MobFlyingCreeper.class, new RenderFlyingCreeper());
+		RenderingRegistry.registerEntityRenderingHandler(MobCrazyGuy.class, new RenderCrazyGuy());
 	}
 
 	@Override

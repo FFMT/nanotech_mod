@@ -10,7 +10,7 @@ public class RenderCrazyGuy extends RenderLiving
 {
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/entity/crazyguy.png");
 
-	public RenderCrazyGuy(ModelCrazyGuy model, float f)
+	public RenderCrazyGuy()
 	{
 		super(new ModelCrazyGuy(), 0.5F);
 	}

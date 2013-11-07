@@ -22,7 +22,7 @@ public class RenderSuperEnderman extends RenderLiving
 	private Random rnd = new Random();
 	protected static final ResourceLocation texture = new ResourceLocation("textures/entity/enderman/enderman.png");
 
-	public RenderSuperEnderman(ModelSuperEnderman model, float f)
+	public RenderSuperEnderman()
 	{
 		super(new ModelSuperEnderman(), 0.5F);
 		this.model = (ModelSuperEnderman)super.mainModel;
