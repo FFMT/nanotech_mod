@@ -5,26 +5,18 @@ import net.minecraft.client.renderer.entity.RenderFish;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiOverlay;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelCrazyGuy;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelCreeperDriller;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelFly;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelFlyingCreeper;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelMobFastZombie;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelSuperCreeper;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelSuperEnderman;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelSuperSkeleton;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelSuperZombie;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.ModelTheDeath;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderCrazyGuy;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderCreeperDriller;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderFastZombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderFlyingCreeper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderMobFly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderMobSuperSkeleton;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderSatelite;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderSuperCreeper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderSuperEnderman;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderSuperZombie;
@@ -34,6 +26,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.items.ItemCrazyG
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.items.ItemDebugRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.items.ItemNanomiteArrowGunRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.items.ItemScytheRender;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.tileentity.TileEntityButtonRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCrazyGuy;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCreeperDriller;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobFastZombie;
@@ -45,8 +38,10 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperSkeleton;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobSuperZombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntityReinforcedFishingHook;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntitySatelite;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntitySuperBottleOfXp;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityButton;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.NanotechClientTickHandler;
 
 public class ClientProxy extends CommonProxy
@@ -71,6 +66,7 @@ public class ClientProxy extends CommonProxy
 	{
 		RenderingRegistry.registerEntityRenderingHandler(EntityReinforcedFishingHook.class, new RenderFish());
 		RenderingRegistry.registerEntityRenderingHandler(EntitySuperBottleOfXp.class, new RenderSnowball(NanotechItem.superBottleOfXp));
+		RenderingRegistry.registerEntityRenderingHandler(EntitySatelite.class, new RenderSatelite());
 	}
 
 	@Override
@@ -81,6 +77,12 @@ public class ClientProxy extends CommonProxy
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.alters.itemID, new ItemAltersRender());
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.nanomiteBow.itemID, new ItemNanomiteArrowGunRender());
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.crazyGlassesGun.itemID, new ItemCrazyGlassesGunRender());
+	}
+	
+	@Override
+	public void registerTileEntityRenders()
+	{
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityButton.class, new TileEntityButtonRender());
 	}
 
 	@Override

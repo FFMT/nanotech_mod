@@ -16,7 +16,12 @@ public class CommonProxy
 	{
 
 	}
-
+	
+	public void registerTileEntityRenders()
+	{
+		
+	}
+	
 	public void registerOverlay()
 	{
 

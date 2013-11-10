@@ -698,7 +698,7 @@ public class WorldModel5 extends WorldGenerator
 		world.setBlock(x + 6, y + 8, z + 4, 0);
 		world.setBlock(x + 6, y + 8, z + 5, 0);
 		world.setBlock(x + 6, y + 8, z + 6, 0);
-		world.setBlock(x + 3, y - 2, z + 3, NanotechBlock.nuke.blockID);
+		world.setBlock(x + 3, y - 2, z + 3, NanotechBlock.nukeBuildingBlock.blockID, 9, 0);
 		return true;
 	}
 }

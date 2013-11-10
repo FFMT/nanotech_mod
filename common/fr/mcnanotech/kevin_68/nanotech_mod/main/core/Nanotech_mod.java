@@ -31,6 +31,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.NanotechMobs;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntityReinforcedFishingHook;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntitySatelite;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntitySuperBottleOfXp;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.BucketEvent;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventBonemeal;
@@ -42,6 +43,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.event.TextureEvent;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.network.GuiHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.network.PacketHandler;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityButton;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityListerJukebox;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
@@ -68,7 +70,7 @@ public class Nanotech_mod
 	public static Fluid liquidNitrogen;
 
 	// Block IDs
-	public static int portalID, portalFrameID, grassID, fakeOreID, speedID, jumperID, multiplierID, smokerID, barbedWireID, nanoWoodID, nanoLeavesID, nanoSaplingsID, nanoPlanksID, nanoOreID, confusionID, fallingID, notFallingID, sodiumID, mossyStoneID, theDeathHeadID, listerJukeboxID, liquidNitrogenID, nanoFenceID, nanoStairsID, nanoSlabSingleID, nanoSlabDoubleID, nukeID;
+	public static int portalID, portalFrameID, grassID, fakeOreID, speedID, jumperID, multiplierID, smokerID, barbedWireID, nanoWoodID, nanoLeavesID, nanoSaplingsID, nanoPlanksID, nanoOreID, confusionID, fallingID, notFallingID, sodiumID, mossyStoneID, theDeathHeadID, listerJukeboxID, liquidNitrogenID, nanoFenceID, nanoStairsID, nanoSlabSingleID, nanoSlabDoubleID, satID;
 
 	// Item IDs
 	public static int nanotechItemID, superBottleOfXpID, diamondBowID, emeraldBowID, nanomiteBowID, nanomiteAxeID, nanomitePickaxeID, nanomiteShovelID, nanomiteHoeID, nanomiteSwordID, nanomiteHelmetID, nanomiteChestPlateID, nanomiteLegginsID, nanomiteBootsID, mysteriousHelmetID, mysteriousChestPlateID, mysteriousLegginsID, mysteriousBootsID, nanoDiscID, edibleFleshID, rottenChunkID, scytheID,
@@ -147,7 +149,7 @@ public class Nanotech_mod
 			nanoStairsID = cfg.getBlock("Nano Stairs", 1022).getInt();
 			nanoSlabSingleID = cfg.getBlock("Nano Slab Single", 1023).getInt();
 			nanoSlabDoubleID = cfg.getBlock("Nano Slab Double", 1024).getInt();
-			nukeID = cfg.getBlock("Nuke", 1025).getInt();
+			satID = cfg.getBlock("Satelite", 1025).getInt();
 
 			nanotechItemID = cfg.getItem("Main Nanotech ID", 5000).getInt();
 			superBottleOfXpID = cfg.getItem("Super Bottle of xp", 5001).getInt();
@@ -262,13 +264,15 @@ public class Nanotech_mod
 		freeze = new NanotechPotion(30, true, 3035801).setPotionName("potion.freeze").setIconIndex(0, 0).func_111184_a(SharedMonsterAttributes.movementSpeed, "7107DE5E-7CE8-4030-940E-514C1F160890", -0.50000000596046448D, 2);
 
 		proxy.registerItemRenders();
+		proxy.registerTileEntityRenders();
 		this.guiAndTileEntity();
 		NanotechMobs.mobs();
 		proxy.registerModRenders();
 
 		EntityRegistry.registerGlobalEntityID(EntityReinforcedFishingHook.class, "EntityReinforcedFishingHook", 2048);
 		EntityRegistry.registerGlobalEntityID(EntitySuperBottleOfXp.class, "EntitySuperBottleOfXp", 2049);
-
+		EntityRegistry.registerModEntity(EntitySatelite.class, "Satelite", 1520, this, 100, 1, true);
+		
 		proxy.registerEntityRenders();
 		this.forgeDictionary();
 		this.other();
@@ -314,6 +318,7 @@ public class Nanotech_mod
 		GameRegistry.registerTileEntity(TileEntitySmoker.class, "TileEntitySmoker");
 		GameRegistry.registerTileEntity(TileEntityMultiplier.class, "TileEntityMultiplier");
 		GameRegistry.registerTileEntity(TileEntityListerJukebox.class, "TileEntityListerJukebox");
+		GameRegistry.registerTileEntity(TileEntityButton.class, "TileEntityButton");
 	}
 
 	// Forge dictionary

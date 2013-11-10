@@ -9,7 +9,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 public class NanotechBlock
 {
 	// Blocks statement
-	public static Block portal, portalFrame, nanoGrass, fakeOre, speed, jumper, multiplier, smoker, barbedwire, nanoWood, nanoLeaves, nanoSaplings, nanoPlanks, nanoOre, confusion, falling, notfalling, sodium, mossystone, theDeathHead, listerJukebox, liquidNitrogen, nanoStairs, nanoSlabSingle, nanoSlabDouble, nanoFence, nuke, nukeBuildingBlock, nukeBuildingStairs;
+	public static Block portal, portalFrame, nanoGrass, fakeOre, speed, jumper, multiplier, smoker, barbedwire, nanoWood, nanoLeaves, nanoSaplings, nanoPlanks, nanoOre, confusion, falling, notfalling, sodium, mossystone, theDeathHead, listerJukebox, liquidNitrogen, nanoStairs, nanoSlabSingle, nanoSlabDouble, nanoFence, satelite, nukeBuildingBlock, nukeBuildingStairs;
 
 	// Blocks Initialization
 	public static void initBlock()
@@ -39,7 +39,7 @@ public class NanotechBlock
 		nanoStairs = new BlockNanoStairs(Nanotech_mod.nanoStairsID, nanoPlanks, 0).setUnlocalizedName("nanoStairs").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		nanoSlabSingle = new BlockNanoSteps(Nanotech_mod.nanoSlabSingleID, false).setUnlocalizedName("nanoSlabSingle").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		nanoSlabDouble = new BlockNanoSteps(Nanotech_mod.nanoSlabDoubleID, true).setUnlocalizedName("nanoSlabDouble");
-		nuke = new BlockNuke(Nanotech_mod.nukeID).setUnlocalizedName("nuke").setTextureName("nanotech_mod:nukebuilding");
+		satelite = new BlockSat(Nanotech_mod.satID).setUnlocalizedName("satelite").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		nukeBuildingBlock = new BlockBuildingNuke(1026).setUnlocalizedName("nukeBuildingBlock").setTextureName("nanotech_mod:nukebuilding");
 		nukeBuildingStairs = new BlockNanoStairs(1027, nukeBuildingBlock, 0).setUnlocalizedName("nukeBuildingStairs").setCreativeTab(null);
 
@@ -83,7 +83,7 @@ public class NanotechBlock
 		GameRegistry.registerBlock(nanoStairs, "nanoStairs");
 		GameRegistry.registerBlock(nanoSlabSingle, ItemBlockNanoSteps.class, "BlockNanoSlabSingle", "Nanotech_mod");
 		GameRegistry.registerBlock(nanoSlabDouble, ItemBlockNanoSteps.class, "BlockNanoSlabDouble", "Nanotech_mod");
-		GameRegistry.registerBlock(nuke, "nuke");
+		GameRegistry.registerBlock(satelite, ItemBlockSatelite.class, "satelite", "Nanotech_mod");
 		GameRegistry.registerBlock(nukeBuildingBlock, ItemBlockNukeBuildingBlock.class, "nukeBuildingBlock", "Nanotech_mod");
 		GameRegistry.registerBlock(nukeBuildingStairs, "nukeBuildingStairs");
 	}
