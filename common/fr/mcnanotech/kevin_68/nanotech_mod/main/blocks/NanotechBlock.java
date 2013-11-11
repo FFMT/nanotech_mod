@@ -39,7 +39,7 @@ public class NanotechBlock
 		nanoStairs = new BlockNanoStairs(Nanotech_mod.nanoStairsID, nanoPlanks, 0).setUnlocalizedName("nanoStairs").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		nanoSlabSingle = new BlockNanoSteps(Nanotech_mod.nanoSlabSingleID, false).setUnlocalizedName("nanoSlabSingle").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		nanoSlabDouble = new BlockNanoSteps(Nanotech_mod.nanoSlabDoubleID, true).setUnlocalizedName("nanoSlabDouble");
-		satelite = new BlockSat(Nanotech_mod.satID).setUnlocalizedName("satelite").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
+		satelite = new BlockSat(Nanotech_mod.satID).setUnlocalizedName("satelite")/*.setCreativeTab(Nanotech_mod.CREATIVE_TAB_B)*/;
 		nukeBuildingBlock = new BlockBuildingNuke(1026).setUnlocalizedName("nukeBuildingBlock").setTextureName("nanotech_mod:nukebuilding");
 		nukeBuildingStairs = new BlockNanoStairs(1027, nukeBuildingBlock, 0).setUnlocalizedName("nukeBuildingStairs").setCreativeTab(null);
 
