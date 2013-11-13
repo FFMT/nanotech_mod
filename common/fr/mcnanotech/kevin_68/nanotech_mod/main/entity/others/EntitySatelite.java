@@ -3,11 +3,16 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
+import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -27,6 +32,9 @@ public class EntitySatelite extends Entity
 	private int xTile = -1;
 	private int yTile = -1;
 	private int zTile = -1;
+	public int launcherBlockX;
+	public int launcherBlockY;
+	public int launcherBlockZ;
 	private int inTile;
 	private int inData;
 	private boolean inGround;
@@ -53,24 +61,25 @@ public class EntitySatelite extends Entity
 		this.setSize(0.5F, 0.5F);
 	}
 
-
-	public EntitySatelite(World par1World, double par2, double par4, double par6)
+	public EntitySatelite(World par1World, double par2, double par4, double par6, int x, int y, int z)
 	{
 		super(par1World);
-		this.renderDistanceWeight = 10.0D;
-
+		this.renderDistanceWeight = 100.0D;
 		this.setSize(0.5F, 0.5F);
-		this.setLocationAndAngles(par2, par4 + 100, par6, 0.5F, 1.0F);
-		this.posX -= (double)(MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
-		this.posY -= 0.10000000149011612D;
-		this.posZ -= (double)(MathHelper.sin(this.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
-		this.posZ -= 100D;
-		this.setPosition(this.posX, this.posY, this.posZ);
-		this.yOffset = 0.0F;
-		this.motionX = (double)(-MathHelper.sin(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI));
-		this.motionZ = (double)(MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI));
-		this.motionY = (double)(-MathHelper.sin(this.rotationPitch / 180.0F * (float)Math.PI));
-		this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, 2.0F * 1.5F, 1.0F);
+        this.setLocationAndAngles(par2, par4 + 100, par6, 0.5F, 1.0F);
+        this.posX -= (double)(MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
+        this.posY -= 0.10000000149011612D;
+        this.posZ -= (double)(MathHelper.sin(this.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
+        this.posZ -= 100D;
+        this.setPosition(this.posX, this.posY, this.posZ);
+        this.yOffset = 0.0F;
+        this.motionX = (double)(-MathHelper.sin(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI));
+        this.motionZ = (double)(MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI));
+        this.motionY = (double)(-MathHelper.sin(this.rotationPitch / 180.0F * (float)Math.PI));
+        this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, 2.0F * 1.5F, 1.0F);
+		launcherBlockX = x;
+		launcherBlockY = y;
+		launcherBlockZ = z;
 	}
 
 	protected void entityInit()
@@ -170,7 +179,18 @@ public class EntitySatelite extends Entity
 
 		if(this.inGround)
 		{
-			this.worldObj.newExplosion(null, this.posX, this.posY, this.posZ, 15, true, true);
+			EntityItem proco = new EntityItem(worldObj, this.posX, this.posY, this.posZ, new ItemStack(NanotechItem.itemBase, 1, 8));
+			EntityItem iron = new EntityItem(worldObj, this.posX, this.posY, this.posZ, new ItemStack(Item.ingotIron, 5));
+			EntityItem red = new EntityItem(worldObj, this.posX, this.posY, this.posZ, new ItemStack(Item.redstone, 10));
+			EntityItem gold = new EntityItem(worldObj, this.posX, this.posY, this.posZ, new ItemStack(Item.ingotGold, 2));
+			this.worldObj.newExplosion(null, this.posX, this.posY, this.posZ, 15, false, true);
+			if(!worldObj.isRemote)
+			{
+				this.worldObj.spawnEntityInWorld(proco);
+				this.worldObj.spawnEntityInWorld(iron);
+				this.worldObj.spawnEntityInWorld(red);
+				this.worldObj.spawnEntityInWorld(gold);
+			}
 			this.setDead();
 		}
 		else
@@ -241,7 +261,7 @@ public class EntitySatelite extends Entity
 					f2 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
 					int i1 = MathHelper.ceiling_double_int((double)f2 * this.damage);
 
-					DamageSource damagesource = null;
+					DamageSource damagesource = NanotechDamageSource.altersDamage;
 
 					if(this.isBurning() && !(movingobjectposition.entityHit instanceof EntityEnderman))
 					{
@@ -370,6 +390,11 @@ public class EntitySatelite extends Entity
 			this.motionY -= (double)f1;
 			this.setPosition(this.posX, this.posY, this.posZ);
 			this.doBlockCollisions();
+
+			if(inGround && worldObj.getBlockId(launcherBlockX, launcherBlockY, launcherBlockZ) == NanotechBlock.satelite.blockID && worldObj.getBlockMetadata(launcherBlockX, launcherBlockY, launcherBlockZ) == 2)
+			{
+				this.worldObj.setBlock(launcherBlockX, launcherBlockY, launcherBlockZ, NanotechBlock.satelite.blockID, 3, 3);
+			}
 		}
 	}
 

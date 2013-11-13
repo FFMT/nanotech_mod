@@ -31,7 +31,10 @@ public class RenderSatelite extends Render
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)par2, (float)par4, (float)par6);
 		GL11.glRotatef(180.0F - par8, 0.0F, 1.0F, 0.0F);
-		float f4 = 5.75F;
+        GL11.glRotatef(entitySatelite.prevRotationYaw + (entitySatelite.rotationYaw - entitySatelite.prevRotationYaw) * par9 - 90.0F, 0.0F, 1.0F, 0.0F);
+        GL11.glRotatef(entitySatelite.prevRotationPitch + (entitySatelite.rotationPitch - entitySatelite.prevRotationPitch) * par9, 0.0F, 0.0F, 1.0F);
+		GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
+        float f4 = 5.75F;
 		GL11.glScalef(f4, f4, f4);
 		GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
 		this.bindEntityTexture(entitySatelite);

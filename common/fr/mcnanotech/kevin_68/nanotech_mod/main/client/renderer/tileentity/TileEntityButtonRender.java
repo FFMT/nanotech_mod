@@ -37,8 +37,7 @@ public class TileEntityButtonRender extends TileEntitySpecialRenderer
 		this.bindTexture(texture);
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		this.model.isPressed = tileentity.getSateliteIsFalling();
-		this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+		this.model.renderModel((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F, tileentity.getBlockMetadata() == 2 ? true : (tileentity.getBlockMetadata() == 3 ? true : false));
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
 	}

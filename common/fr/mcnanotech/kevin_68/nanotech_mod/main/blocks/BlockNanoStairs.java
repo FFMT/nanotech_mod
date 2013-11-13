@@ -4,6 +4,7 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
+import net.minecraft.item.Item;
 
 public class BlockNanoStairs extends BlockStairs
 {
@@ -13,16 +14,21 @@ public class BlockNanoStairs extends BlockStairs
 		this.setLightOpacity(0);
 	}
 
-	public int quantityDropped(Random rand)
+	public int idDropped(int metadata, Random rand, int par3)
 	{
 		if(this.blockID == NanotechBlock.nukeBuildingStairs.blockID)
 		{
-			return 0;
+			return Item.ingotIron.itemID;
 		}
 		else
 		{
-			return 1;
+			return this.blockID;
 		}
+	}
+
+	public int quantityDropped(Random rand)
+	{
+		return 1;
 	}
 
 }

@@ -33,7 +33,7 @@ public class ItemDebug extends Item
 			player.addChatMessage("Name: " + FFMTColor.aqua + Block.blocksList[world.getBlockId(x, y, z)].getLocalizedName());
 			player.addChatMessage("Coords: X:" + FFMTColor.aqua + String.valueOf(x) + FFMTColor.white + " Y:" + FFMTColor.aqua + String.valueOf(y) + FFMTColor.white + " Z:" + FFMTColor.aqua + String.valueOf(z));
 			player.addChatMessage("Metadata : " + FFMTColor.aqua + String.valueOf(world.getBlockMetadata(x, y, z)));
-
+			player.addChatMessage("Side: " + side);
 			if(tile != null)
 			{
 				if(tile instanceof TileEntityJumper)

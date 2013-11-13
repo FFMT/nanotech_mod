@@ -5,7 +5,9 @@ import java.util.logging.Logger;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
+import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
@@ -79,7 +81,7 @@ public class Nanotech_mod
 	// Dimension and biome
 	public static int dimensionID;
 	public static int nanotechBiomeID, nitrogenOceanID;
-	public static int structure1Prob, structure2Prob, structure3Prob, structure4Prob, structure5Prob;
+	public static int structure1Prob, structure2Prob, structure3Prob, structure4Prob, structure5Prob, structure6Prob;
 
 	// Biome statement
 	public static BiomeGenBase nanotechBiome;
@@ -218,11 +220,13 @@ public class Nanotech_mod
 			crazyGuyMin = cfg.get(CATEGORY_MOB_SPAWN, "CrazyGuy Min", 1).getInt();
 			crazyGuyMax = cfg.get(CATEGORY_MOB_SPAWN, "CrazyGuy Max", 2, "Set the probability to 0 to disable the mob, max = maximum spawn group and min = minimum spawn group").getInt();
 			theDeathSpawn = cfg.get(CATEGORY_MOB_SPAWN, "Enable TheDeath", true).getBoolean(true);
+			
 			structure1Prob = cfg.get(CATEGORY_WORLD, "Structure 1 probability", 2).getInt();
 			structure2Prob = cfg.get(CATEGORY_WORLD, "Structure 2 probability", 2).getInt();
 			structure3Prob = cfg.get(CATEGORY_WORLD, "Structure 3 probability", 2).getInt();
 			structure4Prob = cfg.get(CATEGORY_WORLD, "Structure 4 probability", 2).getInt();
 			structure5Prob = cfg.get(CATEGORY_WORLD, "Structure 5 probability", 2).getInt();
+			structure6Prob = cfg.get(CATEGORY_WORLD, "Structure 6 probability", 2).getInt();
 		}
 		catch(Exception ex)
 		{
@@ -258,6 +262,10 @@ public class Nanotech_mod
 
 		DimensionManager.registerProviderType(dimensionID, NanotechWorldProvider.class, false);
 		DimensionManager.registerDimension(dimensionID, dimensionID);
+		
+		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechBlock.sodium), 1, 5, 6));
+		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechItem.nanoDisc), 1, 1, 2));
+		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechItem.alters), 1, 1, 10));
 
 		GameRegistry.registerWorldGenerator(new WorldGeneration());
 
@@ -271,7 +279,7 @@ public class Nanotech_mod
 
 		EntityRegistry.registerGlobalEntityID(EntityReinforcedFishingHook.class, "EntityReinforcedFishingHook", 2048);
 		EntityRegistry.registerGlobalEntityID(EntitySuperBottleOfXp.class, "EntitySuperBottleOfXp", 2049);
-		EntityRegistry.registerModEntity(EntitySatelite.class, "Satelite", 1520, this, 100, 1, true);
+		EntityRegistry.registerModEntity(EntitySatelite.class, "Satelite", 1520, this, 250, 1, true);
 		
 		proxy.registerEntityRenders();
 		this.forgeDictionary();

@@ -8,6 +8,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.NewExplosion;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -151,8 +152,18 @@ public class BlockBuildingNuke extends Block
 		}
 	}
 
+    public int idDropped(int metadata, Random rand, int par3)
+    {
+        return Item.ingotIron.itemID;
+    }
+
 	public int quantityDropped(Random rand)
 	{
-		return 0;
+		return 1;
 	}
+	
+    protected boolean canSilkHarvest()
+    {
+    	return false;
+    }
 }

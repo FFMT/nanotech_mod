@@ -11,86 +11,33 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntitySatelite;
 
 public class TileEntityButton extends TileEntity
 {
-	public boolean sateliteIsFalling = false;;
-	
 	public void updateEntity()
 	{
-		
+
 	}
-	
+
 	public void crashSatelite()
 	{
-		if(!sateliteIsFalling)
+		if(monitorNextToPad(this.worldObj, this.xCoord, this.yCoord, this.zCoord))
 		{
-			if(monitorNextToPad(this.worldObj, this.xCoord, this.yCoord, this.zCoord))
+			this.worldObj.spawnEntityInWorld(new EntitySatelite(this.worldObj, this.xCoord, this.yCoord, this.zCoord, this.xCoord, this.yCoord, this.zCoord));
+			if(this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord) == NanotechBlock.satelite.blockID && this.worldObj.getBlockMetadata(xCoord, yCoord, zCoord) == 1)
 			{
-				this.worldObj.spawnEntityInWorld(new EntitySatelite(this.worldObj, this.xCoord, this.yCoord, this.zCoord));
-				sateliteIsFalling = true;
+				this.worldObj.setBlock(xCoord, yCoord, zCoord, NanotechBlock.satelite.blockID, 2, 2);
 			}
-		}
-		else
-		{
-			sateliteIsFalling = true;
 		}
 	}
 
 	public boolean monitorNextToPad(World world, int x, int y, int z)
 	{
-		if(!(world.getBlockMetadata(x, y, z) == 0))
+		if(world.getBlockMetadata(x, y, z) != 0)
 		{
-			if(world.getBlockId(x - 1, y, z) == NanotechBlock.satelite.blockID)
-			{
-				return world.getBlockMetadata(x - 1, y, z) == 0;
-			}
-			else if(world.getBlockId(x + 1, y, z) == NanotechBlock.satelite.blockID)
-			{
-				return world.getBlockMetadata(x + 1, y, z) == 0;
-			}
-			else if(world.getBlockId(x, y, z - 1) == NanotechBlock.satelite.blockID)
-			{
-				return world.getBlockMetadata(x, y, z - 1) == 0;
-			}
-			else if(world.getBlockId(x, y, z + 1) == NanotechBlock.satelite.blockID)
-			{
-				return world.getBlockMetadata(x, y, z + 1) == 0;
-			}
+			boolean flag = world.getBlockId(x - 1, y, z) == NanotechBlock.satelite.blockID && world.getBlockMetadata(x - 1, y, z) == 0;
+			boolean flag1 = world.getBlockId(x + 1, y, z) == NanotechBlock.satelite.blockID && world.getBlockMetadata(x + 1, y, z) == 0;
+			boolean flag2 = world.getBlockId(x, y, z - 1) == NanotechBlock.satelite.blockID && world.getBlockMetadata(x, y, z - 1) == 0;
+			boolean flag3 = world.getBlockId(x, y, z + 1) == NanotechBlock.satelite.blockID && world.getBlockMetadata(x, y, z + 1) == 0;
+			return flag ? true : (flag1 ? true : (flag2 ? true : (flag3 ? true : false)));
 		}
 		return false;
-	}
-	
-	@Override
-	public void writeToNBT(NBTTagCompound nbtTagCompound)
-	{
-		super.writeToNBT(nbtTagCompound);
-		nbtTagCompound.setBoolean("SateliteIsFalling", sateliteIsFalling);
-	}
-
-	@Override
-	public void readFromNBT(NBTTagCompound nbtTagCompound)
-	{
-		super.readFromNBT(nbtTagCompound);
-		sateliteIsFalling = nbtTagCompound.getBoolean("SateliteIsFalling");
-	}
-
-	public Packet getDescriptionPacket()
-	{
-		NBTTagCompound nbttagcompound = new NBTTagCompound();
-		this.writeToNBT(nbttagcompound);
-		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4, nbttagcompound);
-	}
-
-	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
-	{
-		this.readFromNBT(pkt.data);
-	}
-
-	public void setSateliteIsFalling(boolean newValue)
-	{
-		sateliteIsFalling = newValue;
-	}
-
-	public boolean getSateliteIsFalling()
-	{
-		return this.sateliteIsFalling;
 	}
 }
