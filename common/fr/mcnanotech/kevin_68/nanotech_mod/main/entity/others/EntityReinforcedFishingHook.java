@@ -23,6 +23,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechAchievement;
 
 public class EntityReinforcedFishingHook extends EntityFishHook
 {
@@ -499,6 +500,10 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 				entityitem.motionX = d5 * d9;
 				entityitem.motionY = d6 * d9 + (double)MathHelper.sqrt_double(d8) * 0.08D;
 				entityitem.motionZ = d7 * d9;
+				if(this.isInNitrogen)
+				{
+					this.angler.triggerAchievement(NanotechAchievement.itemFrozenFish);
+				}
 				this.worldObj.spawnEntityInWorld(entityitem);
 				this.angler.addStat(StatList.fishCaughtStat, 1);
 				this.angler.worldObj.spawnEntityInWorld(new EntityXPOrb(this.angler.worldObj, this.angler.posX, this.angler.posY + 0.5D, this.angler.posZ + 0.5D, this.rand.nextInt(6) + 1));

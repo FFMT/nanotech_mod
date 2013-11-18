@@ -4,7 +4,9 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.blocks.NanotechCityBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import fr.minecraftforgefrance.ffmtlibs.FFMTRegistry;
@@ -49,6 +51,7 @@ public class NanotechRecipe
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.nanoStairs, 4), new Object[] {"  P", " PP", "PPP", 'P', NanotechBlock.nanoPlanks});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.itemBase, 1, 20), new Object[] {NanotechItem.crazyGlasses, Item.ingotIron, Item.ingotIron});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.crazyGlassesGun, 1, 0), new Object[] {"DID", "DID", " S ", 'D', NanotechItem.diamondBow, 'I', Item.ingotIron, 'S', Item.stick});
+		GameRegistry.addRecipe(new ItemStack(NanotechItem.lightSaber, 1, 0), new Object[] {"G", "G", "S", 'G', Block.glass, 'S', (Loader.isModLoaded("Nanotech_mod_City") ? NanotechCityBlock.spotLight : Block.blockGold)});
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[] {"XXX", "XXX", "XXX", 'X', "itemSodium"}));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[] {"XXX", "XXX", "XXX", 'X', "dustSodium"}));
@@ -58,7 +61,6 @@ public class NanotechRecipe
 		FFMTRegistry.addSmeltingWithMetadata(NanotechItem.itemBase.itemID, 17, new ItemStack(NanotechItem.itemBase, 1, 18), 0.1F);
 		FFMTRegistry.addSmeltingWithMetadata(NanotechItem.itemBase.itemID, 18, new ItemStack(NanotechItem.itemBase, 1, 19), 0.1F);
 		FFMTRegistry.addSmeltingWithMetadata(NanotechItem.itemBase.itemID, 19, new ItemStack(Item.fishRaw, 1), 0.1F);
-
 	}
 
 	public static void InitNormalRecipes()

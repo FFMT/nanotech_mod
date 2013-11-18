@@ -2,7 +2,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.city.core;
 
 import net.minecraft.stats.Achievement;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.blocks.NanotechCityBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechAchievement;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechAchievement;
 
 public class NanotechCityAchievement
 {

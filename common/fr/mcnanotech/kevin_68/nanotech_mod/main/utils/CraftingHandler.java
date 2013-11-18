@@ -5,8 +5,8 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.ICraftingHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechAchievement;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechAchievement;
 
 public class CraftingHandler implements ICraftingHandler
 {
@@ -125,6 +125,14 @@ public class CraftingHandler implements ICraftingHandler
 		if(stack.itemID == NanotechItem.nanomitePickaxe.itemID || stack.itemID == NanotechItem.nanomiteAxe.itemID || stack.itemID == NanotechItem.nanomiteShovel.itemID || stack.itemID == NanotechItem.nanomiteHoe.itemID || stack.itemID == NanotechItem.nanomiteSword.itemID)
 		{
 			player.triggerAchievement(NanotechAchievement.itemNanomiteTool);
+		}
+		if(stack.itemID == NanotechItem.reinforcedFishingRod.itemID)
+		{
+			player.triggerAchievement(NanotechAchievement.itemReinforcedFishinRod);
+		}
+		if(stack.itemID == NanotechItem.crazyGlassesGun.itemID)
+		{
+			player.triggerAchievement(NanotechAchievement.itemCrazyGlassesLauncher);
 		}
 
 	}

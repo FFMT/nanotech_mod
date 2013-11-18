@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.other;
 
 import java.util.Random;
 
@@ -13,6 +13,8 @@ public class NanotechDamageSource extends DamageSource
 	public static DamageSource altersDamage;
 	public static DamageSource nitrogenDamage;
 	public static DamageSource barbedWireDamage;
+	public static DamageSource lightSaberDamage;
+	public static DamageSource sateliteDamage;
 	public Random rand = new Random();
 
 	protected NanotechDamageSource(String par1Str)
@@ -26,6 +28,8 @@ public class NanotechDamageSource extends DamageSource
 		altersDamage = new NanotechDamageSource("alters").setDamageBypassesArmor();
 		nitrogenDamage = new NanotechDamageSource("nitrogen").setDamageBypassesArmor();
 		barbedWireDamage = new NanotechDamageSource("barbedWire");
+		lightSaberDamage = new NanotechDamageSource("lightSaberDamage");
+		sateliteDamage = new NanotechDamageSource("sateliteDamage").setDamageBypassesArmor();
 	}
 
 	public ChatMessageComponent getDeathMessage(EntityLivingBase livingBase)

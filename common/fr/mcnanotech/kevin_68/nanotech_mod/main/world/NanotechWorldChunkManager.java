@@ -14,7 +14,7 @@ import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechOther;
 
 public class NanotechWorldChunkManager extends WorldChunkManager
 {
@@ -27,8 +27,8 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 	{
 		this.myBiomeCache = new BiomeCache(this);
 		this.myBiomesToSpawnIn = new ArrayList<BiomeGenBase>();
-		this.myBiomesToSpawnIn.add(Nanotech_mod.nanotechBiome);
-		this.myBiomesToSpawnIn.add(Nanotech_mod.nitrogenOcean);
+		this.myBiomesToSpawnIn.add(NanotechOther.nanotechBiome);
+		this.myBiomesToSpawnIn.add(NanotechOther.nitrogenOcean);
 	}
 
 	public NanotechWorldChunkManager(long seed, WorldType worldtype)
@@ -54,7 +54,7 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 		BiomeGenBase biome = this.myBiomeCache.getBiomeGenAt(x, z);
 		if(biome == null)
 		{
-			return Nanotech_mod.nanotechBiome;
+			return NanotechOther.nanotechBiome;
 		}
 
 		return biome;
@@ -137,7 +137,7 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 			}
 			else
 			{
-				par1ArrayOfBiomeGenBase[i] = Nanotech_mod.nanotechBiome;
+				par1ArrayOfBiomeGenBase[i] = NanotechOther.nanotechBiome;
 			}
 		}
 
@@ -176,7 +176,7 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 				}
 				else
 				{
-					par1ArrayOfBiomeGenBase[i] = Nanotech_mod.nanotechBiome;
+					par1ArrayOfBiomeGenBase[i] = NanotechOther.nanotechBiome;
 				}
 			}
 

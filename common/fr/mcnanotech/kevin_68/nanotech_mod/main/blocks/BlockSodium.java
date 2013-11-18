@@ -8,7 +8,7 @@ import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechDamageSource;
 
 public class BlockSodium extends Block
 {

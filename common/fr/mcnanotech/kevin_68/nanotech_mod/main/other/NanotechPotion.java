@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.other;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
@@ -10,7 +10,7 @@ public class NanotechPotion extends Potion
 {
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/gui/potion/freeze.png");
 
-	protected NanotechPotion(int id, boolean isBad, int color)
+	public NanotechPotion(int id, boolean isBad, int color)
 	{
 		super(id, isBad, color);
 	}

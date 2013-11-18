@@ -21,6 +21,7 @@ public class EventSound
 			event.manager.addSound("nanotech_mod:fly.ogg");
 			event.manager.addSound("nanotech_mod:CrazyGuy.ogg");
 			event.manager.addSound("nanotech_mod:crazyglassesgunreload.ogg");
+			event.manager.addSound("nanotech_mod:lightsaber.ogg");
 			event.manager.addStreaming("nanotech_mod:nanodisk.ogg");
 
 			File di = new File(Minecraft.getMinecraft().mcDataDir, "/assets/records/");

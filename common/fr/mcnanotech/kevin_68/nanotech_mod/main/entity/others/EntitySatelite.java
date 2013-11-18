@@ -1,17 +1,11 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,6 +20,11 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechDamageSource;
 
 public class EntitySatelite extends Entity
 {
@@ -261,7 +260,7 @@ public class EntitySatelite extends Entity
 					f2 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
 					int i1 = MathHelper.ceiling_double_int((double)f2 * this.damage);
 
-					DamageSource damagesource = NanotechDamageSource.altersDamage;
+					DamageSource damagesource = NanotechDamageSource.sateliteDamage;
 
 					if(this.isBurning() && !(movingobjectposition.entityHit instanceof EntityEnderman))
 					{

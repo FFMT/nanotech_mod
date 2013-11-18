@@ -8,8 +8,8 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.TickType;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechDamageSource;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
 
 public class NanotechServerTickHandler implements ITickHandler
@@ -17,7 +17,6 @@ public class NanotechServerTickHandler implements ITickHandler
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData)
 	{
-
 	}
 
 	@Override

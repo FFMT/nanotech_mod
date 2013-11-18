@@ -13,7 +13,7 @@ public class NanotechItem
 {
 	// Items statement
 	public static Item itemBase, superBottleOfXp, diamondBow, emeraldBow, nanomiteBow, nanomiteAxe, nanomitePickaxe, nanomiteShovel, nanomiteHoe, nanomiteSword, nanomiteHelmet, nanomiteChestPlate, nanomiteLeggings, nanomiteBoots, mysteriousHelmet, mysteriousChestPlate, mysteriousLeggings, mysteriousBoots, nanoDisc, edibleFlesh, rottenChunk, scythe, crazyGlasses, debug, alters, nitrogenBucket,
-			reinforcedFishingRod, crazyGlassesGun;
+			reinforcedFishingRod, crazyGlassesGun, lightSaber;
 
 	// Enum tools and armor material
 	public static EnumArmorMaterial EnumArmorMaterialMysterious = EnumHelper.addArmorMaterial("Mysterious", 50, new int[] {6, 6, 6, 6}, 15);
@@ -21,7 +21,7 @@ public class NanotechItem
 	public static EnumArmorMaterial EnumArmorMaterialCrazyGlasses = EnumHelper.addArmorMaterial("CrazyGlasses", 0, new int[] {0, 0, 0, 0}, 0);
 	public static EnumToolMaterial EnumToolMaterialNanomite = EnumHelper.addToolMaterial("Nanomite", 4, 2000, 13F, 4, 14);
 	public static EnumToolMaterial EnumToolMaterialScythe = EnumHelper.addToolMaterial("Scythe", 4, 2500, 13F, 16, 2);
-
+	
 	// Items Initialization
 	public static void initItem()
 	{
@@ -53,6 +53,7 @@ public class NanotechItem
 		nitrogenBucket = new ItemNitrogenBucket(Nanotech_mod.nitrogenBucketID, NanotechBlock.liquidNitrogen.blockID).setContainerItem(Item.bucketEmpty).setUnlocalizedName("nitrogenBucket").setTextureName("nanotech_mod:nitrogenbucket").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		reinforcedFishingRod = new ItemReinforcedFishingRod(Nanotech_mod.reinforcedFishingRodID).setUnlocalizedName("reinforcedFishingRod").setTextureName("nanotech_mod:reinforced_fishing_rod").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		crazyGlassesGun = new ItemCrazyGlassesGun(Nanotech_mod.crazyGlassesGunID).setUnlocalizedName("crazyGlassesGun").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		lightSaber = new ItemLightSaber(Nanotech_mod.lightSaberID).setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 	}
 	
 	public static void registerItem()
@@ -85,6 +86,6 @@ public class NanotechItem
 		GameRegistry.registerItem(nitrogenBucket, "nitrogenBucket", "Nanotech_mod");
 		GameRegistry.registerItem(reinforcedFishingRod, "reinforcedFishingRod", "Nanotech_mod");
 		GameRegistry.registerItem(crazyGlassesGun, "crazyGlassesGun", "Nanotech_mod");
-
+		GameRegistry.registerItem(lightSaber, "lightSaber", "Nanotech_mod");
 	}
 }

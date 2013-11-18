@@ -94,6 +94,11 @@ item.fish_veryfrozen.name=Very frozen fish
 item.fish_frozen.name=Frozen fish
 item.crazyGlassesGun.name=Crazy Glasses Launcher
 item.cageCrazyGlasses.name=Caged Crazy Glasses
+item.lightSaber_black.name=Black light saber
+item.lightSaber_red.name=Red light saber
+item.lightSaber_green.name=Green light saber
+item.lightSaber_blue.name=Blue light saber
+item.lightSaber_white.name=White light saber
 
 #Entity
 entity.SuperZombie.name=Super Zombie
@@ -211,6 +216,24 @@ achievement.itemNanomiteTool=Craft Nanomite Tools
 achievement.itemNanomiteTool.desc=Better tools!
 achievement.itemNanomiteArmor=Craft Nanomite Armor
 achievement.itemNanomiteArmor.desc=Better Armors!
+achievement.itemReinforcedFishinRod=Craft Reinforced Fishing Rod
+achievement.itemReinforcedFishinRod.desc=Better fisherman!
+achievement.itemCrazyGlassesLauncher=Craft Crazy Glasses Launcher
+achievement.itemCrazyGlassesLauncher.desc=For you, my friends!
+achievement.itemFrozenFish=Fish frozen fish
+achievement.itemFrozenFish.desc=Very icy!
+achievement.deathSatelit=Killed by a satelit
+achievement.deathSatelit.desc=You aren't lucky!
+achievement.deathLightLaser=Cutted by a light laser
+achievement.deathLightLaser.desc=Like StarWars!
+achievement.deathAlters=Killed because it is too much effort. 
+achievement.deathAlters.desc=Musclor!
+achievement.deathSodium=Killed when manipulate sodium
+achievement.deathSodium.desc=Novice chemist!
+achievement.deathNitrogen=Frozen death
+achievement.deathNitrogen.desc=Because it's to cold!
+achievement.deathBarbedWire=Killed in barbed wire
+achievement.deathBarbedWire.desc=As the war!
 
 #CreativeTab
 itemGroup.NanotechModBlocks=Nanotech mod Blocks
@@ -223,6 +246,8 @@ deathMessage.sodium.2=%s wants to become a scientist, but it does not have the r
 deathMessage.alters.0=%s has done too much workouts ! 
 deathMessage.nitrogen.0=%s stayed frozen in liquid nitrogen !
 deathMessage.barbedWire.0=%s stayed stuck in barbed wire !
+deathMessage.lightSaberDamage.0=%s was cuted by a light saber !
+deathMessage.sateliteDamage.0=%s was in the wrong place at the wrong time, and was crushed by satelite!
 
 #Potion
 potion.freeze=Freeze

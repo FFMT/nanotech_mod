@@ -20,6 +20,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntityReinforcedFishingHook;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechOther;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
 
 public class BlockLiquidNitrogen extends BlockFluidClassic
@@ -67,7 +68,7 @@ public class BlockLiquidNitrogen extends BlockFluidClassic
 		{
 			EntityLivingBase living = (EntityLivingBase)entity;
 			if(this.doEffect(living))
-				living.addPotionEffect(new PotionEffect(Nanotech_mod.freeze.id, 500, 0));
+				living.addPotionEffect(new PotionEffect(NanotechOther.freeze.id, 500, 0));
 		}
 
 		if(entity instanceof EntityFishHook && !(entity instanceof EntityReinforcedFishingHook) && !world.isRemote)

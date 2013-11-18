@@ -6,7 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechDamageSource;
 
 public class BlockBarbedWire extends Block
 {

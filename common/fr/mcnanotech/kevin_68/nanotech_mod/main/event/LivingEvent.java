@@ -1,15 +1,17 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.event;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechAchievement;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechDamageSource;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechOther;
 
 public class LivingEvent
 {
@@ -32,7 +34,7 @@ public class LivingEvent
 	@ForgeSubscribe
 	public void onLivingUpdate(LivingUpdateEvent event)
 	{
-		if(event.entityLiving.isPotionActive(Nanotech_mod.freeze))
+		if(event.entityLiving.isPotionActive(NanotechOther.freeze))
 		{
 			event.entityLiving.attackEntityFrom(NanotechDamageSource.nitrogenDamage, 1);
 			int blockId = event.entityLiving.worldObj.getBlockId((int)event.entityLiving.posX - 1, (int)event.entityLiving.posY, (int)event.entityLiving.posZ);
@@ -62,6 +64,35 @@ public class LivingEvent
 		if(event.source.equals(NanotechDamageSource.nitrogenDamage))
 		{
 			event.entityLiving.worldObj.setBlock((int)(event.entityLiving.posX - 1), (int)event.entityLiving.posY, (int)event.entityLiving.posZ, Block.ice.blockID);
+		}
+		if(event.entity instanceof EntityPlayer)
+		{
+			EntityPlayer player = (EntityPlayer)event.entity;
+			
+			if(event.source.equals(NanotechDamageSource.altersDamage))
+			{
+				player.triggerAchievement(NanotechAchievement.deathAlters);
+			}
+			if(event.source.equals(NanotechDamageSource.barbedWireDamage))
+			{
+				player.triggerAchievement(NanotechAchievement.deathBarbedWire);
+			}
+			if(event.source.equals(NanotechDamageSource.lightSaberDamage))
+			{
+				player.triggerAchievement(NanotechAchievement.deathLightLaser);
+			}
+			if(event.source.equals(NanotechDamageSource.nitrogenDamage))
+			{
+				player.triggerAchievement(NanotechAchievement.deathNitrogen);
+			}
+			if(event.source.equals(NanotechDamageSource.sateliteDamage))
+			{
+				player.triggerAchievement(NanotechAchievement.deathSatelit);
+			}
+			if(event.source.equals(NanotechDamageSource.sodiumDamage))
+			{
+				player.triggerAchievement(NanotechAchievement.deathSodium);
+			}
 		}
 	}
 

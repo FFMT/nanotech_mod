@@ -5,6 +5,7 @@ import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechOther;
 
 public class NanotechBlock
 {
@@ -43,15 +44,15 @@ public class NanotechBlock
 		nukeBuildingBlock = new BlockBuildingNuke(1026).setUnlocalizedName("nukeBuildingBlock").setTextureName("nanotech_mod:nukebuilding");
 		nukeBuildingStairs = new BlockNanoStairs(1027, nukeBuildingBlock, 0).setUnlocalizedName("nukeBuildingStairs").setCreativeTab(null);
 
-		if(Nanotech_mod.liquidNitrogen.getBlockID() == -1)
+		if(NanotechOther.liquidNitrogen.getBlockID() == -1)
 		{
-			liquidNitrogen = new BlockLiquidNitrogen(Nanotech_mod.liquidNitrogenID, Nanotech_mod.liquidNitrogen, Material.water).setUnlocalizedName("liquidNitrogen");
+			liquidNitrogen = new BlockLiquidNitrogen(Nanotech_mod.liquidNitrogenID, NanotechOther.liquidNitrogen, Material.water).setUnlocalizedName("liquidNitrogen");
 			GameRegistry.registerBlock(liquidNitrogen, "blockLiquidNitrogen");
-			Nanotech_mod.liquidNitrogen.setBlockID(liquidNitrogen);
+			NanotechOther.liquidNitrogen.setBlockID(liquidNitrogen);
 		}
 		else
 		{
-			liquidNitrogen = Block.blocksList[Nanotech_mod.liquidNitrogen.getBlockID()];
+			liquidNitrogen = Block.blocksList[NanotechOther.liquidNitrogen.getBlockID()];
 		}
 	}
 

@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechDamageSource;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechDamageSource;
 
 public class ItemAlters extends Item
 {

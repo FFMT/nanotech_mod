@@ -3,12 +3,12 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.world;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechOther;
 
 public class NanotechBiomeGenLayer extends GenLayer
 {
 
-	protected BiomeGenBase[] allowedBiomes = {Nanotech_mod.nanotechBiome, Nanotech_mod.nitrogenOcean};
+	protected BiomeGenBase[] allowedBiomes = {NanotechOther.nanotechBiome, NanotechOther.nitrogenOcean};
 
 	public NanotechBiomeGenLayer(long seed, GenLayer genlayer)
 	{
