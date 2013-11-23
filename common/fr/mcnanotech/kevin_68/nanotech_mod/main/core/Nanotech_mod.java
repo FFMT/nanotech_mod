@@ -2,6 +2,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 
 import java.util.logging.Logger;
 
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
@@ -22,6 +23,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.network.PacketHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechAchievement;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechDamageSource;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechOther;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.UtilListerJukebox;
 
 @Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "@VERSION@", dependencies = "required-after:FFMTLIBS")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTM|smoker", "NTM|jumper"}, packetHandler = PacketHandler.class)
@@ -75,6 +77,7 @@ public class Nanotech_mod
 		if(event.getSide().isClient())
 		{
 			MinecraftForge.EVENT_BUS.register(new EventSound());
+			UtilListerJukebox.scanFolder(Minecraft.getMinecraft());
 		}
 
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());

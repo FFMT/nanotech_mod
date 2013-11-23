@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.UtilListerJukebox;
 
 public class EventSound
 {
@@ -24,21 +25,21 @@ public class EventSound
 			event.manager.addSound("nanotech_mod:lightsaber.ogg");
 			event.manager.addStreaming("nanotech_mod:nanodisk.ogg");
 
-			File di = new File(Minecraft.getMinecraft().mcDataDir, "/assets/records/");
-			if(!di.exists())
-			{
-				di.mkdirs();
-			}
+			/*
+			 * File di = new File(Minecraft.getMinecraft().mcDataDir,
+			 * "/assets/records/"); if(!di.exists()) { di.mkdirs(); }
+			 */
 
-			File fl[] = di.listFiles();
-
-			for(int i = 0; i != fl.length; i++)
+			for(int i = 0; i != UtilListerJukebox.fileList.length; i++)
 			{
-				String soundName = fl[i].getName();
-				boolean isVanillaSound = soundName.equals("11.ogg") || soundName.equals("13.ogg") || soundName.equals("blocks.ogg") || soundName.equals("cat.ogg") || soundName.equals("chirp.ogg") || soundName.equals("far.ogg") || soundName.equals("mall.ogg") || soundName.equals("mellohi.ogg") || soundName.equals("stal.ogg") || soundName.equals("strad.ogg") || soundName.equals("wait.ogg") || soundName.equals("ward.ogg");
+				String soundName = UtilListerJukebox.fileList[i].getName();
+				boolean isVanillaSound = soundName.equals("11.ogg") || soundName.equals("13.ogg") || soundName.equals("blocks.ogg") || soundName.equals("cat.ogg") || soundName.equals("chirp.ogg") || soundName.equals("far.ogg") || soundName.equals("mall.ogg") || soundName.equals("mellohi.ogg") || soundName.equals("stal.ogg") || soundName.equals("strad.ogg") || soundName.equals("wait.ogg") || soundName.equals("ward.ogg") || soundName.equals("playlists");
 				if(!isVanillaSound)
+				{
 					event.manager.addStreaming(soundName);
+				}
 			}
+
 		}
 		catch(Exception e)
 		{

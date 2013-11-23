@@ -13,26 +13,28 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityListerJukebox;
 
 @SideOnly(Side.CLIENT)
-public class GuiListerJukebox extends GuiScreen
+public class GuiListerJukeboxPlaylists extends GuiScreen
 {
-	private GuiSlotMusic musicList;
+	private GuiSlotMusicPlaylist musicList;
 	public TileEntityListerJukebox tile;
 	public World worldd;
 	public InventoryPlayer inventoryy;
 	private GuiSmallButton stopButton;
+	private int playList;
 
-	public GuiListerJukebox(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world)
+	public GuiListerJukeboxPlaylists(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world, int playlistnumber)
 	{
 		inventoryy = inventory;
 		tile = tileentity;
 		worldd = world;
+		playList = playlistnumber;
 	}
 
 	public void initGui()
 	{
 		this.buttonList.add(this.stopButton = new GuiSmallButton(6, this.width / 2 - 150, this.height - 38, "Stop"));
 		this.buttonList.add(new GuiSmallButton(7, this.width / 2, this.height - 38, "Playlist"));
-		this.musicList = new GuiSlotMusic(this);
+		this.musicList = new GuiSlotMusicPlaylist(this, playList);
 		this.musicList.registerScrollButtons(7, 8);
 	}
 
@@ -57,11 +59,11 @@ public class GuiListerJukebox extends GuiScreen
 	public void drawScreen(int par1, int par2, float par3)
 	{
 		this.musicList.drawScreen(par1, par2, par3);
-		this.drawCenteredString(this.fontRenderer, "Chose your music", this.width / 2, 16, 16777215);
+		this.drawCenteredString(this.fontRenderer, "Playlist " + this.playList, this.width / 2, 16, 16777215);
 		super.drawScreen(par1, par2, par3);
 	}
 
-	static GuiSmallButton getstopButton(GuiListerJukebox gui)
+	static GuiSmallButton getstopButton(GuiListerJukeboxPlaylists gui)
 	{
 		return gui.stopButton;
 	}
