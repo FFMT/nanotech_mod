@@ -15,10 +15,12 @@ public class TileEntityListerJukebox extends TileEntity
 		if(music != null && music.contains(".ogg"))
 		{
 			String str = music.replace(".ogg", "");
-			this.worldObj.playRecord(str, xCoord, yCoord, zCoord);
+			System.out.println(str);
+			this.worldObj.playRecord("nanotech_mod:" + str, xCoord, yCoord, zCoord);
 		}
 		else if(music != null && music.equals("nanodisk"))
 		{
+			System.out.println(music);
 			this.worldObj.playRecord("nanotech_mod:" + music, xCoord, yCoord, zCoord);
 		}
 	}

@@ -33,13 +33,8 @@ public class EventSound
 			for(int i = 0; i != UtilListerJukebox.fileList.length; i++)
 			{
 				String soundName = UtilListerJukebox.fileList[i].getName();
-				boolean isVanillaSound = soundName.equals("11.ogg") || soundName.equals("13.ogg") || soundName.equals("blocks.ogg") || soundName.equals("cat.ogg") || soundName.equals("chirp.ogg") || soundName.equals("far.ogg") || soundName.equals("mall.ogg") || soundName.equals("mellohi.ogg") || soundName.equals("stal.ogg") || soundName.equals("strad.ogg") || soundName.equals("wait.ogg") || soundName.equals("ward.ogg") || soundName.equals("playlists");
-				if(!isVanillaSound)
-				{
-					event.manager.addStreaming(soundName);
-				}
+				event.manager.addStreaming("nanotech_mod:" + soundName);
 			}
-
 		}
 		catch(Exception e)
 		{
