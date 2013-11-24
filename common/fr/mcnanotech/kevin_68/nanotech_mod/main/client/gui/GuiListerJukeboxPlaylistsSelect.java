@@ -35,7 +35,7 @@ public class GuiListerJukeboxPlaylistsSelect extends GuiScreen
 		this.buttonList.add(new GuiSmallButton(4, this.width / 2, this.height - 150, "Playlist 4"));
 		this.buttonList.add(new GuiSmallButton(5, this.width / 2 - 150, this.height - 100, "Playlist 5"));
 		this.buttonList.add(new GuiSmallButton(6, this.width / 2, this.height - 100, "Playlist 6"));
-
+		this.buttonList.add(new GuiSmallButton(7, this.width / 2 - 75, this.height - 75, "Mods Playlist"));
 	}
 
 	protected void actionPerformed(GuiButton guiButton)
@@ -69,6 +69,10 @@ public class GuiListerJukeboxPlaylistsSelect extends GuiScreen
 			if(guiButton.id == 6)
 			{
 				this.mc.displayGuiScreen(new GuiListerJukeboxPlaylists(inventoryy, tile, worldd, 6));	
+			}			
+			if(guiButton.id == 7)
+			{
+				this.mc.displayGuiScreen(new GuiListerJukeboxPlaylists(inventoryy, tile, worldd, 7));	
 			}
 		}
 	}

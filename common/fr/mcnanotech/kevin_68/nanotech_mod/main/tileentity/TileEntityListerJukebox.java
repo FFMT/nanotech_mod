@@ -10,18 +10,27 @@ public class TileEntityListerJukebox extends TileEntity
 		return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) == this && player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
 	}
 
-	public void playMusic(String music)
+	public void playMusic(String music, boolean mods)
 	{
-		if(music != null && music.contains(".ogg"))
+		if(!mods)
 		{
-			String str = music.replace(".ogg", "");
-			System.out.println(str);
-			this.worldObj.playRecord("nanotech_mod:" + str, xCoord, yCoord, zCoord);
+			if(music != null && music.contains(".ogg"))
+			{
+				String str = music.replace(".ogg", "");
+				this.worldObj.playRecord(str, xCoord, yCoord, zCoord);
+			}
+			else if(music != null && music.equals("nanodisk"))
+			{
+				this.worldObj.playRecord("nanotech_mod:" + music, xCoord, yCoord, zCoord);
+			}
 		}
-		else if(music != null && music.equals("nanodisk"))
+		else
 		{
-			System.out.println(music);
-			this.worldObj.playRecord("nanotech_mod:" + music, xCoord, yCoord, zCoord);
+			String newMusic;
+			newMusic = music.substring(music.lastIndexOf("assets"));
+			String modId = newMusic.substring(7);
+			
+			System.out.println(newMusic);
 		}
 	}
 

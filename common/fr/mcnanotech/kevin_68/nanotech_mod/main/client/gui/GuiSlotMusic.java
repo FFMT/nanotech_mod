@@ -31,7 +31,7 @@ class GuiSlotMusic extends GuiSlot
 
 		for(int i = 0; i != UtilListerJukebox.fileList.length; i++)
 		{
-			this.mapMap.put(i, UtilListerJukebox.fileList[i]);
+			this.mapMap.put(i, UtilListerJukebox.fileList[i].getName());
 			this.listList.add(i);
 		}
 
@@ -50,11 +50,11 @@ class GuiSlotMusic extends GuiSlot
 
 		if(slot < listList.size() - 1)
 		{
-			this.listerGui.getTile().playMusic(UtilListerJukebox.fileList[slot].getName());
+			this.listerGui.getTile().playMusic(UtilListerJukebox.fileList[slot].getName(), false);
 		}
 		else
 		{
-			this.listerGui.getTile().playMusic("nanodisk");
+			this.listerGui.getTile().playMusic("nanodisk", false);
 		}
 	}
 
@@ -102,6 +102,8 @@ class GuiSlotMusicPlaylist extends GuiSlot
 	private final Map mapMap5;
 	private final List listList6;
 	private final Map mapMap6;
+	private final List listListMods;
+	private final Map mapMapMods;
 	private int playList;
 	final GuiListerJukeboxPlaylists listerGui;
 
@@ -122,36 +124,43 @@ class GuiSlotMusicPlaylist extends GuiSlot
 		this.mapMap5 = Maps.newHashMap();
 		this.listList6 = Lists.newArrayList();
 		this.mapMap6 = Maps.newHashMap();
+		this.listListMods = Lists.newArrayList();
+		this.mapMapMods = Maps.newHashMap();
 
 		for(int i = 0; i != UtilListerJukebox.playlistlist1.length; i++)
 		{
-			this.mapMap1.put(i, UtilListerJukebox.playlistlist1[i]);
+			this.mapMap1.put(i, UtilListerJukebox.playlistlist1[i].getName());
 			this.listList1.add(i);
 		}
 		for(int i = 0; i != UtilListerJukebox.playlistlist2.length; i++)
 		{
-			this.mapMap2.put(i, UtilListerJukebox.playlistlist2[i]);
+			this.mapMap2.put(i, UtilListerJukebox.playlistlist2[i].getName());
 			this.listList2.add(i);
 		}
 		for(int i = 0; i != UtilListerJukebox.playlistlist3.length; i++)
 		{
-			this.mapMap3.put(i, UtilListerJukebox.playlistlist3[i]);
+			this.mapMap3.put(i, UtilListerJukebox.playlistlist3[i].getName());
 			this.listList3.add(i);
 		}
 		for(int i = 0; i != UtilListerJukebox.playlistlist4.length; i++)
 		{
-			this.mapMap4.put(i, UtilListerJukebox.playlistlist4[i]);
+			this.mapMap4.put(i, UtilListerJukebox.playlistlist4[i].getName());
 			this.listList4.add(i);
 		}
 		for(int i = 0; i != UtilListerJukebox.playlistlist5.length; i++)
 		{
-			this.mapMap5.put(i, UtilListerJukebox.playlistlist5[i]);
+			this.mapMap5.put(i, UtilListerJukebox.playlistlist5[i].getName());
 			this.listList5.add(i);
 		}
 		for(int i = 0; i != UtilListerJukebox.playlistlist6.length; i++)
 		{
-			this.mapMap6.put(i, UtilListerJukebox.playlistlist6[i]);
+			this.mapMap6.put(i, UtilListerJukebox.playlistlist6[i].getName());
 			this.listList6.add(i);
+		}
+		for(int i = 0; i != UtilListerJukebox.allModsPlayList.length; i++)
+		{
+			this.mapMapMods.put(i, UtilListerJukebox.allModsPlayList[i].getName());
+			this.listListMods.add(i);
 		}
 	}
 
@@ -177,9 +186,13 @@ class GuiSlotMusicPlaylist extends GuiSlot
 		{
 			return this.listList5.size();
 		}
-		else
+		else if(playList == 6)
 		{
 			return this.listList6.size();
+		}
+		else
+		{
+			return this.listListMods.size();
 		}
 	}
 
@@ -187,27 +200,31 @@ class GuiSlotMusicPlaylist extends GuiSlot
 	{
 		if(playList == 1)
 		{
-			this.listerGui.getTile().playMusic(UtilListerJukebox.playlistlist1[slot].getName());
+			this.listerGui.getTile().playMusic(UtilListerJukebox.playlistlist1[slot].getName(), false);
 		}
 		else if(playList == 2)
 		{
-			this.listerGui.getTile().playMusic(UtilListerJukebox.playlistlist2[slot].getName());
+			this.listerGui.getTile().playMusic(UtilListerJukebox.playlistlist2[slot].getName(), false);
 		}
 		else if(playList == 3)
 		{
-			this.listerGui.getTile().playMusic(UtilListerJukebox.playlistlist3[slot].getName());
+			this.listerGui.getTile().playMusic(UtilListerJukebox.playlistlist3[slot].getName(), false);
 		}
 		else if(playList == 4)
 		{
-			this.listerGui.getTile().playMusic(UtilListerJukebox.playlistlist4[slot].getName());
+			this.listerGui.getTile().playMusic(UtilListerJukebox.playlistlist4[slot].getName(), false);
 		}
 		else if(playList == 5)
 		{
-			this.listerGui.getTile().playMusic(UtilListerJukebox.playlistlist5[slot].getName());
+			this.listerGui.getTile().playMusic(UtilListerJukebox.playlistlist5[slot].getName(), false);
+		}
+		else if(playList == 6)
+		{
+			this.listerGui.getTile().playMusic(UtilListerJukebox.playlistlist6[slot].getName(), false);
 		}
 		else
 		{
-			this.listerGui.getTile().playMusic(UtilListerJukebox.playlistlist6[slot].getName());
+			this.listerGui.getTile().playMusic(UtilListerJukebox.allModsPlayList[slot].toString(), true);
 		}
 	}
 
@@ -228,27 +245,31 @@ class GuiSlotMusicPlaylist extends GuiSlot
 
 		if(this.playList == 1)
 		{
-			this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.mapMap1.get(this.listList1.get(slotId))).toString().replace(".ogg", "").replace(UtilListerJukebox.cdDirectoryName + File.separator, ""), this.listerGui.width / 2, par3 + 1, color);
+			this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.mapMap1.get(this.listList1.get(slotId))).toString().replace("_pl1.ogg", "").replace(UtilListerJukebox.cdDirectoryName + File.separator, ""), this.listerGui.width / 2, par3 + 1, color);
 		}
 		else if(this.playList == 2)
 		{
-			this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.mapMap2.get(this.listList2.get(slotId))).toString().replace(".ogg", "").replace(UtilListerJukebox.cdDirectoryName + File.separator, ""), this.listerGui.width / 2, par3 + 1, color);
+			this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.mapMap2.get(this.listList2.get(slotId))).toString().replace("_pl2.ogg", "").replace(UtilListerJukebox.cdDirectoryName + File.separator, ""), this.listerGui.width / 2, par3 + 1, color);
 		}
 		else if(this.playList == 3)
 		{
-			this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.mapMap3.get(this.listList3.get(slotId))).toString().replace(".ogg", "").replace(UtilListerJukebox.cdDirectoryName + File.separator, ""), this.listerGui.width / 2, par3 + 1, color);
+			this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.mapMap3.get(this.listList3.get(slotId))).toString().replace("_pl3.ogg", "").replace(UtilListerJukebox.cdDirectoryName + File.separator, ""), this.listerGui.width / 2, par3 + 1, color);
 		}
 		else if(this.playList == 4)
 		{
-			this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.mapMap4.get(this.listList4.get(slotId))).toString().replace(".ogg", "").replace(UtilListerJukebox.cdDirectoryName + File.separator, ""), this.listerGui.width / 2, par3 + 1, color);
+			this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.mapMap4.get(this.listList4.get(slotId))).toString().replace("_pl4.ogg", "").replace(UtilListerJukebox.cdDirectoryName + File.separator, ""), this.listerGui.width / 2, par3 + 1, color);
 		}
 		else if(this.playList == 5)
 		{
-			this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.mapMap5.get(this.listList5.get(slotId))).toString().replace(".ogg", "").replace(UtilListerJukebox.cdDirectoryName + File.separator, ""), this.listerGui.width / 2, par3 + 1, color);
+			this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.mapMap5.get(this.listList5.get(slotId))).toString().replace("_pl5.ogg", "").replace(UtilListerJukebox.cdDirectoryName + File.separator, ""), this.listerGui.width / 2, par3 + 1, color);
+		}
+		else if(this.playList == 6)
+		{
+			this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.mapMap6.get(this.listList6.get(slotId))).toString().replace("_pl6.ogg", "").replace(UtilListerJukebox.cdDirectoryName + File.separator, ""), this.listerGui.width / 2, par3 + 1, color);
 		}
 		else
 		{
-			this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.mapMap6.get(this.listList6.get(slotId))).toString().replace(".ogg", "").replace(UtilListerJukebox.cdDirectoryName + File.separator, ""), this.listerGui.width / 2, par3 + 1, color);
+			this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.mapMapMods.get(this.listListMods.get(slotId))).toString().replace(".ogg", "").replace(UtilListerJukebox.cdDirectoryName + File.separator, ""), this.listerGui.width / 2, par3 + 1, color);
 		}
 	}
 

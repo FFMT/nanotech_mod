@@ -76,8 +76,8 @@ public class Nanotech_mod
 		nanoLog = event.getModLog();
 		if(event.getSide().isClient())
 		{
-			MinecraftForge.EVENT_BUS.register(new EventSound());
 			UtilListerJukebox.scanFolder(Minecraft.getMinecraft());
+			MinecraftForge.EVENT_BUS.register(new EventSound());
 		}
 
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
@@ -246,5 +246,6 @@ public class Nanotech_mod
 			NanotechRecipe.InitNormalRecipes();
 			NanotechRecipe.InitFallingBlockRecipes(8);
 		}
+		UtilListerJukebox.getAllStreaming();
 	}
 }

@@ -25,15 +25,14 @@ public class EventSound
 			event.manager.addSound("nanotech_mod:lightsaber.ogg");
 			event.manager.addStreaming("nanotech_mod:nanodisk.ogg");
 
-			/*
-			 * File di = new File(Minecraft.getMinecraft().mcDataDir,
-			 * "/assets/records/"); if(!di.exists()) { di.mkdirs(); }
-			 */
-
-			for(int i = 0; i != UtilListerJukebox.fileList.length; i++)
+			for(int i = 0; i != UtilListerJukebox.unsortedFileList.length; i++)
 			{
-				String soundName = UtilListerJukebox.fileList[i].getName();
-				event.manager.addStreaming("nanotech_mod:" + soundName);
+				String soundName = UtilListerJukebox.unsortedFileList[i].getName();
+				boolean isVanillaSound = soundName.equals("11.ogg") || soundName.equals("13.ogg") || soundName.equals("blocks.ogg") || soundName.equals("cat.ogg") || soundName.equals("chirp.ogg") || soundName.equals("far.ogg") || soundName.equals("mall.ogg") || soundName.equals("mellohi.ogg") || soundName.equals("stal.ogg") || soundName.equals("strad.ogg") || soundName.equals("wait.ogg") || soundName.equals("ward.ogg");
+				if(!isVanillaSound && soundName.contains(".ogg"))
+				{
+					event.manager.addStreaming(soundName);
+				}
 			}
 		}
 		catch(Exception e)
