@@ -59,7 +59,7 @@ public class GuiListerJukeboxPlaylists extends GuiScreen
 	public void drawScreen(int par1, int par2, float par3)
 	{
 		this.musicList.drawScreen(par1, par2, par3);
-		this.drawCenteredString(this.fontRenderer, "Playlist " + this.playList, this.width / 2, 16, 16777215);
+		this.drawCenteredString(this.fontRenderer, (this.playList == 7 ? "Mods playlist" : ("Playlist " + this.playList)), this.width / 2, 16, 16777215);
 		super.drawScreen(par1, par2, par3);
 	}
 

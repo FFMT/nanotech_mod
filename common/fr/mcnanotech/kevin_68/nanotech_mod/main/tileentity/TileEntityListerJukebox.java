@@ -1,5 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity;
 
+import java.io.File;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 
@@ -26,11 +28,19 @@ public class TileEntityListerJukebox extends TileEntity
 		}
 		else
 		{
-			String newMusic;
-			newMusic = music.substring(music.lastIndexOf("assets"));
+			String newMusic = music.substring(music.lastIndexOf("assets"));
 			String modId = newMusic.substring(7);
+			String modId2 = "";
+			for(int i = 0; i != modId.length(); i++)
+			{
+				if(modId.charAt(i) == File.separatorChar)
+				{
+					modId2 = modId.substring(0, i).replace(File.separator + "records", "").toLowerCase();
+				}
+			}
+			String musicName = music.substring(music.lastIndexOf("records" + File.separator)).replace(".ogg", "").replace("records" + File.separator, "");
 			
-			System.out.println(newMusic);
+			this.worldObj.playRecord(modId2 + ":" + musicName, xCoord, yCoord, zCoord);
 		}
 	}
 

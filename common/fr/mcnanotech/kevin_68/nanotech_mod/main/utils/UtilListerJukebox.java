@@ -47,7 +47,6 @@ public class UtilListerJukebox
 	public static void scanFolder(Minecraft minecraft)
 	{
 		mcDir = String.valueOf(minecraft.getMinecraft().mcDataDir);
-		System.out.println(mcDir);
 		recordsDir = new File(minecraft.getMinecraft().mcDataDir + "/assets/records/");
 		if(!recordsDir.exists())
 		{
@@ -129,7 +128,6 @@ public class UtilListerJukebox
 	public static void getAllStreaming()
 	{
 		List modList = Loader.instance().getActiveModList();
-		System.out.println("----------------------------------" + modList.size());
 		int id = 0;
 		for(int i = 0; i != modList.size(); i++)
 		{
@@ -137,19 +135,15 @@ public class UtilListerJukebox
 			File modsPlaylist[] = new File(mod.getSource() + "/assets/" + mod.getModId() + "/records/").listFiles();
 			for(int j = 0; j != (modsPlaylist == null ? 0 : modsPlaylist.length); j++)
 			{
-				System.out.println(modsPlaylist[j]);
 				allModsPlayListA.add(id, modsPlaylist[j]);
 				id++;
 			}
-			System.out.println(mod.getName());
-			System.out.println(mod.getSource());
 		}
 		
 		allModsPlayList = new File[allModsPlayListA.size()];
 		for(int i = 0; i != allModsPlayListA.size(); i++)
 		{
 			allModsPlayList[i] = allModsPlayListA.get(i);
-			System.out.println("Chemin fichier" + allModsPlayList[i].toString().substring(allModsPlayList[i].toString().lastIndexOf("assets")));
 		}
 	}
 }
