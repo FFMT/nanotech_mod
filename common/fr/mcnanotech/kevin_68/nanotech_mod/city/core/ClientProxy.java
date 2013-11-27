@@ -1,6 +1,8 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.city.core;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.TrashCanRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity.TileEntityFountainRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity.TileEntityLampLightRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity.TileEntityLampRender;
@@ -20,6 +22,8 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrashCan;
 
 public class ClientProxy extends CommonProxy
 {
+	public static int trashCanRenderId;
+	
 	@Override
 	public void registerTileRenders()
 	{
@@ -31,5 +35,8 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySunShade.class, new TileEntitySunShadeRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityModernFence.class, new TileEntityModernFenceRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTrashCan.class, new TileEntityTrashCanRender());
+		
+		trashCanRenderId = RenderingRegistry.getNextAvailableRenderId();
+		RenderingRegistry.registerBlockHandler(new TrashCanRender());
 	}
 }

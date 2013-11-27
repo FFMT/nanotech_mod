@@ -11,6 +11,9 @@ import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.core.ClientProxy;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrashCan;
 
 public class BlockTrashcan extends Block
@@ -73,9 +76,10 @@ public class BlockTrashcan extends Block
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public int getRenderType()
 	{
-		return -1;
+		return ClientProxy.trashCanRenderId;
 	}
 
 	@Override

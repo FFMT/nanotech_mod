@@ -1,5 +1,6 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity;
 
+import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
@@ -12,21 +13,22 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrashCan;
 
 public class TileEntityTrashCanRender extends TileEntitySpecialRenderer
 {
-	private final ModelBlockTrashCan model;
-	private final ResourceLocation texture = new ResourceLocation("nanotech_mod_city", "textures/blocks/trashcan.png");
+	public static TileEntityTrashCanRender INSTANCE = new TileEntityTrashCanRender();
+	private final ModelBlockTrashCan model = new ModelBlockTrashCan();;
+	private static final ResourceLocation texture = new ResourceLocation("nanotech_mod_city", "textures/blocks/trashcan.png");
 
 	public TileEntityTrashCanRender()
 	{
-		this.model = new ModelBlockTrashCan();
+		setTileEntityRenderer(TileEntityRenderer.instance);
 	}
 
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float scale)
 	{
-		this.renderTileEntityAtBlockLamp((TileEntityTrashCan)tileentity, x, y, z, scale);
+		this.renderTileEntityTrashCanAt((TileEntityTrashCan)tileentity, x, y, z, scale);
 	}
 
-	public void renderTileEntityAtBlockLamp(TileEntityTrashCan tileentity, double x, double y, double z, float scale)
+	public void renderTileEntityTrashCanAt(TileEntityTrashCan tileentity, double x, double y, double z, float scale)
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
