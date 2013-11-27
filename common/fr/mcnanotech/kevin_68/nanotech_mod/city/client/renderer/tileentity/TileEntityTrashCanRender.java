@@ -14,7 +14,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrashCan;
 public class TileEntityTrashCanRender extends TileEntitySpecialRenderer
 {
 	public static TileEntityTrashCanRender INSTANCE = new TileEntityTrashCanRender();
-	private final ModelBlockTrashCan model = new ModelBlockTrashCan();;
+	private final ModelBlockTrashCan model = new ModelBlockTrashCan();
 	private static final ResourceLocation texture = new ResourceLocation("nanotech_mod_city", "textures/blocks/trashcan.png");
 
 	public TileEntityTrashCanRender()
