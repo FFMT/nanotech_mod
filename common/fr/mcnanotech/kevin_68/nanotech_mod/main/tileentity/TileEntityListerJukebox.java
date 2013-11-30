@@ -16,22 +16,12 @@ public class TileEntityListerJukebox extends TileEntity
 
 	public void playMusic(String music, boolean mods)
 	{
-		if(Nanotech_mod.debugMode)
-		{
-			System.out.println("TileEntityListerJukebox:playMusic:" + "music:" + music);
-			System.out.println("TileEntityListerJukebox:playMusic:" + "mods:" + mods);
-		}
-
 		if(!mods)
 		{
 			if(music != null && music.contains(".ogg"))
 			{
 				String str = music.replace(".ogg", "");
 				this.worldObj.playRecord(str, xCoord, yCoord, zCoord);
-				if(Nanotech_mod.debugMode)
-				{
-					System.out.println("TileEntityListerJukebox:playMusic:" + "str:" + str);
-				}
 			}
 			else if(music != null && music.equals("nanodisk"))
 			{
@@ -40,25 +30,7 @@ public class TileEntityListerJukebox extends TileEntity
 		}
 		else
 		{
-			String newMusic = music.substring(music.lastIndexOf("assets"));
-			String modId = newMusic.substring(7);
-			String modId2 = "";
-			for(int i = 0; i != modId.length(); i++)
-			{
-				if(modId.charAt(i) == File.separatorChar)
-				{
-					modId2 = modId.substring(0, i).replace(File.separator + "records", "").toLowerCase();
-				}
-			}
-			String musicName = music.substring(music.lastIndexOf("records" + File.separator)).replace(".ogg", "").replace("records" + File.separator, "");
-			this.worldObj.playRecord(modId2 + ":" + musicName, xCoord, yCoord, zCoord);
-			if(Nanotech_mod.debugMode)
-			{
-				System.out.println("TileEntityListerJukebox:playMusic:" + "newMusic:" + newMusic);
-				System.out.println("TileEntityListerJukebox:playMusic:" + "modId:" + modId);
-				System.out.println("TileEntityListerJukebox:playMusic:" + "modId2:" + modId2);
-				System.out.println("TileEntityListerJukebox:playMusic:" + "musicName:" + musicName);
-			}
+			this.worldObj.playRecord(music, xCoord, yCoord, zCoord);
 		}
 	}
 

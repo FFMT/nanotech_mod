@@ -1,15 +1,19 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.SoundPool;
 import net.minecraft.client.gui.GuiSlot;
 import net.minecraft.client.renderer.Tessellator;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
+import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.UtilListerJukebox;
@@ -103,6 +107,10 @@ class GuiSlotMusicPlaylist extends GuiSlot
 	private final Map mapMap6;
 	private final List listListMods;
 	private final Map mapMapMods;
+
+	private Map map = ObfuscationReflectionHelper.getPrivateValue(SoundPool.class, Minecraft.getMinecraft().sndManager.soundPoolStreaming, "nameToSoundPoolEntriesMapping");
+	private ArrayList arraylist = Lists.newArrayList(map.keySet());
+
 	private int playList;
 	final GuiListerJukeboxPlaylists listerGui;
 
@@ -125,6 +133,18 @@ class GuiSlotMusicPlaylist extends GuiSlot
 		this.mapMap6 = Maps.newHashMap();
 		this.listListMods = Lists.newArrayList();
 		this.mapMapMods = Maps.newHashMap();
+
+		int id = 0;
+		for(int i = 0; i != arraylist.size(); i++)
+		{
+			if(arraylist.get(i).toString().contains(":"))
+			{
+				this.mapMapMods.put(id, arraylist.get(i));
+				this.listListMods.add(id);
+				System.out.println(arraylist.get(i));
+				id++;
+			}
+		}
 
 		for(int i = 0; i != UtilListerJukebox.playlistlist1.length; i++)
 		{
@@ -155,11 +175,6 @@ class GuiSlotMusicPlaylist extends GuiSlot
 		{
 			this.mapMap6.put(i, UtilListerJukebox.playlistlist6[i].getName());
 			this.listList6.add(i);
-		}
-		for(int i = 0; i != UtilListerJukebox.allModsPlayList.length; i++)
-		{
-			this.mapMapMods.put(i, UtilListerJukebox.allModsPlayList[i].getName());
-			this.listListMods.add(i);
 		}
 	}
 
@@ -223,7 +238,7 @@ class GuiSlotMusicPlaylist extends GuiSlot
 		}
 		else
 		{
-			this.listerGui.getTile().playMusic(UtilListerJukebox.allModsPlayList[slot].toString(), true);
+			this.listerGui.getTile().playMusic(this.mapMapMods.get(this.listListMods.get(slot)).toString(), true);
 		}
 	}
 

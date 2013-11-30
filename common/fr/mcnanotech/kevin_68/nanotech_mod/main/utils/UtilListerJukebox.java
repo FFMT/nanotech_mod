@@ -5,18 +5,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.ModContainer;
+import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.SoundManager;
 import net.minecraft.client.audio.SoundPool;
 import net.minecraft.client.audio.SoundPoolEntry;
 import net.minecraft.util.ResourceLocation;
@@ -34,7 +38,6 @@ public class UtilListerJukebox
 	public static ArrayList<File> playlistlist4A = new ArrayList();
 	public static ArrayList<File> playlistlist5A = new ArrayList();
 	public static ArrayList<File> playlistlist6A = new ArrayList();
-	public static ArrayList<File> allModsPlayListA = new ArrayList();
 
 	public static File fileList[];
 	public static File playlistlist1[];
@@ -43,7 +46,6 @@ public class UtilListerJukebox
 	public static File playlistlist4[];
 	public static File playlistlist5[];
 	public static File playlistlist6[];
-	public static File allModsPlayList[];
 
 	public static void scanFolder(Minecraft minecraft)
 	{
@@ -123,51 +125,6 @@ public class UtilListerJukebox
 		for(int i = 0; i != playlistlist6A.size(); i++)
 		{
 			playlistlist6[i] = playlistlist6A.get(i);
-		}
-
-		if(Nanotech_mod.debugMode)
-		{
-			System.out.println("UtilListerJukebox:scanFolder:" + "mcDir:" + mcDir);
-			System.out.println("UtilListerJukebox:scanFolder:" + "recordsDir:" + recordsDir.toString());
-			System.out.println("UtilListerJukebox:scanFolder:" + "cdDirectoryName:" + cdDirectoryName);
-			for(int i = 0; i != unsortedFileList.length; i++)
-			{
-				System.out.println("UtilListerJukebox:scanFolder:" + "unsortedFileList:" + i + ":" + unsortedFileList[i].toString());
-			}
-		}
-	}
-
-	public static void getAllStreaming()
-	{
-		List modList = Loader.instance().getActiveModList();
-		int id = 0;
-		for(int i = 0; i != modList.size(); i++)
-		{
-			ModContainer mod = (ModContainer)modList.get(i);
-			File modsPlaylist[] = new File(mod.getSource() + "/assets/" + mod.getModId() + "/records/").listFiles();
-			for(int j = 0; j != (modsPlaylist == null ? 0 : modsPlaylist.length); j++)
-			{
-				allModsPlayListA.add(id, modsPlaylist[j]);
-				id++;
-			}
-		}
-
-		allModsPlayList = new File[allModsPlayListA.size()];
-		for(int i = 0; i != allModsPlayListA.size(); i++)
-		{
-			allModsPlayList[i] = allModsPlayListA.get(i);
-		}
-
-		if(Nanotech_mod.debugMode)
-		{
-			for(int i = 0; i != modList.size(); i++)
-			{
-				System.out.println("UtilListerJukebox:getAllStreaming:" + "modList:" + i + ":" + modList.get(i));
-			}
-			for(int i = 0; i != allModsPlayList.length; i++)
-			{
-				System.out.println("UtilListerJukebox:getAllStreaming:" + "allModsPlayList:" + i + ":" + allModsPlayList[i]);
-			}
 		}
 	}
 }
