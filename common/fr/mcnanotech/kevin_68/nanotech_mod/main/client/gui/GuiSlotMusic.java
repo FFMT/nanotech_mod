@@ -108,7 +108,7 @@ class GuiSlotMusicPlaylist extends GuiSlot
 	private final List listListMods;
 	private final Map mapMapMods;
 
-	private Map map = ObfuscationReflectionHelper.getPrivateValue(SoundPool.class, Minecraft.getMinecraft().sndManager.soundPoolStreaming, "nameToSoundPoolEntriesMapping");
+	private Map map = ObfuscationReflectionHelper.getPrivateValue(SoundPool.class, Minecraft.getMinecraft().sndManager.soundPoolStreaming, "b");
 	private Map map2 = ObfuscationReflectionHelper.getPrivateValue(SoundPool.class, Minecraft.getMinecraft().sndManager.soundPoolStreaming, "b");
 	private ArrayList arraylist = Lists.newArrayList(map.keySet());
 	private ArrayList arraylist2 = Lists.newArrayList(map2.keySet());
