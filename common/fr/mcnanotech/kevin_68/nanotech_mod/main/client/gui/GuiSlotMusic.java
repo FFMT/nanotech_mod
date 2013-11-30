@@ -93,20 +93,20 @@ class GuiSlotMusic extends GuiSlot
 @SideOnly(Side.CLIENT)
 class GuiSlotMusicPlaylist extends GuiSlot
 {
-	private final List listList1;
-	private final Map mapMap1;
-	private final List listList2;
-	private final Map mapMap2;
-	private final List listList3;
-	private final Map mapMap3;
-	private final List listList4;
-	private final Map mapMap4;
-	private final List listList5;
-	private final Map mapMap5;
-	private final List listList6;
-	private final Map mapMap6;
-	private final List listListMods;
-	private final Map mapMapMods;
+	public final List listList1;
+	public final Map mapMap1;
+	public final List listList2;
+	public final Map mapMap2;
+	public final List listList3;
+	public final Map mapMap3;
+	public final List listList4;
+	public final Map mapMap4;
+	public final List listList5;
+	public final Map mapMap5;
+	public final List listList6;
+	public final Map mapMap6;
+	public final List listListMods;
+	public final Map mapMapMods;
 
 	private Map map = ObfuscationReflectionHelper.getPrivateValue(SoundPool.class, Minecraft.getMinecraft().sndManager.soundPoolStreaming, "field_77461_d", "nameToSoundPoolEntriesMapping", "b");
 	private ArrayList arraylist = Lists.newArrayList(map.keySet());

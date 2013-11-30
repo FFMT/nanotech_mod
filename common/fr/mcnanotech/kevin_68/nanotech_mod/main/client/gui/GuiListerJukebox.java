@@ -19,7 +19,7 @@ public class GuiListerJukebox extends GuiScreen
 	public TileEntityListerJukebox tile;
 	public World worldd;
 	public InventoryPlayer inventoryy;
-	private GuiSmallButton stopButton;
+	private GuiButton stopButton;
 
 	public GuiListerJukebox(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world)
 	{
@@ -30,8 +30,8 @@ public class GuiListerJukebox extends GuiScreen
 
 	public void initGui()
 	{
-		this.buttonList.add(this.stopButton = new GuiSmallButton(6, this.width / 2 - 150, this.height - 38, "Stop"));
-		this.buttonList.add(new GuiSmallButton(7, this.width / 2, this.height - 38, "Playlist"));
+		this.buttonList.add(this.stopButton = new GuiButton(6, this.width / 2 - 151, this.height - 38, 149, 20, "Stop"));
+		this.buttonList.add(new GuiButton(7, this.width / 2 + 1, this.height - 38, 149, 20, "Playlist"));
 		this.musicList = new GuiSlotMusic(this);
 		this.musicList.registerScrollButtons(7, 8);
 	}
@@ -61,7 +61,7 @@ public class GuiListerJukebox extends GuiScreen
 		super.drawScreen(par1, par2, par3);
 	}
 
-	static GuiSmallButton getstopButton(GuiListerJukebox gui)
+	static GuiButton getstopButton(GuiListerJukebox gui)
 	{
 		return gui.stopButton;
 	}

@@ -19,7 +19,7 @@ public class GuiListerJukeboxPlaylists extends GuiScreen
 	public TileEntityListerJukebox tile;
 	public World worldd;
 	public InventoryPlayer inventoryy;
-	private GuiSmallButton stopButton;
+	private GuiButton stopButton;
 	private int playList;
 
 	public GuiListerJukeboxPlaylists(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world, int playlistnumber)
@@ -32,8 +32,9 @@ public class GuiListerJukeboxPlaylists extends GuiScreen
 
 	public void initGui()
 	{
-		this.buttonList.add(this.stopButton = new GuiSmallButton(6, this.width / 2 - 150, this.height - 38, "Stop"));
-		this.buttonList.add(new GuiSmallButton(7, this.width / 2, this.height - 38, "Playlist"));
+		this.buttonList.add(this.stopButton = new GuiSmallButton(6, this.width / 2 - 152, this.height - 38, 100, 20, "Stop"));
+		this.buttonList.add(new GuiButton(7, this.width / 2 + 52, this.height - 38, 100, 20, "Playlist"));
+		this.buttonList.add(new GuiButton(8, this.width / 2 - 50, this.height - 38, 100, 20, "Play all"));
 		this.musicList = new GuiSlotMusicPlaylist(this, playList);
 		this.musicList.registerScrollButtons(7, 8);
 	}
@@ -50,6 +51,9 @@ public class GuiListerJukeboxPlaylists extends GuiScreen
 			case 7:
 				this.mc.displayGuiScreen(new GuiListerJukeboxPlaylistsSelect(inventoryy, tile, worldd));
 				break;
+			case 8:
+				tile.playAllPlaylist((playList == 1 ? musicList.mapMap1 : (playList == 2 ? musicList.mapMap2 : (playList == 3 ? musicList.mapMap3 : (playList == 4 ? musicList.mapMap4 : (playList == 5 ? musicList.mapMap5 : (playList == 6 ? musicList.mapMap6 : musicList.mapMapMods)))))), (playList == 1 ? musicList.listList1 : (playList == 2 ? musicList.listList2 : (playList == 3 ? musicList.listList3 : (playList == 4 ? musicList.listList4 : (playList == 5 ? musicList.listList5 : (playList == 6 ? musicList.listList6 : musicList.listListMods)))))));
+				break;
 			default:
 				this.musicList.actionPerformed(guiButton);
 			}
@@ -63,7 +67,7 @@ public class GuiListerJukeboxPlaylists extends GuiScreen
 		super.drawScreen(par1, par2, par3);
 	}
 
-	static GuiSmallButton getstopButton(GuiListerJukeboxPlaylists gui)
+	static GuiButton getstopButton(GuiListerJukeboxPlaylists gui)
 	{
 		return gui.stopButton;
 	}

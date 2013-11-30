@@ -11,11 +11,6 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntitySatelite;
 
 public class TileEntityButton extends TileEntity
 {
-	public void updateEntity()
-	{
-
-	}
-
 	public void crashSatelite()
 	{
 		if(monitorNextToPad(this.worldObj, this.xCoord, this.yCoord, this.zCoord))

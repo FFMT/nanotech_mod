@@ -29,12 +29,12 @@ public class GuiListerJukeboxPlaylistsSelect extends GuiScreen
 	public void initGui()
 	{
 		this.buttonList.add(new GuiSmallButton(0, this.width / 2 - 75, this.height - 38, "Back"));
-		this.buttonList.add(new GuiSmallButton(1, this.width / 2 - 150 , this.height - 200, "Playlist 1"));
-		this.buttonList.add(new GuiSmallButton(2, this.width / 2, this.height - 200, "Playlist 2"));
-		this.buttonList.add(new GuiSmallButton(3, this.width / 2 - 150, this.height - 150, "Playlist 3"));
-		this.buttonList.add(new GuiSmallButton(4, this.width / 2, this.height - 150, "Playlist 4"));
-		this.buttonList.add(new GuiSmallButton(5, this.width / 2 - 150, this.height - 100, "Playlist 5"));
-		this.buttonList.add(new GuiSmallButton(6, this.width / 2, this.height - 100, "Playlist 6"));
+		this.buttonList.add(new GuiSmallButton(1, this.width / 2 - 151, this.height - 200, "Playlist 1"));
+		this.buttonList.add(new GuiSmallButton(2, this.width / 2 + 2, this.height - 200, "Playlist 2"));
+		this.buttonList.add(new GuiSmallButton(3, this.width / 2 - 151, this.height - 150, "Playlist 3"));
+		this.buttonList.add(new GuiSmallButton(4, this.width / 2 + 2, this.height - 150, "Playlist 4"));
+		this.buttonList.add(new GuiSmallButton(5, this.width / 2 - 151, this.height - 100, "Playlist 5"));
+		this.buttonList.add(new GuiSmallButton(6, this.width / 2 + 2, this.height - 100, "Playlist 6"));
 		this.buttonList.add(new GuiSmallButton(7, this.width / 2 - 75, this.height - 75, "Mods Playlist"));
 	}
 
