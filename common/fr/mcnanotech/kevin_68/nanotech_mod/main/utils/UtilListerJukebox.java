@@ -127,15 +127,14 @@ public class UtilListerJukebox
 
 		if(Nanotech_mod.debugMode)
 		{
-			Nanotech_mod.nanoLog.fine("UtilListerJukebox:scanFolder:" + "mcDir:" + mcDir);
-			Nanotech_mod.nanoLog.fine("UtilListerJukebox:scanFolder:" + "recordsDir:" + recordsDir.toString());
-			Nanotech_mod.nanoLog.fine("UtilListerJukebox:scanFolder:" + "cdDirectoryName:" + cdDirectoryName);
+			System.out.println("UtilListerJukebox:scanFolder:" + "mcDir:" + mcDir);
+			System.out.println("UtilListerJukebox:scanFolder:" + "recordsDir:" + recordsDir.toString());
+			System.out.println("UtilListerJukebox:scanFolder:" + "cdDirectoryName:" + cdDirectoryName);
 			for(int i = 0; i != unsortedFileList.length; i++)
 			{
-				Nanotech_mod.nanoLog.fine("UtilListerJukebox:scanFolder:" + "unsortedFileList:" + i + ":" + unsortedFileList[i].toString());
+				System.out.println("UtilListerJukebox:scanFolder:" + "unsortedFileList:" + i + ":" + unsortedFileList[i].toString());
 			}
 		}
-
 	}
 
 	public static void getAllStreaming()
@@ -163,11 +162,11 @@ public class UtilListerJukebox
 		{
 			for(int i = 0; i != modList.size(); i++)
 			{
-				Nanotech_mod.nanoLog.fine("UtilListerJukebox:getAllStreaming:" + "modList:" + i + ":" + modList.get(i));
+				System.out.println("UtilListerJukebox:getAllStreaming:" + "modList:" + i + ":" + modList.get(i));
 			}
 			for(int i = 0; i != allModsPlayList.length; i++)
 			{
-				Nanotech_mod.nanoLog.fine("UtilListerJukebox:getAllStreaming:" + "allModsPlayList:" + i + ":" + allModsPlayList[i]);
+				System.out.println("UtilListerJukebox:getAllStreaming:" + "allModsPlayList:" + i + ":" + allModsPlayList[i]);
 			}
 		}
 	}

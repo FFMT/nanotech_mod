@@ -18,8 +18,8 @@ public class TileEntityListerJukebox extends TileEntity
 	{
 		if(Nanotech_mod.debugMode)
 		{
-			Nanotech_mod.nanoLog.fine("TileEntityListerJukebox:playMusic:" + "music:" + music);
-			Nanotech_mod.nanoLog.fine("TileEntityListerJukebox:playMusic:" + "mods:" + mods);
+			System.out.println("TileEntityListerJukebox:playMusic:" + "music:" + music);
+			System.out.println("TileEntityListerJukebox:playMusic:" + "mods:" + mods);
 		}
 
 		if(!mods)
@@ -30,7 +30,7 @@ public class TileEntityListerJukebox extends TileEntity
 				this.worldObj.playRecord(str, xCoord, yCoord, zCoord);
 				if(Nanotech_mod.debugMode)
 				{
-					Nanotech_mod.nanoLog.fine("TileEntityListerJukebox:playMusic:" + "str:" + str);
+					System.out.println("TileEntityListerJukebox:playMusic:" + "str:" + str);
 				}
 			}
 			else if(music != null && music.equals("nanodisk"))
@@ -54,10 +54,10 @@ public class TileEntityListerJukebox extends TileEntity
 			this.worldObj.playRecord(modId2 + ":" + musicName, xCoord, yCoord, zCoord);
 			if(Nanotech_mod.debugMode)
 			{
-				Nanotech_mod.nanoLog.fine("TileEntityListerJukebox:playMusic:" + "newMusic:" + newMusic);
-				Nanotech_mod.nanoLog.fine("TileEntityListerJukebox:playMusic:" + "modId:" + modId);
-				Nanotech_mod.nanoLog.fine("TileEntityListerJukebox:playMusic:" + "modId2:" + modId2);
-				Nanotech_mod.nanoLog.fine("TileEntityListerJukebox:playMusic:" + "musicName:" + musicName);
+				System.out.println("TileEntityListerJukebox:playMusic:" + "newMusic:" + newMusic);
+				System.out.println("TileEntityListerJukebox:playMusic:" + "modId:" + modId);
+				System.out.println("TileEntityListerJukebox:playMusic:" + "modId2:" + modId2);
+				System.out.println("TileEntityListerJukebox:playMusic:" + "musicName:" + musicName);
 			}
 		}
 	}
