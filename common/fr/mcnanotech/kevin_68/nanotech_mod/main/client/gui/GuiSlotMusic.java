@@ -47,7 +47,6 @@ class GuiSlotMusic extends GuiSlot
 
 	protected void elementClicked(int slot, boolean doubleclick)
 	{
-
 		if(slot < listList.size() - 1)
 		{
 			this.listerGui.getTile().playMusic(UtilListerJukebox.fileList[slot].getName(), false);

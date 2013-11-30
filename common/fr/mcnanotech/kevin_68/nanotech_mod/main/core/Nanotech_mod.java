@@ -69,6 +69,7 @@ public class Nanotech_mod
 
 	// log
 	public static Logger nanoLog;
+	public static boolean debugMode;
 
 	@EventHandler
 	public void PreInitNanotech_mod(FMLPreInitializationEvent event)
@@ -147,7 +148,8 @@ public class Nanotech_mod
 			nitrogenOceanID = cfg.get("World", "Nitrogen Ocean", 101).getInt();
 
 			hardRecipe = cfg.get(CATEGORY_OTHER, "Hard recipes", false).getBoolean(false);
-
+			debugMode = cfg.get(CATEGORY_OTHER, "Debug mode", false).getBoolean(false);
+			
 			multipleExplosion = cfg.get(CATEGORY_MOB_CFG, "Multiple Explosion (CreeperDriller)", true).getBoolean(true);
 			explosionRadius = cfg.get(CATEGORY_MOB_CFG, "Explosion Radius (SuperCreeper)", 5).getInt();
 			timeUntilNextArrow = cfg.get(CATEGORY_MOB_CFG, "Time Until New Arrow (SuperSkeleton)", 3).getInt();

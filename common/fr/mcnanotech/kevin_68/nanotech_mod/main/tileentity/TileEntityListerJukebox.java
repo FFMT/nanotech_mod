@@ -2,6 +2,8 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity;
 
 import java.io.File;
 
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 
@@ -14,12 +16,22 @@ public class TileEntityListerJukebox extends TileEntity
 
 	public void playMusic(String music, boolean mods)
 	{
+		if(Nanotech_mod.debugMode)
+		{
+			Nanotech_mod.nanoLog.fine("TileEntityListerJukebox:playMusic:" + "music:" + music);
+			Nanotech_mod.nanoLog.fine("TileEntityListerJukebox:playMusic:" + "mods:" + mods);
+		}
+
 		if(!mods)
 		{
 			if(music != null && music.contains(".ogg"))
 			{
 				String str = music.replace(".ogg", "");
 				this.worldObj.playRecord(str, xCoord, yCoord, zCoord);
+				if(Nanotech_mod.debugMode)
+				{
+					Nanotech_mod.nanoLog.fine("TileEntityListerJukebox:playMusic:" + "str:" + str);
+				}
 			}
 			else if(music != null && music.equals("nanodisk"))
 			{
@@ -39,8 +51,14 @@ public class TileEntityListerJukebox extends TileEntity
 				}
 			}
 			String musicName = music.substring(music.lastIndexOf("records" + File.separator)).replace(".ogg", "").replace("records" + File.separator, "");
-			
 			this.worldObj.playRecord(modId2 + ":" + musicName, xCoord, yCoord, zCoord);
+			if(Nanotech_mod.debugMode)
+			{
+				Nanotech_mod.nanoLog.fine("TileEntityListerJukebox:playMusic:" + "newMusic:" + newMusic);
+				Nanotech_mod.nanoLog.fine("TileEntityListerJukebox:playMusic:" + "modId:" + modId);
+				Nanotech_mod.nanoLog.fine("TileEntityListerJukebox:playMusic:" + "modId2:" + modId2);
+				Nanotech_mod.nanoLog.fine("TileEntityListerJukebox:playMusic:" + "musicName:" + musicName);
+			}
 		}
 	}
 

@@ -14,6 +14,7 @@ import com.google.common.collect.Maps;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.ModContainer;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundPool;
@@ -123,6 +124,18 @@ public class UtilListerJukebox
 		{
 			playlistlist6[i] = playlistlist6A.get(i);
 		}
+
+		if(Nanotech_mod.debugMode)
+		{
+			Nanotech_mod.nanoLog.fine("UtilListerJukebox:scanFolder:" + "mcDir:" + mcDir);
+			Nanotech_mod.nanoLog.fine("UtilListerJukebox:scanFolder:" + "recordsDir:" + recordsDir.toString());
+			Nanotech_mod.nanoLog.fine("UtilListerJukebox:scanFolder:" + "cdDirectoryName:" + cdDirectoryName);
+			for(int i = 0; i != unsortedFileList.length; i++)
+			{
+				Nanotech_mod.nanoLog.fine("UtilListerJukebox:scanFolder:" + "unsortedFileList:" + i + ":" + unsortedFileList[i].toString());
+			}
+		}
+
 	}
 
 	public static void getAllStreaming()
@@ -139,11 +152,23 @@ public class UtilListerJukebox
 				id++;
 			}
 		}
-		
+
 		allModsPlayList = new File[allModsPlayListA.size()];
 		for(int i = 0; i != allModsPlayListA.size(); i++)
 		{
 			allModsPlayList[i] = allModsPlayListA.get(i);
+		}
+
+		if(Nanotech_mod.debugMode)
+		{
+			for(int i = 0; i != modList.size(); i++)
+			{
+				Nanotech_mod.nanoLog.fine("UtilListerJukebox:getAllStreaming:" + "modList:" + i + ":" + modList.get(i));
+			}
+			for(int i = 0; i != allModsPlayList.length; i++)
+			{
+				Nanotech_mod.nanoLog.fine("UtilListerJukebox:getAllStreaming:" + "allModsPlayList:" + i + ":" + allModsPlayList[i]);
+			}
 		}
 	}
 }
