@@ -30,8 +30,9 @@ public class GuiListerJukebox extends GuiScreen
 
 	public void initGui()
 	{
-		this.buttonList.add(this.stopButton = new GuiButton(6, this.width / 2 - 151, this.height - 38, 149, 20, "Stop"));
-		this.buttonList.add(new GuiButton(7, this.width / 2 + 1, this.height - 38, 149, 20, "Playlist"));
+		this.buttonList.add(this.stopButton = new GuiSmallButton(6, this.width / 2 - 152, this.height - 38, 100, 20, "Stop"));
+		this.buttonList.add(new GuiButton(7, this.width / 2 + 52, this.height - 38, 100, 20, "Playlist"));
+		this.buttonList.add(new GuiButton(8, this.width / 2 - 50, this.height - 38, 100, 20, "Play all"));
 		this.musicList = new GuiSlotMusic(this);
 		this.musicList.registerScrollButtons(7, 8);
 	}
@@ -47,6 +48,9 @@ public class GuiListerJukebox extends GuiScreen
 				break;
 			case 7:
 				this.mc.displayGuiScreen(new GuiListerJukeboxPlaylistsSelect(inventoryy, tile, worldd));
+				break;
+			case 8:
+				tile.playAllPlaylist(musicList.mapMap, musicList.listList);
 				break;
 			default:
 				this.musicList.actionPerformed(guiButton);

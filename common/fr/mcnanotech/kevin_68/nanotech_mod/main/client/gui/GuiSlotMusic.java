@@ -22,8 +22,8 @@ import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
 @SideOnly(Side.CLIENT)
 class GuiSlotMusic extends GuiSlot
 {
-	private final List listList;
-	private final Map mapMap;
+	public final List listList;
+	public final Map mapMap;
 	final GuiListerJukebox listerGui;
 
 	public GuiSlotMusic(GuiListerJukebox guiLister)

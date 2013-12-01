@@ -12,7 +12,7 @@ public class TileEntityListerJukebox extends TileEntity
 	private boolean playRecords = false;
 	private Map playListMap;
 	private List playListList;
-	
+
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
 		return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) == this && player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
@@ -41,33 +41,53 @@ public class TileEntityListerJukebox extends TileEntity
 	public void stopMusic()
 	{
 		playRecords = false;
+		number = 0;
 		this.worldObj.playRecord((String)null, xCoord, yCoord, zCoord);
 	}
-	
+
 	public void playAllPlaylist(Map map, List list)
 	{
+		stopMusic();
 		playRecords = true;
 		playListMap = map;
 		playListList = list;
+		timer = 100;
 	}
-	
+
 	public int number = 0;
+	public int timer = 0;
+
 	public void updateEntity()
 	{
-		if(playRecords)
+		if(timer < 100)
 		{
-			String music = playListMap.get(playListList.get(number)).toString();
-			boolean isPlaying = Minecraft.getMinecraft().sndManager.sndSystem.playing(music);
-			if(!isPlaying)
+			timer++;
+		}
+		else
+		{
+			timer = 0;
+			if(playRecords && !playListMap.isEmpty())
 			{
-				this.worldObj.playRecord(music, xCoord, yCoord, zCoord);
-				if(number == playListList.size())
+				System.out.println(number);
+				String music = playListMap.get(playListList.get(number)).toString();
+				System.out.println(music);
+				boolean isPlaying = Minecraft.getMinecraft().sndManager.sndSystem.playing("streaming");
+				System.out.println(isPlaying);
+				if(!isPlaying)
 				{
-					number = 0;
+					playMusic(music, music.contains(":") ? true : false);
+					if(number == playListList.size() - 1)
+					{
+						number = 0;
+					}
+					else
+					{
+						number++;
+					}
 				}
 				else
 				{
-					number++;
+					return;
 				}
 			}
 		}

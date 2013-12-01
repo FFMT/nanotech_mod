@@ -20,6 +20,7 @@ public class GuiListerJukeboxPlaylists extends GuiScreen
 	public World worldd;
 	public InventoryPlayer inventoryy;
 	private GuiButton stopButton;
+	public GuiButton playAllButton;
 	private int playList;
 
 	public GuiListerJukeboxPlaylists(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world, int playlistnumber)
@@ -34,9 +35,10 @@ public class GuiListerJukeboxPlaylists extends GuiScreen
 	{
 		this.buttonList.add(this.stopButton = new GuiSmallButton(6, this.width / 2 - 152, this.height - 38, 100, 20, "Stop"));
 		this.buttonList.add(new GuiButton(7, this.width / 2 + 52, this.height - 38, 100, 20, "Playlist"));
-		this.buttonList.add(new GuiButton(8, this.width / 2 - 50, this.height - 38, 100, 20, "Play all"));
+		this.buttonList.add(this.playAllButton = new GuiButton(8, this.width / 2 - 50, this.height - 38, 100, 20, "Play all"));
 		this.musicList = new GuiSlotMusicPlaylist(this, playList);
 		this.musicList.registerScrollButtons(7, 8);
+		playAllButton.enabled = (playList == 1 ? !musicList.mapMap1.isEmpty() : (playList == 2 ? !musicList.mapMap2.isEmpty() : (playList == 3 ? !musicList.mapMap3.isEmpty() : (playList == 4 ? !musicList.mapMap4.isEmpty() : (playList == 5 ? !musicList.mapMap5.isEmpty() : (playList == 6 ? !musicList.mapMap6.isEmpty() : (playList == 7 ? !musicList.mapMapMods.isEmpty() : false)))))));
 	}
 
 	protected void actionPerformed(GuiButton guiButton)
