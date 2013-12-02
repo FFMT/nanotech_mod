@@ -3,7 +3,8 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.BlockStep;
+import net.minecraft.block.BlockHalfSlab;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
@@ -11,13 +12,13 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockNanoSteps extends BlockStep
+public class BlockNanoSteps extends BlockHalfSlab
 {
 	public static final String[] StepTypes = new String[] {"nano"};
 
 	public BlockNanoSteps(int id, boolean isdouble)
 	{
-		super(id, isdouble);
+		super(id, isdouble, Material.wood);
 		if(!this.isDoubleSlab)
 		{
 			this.setLightOpacity(0);
