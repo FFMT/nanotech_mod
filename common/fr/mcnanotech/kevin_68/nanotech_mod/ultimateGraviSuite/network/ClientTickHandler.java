@@ -5,6 +5,7 @@ import java.util.EnumSet;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
@@ -12,7 +13,6 @@ import cpw.mods.fml.common.TickType;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.UltimateGraviSuite;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.items.UltimateGraviChestPlate;
 import fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.keyboard.KeyboardClient;
-import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
 
 public class ClientTickHandler implements ITickHandler
 {
@@ -200,11 +200,11 @@ public class ClientTickHandler implements ITickHandler
 	{
 		String color;
 		if(percentage <= 10 && percentage > 5)
-			color = FFMTColor.gold;
+			color = String.valueOf(EnumChatFormatting.GOLD);
 		else if(percentage <= 5)
-			color = FFMTColor.red;
+			color = String.valueOf(EnumChatFormatting.RED);
 		else
-			color = FFMTColor.green;
+			color = String.valueOf(EnumChatFormatting.GREEN);
 		return color + Long.toString(percentage) + "%";
 	}
 

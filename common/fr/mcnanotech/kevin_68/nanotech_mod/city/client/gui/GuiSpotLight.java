@@ -7,6 +7,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
@@ -35,47 +36,47 @@ public class GuiSpotLight extends GuiContainer
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 
-		buttonList.add(new GuiButton(0, width / 2 - 30, y + 7, 20, 20, FFMTColor.red + "-1"));
-		buttonList.add(new GuiButton(1, width / 2 - 58, y + 7, 20, 20, FFMTColor.red + "-10"));
-		buttonList.add(new GuiButton(2, width / 2 - 86, y + 7, 25, 20, FFMTColor.red + "-100"));
-		buttonList.add(new GuiButton(3, width / 2 + 10, y + 7, 20, 20, FFMTColor.red + "+1"));
-		buttonList.add(new GuiButton(4, width / 2 + 38, y + 7, 20, 20, FFMTColor.red + "+10"));
-		buttonList.add(new GuiButton(5, width / 2 + 61, y + 7, 25, 20, FFMTColor.red + "+100"));
+		buttonList.add(new GuiButton(0, width / 2 - 30, y + 7, 20, 20, EnumChatFormatting.RED + "-1"));
+		buttonList.add(new GuiButton(1, width / 2 - 58, y + 7, 20, 20, EnumChatFormatting.RED + "-10"));
+		buttonList.add(new GuiButton(2, width / 2 - 86, y + 7, 25, 20, EnumChatFormatting.RED + "-100"));
+		buttonList.add(new GuiButton(3, width / 2 + 10, y + 7, 20, 20, EnumChatFormatting.RED + "+1"));
+		buttonList.add(new GuiButton(4, width / 2 + 38, y + 7, 20, 20, EnumChatFormatting.RED + "+10"));
+		buttonList.add(new GuiButton(5, width / 2 + 61, y + 7, 25, 20, EnumChatFormatting.RED + "+100"));
 
-		buttonList.add(new GuiButton(6, width / 2 - 30, y + 29, 20, 20, FFMTColor.green + "-1"));
-		buttonList.add(new GuiButton(7, width / 2 - 58, y + 29, 20, 20, FFMTColor.green + "-10"));
-		buttonList.add(new GuiButton(8, width / 2 - 86, y + 29, 25, 20, FFMTColor.green + "-100"));
-		buttonList.add(new GuiButton(9, width / 2 + 10, y + 29, 20, 20, FFMTColor.green + "+1"));
-		buttonList.add(new GuiButton(10, width / 2 + 38, y + 29, 20, 20, FFMTColor.green + "+10"));
-		buttonList.add(new GuiButton(11, width / 2 + 61, y + 29, 25, 20, FFMTColor.green + "+100"));
+		buttonList.add(new GuiButton(6, width / 2 - 30, y + 29, 20, 20, EnumChatFormatting.GREEN + "-1"));
+		buttonList.add(new GuiButton(7, width / 2 - 58, y + 29, 20, 20, EnumChatFormatting.GREEN + "-10"));
+		buttonList.add(new GuiButton(8, width / 2 - 86, y + 29, 25, 20, EnumChatFormatting.GREEN + "-100"));
+		buttonList.add(new GuiButton(9, width / 2 + 10, y + 29, 20, 20, EnumChatFormatting.GREEN + "+1"));
+		buttonList.add(new GuiButton(10, width / 2 + 38, y + 29, 20, 20, EnumChatFormatting.GREEN + "+10"));
+		buttonList.add(new GuiButton(11, width / 2 + 61, y + 29, 25, 20, EnumChatFormatting.GREEN + "+100"));
 
-		buttonList.add(new GuiButton(12, width / 2 - 30, y + 51, 20, 20, FFMTColor.blue + "-1"));
-		buttonList.add(new GuiButton(13, width / 2 - 58, y + 51, 20, 20, FFMTColor.blue + "-10"));
-		buttonList.add(new GuiButton(14, width / 2 - 86, y + 51, 25, 20, FFMTColor.blue + "-100"));
-		buttonList.add(new GuiButton(15, width / 2 + 10, y + 51, 20, 20, FFMTColor.blue + "+1"));
-		buttonList.add(new GuiButton(16, width / 2 + 38, y + 51, 20, 20, FFMTColor.blue + "+10"));
-		buttonList.add(new GuiButton(17, width / 2 + 61, y + 51, 25, 20, FFMTColor.blue + "+100"));
+		buttonList.add(new GuiButton(12, width / 2 - 30, y + 51, 20, 20, EnumChatFormatting.BLUE + "-1"));
+		buttonList.add(new GuiButton(13, width / 2 - 58, y + 51, 20, 20, EnumChatFormatting.BLUE + "-10"));
+		buttonList.add(new GuiButton(14, width / 2 - 86, y + 51, 25, 20, EnumChatFormatting.BLUE + "-100"));
+		buttonList.add(new GuiButton(15, width / 2 + 10, y + 51, 20, 20, EnumChatFormatting.BLUE + "+1"));
+		buttonList.add(new GuiButton(16, width / 2 + 38, y + 51, 20, 20, EnumChatFormatting.BLUE + "+10"));
+		buttonList.add(new GuiButton(17, width / 2 + 61, y + 51, 25, 20, EnumChatFormatting.BLUE + "+100"));
 
-		buttonList.add(new GuiButton(18, width / 2 - 30, y + 73, 20, 20, FFMTColor.darkRed + "-1"));
-		buttonList.add(new GuiButton(19, width / 2 - 58, y + 73, 20, 20, FFMTColor.darkRed + "-10"));
-		buttonList.add(new GuiButton(20, width / 2 - 86, y + 73, 25, 20, FFMTColor.darkRed + "-100"));
-		buttonList.add(new GuiButton(21, width / 2 + 10, y + 73, 20, 20, FFMTColor.darkRed + "+1"));
-		buttonList.add(new GuiButton(22, width / 2 + 38, y + 73, 20, 20, FFMTColor.darkRed + "+10"));
-		buttonList.add(new GuiButton(23, width / 2 + 61, y + 73, 25, 20, FFMTColor.darkRed + "+100"));
+		buttonList.add(new GuiButton(18, width / 2 - 30, y + 73, 20, 20, EnumChatFormatting.DARK_RED + "-1"));
+		buttonList.add(new GuiButton(19, width / 2 - 58, y + 73, 20, 20, EnumChatFormatting.DARK_RED + "-10"));
+		buttonList.add(new GuiButton(20, width / 2 - 86, y + 73, 25, 20, EnumChatFormatting.DARK_RED + "-100"));
+		buttonList.add(new GuiButton(21, width / 2 + 10, y + 73, 20, 20, EnumChatFormatting.DARK_RED + "+1"));
+		buttonList.add(new GuiButton(22, width / 2 + 38, y + 73, 20, 20, EnumChatFormatting.DARK_RED + "+10"));
+		buttonList.add(new GuiButton(23, width / 2 + 61, y + 73, 25, 20, EnumChatFormatting.DARK_RED + "+100"));
 
-		buttonList.add(new GuiButton(24, width / 2 - 30, y + 95, 20, 20, FFMTColor.darkGreen + "-1"));
-		buttonList.add(new GuiButton(25, width / 2 - 58, y + 95, 20, 20, FFMTColor.darkGreen + "-10"));
-		buttonList.add(new GuiButton(26, width / 2 - 86, y + 95, 25, 20, FFMTColor.darkGreen + "-100"));
-		buttonList.add(new GuiButton(27, width / 2 + 10, y + 95, 20, 20, FFMTColor.darkGreen + "+1"));
-		buttonList.add(new GuiButton(28, width / 2 + 38, y + 95, 20, 20, FFMTColor.darkGreen + "+10"));
-		buttonList.add(new GuiButton(29, width / 2 + 61, y + 95, 25, 20, FFMTColor.darkGreen + "+100"));
+		buttonList.add(new GuiButton(24, width / 2 - 30, y + 95, 20, 20, EnumChatFormatting.DARK_GREEN + "-1"));
+		buttonList.add(new GuiButton(25, width / 2 - 58, y + 95, 20, 20, EnumChatFormatting.DARK_GREEN + "-10"));
+		buttonList.add(new GuiButton(26, width / 2 - 86, y + 95, 25, 20, EnumChatFormatting.DARK_GREEN + "-100"));
+		buttonList.add(new GuiButton(27, width / 2 + 10, y + 95, 20, 20, EnumChatFormatting.DARK_GREEN + "+1"));
+		buttonList.add(new GuiButton(28, width / 2 + 38, y + 95, 20, 20, EnumChatFormatting.DARK_GREEN + "+10"));
+		buttonList.add(new GuiButton(29, width / 2 + 61, y + 95, 25, 20, EnumChatFormatting.DARK_GREEN + "+100"));
 
-		buttonList.add(new GuiButton(30, width / 2 - 30, y + 117, 20, 20, FFMTColor.darkBlue + "-1"));
-		buttonList.add(new GuiButton(31, width / 2 - 58, y + 117, 20, 20, FFMTColor.darkBlue + "-10"));
-		buttonList.add(new GuiButton(32, width / 2 - 86, y + 117, 25, 20, FFMTColor.darkBlue + "-100"));
-		buttonList.add(new GuiButton(33, width / 2 + 10, y + 117, 20, 20, FFMTColor.darkBlue + "+1"));
-		buttonList.add(new GuiButton(34, width / 2 + 38, y + 117, 20, 20, FFMTColor.darkBlue + "+10"));
-		buttonList.add(new GuiButton(35, width / 2 + 61, y + 117, 25, 20, FFMTColor.darkBlue + "+100"));
+		buttonList.add(new GuiButton(30, width / 2 - 30, y + 117, 20, 20, EnumChatFormatting.DARK_BLUE + "-1"));
+		buttonList.add(new GuiButton(31, width / 2 - 58, y + 117, 20, 20, EnumChatFormatting.DARK_BLUE + "-10"));
+		buttonList.add(new GuiButton(32, width / 2 - 86, y + 117, 25, 20, EnumChatFormatting.DARK_BLUE + "-100"));
+		buttonList.add(new GuiButton(33, width / 2 + 10, y + 117, 20, 20, EnumChatFormatting.DARK_BLUE + "+1"));
+		buttonList.add(new GuiButton(34, width / 2 + 38, y + 117, 20, 20, EnumChatFormatting.DARK_BLUE + "+10"));
+		buttonList.add(new GuiButton(35, width / 2 + 61, y + 117, 25, 20, EnumChatFormatting.DARK_BLUE + "+100"));
 	}
 
 	protected void actionPerformed(GuiButton guibutton)
@@ -519,12 +520,12 @@ public class GuiSpotLight extends GuiContainer
 		{
 			darkBluePos = 8;
 		}
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getRedValue()), xSize / 2 - redPos, ySize + -153, FFMTColor.redInt);
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getGreenValue()), xSize / 2 - greenPos, ySize + -131, FFMTColor.greenInt);
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getBlueValue()), xSize / 2 - bluePos, ySize + -109, FFMTColor.blueInt);
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkRedValue()), xSize / 2 - darkRedPos, ySize + -87, FFMTColor.darkRedInt);
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkGreenValue()), xSize / 2 - darkGreenPos, ySize + -65, FFMTColor.darkGreenInt);
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkBlueValue()), xSize / 2 - darkBluePos, ySize + -43, FFMTColor.darkBlueInt);
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getRedValue()), xSize / 2 - redPos, ySize + -153, FFMTColor.RED);
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getGreenValue()), xSize / 2 - greenPos, ySize + -131, FFMTColor.GREEN);
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getBlueValue()), xSize / 2 - bluePos, ySize + -109, FFMTColor.BLUE);
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkRedValue()), xSize / 2 - darkRedPos, ySize + -87, FFMTColor.DARK_RED);
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkGreenValue()), xSize / 2 - darkGreenPos, ySize + -65, FFMTColor.DARK_GREEN);
+		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkBlueValue()), xSize / 2 - darkBluePos, ySize + -43, FFMTColor.DARK_BLUE);
 	}
 
 	private void setToMax(int type)

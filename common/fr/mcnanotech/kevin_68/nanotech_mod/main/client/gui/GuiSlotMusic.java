@@ -78,7 +78,7 @@ class GuiSlotMusic extends GuiSlot
 
 		if(this.mapMap.get(this.listList.get(slotId)).toString().equals("nanodisk"))
 		{
-			color = FFMTColor.aquaInt;
+			color = FFMTColor.AQUA;
 		}
 		this.listerGui.drawCenteredString(this.listerGui.getFont(), (this.mapMap.get(this.listList.get(slotId))).toString().replace(".ogg", "").replace(UtilListerJukebox.cdDirectoryName + File.separator, ""), this.listerGui.width / 2, par3 + 1, color);
 	}
