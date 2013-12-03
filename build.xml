@@ -6,7 +6,7 @@
     <property name="mcp.dir" value="${forge.dir}\${buildprop.forge}\mcp"/>
 	<property name="ffmtapi.name" value="${buildprop.ffmtapi}"/>
     <available property="mcp-exists" file="${mcp.dir}"/>
-	<available property="ffmtapi-exists" file="libs\${buildprop.ffmtapi}"/>
+	<available property="ffmtlib-exists" file="libs\${buildprop.ffmtlib.name}"/>
 	<available property="ic2-exists" file="libs\ic2.name"/>
     <property environment="env"/>
 
@@ -75,16 +75,16 @@
         <get src="http://ic2api.player.to:8080/job/IC2_experimental/${buildprop.ic2_build}/artifact/packages/${buildprop.ic2_name}" dest="libs/" usetimestamp="True"/>
     </target>
 
-    <!-- Download FFMT API-->
-    <target name="download_ffmtapi" unless="ffmtapi-exists">
+    <!-- Download FFMT LIB-->
+    <target name="download_ffmtlib" unless="ffmtlib-exists">
         <mkdir dir="libs/"/>
-        <get src="http://dl.mcnanotech.fr/FFMT/libs/${buildprop.ffmtapi}" dest="libs/" usetimestamp="True"/>
+        <get src="http://ci.mcnanotech.fr/job/FFMT-libs/${buildprop.ffmtlib.build}/dist/${buildprop.ffmtlib.name}" dest="libs/" usetimestamp="True"/>
     </target>
 
-    <!-- Extract FFMT API into bin -->
+    <!-- Extract FFMT LIB into bin -->
     <target name="extract_ffmtapi">
         <copy todir="${mcp.dir}\lib\">
-            <fileset file="libs\${ffmtapi.name}" />
+            <fileset file="libs\${ffmtlib.name}" />
         </copy>
     </target>
 
@@ -181,7 +181,7 @@
         <antcall target="clean" />
         <antcall target="download-and-setup-forge" />
         <antcall target="download_ic2" />
-        <antcall target="download_ffmtapi" />
+        <antcall target="download_ffmtlib" />
         <antcall target="copy_ntm_sources" />
         <antcall target="copy_ugs_sources" />
         <antcall target="extract_ic2" />

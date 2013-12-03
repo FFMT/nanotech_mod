@@ -15,6 +15,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.core.ClientProxy;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrashCan;
+import fr.minecraftforgefrance.ffmtlibs.FFMTClientRegistry;
 
 public class BlockTrashcan extends Block
 {
@@ -79,7 +80,7 @@ public class BlockTrashcan extends Block
 	@SideOnly(Side.CLIENT)
 	public int getRenderType()
 	{
-		return ClientProxy.trashCanRenderId;
+		return FFMTClientRegistry.tesrRenderId;
 	}
 
 	@Override
