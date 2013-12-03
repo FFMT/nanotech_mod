@@ -4,9 +4,8 @@
     <property file="build.properties" prefix="buildprop"/>
     <property name="forge.dir" value="..\forge"/>
     <property name="mcp.dir" value="${forge.dir}\${buildprop.forge}\mcp"/>
-	<property name="ffmtapi.name" value="${buildprop.ffmtapi}"/>
     <available property="mcp-exists" file="${mcp.dir}"/>
-	<available property="ffmtlib-exists" file="libs\${buildprop.ffmtlib.name}"/>
+	<available property="ffmtlib-exists" file="libs\${ffmtlib.name}"/>
 	<available property="ic2-exists" file="libs\ic2.name"/>
     <property environment="env"/>
 
@@ -78,13 +77,13 @@
     <!-- Download FFMT LIB-->
     <target name="download_ffmtlib" unless="ffmtlib-exists">
         <mkdir dir="libs/"/>
-        <get src="http://ci.mcnanotech.fr/job/FFMT-libs/${buildprop.ffmtlib.build}/dist/${buildprop.ffmtlib.name}" dest="libs/" usetimestamp="True"/>
+        <get src="http://ci.mcnanotech.fr/job/FFMT-libs/${buildprop.ffmtlib_build}/dist/${buildprop.ffmtlib_name}" dest="libs/" usetimestamp="True"/>
     </target>
 
     <!-- Extract FFMT LIB into bin -->
     <target name="extract_ffmtapi">
         <copy todir="${mcp.dir}\lib\">
-            <fileset file="libs\${ffmtlib.name}" />
+            <fileset file="libs\${buildprop.ffmtlib_name}" />
         </copy>
     </target>
 
