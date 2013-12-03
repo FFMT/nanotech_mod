@@ -77,7 +77,7 @@
     <!-- Download FFMT LIB-->
     <target name="download_ffmtlib" unless="ffmtlib-exists">
         <mkdir dir="libs/"/>
-        <get src="http://ci.mcnanotech.fr/job/FFMT-libs/${buildprop.ffmtlib_build}/dist/${buildprop.ffmtlib_name}" dest="libs/" usetimestamp="True"/>
+        <get src="http://ci.mcnanotech.fr/job/FFMT-libs/${buildprop.ffmtlib_build}/artifact/dist/${buildprop.ffmtlib_name}" dest="libs/" usetimestamp="True"/>
     </target>
 
     <!-- Extract FFMT LIB into bin -->
