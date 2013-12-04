@@ -14,10 +14,10 @@ import org.lwjgl.opengl.GL11;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.container.ContainerSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
-import fr.minecraftforgefrance.ffmtlibs.gui.GuiContainerSliderBase;
-import fr.minecraftforgefrance.ffmtlibs.gui.GuiSliderForContainer;
+import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
+import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 
-public class GuiSpotLight extends GuiContainerSliderBase
+public class GuiSpotLight extends FFMTGuiContainerSliderBase
 {
 	protected TileEntitySpotLight tileSpotLight;
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod_city:textures/gui/SpotLight.png");
@@ -35,12 +35,12 @@ public class GuiSpotLight extends GuiContainerSliderBase
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 
-		this.buttonList.add(new GuiSliderForContainer(this, 0, width / 2 - 75, y + 7, EnumChatFormatting.RED + "red" + " : " + tileSpotLight.getRedValue(), (float)(tileSpotLight.getRedValue()) / 255.0F));
-		this.buttonList.add(new GuiSliderForContainer(this, 1, width / 2 - 75, y + 29, EnumChatFormatting.GREEN + "green" + " : " + tileSpotLight.getGreenValue(), (float)(tileSpotLight.getGreenValue()) / 255.0F));
-		this.buttonList.add(new GuiSliderForContainer(this, 2, width / 2 - 75, y + 51, EnumChatFormatting.BLUE + "blue" + " : " + tileSpotLight.getBlueValue(), (float)(tileSpotLight.getBlueValue()) / 255.0F));
-		this.buttonList.add(new GuiSliderForContainer(this, 3, width / 2 - 75, y + 73, EnumChatFormatting.DARK_RED + "dark red" + " : " + tileSpotLight.getDarkRedValue(), (float)(tileSpotLight.getDarkRedValue()) / 255.0F));
-		this.buttonList.add(new GuiSliderForContainer(this, 4, width / 2 - 75, y + 95, EnumChatFormatting.DARK_GREEN + "dark green" + " : " + tileSpotLight.getDarkGreenValue(), (float)(tileSpotLight.getDarkGreenValue()) / 255.0F));
-		this.buttonList.add(new GuiSliderForContainer(this, 5, width / 2 - 75, y + 117, EnumChatFormatting.DARK_BLUE + "dark blue" + " : " + tileSpotLight.getDarkBlueValue(), (float)(tileSpotLight.getDarkBlueValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, width / 2 - 75, y + 7, EnumChatFormatting.RED + "red" + " : " + tileSpotLight.getRedValue(), (float)(tileSpotLight.getRedValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 1, width / 2 - 75, y + 29, EnumChatFormatting.GREEN + "green" + " : " + tileSpotLight.getGreenValue(), (float)(tileSpotLight.getGreenValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 2, width / 2 - 75, y + 51, EnumChatFormatting.BLUE + "blue" + " : " + tileSpotLight.getBlueValue(), (float)(tileSpotLight.getBlueValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 3, width / 2 - 75, y + 73, EnumChatFormatting.DARK_RED + "dark red" + " : " + tileSpotLight.getDarkRedValue(), (float)(tileSpotLight.getDarkRedValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 4, width / 2 - 75, y + 95, EnumChatFormatting.DARK_GREEN + "dark green" + " : " + tileSpotLight.getDarkGreenValue(), (float)(tileSpotLight.getDarkGreenValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 5, width / 2 - 75, y + 117, EnumChatFormatting.DARK_BLUE + "dark blue" + " : " + tileSpotLight.getDarkBlueValue(), (float)(tileSpotLight.getDarkBlueValue()) / 255.0F));
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class GuiSpotLight extends GuiContainerSliderBase
 	}
 
 	@Override
-	public String getSladerName(int sladerId, float sladerValue)
+	public String getSliderName(int sladerId, float sladerValue)
 	{
 		String name = "";
 		switch(sladerId)

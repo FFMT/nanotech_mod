@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.ResourceLocation;
@@ -14,9 +13,12 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSmoker;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
+import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
+import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 
-public class GuiSmoker extends GuiContainer
+public class GuiSmoker extends FFMTGuiContainerSliderBase
 {
 	private TileEntitySmoker tileSmoker;
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/gui/smoker.png");
@@ -31,52 +33,39 @@ public class GuiSmoker extends GuiContainer
 	public void initGui()
 	{
 		super.initGui();
-		int x = (width - xSize) / 2;
+		int x = (width) / 2;
 		int y = (height - ySize) / 2;
-		buttonList.add(new GuiButton(1, x + 75, y + 15, 20, 20, "+"));
-		buttonList.add(new GuiButton(2, x + 75, y + 45, 20, 20, "-"));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x - 75, y + 20, "Power:" + tileSmoker.getSmokeValue(), (float)(tileSmoker.getSmokeValue()) / 15.0F));
 	}
-
-	protected void actionPerformed(GuiButton guibutton)
+	
+	@Override
+	public void handlerSliderAction(int sliderId, float sliderValue)
 	{
-		if(guibutton.id == 1)
-		{
-			if(tileSmoker.getSmokeValue() < 15)
-			{
-				ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-				DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
+		this.sendSmokerPacket((int)(sliderValue * 15));
+	}
 
-				try
-				{
-					dataoutputstream.writeInt(tileSmoker.getSmokeValue() + 1);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|smoker", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
-			}
+	@Override
+	public String getSliderName(int sliderId, float sliderValue)
+	{
+		return "Power:" + (int)(sliderValue * 15);
+	}
+
+	private void sendSmokerPacket(int value)
+	{
+		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
+		DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
+		try
+		{
+			dataoutputstream.writeInt(value);
+			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|smoker", bytearrayoutputstream.toByteArray()));
 		}
-
-		else if(guibutton.id == 2)
+		catch(Exception exception)
 		{
-			if(tileSmoker.getSmokeValue() > 0)
-			{
-				ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-				DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-
-				try
-				{
-					dataoutputstream.writeInt(tileSmoker.getSmokeValue() - 1);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|smoker", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
-			}
+			exception.printStackTrace();
+			Nanotech_mod.nanoLog.severe("Failed to send a packet from a Smoker");
 		}
 	}
+
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int i, int j)
@@ -85,7 +74,6 @@ public class GuiSmoker extends GuiContainer
 		int y = (height - ySize) / 2;
 		fontRenderer.drawString("Smoke Block", 6, 6, 4210752);
 		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 6, ySize - 96 + 2, 4210752);
-		fontRenderer.drawString(String.valueOf(tileSmoker.Smokepower), xSize / 2 + 30, ySize - 128, 4210752);
 	}
 
 	@Override

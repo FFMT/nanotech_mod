@@ -5,11 +5,11 @@ import java.io.DataOutputStream;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
@@ -17,9 +17,12 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerJumper;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
+import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
+import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 
-public class GuiJumper extends GuiContainer
+public class GuiJumper extends FFMTGuiContainerSliderBase
 {
 	private TileEntityJumper tileJumper;
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/gui/jumper.png");
@@ -34,49 +37,36 @@ public class GuiJumper extends GuiContainer
 	public void initGui()
 	{
 		super.initGui();
-		int x = (width - xSize) / 2;
+		int x = (width) / 2;
 		int y = (height - ySize) / 2;
-		buttonList.add(new GuiButton(1, x + 75, y + 15, 20, 20, "+"));
-		buttonList.add(new GuiButton(2, x + 75, y + 45, 20, 20, "-"));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x - 75, y + 20, "Height", (float)(tileJumper.getJumpHeightValue()) / 9.0F));
 	}
 
-	protected void actionPerformed(GuiButton guibutton)
+	@Override
+	public void handlerSliderAction(int sliderId, float sliderValue)
 	{
-		if(guibutton.id == 1)
-		{
-			if(tileJumper.getJumpHeightValue() < 9)
-			{
-				ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-				DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
+		this.sendJumperPacket((int)(sliderValue * 9));
+	}
 
-				try
-				{
-					dataoutputstream.writeInt(tileJumper.getJumpHeightValue() + 1);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|jumper", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
-			}
+	@Override
+	public String getSliderName(int sliderId, float sliderValue)
+	{
+		return "Height";
+	}
+
+	private void sendJumperPacket(int value)
+	{
+		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
+		DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
+		try
+		{
+			dataoutputstream.writeInt(value);
+			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|jumper", bytearrayoutputstream.toByteArray()));
 		}
-		else if(guibutton.id == 2)
+		catch(Exception exception)
 		{
-			if(tileJumper.getJumpHeightValue() > 0)
-			{
-				ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-				DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-
-				try
-				{
-					dataoutputstream.writeInt(tileJumper.getJumpHeightValue() - 1);
-					this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|jumper", bytearrayoutputstream.toByteArray()));
-				}
-				catch(Exception exception)
-				{
-					exception.printStackTrace();
-				}
-			}
+			exception.printStackTrace();
+			Nanotech_mod.nanoLog.severe("Failed to send a packet from a Jumper");
 		}
 	}
 
@@ -98,45 +88,56 @@ public class GuiJumper extends GuiContainer
 		int y = (height - ySize) / 2;
 
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-		if(tileJumper.getJumpHeightValue() == 0)
+		boolean flag9 = tileJumper.getJumpHeightValue() == 9;
+		boolean flag8 = tileJumper.getJumpHeightValue() == 8;
+		boolean flag7 = tileJumper.getJumpHeightValue() == 7;
+		boolean flag6 = tileJumper.getJumpHeightValue() == 6;
+		boolean flag5 = tileJumper.getJumpHeightValue() == 5;
+		boolean flag4 = tileJumper.getJumpHeightValue() == 4;
+		boolean flag3 = tileJumper.getJumpHeightValue() == 3;
+		boolean flag2 = tileJumper.getJumpHeightValue() == 2;
+		boolean flag1 = tileJumper.getJumpHeightValue() == 1;
+		boolean flag0 = tileJumper.getJumpHeightValue() == 0;
+
+		if(flag9)
 		{
-			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Item.feather), x + 140, y + 35);
+			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Block.blockEmerald), width / 2 - 9, y + 45);
 		}
-		else if(tileJumper.getJumpHeightValue() == 1)
+		if(flag8)
 		{
-			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Item.coal), x + 140, y + 35);
+			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Item.emerald), width / 2 - 9, y + 45);
 		}
-		else if(tileJumper.getJumpHeightValue() == 2)
+		if(flag7)
 		{
-			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Item.ingotIron), x + 140, y + 35);
+			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Block.blockDiamond), width / 2 - 9, y + 45);
 		}
-		else if(tileJumper.getJumpHeightValue() == 3)
+		if(flag6)
 		{
-			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Block.blockIron), x + 140, y + 35);
+			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Item.diamond), width / 2 - 9, y + 45);
 		}
-		else if(tileJumper.getJumpHeightValue() == 4)
+		if(flag5)
 		{
-			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Item.ingotGold), x + 140, y + 35);
+			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Block.blockGold), width / 2 - 9, y + 45);
 		}
-		else if(tileJumper.getJumpHeightValue() == 5)
+		if(flag4)
 		{
-			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Block.blockGold), x + 140, y + 35);
+			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Item.ingotGold), width / 2 - 9, y + 45);
 		}
-		else if(tileJumper.getJumpHeightValue() == 6)
+		if(flag3)
 		{
-			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Item.diamond), x + 140, y + 35);
+			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Block.blockIron), width / 2 - 9, y + 45);
 		}
-		else if(tileJumper.getJumpHeightValue() == 7)
+		if(flag2)
 		{
-			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Block.blockDiamond), x + 140, y + 35);
+			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Item.ingotIron), width / 2 - 9, y + 45);
 		}
-		else if(tileJumper.getJumpHeightValue() == 8)
+		if(flag1)
 		{
-			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Item.emerald), x + 140, y + 35);
+			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Item.coal), width / 2 - 9, y + 45);
 		}
-		else if(tileJumper.getJumpHeightValue() == 9)
+		if(flag0)
 		{
-			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Block.blockEmerald), x + 140, y + 35);
+			itemRenderer.renderItemAndEffectIntoGUI(this.fontRenderer, this.mc.renderEngine, new ItemStack(Item.feather), width / 2 - 9, y + 45);
 		}
 	}
 }
