@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.EnumChatFormatting;
@@ -16,9 +15,10 @@ import org.lwjgl.opengl.GL11;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.container.ContainerSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
-import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
+import fr.minecraftforgefrance.ffmtlibs.gui.GuiContainerSliderBase;
+import fr.minecraftforgefrance.ffmtlibs.gui.GuiSliderForContainer;
 
-public class GuiSpotLight extends GuiContainer
+public class GuiSpotLight extends GuiContainerSliderBase
 {
 	protected TileEntitySpotLight tileSpotLight;
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod_city:textures/gui/SpotLight.png");
@@ -36,6 +36,9 @@ public class GuiSpotLight extends GuiContainer
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 
+        this.buttonList.add(new GuiSliderForContainer(this, 0, width / 2 - 75, y + 7, EnumChatFormatting.RED + "red" + " : "+ tileSpotLight.getRedValue(), (float)(tileSpotLight.getRedValue()) / 255.0F));
+        
+		/*
 		buttonList.add(new GuiButton(0, width / 2 - 30, y + 7, 20, 20, EnumChatFormatting.RED + "-1"));
 		buttonList.add(new GuiButton(1, width / 2 - 58, y + 7, 20, 20, EnumChatFormatting.RED + "-10"));
 		buttonList.add(new GuiButton(2, width / 2 - 86, y + 7, 25, 20, EnumChatFormatting.RED + "-100"));
@@ -77,6 +80,23 @@ public class GuiSpotLight extends GuiContainer
 		buttonList.add(new GuiButton(33, width / 2 + 10, y + 117, 20, 20, EnumChatFormatting.DARK_BLUE + "+1"));
 		buttonList.add(new GuiButton(34, width / 2 + 38, y + 117, 20, 20, EnumChatFormatting.DARK_BLUE + "+10"));
 		buttonList.add(new GuiButton(35, width / 2 + 61, y + 117, 25, 20, EnumChatFormatting.DARK_BLUE + "+100"));
+		*/
+	}
+	
+	@Override
+	public void handlerSliderAction(int sladerId, float sladerValue)
+	{
+		this.sendSpotLightPacket((int)(sladerValue * 255), sladerId);
+	}
+
+	@Override
+	public String getSladerName(int sladerId, float sladerValue)
+	{
+		if(sladerId == 0)
+		{
+			return EnumChatFormatting.RED + "red" + " : " + (int)(sladerValue * 255);
+		}
+		return null;
 	}
 
 	protected void actionPerformed(GuiButton guibutton)
@@ -447,85 +467,6 @@ public class GuiSpotLight extends GuiContainer
 	{
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		int redPos, greenPos, bluePos, darkRedPos, darkGreenPos, darkBluePos;
-		if(tileSpotLight.red < 10)
-		{
-			redPos = 2;
-		}
-		else if(tileSpotLight.red > 9 && tileSpotLight.red < 100)
-		{
-			redPos = 5;
-		}
-		else
-		{
-			redPos = 8;
-		}
-		if(tileSpotLight.green < 10)
-		{
-			greenPos = 2;
-		}
-		else if(tileSpotLight.green > 9 && tileSpotLight.green < 100)
-		{
-			greenPos = 5;
-		}
-		else
-		{
-			greenPos = 8;
-		}
-		if(tileSpotLight.blue < 10)
-		{
-			bluePos = 2;
-		}
-		else if(tileSpotLight.blue > 9 && tileSpotLight.blue < 100)
-		{
-			bluePos = 5;
-		}
-		else
-		{
-			bluePos = 8;
-		}
-		if(tileSpotLight.darkRed < 10)
-		{
-			darkRedPos = 2;
-		}
-		else if(tileSpotLight.darkRed > 9 && tileSpotLight.darkRed < 100)
-		{
-			darkRedPos = 5;
-		}
-		else
-		{
-			darkRedPos = 8;
-		}
-		if(tileSpotLight.darkGreen < 10)
-		{
-			darkGreenPos = 2;
-		}
-		else if(tileSpotLight.darkGreen > 9 && tileSpotLight.darkGreen < 100)
-		{
-			darkGreenPos = 5;
-		}
-		else
-		{
-			darkGreenPos = 8;
-		}
-		if(tileSpotLight.darkBlue < 10)
-		{
-			darkBluePos = 2;
-		}
-		else if(tileSpotLight.darkBlue > 9 && tileSpotLight.darkBlue < 100)
-		{
-			darkBluePos = 5;
-		}
-		else
-		{
-			darkBluePos = 8;
-		}
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getRedValue()), xSize / 2 - redPos, ySize + -153, FFMTColor.RED);
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getGreenValue()), xSize / 2 - greenPos, ySize + -131, FFMTColor.GREEN);
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getBlueValue()), xSize / 2 - bluePos, ySize + -109, FFMTColor.BLUE);
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkRedValue()), xSize / 2 - darkRedPos, ySize + -87, FFMTColor.DARK_RED);
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkGreenValue()), xSize / 2 - darkGreenPos, ySize + -65, FFMTColor.DARK_GREEN);
-		fontRenderer.drawString(String.valueOf(tileSpotLight.getDarkBlueValue()), xSize / 2 - darkBluePos, ySize + -43, FFMTColor.DARK_BLUE);
 	}
 
 	private void setToMax(int type)
