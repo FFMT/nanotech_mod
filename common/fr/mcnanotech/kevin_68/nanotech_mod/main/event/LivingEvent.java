@@ -61,7 +61,7 @@ public class LivingEvent
 	@ForgeSubscribe
 	public void onLivingDeath(LivingDeathEvent event)
 	{
-		if(event.source.equals(NanotechDamageSource.nitrogenDamage))
+		if(event.source.equals(NanotechDamageSource.nitrogenDamage) && event.entityLiving.worldObj.isAirBlock((int)(event.entityLiving.posX - 1), (int)event.entityLiving.posY, (int)event.entityLiving.posZ))
 		{
 			event.entityLiving.worldObj.setBlock((int)(event.entityLiving.posX - 1), (int)event.entityLiving.posY, (int)event.entityLiving.posZ, Block.ice.blockID);
 		}
