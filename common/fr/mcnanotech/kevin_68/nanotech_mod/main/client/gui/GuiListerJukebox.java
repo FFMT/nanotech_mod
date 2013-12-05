@@ -5,6 +5,7 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiSmallButton;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -61,7 +62,7 @@ public class GuiListerJukebox extends GuiScreen
 	public void drawScreen(int par1, int par2, float par3)
 	{
 		this.musicList.drawScreen(par1, par2, par3);
-		this.drawCenteredString(this.fontRenderer, "Chose your music", this.width / 2, 16, 16777215);
+		this.drawCenteredString(this.fontRenderer, I18n.getString("container.listerJukebox.chose"), this.width / 2, 16, 16777215);
 		super.drawScreen(par1, par2, par3);
 	}
 

@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -39,7 +40,7 @@ public class GuiJumper extends FFMTGuiContainerSliderBase
 		super.initGui();
 		int x = (width) / 2;
 		int y = (height - ySize) / 2;
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x - 75, y + 20, "Height", (float)(tileJumper.getJumpHeightValue()) / 9.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x - 75, y + 20, I18n.getString("container.jumper.height"), (float)(tileJumper.getJumpHeightValue()) / 9.0F));
 	}
 
 	@Override
@@ -51,7 +52,7 @@ public class GuiJumper extends FFMTGuiContainerSliderBase
 	@Override
 	public String getSliderName(int sliderId, float sliderValue)
 	{
-		return "Height";
+		return I18n.getString("container.jumper.height");
 	}
 
 	private void sendJumperPacket(int value)
@@ -75,8 +76,8 @@ public class GuiJumper extends FFMTGuiContainerSliderBase
 	{
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		fontRenderer.drawString("Jump Block", 6, 6, 4210752);
-		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 6, ySize - 96 + 2, 4210752);
+		fontRenderer.drawString(I18n.getString("container.jumper"), 6, 6, 4210752);
+		fontRenderer.drawString(I18n.getString("container.inventory"), 6, ySize - 96 + 2, 4210752);
 	}
 
 	@Override

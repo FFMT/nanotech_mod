@@ -12,7 +12,7 @@ tile.retarder.name=Ralentisseur
 tile.jumper.name=Trampoline
 tile.jumperadvanced.name=Trampoline avancé
 tile.multiplier.name=Multiplicateur
-tile.smoker.name=Bloc qui fume
+tile.smoker.name=Bloc fumeur
 tile.barbedwire.name=Barbelé
 tile.nanowood.name=Bois nano
 tile.nanoleaves.name=Feuilles nano
@@ -117,6 +117,13 @@ entity.CrazyGuy.name=Fou
 container.multiplier=Multiplieur
 container.input=Entrée
 container.output=Sortie
+container.jumper=Bloc trampoline
+container.jumper.height=Hauteur
+container.smoker=Bloc fumeur
+container.smoker.power=Puissance : %d
+container.listerJukebox.chose=Choisissez votre musique
+container.listerJukebox.stop=Arrêter
+container.listerJukebox.playAll=Tout jouer
 
 #Other
 info.void.1=Item pour barrel vide

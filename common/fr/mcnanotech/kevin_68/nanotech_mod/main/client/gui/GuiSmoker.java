@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.ResourceLocation;
@@ -35,7 +36,7 @@ public class GuiSmoker extends FFMTGuiContainerSliderBase
 		super.initGui();
 		int x = (width) / 2;
 		int y = (height - ySize) / 2;
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x - 75, y + 20, "Power:" + tileSmoker.getSmokeValue(), (float)(tileSmoker.getSmokeValue()) / 15.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x - 75, y + 20, I18n.getStringParams("container.smoker.power", tileSmoker.getSmokeValue()), (float)(tileSmoker.getSmokeValue()) / 15.0F));
 	}
 	
 	@Override
@@ -47,7 +48,7 @@ public class GuiSmoker extends FFMTGuiContainerSliderBase
 	@Override
 	public String getSliderName(int sliderId, float sliderValue)
 	{
-		return "Power:" + (int)(sliderValue * 15);
+		return I18n.getStringParams("container.smoker.power", + (int)(sliderValue * 15));
 	}
 
 	private void sendSmokerPacket(int value)
@@ -66,14 +67,13 @@ public class GuiSmoker extends FFMTGuiContainerSliderBase
 		}
 	}
 
-
 	@Override
 	protected void drawGuiContainerForegroundLayer(int i, int j)
 	{
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		fontRenderer.drawString("Smoke Block", 6, 6, 4210752);
-		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 6, ySize - 96 + 2, 4210752);
+		fontRenderer.drawString(I18n.getString("container.smoker"), 6, 6, 4210752);
+		fontRenderer.drawString(I18n.getString("container.inventory"), 6, ySize - 96 + 2, 4210752);
 	}
 
 	@Override

@@ -116,6 +116,13 @@ entity.CrazyGuy.name=Crazy Guy
 container.multiplier=Multiplier
 container.input=Input
 container.output=Output
+container.jumper=Jump Block
+container.jumper.height=Height
+container.smoker=Smoker Block
+container.smoker.power=Power : %d
+container.listerJukebox.chose=Chose your music
+container.listerJukebox.stop=Stop
+container.listerJukebox.=Play All
 
 #Other
 info.void.1=Item for empty barrel
