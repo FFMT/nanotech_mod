@@ -89,6 +89,14 @@
         </unzip>
     </target>
 
+    <!-- Extract IC2 into bin -->
+    <target name="extract_ic2">
+        <copy todir="${mcp.dir}\src\minecraft\">
+            <fileset dir="external_api\" />
+        </copy>
+    </target>
+
+
     <!-- Replace version token -->
     <target name="replace_tokens">
         <propertyfile file="build.properties">
@@ -175,6 +183,7 @@
         <antcall target="download_ffmtlib" />
         <antcall target="copy_ntm_sources" />
         <antcall target="copy_ugs_sources" />
+        <antcall target="extract_ic2" />
         <antcall target="extract_ffmtapi" />
         <antcall target="replace_tokens" />
         <antcall target="recompile" />
@@ -201,7 +210,10 @@
         <antcall target="clean" />
         <antcall target="download-and-setup-forge" />
         <antcall target="download_ic2" />
+        <antcall target="download_ffmtlib" />
         <antcall target="copy_ugs_sources" />
+        <antcall target="extract_ic2" />
+        <antcall target="extract_ffmtapi" />
         <antcall target="replace_tokens" />
         <antcall target="recompile" />	
         <antcall target="reobfuscate" />
