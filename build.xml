@@ -82,10 +82,11 @@
 
     <!-- Extract FFMT LIB -->
     <target name="extract_ffmtapi">
-        <unzip dest=".${mcp.dir}\src\minecraft" excludesfile = "mcmod.info" src="libs/${buildprop.ffmtlib_name}"/>
-        <copy todir="${mcp.dir}\lib\">
-            <fileset file="libs\${buildprop.ffmtlib_name}" />
-        </copy>
+        <unzip dest=".${mcp.dir}\src\minecraft" excludesfile = "mcmod.info" src="libs/${buildprop.ffmtlib_name}">
+            <patternset>
+                <include name="fr/**/**"/>
+            </patternset>
+        </unzip>
     </target>
 
     <!-- Replace version token -->
