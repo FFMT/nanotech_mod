@@ -20,7 +20,7 @@ import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 public class GuiSpotLight extends FFMTGuiContainerSliderBase
 {
 	protected TileEntitySpotLight tileSpotLight;
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod_city:textures/gui/SpotLight.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod_city:textures/gui/spotlight.png");
 
 	public GuiSpotLight(InventoryPlayer playerInventory, TileEntitySpotLight tileEntity, World world)
 	{

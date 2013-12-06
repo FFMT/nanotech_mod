@@ -3,11 +3,14 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerLightSaber;
@@ -20,6 +23,7 @@ import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 public class GuiLightSaber extends FFMTGuiContainerSliderBase
 {
 	private final ItemStack saberStack;
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod:textures/gui/lightsaber.png");
 
 	public GuiLightSaber(EntityPlayer player)
 	{
@@ -91,7 +95,12 @@ public class GuiLightSaber extends FFMTGuiContainerSliderBase
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
+		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+		this.mc.renderEngine.bindTexture(texture);
+		int x = (width - xSize) / 2;
+		int y = (height - ySize) / 2;
 
+		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 	}
 
 	public void updateScreen()
