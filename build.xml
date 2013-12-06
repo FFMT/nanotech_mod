@@ -80,20 +80,11 @@
         <get src="http://ci.mcnanotech.fr/job/FFMT-libs/${buildprop.ffmtlib_build}/artifact/dist/${buildprop.ffmtlib_name}" dest="libs/" usetimestamp="True"/>
     </target>
 
-    <!-- Extract FFMT LIB into bin -->
+    <!-- Extract FFMT LIB -->
     <target name="extract_ffmtapi">
+        <unzip dest=".${mcp.dir}\src\minecraft" excludes = "mcmod.info" src="libs/${buildprop.ffmtlib_name}"/>
         <copy todir="${mcp.dir}\lib\">
             <fileset file="libs\${buildprop.ffmtlib_name}" />
-        </copy>
-    </target>
-
-    <!-- Extract IC2 into bin -->
-    <target name="extract_ic2">
-        <copy todir="${mcp.dir}\lib\">
-            <fileset file="libs\${buildprop.ic2_name}" />
-        </copy>
-        <copy todir="${mcp.dir}\src\minecraft\">
-            <fileset dir="external_api\" />
         </copy>
     </target>
 
@@ -183,7 +174,6 @@
         <antcall target="download_ffmtlib" />
         <antcall target="copy_ntm_sources" />
         <antcall target="copy_ugs_sources" />
-        <antcall target="extract_ic2" />
         <antcall target="extract_ffmtapi" />
         <antcall target="replace_tokens" />
         <antcall target="recompile" />
@@ -211,7 +201,6 @@
         <antcall target="download-and-setup-forge" />
         <antcall target="download_ic2" />
         <antcall target="copy_ugs_sources" />
-        <antcall target="extract_ic2" />
         <antcall target="replace_tokens" />
         <antcall target="recompile" />	
         <antcall target="reobfuscate" />
