@@ -31,9 +31,9 @@ public class GuiListerJukebox extends GuiScreen
 
 	public void initGui()
 	{
-		this.buttonList.add(this.stopButton = new GuiSmallButton(6, this.width / 2 - 152, this.height - 38, 100, 20, "Stop"));
+		this.buttonList.add(this.stopButton = new GuiSmallButton(6, this.width / 2 - 152, this.height - 38, 100, 20, I18n.getString("container.listerJukebox.stop")));
 		this.buttonList.add(new GuiButton(7, this.width / 2 + 52, this.height - 38, 100, 20, "Playlist"));
-		this.buttonList.add(new GuiButton(8, this.width / 2 - 50, this.height - 38, 100, 20, "Play all"));
+		this.buttonList.add(new GuiButton(8, this.width / 2 - 50, this.height - 38, 100, 20, I18n.getString("container.listerJukebox.playAll")));
 		this.musicList = new GuiSlotMusic(this);
 		this.musicList.registerScrollButtons(7, 8);
 	}
