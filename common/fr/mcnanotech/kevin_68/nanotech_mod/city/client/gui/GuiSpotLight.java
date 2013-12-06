@@ -44,16 +44,16 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 	}
 
 	@Override
-	public void handlerSliderAction(int sladerId, float sladerValue)
+	public void handlerSliderAction(int sliderId, float sliderValue)
 	{
-		this.sendSpotLightPacket((int)(sladerValue * 255), sladerId);
+		this.sendSpotLightPacket((int)(sliderValue * 255), sliderId);
 	}
 
 	@Override
-	public String getSliderName(int sladerId, float sladerValue)
+	public String getSliderName(int sliderId, float sliderValue)
 	{
 		String name = "";
-		switch(sladerId)
+		switch(sliderId)
 		{
 		case 0:
 			name = EnumChatFormatting.RED + "red" + " : ";
@@ -74,7 +74,7 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 			name = EnumChatFormatting.DARK_BLUE + "dark blue" + " : ";
 			break;
 		}
-		return name + (int)(sladerValue * 255);
+		return name + (int)(sliderValue * 255);
 	}
 
 	@Override

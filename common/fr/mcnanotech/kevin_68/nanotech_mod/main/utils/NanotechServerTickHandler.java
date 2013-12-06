@@ -37,7 +37,7 @@ public class NanotechServerTickHandler implements ITickHandler
 				}
 			}
 		}
-		else if(player.inventory.armorItemInSlot(3) != null && player.inventory.armorItemInSlot(3).itemID != NanotechItem.crazyGlasses.itemID)
+		else if(player.inventory.armorItemInSlot(3) != null && player.inventory.armorItemInSlot(3).itemID != NanotechItem.crazyGlasses.itemID && !player.capabilities.isCreativeMode)
 		{
 			for(int i = 0; i < player.inventory.getSizeInventory(); i++)
 			{
@@ -60,7 +60,9 @@ public class NanotechServerTickHandler implements ITickHandler
 				{
 					Random rand = new Random();
 					if(rand.nextInt(100) < 2 && this.doEffect(player))
+					{
 						player.attackEntityFrom(NanotechDamageSource.nitrogenDamage, 1);
+					}
 				}
 			}
 		}

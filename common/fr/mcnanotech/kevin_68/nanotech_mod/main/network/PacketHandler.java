@@ -4,6 +4,8 @@ import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import cpw.mods.fml.common.network.IPacketHandler;
@@ -11,6 +13,7 @@ import cpw.mods.fml.common.network.Player;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.items.ItemLightSaber;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 
@@ -25,10 +28,13 @@ public class PacketHandler implements IPacketHandler
 		{
 			handleSmokerPacket(packet, playerSender);
 		}
-
-		if(packet.channel.equals("NTM|jumper"))
+		else if(packet.channel.equals("NTM|jumper"))
 		{
 			handleJumperPacket(packet, playerSender);
+		}
+		else if(packet.channel.equals("NTM|saber"))
+		{
+			handleSaberPacket(packet, playerSender);
 		}
 	}
 
@@ -69,6 +75,45 @@ public class PacketHandler implements IPacketHandler
 		{
 			exception.printStackTrace();
 			Nanotech_mod.nanoLog.severe("Failed to handle jumper packet");
+		}
+	}
+	
+	private void handleSaberPacket(Packet250CustomPayload packet, EntityPlayer player)
+	{
+		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
+		int type;
+		int color;
+		try
+		{
+			data = new DataInputStream(new ByteArrayInputStream(packet.data));
+			type = data.readInt();
+			color = data.readInt();
+			ItemStack saberStack = player.getCurrentEquippedItem();
+			if(!saberStack.hasTagCompound() || !(saberStack.getItem() instanceof ItemLightSaber))
+			{
+				saberStack.setTagCompound(new NBTTagCompound());
+				Nanotech_mod.nanoLog.severe("A saber packet is erroned");
+			}
+			switch(type)
+			{
+			case 0:
+				saberStack.getTagCompound().setInteger("red", color);
+				break;
+			case 1:
+				saberStack.getTagCompound().setInteger("green", color);
+				break;
+			case 2:
+				saberStack.getTagCompound().setInteger("blue", color);
+				break;
+			default:
+				Nanotech_mod.nanoLog.severe("A saber packet has a bad type, this is a bug");
+			}
+			player.inventory.onInventoryChanged();
+		}
+		catch(Exception exception)
+		{
+			exception.printStackTrace();
+			Nanotech_mod.nanoLog.severe("Failed to handle saber packet");
 		}
 	}
 }

@@ -1,6 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.items;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
@@ -49,6 +50,9 @@ public class ItemLightSaberRender implements IItemRenderer
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data)
 	{
+		int red = (item.hasTagCompound() && item.getTagCompound().hasKey("red")) ? item.getTagCompound().getInteger("red") : 0;
+		int green = (item.hasTagCompound() && item.getTagCompound().hasKey("green")) ? item.getTagCompound().getInteger("green") : 0;
+		int blue = (item.hasTagCompound() && item.getTagCompound().hasKey("blue")) ? item.getTagCompound().getInteger("blue") : 0;
 		switch(type)
 		{
 		case EQUIPPED:
@@ -57,9 +61,9 @@ public class ItemLightSaberRender implements IItemRenderer
 			Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 			GL11.glRotatef(-140, 0.0F, 0.0F, 1.0F);
 			GL11.glTranslatef(-0.65F, -1.35F, 0.0F);
-			model.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F, false);
-			GL11.glColor3d(item.getItemDamage() == 1 ? 255 :(item.getItemDamage() == 4 ? 255 : 0), item.getItemDamage() == 2 ? 255 :(item.getItemDamage() == 4 ? 255 : 0), item.getItemDamage() == 3 ? 255 :(item.getItemDamage() == 4 ? 255 : 0));
-			model.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F, true);			
+			model.render(0.0625F, item, false);
+			GL11.glColor3d((float)(red) / 255.0F, (float)(green) / 255.0F, (float)(blue) / 255.0F);
+			model.render(0.0625F, item, true);
 			GL11.glPopMatrix();
 			break;
 		}
@@ -69,9 +73,9 @@ public class ItemLightSaberRender implements IItemRenderer
 			Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 			GL11.glRotatef(-140, 0.0F, 0.0F, 1.0F);
 			GL11.glTranslatef(-0.65F, -1.35F, 0.0F);
-			model.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F, false);
-			GL11.glColor3d(item.getItemDamage() == 1 ? 255 :(item.getItemDamage() == 4 ? 255 : 0), item.getItemDamage() == 2 ? 255 :(item.getItemDamage() == 4 ? 255 : 0), item.getItemDamage() == 3 ? 255 :(item.getItemDamage() == 4 ? 255 : 0));
-			model.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F, true);
+			model.render(0.0625F, item, false);
+			GL11.glColor3d((float)(red) / 255.0F, (float)(green) / 255.0F, (float)(blue) / 255.0F);
+			model.render(0.0625F, item, true);
 			GL11.glPopMatrix();
 			break;
 		}
@@ -88,9 +92,9 @@ public class ItemLightSaberRender implements IItemRenderer
 				GL11.glTranslatef(-1.1F, -0.5F, 0.1F);
 				GL11.glRotatef(-45.0F, 0.0F, 0.0F, 1.0F);
 			}
-			model.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F, false);
-			GL11.glColor3d(item.getItemDamage() == 1 ? 255 :(item.getItemDamage() == 4 ? 255 : 0), item.getItemDamage() == 2 ? 255 :(item.getItemDamage() == 4 ? 255 : 0), item.getItemDamage() == 3 ? 255 :(item.getItemDamage() == 4 ? 255 : 0));
-			model.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F, true);
+			model.render(0.0625F, item, false);
+			GL11.glColor3d((float)(red) / 255.0F, (float)(green) / 255.0F, (float)(blue) / 255.0F);
+			model.render(0.0625F, item, true);
 			GL11.glPopMatrix();
 			break;
 		}
@@ -101,9 +105,9 @@ public class ItemLightSaberRender implements IItemRenderer
 			GL11.glRotatef(45.F, 0.0F, 0.0F, 1.0F);
 			GL11.glTranslatef(11.5F, -16.0F, 0.0F);
 			GL11.glScalef(17F, 17F, 17F);
-			model.render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F, false);
-			GL11.glColor3d(item.getItemDamage() == 1 ? 255 :(item.getItemDamage() == 4 ? 255 : 0), item.getItemDamage() == 2 ? 255 :(item.getItemDamage() == 4 ? 255 : 0), item.getItemDamage() == 3 ? 255 :(item.getItemDamage() == 4 ? 255 : 0));
-			model.render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F, true);
+			model.render(0.0625F, item, false);
+			GL11.glColor3d((float)(red) / 255.0F, (float)(green) / 255.0F, (float)(blue) / 255.0F);
+			model.render(0.0625F, item, true);
 			GL11.glPopMatrix();
 			break;
 		}

@@ -1,11 +1,13 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.items;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
 public class ItemLightSaberModel extends ModelBase
 {
@@ -37,40 +39,22 @@ public class ItemLightSaberModel extends ModelBase
 		Shape3.mirror = true;
 		setRotation(Shape3, 0F, 0F, 0F);
 	}
-
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5, boolean multiColor)
+	
+	public void render(float f, ItemStack stack, boolean isColor)
 	{
-		super.render(entity, f, f1, f2, f3, f4, f5);
-		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		if(!multiColor)
+		if(!isColor)
 		{
-			Shape1.render(f5);
-			Shape2.render(f5);
+			Shape1.render(f);
+			Shape2.render(f);
 		}
-		else
+		else if(isColor && stack.hasTagCompound())
 		{
-			if(entity instanceof EntityPlayer)
+			if(stack.getTagCompound().hasKey("IsOn"))
 			{
-				EntityPlayer player = (EntityPlayer)entity;
-				if(player.inventory.getCurrentItem() != null && player.inventory.getCurrentItem().getItem().itemID == NanotechItem.lightSaber.itemID)
+				if(stack.getTagCompound().getBoolean("IsOn"))
 				{
-					if(!player.inventory.getCurrentItem().hasTagCompound())
-					{
-						player.inventory.getCurrentItem().setTagCompound(new NBTTagCompound());
-					}
-					else if(!player.inventory.getCurrentItem().getTagCompound().hasKey("IsOn"))
-					{
-						player.inventory.getCurrentItem().getTagCompound().setBoolean("IsOn", false);
-					}
-					else if(player.inventory.getCurrentItem().getTagCompound().getBoolean("IsOn"))
-					{
-						Shape3.render(f5);
-					}
+					Shape3.render(f);
 				}
-			}
-			else
-			{
-				Shape3.render(f5);
 			}
 		}
 	}
@@ -81,10 +65,4 @@ public class ItemLightSaberModel extends ModelBase
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
-
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
-	{
-		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-	}
-
 }

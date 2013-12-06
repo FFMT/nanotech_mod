@@ -41,8 +41,11 @@ public class GuiHandler implements IGuiHandler
 		{
 			return new ContainerListerJukebox((TileEntityListerJukebox)tileentity, player.inventory, world);
 		}
-
-		return new ContainerLightSaber(player.inventory, player.worldObj);
+		if(id == 10)
+		{
+			return new ContainerLightSaber(player.inventory, player.worldObj);
+		}
+		return null;
 	}
 
 	@Override
@@ -66,7 +69,10 @@ public class GuiHandler implements IGuiHandler
 		{
 			return new GuiListerJukebox(player.inventory, (TileEntityListerJukebox)tileentity, world);
 		}
-
-		return new GuiLightSaber(player);
+		if(id == 10)
+		{
+			return new GuiLightSaber(player);
+		}
+		return null;
 	}
 }

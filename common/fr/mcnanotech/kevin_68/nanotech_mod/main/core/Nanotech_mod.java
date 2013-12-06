@@ -26,7 +26,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechOther;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.UtilListerJukebox;
 
 @Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "@VERSION@", dependencies = "required-after:FFMTLIBS")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTM|smoker", "NTM|jumper"}, packetHandler = PacketHandler.class)
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTM|smoker", "NTM|jumper", "NTM|saber"}, packetHandler = PacketHandler.class)
 public class Nanotech_mod
 {
 	// Instance

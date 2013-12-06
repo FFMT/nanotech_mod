@@ -42,8 +42,11 @@ public class ItemLightSaber extends Item
 		{
 			if(player.isSneaking())
 			{
-				player.openGui(Nanotech_mod.modInstance, 5, world, (int)player.posX, (int)player.posY, (int)player.posZ);
-				//this.setDamage(stack, this.getDamage(stack) == 4 ? 0 : this.getDamage(stack) + 1);
+				if(!stack.hasTagCompound())
+				{
+					stack.setTagCompound(new NBTTagCompound());
+				}
+				player.openGui(Nanotech_mod.modInstance, 10, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 			}
 			else
 			{
@@ -69,21 +72,6 @@ public class ItemLightSaber extends Item
 							world.playSoundAtEntity(player, "nanotech_mod:lightsaber", 1.0F, 1.0F);
 							stack.getTagCompound().setBoolean("IsOn", true);
 						}
-					}
-					
-					if(!stack.getTagCompound().hasKey("Red"))
-					{
-						stack.getTagCompound().setInteger("Red", 0);
-					}
-					
-					if(!stack.getTagCompound().hasKey("Green"))
-					{
-						stack.getTagCompound().setInteger("Green", 0);
-					}
-					
-					if(!stack.getTagCompound().hasKey("Blue"))
-					{
-						stack.getTagCompound().setInteger("Blue", 0);
 					}
 				}
 			}
