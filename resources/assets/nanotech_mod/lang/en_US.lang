@@ -94,11 +94,8 @@ item.fish_veryfrozen.name=Very frozen fish
 item.fish_frozen.name=Frozen fish
 item.crazyGlassesGun.name=Crazy Glasses Launcher
 item.cageCrazyGlasses.name=Caged Crazy Glasses
-item.lightSaber_black.name=Black light saber
-item.lightSaber_red.name=Red light saber
-item.lightSaber_green.name=Green light saber
-item.lightSaber_blue.name=Blue light saber
-item.lightSaber_white.name=White light saber
+item.lightSaber.name=Light saber
+
 
 #Entity
 entity.SuperZombie.name=Super Zombie

@@ -95,11 +95,7 @@ item.fish_veryfrozen.name=Poisson très gelé
 item.fish_frozen.name=Poisson surgelé
 item.crazyGlassesGun.name=Lanceur de lunnette de fou
 item.cageCrazyGlasses.name=Lunnette de fou en cage
-item.lightSaber_black.name=Sabre laser noir
-item.lightSaber_red.name=Sabre laser rouge
-item.lightSaber_green.name=Sabre laser vert
-item.lightSaber_blue.name=Sabre laser bleu
-item.lightSaber_white.name=Sabre laser blanc
+item.lightSaber.name=Sabre laser
 
 #Entity
 entity.SuperZombie.name=Super Zombie

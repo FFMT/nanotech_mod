@@ -5,10 +5,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiJumper;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiLightSaber;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiListerJukebox;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiSmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerJumper;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerLightSaber;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerListerJukebox;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerMultiplier;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSmoker;
@@ -40,7 +42,7 @@ public class GuiHandler implements IGuiHandler
 			return new ContainerListerJukebox((TileEntityListerJukebox)tileentity, player.inventory, world);
 		}
 
-		return null;
+		return new ContainerLightSaber(player.inventory, player.worldObj);
 	}
 
 	@Override
@@ -65,6 +67,6 @@ public class GuiHandler implements IGuiHandler
 			return new GuiListerJukebox(player.inventory, (TileEntityListerJukebox)tileentity, world);
 		}
 
-		return null;
+		return new GuiLightSaber(player);
 	}
 }

@@ -23,17 +23,16 @@ import com.google.common.collect.Multimap;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechDamageSource;
 
 public class ItemLightSaber extends Item
 {
-	public static String[] type = new String[] {"black", "red", "green", "blue", "white"};
-
 	public ItemLightSaber(int id)
 	{
 		super(id);
-		this.setHasSubtypes(true);
 		this.maxStackSize = 1;
+		this.setMaxDamage(1500);
 		this.setCreativeTab(CreativeTabs.tabCombat);
 	}
 
@@ -43,7 +42,8 @@ public class ItemLightSaber extends Item
 		{
 			if(player.isSneaking())
 			{
-				this.setDamage(stack, this.getDamage(stack) == 4 ? 0 : this.getDamage(stack) + 1);
+				player.openGui(Nanotech_mod.modInstance, 5, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+				//this.setDamage(stack, this.getDamage(stack) == 4 ? 0 : this.getDamage(stack) + 1);
 			}
 			else
 			{
@@ -69,6 +69,21 @@ public class ItemLightSaber extends Item
 							world.playSoundAtEntity(player, "nanotech_mod:lightsaber", 1.0F, 1.0F);
 							stack.getTagCompound().setBoolean("IsOn", true);
 						}
+					}
+					
+					if(!stack.getTagCompound().hasKey("Red"))
+					{
+						stack.getTagCompound().setInteger("Red", 0);
+					}
+					
+					if(!stack.getTagCompound().hasKey("Green"))
+					{
+						stack.getTagCompound().setInteger("Green", 0);
+					}
+					
+					if(!stack.getTagCompound().hasKey("Blue"))
+					{
+						stack.getTagCompound().setInteger("Blue", 0);
 					}
 				}
 			}
@@ -142,33 +157,13 @@ public class ItemLightSaber extends Item
 		if(stack.getTagCompound().getBoolean("IsOn"))
 		{
 			entityTarget.attackEntityFrom(NanotechDamageSource.lightSaberDamage, 16F);
+			this.setDamage(stack, this.getDamage(stack) + 1);
 			return true;
 		}
 		else
 		{
 			entityTarget.attackEntityFrom(NanotechDamageSource.lightSaberDamage, 1F);
 			return true;
-		}
-	}
-
-	public String getUnlocalizedName(ItemStack stack)
-	{
-		if(stack.getItemDamage() < type.length)
-		{
-			return "item.lightSaber_" + type[stack.getItemDamage()];
-		}
-		else
-		{
-			return getUnlocalizedName();
-		}
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(int itemid, CreativeTabs creativeTabs, List list)
-	{
-		for(int metadatanumber = 0; metadatanumber < type.length; metadatanumber++)
-		{
-			list.add(new ItemStack(itemid, 1, metadatanumber));
 		}
 	}
 }

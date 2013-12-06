@@ -53,7 +53,7 @@ public class NanotechItem
 		nitrogenBucket = new ItemNitrogenBucket(Nanotech_mod.nitrogenBucketID, NanotechBlock.liquidNitrogen.blockID).setContainerItem(Item.bucketEmpty).setUnlocalizedName("nitrogenBucket").setTextureName("nanotech_mod:nitrogenbucket").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		reinforcedFishingRod = new ItemReinforcedFishingRod(Nanotech_mod.reinforcedFishingRodID).setUnlocalizedName("reinforcedFishingRod").setTextureName("nanotech_mod:reinforced_fishing_rod").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		crazyGlassesGun = new ItemCrazyGlassesGun(Nanotech_mod.crazyGlassesGunID).setUnlocalizedName("crazyGlassesGun").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		lightSaber = new ItemLightSaber(Nanotech_mod.lightSaberID).setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		lightSaber = new ItemLightSaber(Nanotech_mod.lightSaberID).setUnlocalizedName("lightSaber").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 	}
 	
 	public static void registerItem()
