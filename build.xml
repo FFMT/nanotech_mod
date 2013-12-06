@@ -82,7 +82,7 @@
 
     <!-- Extract FFMT LIB -->
     <target name="extract_ffmtapi">
-        <unzip dest=".${mcp.dir}\src\minecraft" excludes = "mcmod.info" src="libs/${buildprop.ffmtlib_name}"/>
+        <unzip dest=".${mcp.dir}\src\minecraft" excludesfile = "mcmod.info" src="libs/${buildprop.ffmtlib_name}"/>
         <copy todir="${mcp.dir}\lib\">
             <fileset file="libs\${buildprop.ffmtlib_name}" />
         </copy>
