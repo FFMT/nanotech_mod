@@ -40,12 +40,7 @@ public class BlockListerJukebox extends BlockContainer
 
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata)
 	{
-		TileEntity tile = world.getBlockTileEntity(x, y, z);
-		if(tile instanceof TileEntityListerJukebox)
-		{
-			TileEntityListerJukebox te = (TileEntityListerJukebox)tile;
-			te.stopMusic();
-		}
+		world.playRecord((String)null, x, y, z);
 	}
 
 	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion par5Explosion)
