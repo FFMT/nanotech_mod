@@ -29,6 +29,8 @@ public class UtilListerJukebox
 {
 	public static String mcDir;
 	public static String cdDirectoryName;
+	public static File oldRecordsDir;
+	public static File newRecordsDir;
 	public static File recordsDir;
 	public static File unsortedFileList[];
 	public static ArrayList<File> fileListA = new ArrayList();
@@ -50,10 +52,24 @@ public class UtilListerJukebox
 	public static void scanFolder(Minecraft minecraft)
 	{
 		mcDir = String.valueOf(minecraft.getMinecraft().mcDataDir);
-		recordsDir = new File(minecraft.getMinecraft().mcDataDir + "/assets/records/");
-		if(!recordsDir.exists())
+		oldRecordsDir = new File(minecraft.getMinecraft().mcDataDir + "/assets/records/");
+		newRecordsDir = new File(minecraft.getMinecraft().mcDataDir + "/assets/virtual/legacy/records/");
+		recordsDir = new File("");
+		if(!oldRecordsDir.exists())
 		{
-			recordsDir.mkdirs();
+			if(!newRecordsDir.exists())
+			{
+				newRecordsDir.mkdirs();
+				recordsDir = newRecordsDir;
+			}
+			else
+			{
+				recordsDir = newRecordsDir;
+			}
+		}
+		else
+		{
+			recordsDir = oldRecordsDir;
 		}
 
 		cdDirectoryName = recordsDir.getAbsolutePath();
