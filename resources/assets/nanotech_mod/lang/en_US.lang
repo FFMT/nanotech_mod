@@ -119,7 +119,7 @@ container.smoker=Smoker Block
 container.smoker.power=Power : %d
 container.listerJukebox.chose=Chose your music
 container.listerJukebox.stop=Stop
-container.listerJukebox.=Play All
+container.listerJukebox.playAll=Play All
 
 #Other
 info.void.1=Item for empty barrel
