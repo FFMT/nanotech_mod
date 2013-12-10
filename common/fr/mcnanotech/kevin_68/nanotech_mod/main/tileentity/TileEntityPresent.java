@@ -8,7 +8,7 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityPresent extends TileEntity
 {
-	private int presentId = 1, presentMeta;
+	private int presentId, presentMeta;
 
 	@Override
 	public void writeToNBT(NBTTagCompound nbtTagCompound)
