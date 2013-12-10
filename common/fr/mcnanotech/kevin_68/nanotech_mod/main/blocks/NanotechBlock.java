@@ -10,7 +10,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechOther;
 public class NanotechBlock
 {
 	// Blocks statement
-	public static Block portal, portalFrame, nanoGrass, fakeOre, speed, jumper, multiplier, smoker, barbedwire, nanoWood, nanoLeaves, nanoSaplings, nanoPlanks, nanoOre, confusion, falling, notfalling, sodium, mossystone, theDeathHead, listerJukebox, liquidNitrogen, nanoStairs, nanoSlabSingle, nanoSlabDouble, nanoFence, satelite, nukeBuildingBlock, nukeBuildingStairs;
+	public static Block portal, portalFrame, nanoGrass, fakeOre, speed, jumper, multiplier, smoker, barbedwire, nanoWood, nanoLeaves, nanoSaplings, nanoPlanks, nanoOre, confusion, falling, notfalling, sodium, mossystone, theDeathHead, listerJukebox, liquidNitrogen, nanoStairs, nanoSlabSingle, nanoSlabDouble, nanoFence, satelite, nukeBuildingBlock, nukeBuildingStairs, present;
 
 	// Blocks Initialization
 	public static void initBlock()
@@ -41,9 +41,10 @@ public class NanotechBlock
 		nanoSlabSingle = new BlockNanoSteps(Nanotech_mod.nanoSlabSingleID, false).setHardness(2.0F).setResistance(5.0F).setUnlocalizedName("nanoSlabSingle").setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
 		nanoSlabDouble = new BlockNanoSteps(Nanotech_mod.nanoSlabDoubleID, true).setHardness(2.0F).setResistance(5.0F).setUnlocalizedName("nanoSlabDouble");
 		satelite = new BlockSat(Nanotech_mod.satID).setUnlocalizedName("satelite");
-		nukeBuildingBlock = new BlockBuildingNuke(1026).setUnlocalizedName("nukeBuildingBlock").setTextureName("nanotech_mod:nukebuilding");
-		nukeBuildingStairs = new BlockNanoStairs(1027, nukeBuildingBlock, 0).setUnlocalizedName("nukeBuildingStairs").setCreativeTab(null);
-
+		nukeBuildingBlock = new BlockBuildingNuke(Nanotech_mod.nukeStairsID).setUnlocalizedName("nukeBuildingBlock").setTextureName("nanotech_mod:nukebuilding");
+		nukeBuildingStairs = new BlockNanoStairs(Nanotech_mod.nukeID, nukeBuildingBlock, 0).setUnlocalizedName("nukeBuildingStairs").setCreativeTab(null);
+		present = new BlockPresent(Nanotech_mod.presentID).setUnlocalizedName("present").setHardness(1.0F).setResistance(2.5F).setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
+		
 		if(NanotechOther.liquidNitrogen.getBlockID() == -1)
 		{
 			liquidNitrogen = new BlockLiquidNitrogen(Nanotech_mod.liquidNitrogenID, NanotechOther.liquidNitrogen, Material.water).setUnlocalizedName("liquidNitrogen");
@@ -87,5 +88,6 @@ public class NanotechBlock
 		GameRegistry.registerBlock(satelite, ItemBlockSatelite.class, "satelite", "Nanotech_mod");
 		GameRegistry.registerBlock(nukeBuildingBlock, ItemBlockNukeBuildingBlock.class, "nukeBuildingBlock", "Nanotech_mod");
 		GameRegistry.registerBlock(nukeBuildingStairs, "nukeBuildingStairs");
+		GameRegistry.registerBlock(present, "present");
 	}
 }
