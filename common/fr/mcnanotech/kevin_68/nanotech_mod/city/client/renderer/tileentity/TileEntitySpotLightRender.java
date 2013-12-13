@@ -32,12 +32,12 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 			GL11.glDisable(GL11.GL_BLEND);
 			GL11.glDepthMask(true);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE);
+			tessellator.startDrawingQuads();
+			tessellator.setColorRGBA(tileentity.getRedValue(), tileentity.getGreenValue(), tileentity.getBlueValue(), 32);
 			float f2 = (float)tileentity.getWorldObj().getTotalWorldTime() + par8;
 			float f3 = -f2 * 0.2F - (float)MathHelper.floor_float(-f2 * 0.1F);
 			byte b0 = 1;
 			double d3 = (double)f2 * 0.025D * (1.0D - (double)(b0 & 1) * 2.5D);
-			tessellator.startDrawingQuads();
-			tessellator.setColorRGBA(tileentity.getRedValue(), tileentity.getGreenValue(), tileentity.getBlueValue(), 32);
 			double d4 = (double)b0 * 0.2D;// taille
 			double d5 = 0.5D + Math.cos(d3 + 2.356194490192345D) * d4;
 			double d6 = 0.5D + Math.sin(d3 + 2.356194490192345D) * d4;
