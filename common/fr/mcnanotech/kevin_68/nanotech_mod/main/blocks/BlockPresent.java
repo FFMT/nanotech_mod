@@ -35,23 +35,20 @@ public class BlockPresent extends Block
 			calendar.setTime(new Date());
 			int day = calendar.get(5);
 			int month = calendar.get(2);
-			System.out.println(day);
-			System.out.println(month);
-
-			if((day == 24 || day == 25 || day == 10) && month == Calendar.DECEMBER)
+			
+			if((day == 24 || day == 25 || day == 13) && month == Calendar.DECEMBER)
 			{
 				TileEntity tile = world.getBlockTileEntity(x, y, z);
 				if(tile != null && tile instanceof TileEntityPresent)
 				{
 					TileEntityPresent te = (TileEntityPresent)tile;
-					this.dropBlockAsItem_do(world, x, y, z, new ItemStack(te.getPresentId(), 1, te.getPresentMeta()));
+					this.dropBlockAsItem_do(world, x, y, z, new ItemStack(1, 1, 0));
+					world.setBlockToAir(x, y, z);
 				}
-				// world.newExplosion(player, x, y, z, 10, true, true);
 			}
 			else
 			{
-				player.addChatMessage("NO");
-				player.addChatMessage(player.username + ":Oh, he said no");
+				player.addChatMessage("Hey, " + player.username + ", it's not the time to open!");
 			}
 		}
 		return true;
