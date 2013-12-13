@@ -46,7 +46,7 @@ public class BlockPresent extends Block
 				if(tile != null && tile instanceof TileEntityPresent)
 				{
 					TileEntityPresent te = (TileEntityPresent)tile;
-					this.dropBlockAsItem_do(world, x, y, z, new ItemStack(te.getPresentId(), 1, te.getPresentMeta()));
+					this.dropBlockAsItem_do(world, x, y, z, te.getPresent());
 					this.removeBlockByPlayer(world, player, x, y, z);
 					world.setBlockToAir(x, y, z);
 				}
@@ -67,9 +67,17 @@ public class BlockPresent extends Block
 			if(tile != null && tile instanceof TileEntityPresent)
 			{
 				TileEntityPresent te = (TileEntityPresent)tile;
-				if(stack.hasTagCompound() && stack.getTagCompound().hasKey("presentId") && stack.getTagCompound().hasKey("presentMeta"))
+				if(stack.hasTagCompound())
 				{
-					te.setPresent(stack.getTagCompound().getInteger("presentId"), stack.getTagCompound().getInteger("presentMeta"));
+					try
+					{
+						te.setPresent(ItemStack.loadItemStackFromNBT(stack.getTagCompound()));
+					}
+					catch(Exception ex)
+					{
+						ex.printStackTrace();
+						System.out.println("error");
+					}
 				}
 			}
 		}

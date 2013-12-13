@@ -44,8 +44,7 @@ public class INanotechRecipe implements IRecipe
 		{
 			newStack = new ItemStack(NanotechBlock.present, 1, 0);
 			NBTTagCompound nbtTag = new NBTTagCompound();
-			nbtTag.setInteger("presentId", nStack.itemID);
-			nbtTag.setInteger("presentMeta", stack.getItemDamage());
+			nStack.writeToNBT(nbtTag);
 			newStack.setTagCompound(nbtTag);
 			return true;
 		}
