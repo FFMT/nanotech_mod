@@ -7,7 +7,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -26,8 +25,13 @@ public class BlockPresent extends Block
 		return new TileEntityPresent();
 	}
 
+	public boolean hasTileEntity(int metadata)
+	{
+		return true;
+	}
+
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t)
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float f, float g, float t)
 	{
 		if(!world.isRemote)
 		{
@@ -35,14 +39,15 @@ public class BlockPresent extends Block
 			calendar.setTime(new Date());
 			int day = calendar.get(5);
 			int month = calendar.get(2);
-			
+
 			if((day == 24 || day == 25 || day == 13) && month == Calendar.DECEMBER)
 			{
 				TileEntity tile = world.getBlockTileEntity(x, y, z);
 				if(tile != null && tile instanceof TileEntityPresent)
 				{
 					TileEntityPresent te = (TileEntityPresent)tile;
-					this.dropBlockAsItem_do(world, x, y, z, new ItemStack(1, 1, 0));
+					this.dropBlockAsItem_do(world, x, y, z, new ItemStack(te.getPresentId(), 1, te.getPresentMeta()));
+					this.removeBlockByPlayer(world, player, x, y, z);
 					world.setBlockToAir(x, y, z);
 				}
 			}
