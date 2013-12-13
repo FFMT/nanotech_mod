@@ -13,6 +13,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.GameRegistry;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.creativetab.CreativetabItems;
@@ -232,6 +233,8 @@ public class Nanotech_mod
 		NanotechOther.registerBlockHarvestlevel();
 		NanotechOther.registerEvent();
 		proxy.registerTickHandler();
+		
+		GameRegistry.addRecipe(new INanotechRecipe());
 	}
 
 	@EventHandler
