@@ -1,6 +1,8 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
@@ -8,22 +10,25 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityPresent extends TileEntity
 {
-	private int presentId, presentMeta;
+	private ItemStack present;
 
 	@Override
 	public void writeToNBT(NBTTagCompound nbtTagCompound)
 	{
 		super.writeToNBT(nbtTagCompound);
-		nbtTagCompound.setInteger("id", presentId);
-		nbtTagCompound.setInteger("meta", presentMeta);
+		NBTTagList nbttaglist = new NBTTagList();
+		if(this.present != null)
+		{
+			this.present.writeToNBT(nbtTagCompound);
+		}
+		nbtTagCompound.setTag("Items", nbttaglist);
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbtTagCompound)
 	{
 		super.readFromNBT(nbtTagCompound);
-		presentId = nbtTagCompound.getInteger("id");
-		presentMeta = nbtTagCompound.getInteger("meta");
+		this.present = ItemStack.loadItemStackFromNBT(nbtTagCompound);
 	}
 
 	public Packet getDescriptionPacket()
@@ -38,19 +43,13 @@ public class TileEntityPresent extends TileEntity
 		this.readFromNBT(pkt.data);
 	}
 
-	public void setPresent(int id, int meta)
+	public void setPresent(ItemStack stack)
 	{
-		presentId = id;
-		presentMeta = meta;
+		present = stack;
 	}
 
-	public int getPresentId()
+	public ItemStack getPresent()
 	{
-		return presentId;
-	}
-
-	public int getPresentMeta()
-	{
-		return presentMeta;
+		return present;
 	}
 }
