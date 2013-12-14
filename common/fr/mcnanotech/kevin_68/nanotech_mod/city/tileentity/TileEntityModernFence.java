@@ -112,6 +112,6 @@ public class TileEntityModernFence extends TileEntity
 	@SideOnly(Side.CLIENT)
 	public AxisAlignedBB getRenderBoundingBox()
 	{
-		return AxisAlignedBB.getBoundingBox(-1000D, -1000D, -1000D, 1000D, 1000D, 1000D);
+		return AxisAlignedBB.getBoundingBox(xCoord - 2, yCoord - 2, zCoord - 2, xCoord + 2, yCoord + 2, zCoord + 2);
 	}
 }

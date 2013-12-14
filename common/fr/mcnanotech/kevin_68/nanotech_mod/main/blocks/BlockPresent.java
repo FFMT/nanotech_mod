@@ -41,7 +41,7 @@ public class BlockPresent extends Block
 			int day = calendar.get(5);
 			int month = calendar.get(2);
 
-			if((day == 24 || day == 25 || day == 13) && month == Calendar.DECEMBER)
+			if((day == 24 || day == 25) && month == Calendar.DECEMBER)
 			{
 				TileEntity tile = world.getBlockTileEntity(x, y, z);
 				if(tile != null && tile instanceof TileEntityPresent)
@@ -54,7 +54,7 @@ public class BlockPresent extends Block
 			}
 			else
 			{
-				player.addChatMessage(I18n.getString("block.present.hey") + player.username + I18n.getString("block.present.nottime"));
+				player.addChatMessage(I18n.getStringParams("block.present.nottime", player.username));
 			}
 		}
 		return true;

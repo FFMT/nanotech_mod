@@ -133,8 +133,7 @@ nanomiteGun.auto.slow=Mode de tire : automatique (lent)
 nanomiteGun.auto.fast=Mode de tire : automatique (rapide)
 nanomiteGun.auto.detect=Mode de tire : automatique (détection de mob)
 
-block.present.hey=Hey, 
-block.present.nottime=, ce n'est pas l'heure de l'ouvrir!
+block.present.nottime=Hey, %s, ce n'est pas l'heure de l'ouvrir!
 
 #Achievement
 achievement.installMod=Install Nanotech_mod
