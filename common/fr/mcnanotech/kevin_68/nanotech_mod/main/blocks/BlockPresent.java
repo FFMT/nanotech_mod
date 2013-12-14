@@ -5,6 +5,7 @@ import java.util.Date;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -53,7 +54,7 @@ public class BlockPresent extends Block
 			}
 			else
 			{
-				player.addChatMessage("Hey, " + player.username + ", it's not the time to open!");
+				player.addChatMessage(I18n.getString("block.present.hey") + player.username + I18n.getString("block.present.nottime"));
 			}
 		}
 		return true;

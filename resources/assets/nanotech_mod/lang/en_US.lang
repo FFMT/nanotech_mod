@@ -42,6 +42,7 @@ tile.nanoSlabDouble.nano.name=Nano Double Slab
 tile.nuke.name=Nuke
 tile.nukeBuildingBlock.name=Nuke Structure
 tile.nukeBuildingStairs.name=Nuke Structure Stairs
+tile.present.name=Christmas present
 
 #Fluid
 fluid.liquidnitrogen=Liquid Nitrogen
@@ -95,7 +96,7 @@ item.fish_frozen.name=Frozen fish
 item.crazyGlassesGun.name=Crazy Glasses Launcher
 item.cageCrazyGlasses.name=Caged Crazy Glasses
 item.lightSaber.name=Light saber
-
+item.presentPaper.name=Present paper
 
 #Entity
 entity.SuperZombie.name=Super Zombie
@@ -130,6 +131,9 @@ nanomiteGun.manual=Shoot mode : Manual
 nanomiteGun.auto.slow=Shoot mode : Automatic (slow)
 nanomiteGun.auto.fast=Shoot mode : Automatic (fast)
 nanomiteGun.auto.detect=Shoot mode : Automatic (mob detection)
+
+block.present.hey=Hey, 
+block.present.nottime=, it's not the time to open!
 
 #Achievement
 achievement.installMod=Install Nanotech_mod
