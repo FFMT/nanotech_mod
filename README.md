@@ -10,6 +10,5 @@ Todo list:
 * 3 machines, nano assembler, furnace to use decrease dust, very hot furnace for silicon
 * portable chest: keep the stuff inside when break
 * camouflage armor: when weared, you become a block
-* text spotlight (idea)
 
 That's all for now
