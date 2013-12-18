@@ -77,7 +77,7 @@ public class PacketHandler implements IPacketHandler
 			Nanotech_mod.nanoLog.severe("Failed to handle jumper packet");
 		}
 	}
-	
+
 	private void handleSaberPacket(Packet250CustomPayload packet, EntityPlayer player)
 	{
 		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));

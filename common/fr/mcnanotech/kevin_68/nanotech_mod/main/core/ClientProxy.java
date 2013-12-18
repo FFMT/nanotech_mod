@@ -80,7 +80,7 @@ public class ClientProxy extends CommonProxy
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.crazyGlassesGun.itemID, new ItemCrazyGlassesGunRender());
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.lightSaber.itemID, new ItemLightSaberRender());
 	}
-	
+
 	@Override
 	public void registerTileEntityRenders()
 	{

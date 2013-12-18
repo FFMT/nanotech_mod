@@ -2,14 +2,13 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.world;
 
 import java.util.Random;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
-
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.ChestGenHooks;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 
 public class WorldModel6 extends WorldGenerator
 {
@@ -767,16 +766,16 @@ public class WorldModel6 extends WorldGenerator
 		world.setBlock(x + 3, y + 1, z + 2, 0);
 		world.setBlock(x + 3, y + 1, z + 3, Block.stairsNetherQuartz.blockID, 7, 2);
 		world.setBlock(x + 3, y + 1, z + 4, Block.stairsNetherQuartz.blockID, 6, 2);
-		
-		world.setBlock(x + 3, y + 1, z + 5, Block.chest.blockID, 5, 2);
-		
-        TileEntityChest tileentitychest = (TileEntityChest)world.getBlockTileEntity(x + 3, y + 1, z + 5);
 
-        if (tileentitychest != null)
-        {
-            ChestGenHooks info = ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH);
-            WeightedRandomChestContent.generateChestContents(rand, info.getItems(rand), tileentitychest, info.getCount(rand));
-        }
+		world.setBlock(x + 3, y + 1, z + 5, Block.chest.blockID, 5, 2);
+
+		TileEntityChest tileentitychest = (TileEntityChest)world.getBlockTileEntity(x + 3, y + 1, z + 5);
+
+		if(tileentitychest != null)
+		{
+			ChestGenHooks info = ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH);
+			WeightedRandomChestContent.generateChestContents(rand, info.getItems(rand), tileentitychest, info.getCount(rand));
+		}
 		world.setBlock(x + 3, y + 1, z + 6, Block.stairsNetherQuartz.blockID, 7, 2);
 		world.setBlock(x + 3, y + 1, z + 7, Block.stairsNetherQuartz.blockID, 6, 2);
 		world.setBlock(x + 3, y + 1, z + 8, Block.blockNetherQuartz.blockID);

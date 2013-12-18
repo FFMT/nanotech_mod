@@ -16,7 +16,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 import cpw.mods.fml.common.Loader;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntityReinforcedFishingHook;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;

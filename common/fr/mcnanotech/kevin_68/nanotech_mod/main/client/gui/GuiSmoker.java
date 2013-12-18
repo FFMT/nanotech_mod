@@ -3,12 +3,10 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
-import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
@@ -38,7 +36,7 @@ public class GuiSmoker extends FFMTGuiContainerSliderBase
 		int y = (height - ySize) / 2;
 		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x - 75, y + 20, I18n.getStringParams("container.smoker.power", tileSmoker.getSmokeValue()), (float)(tileSmoker.getSmokeValue()) / 15.0F));
 	}
-	
+
 	@Override
 	public void handlerSliderAction(int sliderId, float sliderValue)
 	{
@@ -48,7 +46,7 @@ public class GuiSmoker extends FFMTGuiContainerSliderBase
 	@Override
 	public String getSliderName(int sliderId, float sliderValue)
 	{
-		return I18n.getStringParams("container.smoker.power", + (int)(sliderValue * 15));
+		return I18n.getStringParams("container.smoker.power", +(int)(sliderValue * 15));
 	}
 
 	private void sendSmokerPacket(int value)

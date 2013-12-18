@@ -1,17 +1,17 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
 public class INanotechRecipe implements IRecipe
 {
 	public ItemStack newStack;
-	
+
 	@Override
 	public boolean matches(InventoryCrafting inventorycrafting, World world)
 	{
@@ -39,7 +39,7 @@ public class INanotechRecipe implements IRecipe
 				}
 			}
 		}
-		
+
 		if(stack != null && nStack != null)
 		{
 			newStack = new ItemStack(NanotechBlock.present, 1, 0);

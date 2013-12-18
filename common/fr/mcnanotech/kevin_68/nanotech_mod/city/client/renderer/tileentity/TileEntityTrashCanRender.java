@@ -1,6 +1,5 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity;
 
-import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -21,7 +20,7 @@ public class TileEntityTrashCanRender extends TileEntityInventorySpecialRenderer
 	{
 		this.renderTileEntityTrashCanAt(null, x, y, z, 0);
 	}
-	
+
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float tick)
 	{

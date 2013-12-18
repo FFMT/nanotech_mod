@@ -68,7 +68,7 @@ public class LivingEvent
 		if(event.entity instanceof EntityPlayer)
 		{
 			EntityPlayer player = (EntityPlayer)event.entity;
-			
+
 			if(event.source.equals(NanotechDamageSource.altersDamage))
 			{
 				player.triggerAchievement(NanotechAchievement.deathAlters);

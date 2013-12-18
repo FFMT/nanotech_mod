@@ -43,19 +43,19 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.world.WorldGeneration;
 public class NanotechOther
 {
 	public static Fluid liquidNitrogen;
-	
+
 	public static BiomeGenBase nanotechBiome;
 	public static BiomeGenBase nitrogenOcean;
-	
+
 	public static Potion freeze;
-	
+
 	public static void registerLiquid(int state)
 	{
 		if(state == 0)
 		{
-		liquidNitrogen = new Fluid("liquidnitrogen").setDensity(4000).setViscosity(500).setTemperature(77).setLuminosity(0).setUnlocalizedName("liquidNitrogen");
-		FluidRegistry.registerFluid(liquidNitrogen);
-		liquidNitrogen = FluidRegistry.getFluid("liquidnitrogen");
+			liquidNitrogen = new Fluid("liquidnitrogen").setDensity(4000).setViscosity(500).setTemperature(77).setLuminosity(0).setUnlocalizedName("liquidNitrogen");
+			FluidRegistry.registerFluid(liquidNitrogen);
+			liquidNitrogen = FluidRegistry.getFluid("liquidnitrogen");
 		}
 		else if(state == 1)
 		{
@@ -66,7 +66,7 @@ public class NanotechOther
 			Nanotech_mod.nanoLog.severe("Error on call liquid register");
 		}
 	}
-	
+
 	public static void registerWorld()
 	{
 		nanotechBiome = new NanotechBiome(Nanotech_mod.nanotechBiomeID).setBiomeName("Nanotechbiome").setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.0F, 0.1F);
@@ -74,7 +74,7 @@ public class NanotechOther
 
 		DimensionManager.registerProviderType(Nanotech_mod.dimensionID, NanotechWorldProvider.class, false);
 		DimensionManager.registerDimension(Nanotech_mod.dimensionID, Nanotech_mod.dimensionID);
-		
+
 		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechBlock.sodium), 1, 5, 6));
 		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechItem.nanoDisc), 1, 1, 2));
 		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechItem.alters), 1, 1, 10));
@@ -82,12 +82,12 @@ public class NanotechOther
 		GameRegistry.registerWorldGenerator(new WorldGeneration());
 
 	}
-	
+
 	public static void registerPotion()
 	{
 		freeze = new NanotechPotion(30, true, 3035801).setPotionName("potion.freeze").setIconIndex(0, 0).func_111184_a(SharedMonsterAttributes.movementSpeed, "7107DE5E-7CE8-4030-940E-514C1F160890", -0.50000000596046448D, 2);
 	}
-	
+
 	public static void registerGuiAndTileEntity()
 	{
 		NetworkRegistry.instance().registerGuiHandler(Nanotech_mod.modInstance, new GuiHandler());
@@ -100,7 +100,7 @@ public class NanotechOther
 		GameRegistry.registerTileEntity(TileEntityButton.class, "TileEntityButton");
 		GameRegistry.registerTileEntity(TileEntityPresent.class, "TileEntityPresent");
 	}
-	
+
 	public static void registerForgeDictionary()
 	{
 		OreDictionary.registerOre("logWood", new ItemStack(NanotechBlock.nanoWood));
@@ -108,13 +108,13 @@ public class NanotechOther
 		OreDictionary.registerOre("treeSapling", new ItemStack(NanotechBlock.nanoSaplings));
 		OreDictionary.registerOre("treeLeaves", new ItemStack(NanotechBlock.nanoLeaves));
 	}
-	
+
 	public static void registerBlockHarvestlevel()
 	{
 		MinecraftForge.setBlockHarvestLevel(NanotechBlock.nanoGrass, "shovel", 2);
 		MinecraftForge.setBlockHarvestLevel(NanotechBlock.notfalling, "shovel", 2);
 	}
-	
+
 	public static void registerEvent()
 	{
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());

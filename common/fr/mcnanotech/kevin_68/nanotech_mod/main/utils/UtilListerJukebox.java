@@ -1,29 +1,9 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.utils;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.zip.ZipException;
-import java.util.zip.ZipFile;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.ModContainer;
-import cpw.mods.fml.common.ObfuscationReflectionHelper;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.SoundManager;
-import net.minecraft.client.audio.SoundPool;
-import net.minecraft.client.audio.SoundPoolEntry;
-import net.minecraft.util.ResourceLocation;
 
 public class UtilListerJukebox
 {

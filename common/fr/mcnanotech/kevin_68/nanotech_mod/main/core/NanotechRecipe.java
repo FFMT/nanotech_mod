@@ -52,7 +52,7 @@ public class NanotechRecipe
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.itemBase, 1, 20), new Object[] {NanotechItem.crazyGlasses, Item.ingotIron, Item.ingotIron});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.crazyGlassesGun, 1, 0), new Object[] {"DID", "DID", " S ", 'D', NanotechItem.diamondBow, 'I', Item.ingotIron, 'S', Item.stick});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.lightSaber, 1, 0), new Object[] {"G", "G", "S", 'G', Block.glass, 'S', (Loader.isModLoaded("Nanotech_mod_City") ? NanotechCityBlock.spotLight : Block.blockGold)});
-		
+
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[] {"XXX", "XXX", "XXX", 'X', "itemSodium"}));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[] {"XXX", "XXX", "XXX", 'X', "dustSodium"}));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[] {"XXX", "XXX", "XXX", 'X', "ingotSodium"}));

@@ -32,7 +32,7 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLampLight.class, new TileEntityLampLightRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySunShade.class, new TileEntitySunShadeRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityModernFence.class, new TileEntityModernFenceRender());
-		
+
 		FFMTClientRegistry.bindTESRWithInventoryRender(NanotechCityBlock.trashcan, 0, TileEntityTrashCan.class, new TileEntityTrashCanRender());
 	}
 }

@@ -117,7 +117,6 @@ public class Nanotech_mod_City
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.modernFence, 4), new Object[] {"I I", "III", "I I", 'I', Item.ingotIron});
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.trashcan, 1), new Object[] {"I I", "ICI", "III", 'I', Item.ingotIron, 'C', Block.cactus});
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.spotLight), new Object[] {"OAO", "RGB", "OAO", 'O', Block.obsidian, 'A', Block.glass, 'R', new ItemStack(Item.dyePowder, 1, 1), 'G', new ItemStack(Item.dyePowder, 1, 2), 'B', new ItemStack(Item.dyePowder, 1, 4)});
-
 	}
 
 	@EventHandler

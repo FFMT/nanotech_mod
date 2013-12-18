@@ -233,7 +233,7 @@ public class Nanotech_mod
 		NanotechOther.registerBlockHarvestlevel();
 		NanotechOther.registerEvent();
 		proxy.registerTickHandler();
-		
+
 		GameRegistry.addRecipe(new INanotechRecipe());
 	}
 

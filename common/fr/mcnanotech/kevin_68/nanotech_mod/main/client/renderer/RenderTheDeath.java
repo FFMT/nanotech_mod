@@ -2,7 +2,6 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer;
 
 import static net.minecraftforge.client.IItemRenderer.ItemRenderType.EQUIPPED;
 import static net.minecraftforge.client.IItemRenderer.ItemRendererHelper.BLOCK_3D;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -23,6 +22,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 public class RenderTheDeath extends RenderLiving
 {
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/entity/thedeath.png");
+
 	public RenderTheDeath()
 	{
 		super(new ModelTheDeath(), 0.5F);

@@ -1,11 +1,11 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.items;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.EnumHelper;
+import cpw.mods.fml.common.registry.GameRegistry;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
@@ -21,7 +21,7 @@ public class NanotechItem
 	public static EnumArmorMaterial EnumArmorMaterialCrazyGlasses = EnumHelper.addArmorMaterial("CrazyGlasses", 0, new int[] {0, 0, 0, 0}, 0);
 	public static EnumToolMaterial EnumToolMaterialNanomite = EnumHelper.addToolMaterial("Nanomite", 4, 2000, 13F, 4, 14);
 	public static EnumToolMaterial EnumToolMaterialScythe = EnumHelper.addToolMaterial("Scythe", 4, 2500, 13F, 16, 2);
-	
+
 	// Items Initialization
 	public static void initItem()
 	{
@@ -55,7 +55,7 @@ public class NanotechItem
 		crazyGlassesGun = new ItemCrazyGlassesGun(Nanotech_mod.crazyGlassesGunID).setUnlocalizedName("crazyGlassesGun").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 		lightSaber = new ItemLightSaber(Nanotech_mod.lightSaberID).setUnlocalizedName("lightSaber").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
 	}
-	
+
 	public static void registerItem()
 	{
 		GameRegistry.registerItem(itemBase, "nanotechbase", "Nanotech_mod");

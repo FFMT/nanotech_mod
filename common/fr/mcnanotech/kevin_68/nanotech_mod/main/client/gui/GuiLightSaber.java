@@ -3,14 +3,15 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
+
+import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerLightSaber;

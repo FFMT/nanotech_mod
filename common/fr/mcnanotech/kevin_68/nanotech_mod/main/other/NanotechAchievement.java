@@ -1,13 +1,8 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.other;
 
-import java.lang.reflect.Field;
-import java.util.Map;
-
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
-import net.minecraft.stats.AchievementMap;
-import net.minecraft.stats.StatList;
 import net.minecraftforge.common.AchievementPage;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
@@ -79,6 +74,7 @@ public class NanotechAchievement
 		pageNanotech = new AchievementPage("Nanotech_mod", installMod, blockBarbedWire, blockConfusion, blockFalling, blockJumper, blockJumperAdv, blockMossyStone, blockNotFalling, blockPortalFrame, blockSmoker, blockSpeed, blockSlow, blockTheDeath, blockSiliconOre, killTheDeath, killTheDeathWithCG, getScythe, getMysteriousMat, nanotechDim, blockListerJukebox, itemAlters, itemSiliconore, itemSiliconplate, itemCircuit, itemAdvancedcircuit, itemProcessor, itemMicroProcessor, itemCamera, itemDetector, itemEngine, itemNanomiteFrame, itemNanomite, itemSmallNanomite, itemStoneofdecrease, itemMysteriousingot, itemVoid, itemPortalActivator, itemCrazyGlasses, itemDiamondBow, itemEmeraldBow, itemNanomiteBow, itemMysteriousArmor, itemNanomiteTool, itemNanomiteArmor, itemReinforcedFishinRod, itemCrazyGlassesLauncher, itemFrozenFish, deathSatelit, deathLightLaser, deathAlters, deathSodium, deathNitrogen, deathBarbedWire);
 		AchievementPage.registerAchievementPage(pageNanotech);
 	}
+
 	public static Achievement getInstallModAchievement()
 	{
 		return installMod;

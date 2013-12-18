@@ -3,8 +3,6 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 import java.util.List;
 import java.util.Random;
 
-import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.NewExplosion;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -12,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.NewExplosion;
 
 public class BlockBuildingNuke extends Block
 {
@@ -152,18 +151,18 @@ public class BlockBuildingNuke extends Block
 		}
 	}
 
-    public int idDropped(int metadata, Random rand, int par3)
-    {
-        return Item.ingotIron.itemID;
-    }
+	public int idDropped(int metadata, Random rand, int par3)
+	{
+		return Item.ingotIron.itemID;
+	}
 
 	public int quantityDropped(Random rand)
 	{
 		return 1;
 	}
-	
-    protected boolean canSilkHarvest()
-    {
-    	return false;
-    }
+
+	protected boolean canSilkHarvest()
+	{
+		return false;
+	}
 }

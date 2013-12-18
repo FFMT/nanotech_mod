@@ -13,7 +13,6 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.city.core.ClientProxy;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrashCan;
 import fr.minecraftforgefrance.ffmtlibs.FFMTClientRegistry;
 

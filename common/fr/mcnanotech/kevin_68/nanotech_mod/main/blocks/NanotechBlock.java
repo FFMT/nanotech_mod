@@ -44,7 +44,7 @@ public class NanotechBlock
 		nukeBuildingBlock = new BlockBuildingNuke(Nanotech_mod.nukeStairsID).setUnlocalizedName("nukeBuildingBlock").setTextureName("nanotech_mod:nukebuilding");
 		nukeBuildingStairs = new BlockNanoStairs(Nanotech_mod.nukeID, nukeBuildingBlock, 0).setUnlocalizedName("nukeBuildingStairs").setCreativeTab(null);
 		present = new BlockPresent(Nanotech_mod.presentID).setUnlocalizedName("present").setHardness(1.0F).setResistance(2.5F).setCreativeTab(Nanotech_mod.CREATIVE_TAB_B).setTextureName("nanotech_mod:present");
-		
+
 		if(NanotechOther.liquidNitrogen.getBlockID() == -1)
 		{
 			liquidNitrogen = new BlockLiquidNitrogen(Nanotech_mod.liquidNitrogenID, NanotechOther.liquidNitrogen, Material.water).setUnlocalizedName("liquidNitrogen");

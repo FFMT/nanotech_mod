@@ -85,7 +85,7 @@ public class NanotechEntity
 		}
 
 	}
-	
+
 	public static void otherEntity()
 	{
 		EntityRegistry.registerGlobalEntityID(EntityReinforcedFishingHook.class, "EntityReinforcedFishingHook", 2048);

@@ -2,12 +2,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.client.model.items;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
 public class ItemLightSaberModel extends ModelBase
 {
@@ -39,7 +34,7 @@ public class ItemLightSaberModel extends ModelBase
 		Shape3.mirror = true;
 		setRotation(Shape3, 0F, 0F, 0F);
 	}
-	
+
 	public void render(float f, ItemStack stack, boolean isColor)
 	{
 		if(!isColor)

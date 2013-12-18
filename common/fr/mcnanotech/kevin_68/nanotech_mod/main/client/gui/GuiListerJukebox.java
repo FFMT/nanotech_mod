@@ -10,7 +10,6 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityListerJukebox;
 
 @SideOnly(Side.CLIENT)
@@ -85,9 +84,9 @@ public class GuiListerJukebox extends GuiScreen
 	{
 		return tile;
 	}
-	
-    public boolean doesGuiPauseGame()
-    {
-        return false;
-    }
+
+	public boolean doesGuiPauseGame()
+	{
+		return false;
+	}
 }

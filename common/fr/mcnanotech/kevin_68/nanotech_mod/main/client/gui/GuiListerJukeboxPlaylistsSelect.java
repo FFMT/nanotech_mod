@@ -68,11 +68,11 @@ public class GuiListerJukeboxPlaylistsSelect extends GuiScreen
 			}
 			if(guiButton.id == 6)
 			{
-				this.mc.displayGuiScreen(new GuiListerJukeboxPlaylists(inventoryy, tile, worldd, 6));	
-			}			
+				this.mc.displayGuiScreen(new GuiListerJukeboxPlaylists(inventoryy, tile, worldd, 6));
+			}
 			if(guiButton.id == 7)
 			{
-				this.mc.displayGuiScreen(new GuiListerJukeboxPlaylists(inventoryy, tile, worldd, 7));	
+				this.mc.displayGuiScreen(new GuiListerJukeboxPlaylists(inventoryy, tile, worldd, 7));
 			}
 		}
 	}
@@ -92,15 +92,15 @@ public class GuiListerJukeboxPlaylistsSelect extends GuiScreen
 	public FontRenderer getFont()
 	{
 		return fontRenderer;
-	}	
+	}
 
 	public TileEntityListerJukebox getTile()
 	{
 		return tile;
 	}
-	
-    public boolean doesGuiPauseGame()
-    {
-        return false;
-    }
+
+	public boolean doesGuiPauseGame()
+	{
+		return false;
+	}
 }
