@@ -79,7 +79,6 @@ public class ItemDebug extends Item
 				{
 					TileEntitySpotLight te = (TileEntitySpotLight)tile;
 					player.addChatMessage("Powered: " + EnumChatFormatting.AQUA + String.valueOf(te.isActive));
-					player.addChatMessage("Reverse: " + EnumChatFormatting.AQUA + String.valueOf(te.isReverse));
 					player.addChatMessage("Red: " + EnumChatFormatting.AQUA + String.valueOf(te.red));
 					player.addChatMessage("Green: " + EnumChatFormatting.AQUA + String.valueOf(te.green));
 					player.addChatMessage("Blue: " + EnumChatFormatting.AQUA + String.valueOf(te.blue));

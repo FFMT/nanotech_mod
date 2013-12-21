@@ -17,7 +17,6 @@ public class TileEntitySpotLight extends TileEntity
 	@SideOnly(Side.CLIENT)
 	private float field_82138_c;
 	public boolean isActive;
-	public boolean isReverse;
 	private String field_94048_i;
 
 	public int red;
@@ -26,6 +25,10 @@ public class TileEntitySpotLight extends TileEntity
 	public int darkRed;
 	public int darkGreen;
 	public int darkBlue;
+	public int angle1;
+	public int angle2;
+	public boolean autoRotate;
+	public float rotationSpeed;
 
 	public void updateEntity()
 	{
@@ -36,16 +39,7 @@ public class TileEntitySpotLight extends TileEntity
 	{
 		if(this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
 		{
-			if(!this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord + 1, this.zCoord))
-			{
 				this.isActive = true;
-				this.isReverse = true;
-			}
-			else
-			{
-				this.isActive = true;
-				this.isReverse = false;
-			}
 		}
 		else
 		{
@@ -101,6 +95,10 @@ public class TileEntitySpotLight extends TileEntity
 		nbtTagCompound.setInteger("SpotLightDarkRed", darkRed);
 		nbtTagCompound.setInteger("SpotLightDarkGreen", darkGreen);
 		nbtTagCompound.setInteger("SpotLightDarkBlue", darkBlue);
+		nbtTagCompound.setInteger("SpotLightAngle1", angle1);
+		nbtTagCompound.setInteger("SpotLightAngle2", angle2);
+		nbtTagCompound.setBoolean("SpotLightAutoRotate", autoRotate);
+		nbtTagCompound.setFloat("SpotLightRotationSpeed", rotationSpeed);
 	}
 
 	public void readFromNBT(NBTTagCompound nbtTagCompound)
@@ -112,6 +110,10 @@ public class TileEntitySpotLight extends TileEntity
 		darkRed = nbtTagCompound.getInteger("SpotLightDarkRed");
 		darkGreen = nbtTagCompound.getInteger("SpotLightDarkGreen");
 		darkBlue = nbtTagCompound.getInteger("SpotLightDarkBlue");
+		angle1 = nbtTagCompound.getInteger("SpotLightAngle1");
+		angle2 = nbtTagCompound.getInteger("SpotLightAngle2");
+		autoRotate = nbtTagCompound.getBoolean("SpotLightAutoRotate");
+		rotationSpeed = nbtTagCompound.getFloat("SpotLightRotationSpeed");
 	}
 
 	public Packet getDescriptionPacket()
@@ -126,34 +128,61 @@ public class TileEntitySpotLight extends TileEntity
 		this.readFromNBT(pkt.data);
 	}
 
-	public int setRedValue(int i)
+	public void setRedValue(int i)
 	{
-		return this.red = i;
+		this.red = i;
 	}
 
-	public int setGreenValue(int i)
+	public void setGreenValue(int i)
 	{
-		return this.green = i;
+		this.green = i;
 	}
 
-	public int setBlueValue(int i)
+	public void setBlueValue(int i)
 	{
-		return this.blue = i;
+		this.blue = i;
 	}
 
-	public int setDarkRedValue(int i)
+	public void setDarkRedValue(int i)
 	{
-		return this.darkRed = i;
+		this.darkRed = i;
 	}
 
-	public int setDarkGreenValue(int i)
+	public void setDarkGreenValue(int i)
 	{
-		return this.darkGreen = i;
+		this.darkGreen = i;
 	}
 
-	public int setDarkBlueValue(int i)
+	public void setDarkBlueValue(int i)
 	{
-		return this.darkBlue = i;
+		this.darkBlue = i;
+	}
+
+	public void setAngle1Value(int i)
+	{
+		this.angle1 = i;
+	}
+
+	public void setAngle2Value(int i)
+	{
+		this.angle2 = i;
+	}
+
+	public void setRotateValue(int i)
+	{
+		if(i == 1)
+		{
+			this.autoRotate = true;
+		}
+		else
+		{
+			this.autoRotate = false;
+		}
+	}
+	
+	public void setRotationSpeed(int i)
+	{
+		this.rotationSpeed = i;
 	}
 
 	public int getRedValue()
@@ -184,6 +213,26 @@ public class TileEntitySpotLight extends TileEntity
 	public int getDarkBlueValue()
 	{
 		return this.darkBlue;
+	}
+
+	public int getAngle1()
+	{
+		return this.angle1;
+	}
+
+	public int getAngle2()
+	{
+		return this.angle2;
+	}
+
+	public boolean getAutoRotate()
+	{
+		return this.autoRotate;
+	}
+	
+	public float getRotationSpeed()
+	{
+		return this.rotationSpeed;
 	}
 
 	public boolean isUseableByPlayer(EntityPlayer player)
