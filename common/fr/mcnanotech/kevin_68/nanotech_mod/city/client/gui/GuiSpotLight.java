@@ -48,7 +48,7 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		this.buttonList.add(new FFMTGuiSliderForContainer(this, 5, width / 2 + 5, y + 117, EnumChatFormatting.DARK_BLUE + "dark blue" + " : " + tileSpotLight.getDarkBlueValue(), (float)(tileSpotLight.getDarkBlueValue()) / 255.0F));
 		this.buttonList.add(new FFMTGuiSliderForContainer(this, 6, width / 2 - 130, y - 15, 270, 20, EnumChatFormatting.WHITE + "Angle1" + " : " + tileSpotLight.getAngle1(), (float)(tileSpotLight.getAngle1()) / 360.0F));
 		this.buttonList.add(angle2Button = new FFMTGuiSliderForContainer(this, 7, width / 2 - 155, y + 7, EnumChatFormatting.WHITE + "Angle2" + " : " + tileSpotLight.getAngle2(), (float)(tileSpotLight.getAngle2()) / 180.0F));
-		this.buttonList.add(autoRotateButton = new FFMTGuiBooleanButton(8, width / 2 - 155, y + 29, 150, 20, "Rotate", false));
+		this.buttonList.add(autoRotateButton = new FFMTGuiBooleanButton(8, width / 2 - 155, y + 29, 150, 20, "Rotate", tileSpotLight.getAutoRotate()));
 		this.buttonList.add(speedRotationButton = new FFMTGuiSliderForContainer(this, 9, width / 2 - 155, y + 51, EnumChatFormatting.WHITE + "Rotation Speed" + " : " + (int)(tileSpotLight.getRotationSpeed()/10.0F), (float)(tileSpotLight.getRotationSpeed()) / 50.0F));
 	}
 
@@ -56,9 +56,8 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 	{
 		if(guibutton.id == 8)
 		{
-			this.sendSpotLightPacket((int)(tileSpotLight.getAutoRotate() ? 1 : 0), 8);
+			this.sendSpotLightPacket((int)(tileSpotLight.getAutoRotate() ? 0 : 1), 8);
 			autoRotateButton.toggle();
-			System.out.println(tileSpotLight.getAutoRotate());
 		}
 	}
 
