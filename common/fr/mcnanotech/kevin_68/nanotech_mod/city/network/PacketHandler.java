@@ -78,6 +78,9 @@ public class PacketHandler implements IPacketHandler
 			case 10:
 				tileSpotLight.setSecondaryLazer(color);
 				break;
+			case 11:
+				tileSpotLight.setReverseRotation(color);
+				break;
 			default:
 				Nanotech_mod.nanoLog.severe("A SpotLight packet has a bad type, this is a bug");
 			}

@@ -43,7 +43,7 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 			double angle1Deg = tileentity.getAngle1();
 			double angle2Deg = tileentity.getAngle2();
 			double a1 = Math.toRadians(angle1Deg);
-			double a2 = !tileentity.getAutoRotate() ? d3 * (tileentity.getRotationSpeed() / 10) : Math.toRadians(angle2Deg);
+			double a2 = !tileentity.getAutoRotate() ? ((d3 * (tileentity.getRotationSpeed() / 10)) * (!tileentity.getReverseRotation() ? -1 : 1)) : Math.toRadians(angle2Deg);
 
 			double xo = 0.5D;
 			double yo = 0.5D;

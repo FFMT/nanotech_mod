@@ -1,14 +1,20 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
+import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class TileEntitySpotLight extends TileEntity
 {
@@ -30,7 +36,7 @@ public class TileEntitySpotLight extends TileEntity
 	public boolean autoRotate;
 	public float rotationSpeed;
 	public boolean secondaryLazer;
-	public boolean guiHelp;
+	public boolean reverseRotation;
 
 	public void updateEntity()
 	{
@@ -102,7 +108,7 @@ public class TileEntitySpotLight extends TileEntity
 		nbtTagCompound.setBoolean("SpotLightAutoRotate", autoRotate);
 		nbtTagCompound.setFloat("SpotLightRotationSpeed", rotationSpeed);
 		nbtTagCompound.setBoolean("SpotLightSecondaryLaser", secondaryLazer);
-		nbtTagCompound.setBoolean("SpotLightGuiHelp", guiHelp);
+		nbtTagCompound.setBoolean("SpotLightReverseRotation", reverseRotation);
 	}
 
 	public void readFromNBT(NBTTagCompound nbtTagCompound)
@@ -119,7 +125,7 @@ public class TileEntitySpotLight extends TileEntity
 		autoRotate = nbtTagCompound.getBoolean("SpotLightAutoRotate");
 		rotationSpeed = nbtTagCompound.getFloat("SpotLightRotationSpeed");
 		secondaryLazer = nbtTagCompound.getBoolean("SpotLightSecondaryLaser");
-		guiHelp = nbtTagCompound.getBoolean("SpotLightGuiHelp");
+		reverseRotation = nbtTagCompound.getBoolean("SpotLightReverseRotation");
 	}
 
 	public Packet getDescriptionPacket()
@@ -203,15 +209,15 @@ public class TileEntitySpotLight extends TileEntity
 		}
 	}
 
-	public void setGuiHelp(int i)
+	public void setReverseRotation(int i)
 	{
 		if(i == 1)
 		{
-			this.guiHelp = true;
+			this.reverseRotation = true;
 		}
 		else
 		{
-			this.guiHelp = false;
+			this.reverseRotation = false;
 		}
 	}
 
@@ -270,9 +276,9 @@ public class TileEntitySpotLight extends TileEntity
 		return this.secondaryLazer;
 	}
 
-	public boolean getGuiHelp()
+	public boolean getReverseRotation()
 	{
-		return this.guiHelp;
+		return this.reverseRotation;
 	}
 
 	public boolean isUseableByPlayer(EntityPlayer player)

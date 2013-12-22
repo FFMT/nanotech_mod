@@ -26,6 +26,7 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 	protected static final ResourceLocation texture2 = new ResourceLocation("nanotech_mod_city:textures/gui/spotlight2.png");
 	public FFMTGuiBooleanButton autoRotateButton;
 	public FFMTGuiBooleanButton secondaryLazerButton;
+	public FFMTGuiBooleanButton reverseRotationButton;
 	public FFMTGuiSliderForContainer angle2Button;
 	public FFMTGuiSliderForContainer speedRotationButton;
 
@@ -40,31 +41,34 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 	{
 		super.initGui();
 		this.xSize = 256;
-		//this.ySize = 256;
+		this.ySize = 256;
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, width / 2 + 5, y + 7, EnumChatFormatting.RED + "red" + " : " + tileSpotLight.getRedValue(), (float)(tileSpotLight.getRedValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 1, width / 2 + 5, y + 29, EnumChatFormatting.GREEN + "green" + " : " + tileSpotLight.getGreenValue(), (float)(tileSpotLight.getGreenValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 2, width / 2 + 5, y + 51, EnumChatFormatting.BLUE + "blue" + " : " + tileSpotLight.getBlueValue(), (float)(tileSpotLight.getBlueValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 3, width / 2 + 5, y + 73, EnumChatFormatting.DARK_RED + "dark red" + " : " + tileSpotLight.getDarkRedValue(), (float)(tileSpotLight.getDarkRedValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 4, width / 2 + 5, y + 95, EnumChatFormatting.DARK_GREEN + "dark green" + " : " + tileSpotLight.getDarkGreenValue(), (float)(tileSpotLight.getDarkGreenValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 5, width / 2 + 5, y + 117, EnumChatFormatting.DARK_BLUE + "dark blue" + " : " + tileSpotLight.getDarkBlueValue(), (float)(tileSpotLight.getDarkBlueValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 6, width / 2 - 130, y - 15, 270, 20, EnumChatFormatting.WHITE + "Angle1" + " : " + tileSpotLight.getAngle1(), (float)(tileSpotLight.getAngle1()) / 360.0F));
-		this.buttonList.add(angle2Button = new FFMTGuiSliderForContainer(this, 7, width / 2 - 155, y + 7, EnumChatFormatting.WHITE + "Angle2" + " : " + tileSpotLight.getAngle2(), (float)(tileSpotLight.getAngle2()) / 180.0F));
-		this.buttonList.add(autoRotateButton = new FFMTGuiBooleanButton(8, width / 2 - 155, y + 29, 150, 20, "Rotate", tileSpotLight.getAutoRotate()));
-		this.buttonList.add(speedRotationButton = new FFMTGuiSliderForContainer(this, 9, width / 2 - 155, y + 51, EnumChatFormatting.WHITE + "Rotation Speed" + " : " + (int)(tileSpotLight.getRotationSpeed() / 10.0F), (float)(tileSpotLight.getRotationSpeed()) / 50.0F));
-		this.buttonList.add(secondaryLazerButton = new FFMTGuiBooleanButton(10, width / 2 - 155, y + 73, 150, 20, "Secondary lazer", tileSpotLight.getSecondaryLazer()));
-
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, width / 2 + 5, y + 47, EnumChatFormatting.RED + "red" + " : " + tileSpotLight.getRedValue(), (float)(tileSpotLight.getRedValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 1, width / 2 + 5, y + 69, EnumChatFormatting.GREEN + "green" + " : " + tileSpotLight.getGreenValue(), (float)(tileSpotLight.getGreenValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 2, width / 2 + 5, y + 91, EnumChatFormatting.BLUE + "blue" + " : " + tileSpotLight.getBlueValue(), (float)(tileSpotLight.getBlueValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 3, width / 2 + 5, y + 113, EnumChatFormatting.DARK_RED + "dark red" + " : " + tileSpotLight.getDarkRedValue(), (float)(tileSpotLight.getDarkRedValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 4, width / 2 + 5, y + 135, EnumChatFormatting.DARK_GREEN + "dark green" + " : " + tileSpotLight.getDarkGreenValue(), (float)(tileSpotLight.getDarkGreenValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 5, width / 2 + 5, y + 157, EnumChatFormatting.DARK_BLUE + "dark blue" + " : " + tileSpotLight.getDarkBlueValue(), (float)(tileSpotLight.getDarkBlueValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 6, width / 2 - 130, y + 25, 270, 20, EnumChatFormatting.WHITE + "Angle1" + " : " + tileSpotLight.getAngle1(), (float)(tileSpotLight.getAngle1()) / 360.0F));
+		this.buttonList.add(angle2Button = new FFMTGuiSliderForContainer(this, 7, width / 2 - 155, y + 47, EnumChatFormatting.WHITE + "Angle2" + " : " + tileSpotLight.getAngle2(), (float)(tileSpotLight.getAngle2()) / 180.0F));
+		this.buttonList.add(autoRotateButton = new FFMTGuiBooleanButton(8, width / 2 - 155, y + 69, 150, 20, "Rotate", tileSpotLight.getAutoRotate()));
+		this.buttonList.add(speedRotationButton = new FFMTGuiSliderForContainer(this, 9, width / 2 - 155, y + 91, EnumChatFormatting.WHITE + "Rotation Speed" + " : " + (int)(tileSpotLight.getRotationSpeed() / 10.0F), (float)(tileSpotLight.getRotationSpeed()) / 50.0F));
+		this.buttonList.add(reverseRotationButton = new FFMTGuiBooleanButton(11, width / 2 - 155, y + 113, "Reverse Rotation", !tileSpotLight.getReverseRotation()));
+		this.buttonList.add(secondaryLazerButton = new FFMTGuiBooleanButton(10, width / 2 - 155, y + 135, "Secondary lazer", tileSpotLight.getSecondaryLazer()));
+		
 		if(!tileSpotLight.getAutoRotate())
 		{
 			angle2Button.disable();
 			speedRotationButton.enable();
+			reverseRotationButton.enabled = true;
 		}
 		else
 		{
 			angle2Button.enable();
 			speedRotationButton.disable();
+			reverseRotationButton.enabled = false;
 		}
 	}
 
@@ -78,17 +82,24 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 			{
 				angle2Button.disable();
 				speedRotationButton.enable();
+				reverseRotationButton.enabled = true;
 			}
 			else
 			{
 				angle2Button.enable();
 				speedRotationButton.disable();
+				reverseRotationButton.enabled = false;
 			}
 		}
 		else if(guibutton.id == 10)
 		{
 			this.sendSpotLightPacket((int)(tileSpotLight.getSecondaryLazer() ? 0 : 1), 10);
 			secondaryLazerButton.toggle();
+		}
+		else if(guibutton.id == 11)
+		{
+			this.sendSpotLightPacket((int)(tileSpotLight.getReverseRotation() ? 0 : 1), 11);
+			reverseRotationButton.toggle();
 		}
 	}
 
@@ -191,8 +202,8 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		this.mc.renderEngine.bindTexture(texture);
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		this.drawTexturedModalRect(x - 35, y, 0, 0, xSize, ySize);
+		this.drawTexturedModalRect(x - 35, y + 19, 0, 0, xSize, ySize);
 		this.mc.renderEngine.bindTexture(texture2);
-		this.drawTexturedModalRect(x + 135, y, 0, 0, xSize, ySize);
+		this.drawTexturedModalRect(x + 135, y + 19, 0, 0, xSize, ySize);
 	}
 }

@@ -4,6 +4,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
@@ -29,16 +30,18 @@ public class BlockSpotLight extends BlockContainer
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
-		TileEntity tile_entity = world.getBlockTileEntity(x, y, z);
+		TileEntity tileentity = world.getBlockTileEntity(x, y, z);
+		ItemStack itemstack = player.inventory.getCurrentItem();
 
-		if(tile_entity == null || player.isSneaking())
+		if(tileentity == null || player.isSneaking())
 		{
 			return false;
 		}
-
-		player.openGui(Nanotech_mod_City.modInstance, 3, world, x, y, z);
-
-		return true;
+		else
+		{
+			player.openGui(Nanotech_mod_City.modInstance, 3, world, x, y, z);
+			return true;
+		}
 	}
 
 	public boolean isOpaqueCube()
