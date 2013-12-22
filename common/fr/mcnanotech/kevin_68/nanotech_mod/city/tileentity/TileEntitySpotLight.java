@@ -29,6 +29,8 @@ public class TileEntitySpotLight extends TileEntity
 	public int angle2;
 	public boolean autoRotate;
 	public float rotationSpeed;
+	public boolean secondaryLazer;
+	public boolean guiHelp;
 
 	public void updateEntity()
 	{
@@ -39,7 +41,7 @@ public class TileEntitySpotLight extends TileEntity
 	{
 		if(this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
 		{
-				this.isActive = true;
+			this.isActive = true;
 		}
 		else
 		{
@@ -99,6 +101,8 @@ public class TileEntitySpotLight extends TileEntity
 		nbtTagCompound.setInteger("SpotLightAngle2", angle2);
 		nbtTagCompound.setBoolean("SpotLightAutoRotate", autoRotate);
 		nbtTagCompound.setFloat("SpotLightRotationSpeed", rotationSpeed);
+		nbtTagCompound.setBoolean("SpotLightSecondaryLaser", secondaryLazer);
+		nbtTagCompound.setBoolean("SpotLightGuiHelp", guiHelp);
 	}
 
 	public void readFromNBT(NBTTagCompound nbtTagCompound)
@@ -114,6 +118,8 @@ public class TileEntitySpotLight extends TileEntity
 		angle2 = nbtTagCompound.getInteger("SpotLightAngle2");
 		autoRotate = nbtTagCompound.getBoolean("SpotLightAutoRotate");
 		rotationSpeed = nbtTagCompound.getFloat("SpotLightRotationSpeed");
+		secondaryLazer = nbtTagCompound.getBoolean("SpotLightSecondaryLaser");
+		guiHelp = nbtTagCompound.getBoolean("SpotLightGuiHelp");
 	}
 
 	public Packet getDescriptionPacket()
@@ -179,10 +185,34 @@ public class TileEntitySpotLight extends TileEntity
 			this.autoRotate = false;
 		}
 	}
-	
+
 	public void setRotationSpeed(int i)
 	{
 		this.rotationSpeed = i;
+	}
+
+	public void setSecondaryLazer(int i)
+	{
+		if(i == 1)
+		{
+			this.secondaryLazer = true;
+		}
+		else
+		{
+			this.secondaryLazer = false;
+		}
+	}
+
+	public void setGuiHelp(int i)
+	{
+		if(i == 1)
+		{
+			this.guiHelp = true;
+		}
+		else
+		{
+			this.guiHelp = false;
+		}
 	}
 
 	public int getRedValue()
@@ -229,10 +259,20 @@ public class TileEntitySpotLight extends TileEntity
 	{
 		return this.autoRotate;
 	}
-	
+
 	public float getRotationSpeed()
 	{
 		return this.rotationSpeed;
+	}
+
+	public boolean getSecondaryLazer()
+	{
+		return this.secondaryLazer;
+	}
+
+	public boolean getGuiHelp()
+	{
+		return this.guiHelp;
 	}
 
 	public boolean isUseableByPlayer(EntityPlayer player)

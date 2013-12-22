@@ -22,8 +22,10 @@ import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 public class GuiSpotLight extends FFMTGuiContainerSliderBase
 {
 	protected TileEntitySpotLight tileSpotLight;
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod_city:textures/gui/spotlight.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod_city:textures/gui/spotlight1.png");
+	protected static final ResourceLocation texture2 = new ResourceLocation("nanotech_mod_city:textures/gui/spotlight2.png");
 	public FFMTGuiBooleanButton autoRotateButton;
+	public FFMTGuiBooleanButton secondaryLazerButton;
 	public FFMTGuiSliderForContainer angle2Button;
 	public FFMTGuiSliderForContainer speedRotationButton;
 
@@ -37,6 +39,8 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 	public void initGui()
 	{
 		super.initGui();
+		this.xSize = 256;
+		//this.ySize = 256;
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 
@@ -49,7 +53,19 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		this.buttonList.add(new FFMTGuiSliderForContainer(this, 6, width / 2 - 130, y - 15, 270, 20, EnumChatFormatting.WHITE + "Angle1" + " : " + tileSpotLight.getAngle1(), (float)(tileSpotLight.getAngle1()) / 360.0F));
 		this.buttonList.add(angle2Button = new FFMTGuiSliderForContainer(this, 7, width / 2 - 155, y + 7, EnumChatFormatting.WHITE + "Angle2" + " : " + tileSpotLight.getAngle2(), (float)(tileSpotLight.getAngle2()) / 180.0F));
 		this.buttonList.add(autoRotateButton = new FFMTGuiBooleanButton(8, width / 2 - 155, y + 29, 150, 20, "Rotate", tileSpotLight.getAutoRotate()));
-		this.buttonList.add(speedRotationButton = new FFMTGuiSliderForContainer(this, 9, width / 2 - 155, y + 51, EnumChatFormatting.WHITE + "Rotation Speed" + " : " + (int)(tileSpotLight.getRotationSpeed()/10.0F), (float)(tileSpotLight.getRotationSpeed()) / 50.0F));
+		this.buttonList.add(speedRotationButton = new FFMTGuiSliderForContainer(this, 9, width / 2 - 155, y + 51, EnumChatFormatting.WHITE + "Rotation Speed" + " : " + (int)(tileSpotLight.getRotationSpeed() / 10.0F), (float)(tileSpotLight.getRotationSpeed()) / 50.0F));
+		this.buttonList.add(secondaryLazerButton = new FFMTGuiBooleanButton(10, width / 2 - 155, y + 73, 150, 20, "Secondary lazer", tileSpotLight.getSecondaryLazer()));
+
+		if(!tileSpotLight.getAutoRotate())
+		{
+			angle2Button.disable();
+			speedRotationButton.enable();
+		}
+		else
+		{
+			angle2Button.enable();
+			speedRotationButton.disable();
+		}
 	}
 
 	protected void actionPerformed(GuiButton guibutton)
@@ -58,6 +74,21 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		{
 			this.sendSpotLightPacket((int)(tileSpotLight.getAutoRotate() ? 0 : 1), 8);
 			autoRotateButton.toggle();
+			if(tileSpotLight.getAutoRotate())
+			{
+				angle2Button.disable();
+				speedRotationButton.enable();
+			}
+			else
+			{
+				angle2Button.enable();
+				speedRotationButton.disable();
+			}
+		}
+		else if(guibutton.id == 10)
+		{
+			this.sendSpotLightPacket((int)(tileSpotLight.getSecondaryLazer() ? 0 : 1), 10);
+			secondaryLazerButton.toggle();
 		}
 	}
 
@@ -160,7 +191,8 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		this.mc.renderEngine.bindTexture(texture);
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-
-		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+		this.drawTexturedModalRect(x - 35, y, 0, 0, xSize, ySize);
+		this.mc.renderEngine.bindTexture(texture2);
+		this.drawTexturedModalRect(x + 135, y, 0, 0, xSize, ySize);
 	}
 }
