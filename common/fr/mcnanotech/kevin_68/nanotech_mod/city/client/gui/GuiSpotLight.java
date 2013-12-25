@@ -3,6 +3,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.city.client.gui;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
@@ -15,6 +16,7 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.city.container.ContainerSpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.core.Nanotech_mod_City;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.items.NanotechCityItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
@@ -32,6 +34,7 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 	public FFMTGuiBooleanButton reverseRotationButton;
 	public FFMTGuiSliderForContainer angle2Button;
 	public FFMTGuiSliderForContainer speedRotationButton;
+	public FFMTGuiSliderForContainer redButton;
 
 	public GuiSpotLight(InventoryPlayer playerInventory, TileEntitySpotLight tileEntity, World world)
 	{
@@ -48,7 +51,7 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, width / 2 + 5, y + 47, EnumChatFormatting.RED + "red" + " : " + tileSpotLight.getRedValue(), (float)(tileSpotLight.getRedValue()) / 255.0F));
+		this.buttonList.add(redButton = new FFMTGuiSliderForContainer(this, 0, width / 2 + 5, y + 47, EnumChatFormatting.RED + "red" + " : " + tileSpotLight.getRedValue(), (float)(tileSpotLight.getRedValue()) / 255.0F));
 		this.buttonList.add(new FFMTGuiSliderForContainer(this, 1, width / 2 + 5, y + 69, EnumChatFormatting.GREEN + "green" + " : " + tileSpotLight.getGreenValue(), (float)(tileSpotLight.getGreenValue()) / 255.0F));
 		this.buttonList.add(new FFMTGuiSliderForContainer(this, 2, width / 2 + 5, y + 91, EnumChatFormatting.BLUE + "blue" + " : " + tileSpotLight.getBlueValue(), (float)(tileSpotLight.getBlueValue()) / 255.0F));
 		this.buttonList.add(new FFMTGuiSliderForContainer(this, 3, width / 2 + 5, y + 113, EnumChatFormatting.DARK_RED + "dark red" + " : " + tileSpotLight.getDarkRedValue(), (float)(tileSpotLight.getDarkRedValue()) / 255.0F));
@@ -108,21 +111,11 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		}
 		else if(guibutton.id == 12)
 		{
-			tileSpotLight.addNbtTagToItem();
+			sendSpotLightPacket(0, 12);
 		}
 		else if(guibutton.id == 13)
 		{
-			ItemStack stack = tileSpotLight.getStackInSlot(0);
-			if(stack != null && stack.itemID == NanotechCityItems.configCopy.itemID)
-			{
-				if(stack.hasTagCompound())
-				{
-					if(stack.getTagCompound().hasKey("SpotLightRed"))
-					{
-						sendSpotLightPacket(stack.getTagCompound().getInteger("SpotLightRed"), 0);
-					}
-				}
-			}
+			sendSpotLightPacket(1, 12);
 		}
 	}
 
