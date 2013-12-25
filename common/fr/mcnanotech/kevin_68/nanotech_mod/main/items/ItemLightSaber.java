@@ -22,7 +22,6 @@ public class ItemLightSaber extends Item
 		super(id);
 		this.maxStackSize = 1;
 		this.setMaxDamage(1500);
-		this.setCreativeTab(CreativeTabs.tabCombat);
 	}
 
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)

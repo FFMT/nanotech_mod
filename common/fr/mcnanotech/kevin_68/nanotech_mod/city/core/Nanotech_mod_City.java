@@ -18,6 +18,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.blocks.NanotechCityBlock;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.items.NanotechCityItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.network.GuiHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.network.PacketHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityFountain;
@@ -26,12 +27,13 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityLampLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityModernFence;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySunShade;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTextSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrail;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrashCan;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 @Mod(modid = "Nanotech_mod_City", name = "Nanotech mod City", version = "@VERSION@")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTMC|light", "NTMC|fount"}, packetHandler = PacketHandler.class)
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTMC|light", "NTMC|fount", "NTMC|text"}, packetHandler = PacketHandler.class)
 public class Nanotech_mod_City
 {
 	// Instance
@@ -42,10 +44,11 @@ public class Nanotech_mod_City
 	public static CommonProxy proxy;
 
 	// Block IDs
-	public static int trashcanID, spotLightID, trailID, fountainID, lampID, sunShadeID, modernFenceID;
+	public static int trashcanID, spotLightID, trailID, fountainID, lampID, sunShadeID, modernFenceID, textSpotLightID;
 
 	// Item IDs
-
+	public static int configCopyID;
+	
 	public static CreativeTabs cityTab = new CreativeTabs("NanotechModCity")
 	{
 		@SideOnly(Side.CLIENT)
@@ -69,6 +72,9 @@ public class Nanotech_mod_City
 			lampID = cfg.getBlock("Lamp", 1123).getInt();
 			sunShadeID = cfg.getBlock("SunShade", 1124).getInt();
 			modernFenceID = cfg.getBlock("ModernFence", 1125).getInt();
+			textSpotLightID = cfg.getBlock("Text Spotlight", 1126).getInt();
+			
+			configCopyID = cfg.getItem("Condif Copy", 5100).getInt();
 		}
 		catch(Exception ex)
 		{
@@ -84,6 +90,8 @@ public class Nanotech_mod_City
 
 		NanotechCityBlock.initBlock();
 		NanotechCityBlock.blockRegistry();
+		NanotechCityItems.initItems();
+		NanotechCityItems.registerItem();
 		NanotechCityAchievement.initAchievement();
 	}
 
@@ -105,6 +113,7 @@ public class Nanotech_mod_City
 		GameRegistry.registerTileEntity(TileEntitySunShade.class, "SunShade");
 		GameRegistry.registerTileEntity(TileEntityModernFence.class, "ModernFence");
 		GameRegistry.registerTileEntity(TileEntityTrashCan.class, "Trashcan");
+		GameRegistry.registerTileEntity(TileEntityTextSpotLight.class, "TextSpotLight");
 
 		// Render
 		proxy.registerTileRenders();

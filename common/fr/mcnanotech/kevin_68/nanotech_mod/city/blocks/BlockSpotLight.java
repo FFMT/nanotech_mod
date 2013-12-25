@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.core.Nanotech_mod_City;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.items.NanotechCityItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
 
 public class BlockSpotLight extends BlockContainer
@@ -33,7 +34,7 @@ public class BlockSpotLight extends BlockContainer
 		TileEntity tileentity = world.getBlockTileEntity(x, y, z);
 		ItemStack itemstack = player.inventory.getCurrentItem();
 
-		if(tileentity == null || player.isSneaking())
+		if(tileentity == null || player.isSneaking() || (player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().itemID == NanotechCityItems.configCopy.itemID))
 		{
 			return false;
 		}

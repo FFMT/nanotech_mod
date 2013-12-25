@@ -5,6 +5,8 @@ import java.io.DataOutputStream;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
@@ -13,6 +15,7 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.city.container.ContainerSpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.items.NanotechCityItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiBooleanButton;
@@ -51,12 +54,14 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		this.buttonList.add(new FFMTGuiSliderForContainer(this, 3, width / 2 + 5, y + 113, EnumChatFormatting.DARK_RED + "dark red" + " : " + tileSpotLight.getDarkRedValue(), (float)(tileSpotLight.getDarkRedValue()) / 255.0F));
 		this.buttonList.add(new FFMTGuiSliderForContainer(this, 4, width / 2 + 5, y + 135, EnumChatFormatting.DARK_GREEN + "dark green" + " : " + tileSpotLight.getDarkGreenValue(), (float)(tileSpotLight.getDarkGreenValue()) / 255.0F));
 		this.buttonList.add(new FFMTGuiSliderForContainer(this, 5, width / 2 + 5, y + 157, EnumChatFormatting.DARK_BLUE + "dark blue" + " : " + tileSpotLight.getDarkBlueValue(), (float)(tileSpotLight.getDarkBlueValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 6, width / 2 - 130, y + 25, 270, 20, EnumChatFormatting.WHITE + "Angle1" + " : " + tileSpotLight.getAngle1(), (float)(tileSpotLight.getAngle1()) / 360.0F));
-		this.buttonList.add(angle2Button = new FFMTGuiSliderForContainer(this, 7, width / 2 - 155, y + 47, EnumChatFormatting.WHITE + "Angle2" + " : " + tileSpotLight.getAngle2(), (float)(tileSpotLight.getAngle2()) / 180.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 6, width / 2 - 155, y + 25, 310, 20, EnumChatFormatting.WHITE + "Angle1" + " : " + tileSpotLight.getAngle1(), (float)(tileSpotLight.getAngle1()) / 360.0F));
+		this.buttonList.add(angle2Button = new FFMTGuiSliderForContainer(this, 7, width / 2 - 155, y + 47, "Angle2" + " : " + tileSpotLight.getAngle2(), (float)(tileSpotLight.getAngle2()) / 180.0F));
 		this.buttonList.add(autoRotateButton = new FFMTGuiBooleanButton(8, width / 2 - 155, y + 69, 150, 20, "Rotate", tileSpotLight.getAutoRotate()));
-		this.buttonList.add(speedRotationButton = new FFMTGuiSliderForContainer(this, 9, width / 2 - 155, y + 91, EnumChatFormatting.WHITE + "Rotation Speed" + " : " + (int)(tileSpotLight.getRotationSpeed() / 10.0F), (float)(tileSpotLight.getRotationSpeed()) / 50.0F));
+		this.buttonList.add(speedRotationButton = new FFMTGuiSliderForContainer(this, 9, width / 2 - 155, y + 91, "Rotation Speed" + " : " + (int)(tileSpotLight.getRotationSpeed() / 10.0F), (float)(tileSpotLight.getRotationSpeed()) / 50.0F));
 		this.buttonList.add(reverseRotationButton = new FFMTGuiBooleanButton(11, width / 2 - 155, y + 113, "Reverse Rotation", !tileSpotLight.getReverseRotation()));
 		this.buttonList.add(secondaryLazerButton = new FFMTGuiBooleanButton(10, width / 2 - 155, y + 135, "Secondary lazer", tileSpotLight.getSecondaryLazer()));
+		this.buttonList.add(new GuiButton(12, width / 2 - 155, y + 157, 65, 20, "Copy"));
+		this.buttonList.add(new GuiButton(13, width / 2 - 69, y + 157, 65, 20, "Paste"));
 		
 		if(!tileSpotLight.getAutoRotate())
 		{
@@ -100,6 +105,24 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		{
 			this.sendSpotLightPacket((int)(tileSpotLight.getReverseRotation() ? 0 : 1), 11);
 			reverseRotationButton.toggle();
+		}
+		else if(guibutton.id == 12)
+		{
+			tileSpotLight.addNbtTagToItem();
+		}
+		else if(guibutton.id == 13)
+		{
+			ItemStack stack = tileSpotLight.getStackInSlot(0);
+			if(stack != null && stack.itemID == NanotechCityItems.configCopy.itemID)
+			{
+				if(stack.hasTagCompound())
+				{
+					if(stack.getTagCompound().hasKey("SpotLightRed"))
+					{
+						sendSpotLightPacket(stack.getTagCompound().getInteger("SpotLightRed"), 0);
+					}
+				}
+			}
 		}
 	}
 
@@ -156,15 +179,15 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 			multiValue = 255;
 			break;
 		case 6:
-			name = EnumChatFormatting.WHITE + "Angle1" + " : ";
+			name = "Angle1" + " : ";
 			multiValue = 360;
 			break;
 		case 7:
-			name = EnumChatFormatting.WHITE + "Angle2" + " : ";
+			name = "Angle2" + " : ";
 			multiValue = 180;
 			break;
 		case 9:
-			name = EnumChatFormatting.WHITE + "Rotation Speed" + " : ";
+			name = "Rotation Speed" + " : ";
 			multiValue = 5;
 			break;
 		}

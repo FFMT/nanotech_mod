@@ -10,8 +10,10 @@ import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.container.ContainerFountain;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.container.ContainerSpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.container.ContainerTextSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityFountain;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTextSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
 public class PacketHandler implements IPacketHandler
@@ -28,6 +30,11 @@ public class PacketHandler implements IPacketHandler
 		if(packet.channel.equals("NTMC|fount"))
 		{
 			handleFountainPacket(packet, playerSender);
+		}
+		
+		if(packet.channel.equals("NTMC|text"))
+		{
+			handleTextSpotLightPacket(packet, playerSender);
 		}
 	}
 
@@ -121,6 +128,35 @@ public class PacketHandler implements IPacketHandler
 		{
 			exception.printStackTrace();
 			Nanotech_mod.nanoLog.severe("Failed to handle Fountain packet");
+		}
+	}
+	
+	private void handleTextSpotLightPacket(Packet250CustomPayload packet, EntityPlayer player)
+	{
+		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
+		int type;
+		String text;
+		try
+		{
+			data = new DataInputStream(new ByteArrayInputStream(packet.data));
+			type = data.readInt();
+			text = data.readUTF();
+			ContainerTextSpotLight containerSpotLight = (ContainerTextSpotLight)player.openContainer;
+			TileEntityTextSpotLight tileSpotLight = containerSpotLight.getSpotLight();
+			switch(type)
+			{
+			case 0:
+				tileSpotLight.setText(text);
+				break;
+			default:
+				Nanotech_mod.nanoLog.severe("A TextSpotLight packet has a bad type, this is a bug");
+			}
+			player.worldObj.markBlockForUpdate(tileSpotLight.xCoord, tileSpotLight.yCoord, tileSpotLight.zCoord);
+		}
+		catch(Exception exception)
+		{
+			exception.printStackTrace();
+			Nanotech_mod.nanoLog.severe("Failed to handle TextSpotLight packet");
 		}
 	}
 }

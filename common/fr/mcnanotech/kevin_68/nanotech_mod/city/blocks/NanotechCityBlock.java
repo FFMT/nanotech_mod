@@ -8,7 +8,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.core.Nanotech_mod_City;
 public class NanotechCityBlock
 {
 	// Blocks statement
-	public static Block trashcan, spotLight, trail, fountain, lamp, sunShade, modernFence;
+	public static Block trashcan, spotLight, trail, fountain, lamp, sunShade, modernFence, textSpotLight;
 
 	// Blocks Initialization
 	public static void initBlock()
@@ -20,6 +20,7 @@ public class NanotechCityBlock
 		lamp = new BlockLamp(Nanotech_mod_City.lampID, Material.iron).setHardness(3.0F).setResistance(10.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("lamp").setCreativeTab(Nanotech_mod_City.cityTab);
 		sunShade = new BlockSunShade(Nanotech_mod_City.sunShadeID, Material.wood).setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("sunShade").setCreativeTab(Nanotech_mod_City.cityTab);
 		modernFence = new BlockModernFence(Nanotech_mod_City.modernFenceID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("modernFence").setCreativeTab(Nanotech_mod_City.cityTab);
+		textSpotLight = new BlockTextSpotLight(Nanotech_mod_City.textSpotLightID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("textSpotLight").setCreativeTab(Nanotech_mod_City.cityTab);
 	}
 
 	// Blocks registry
@@ -32,5 +33,6 @@ public class NanotechCityBlock
 		GameRegistry.registerBlock(lamp, ItemBlockLamp.class, "BlockLamp", "Nanotech_mod_City");
 		GameRegistry.registerBlock(sunShade, ItemBlockSunShade.class, "BlockSunShade", "Nanotech_mod_City");
 		GameRegistry.registerBlock(modernFence, ItemBlockModernFence.class, "blockModernFence", "Nanotech_mod_City");
+		GameRegistry.registerBlock(textSpotLight, "BlockTextSpotLight");
 	}
 }

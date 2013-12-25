@@ -8,6 +8,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity.TileE
 import fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity.TileEntityModernFenceRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity.TileEntitySpotLightRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity.TileEntitySunShadeRender;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity.TileEntityTextSpotLightRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity.TileEntityTrailRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.client.renderer.tileentity.TileEntityTrashCanRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityFountain;
@@ -16,6 +17,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityLampLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityModernFence;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySunShade;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTextSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrail;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrashCan;
 import fr.minecraftforgefrance.ffmtlibs.FFMTClientRegistry;
@@ -32,7 +34,8 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLampLight.class, new TileEntityLampLightRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySunShade.class, new TileEntitySunShadeRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityModernFence.class, new TileEntityModernFenceRender());
-
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTextSpotLight.class, new TileEntityTextSpotLightRender());
+		
 		FFMTClientRegistry.bindTESRWithInventoryRender(NanotechCityBlock.trashcan, 0, TileEntityTrashCan.class, new TileEntityTrashCanRender());
 	}
 }

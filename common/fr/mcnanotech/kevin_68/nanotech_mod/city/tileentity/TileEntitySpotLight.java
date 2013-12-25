@@ -5,7 +5,10 @@ import java.io.DataOutputStream;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
@@ -14,10 +17,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.items.NanotechCityItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 
-public class TileEntitySpotLight extends TileEntity
+public class TileEntitySpotLight extends TileEntity implements IInventory
 {
+	private ItemStack[] inventory = new ItemStack[2];
+	private String customName;
+	
 	@SideOnly(Side.CLIENT)
 	private long field_82137_b;
 	@SideOnly(Side.CLIENT)
@@ -39,11 +46,6 @@ public class TileEntitySpotLight extends TileEntity
 	public boolean reverseRotation;
 
 	public void updateEntity()
-	{
-		this.updateState();
-	}
-
-	private void updateState()
 	{
 		if(this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
 		{
@@ -109,6 +111,28 @@ public class TileEntitySpotLight extends TileEntity
 		nbtTagCompound.setFloat("SpotLightRotationSpeed", rotationSpeed);
 		nbtTagCompound.setBoolean("SpotLightSecondaryLaser", secondaryLazer);
 		nbtTagCompound.setBoolean("SpotLightReverseRotation", reverseRotation);
+		
+		NBTTagList itemList = new NBTTagList();
+
+		for(int j = 0; j < inventory.length; j++)
+		{
+			ItemStack stack = inventory[j];
+
+			if(stack != null)
+			{
+				NBTTagCompound tag = new NBTTagCompound();
+
+				tag.setByte("Slot", (byte)j);
+				stack.writeToNBT(tag);
+				itemList.appendTag(tag);
+			}
+		}
+		nbtTagCompound.setTag("Inventory", itemList);
+
+		if(this.customName != null)
+		{
+			nbtTagCompound.setString("Name", this.customName);
+		}
 	}
 
 	public void readFromNBT(NBTTagCompound nbtTagCompound)
@@ -126,6 +150,23 @@ public class TileEntitySpotLight extends TileEntity
 		rotationSpeed = nbtTagCompound.getFloat("SpotLightRotationSpeed");
 		secondaryLazer = nbtTagCompound.getBoolean("SpotLightSecondaryLaser");
 		reverseRotation = nbtTagCompound.getBoolean("SpotLightReverseRotation");
+		
+		NBTTagList tagList = nbtTagCompound.getTagList("Inventory");
+
+		for(int i = 0; i < tagList.tagCount(); i++)
+		{
+			NBTTagCompound tag = (NBTTagCompound)tagList.tagAt(i);
+			byte slot = tag.getByte("Slot");
+
+			if(slot >= 0 && slot < inventory.length)
+			{
+				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
+			}
+		}
+		if(nbtTagCompound.hasKey("Name"))
+		{
+			this.customName = nbtTagCompound.getString("Name");
+		}
 	}
 
 	public Packet getDescriptionPacket()
@@ -290,5 +331,105 @@ public class TileEntitySpotLight extends TileEntity
 	public AxisAlignedBB getRenderBoundingBox()
 	{
 		return INFINITE_EXTENT_AABB;
+	}
+
+	@Override
+	public int getSizeInventory()
+	{
+		return inventory.length;
+	}
+
+	@Override
+	public ItemStack getStackInSlot(int slotIndex)
+	{
+		return inventory[slotIndex];
+	}
+
+	@Override
+	public ItemStack decrStackSize(int slotIndex, int amount)
+	{
+		ItemStack stack = getStackInSlot(slotIndex);
+
+		if(stack != null)
+		{
+			if(stack.stackSize <= amount)
+			{
+				setInventorySlotContents(slotIndex, null);
+			}
+			else
+			{
+				stack = stack.splitStack(amount);
+				if(stack.stackSize == 0)
+				{
+					setInventorySlotContents(slotIndex, null);
+				}
+			}
+		}
+
+		return stack;
+	}
+
+	@Override
+	public ItemStack getStackInSlotOnClosing(int slotIndex)
+	{
+		ItemStack stack = getStackInSlot(slotIndex);
+		if(stack != null)
+		{
+			setInventorySlotContents(slotIndex, null);
+		}
+		return stack;
+	}
+
+	@Override
+	public void setInventorySlotContents(int slot, ItemStack stack)
+	{
+		inventory[slot] = stack;
+
+		if(stack != null && stack.stackSize > getInventoryStackLimit())
+		{
+			stack.stackSize = getInventoryStackLimit();
+		}
+	}
+
+	@Override
+	public String getInvName()
+	{
+		return "container.spotLight";
+	}
+
+	@Override
+	public boolean isInvNameLocalized()
+	{
+		return this.customName != null && this.customName.length() > 0;
+	}
+
+	@Override
+	public int getInventoryStackLimit()
+	{
+		return 1;
+	}
+
+	@Override
+	public void openChest(){}
+
+	@Override
+	public void closeChest(){}
+
+	@Override
+	public boolean isItemValidForSlot(int i, ItemStack itemstack)
+	{
+		return false;
+	}
+	
+	public void addNbtTagToItem()
+	{
+		ItemStack stack = getStackInSlot(1);
+		ItemStack newStack = new ItemStack(NanotechCityItems.configCopy);
+		if(stack != null && stack.itemID == NanotechCityItems.configCopy.itemID)
+		{
+			newStack.setTagCompound(new NBTTagCompound());
+			newStack.getTagCompound().setInteger("SpotLightRed", getRedValue());
+			setInventorySlotContents(1, newStack);
+		}
 	}
 }

@@ -25,7 +25,6 @@ public class ItemDebug extends Item
 
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
 	{
-
 		TileEntity tile = world.getBlockTileEntity(x, y, z);
 		if(!world.isRemote)
 		{
