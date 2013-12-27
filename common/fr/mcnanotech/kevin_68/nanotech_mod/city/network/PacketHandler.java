@@ -36,6 +36,11 @@ public class PacketHandler implements IPacketHandler
 		{
 			handleTextSpotLightPacket(packet, playerSender);
 		}
+		
+		if(packet.channel.equals("NTMC|text2"))
+		{
+			handleTextSpotLightPacket2(packet, playerSender);
+		}
 	}
 
 	private void handleSpotLightPacket(Packet250CustomPayload packet, EntityPlayer player)
@@ -145,23 +150,83 @@ public class PacketHandler implements IPacketHandler
 	private void handleTextSpotLightPacket(Packet250CustomPayload packet, EntityPlayer player)
 	{
 		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
+		int value;
 		int type;
-		String text;
 		try
 		{
 			data = new DataInputStream(new ByteArrayInputStream(packet.data));
 			type = data.readInt();
-			text = data.readUTF();
+			value = data.readInt();
 			ContainerTextSpotLight containerSpotLight = (ContainerTextSpotLight)player.openContainer;
 			TileEntityTextSpotLight tileSpotLight = containerSpotLight.getSpotLight();
 			switch(type)
 			{
-			case 0:
-				tileSpotLight.setText(text);
+			case 1:
+				if(value == 1)
+				{
+					tileSpotLight.setRotate(true);
+					break;
+				}
+				else
+				{
+					tileSpotLight.setRotate(false);
+					break;
+				}
+			case 2:
+				tileSpotLight.setAngle(value);
+				break;
+			case 3:
+				tileSpotLight.setRotationSpeed(value);
+				break;
+			case 4:
+				if(value == 1)
+				{
+					tileSpotLight.setReverseRotation(true);
+					break;
+				}
+				else
+				{
+					tileSpotLight.setReverseRotation(false);
+					break;
+				}
+			case 5:
+				tileSpotLight.setRedValue(value);
+				break;
+			case 6:
+				tileSpotLight.setGreenValue(value);
+				break;
+			case 7:
+				tileSpotLight.setBlueValue(value);
+				break;
+			case 8:
+				tileSpotLight.setScale(value);
+				break;
+			case 9:
+				tileSpotLight.setHeight(value);
 				break;
 			default:
 				Nanotech_mod.nanoLog.severe("A TextSpotLight packet has a bad type, this is a bug");
 			}
+			player.worldObj.markBlockForUpdate(tileSpotLight.xCoord, tileSpotLight.yCoord, tileSpotLight.zCoord);
+		}
+		catch(Exception exception)
+		{
+			exception.printStackTrace();
+			Nanotech_mod.nanoLog.severe("Failed to handle TextSpotLight packet");
+		}
+	}
+	
+	private void handleTextSpotLightPacket2(Packet250CustomPayload packet, EntityPlayer player)
+	{
+		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
+		String text;
+		try
+		{
+			data = new DataInputStream(new ByteArrayInputStream(packet.data));
+			text = data.readUTF();
+			ContainerTextSpotLight containerSpotLight = (ContainerTextSpotLight)player.openContainer;
+			TileEntityTextSpotLight tileSpotLight = containerSpotLight.getSpotLight();
+			tileSpotLight.setText(text);
 			player.worldObj.markBlockForUpdate(tileSpotLight.xCoord, tileSpotLight.yCoord, tileSpotLight.zCoord);
 		}
 		catch(Exception exception)
