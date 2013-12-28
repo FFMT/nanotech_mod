@@ -10,9 +10,32 @@ tile.lamp.name=BlockLamp
 tile.modernFence.name=Modern Fence
 tile.sunShade.name=SunShade
 tile.lamp.name=Lamp
+tile.textspotlight.name=Text Spotlight
+
+#Items
+item.configCopier.name=Config copier
 
 #CreativeTab
 itemGroup.NanotechModCity=Nanotech mod City
 
 #Container
 container.fountain=Fountain
+container.spotlight.red=Red
+container.spotlight.green=Green
+container.spotlight.blue=Blue
+container.spotlight.darkred=Dark red
+container.spotlight.darkgreen=Dark green
+container.spotlight.darkblue=Dark blue
+container.spotlight.angle=Angle
+container.spotlight.rotate=Auto Rotate
+container.spotlight.rotationspeed=Rotation speed
+container.spotlight.rotationreverse=Reverse rotation
+container.spotlight.secondlazer=Secondary lazer
+container.spotlight.copy=Copy
+container.spotlight.paste=Paste
+container.spotlight.true=True
+container.spotlight.false=False
+container.textspotlight.scale=Scale
+container.textspotlight.height=Height
+container.configcopier.empty=Empty
+container.configcopier.text=Text

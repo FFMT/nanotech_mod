@@ -10,11 +10,11 @@ public class NanotechCityItems
 	
 	public static void initItems()
 	{
-		configCopy = new ItemConfigCopy(Nanotech_mod_City.configCopyID).setUnlocalizedName("configCopy").setCreativeTab(Nanotech_mod_City.cityTab);
+		configCopy = new ItemConfigCopy(Nanotech_mod_City.configCopyID).setUnlocalizedName("configCopier").setCreativeTab(Nanotech_mod_City.cityTab);
 	}
 
 	public static void registerItem()
 	{
-		GameRegistry.registerItem(configCopy, "configCopy", "Nanotech_mod_City");
+		GameRegistry.registerItem(configCopy, "configCopier", "Nanotech_mod_City");
 	}
 }

@@ -122,16 +122,23 @@ container.smoker.power=Puissance : %d
 container.listerJukebox.chose=Choisissez votre musique
 container.listerJukebox.stop=Arrêter
 container.listerJukebox.playAll=Tout jouer
+container.listerJukebox.playlist=Playlist
+container.listerJukebox.playlists=Playlists
+container.listerJukebox.back=Retour
+container.listerJukebox.modplaylist=Mods playlist
+container.lightsaber.red=Rouge
+container.lightsaber.green=Vert
+container.lightsaber.blue=Bleu
 
 #Other
 info.void.1=Item pour barrel vide
 info.void.2=100% cobblestone
 info.void.3=100% recyclable
 
-nanomiteGun.manual=Mode de tire : manuel
-nanomiteGun.auto.slow=Mode de tire : automatique (lent)
-nanomiteGun.auto.fast=Mode de tire : automatique (rapide)
-nanomiteGun.auto.detect=Mode de tire : automatique (détection de mob)
+nanomiteGun.manual=Mode de tir : manuel
+nanomiteGun.auto.slow=Mode de tir : automatique (lent)
+nanomiteGun.auto.fast=Mode de tir : automatique (rapide)
+nanomiteGun.auto.detect=Mode de tir : automatique (détection de mob)
 
 block.present.nottime=Hey, %s, ce n'est pas l'heure de l'ouvrir!
 

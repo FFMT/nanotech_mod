@@ -121,6 +121,13 @@ container.smoker.power=Power : %d
 container.listerJukebox.chose=Chose your music
 container.listerJukebox.stop=Stop
 container.listerJukebox.playAll=Play All
+container.listerJukebox.playlist=Playlist
+container.listerJukebox.playlists=Playlists
+container.listerJukebox.back=Back
+container.listerJukebox.modplaylist=Mods playlist
+container.lightsaber.red=Red
+container.lightsaber.green=Green
+container.lightsaber.blue=Blue
 
 #Other
 info.void.1=Item for empty barrel

@@ -204,6 +204,17 @@ public class PacketHandler implements IPacketHandler
 			case 9:
 				tileSpotLight.setHeight(value);
 				break;
+			case 10:
+				if(value == 0)
+				{
+					tileSpotLight.addNbtTagToItem();
+					break;
+				}
+				else
+				{
+					tileSpotLight.setConfig();
+					break;
+				}
 			default:
 				Nanotech_mod.nanoLog.severe("A TextSpotLight packet has a bad type, this is a bug");
 			}

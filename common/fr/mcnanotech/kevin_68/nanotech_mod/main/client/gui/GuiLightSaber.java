@@ -3,6 +3,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -46,9 +47,9 @@ public class GuiLightSaber extends FFMTGuiContainerSliderBase
 		int green = saberStack.getTagCompound().hasKey("green") ? saberStack.getTagCompound().getInteger("green") : 0;
 		int blue = saberStack.getTagCompound().hasKey("blue") ? saberStack.getTagCompound().getInteger("blue") : 0;
 		System.out.println("red " + red + " | green : " + green + " | blue : " + blue);
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, width / 2 - 75, y + 7, EnumChatFormatting.RED + "red" + " : " + red, (float)(red) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 1, width / 2 - 75, y + 29, EnumChatFormatting.GREEN + "green" + " : " + green, (float)(green) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 2, width / 2 - 75, y + 51, EnumChatFormatting.BLUE + "blue" + " : " + blue, (float)(blue) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, width / 2 - 75, y + 7, EnumChatFormatting.RED + I18n.getString("container.lightsaber.red") + " : " + red, (float)(red) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 1, width / 2 - 75, y + 29, EnumChatFormatting.GREEN + I18n.getString("container.lightsaber.green") + " : " + green, (float)(green) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 2, width / 2 - 75, y + 51, EnumChatFormatting.BLUE + I18n.getString("container.lightsaber.blue") + " : " + blue, (float)(blue) / 255.0F));
 	}
 
 	@Override
@@ -64,13 +65,13 @@ public class GuiLightSaber extends FFMTGuiContainerSliderBase
 		switch(sliderId)
 		{
 		case 0:
-			name = EnumChatFormatting.RED + "red" + " : ";
+			name = EnumChatFormatting.RED + I18n.getString("container.lightsaber.red") + " : ";
 			break;
 		case 1:
-			name = EnumChatFormatting.GREEN + "green" + " : ";
+			name = EnumChatFormatting.GREEN + I18n.getString("container.lightsaber.green") + " : ";
 			break;
 		case 2:
-			name = EnumChatFormatting.BLUE + "blue" + " : ";
+			name = EnumChatFormatting.BLUE + I18n.getString("container.lightsaber.blue") + " : ";
 			break;
 		}
 		return name + (int)(sliderValue * 255);

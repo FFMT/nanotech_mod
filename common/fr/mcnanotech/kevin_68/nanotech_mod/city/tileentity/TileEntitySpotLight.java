@@ -24,7 +24,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 {
 	private ItemStack[] inventory = new ItemStack[2];
 	private String customName;
-	
+
 	@SideOnly(Side.CLIENT)
 	private long field_82137_b;
 	@SideOnly(Side.CLIENT)
@@ -111,7 +111,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		nbtTagCompound.setFloat("SpotLightRotationSpeed", rotationSpeed);
 		nbtTagCompound.setBoolean("SpotLightSecondaryLaser", secondaryLazer);
 		nbtTagCompound.setBoolean("SpotLightReverseRotation", reverseRotation);
-		
+
 		NBTTagList itemList = new NBTTagList();
 
 		for(int j = 0; j < inventory.length; j++)
@@ -150,7 +150,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		rotationSpeed = nbtTagCompound.getFloat("SpotLightRotationSpeed");
 		secondaryLazer = nbtTagCompound.getBoolean("SpotLightSecondaryLaser");
 		reverseRotation = nbtTagCompound.getBoolean("SpotLightReverseRotation");
-		
+
 		NBTTagList tagList = nbtTagCompound.getTagList("Inventory");
 
 		for(int i = 0; i < tagList.tagCount(); i++)
@@ -410,17 +410,19 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	}
 
 	@Override
-	public void openChest(){}
+	public void openChest()
+	{}
 
 	@Override
-	public void closeChest(){}
+	public void closeChest()
+	{}
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack)
 	{
 		return false;
 	}
-	
+
 	public void addNbtTagToItem()
 	{
 		ItemStack stack = getStackInSlot(1);
@@ -428,6 +430,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		if(stack != null && stack.itemID == NanotechCityItems.configCopy.itemID)
 		{
 			newStack.setTagCompound(new NBTTagCompound());
+			newStack.getTagCompound().setInteger("Type", 0);
 			newStack.getTagCompound().setInteger("SpotLightRed", getRedValue());
 			newStack.getTagCompound().setInteger("SpotLightGreen", getGreenValue());
 			newStack.getTagCompound().setInteger("SpotLightBlue", getBlueValue());
@@ -443,7 +446,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 			setInventorySlotContents(1, newStack);
 		}
 	}
-	
+
 	public void setConfig()
 	{
 		ItemStack stack = getStackInSlot(1);
@@ -451,53 +454,56 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		{
 			if(stack.hasTagCompound())
 			{
-				if(stack.getTagCompound().hasKey("SpotLightRed"))
+				if(stack.getTagCompound().hasKey("Type") && stack.getTagCompound().getInteger("Type") == 0)
 				{
-					setRedValue(stack.getTagCompound().getInteger("SpotLightRed"));
-				}
-				if(stack.getTagCompound().hasKey("SpotLightGreen"))
-				{
-					setGreenValue(stack.getTagCompound().getInteger("SpotLightGreen"));
-				}
-				if(stack.getTagCompound().hasKey("SpotLightBlue"))
-				{
-					setBlueValue(stack.getTagCompound().getInteger("SpotLightBlue"));
-				}
-				if(stack.getTagCompound().hasKey("SpotLightDarkRed"))
-				{
-					setDarkRedValue(stack.getTagCompound().getInteger("SpotLightDarkRed"));
-				}
-				if(stack.getTagCompound().hasKey("SpotLightDarkGreen"))
-				{
-					setDarkGreenValue(stack.getTagCompound().getInteger("SpotLightDarkGreen"));
-				}
-				if(stack.getTagCompound().hasKey("SpotLightDarkBlue"))
-				{
-					setDarkBlueValue(stack.getTagCompound().getInteger("SpotLightDarkBlue"));
-				}
-				if(stack.getTagCompound().hasKey("SpotLightAngle1"))
-				{
-					setAngle1Value(stack.getTagCompound().getInteger("SpotLightAngle1"));
-				}
-				if(stack.getTagCompound().hasKey("SpotLightAngle2"))
-				{
-					setAngle2Value(stack.getTagCompound().getInteger("SpotLightAngle2"));
-				}
-				if(stack.getTagCompound().hasKey("SpotLightAutoRotate"))
-				{
-					setRotateValue(stack.getTagCompound().getInteger("SpotLightAutoRotate"));
-				}
-				if(stack.getTagCompound().hasKey("SpotLightRotationSpeed"))
-				{
-					setRotationSpeed(stack.getTagCompound().getInteger("SpotLightRotationSpeed"));
-				}
-				if(stack.getTagCompound().hasKey("SpotLightSecondaryLazer"))
-				{
-					setSecondaryLazer(stack.getTagCompound().getInteger("SpotLightSecondaryLazer"));
-				}
-				if(stack.getTagCompound().hasKey("SpotLightReverseRotation"))
-				{
-					setReverseRotation((stack.getTagCompound().getInteger("SpotLightReverseRotation") == 1 ? 0 : 1));
+					if(stack.getTagCompound().hasKey("SpotLightRed"))
+					{
+						setRedValue(stack.getTagCompound().getInteger("SpotLightRed"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightGreen"))
+					{
+						setGreenValue(stack.getTagCompound().getInteger("SpotLightGreen"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightBlue"))
+					{
+						setBlueValue(stack.getTagCompound().getInteger("SpotLightBlue"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightDarkRed"))
+					{
+						setDarkRedValue(stack.getTagCompound().getInteger("SpotLightDarkRed"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightDarkGreen"))
+					{
+						setDarkGreenValue(stack.getTagCompound().getInteger("SpotLightDarkGreen"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightDarkBlue"))
+					{
+						setDarkBlueValue(stack.getTagCompound().getInteger("SpotLightDarkBlue"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightAngle1"))
+					{
+						setAngle1Value(stack.getTagCompound().getInteger("SpotLightAngle1"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightAngle2"))
+					{
+						setAngle2Value(stack.getTagCompound().getInteger("SpotLightAngle2"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightAutoRotate"))
+					{
+						setRotateValue(stack.getTagCompound().getInteger("SpotLightAutoRotate"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightRotationSpeed"))
+					{
+						setRotationSpeed(stack.getTagCompound().getInteger("SpotLightRotationSpeed"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightSecondaryLazer"))
+					{
+						setSecondaryLazer(stack.getTagCompound().getInteger("SpotLightSecondaryLazer"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightReverseRotation"))
+					{
+						setReverseRotation((stack.getTagCompound().getInteger("SpotLightReverseRotation") == 1 ? 0 : 1));
+					}
 				}
 			}
 		}
