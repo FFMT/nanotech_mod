@@ -9,7 +9,6 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiOverlay;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderCrazyGuy;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderCreeperDriller;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderFastZombie;
@@ -41,6 +40,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntityReinforcedFishingHook;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntitySatelite;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.others.EntitySuperBottleOfXp;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.event.RenderEvent;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityButton;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.NanotechClientTickHandler;
@@ -90,7 +90,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerOverlay()
 	{
-		MinecraftForge.EVENT_BUS.register(new GuiOverlay(Minecraft.getMinecraft()));
+		MinecraftForge.EVENT_BUS.register(new RenderEvent());
 	}
 
 	@Override

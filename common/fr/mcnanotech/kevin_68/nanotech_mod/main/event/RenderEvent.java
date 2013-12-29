@@ -1,45 +1,31 @@
-package fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui;
+package fr.mcnanotech.kevin_68.nanotech_mod.main.event;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
-import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
 
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.NanotechItem;
 
-public class GuiOverlay extends Gui
+public class RenderEvent
 {
-	private Minecraft mc;
+	private Minecraft mc = Minecraft.getMinecraft();
 	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/armor/crazyGlassesOverlay.png");
 
-	public GuiOverlay(Minecraft mc)
+	@ForgeSubscribe
+	public void onRenderGameOverlay(RenderGameOverlayEvent event)
 	{
-		super();
-		this.mc = mc;
-	}
-
-	@ForgeSubscribe(priority = EventPriority.NORMAL)
-	public void onRenderExperienceBar(RenderGameOverlayEvent event)
-	{
-		if(event.isCancelable() || event.type != ElementType.EXPERIENCE)
-		{
-			return;
-		}
-
 		ItemStack stack = this.mc.thePlayer.inventory.armorItemInSlot(3);
 		if(this.mc.gameSettings.thirdPersonView == 0 && stack != null && stack.getItem().itemID == NanotechItem.crazyGlasses.itemID)
 		{
-			ScaledResolution scaledresolution = new ScaledResolution(this.mc.gameSettings, this.mc.displayWidth, this.mc.displayHeight);
-			int k = scaledresolution.getScaledWidth();
-			int l = scaledresolution.getScaledHeight();
+			int k = event.resolution.getScaledWidth();
+			int l = event.resolution.getScaledHeight();
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			GL11.glDisable(GL11.GL_LIGHTING);
