@@ -128,6 +128,7 @@ container.listerJukebox.modplaylist=Mods playlist
 container.lightsaber.red=Red
 container.lightsaber.green=Green
 container.lightsaber.blue=Blue
+container.portablechest.name=Portable Chest
 
 #Other
 info.void.1=Item for empty barrel

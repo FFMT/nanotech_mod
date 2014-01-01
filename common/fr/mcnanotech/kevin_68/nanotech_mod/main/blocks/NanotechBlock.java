@@ -10,7 +10,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechOther;
 public class NanotechBlock
 {
 	// Blocks statement
-	public static Block portal, portalFrame, nanoGrass, fakeOre, speed, jumper, multiplier, smoker, barbedwire, nanoWood, nanoLeaves, nanoSaplings, nanoPlanks, nanoOre, confusion, falling, notfalling, sodium, mossystone, theDeathHead, listerJukebox, liquidNitrogen, nanoStairs, nanoSlabSingle, nanoSlabDouble, nanoFence, satelite, nukeBuildingBlock, nukeBuildingStairs, present;
+	public static Block portal, portalFrame, nanoGrass, fakeOre, speed, jumper, multiplier, smoker, barbedwire, nanoWood, nanoLeaves, nanoSaplings, nanoPlanks, nanoOre, confusion, falling, notfalling, sodium, mossystone, theDeathHead, listerJukebox, liquidNitrogen, nanoStairs, nanoSlabSingle, nanoSlabDouble, nanoFence, satelite, nukeBuildingBlock, nukeBuildingStairs, present, portableChest;
 
 	// Blocks Initialization
 	public static void initBlock()
@@ -44,7 +44,8 @@ public class NanotechBlock
 		nukeBuildingBlock = new BlockBuildingNuke(Nanotech_mod.nukeStairsID).setUnlocalizedName("nukeBuildingBlock").setTextureName("nanotech_mod:nukebuilding");
 		nukeBuildingStairs = new BlockNanoStairs(Nanotech_mod.nukeID, nukeBuildingBlock, 0).setUnlocalizedName("nukeBuildingStairs").setCreativeTab(null);
 		present = new BlockPresent(Nanotech_mod.presentID).setUnlocalizedName("present").setHardness(1.0F).setResistance(2.5F).setCreativeTab(Nanotech_mod.CREATIVE_TAB_B).setTextureName("nanotech_mod:present");
-
+		portableChest = new BlockPortableChest(Nanotech_mod.portableChestID, Material.wood).setUnlocalizedName("portableChest").setHardness(1.0F).setResistance(15.0F).setCreativeTab(Nanotech_mod.CREATIVE_TAB_B).setTextureName("nanotech_mod:portablechest");
+		
 		if(NanotechOther.liquidNitrogen.getBlockID() == -1)
 		{
 			liquidNitrogen = new BlockLiquidNitrogen(Nanotech_mod.liquidNitrogenID, NanotechOther.liquidNitrogen, Material.water).setUnlocalizedName("liquidNitrogen");
@@ -89,5 +90,6 @@ public class NanotechBlock
 		GameRegistry.registerBlock(nukeBuildingBlock, ItemBlockNukeBuildingBlock.class, "nukeBuildingBlock", "Nanotech_mod");
 		GameRegistry.registerBlock(nukeBuildingStairs, "nukeBuildingStairs");
 		GameRegistry.registerBlock(present, "present");
+		GameRegistry.registerBlock(portableChest, "portableChest");
 	}
 }

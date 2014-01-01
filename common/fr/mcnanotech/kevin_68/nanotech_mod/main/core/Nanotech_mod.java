@@ -39,7 +39,7 @@ public class Nanotech_mod
 
 	// Block IDs
 	public static int portalID, portalFrameID, grassID, fakeOreID, speedID, jumperID, multiplierID, smokerID, barbedWireID, nanoWoodID, nanoLeavesID, nanoSaplingsID, nanoPlanksID, nanoOreID, confusionID, fallingID, notFallingID, sodiumID, mossyStoneID, theDeathHeadID, listerJukeboxID, liquidNitrogenID, nanoFenceID, nanoStairsID, nanoSlabSingleID, nanoSlabDoubleID, satID, nukeStairsID, nukeID,
-			presentID;
+			presentID, portableChestID;
 
 	// Item IDs
 	public static int nanotechItemID, superBottleOfXpID, diamondBowID, emeraldBowID, nanomiteBowID, nanomiteAxeID, nanomitePickaxeID, nanomiteShovelID, nanomiteHoeID, nanomiteSwordID, nanomiteHelmetID, nanomiteChestPlateID, nanomiteLegginsID, nanomiteBootsID, mysteriousHelmetID, mysteriousChestPlateID, mysteriousLegginsID, mysteriousBootsID, nanoDiscID, edibleFleshID, rottenChunkID, scytheID,
@@ -116,6 +116,7 @@ public class Nanotech_mod
 			nukeStairsID = cfg.getBlock("Nuke stairs", 1026).getInt();
 			nukeID = cfg.getBlock("Nuke", 1027).getInt();
 			presentID = cfg.getBlock("Present", 1028).getInt();
+			portableChestID = cfg.getBlock("Portable Chest", 1029).getInt();
 
 			nanotechItemID = cfg.getItem("Main Nanotech ID", 5000).getInt();
 			superBottleOfXpID = cfg.getItem("Super Bottle of xp", 5001).getInt();

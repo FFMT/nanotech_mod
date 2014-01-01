@@ -31,6 +31,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityButton;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityListerJukebox;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityPortableChest;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityPresent;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.CraftingHandler;
@@ -99,6 +100,7 @@ public class NanotechOther
 		GameRegistry.registerTileEntity(TileEntityListerJukebox.class, "TileEntityListerJukebox");
 		GameRegistry.registerTileEntity(TileEntityButton.class, "TileEntityButton");
 		GameRegistry.registerTileEntity(TileEntityPresent.class, "TileEntityPresent");
+		GameRegistry.registerTileEntity(TileEntityPortableChest.class, "TileEntityPortableChest");
 	}
 
 	public static void registerForgeDictionary()

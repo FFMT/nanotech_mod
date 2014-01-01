@@ -8,15 +8,18 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiLightSaber;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiListerJukebox;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiMultiplier;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiPortableChest;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.gui.GuiSmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerLightSaber;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerListerJukebox;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerMultiplier;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerPortableChest;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSmoker;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityListerJukebox;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityMultiplier;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityPortableChest;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 
 public class GuiHandler implements IGuiHandler
@@ -40,6 +43,10 @@ public class GuiHandler implements IGuiHandler
 		if(tileentity instanceof TileEntityListerJukebox)
 		{
 			return new ContainerListerJukebox((TileEntityListerJukebox)tileentity, player.inventory, world);
+		}
+		if(tileentity instanceof TileEntityPortableChest)
+		{
+			return new ContainerPortableChest((TileEntityPortableChest)tileentity, player.inventory, world);
 		}
 		if(id == 10)
 		{
@@ -68,6 +75,10 @@ public class GuiHandler implements IGuiHandler
 		if(tileentity instanceof TileEntityListerJukebox)
 		{
 			return new GuiListerJukebox(player.inventory, (TileEntityListerJukebox)tileentity, world);
+		}
+		if(tileentity instanceof TileEntityPortableChest)
+		{
+			return new GuiPortableChest(player.inventory, (TileEntityPortableChest)tileentity, world);
 		}
 		if(id == 10)
 		{
