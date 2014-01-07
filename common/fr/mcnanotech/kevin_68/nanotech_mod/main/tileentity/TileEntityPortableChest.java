@@ -9,7 +9,7 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityPortableChest extends TileEntity implements IInventory
 {
-	private ItemStack[] inventory = new ItemStack[72];
+	public ItemStack[] inventory = new ItemStack[72];
 	private String customName;
 
 	public void readFromNBT(NBTTagCompound nbttag)

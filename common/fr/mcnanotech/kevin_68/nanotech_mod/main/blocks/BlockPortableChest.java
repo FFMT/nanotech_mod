@@ -1,5 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.blocks;
 
+import java.util.Random;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -7,11 +9,13 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.FMLNetworkHandler;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityPortableChest;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityPresent;
 
 public class BlockPortableChest extends BlockContainer
 {
@@ -35,11 +39,7 @@ public class BlockPortableChest extends BlockContainer
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
 	{
-		TileEntity te = world.getBlockTileEntity(x, y, z);
-		if(te != null && te instanceof TileEntityPortableChest && stack.hasDisplayName())
-		{
-			((TileEntityPortableChest)te).setCustomGuiName(stack.getDisplayName());
-		}
+
 	}
 
 	public void breakBlock(World world, int x, int y, int z, int side, int metadata)

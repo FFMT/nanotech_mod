@@ -17,7 +17,7 @@ public class ContainerSpotLight extends Container
 	{
 		this.worldObj = world;
 		this.tileSpotLight = tileEntity;
-		addSlotToContainer(new Slot(tileEntity, 1, 0, 114));
+		addSlotToContainer(new Slot(tileEntity, 1, 0, 115));
 		bindPlayerInventory(inventoryPlayer);
 	}
 
@@ -31,7 +31,7 @@ public class ContainerSpotLight extends Container
 	{
 		for(int i = 0; i < 9; i++)
 		{
-			addSlotToContainer(new Slot(inventoryPlayer, i, 11 + i * 18, 141));
+			addSlotToContainer(new Slot(inventoryPlayer, i, 11 + i * 18, 142));
 		}
 	}
 

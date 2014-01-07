@@ -57,7 +57,7 @@ public class Nanotech_mod
 	public static boolean theDeathSpawn, multipleExplosion;
 	public static int explosionRadius, timeUntilNextArrow;
 	public static int superZombieProb, superZombieMin, superZombieMax, superSkeletonProb, superSkeletonMin, superSkeletonMax, superCreeperProb, superCreeperMin, superCreeperMax, superEndermanProb, superEndermanMin, superEndermanMax, fastZombieProb, fastZombieMin, fastZombieMax, flyProb, flyMin, flyMax, creeperDrillerProb, creeperDrillerMin, creeperDrillerMax, flyingCreeperProb, flyingCreeperMin,
-			flyingCreeperMax, crazyGuyProb, crazyGuyMin, crazyGuyMax;
+			flyingCreeperMax, crazyGuyProb, crazyGuyMin, crazyGuyMax, dancerProb, dancerMin, dancerMax;
 
 	// Configuration Category
 	public static final String CATEGORY_OTHER = "Other configs";
@@ -186,6 +186,9 @@ public class Nanotech_mod
 			crazyGuyMin = cfg.get(CATEGORY_MOB_SPAWN, "CrazyGuy Min", 1).getInt();
 			crazyGuyMax = cfg.get(CATEGORY_MOB_SPAWN, "CrazyGuy Max", 2, "Set the probability to 0 to disable the mob, max = maximum spawn group and min = minimum spawn group").getInt();
 			theDeathSpawn = cfg.get(CATEGORY_MOB_SPAWN, "Enable TheDeath", true).getBoolean(true);
+			dancerProb = cfg.get(CATEGORY_MOB_SPAWN, "Dancer Prob", 2).getInt();
+			dancerMin = cfg.get(CATEGORY_MOB_SPAWN, "Dancer Min", 1).getInt();
+			dancerMax = cfg.get(CATEGORY_MOB_SPAWN, "Dancer Max", 2).getInt();
 
 			structure1Prob = cfg.get(CATEGORY_WORLD, "Structure 1 probability", 2).getInt();
 			structure2Prob = cfg.get(CATEGORY_WORLD, "Structure 2 probability", 2).getInt();

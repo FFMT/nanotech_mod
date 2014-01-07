@@ -67,6 +67,11 @@ public class NanotechEntity
 		{
 			FFMTEntityHelper.addMob(MobCrazyGuy.class, "CrazyGuy", 10, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.RED, FFMTColor.YELLOW, Nanotech_mod.crazyGuyProb, Nanotech_mod.crazyGuyMin, Nanotech_mod.crazyGuyMax, EnumCreatureType.creature, BiomeGenBase.plains, BiomeGenBase.extremeHills, BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.icePlains, BiomeGenBase.jungle, BiomeGenBase.beach, BiomeGenBase.desertHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forestHills, BiomeGenBase.iceMountains, BiomeGenBase.jungleHills, BiomeGenBase.taigaHills, NanotechOther.nanotechBiome);
 		}
+		
+		if(Nanotech_mod.dancerProb != 0)
+		{
+			FFMTEntityHelper.addMob(MobDancer.class, "Dancer", 11, Nanotech_mod.modInstance, 100, 1, true, FFMTColor.AQUA, FFMTColor.GOLD, Nanotech_mod.dancerProb, Nanotech_mod.dancerMin, Nanotech_mod.dancerMax, EnumCreatureType.creature, BiomeGenBase.plains, BiomeGenBase.extremeHills, BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.taiga, BiomeGenBase.swampland, BiomeGenBase.icePlains, BiomeGenBase.jungle, BiomeGenBase.beach, BiomeGenBase.desertHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.forestHills, BiomeGenBase.iceMountains, BiomeGenBase.jungleHills, BiomeGenBase.taigaHills, NanotechOther.nanotechBiome);
+		}
 
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(new Date());

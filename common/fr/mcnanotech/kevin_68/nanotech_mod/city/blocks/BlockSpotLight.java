@@ -34,7 +34,7 @@ public class BlockSpotLight extends BlockContainer
 		TileEntity tileentity = world.getBlockTileEntity(x, y, z);
 		ItemStack itemstack = player.inventory.getCurrentItem();
 
-		if(tileentity == null || player.isSneaking() || (player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().itemID == NanotechCityItems.configCopy.itemID))
+		if(tileentity == null || player.isSneaking())
 		{
 			return false;
 		}

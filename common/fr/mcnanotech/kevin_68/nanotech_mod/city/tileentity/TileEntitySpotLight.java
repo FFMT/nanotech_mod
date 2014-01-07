@@ -15,6 +15,7 @@ import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.items.NanotechCityItems;
@@ -46,7 +47,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	public boolean reverseRotation;
 
 	public void updateEntity()
-	{
+	{		
 		if(this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
 		{
 			this.isActive = true;
@@ -328,6 +329,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	}
 
 	@SideOnly(Side.CLIENT)
+	@Override
 	public AxisAlignedBB getRenderBoundingBox()
 	{
 		return INFINITE_EXTENT_AABB;

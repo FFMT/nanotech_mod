@@ -1,6 +1,5 @@
 package fr.mcnanotech.kevin_68.nanotech_mod.main.core;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderFish;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraftforge.client.MinecraftForgeClient;
@@ -11,6 +10,7 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderCrazyGuy;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderCreeperDriller;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderDancer;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderFastZombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderFlyingCreeper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.RenderMobFly;
@@ -29,6 +29,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.items.ItemScythe
 import fr.mcnanotech.kevin_68.nanotech_mod.main.client.renderer.tileentity.TileEntityButtonRender;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCrazyGuy;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobCreeperDriller;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobDancer;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobFastZombie;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobFly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobFlyingCreeper;
@@ -60,6 +61,7 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(MobFly.class, new RenderMobFly(0.05F));
 		RenderingRegistry.registerEntityRenderingHandler(MobFlyingCreeper.class, new RenderFlyingCreeper());
 		RenderingRegistry.registerEntityRenderingHandler(MobCrazyGuy.class, new RenderCrazyGuy());
+		RenderingRegistry.registerEntityRenderingHandler(MobDancer.class, new RenderDancer());
 	}
 
 	@Override

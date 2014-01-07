@@ -6,6 +6,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -20,6 +21,11 @@ public class ItemConfigCopy extends Item
 	public ItemConfigCopy(int par1)
 	{
 		super(par1);
+	}
+	
+	public void registerIcons(IconRegister iconregister)
+	{
+		this.itemIcon = iconregister.registerIcon("nanotech_mod_city:configcopier");
 	}
 
 	@SideOnly(Side.CLIENT)
