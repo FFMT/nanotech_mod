@@ -104,66 +104,40 @@ public class ModelDancer extends ModelBase
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
 	{
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		renderHead(f5);
-		renderLeftArm(f5);
-		renderRightArm(f5);
-		renderBody(f5);
-		renderLeftLegs(f5);
-		renderRightLegs(f5);
-	}
-
-	public void renderHead(float f)
-	{
+		
 		GL11.glPushMatrix();
-		GL11.glTranslatef((float)Math.sin(this.entityTicks) * 0.015F, 0.0F, 0.0F);
-		this.head.render(f);
+		GL11.glTranslatef((float)Math.sin(this.entityTicks) * -0.015F, 0.0F, 0.0F);
+		this.head.render(f5);
 		GL11.glPopMatrix();
-	}
-	
-	public void renderLeftArm(float f)
-	{
 
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)Math.sin(this.entityTicks) * 0.025F, (float)Math.abs(Math.cos(this.entityTicks)) * 0.125F - 0.02F, 0.0F);
-		this.leftarm.render(f);
-		this.leftarm2.render(f);
+		this.leftarm.render(f5);
+		this.leftarm2.render(f5);
 		GL11.glPopMatrix();
-
-	}
-
-	public void renderRightArm(float f)
-	{
+		
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)Math.sin(this.entityTicks) * 0.025F, (float)Math.abs(Math.cos(this.entityTicks)) * 0.125F - 0.02F, 0.0F);
 		GL11.glRotatef((float)Math.sin(this.entityTicks) * 0.025F, 0.0F, 1.0F, 0.0F);
-		this.rightarm.render(f);
-		this.rightarm2.render(f);
+		this.rightarm.render(f5);
+		this.rightarm2.render(f5);
 		GL11.glPopMatrix();
-	}
-
-	public void renderBody(float f)
-	{
+		
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)Math.sin(this.entityTicks) * 0.015F, 0.0F, 0.0F);
-		this.body.render(f);
+		this.body.render(f5);
 		GL11.glPopMatrix();
-	}
-
-	public void renderRightLegs(float f)
-	{
+		
 		GL11.glPushMatrix();
-		GL11.glTranslatef((float)Math.sin(this.entityTicks) * 0.025F, (float)Math.abs(Math.cos(this.entityTicks)) * 0.125F - 0.13F, 0.0F);
-		this.rightleg.render(f);
-		this.rightleg2.render(f);
+		GL11.glTranslatef((float)(Math.sin(this.entityTicks) * -0.025F), (float)(Math.abs(Math.cos(this.entityTicks)) * -0.125F), 0.0F);
+		this.rightleg.render(f5);
+		this.rightleg2.render(f5);
 		GL11.glPopMatrix();
-	}
-	
-	public void renderLeftLegs(float f)
-	{
+		
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)Math.sin(Math.PI - this.entityTicks) * 0.025F, (float)Math.abs(Math.cos(Math.PI - this.entityTicks)) * 0.125F - 0.13F, 0.0F);
-		this.leftleg.render(f);
-		this.leftleg2.render(f);
+		this.leftleg.render(f5);
+		this.leftleg2.render(f5);
 		GL11.glPopMatrix();
 	}
 

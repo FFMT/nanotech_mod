@@ -110,6 +110,7 @@ entity.TheDeath.name=La Mort
 entity.Fly.name=Mouche
 entity.FlyingCreeper.name=Creeper volant
 entity.CrazyGuy.name=Fou
+entity.Dancer.name=Danceur
 
 #Container
 container.multiplier=Multiplieur
