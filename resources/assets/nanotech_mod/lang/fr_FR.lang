@@ -43,7 +43,7 @@ tile.nanoSlabDouble.nano.name=Double dalle nano
 tile.nuke.name=Bombe nucléaire
 tile.nukeBuildingBlock.name=Structure de bombe nucléaire
 tile.nukeBuildingStairs.name=Escalier de structure de bombe nucléaire
-tile.present.name=Cadeau de noël
+tile.present.name=Cadeau
 
 #Fluid
 fluid.liquidnitrogen=Azote liquide

@@ -57,14 +57,14 @@ public class GuiTextSpotLight extends FFMTGuiContainerSliderBase
 		this.textField.setEnabled(true);
 		this.textField.setText(tileTextSpotLight.getText());
 		this.buttonList.add(autoRotateButton = new FFMTGuiBooleanButton(1, width / 2 - 155, y + 69, 150, 20, I18n.getString("container.spotlight.rotate"), tileTextSpotLight.getRotate()));
-		this.buttonList.add(angleButton = new FFMTGuiSliderForContainer(this, 2, width / 2 - 155, y + 47, I18n.getString("container.spotlight.angle") + " : " + tileTextSpotLight.getAngle(), (float)(tileTextSpotLight.getAngle()) / 180.0F));
+		this.buttonList.add(angleButton = new FFMTGuiSliderForContainer(this, 2, width / 2 - 155, y + 47, 310, 20, I18n.getString("container.spotlight.angle") + " : " + tileTextSpotLight.getAngle(), (float)(tileTextSpotLight.getAngle()) / 360.0F));
 		this.buttonList.add(speedRotationButton = new FFMTGuiSliderForContainer(this, 3, width / 2 - 155, y + 91, I18n.getString("container.spotlight.rotationspeed") + " : " + (tileTextSpotLight.getRotationSpeed() / 10.0F), (float)(tileTextSpotLight.getRotationSpeed()) / 50.0F));
 		this.buttonList.add(reverseRotationButton = new FFMTGuiBooleanButton(4, width / 2 - 155, y + 113, I18n.getString("container.spotlight.rotationreverse"), !tileTextSpotLight.getReverseRotation()));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 5, width / 2 + 5, y + 47, EnumChatFormatting.RED + I18n.getString("container.spotlight.red") + " : " + tileTextSpotLight.getRedValue(), (float)(tileTextSpotLight.getRedValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 6, width / 2 + 5, y + 69, EnumChatFormatting.GREEN + I18n.getString("container.spotlight.green") + " : " + tileTextSpotLight.getGreenValue(), (float)(tileTextSpotLight.getGreenValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 7, width / 2 + 5, y + 91, EnumChatFormatting.BLUE + I18n.getString("container.spotlight.blue") + " : " + tileTextSpotLight.getBlueValue(), (float)(tileTextSpotLight.getBlueValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 8, width / 2 + 5, y + 113, I18n.getString("container.textspotlight.scale") + " : " + tileTextSpotLight.getScale() / 10.0F, (float)(tileTextSpotLight.getScale()) / 50.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 9, width / 2 + 5, y + 135, I18n.getString("container.textspotlight.height") + " : " + tileTextSpotLight.getHeight() / 10.0F, (float)(tileTextSpotLight.getHeight()) / 50.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 5, width / 2 + 5, y + 69, EnumChatFormatting.RED + I18n.getString("container.spotlight.red") + " : " + tileTextSpotLight.getRedValue(), (float)(tileTextSpotLight.getRedValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 6, width / 2 + 5, y + 91, EnumChatFormatting.GREEN + I18n.getString("container.spotlight.green") + " : " + tileTextSpotLight.getGreenValue(), (float)(tileTextSpotLight.getGreenValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 7, width / 2 + 5, y + 113, EnumChatFormatting.BLUE + I18n.getString("container.spotlight.blue") + " : " + tileTextSpotLight.getBlueValue(), (float)(tileTextSpotLight.getBlueValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 8, width / 2 + 5, y + 135, I18n.getString("container.textspotlight.scale") + " : " + tileTextSpotLight.getScale() / 10.0F, (float)(tileTextSpotLight.getScale()) / 50.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 9, width / 2 - 155, y + 135, I18n.getString("container.textspotlight.height") + " : " + tileTextSpotLight.getHeight() / 10.0F, (float)(tileTextSpotLight.getHeight()) / 50.0F));
 		this.buttonList.add(new GuiButton(10, width / 2 - 155, y + 157, 65, 20, I18n.getString("container.spotlight.copy")));
 		this.buttonList.add(new GuiButton(11, width / 2 - 69, y + 157, 65, 20, I18n.getString("container.spotlight.paste")));
 
@@ -164,7 +164,7 @@ public class GuiTextSpotLight extends FFMTGuiContainerSliderBase
 	{
 		if(sliderId == 2)
 		{
-			this.sendTextSpotLightPacket((int)(sliderValue * 180), 2);
+			this.sendTextSpotLightPacket((int)(sliderValue * 360), 2);
 		}
 		else if(sliderId == 3)
 		{
@@ -194,7 +194,7 @@ public class GuiTextSpotLight extends FFMTGuiContainerSliderBase
 		{
 		case 2:
 			name = I18n.getString("container.spotlight.angle") + " : ";
-			multiValue = 180;
+			multiValue = 360;
 			break;
 		case 3:
 			name = I18n.getString("container.spotlight.rotationspeed") + " : ";

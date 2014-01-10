@@ -104,7 +104,8 @@ public class ModelDancer extends ModelBase
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
 	{
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		
+		GL11.glPushMatrix();
+		GL11.glTranslatef((float)Math.sin(this.entityTicks) * 0.105F, 0.0F, (float)Math.sin(this.entityTicks) * 0.105F);
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)Math.sin(this.entityTicks) * -0.015F, 0.0F, 0.0F);
 		this.head.render(f5);
@@ -138,6 +139,7 @@ public class ModelDancer extends ModelBase
 		GL11.glTranslatef((float)Math.sin(Math.PI - this.entityTicks) * 0.025F, (float)Math.abs(Math.cos(Math.PI - this.entityTicks)) * 0.125F - 0.13F, 0.0F);
 		this.leftleg.render(f5);
 		this.leftleg2.render(f5);
+		GL11.glPopMatrix();
 		GL11.glPopMatrix();
 	}
 

@@ -42,7 +42,7 @@ tile.nanoSlabDouble.nano.name=Nano Double Slab
 tile.nuke.name=Nuke
 tile.nukeBuildingBlock.name=Nuke Structure
 tile.nukeBuildingStairs.name=Nuke Structure Stairs
-tile.present.name=Christmas present
+tile.present.name=Present
 
 #Fluid
 fluid.liquidnitrogen=Liquid Nitrogen
