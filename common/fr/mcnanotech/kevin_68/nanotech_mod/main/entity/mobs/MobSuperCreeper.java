@@ -21,7 +21,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.ai.AiSuperCreeper;
 
 public class MobSuperCreeper extends EntityMob
@@ -29,7 +29,7 @@ public class MobSuperCreeper extends EntityMob
 	private int lastActiveTime;
 	private int timeSinceIgnited;
 	private int field_82225_f = 30;
-	private int explosionRadius = Nanotech_mod.explosionRadius;
+	private int explosionRadius = NanotechMod.explosionRadius;
 
 	public MobSuperCreeper(World world)
 	{

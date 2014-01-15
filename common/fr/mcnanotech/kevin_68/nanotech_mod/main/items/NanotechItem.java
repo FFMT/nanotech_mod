@@ -7,7 +7,7 @@ import net.minecraft.potion.Potion;
 import net.minecraftforge.common.EnumHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 
 public class NanotechItem
 {
@@ -25,67 +25,67 @@ public class NanotechItem
 	// Items Initialization
 	public static void initItem()
 	{
-		itemBase = new ItemBaseMetadata(Nanotech_mod.nanotechItemID).setUnlocalizedName("nanotechbase").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		superBottleOfXp = new ItemSuperbottleofxp(Nanotech_mod.superBottleOfXpID).setUnlocalizedName("superbottleofxp").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		diamondBow = new ItemDiamondBow(Nanotech_mod.diamondBowID).setUnlocalizedName("diamondbow").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I).setFull3D();
-		emeraldBow = new ItemEmeraldBow(Nanotech_mod.emeraldBowID).setUnlocalizedName("emeraldbow").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I).setFull3D();
-		nanomiteBow = new ItemNanomiteArrowGun(Nanotech_mod.nanomiteBowID).setUnlocalizedName("nanomitebow").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I).setFull3D();
-		nanomiteHelmet = new ItemNanomiteArmor(Nanotech_mod.nanomiteHelmetID, EnumArmorMaterialNanomite, 1, 0).setUnlocalizedName("nanomiteHelmet").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		nanomiteChestPlate = new ItemNanomiteArmor(Nanotech_mod.nanomiteChestPlateID, EnumArmorMaterialNanomite, 1, 1).setUnlocalizedName("nanomiteChestPlate").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		nanomiteLeggings = new ItemNanomiteArmor(Nanotech_mod.nanomiteLegginsID, EnumArmorMaterialNanomite, 1, 2).setUnlocalizedName("nanomiteLegs").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		nanomiteBoots = new ItemNanomiteArmor(Nanotech_mod.nanomiteBootsID, EnumArmorMaterialNanomite, 1, 3).setUnlocalizedName("nanomiteBoots").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		nanomiteSword = new ItemNanomiteSword(Nanotech_mod.nanomiteSwordID, EnumToolMaterialNanomite).setUnlocalizedName("nanomiteSword").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		nanomiteShovel = new ItemNanomiteShovel(Nanotech_mod.nanomiteShovelID, EnumToolMaterialNanomite).setUnlocalizedName("nanomiteShovel").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		nanomitePickaxe = new ItemNanomitePickaxe(Nanotech_mod.nanomitePickaxeID, EnumToolMaterialNanomite).setUnlocalizedName("nanomitePickaxe").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		nanomiteAxe = new ItemNanomiteAxe(Nanotech_mod.nanomiteAxeID, EnumToolMaterialNanomite).setUnlocalizedName("nanomiteAxe").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		nanomiteHoe = new ItemNanomiteHoe(Nanotech_mod.nanomiteHoeID, EnumToolMaterialNanomite).setUnlocalizedName("nanomiteHoe").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		mysteriousHelmet = new ItemMysteriousArmor(Nanotech_mod.mysteriousHelmetID, EnumArmorMaterialMysterious, 1, 0).setUnlocalizedName("mysteriousHelmet").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		mysteriousChestPlate = new ItemMysteriousArmor(Nanotech_mod.mysteriousChestPlateID, EnumArmorMaterialMysterious, 1, 1).setUnlocalizedName("mysteriousChestPlate").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		mysteriousLeggings = new ItemMysteriousArmor(Nanotech_mod.mysteriousLegginsID, EnumArmorMaterialMysterious, 1, 2).setUnlocalizedName("mysteriousLeggings").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		mysteriousBoots = new ItemMysteriousArmor(Nanotech_mod.mysteriousBootsID, EnumArmorMaterialMysterious, 1, 3).setUnlocalizedName("mysteriousBoots").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		nanoDisc = new ItemDisk(Nanotech_mod.nanoDiscID, "nanotech_mod:nanodisk", "JedBorg - Surprise", "nanodisk").setUnlocalizedName("record").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		edibleFlesh = new ItemNanoFood(Nanotech_mod.edibleFleshID, 3, 0.6F, true).setUnlocalizedName("edibleFlesh").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		rottenChunk = new ItemNanoFood(Nanotech_mod.rottenChunkID, 1, 0.6F, true, Potion.hunger.id, 120, 0, 1.0F).setUnlocalizedName("rottenChunk").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		scythe = new ItemScythe(Nanotech_mod.scytheID, EnumToolMaterialScythe).setUnlocalizedName("scythe").setFull3D().setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		crazyGlasses = new ItemCrazyGlasses(Nanotech_mod.crazyGlassesID, EnumArmorMaterialCrazyGlasses, 1, 0).setUnlocalizedName("crazyGlasses").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		debug = new ItemDebug(Nanotech_mod.debugID).setUnlocalizedName("debug").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		alters = new ItemAlters(Nanotech_mod.altersID).setUnlocalizedName("alters").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		nitrogenBucket = new ItemNitrogenBucket(Nanotech_mod.nitrogenBucketID, NanotechBlock.liquidNitrogen.blockID).setContainerItem(Item.bucketEmpty).setUnlocalizedName("nitrogenBucket").setTextureName("nanotech_mod:nitrogenbucket").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		reinforcedFishingRod = new ItemReinforcedFishingRod(Nanotech_mod.reinforcedFishingRodID).setUnlocalizedName("reinforcedFishingRod").setTextureName("nanotech_mod:reinforced_fishing_rod").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		crazyGlassesGun = new ItemCrazyGlassesGun(Nanotech_mod.crazyGlassesGunID).setUnlocalizedName("crazyGlassesGun").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
-		lightSaber = new ItemLightSaber(Nanotech_mod.lightSaberID).setUnlocalizedName("lightSaber").setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		itemBase = new ItemBaseMetadata(NanotechMod.nanotechItemID).setUnlocalizedName("nanotechbase").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		superBottleOfXp = new ItemSuperbottleofxp(NanotechMod.superBottleOfXpID).setUnlocalizedName("superbottleofxp").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		diamondBow = new ItemDiamondBow(NanotechMod.diamondBowID).setUnlocalizedName("diamondbow").setCreativeTab(NanotechMod.CREATIVE_TAB_I).setFull3D();
+		emeraldBow = new ItemEmeraldBow(NanotechMod.emeraldBowID).setUnlocalizedName("emeraldbow").setCreativeTab(NanotechMod.CREATIVE_TAB_I).setFull3D();
+		nanomiteBow = new ItemNanomiteArrowGun(NanotechMod.nanomiteBowID).setUnlocalizedName("nanomitebow").setCreativeTab(NanotechMod.CREATIVE_TAB_I).setFull3D();
+		nanomiteHelmet = new ItemNanomiteArmor(NanotechMod.nanomiteHelmetID, EnumArmorMaterialNanomite, 1, 0).setUnlocalizedName("nanomiteHelmet").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		nanomiteChestPlate = new ItemNanomiteArmor(NanotechMod.nanomiteChestPlateID, EnumArmorMaterialNanomite, 1, 1).setUnlocalizedName("nanomiteChestPlate").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		nanomiteLeggings = new ItemNanomiteArmor(NanotechMod.nanomiteLegginsID, EnumArmorMaterialNanomite, 1, 2).setUnlocalizedName("nanomiteLegs").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		nanomiteBoots = new ItemNanomiteArmor(NanotechMod.nanomiteBootsID, EnumArmorMaterialNanomite, 1, 3).setUnlocalizedName("nanomiteBoots").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		nanomiteSword = new ItemNanomiteSword(NanotechMod.nanomiteSwordID, EnumToolMaterialNanomite).setUnlocalizedName("nanomiteSword").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		nanomiteShovel = new ItemNanomiteShovel(NanotechMod.nanomiteShovelID, EnumToolMaterialNanomite).setUnlocalizedName("nanomiteShovel").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		nanomitePickaxe = new ItemNanomitePickaxe(NanotechMod.nanomitePickaxeID, EnumToolMaterialNanomite).setUnlocalizedName("nanomitePickaxe").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		nanomiteAxe = new ItemNanomiteAxe(NanotechMod.nanomiteAxeID, EnumToolMaterialNanomite).setUnlocalizedName("nanomiteAxe").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		nanomiteHoe = new ItemNanomiteHoe(NanotechMod.nanomiteHoeID, EnumToolMaterialNanomite).setUnlocalizedName("nanomiteHoe").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		mysteriousHelmet = new ItemMysteriousArmor(NanotechMod.mysteriousHelmetID, EnumArmorMaterialMysterious, 1, 0).setUnlocalizedName("mysteriousHelmet").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		mysteriousChestPlate = new ItemMysteriousArmor(NanotechMod.mysteriousChestPlateID, EnumArmorMaterialMysterious, 1, 1).setUnlocalizedName("mysteriousChestPlate").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		mysteriousLeggings = new ItemMysteriousArmor(NanotechMod.mysteriousLegginsID, EnumArmorMaterialMysterious, 1, 2).setUnlocalizedName("mysteriousLeggings").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		mysteriousBoots = new ItemMysteriousArmor(NanotechMod.mysteriousBootsID, EnumArmorMaterialMysterious, 1, 3).setUnlocalizedName("mysteriousBoots").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		nanoDisc = new ItemDisk(NanotechMod.nanoDiscID, "nanotech_mod:nanodisk", "JedBorg - Surprise", "nanodisk").setUnlocalizedName("record").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		edibleFlesh = new ItemNanoFood(NanotechMod.edibleFleshID, 3, 0.6F, true).setUnlocalizedName("edibleFlesh").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		rottenChunk = new ItemNanoFood(NanotechMod.rottenChunkID, 1, 0.6F, true, Potion.hunger.id, 120, 0, 1.0F).setUnlocalizedName("rottenChunk").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		scythe = new ItemScythe(NanotechMod.scytheID, EnumToolMaterialScythe).setUnlocalizedName("scythe").setFull3D().setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		crazyGlasses = new ItemCrazyGlasses(NanotechMod.crazyGlassesID, EnumArmorMaterialCrazyGlasses, 1, 0).setUnlocalizedName("crazyGlasses").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		debug = new ItemDebug(NanotechMod.debugID).setUnlocalizedName("debug").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		alters = new ItemAlters(NanotechMod.altersID).setUnlocalizedName("alters").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		nitrogenBucket = new ItemNitrogenBucket(NanotechMod.nitrogenBucketID, NanotechBlock.liquidNitrogen.blockID).setContainerItem(Item.bucketEmpty).setUnlocalizedName("nitrogenBucket").setTextureName("nanotech_mod:nitrogenbucket").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		reinforcedFishingRod = new ItemReinforcedFishingRod(NanotechMod.reinforcedFishingRodID).setUnlocalizedName("reinforcedFishingRod").setTextureName("nanotech_mod:reinforced_fishing_rod").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		crazyGlassesGun = new ItemCrazyGlassesGun(NanotechMod.crazyGlassesGunID).setUnlocalizedName("crazyGlassesGun").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
+		lightSaber = new ItemLightSaber(NanotechMod.lightSaberID).setUnlocalizedName("lightSaber").setCreativeTab(NanotechMod.CREATIVE_TAB_I);
 	}
 
 	public static void registerItem()
 	{
-		GameRegistry.registerItem(itemBase, "nanotechbase", "Nanotech_mod");
-		GameRegistry.registerItem(superBottleOfXp, "superbottleofxp", "Nanotech_mod");
-		GameRegistry.registerItem(diamondBow, "diamondbow", "Nanotech_mod");
-		GameRegistry.registerItem(emeraldBow, "emeraldbow", "Nanotech_mod");
-		GameRegistry.registerItem(nanomiteBow, "nanomitebow", "Nanotech_mod");
-		GameRegistry.registerItem(nanomiteHelmet, "nanomiteHelmet", "Nanotech_mod");
-		GameRegistry.registerItem(nanomiteChestPlate, "nanomiteChestPlate", "Nanotech_mod");
-		GameRegistry.registerItem(nanomiteLeggings, "nanomiteLegs", "Nanotech_mod");
-		GameRegistry.registerItem(nanomiteBoots, "nanomiteBoots", "Nanotech_mod");
-		GameRegistry.registerItem(nanomiteSword, "nanomiteSword", "Nanotech_mod");
-		GameRegistry.registerItem(nanomiteShovel, "nanomiteShovel", "Nanotech_mod");
-		GameRegistry.registerItem(nanomitePickaxe, "nanomitePickaxe", "Nanotech_mod");
-		GameRegistry.registerItem(nanomiteAxe, "nanomiteAxe", "Nanotech_mod");
-		GameRegistry.registerItem(nanomiteHoe, "nanomiteHoe", "Nanotech_mod");
-		GameRegistry.registerItem(mysteriousHelmet, "mysteriousHelmet", "Nanotech_mod");
-		GameRegistry.registerItem(mysteriousChestPlate, "mysteriousChestPlate", "Nanotech_mod");
-		GameRegistry.registerItem(mysteriousLeggings, "mysteriousLeggings", "Nanotech_mod");
-		GameRegistry.registerItem(mysteriousBoots, "mysteriousBoots", "Nanotech_mod");
-		GameRegistry.registerItem(nanoDisc, "nanoDisc", "Nanotech_mod");
-		GameRegistry.registerItem(edibleFlesh, "edibleFlesh", "Nanotech_mod");
-		GameRegistry.registerItem(rottenChunk, "rottenChunk", "Nanotech_mod");
-		GameRegistry.registerItem(scythe, "scythe", "Nanotech_mod");
-		GameRegistry.registerItem(crazyGlasses, "crazyGlasses", "Nanotech_mod");
-		GameRegistry.registerItem(debug, "debug", "Nanotech_mod");
-		GameRegistry.registerItem(alters, "alters", "Nanotech_mod");
-		GameRegistry.registerItem(nitrogenBucket, "nitrogenBucket", "Nanotech_mod");
-		GameRegistry.registerItem(reinforcedFishingRod, "reinforcedFishingRod", "Nanotech_mod");
-		GameRegistry.registerItem(crazyGlassesGun, "crazyGlassesGun", "Nanotech_mod");
-		GameRegistry.registerItem(lightSaber, "lightSaber", "Nanotech_mod");
+		GameRegistry.registerItem(itemBase, "nanotechbase", "NanotechMod");
+		GameRegistry.registerItem(superBottleOfXp, "superbottleofxp", "NanotechMod");
+		GameRegistry.registerItem(diamondBow, "diamondbow", "NanotechMod");
+		GameRegistry.registerItem(emeraldBow, "emeraldbow", "NanotechMod");
+		GameRegistry.registerItem(nanomiteBow, "nanomitebow", "NanotechMod");
+		GameRegistry.registerItem(nanomiteHelmet, "nanomiteHelmet", "NanotechMod");
+		GameRegistry.registerItem(nanomiteChestPlate, "nanomiteChestPlate", "NanotechMod");
+		GameRegistry.registerItem(nanomiteLeggings, "nanomiteLegs", "NanotechMod");
+		GameRegistry.registerItem(nanomiteBoots, "nanomiteBoots", "NanotechMod");
+		GameRegistry.registerItem(nanomiteSword, "nanomiteSword", "NanotechMod");
+		GameRegistry.registerItem(nanomiteShovel, "nanomiteShovel", "NanotechMod");
+		GameRegistry.registerItem(nanomitePickaxe, "nanomitePickaxe", "NanotechMod");
+		GameRegistry.registerItem(nanomiteAxe, "nanomiteAxe", "NanotechMod");
+		GameRegistry.registerItem(nanomiteHoe, "nanomiteHoe", "NanotechMod");
+		GameRegistry.registerItem(mysteriousHelmet, "mysteriousHelmet", "NanotechMod");
+		GameRegistry.registerItem(mysteriousChestPlate, "mysteriousChestPlate", "NanotechMod");
+		GameRegistry.registerItem(mysteriousLeggings, "mysteriousLeggings", "NanotechMod");
+		GameRegistry.registerItem(mysteriousBoots, "mysteriousBoots", "NanotechMod");
+		GameRegistry.registerItem(nanoDisc, "nanoDisc", "NanotechMod");
+		GameRegistry.registerItem(edibleFlesh, "edibleFlesh", "NanotechMod");
+		GameRegistry.registerItem(rottenChunk, "rottenChunk", "NanotechMod");
+		GameRegistry.registerItem(scythe, "scythe", "NanotechMod");
+		GameRegistry.registerItem(crazyGlasses, "crazyGlasses", "NanotechMod");
+		GameRegistry.registerItem(debug, "debug", "NanotechMod");
+		GameRegistry.registerItem(alters, "alters", "NanotechMod");
+		GameRegistry.registerItem(nitrogenBucket, "nitrogenBucket", "NanotechMod");
+		GameRegistry.registerItem(reinforcedFishingRod, "reinforcedFishingRod", "NanotechMod");
+		GameRegistry.registerItem(crazyGlassesGun, "crazyGlassesGun", "NanotechMod");
+		GameRegistry.registerItem(lightSaber, "lightSaber", "NanotechMod");
 	}
 }

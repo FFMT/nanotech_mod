@@ -4,14 +4,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.chunk.IChunkProvider;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 
 public class NanotechWorldProvider extends WorldProvider
 {
 	public void registerWorldChunkManager()
 	{
 		this.worldChunkMgr = new NanotechWorldChunkManager(worldObj.getSeed(), terrainType);
-		this.dimensionId = Nanotech_mod.dimensionID;
+		this.dimensionId = NanotechMod.dimensionID;
 	}
 
 	public String getDimensionName()

@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSmoker;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
@@ -61,7 +61,7 @@ public class GuiSmoker extends FFMTGuiContainerSliderBase
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.nanoLog.severe("Failed to send a packet from a Smoker");
+			NanotechMod.nanoLog.severe("Failed to send a packet from a Smoker");
 		}
 	}
 

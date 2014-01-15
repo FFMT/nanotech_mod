@@ -34,7 +34,7 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 	public int red;
 	public int green;
 	public int blue;
-	public int scale;
+	public float scale;
 	public int height;
 
 	public void updateEntity()
@@ -99,7 +99,7 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 		nbtTagCompound.setInteger("Red", red);
 		nbtTagCompound.setInteger("Green", green);
 		nbtTagCompound.setInteger("Blue", blue);
-		nbtTagCompound.setInteger("Scale", scale);
+		nbtTagCompound.setFloat("Scale", scale);
 		nbtTagCompound.setInteger("Height", height);
 
 		NBTTagList itemList = new NBTTagList();
@@ -136,7 +136,7 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 		this.red = nbtTagCompound.getInteger("Red");
 		this.green = nbtTagCompound.getInteger("Green");
 		this.blue = nbtTagCompound.getInteger("Blue");
-		this.scale = nbtTagCompound.getInteger("Scale");
+		this.scale = nbtTagCompound.getFloat("Scale");
 		this.height = nbtTagCompound.getInteger("Height");
 
 		NBTTagList tagList = nbtTagCompound.getTagList("Inventory");
@@ -209,7 +209,7 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 		this.blue = i;
 	}
 
-	public void setScale(int i)
+	public void setScale(float i)
 	{
 		this.scale = i;
 	}
@@ -259,7 +259,7 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 		return this.blue;
 	}
 
-	public int getScale()
+	public float getScale()
 	{
 		return this.scale;
 	}
@@ -385,7 +385,7 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 			newStack.getTagCompound().setInteger("TextSpotLightAutoRotate", (getRotate() ? 1 : 0));
 			newStack.getTagCompound().setInteger("TextSpotLightRotationSpeed", (int)getRotationSpeed());
 			newStack.getTagCompound().setInteger("TextSpotLightReverseRotation", (getReverseRotation() ? 0 : 1));
-			newStack.getTagCompound().setInteger("TextSpotLightScale", getScale());
+			newStack.getTagCompound().setFloat("TextSpotLightScale", getScale());
 			newStack.getTagCompound().setInteger("TextSpotLightHeight", getHeight());
 			setInventorySlotContents(1, newStack);
 		}
@@ -434,7 +434,7 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 					}
 					if(stack.getTagCompound().hasKey("TextSpotLightScale"))
 					{
-						setScale(stack.getTagCompound().getInteger("TextSpotLightScale"));
+						setScale(stack.getTagCompound().getFloat("TextSpotLightScale"));
 					}
 					if(stack.getTagCompound().hasKey("TextSpotLightHeight"))
 					{

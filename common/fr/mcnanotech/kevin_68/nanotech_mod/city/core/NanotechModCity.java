@@ -30,23 +30,20 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySunShade;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTextSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrail;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTrashCan;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 
-@Mod(modid = "Nanotech_mod_City", name = "Nanotech mod City", version = "@VERSION@")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTMC|light", "NTMC|fount", "NTMC|text", "NTMC|text2"}, packetHandler = PacketHandler.class)
-public class Nanotech_mod_City
+@Mod(modid = "NanotechModCity", name = "Nanotech mod City", version = "@VERSION@")
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTMC|light", "NTMC|fount", "NTMC|text", "NTMC|text2", "NTMC|text3"}, packetHandler = PacketHandler.class)
+public class NanotechModCity
 {
-	// Instance
-	@Instance("Nanotech_mod_City")
-	public static Nanotech_mod_City modInstance;
-	// Proxy
+	@Instance("NanotechModCity")
+	public static NanotechModCity modInstance;
+
 	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotech_mod.city.core.ClientProxy", serverSide = "fr.mcnanotech.kevin_68.nanotech_mod.city.core.CommonProxy")
 	public static CommonProxy proxy;
 
-	// Block IDs
 	public static int trashcanID, spotLightID, trailID, fountainID, lampID, sunShadeID, modernFenceID, textSpotLightID;
 
-	// Item IDs
 	public static int configCopyID;
 	
 	public static CreativeTabs cityTab = new CreativeTabs("NanotechModCity")
@@ -78,7 +75,7 @@ public class Nanotech_mod_City
 		}
 		catch(Exception ex)
 		{
-			Nanotech_mod.nanoLog.severe("Failed to load configuration");
+			NanotechMod.nanoLog.severe("Failed to load configuration");
 		}
 		finally
 		{
@@ -100,11 +97,9 @@ public class Nanotech_mod_City
 	{
 		GameRegistry.registerCraftingHandler(new CityCraftingHandler());
 
-		// NetWork
 		NetworkRegistry.instance().registerGuiHandler(this.modInstance, new GuiHandler());
 		NetworkRegistry.instance().registerChannel(new PacketHandler(), "nanotechmodcity");
 
-		// TileEntity
 		GameRegistry.registerTileEntity(TileEntitySpotLight.class, "SpotLight");
 		GameRegistry.registerTileEntity(TileEntityTrail.class, "Trail");
 		GameRegistry.registerTileEntity(TileEntityFountain.class, "Fountain");
@@ -115,10 +110,8 @@ public class Nanotech_mod_City
 		GameRegistry.registerTileEntity(TileEntityTrashCan.class, "Trashcan");
 		GameRegistry.registerTileEntity(TileEntityTextSpotLight.class, "TextSpotLight");
 
-		// Render
 		proxy.registerTileRenders();
 
-		// Recipe
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.lamp, 1), new Object[] {"IDI", "GSG", "III", 'I', Item.ingotIron, 'D', Block.daylightSensor, 'G', Block.thinGlass, 'S', Block.glowStone});
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.sunShade, 1), new Object[] {"WWW", " S ", " S ", 'W', Block.cloth, 'S', Item.stick});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechCityBlock.trail, 1), new Object[] {Block.grass, Block.gravel});

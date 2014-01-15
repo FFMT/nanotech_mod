@@ -15,7 +15,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 
 public class BlockJumper extends BlockContainer
@@ -91,7 +91,7 @@ public class BlockJumper extends BlockContainer
 			return false;
 		}
 
-		player.openGui(Nanotech_mod.modInstance, 0, world, x, y, z);
+		player.openGui(NanotechMod.modInstance, 0, world, x, y, z);
 
 		return true;
 	}

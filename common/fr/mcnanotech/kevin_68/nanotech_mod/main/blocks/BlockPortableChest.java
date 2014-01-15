@@ -13,7 +13,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.FMLNetworkHandler;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityPortableChest;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityPresent;
 
@@ -33,7 +33,7 @@ public class BlockPortableChest extends BlockContainer
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
-		FMLNetworkHandler.openGui(player, Nanotech_mod.modInstance, 0, world, x, y, z);
+		FMLNetworkHandler.openGui(player, NanotechMod.modInstance, 0, world, x, y, z);
 		return true;
 	}
 

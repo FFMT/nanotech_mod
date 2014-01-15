@@ -9,7 +9,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.city.core.Nanotech_mod_City;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.core.NanotechModCity;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityFountain;
 
 public class BlockFountain extends BlockContainer
@@ -35,7 +35,7 @@ public class BlockFountain extends BlockContainer
 			return false;
 		}
 
-		player.openGui(Nanotech_mod_City.modInstance, 4, world, x, y, z);
+		player.openGui(NanotechModCity.modInstance, 4, world, x, y, z);
 		return true;
 	}
 

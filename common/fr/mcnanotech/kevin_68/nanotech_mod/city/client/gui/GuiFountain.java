@@ -15,7 +15,7 @@ import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.city.container.ContainerFountain;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityFountain;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 
 public class GuiFountain extends GuiContainer
 {
@@ -125,7 +125,7 @@ public class GuiFountain extends GuiContainer
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.nanoLog.severe("Failed to send a packet from a fountain");
+			NanotechMod.nanoLog.severe("Failed to send a packet from a fountain");
 		}
 	}
 

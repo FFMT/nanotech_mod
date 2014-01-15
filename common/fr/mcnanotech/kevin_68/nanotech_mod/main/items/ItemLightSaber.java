@@ -12,7 +12,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechDamageSource;
 
 public class ItemLightSaber extends Item
@@ -34,7 +34,7 @@ public class ItemLightSaber extends Item
 				{
 					stack.setTagCompound(new NBTTagCompound());
 				}
-				player.openGui(Nanotech_mod.modInstance, 10, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+				player.openGui(NanotechMod.modInstance, 10, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 			}
 			else
 			{

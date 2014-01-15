@@ -2,7 +2,7 @@ package fr.mcnanotech.kevin_68.nanotech_mod.main.event;
 
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.event.ForgeSubscribe;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.UtilListerJukebox;
 
 public class EventSound
@@ -34,7 +34,7 @@ public class EventSound
 		}
 		catch(Exception e)
 		{
-			Nanotech_mod.nanoLog.severe("Failed to register event sounds");
+			NanotechMod.nanoLog.severe("Failed to register event sounds");
 		}
 	}
 }

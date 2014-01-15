@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 
 public class ItemBaseMetadata extends Item
 {
@@ -25,7 +25,7 @@ public class ItemBaseMetadata extends Item
 		super(id);
 		this.setHasSubtypes(true);
 		this.maxStackSize = 64;
-		this.setCreativeTab(Nanotech_mod.CREATIVE_TAB_I);
+		this.setCreativeTab(NanotechMod.CREATIVE_TAB_I);
 	}
 
 	public void registerIcons(IconRegister iconregister)

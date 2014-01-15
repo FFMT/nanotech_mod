@@ -17,7 +17,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.BucketEvent;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.EventBonemeal;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.event.LivingEvent;
@@ -64,17 +64,17 @@ public class NanotechOther
 		}
 		else
 		{
-			Nanotech_mod.nanoLog.severe("Error on call liquid register");
+			NanotechMod.nanoLog.severe("Error on call liquid register");
 		}
 	}
 
 	public static void registerWorld()
 	{
-		nanotechBiome = new NanotechBiome(Nanotech_mod.nanotechBiomeID).setBiomeName("Nanotechbiome").setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.0F, 0.1F);
-		nitrogenOcean = new NitrogenOcean(Nanotech_mod.nitrogenOceanID).setBiomeName("NitrogenOcean").setTemperatureRainfall(-15.0F, -10.0F).setMinMaxHeight(-0.5F, 0.0F);
+		nanotechBiome = new NanotechBiome(NanotechMod.nanotechBiomeID).setBiomeName("Nanotechbiome").setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.0F, 0.1F);
+		nitrogenOcean = new NitrogenOcean(NanotechMod.nitrogenOceanID).setBiomeName("NitrogenOcean").setTemperatureRainfall(-15.0F, -10.0F).setMinMaxHeight(-0.5F, 0.0F);
 
-		DimensionManager.registerProviderType(Nanotech_mod.dimensionID, NanotechWorldProvider.class, false);
-		DimensionManager.registerDimension(Nanotech_mod.dimensionID, Nanotech_mod.dimensionID);
+		DimensionManager.registerProviderType(NanotechMod.dimensionID, NanotechWorldProvider.class, false);
+		DimensionManager.registerDimension(NanotechMod.dimensionID, NanotechMod.dimensionID);
 
 		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechBlock.sodium), 1, 5, 6));
 		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechItem.nanoDisc), 1, 1, 2));
@@ -91,7 +91,7 @@ public class NanotechOther
 
 	public static void registerGuiAndTileEntity()
 	{
-		NetworkRegistry.instance().registerGuiHandler(Nanotech_mod.modInstance, new GuiHandler());
+		NetworkRegistry.instance().registerGuiHandler(NanotechMod.modInstance, new GuiHandler());
 		NetworkRegistry.instance().registerChannel(new PacketHandler(), "nanotechmod");
 
 		GameRegistry.registerTileEntity(TileEntityJumper.class, "TileEntityJumper");

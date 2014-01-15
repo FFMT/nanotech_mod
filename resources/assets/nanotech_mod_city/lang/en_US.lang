@@ -10,7 +10,7 @@ tile.lamp.name=BlockLamp
 tile.modernFence.name=Modern Fence
 tile.sunShade.name=SunShade
 tile.lamp.name=Lamp
-tile.textspotlight.name=Text Spotlight
+tile.textSpotLight.name=Text Spotlight
 
 #Items
 item.configCopier.name=Config copier

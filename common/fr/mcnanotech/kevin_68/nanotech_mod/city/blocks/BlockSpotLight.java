@@ -10,7 +10,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.city.core.Nanotech_mod_City;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.core.NanotechModCity;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.items.NanotechCityItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
 
@@ -40,7 +40,7 @@ public class BlockSpotLight extends BlockContainer
 		}
 		else
 		{
-			player.openGui(Nanotech_mod_City.modInstance, 3, world, x, y, z);
+			player.openGui(NanotechModCity.modInstance, 3, world, x, y, z);
 			return true;
 		}
 	}

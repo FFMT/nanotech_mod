@@ -11,7 +11,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.UtilEntityTeleporter;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.world.NanotechTeleporter;
 
@@ -111,7 +111,7 @@ public class BlockNanoPortal extends Block
 	{
 		if((entity.ridingEntity == null) && (entity.riddenByEntity == null))
 		{
-			if(entity.dimension != Nanotech_mod.dimensionID)
+			if(entity.dimension != NanotechMod.dimensionID)
 			{
 				if(entity instanceof EntityPlayerMP)
 				{
@@ -123,12 +123,12 @@ public class BlockNanoPortal extends Block
 					else
 					{
 						player.timeUntilPortal = 10;
-						player.mcServer.getConfigurationManager().transferPlayerToDimension(player, Nanotech_mod.dimensionID, new NanotechTeleporter(player.mcServer.worldServerForDimension(Nanotech_mod.dimensionID)));
+						player.mcServer.getConfigurationManager().transferPlayerToDimension(player, NanotechMod.dimensionID, new NanotechTeleporter(player.mcServer.worldServerForDimension(NanotechMod.dimensionID)));
 					}
 				}
 				else
 				{
-					UtilEntityTeleporter.teleportToDim(entity, Nanotech_mod.dimensionID);
+					UtilEntityTeleporter.teleportToDim(entity, NanotechMod.dimensionID);
 				}
 			}
 			else

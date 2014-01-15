@@ -19,7 +19,7 @@ import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.city.container.ContainerTextSpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTextSpotLight;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiBooleanButton;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
@@ -172,7 +172,7 @@ public class GuiTextSpotLight extends FFMTGuiContainerSliderBase
 		}
 		else if (sliderId == 8)
 		{
-			this.sendTextSpotLightPacket((int)(sliderValue * 50), 8);
+			this.sendTextSpotLightPacket(sliderValue * 50);
 		}
 		else if (sliderId == 9)
 		{
@@ -250,9 +250,10 @@ public class GuiTextSpotLight extends FFMTGuiContainerSliderBase
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.nanoLog.severe("Failed to send a packet from a TextSpotLight");
+			NanotechMod.nanoLog.severe("Failed to send a packet from a TextSpotLight");
 		}
 	}
+	
 	private void sendTextSpotLightPacket(String text)
 	{
 		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
@@ -265,7 +266,23 @@ public class GuiTextSpotLight extends FFMTGuiContainerSliderBase
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.nanoLog.severe("Failed to send a packet from a TextSpotLight");
+			NanotechMod.nanoLog.severe("Failed to send a packet from a TextSpotLight");
+		}
+	}
+
+	private void sendTextSpotLightPacket(float value)
+	{
+		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
+		DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
+		try
+		{
+			dataoutputstream.writeFloat(value);
+			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|text3", bytearrayoutputstream.toByteArray()));
+		}
+		catch(Exception exception)
+		{
+			exception.printStackTrace();
+			NanotechMod.nanoLog.severe("Failed to send a packet from a TextSpotLight");
 		}
 	}
 }

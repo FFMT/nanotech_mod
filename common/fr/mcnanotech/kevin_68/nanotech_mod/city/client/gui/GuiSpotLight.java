@@ -17,10 +17,10 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotech_mod.city.container.ContainerSpotLight;
-import fr.mcnanotech.kevin_68.nanotech_mod.city.core.Nanotech_mod_City;
+import fr.mcnanotech.kevin_68.nanotech_mod.city.core.NanotechModCity;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.items.NanotechCityItems;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiBooleanButton;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
@@ -213,7 +213,7 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.nanoLog.severe("Failed to send a packet from a SpotLight");
+			NanotechMod.nanoLog.severe("Failed to send a packet from a SpotLight");
 		}
 	}
 

@@ -14,7 +14,7 @@ import fr.mcnanotech.kevin_68.nanotech_mod.city.container.ContainerTextSpotLight
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityFountain;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotech_mod.city.tileentity.TileEntityTextSpotLight;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 
 public class PacketHandler implements IPacketHandler
 {
@@ -40,6 +40,11 @@ public class PacketHandler implements IPacketHandler
 		if(packet.channel.equals("NTMC|text2"))
 		{
 			handleTextSpotLightPacket2(packet, playerSender);
+		}
+		
+		if(packet.channel.equals("NTMC|text3"))
+		{
+			handleTextSpotLightPacket3(packet, playerSender);
 		}
 	}
 
@@ -105,14 +110,14 @@ public class PacketHandler implements IPacketHandler
 					break;
 				}
 			default:
-				Nanotech_mod.nanoLog.severe("A SpotLight packet has a bad type, this is a bug");
+				NanotechMod.nanoLog.severe("A SpotLight packet has a bad type, this is a bug");
 			}
 			player.worldObj.markBlockForUpdate(tileSpotLight.xCoord, tileSpotLight.yCoord, tileSpotLight.zCoord);
 		}
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.nanoLog.severe("Failed to handle SpotLight packet");
+			NanotechMod.nanoLog.severe("Failed to handle SpotLight packet");
 		}
 	}
 
@@ -143,7 +148,7 @@ public class PacketHandler implements IPacketHandler
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.nanoLog.severe("Failed to handle Fountain packet");
+			NanotechMod.nanoLog.severe("Failed to handle Fountain packet");
 		}
 	}
 	
@@ -216,14 +221,14 @@ public class PacketHandler implements IPacketHandler
 					break;
 				}
 			default:
-				Nanotech_mod.nanoLog.severe("A TextSpotLight packet has a bad type, this is a bug");
+				NanotechMod.nanoLog.severe("A TextSpotLight packet has a bad type, this is a bug");
 			}
 			player.worldObj.markBlockForUpdate(tileSpotLight.xCoord, tileSpotLight.yCoord, tileSpotLight.zCoord);
 		}
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.nanoLog.severe("Failed to handle TextSpotLight packet");
+			NanotechMod.nanoLog.severe("Failed to handle TextSpotLight packet");
 		}
 	}
 	
@@ -243,7 +248,27 @@ public class PacketHandler implements IPacketHandler
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.nanoLog.severe("Failed to handle TextSpotLight packet");
+			NanotechMod.nanoLog.severe("Failed to handle TextSpotLight packet");
+		}
+	}
+	
+	private void handleTextSpotLightPacket3(Packet250CustomPayload packet, EntityPlayer player)
+	{
+		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
+		Float value;
+		try
+		{
+			data = new DataInputStream(new ByteArrayInputStream(packet.data));
+			value = data.readFloat();
+			ContainerTextSpotLight containerSpotLight = (ContainerTextSpotLight)player.openContainer;
+			TileEntityTextSpotLight tileSpotLight = containerSpotLight.getSpotLight();
+			tileSpotLight.setScale(value);
+			player.worldObj.markBlockForUpdate(tileSpotLight.xCoord, tileSpotLight.yCoord, tileSpotLight.zCoord);
+		}
+		catch(Exception exception)
+		{
+			exception.printStackTrace();
+			NanotechMod.nanoLog.severe("Failed to handle TextSpotLight packet");
 		}
 	}
 }

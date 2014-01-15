@@ -12,7 +12,7 @@ import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.container.ContainerSmoker;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.items.ItemLightSaber;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
@@ -54,7 +54,7 @@ public class PacketHandler implements IPacketHandler
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.nanoLog.severe("Failed to handle smoker packet");
+			NanotechMod.nanoLog.severe("Failed to handle smoker packet");
 		}
 	}
 
@@ -74,7 +74,7 @@ public class PacketHandler implements IPacketHandler
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.nanoLog.severe("Failed to handle jumper packet");
+			NanotechMod.nanoLog.severe("Failed to handle jumper packet");
 		}
 	}
 
@@ -92,7 +92,7 @@ public class PacketHandler implements IPacketHandler
 			if(!saberStack.hasTagCompound() || !(saberStack.getItem() instanceof ItemLightSaber))
 			{
 				saberStack.setTagCompound(new NBTTagCompound());
-				Nanotech_mod.nanoLog.severe("A saber packet is erroned");
+				NanotechMod.nanoLog.severe("A saber packet is erroned");
 			}
 			switch(type)
 			{
@@ -106,14 +106,14 @@ public class PacketHandler implements IPacketHandler
 				saberStack.getTagCompound().setInteger("blue", color);
 				break;
 			default:
-				Nanotech_mod.nanoLog.severe("A saber packet has a bad type, this is a bug");
+				NanotechMod.nanoLog.severe("A saber packet has a bad type, this is a bug");
 			}
 			player.inventory.onInventoryChanged();
 		}
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			Nanotech_mod.nanoLog.severe("Failed to handle saber packet");
+			NanotechMod.nanoLog.severe("Failed to handle saber packet");
 		}
 	}
 }

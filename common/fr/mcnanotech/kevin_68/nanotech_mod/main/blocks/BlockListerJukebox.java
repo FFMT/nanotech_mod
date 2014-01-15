@@ -6,7 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntityListerJukebox;
 
 public class BlockListerJukebox extends BlockContainer
@@ -33,7 +33,7 @@ public class BlockListerJukebox extends BlockContainer
 		}
 
 		if(!world.isRemote)
-			player.openGui(Nanotech_mod.modInstance, 3, world, x, y, z);
+			player.openGui(NanotechMod.modInstance, 3, world, x, y, z);
 
 		return true;
 	}

@@ -7,7 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.tileentity.TileEntitySmoker;
 
 public class BlockSmoker extends BlockContainer
@@ -26,7 +26,7 @@ public class BlockSmoker extends BlockContainer
 		{
 			return false;
 		}
-		player.openGui(Nanotech_mod.modInstance, 1, world, x, y, z);
+		player.openGui(NanotechMod.modInstance, 1, world, x, y, z);
 		return true;
 	}
 

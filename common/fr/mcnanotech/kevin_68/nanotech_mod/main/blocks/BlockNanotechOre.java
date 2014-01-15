@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 
 public class BlockNanotechOre extends Block
 {
@@ -20,7 +20,7 @@ public class BlockNanotechOre extends Block
 	public BlockNanotechOre(int id)
 	{
 		super(id, Material.rock);
-		setCreativeTab(Nanotech_mod.CREATIVE_TAB_B);
+		setCreativeTab(NanotechMod.CREATIVE_TAB_B);
 	}
 
 	public void registerIcons(IconRegister iconregister)

@@ -8,7 +8,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import cpw.mods.fml.common.IWorldGenerator;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 
 public class WorldGeneration implements IWorldGenerator
 {
@@ -22,7 +22,7 @@ public class WorldGeneration implements IWorldGenerator
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
-		if(world.provider.dimensionId == Nanotech_mod.dimensionID)
+		if(world.provider.dimensionId == NanotechMod.dimensionID)
 		{
 			for(int i = 0; i < 4; i++)
 			{
@@ -39,32 +39,32 @@ public class WorldGeneration implements IWorldGenerator
 			(new WorldGenMinable(NanotechBlock.fakeOre.blockID, 1, 4, Block.stone.blockID)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(16), chunkZ * 16 + random.nextInt(16));
 			// world gen
 
-			if(random.nextInt(32) < 2 * Nanotech_mod.structure1Prob)
+			if(random.nextInt(32) < 2 * NanotechMod.structure1Prob)
 			{
 				worldgen1.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}
 
-			if(random.nextInt(32) < 2 * Nanotech_mod.structure2Prob)
+			if(random.nextInt(32) < 2 * NanotechMod.structure2Prob)
 			{
 				worldgen2.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}
 
-			if(random.nextInt(32) < 2 * Nanotech_mod.structure3Prob)
+			if(random.nextInt(32) < 2 * NanotechMod.structure3Prob)
 			{
 				worldgen3.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}
 
-			if(random.nextInt(32) < 2 * Nanotech_mod.structure4Prob)
+			if(random.nextInt(32) < 2 * NanotechMod.structure4Prob)
 			{
 				worldgen4.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}
 
-			if(random.nextInt(32) < 2 * Nanotech_mod.structure5Prob)
+			if(random.nextInt(32) < 2 * NanotechMod.structure5Prob)
 			{
 				worldgen5.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}
 
-			if(random.nextInt(32) < 2 * Nanotech_mod.structure6Prob)
+			if(random.nextInt(32) < 2 * NanotechMod.structure6Prob)
 			{
 				worldgen6.generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}

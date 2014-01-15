@@ -11,7 +11,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotech_mod.main.core.Nanotech_mod;
+import fr.mcnanotech.kevin_68.nanotech_mod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.entity.mobs.MobThedeath;
 
 public class BlockTheDeathHead extends Block
@@ -37,7 +37,7 @@ public class BlockTheDeathHead extends Block
 
 		super.onBlockAdded(world, x, y, z);
 
-		if(Nanotech_mod.theDeathSpawn)
+		if(NanotechMod.theDeathSpawn)
 		{
 			if(world.getBlockId(x, y - 1, z) == redID && world.getBlockId(x, y - 2, z) == netherID && world.getBlockId(x, y - 3, z) == netherID && world.getBlockId(x, y - 4, z) == netherID)
 			{

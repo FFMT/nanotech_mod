@@ -10,7 +10,7 @@ tile.lamp.name=Lampe
 tile.modernFence.name=Barrière Moderne
 tile.sunShade.name=Parasol
 tile.lamp.name=Lampadaire
-tile.textspotlight.name=Projecteur de texte
+tile.textSpotLight.name=Projecteur de texte
 
 #Items
 item.configCopier.name=Copieur de configuration

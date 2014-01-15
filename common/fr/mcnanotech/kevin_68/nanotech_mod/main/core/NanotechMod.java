@@ -26,13 +26,13 @@ import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechDamageSource;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.other.NanotechOther;
 import fr.mcnanotech.kevin_68.nanotech_mod.main.utils.UtilListerJukebox;
 
-@Mod(modid = "Nanotech_mod", name = "Nanotech mod", version = "@VERSION@", dependencies = "required-after:FFMTLIBS")
+@Mod(modid = "NanotechMod", name = "Nanotech mod", version = "@VERSION@", dependencies = "required-after:FFMTLIBS")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTM|smoker", "NTM|jumper", "NTM|saber"}, packetHandler = PacketHandler.class)
-public class Nanotech_mod
+public class NanotechMod
 {
 	// Instance
-	@Instance("Nanotech_mod")
-	public static Nanotech_mod modInstance;
+	@Instance("NanotechMod")
+	public static NanotechMod modInstance;
 	// Proxy
 	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotech_mod.main.core.ClientProxy", serverSide = "fr.mcnanotech.kevin_68.nanotech_mod.main.core.CommonProxy")
 	public static CommonProxy proxy;

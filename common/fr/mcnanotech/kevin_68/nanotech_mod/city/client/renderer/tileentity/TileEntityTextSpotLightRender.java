@@ -61,9 +61,9 @@ public class TileEntityTextSpotLightRender extends TileEntitySpecialRenderer
 			GL11.glNormal3f(0.0F, 0.0F, -1.0F * f2);
 			GL11.glDepthMask(false);
 
-			GL11.glScaled(1.0 + (1.0 * (tileentity.getScale() / 10)), 1.0 + (1.0 * (tileentity.getScale() / 10)), 1.0 + (1.0 * (tileentity.getScale() / 10)));
-			GL11.glTranslated(0.0F, tileentity.getScale() / 5.0F, 0.0F);
 			GL11.glTranslated(0.0F, -tileentity.getHeight(), 0.0F);
+			//GL11.glTranslated(0.0F, tileentity.getScale() / 5.0F, 0.0F);
+			GL11.glScaled(1.0 + (1.0 * (tileentity.getScale() / 10)), 1.0 + (1.0 * (tileentity.getScale() / 10)), 1.0 + (1.0 * (tileentity.getScale() / 10)));
 
 			String s = tileentity.signText;
 			fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, -20, (tileentity.getRedValue() * 65536) + (tileentity.getGreenValue() * 256) + tileentity.getBlueValue());
