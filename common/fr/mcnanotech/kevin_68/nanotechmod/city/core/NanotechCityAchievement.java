@@ -1,5 +1,6 @@
 package fr.mcnanotech.kevin_68.nanotechmod.city.core;
 
+import cpw.mods.fml.common.Loader;
 import net.minecraft.stats.Achievement;
 import fr.mcnanotech.kevin_68.nanotechmod.city.blocks.NanotechCityBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechAchievement;
@@ -17,8 +18,11 @@ public class NanotechCityAchievement
 
 	public static void addAchievementInPage()
 	{
-		NanotechAchievement.pageNanotech.getAchievements().add(blockSpotLight);
-		NanotechAchievement.pageNanotech.getAchievements().add(blockTrail);
-		NanotechAchievement.pageNanotech.getAchievements().add(blockTrashCan);
+		if(Loader.isModLoaded("NanotechMod"))
+		{
+			NanotechAchievement.pageNanotech.getAchievements().add(blockSpotLight);
+			NanotechAchievement.pageNanotech.getAchievements().add(blockTrail);
+			NanotechAchievement.pageNanotech.getAchievements().add(blockTrashCan);
+		}
 	}
 }
