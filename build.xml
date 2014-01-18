@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<project name="Nanotech_mod" default="build">
+<project name="NanotechMod" default="build">
 
     <property file="build.properties" prefix="buildprop"/>
     <property name="forge.dir" value="..\forge"/>
@@ -50,8 +50,8 @@
     <target name="copy_ntm_sources">
         <copy todir="${mcp.dir}\src\minecraft\">
             <fileset dir="common\">
-                <include name="fr\mcnanotech\kevin_68\nanotech_mod\main\"/>
-                <include name="fr\mcnanotech\kevin_68\nanotech_mod\city\"/>
+                <include name="fr\mcnanotech\kevin_68\nanotechmod\main\"/>
+                <include name="fr\mcnanotech\kevin_68\nanotechmod\city\"/>
             </fileset>
             <fileset dir="resources\">
                 <include name="mcmod.info"/>
@@ -63,7 +63,7 @@
     <target name="copy_ugs_sources">
         <copy todir="${mcp.dir}\src\minecraft\">
             <fileset dir="common\">
-                <include name="fr\mcnanotech\kevin_68\nanotech_mod\ultimateGraviSuite\"/>
+                <include name="fr\mcnanotech\kevin_68\nanotechmod\ultimateGraviSuite\"/>
             </fileset>
         </copy>
     </target>
@@ -102,15 +102,15 @@
         <propertyfile file="build.properties">
             <entry key="ntm_version" type="string" default="error"/>
         </propertyfile>
-        <replace file="${mcp.dir}\src\minecraft\fr\mcnanotech\kevin_68\nanotech_mod\main\core\Nanotech_mod.java" token="@VERSION@" value="${buildprop.ntm_version}" />
-        <replace file="${mcp.dir}\src\minecraft\fr\mcnanotech\kevin_68\nanotech_mod\city\core\Nanotech_mod_City.java" token="@VERSION@" value="${buildprop.ntm_version}" />
+        <replace file="${mcp.dir}\src\minecraft\fr\mcnanotech\kevin_68\nanotechmod\main\core\NanotechMod.java" token="@VERSION@" value="${buildprop.ntm_version}" />
+        <replace file="${mcp.dir}\src\minecraft\fr\mcnanotech\kevin_68\nanotechmod\city\core\NanotechModCity.java" token="@VERSION@" value="${buildprop.ntm_version}" />
         <replace file="${mcp.dir}\src\minecraft\mcmod.info" token="@VERSION@" value="${buildprop.ntm_version}" />
         <replace file="${mcp.dir}\src\minecraft\mcmod.info" token="@MC_VERSION@" value="${buildprop.mc}" />
 
         <propertyfile file="build.properties">
             <entry key="ugs_version" type="string" default="error"/>
         </propertyfile>
-        <replace file="${mcp.dir}\src\minecraft\fr\mcnanotech\kevin_68\nanotech_mod\ultimateGraviSuite\core\UltimateGraviSuite.java" token="@GRAVI_VERSION@" value="${buildprop.ugs_version}" />
+        <replace file="${mcp.dir}\src\minecraft\fr\mcnanotech\kevin_68\nanotechmod\ultimateGraviSuite\core\UltimateGraviSuite.java" token="@GRAVI_VERSION@" value="${buildprop.ugs_version}" />
         <replace file="${mcp.dir}\src\minecraft\mcmod.info" token="@GRAVI_VERSION@" value="${buildprop.ugs_version}" />
     </target>
 
@@ -137,32 +137,32 @@
     <!-- Build the jar -->
     <target name="create_ntm_jar">
         <mkdir dir="releases\" />
-        <jar destfile="releases\Nanotech_mod-core-universal-${buildprop.ntm_version}.${env.BUILD_NUMBER}-mc${buildprop.mc}.jar">
+        <jar destfile="releases\NanotechMod-core-universal-${buildprop.ntm_version}.${env.BUILD_NUMBER}-mc${buildprop.mc}.jar">
             <fileset dir="resources\">
-                <include name ="assets\nanotech_mod\**" /> 
-                <exclude name ="assets\nanotech_mod\**.db" /> 
+                <include name ="assets\nanotechmod\**" /> 
+                <exclude name ="assets\nanotechmod\**.db" /> 
             </fileset>
-            <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\main\"/>
+            <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotechmod\main\"/>
             <fileset dir="${mcp.dir}\src\minecraft" includes="mcmod.info" />
         </jar>
-        <jar destfile="releases\Nanotech_mod-city-universal-${buildprop.ntm_version}.${env.BUILD_NUMBER}-mc${buildprop.mc}.jar">
+        <jar destfile="releases\NanotechModCity-universal-${buildprop.ntm_version}.${env.BUILD_NUMBER}-mc${buildprop.mc}.jar">
             <fileset dir="resources\">
-                <include name ="assets\nanotech_mod_city\**" /> 
-                <exclude name ="assets\nanotech_mod_city\**.db" /> 
+                <include name ="assets\nanotechmodcity\**" /> 
+                <exclude name ="assets\nanotechmodcity\**.db" /> 
             </fileset>
-            <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\city\"/>
+            <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotechmod\city\"/>
             <fileset dir="${mcp.dir}\src\minecraft" includes="mcmod.info" />
         </jar>
     </target>
 
     <target name="create_ugs_jar">
         <mkdir dir="releases\" />
-        <jar destfile="releases\Nanotech_mod-UltimateGraviSuite-universal-${buildprop.ugs_version}.${env.BUILD_NUMBER}-mc${buildprop.mc}.jar">
+        <jar destfile="releases\NanotechMod-UltimateGraviSuite-universal-${buildprop.ugs_version}.${env.BUILD_NUMBER}-mc${buildprop.mc}.jar">
             <fileset dir="resources\">
                 <include name ="assets\ultimategravisuite\**" />
                 <exclude name ="assets\ultimategravisuite\**.db" />
             </fileset>
-            <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotech_mod\ultimateGraviSuite\"/>
+            <fileset dir="${mcp.dir}\reobf\minecraft" includes= "fr\mcnanotech\kevin_68\nanotechmod\ultimateGraviSuite\"/>
             <fileset dir="${mcp.dir}\src\minecraft" includes="mcmod.info" />
         </jar>
     </target>
