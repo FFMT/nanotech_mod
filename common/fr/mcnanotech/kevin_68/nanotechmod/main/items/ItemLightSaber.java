@@ -44,12 +44,12 @@ public class ItemLightSaber extends Item
 				}
 				if(!stack.getTagCompound().hasKey("IsOn"))
 				{
-					world.playSoundAtEntity(player, "nanotech_mod:lightsaber", 1.0F, 1.0F);
+					world.playSoundAtEntity(player, "nanotechmod:lightsaber", 1.0F, 1.0F);
 					stack.getTagCompound().setBoolean("IsOn", true);
 				}
 				else
 				{
-					world.playSoundAtEntity(player, "nanotech_mod:lightsaber", 1.0F, 1.0F);
+					world.playSoundAtEntity(player, "nanotechmod:lightsaber", 1.0F, 1.0F);
 					stack.getTagCompound().setBoolean("IsOn", !stack.getTagCompound().getBoolean("IsOn"));
 				}
 			}
@@ -75,7 +75,7 @@ public class ItemLightSaber extends Item
 				{
 					if(stack.getTagCompound().getBoolean("IsOn"))
 					{
-						player.worldObj.playSoundAtEntity(player, "nanotech_mod:lightsaber", 1.0F, 1.0F);
+						player.worldObj.playSoundAtEntity(player, "nanotechmod:lightsaber", 1.0F, 1.0F);
 					}
 				}
 			}

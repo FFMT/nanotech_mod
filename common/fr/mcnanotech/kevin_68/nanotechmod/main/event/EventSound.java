@@ -12,15 +12,15 @@ public class EventSound
 	{
 		try
 		{
-			event.manager.addSound("nanotech_mod:monster1.ogg");
-			event.manager.addSound("nanotech_mod:monster3.ogg");
-			event.manager.addSound("nanotech_mod:monsterhurt.ogg");
-			event.manager.addSound("nanotech_mod:monsterdead.ogg");
-			event.manager.addSound("nanotech_mod:fly.ogg");
-			event.manager.addSound("nanotech_mod:CrazyGuy.ogg");
-			event.manager.addSound("nanotech_mod:crazyglassesgunreload.ogg");
-			event.manager.addSound("nanotech_mod:lightsaber.ogg");
-			event.manager.addStreaming("nanotech_mod:nanodisk.ogg");
+			event.manager.addSound("nanotechmod:monster1.ogg");
+			event.manager.addSound("nanotechmod:monster3.ogg");
+			event.manager.addSound("nanotechmod:monsterhurt.ogg");
+			event.manager.addSound("nanotechmod:monsterdead.ogg");
+			event.manager.addSound("nanotechmod:fly.ogg");
+			event.manager.addSound("nanotechmod:CrazyGuy.ogg");
+			event.manager.addSound("nanotechmod:crazyglassesgunreload.ogg");
+			event.manager.addSound("nanotechmod:lightsaber.ogg");
+			event.manager.addStreaming("nanotechmod:nanodisk.ogg");
 
 			for(int i = 0; i != UtilListerJukebox.unsortedFileList.length; i++)
 			{

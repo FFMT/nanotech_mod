@@ -23,7 +23,7 @@ import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 public class GuiJumper extends FFMTGuiContainerSliderBase
 {
 	private TileEntityJumper tileJumper;
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/gui/jumper.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/gui/jumper.png");
 
 	public GuiJumper(InventoryPlayer playerInventory, TileEntityJumper tileEntity, World world)
 	{

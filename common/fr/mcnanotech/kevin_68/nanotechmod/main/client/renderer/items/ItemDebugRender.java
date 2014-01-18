@@ -14,7 +14,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.client.model.items.ItemDebugModel
 public class ItemDebugRender implements IItemRenderer
 {
 	protected ItemDebugModel model;
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/items/debug.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/items/debug.png");
 
 	public ItemDebugRender()
 	{

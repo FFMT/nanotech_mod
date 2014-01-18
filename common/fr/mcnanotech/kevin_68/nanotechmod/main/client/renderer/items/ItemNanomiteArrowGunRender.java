@@ -13,7 +13,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.client.model.items.ItemNanomiteAr
 public class ItemNanomiteArrowGunRender implements IItemRenderer
 {
 	protected ItemNanomiteArrowGunModel model;
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/items/nanomitearrowgun.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/items/nanomitearrowgun.png");
 
 	public ItemNanomiteArrowGunRender()
 	{

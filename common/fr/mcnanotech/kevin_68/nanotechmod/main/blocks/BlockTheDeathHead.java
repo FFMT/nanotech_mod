@@ -156,12 +156,12 @@ public class BlockTheDeathHead extends Block
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconregister)
 	{
-		this.face = iconregister.registerIcon("nanotech_mod:theDeathHeadFace");
-		this.top = iconregister.registerIcon("nanotech_mod:theDeathHeadTop");
-		this.side = iconregister.registerIcon("nanotech_mod:theDeathHeadSide");
-		this.side2 = iconregister.registerIcon("nanotech_mod:theDeathHeadSide2");
-		this.back = iconregister.registerIcon("nanotech_mod:theDeathHeadBack");
-		this.bottom = iconregister.registerIcon("nanotech_mod:theDeathHeadBottom");
+		this.face = iconregister.registerIcon("nanotechmod:theDeathHeadFace");
+		this.top = iconregister.registerIcon("nanotechmod:theDeathHeadTop");
+		this.side = iconregister.registerIcon("nanotechmod:theDeathHeadSide");
+		this.side2 = iconregister.registerIcon("nanotechmod:theDeathHeadSide2");
+		this.back = iconregister.registerIcon("nanotechmod:theDeathHeadBack");
+		this.bottom = iconregister.registerIcon("nanotechmod:theDeathHeadBottom");
 	}
 
 	@SideOnly(Side.CLIENT)

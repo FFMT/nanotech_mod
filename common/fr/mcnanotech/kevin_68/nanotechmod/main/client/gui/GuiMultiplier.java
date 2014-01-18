@@ -13,7 +13,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityMultiplier;
 
 public class GuiMultiplier extends GuiContainer
 {
-	public static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/gui/multiplier.png");
+	public static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/gui/multiplier.png");
 	private TileEntityMultiplier tileMultiplier;
 
 	public GuiMultiplier(InventoryPlayer inventoryPlayer, TileEntityMultiplier tileEntity, World world)

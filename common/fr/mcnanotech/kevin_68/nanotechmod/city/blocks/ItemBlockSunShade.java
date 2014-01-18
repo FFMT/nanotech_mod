@@ -34,7 +34,7 @@ public class ItemBlockSunShade extends ItemBlock
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister)
 	{
-		this.itemBlockIcon = iconRegister.registerIcon("nanotech_mod_city:sunShade");
+		this.itemBlockIcon = iconRegister.registerIcon("nanotechmodcity:sunShade");
 	}
 
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float par8, float par9, float par10)

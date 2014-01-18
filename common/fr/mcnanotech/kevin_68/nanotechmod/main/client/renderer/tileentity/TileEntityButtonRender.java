@@ -17,7 +17,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityButton;
 public class TileEntityButtonRender extends TileEntitySpecialRenderer
 {
 	private final ModelButton model;
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/blocks/button.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/blocks/button.png");
 
 	public TileEntityButtonRender()
 	{

@@ -73,7 +73,7 @@ public class NanotechMod
 	public static Logger nanoLog;
 
 	@EventHandler
-	public void PreInitNanotech_mod(FMLPreInitializationEvent event)
+	public void PreInitnanotechmod(FMLPreInitializationEvent event)
 	{
 		nanoLog = event.getModLog();
 		if(event.getSide().isClient())
@@ -222,7 +222,7 @@ public class NanotechMod
 
 	// Initialization
 	@EventHandler
-	public void InitNanotech_mod(FMLInitializationEvent event)
+	public void Initnanotechmod(FMLInitializationEvent event)
 	{
 		NanotechOther.registerWorld();
 		NanotechOther.registerPotion();
@@ -242,7 +242,7 @@ public class NanotechMod
 	}
 
 	@EventHandler
-	public void PostInitNanotech_mod(FMLPostInitializationEvent event)
+	public void PostInitnanotechmod(FMLPostInitializationEvent event)
 	{
 		proxy.registerOverlay();
 

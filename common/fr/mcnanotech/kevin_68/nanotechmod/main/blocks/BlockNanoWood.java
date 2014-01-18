@@ -26,8 +26,8 @@ public class BlockNanoWood extends BlockLog
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		blockIcon = iconregister.registerIcon("nanotech_mod:log");
-		topIcon = iconregister.registerIcon("nanotech_mod:log_top");
+		blockIcon = iconregister.registerIcon("nanotechmod:log");
+		topIcon = iconregister.registerIcon("nanotechmod:log_top");
 	}
 
 	public Icon getIcon(int side, int metadata)

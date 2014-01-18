@@ -13,6 +13,6 @@ public class BlockNanoPlanks extends Block
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		blockIcon = iconregister.registerIcon("nanotech_mod:nanoplank");
+		blockIcon = iconregister.registerIcon("nanotechmod:nanoplank");
 	}
 }

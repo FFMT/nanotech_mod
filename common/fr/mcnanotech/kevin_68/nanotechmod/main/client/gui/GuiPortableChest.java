@@ -16,7 +16,7 @@ public class GuiPortableChest extends GuiContainer
 {
 	private TileEntityPortableChest tileChest;
 	private IInventory playerInventory;
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/gui/portablechest.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/gui/portablechest.png");
 
 	public GuiPortableChest(InventoryPlayer playerinventory, TileEntityPortableChest tileentity, World world)
 	{

@@ -14,7 +14,7 @@ public class ItemNanomitePickaxe extends ItemPickaxe
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("nanotech_mod:nanomitePickaxe");
+		itemIcon = iconregister.registerIcon("nanotechmod:nanomitePickaxe");
 	}
 
 	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)

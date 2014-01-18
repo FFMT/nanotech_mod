@@ -19,7 +19,7 @@ public class ItemMysteriousArmor extends ItemArmor
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("nanotech_mod:" + getUnlocalizedName().substring(5));
+		itemIcon = iconregister.registerIcon("nanotechmod:" + getUnlocalizedName().substring(5));
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -32,11 +32,11 @@ public class ItemMysteriousArmor extends ItemArmor
 	{
 		if(stack.itemID == NanotechItem.mysteriousLeggings.itemID)
 		{
-			return "nanotech_mod:textures/armor/Mysteriousarmor2.png";
+			return "nanotechmod:textures/armor/Mysteriousarmor2.png";
 		}
 		else
 		{
-			return "nanotech_mod:textures/armor/Mysteriousarmor.png";
+			return "nanotechmod:textures/armor/Mysteriousarmor.png";
 		}
 	}
 

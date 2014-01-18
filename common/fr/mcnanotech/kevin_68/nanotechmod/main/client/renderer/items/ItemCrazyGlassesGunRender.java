@@ -13,7 +13,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.client.model.items.ItemCrazyGlass
 public class ItemCrazyGlassesGunRender implements IItemRenderer
 {
 	protected ItemCrazyGlassesGunModel model;
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/items/crazyglassesgun.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/items/crazyglassesgun.png");
 
 	public ItemCrazyGlassesGunRender()
 	{

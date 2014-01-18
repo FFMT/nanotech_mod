@@ -14,7 +14,7 @@ public class ItemNanomiteHoe extends ItemHoe
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("nanotech_mod:nanomiteHoe");
+		itemIcon = iconregister.registerIcon("nanotechmod:nanomiteHoe");
 	}
 
 	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)

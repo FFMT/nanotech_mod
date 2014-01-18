@@ -15,7 +15,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.MobFlyingCreeper;
 public class RenderFlyingCreeper extends RenderLiving
 {
 	private ModelBase model = new ModelFlyingCreeper();
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod:textures/entity/flyingcreeper.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod:textures/entity/flyingcreeper.png");
 
 	public RenderFlyingCreeper()
 	{

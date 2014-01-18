@@ -27,8 +27,8 @@ public class BlockNanoLeaves extends BlockLeaves implements IShearable
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		blockIcon = iconregister.registerIcon("nanotech_mod:nanoleaves");
-		fastIcon = iconregister.registerIcon("nanotech_mod:nanoleaves_opaque");
+		blockIcon = iconregister.registerIcon("nanotechmod:nanoleaves");
+		fastIcon = iconregister.registerIcon("nanotechmod:nanoleaves_opaque");
 	}
 
 	public boolean isOpaqueCube()

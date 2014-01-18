@@ -13,7 +13,7 @@ import fr.minecraftforgefrance.ffmtlibs.renderer.TileEntityInventorySpecialRende
 public class TileEntityTrashCanRender extends TileEntityInventorySpecialRenderer
 {
 	private final ModelBlockTrashCan model = new ModelBlockTrashCan();
-	private static final ResourceLocation texture = new ResourceLocation("nanotech_mod_city", "textures/blocks/trashcan.png");
+	private static final ResourceLocation texture = new ResourceLocation("nanotechmodcity", "textures/blocks/trashcan.png");
 
 	@Override
 	public void renderInventory(double x, double y, double z)

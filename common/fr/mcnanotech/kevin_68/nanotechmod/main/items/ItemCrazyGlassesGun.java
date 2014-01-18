@@ -25,7 +25,7 @@ public class ItemCrazyGlassesGun extends ItemBow
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("nanotech_mod:crazyglassesgunitem");
+		itemIcon = iconregister.registerIcon("nanotechmod:crazyglassesgunitem");
 	}
 
 	public ItemStack onFoodEaten(ItemStack stack, World world, EntityPlayer player)
@@ -111,7 +111,7 @@ public class ItemCrazyGlassesGun extends ItemBow
 							{
 								if(!stack.getTagCompound().getBoolean("IsPlayingSound"))
 								{
-									world.playSoundAtEntity(entity, "nanotech_mod:crazyglassesgunreload", 1.0F, 1.0F);
+									world.playSoundAtEntity(entity, "nanotechmod:crazyglassesgunreload", 1.0F, 1.0F);
 									stack.getTagCompound().setBoolean("IsPlayingSound", true);
 								}
 								timer++;

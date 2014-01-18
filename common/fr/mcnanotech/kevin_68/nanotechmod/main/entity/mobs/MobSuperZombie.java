@@ -87,7 +87,7 @@ public class MobSuperZombie extends EntityMob
 
 	/**
 	 * protected int getDropItemId() { return
-	 * Nanotech_mod.Item_edibleflesh.itemID; }
+	 * nanotechmod.Item_edibleflesh.itemID; }
 	 */
 	public EnumCreatureAttribute getCreatureAttribute()
 	{

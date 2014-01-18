@@ -62,6 +62,6 @@ public class ItemAlters extends Item
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		this.itemIcon = iconregister.registerIcon("nanotech_mod:altersItem");
+		this.itemIcon = iconregister.registerIcon("nanotechmod:altersItem");
 	}
 }

@@ -25,15 +25,15 @@ public class ItemCrazyGlasses extends ItemArmor
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("nanotech_mod:crazyGlassesItem");
+		itemIcon = iconregister.registerIcon("nanotechmod:crazyGlassesItem");
 	}
 
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
 	{
 		if(stack.itemID == NanotechItem.crazyGlasses.itemID)
-			return "nanotech_mod:textures/armor/crazyGlasses.png";
+			return "nanotechmod:textures/armor/crazyGlasses.png";
 
-		return "nanotech_mod:textures/block/empty.png";
+		return "nanotechmod:textures/block/empty.png";
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class ItemCrazyGlasses extends ItemArmor
 			if(tick > 56)
 			{
 				float randPitch = -5.0F + world.rand.nextFloat() * 10;
-				world.playSoundAtEntity(player, "nanotech_mod:CrazyGuy", 30.0F, randPitch);
+				world.playSoundAtEntity(player, "nanotechmod:CrazyGuy", 30.0F, randPitch);
 				tick = 0 + (int)(randPitch * 13.0F);
 			}
 			else

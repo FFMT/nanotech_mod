@@ -25,7 +25,7 @@ import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 public class GuiLightSaber extends FFMTGuiContainerSliderBase
 {
 	private final ItemStack saberStack;
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod:textures/gui/lightsaber.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod:textures/gui/lightsaber.png");
 
 	public GuiLightSaber(EntityPlayer player)
 	{

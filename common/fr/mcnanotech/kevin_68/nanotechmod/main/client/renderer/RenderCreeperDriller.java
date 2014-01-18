@@ -15,7 +15,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.MobCreeperDriller;
 public class RenderCreeperDriller extends RenderLiving
 {
 	private ModelBase model = new ModelCreeperDriller(2.0F);
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/entity/creeperforreur.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/entity/creeperforreur.png");
 
 	public RenderCreeperDriller()
 	{

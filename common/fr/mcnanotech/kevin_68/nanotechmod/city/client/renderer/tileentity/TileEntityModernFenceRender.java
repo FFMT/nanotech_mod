@@ -15,8 +15,8 @@ public class TileEntityModernFenceRender extends TileEntitySpecialRenderer
 {
 	private final ModelBlockModernFence model;
 	private final ModelBlockModernFence2 model2;
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod_city", "textures/blocks/BlockModernFence.png");
-	protected static final ResourceLocation texture2 = new ResourceLocation("nanotech_mod_city", "textures/blocks/BlockModernFence2.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotechmodcity", "textures/blocks/BlockModernFence.png");
+	protected static final ResourceLocation texture2 = new ResourceLocation("nanotechmodcity", "textures/blocks/BlockModernFence2.png");
 
 	public TileEntityModernFenceRender()
 	{

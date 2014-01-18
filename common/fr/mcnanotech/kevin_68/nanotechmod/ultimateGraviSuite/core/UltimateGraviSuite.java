@@ -39,10 +39,10 @@ import gregtechmod.api.GregTech_API;
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, clientPacketHandlerSpec = @NetworkMod.SidedPacketHandler(channels = {"gravisuite"}, packetHandler = ClientPacketHandler.class), serverPacketHandlerSpec = @NetworkMod.SidedPacketHandler(channels = {"gravisuite"}, packetHandler = ServerPacketHandler.class))
 public class UltimateGraviSuite
 {
-	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.core.ClientProxy", serverSide = "fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.core.ServerProxy")
+	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.core.ClientProxy", serverSide = "fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.core.ServerProxy")
 	public static ServerProxy proxy;
 	// Keyboard
-	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.keyboard.KeyboardClient", serverSide = "fr.mcnanotech.kevin_68.nanotech_mod.ultimateGraviSuite.keyboard.Keyboard")
+	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.keyboard.KeyboardClient", serverSide = "fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.keyboard.Keyboard")
 	public static Keyboard keyboard;
 
 	// Items

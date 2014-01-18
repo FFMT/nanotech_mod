@@ -15,7 +15,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.entity.others.EntitySatelite;
 @SideOnly(Side.CLIENT)
 public class RenderSatelite extends Render
 {
-	private static final ResourceLocation SateliteTextures = new ResourceLocation("nanotech_mod", "textures/entity/satelite.png");
+	private static final ResourceLocation SateliteTextures = new ResourceLocation("nanotechmod", "textures/entity/satelite.png");
 
 	protected ModelBase model;
 

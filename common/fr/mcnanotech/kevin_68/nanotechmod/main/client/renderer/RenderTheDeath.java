@@ -21,7 +21,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 
 public class RenderTheDeath extends RenderLiving
 {
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/entity/thedeath.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/entity/thedeath.png");
 
 	public RenderTheDeath()
 	{

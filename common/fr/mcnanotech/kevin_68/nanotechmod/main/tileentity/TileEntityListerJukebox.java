@@ -29,7 +29,7 @@ public class TileEntityListerJukebox extends TileEntity
 			}
 			else if(music != null && music.equals("nanodisk"))
 			{
-				this.worldObj.playRecord("nanotech_mod:" + music, xCoord, yCoord, zCoord);
+				this.worldObj.playRecord("nanotechmod:" + music, xCoord, yCoord, zCoord);
 			}
 		}
 		else

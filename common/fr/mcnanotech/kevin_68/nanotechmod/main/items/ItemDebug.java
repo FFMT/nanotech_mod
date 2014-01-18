@@ -100,6 +100,6 @@ public class ItemDebug extends Item
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		this.itemIcon = iconregister.registerIcon("nanotech_mod:itemDebug");
+		this.itemIcon = iconregister.registerIcon("nanotechmod:itemDebug");
 	}
 }

@@ -35,11 +35,11 @@ public class BlockSat extends Block
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		blockIcon = iconregister.registerIcon("nanotech_mod:empty");
-		monitorSide = iconregister.registerIcon("nanotech_mod:monitorside");
-		screenFine = iconregister.registerIcon("nanotech_mod:screenfine");
-		screenAlert = iconregister.registerIcon("nanotech_mod:screenalert");
-		screenError = iconregister.registerIcon("nanotech_mod:screenerror");
+		blockIcon = iconregister.registerIcon("nanotechmod:empty");
+		monitorSide = iconregister.registerIcon("nanotechmod:monitorside");
+		screenFine = iconregister.registerIcon("nanotechmod:screenfine");
+		screenAlert = iconregister.registerIcon("nanotechmod:screenalert");
+		screenError = iconregister.registerIcon("nanotechmod:screenerror");
 	}
 
 	@SideOnly(Side.CLIENT)

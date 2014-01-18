@@ -32,9 +32,9 @@ public class ItemDiamondBow extends ItemBow
 		iconbuffer = new Icon[bowpullname.length];
 		for(int i = 0; i < bowpullname.length; i++)
 		{
-			iconbuffer[i] = iconregister.registerIcon("nanotech_mod:" + bowpullname[i]);
+			iconbuffer[i] = iconregister.registerIcon("nanotechmod:" + bowpullname[i]);
 		}
-		itemIcon = iconregister.registerIcon("nanotech_mod:diamondbow");
+		itemIcon = iconregister.registerIcon("nanotechmod:diamondbow");
 	}
 
 	public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)

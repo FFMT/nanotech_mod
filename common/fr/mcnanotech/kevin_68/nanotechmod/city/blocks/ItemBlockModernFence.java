@@ -16,7 +16,7 @@ public class ItemBlockModernFence extends ItemBlock
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister)
 	{
-		this.itemIcon = iconRegister.registerIcon("nanotech_mod_city:modernFence");
+		this.itemIcon = iconRegister.registerIcon("nanotechmodcity:modernFence");
 	}
 
 	@SideOnly(Side.CLIENT)

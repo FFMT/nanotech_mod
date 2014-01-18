@@ -48,7 +48,7 @@ public class MobCrazyGuy extends EntityMob
 
 	protected String getLivingSound()
 	{
-		return "nanotech_mod:CrazyGuy";
+		return "nanotechmod:CrazyGuy";
 	}
 
 	protected String getHurtSound()

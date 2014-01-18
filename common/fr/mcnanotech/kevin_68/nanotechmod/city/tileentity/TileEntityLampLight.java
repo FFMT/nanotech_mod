@@ -7,7 +7,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityLampLight extends TileEntity
 {
-	public String getLampTexture = "nanotech_mod_city:textures/blocks/BlockLampLightOn.png";
+	public String getLampTexture = "nanotechmodcity:textures/blocks/BlockLampLightOn.png";
 
 	public void updateEntity()
 	{
@@ -35,11 +35,11 @@ public class TileEntityLampLight extends TileEntity
 	{
 		if(this.getBlockMetadata() == 3)
 		{
-			return "nanotech_mod_city:textures/blocks/BlockLampLightOn.png";
+			return "nanotechmodcity:textures/blocks/BlockLampLightOn.png";
 		}
 		else
 		{
-			return "nanotech_mod_city:textures/blocks/BlockLampLightOff.png";
+			return "nanotechmodcity:textures/blocks/BlockLampLightOff.png";
 		}
 	}
 }

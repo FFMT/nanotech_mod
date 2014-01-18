@@ -31,9 +31,9 @@ public class BlockGrass extends Block
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		blockIcon = iconregister.registerIcon("nanotech_mod:grass_side");
-		iconTop = iconregister.registerIcon("nanotech_mod:grass_top");
-		iconSnowSide = iconregister.registerIcon("nanotech_mod:grass_side_snow");
+		blockIcon = iconregister.registerIcon("nanotechmod:grass_side");
+		iconTop = iconregister.registerIcon("nanotechmod:grass_top");
+		iconSnowSide = iconregister.registerIcon("nanotechmod:grass_side_snow");
 	}
 
 	@SideOnly(Side.CLIENT)

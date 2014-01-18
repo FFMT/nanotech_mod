@@ -14,7 +14,7 @@ public class ItemNanomiteSword extends ItemSword
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("nanotech_mod:nanomiteSword");
+		itemIcon = iconregister.registerIcon("nanotechmod:nanomiteSword");
 	}
 
 	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)

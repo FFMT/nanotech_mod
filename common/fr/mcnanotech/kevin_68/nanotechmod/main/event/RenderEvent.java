@@ -16,7 +16,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 public class RenderEvent
 {
 	private Minecraft mc = Minecraft.getMinecraft();
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/armor/crazyGlassesOverlay.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/armor/crazyGlassesOverlay.png");
 
 	@ForgeSubscribe
 	public void onRenderGameOverlay(RenderGameOverlayEvent event)

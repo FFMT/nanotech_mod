@@ -28,8 +28,8 @@ import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 public class GuiSpotLight extends FFMTGuiContainerSliderBase
 {
 	protected TileEntitySpotLight tileSpotLight;
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod_city:textures/gui/spotlight1.png");
-	protected static final ResourceLocation texture2 = new ResourceLocation("nanotech_mod_city:textures/gui/spotlight2.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotechmodcity:textures/gui/spotlight1.png");
+	protected static final ResourceLocation texture2 = new ResourceLocation("nanotechmodcity:textures/gui/spotlight2.png");
 	public FFMTGuiBooleanButton autoRotateButton;
 	public FFMTGuiBooleanButton secondaryLazerButton;
 	public FFMTGuiBooleanButton reverseRotationButton;

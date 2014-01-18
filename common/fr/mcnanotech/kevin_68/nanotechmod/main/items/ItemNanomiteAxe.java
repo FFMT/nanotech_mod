@@ -15,7 +15,7 @@ public class ItemNanomiteAxe extends ItemAxe
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("nanotech_mod:nanomiteAxe");
+		itemIcon = iconregister.registerIcon("nanotechmod:nanomiteAxe");
 	}
 
 	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)

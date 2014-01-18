@@ -20,7 +20,7 @@ import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 public class GuiSmoker extends FFMTGuiContainerSliderBase
 {
 	private TileEntitySmoker tileSmoker;
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/gui/smoker.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/gui/smoker.png");
 
 	public GuiSmoker(InventoryPlayer playerinventory, TileEntitySmoker tileentity, World world)
 	{

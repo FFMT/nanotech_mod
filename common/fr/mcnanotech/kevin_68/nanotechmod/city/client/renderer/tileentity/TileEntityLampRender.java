@@ -17,7 +17,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityLamp;
 public class TileEntityLampRender extends TileEntitySpecialRenderer
 {
 	private final ModelBlockLamp model;
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod_city", "textures/blocks/BlockLamp.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotechmodcity", "textures/blocks/BlockLamp.png");
 
 	public TileEntityLampRender()
 	{

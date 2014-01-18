@@ -25,7 +25,7 @@ public class ItemConfigCopy extends Item
 	
 	public void registerIcons(IconRegister iconregister)
 	{
-		this.itemIcon = iconregister.registerIcon("nanotech_mod_city:configcopier");
+		this.itemIcon = iconregister.registerIcon("nanotechmodcity:configcopier");
 	}
 
 	@SideOnly(Side.CLIENT)

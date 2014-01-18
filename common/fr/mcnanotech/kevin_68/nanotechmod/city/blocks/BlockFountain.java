@@ -53,7 +53,7 @@ public class BlockFountain extends BlockContainer
 	public void registerIcons(IconRegister iconregister)
 	{
 		this.blockIcon = iconregister.registerIcon("stone_slab_top");
-		this.top = iconregister.registerIcon("nanotech_mod_city:fountainTop");
+		this.top = iconregister.registerIcon("nanotechmodcity:fountainTop");
 	}
 
 	@SideOnly(Side.CLIENT)

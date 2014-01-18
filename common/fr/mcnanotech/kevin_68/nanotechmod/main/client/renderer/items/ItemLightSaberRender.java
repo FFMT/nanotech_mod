@@ -13,7 +13,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.client.model.items.ItemLightSaber
 public class ItemLightSaberRender implements IItemRenderer
 {
 	protected ItemLightSaberModel model;
-	protected static final ResourceLocation texture = new ResourceLocation("nanotech_mod", "textures/items/lightsword.png");
+	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/items/lightsword.png");
 
 	public ItemLightSaberRender()
 	{

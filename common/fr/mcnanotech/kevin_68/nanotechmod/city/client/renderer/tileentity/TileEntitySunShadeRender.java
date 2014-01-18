@@ -29,7 +29,7 @@ public class TileEntitySunShadeRender extends TileEntitySpecialRenderer
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
-		this.bindTexture(new ResourceLocation("nanotech_mod_city", "textures/blocks/BlockSunShade" + (tileentity.getIsOpen() ? "Open" : "Close") + ".png"));
+		this.bindTexture(new ResourceLocation("nanotechmodcity", "textures/blocks/BlockSunShade" + (tileentity.getIsOpen() ? "Open" : "Close") + ".png"));
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
 		this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		GL11.glPopMatrix();

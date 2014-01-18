@@ -26,7 +26,7 @@ public class BlockNanoSaplings extends BlockSapling
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		blockIcon = iconregister.registerIcon("nanotech_mod:sapling");
+		blockIcon = iconregister.registerIcon("nanotechmod:sapling");
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -15,18 +15,18 @@ public class ItemNanomiteArmor extends ItemArmor
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("nanotech_mod:" + getUnlocalizedName().substring(5));
+		itemIcon = iconregister.registerIcon("nanotechmod:" + getUnlocalizedName().substring(5));
 	}
 
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
 	{
 		if(stack.itemID == NanotechItem.nanomiteLeggings.itemID)
 		{
-			return "nanotech_mod:textures/armor/Nanomitearmor2.png";
+			return "nanotechmod:textures/armor/Nanomitearmor2.png";
 		}
 		else
 		{
-			return "nanotech_mod:textures/armor/Nanomitearmor.png";
+			return "nanotechmod:textures/armor/Nanomitearmor.png";
 		}
 	}
 

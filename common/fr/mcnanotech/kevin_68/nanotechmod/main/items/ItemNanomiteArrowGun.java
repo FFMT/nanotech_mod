@@ -31,7 +31,7 @@ public class ItemNanomiteArrowGun extends ItemBow
 
 	public void registerIcons(IconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("nanotech_mod:nanomitebow");
+		itemIcon = iconregister.registerIcon("nanotechmod:nanomitebow");
 	}
 
 	public ItemStack onFoodEaten(ItemStack stack, World world, EntityPlayer player)

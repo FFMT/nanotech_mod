@@ -33,7 +33,7 @@ public class ItemBlockLamp extends ItemBlock
 
 	public void registerIcons(IconRegister iconRegister)
 	{
-		itemBlockIcon = iconRegister.registerIcon("nanotech_mod_city:lamp");
+		itemBlockIcon = iconRegister.registerIcon("nanotechmodcity:lamp");
 	}
 
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float par8, float par9, float par10)
