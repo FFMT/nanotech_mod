@@ -13,7 +13,7 @@ public class NanotechCityAchievement
 	{
 		blockSpotLight = new Achievement(12581, "blockSpotLight", 1, -1, NanotechCityBlock.spotLight, Loader.isModLoaded("NanotechMod") ? NanotechAchievement.getInstallModAchievement() : null).registerAchievement();
 		blockTrail = new Achievement(12582, "blockTrail", 1, -2, NanotechCityBlock.trail, Loader.isModLoaded("NanotechMod") ? NanotechAchievement.getInstallModAchievement() : null).registerAchievement();
-		blockTrashCan = new Achievement(12583, "blockTrashCan", 1, -3, Loader.isModLoaded("NanotechMod") ? NanotechAchievement.getInstallModAchievement() : null).registerAchievement();
+		blockTrashCan = new Achievement(12583, "blockTrashCan", 1, -3, NanotechCityBlock.trashcan, Loader.isModLoaded("NanotechMod") ? NanotechAchievement.getInstallModAchievement() : null).registerAchievement();
 	}
 
 	public static void addAchievementInPage()
