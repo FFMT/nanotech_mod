@@ -88,7 +88,7 @@ public class BlockLamp extends Block
 
 	public Icon getIcon(int side, int metadata)
 	{
-		return NanotechBlock.jumper.getIcon(0, 0);
+		return NanotechCityBlock.spotLight.getIcon(0, 0);
 	}
 
 	public void registerIcons(IconRegister iconregister)
