@@ -27,19 +27,24 @@ import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 
 public class GuiSpotLight extends FFMTGuiContainerSliderBase
 {
+	protected InventoryPlayer invPlayer;
 	protected TileEntitySpotLight tileSpotLight;
+	protected World world;
 	protected static final ResourceLocation texture = new ResourceLocation("nanotechmodcity:textures/gui/spotlight1.png");
 	protected static final ResourceLocation texture2 = new ResourceLocation("nanotechmodcity:textures/gui/spotlight2.png");
 	public FFMTGuiBooleanButton autoRotateButton;
 	public FFMTGuiBooleanButton secondaryLazerButton;
 	public FFMTGuiBooleanButton reverseRotationButton;
+	public FFMTGuiBooleanButton timeLineModeButton;
 	public FFMTGuiSliderForContainer angle2Button;
 	public FFMTGuiSliderForContainer speedRotationButton;
 
 	public GuiSpotLight(InventoryPlayer playerInventory, TileEntitySpotLight tileEntity, World world)
 	{
 		super(new ContainerSpotLight(tileEntity, playerInventory, world));
+		invPlayer = playerInventory;
 		tileSpotLight = tileEntity;
+		this.world = world;
 	}
 
 	@Override
@@ -65,7 +70,9 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		this.buttonList.add(secondaryLazerButton = new FFMTGuiBooleanButton(10, width / 2 - 155, y + 135, I18n.getString("container.spotlight.secondlazer"), tileSpotLight.getSecondaryLazer()));
 		this.buttonList.add(new GuiButton(12, width / 2 - 155, y + 157, 65, 20, I18n.getString("container.spotlight.copy")));
 		this.buttonList.add(new GuiButton(13, width / 2 - 69, y + 157, 65, 20, I18n.getString("container.spotlight.paste")));
-
+		this.buttonList.add(new GuiButton(14, width / 2 + 90, y + 185, 65, 20, I18n.getString("container.spotlight.timeline")));
+		this.buttonList.add(timeLineModeButton = new FFMTGuiBooleanButton(15, width / 2 - 155, y + 185, 65, 20, I18n.getString("container.spotlight.timeline"), tileSpotLight.getTimeLineMode()));
+		
 		if(!tileSpotLight.getAutoRotate())
 		{
 			angle2Button.disable();
@@ -116,6 +123,15 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		else if(guibutton.id == 13)
 		{
 			sendSpotLightPacket(1, 12);
+		}
+		else if(guibutton.id == 14)
+		{
+			this.mc.displayGuiScreen(new GuiSpotLightTimeLine(invPlayer, tileSpotLight, world));
+		}
+		else if(guibutton.id == 15)
+		{
+			this.sendSpotLightPacket((int)(tileSpotLight.getTimeLineMode() ? 0 : 1), 13);
+			timeLineModeButton.toggle();
 		}
 	}
 

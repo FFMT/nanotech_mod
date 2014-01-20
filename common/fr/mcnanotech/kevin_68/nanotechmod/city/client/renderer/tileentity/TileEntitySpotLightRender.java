@@ -19,7 +19,7 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 
 	public void renderTileEntitySpotLightAt(TileEntitySpotLight tileentity, double x, double y, double z, float par8)
 	{
-		float f1 = tileentity.func_82125_v_();
+		float f1 = tileentity.isActive();
 
 		if(f1 > 0.0F)
 		{

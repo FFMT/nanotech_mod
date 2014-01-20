@@ -24,6 +24,8 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 public class TileEntitySpotLight extends TileEntity implements IInventory
 {
 	private ItemStack[] inventory = new ItemStack[2];
+	private boolean[] hasKey = new boolean[120];
+	private int[][] color = new int[120][6];
 	private String customName;
 
 	@SideOnly(Side.CLIENT)
@@ -44,28 +46,27 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	public float rotationSpeed;
 	public boolean secondaryLazer;
 	public boolean reverseRotation;
-	
+
 	public boolean timeLineMode;
 	public int timeLine;
 
 	public void updateEntity()
-	{		
+	{
 		if(this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
 		{
-			this.isActive = true;
-			
-			if(timeLineMode)
+			if(getTimeLineMode())
 			{
-				if(timeLine > 1200)
+				if(getTimeLine() > 1200)
 				{
-					timeLine = 0;
+					setTimeLine(0);
 				}
 				else
 				{
-					timeLine++;
+					setTimeLine(getTimeLine() + 1);
 				}
-				
+
 			}
+			this.isActive = true;
 		}
 		else
 		{
@@ -74,7 +75,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	}
 
 	@SideOnly(Side.CLIENT)
-	public float func_82125_v_()
+	public float isActive()
 	{
 		if(!this.isActive)
 		{
@@ -106,12 +107,6 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		}
 	}
 
-	@SideOnly(Side.CLIENT)
-	public double getMaxRenderDistanceSquared()
-	{
-		return 65536.0D;
-	}
-
 	public void writeToNBT(NBTTagCompound nbtTagCompound)
 	{
 		super.writeToNBT(nbtTagCompound);
@@ -127,25 +122,54 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		nbtTagCompound.setFloat("SpotLightRotationSpeed", rotationSpeed);
 		nbtTagCompound.setBoolean("SpotLightSecondaryLaser", secondaryLazer);
 		nbtTagCompound.setBoolean("SpotLightReverseRotation", reverseRotation);
-		
+
 		nbtTagCompound.setBoolean("SpotLightTimeLineMode", timeLineMode);
+		nbtTagCompound.setInteger("SpotLightTimeLine", timeLine);
 
 		NBTTagList itemList = new NBTTagList();
-
 		for(int j = 0; j < inventory.length; j++)
 		{
 			ItemStack stack = inventory[j];
-
 			if(stack != null)
 			{
 				NBTTagCompound tag = new NBTTagCompound();
-
 				tag.setByte("Slot", (byte)j);
 				stack.writeToNBT(tag);
 				itemList.appendTag(tag);
 			}
 		}
 		nbtTagCompound.setTag("Inventory", itemList);
+
+		NBTTagList booleanList = new NBTTagList();
+		for(int i = 0; i < hasKey.length; i++)
+		{
+			boolean boo = this.hasKey[i];
+			NBTTagCompound tag = new NBTTagCompound();
+			tag.setBoolean("Key" + i, boo);
+			booleanList.appendTag(tag);
+		}
+		nbtTagCompound.setTag("HasKey", booleanList);
+
+		if(this.customName != null)
+		{
+			nbtTagCompound.setString("Name", this.customName);
+		}
+
+		NBTTagList keyList = new NBTTagList();
+		for(int i = 0; i < 120; i++)
+		{
+			NBTTagList typeList = new NBTTagList();
+			typeList.setName("TypeList:Key:" + i);
+			for(int j = 0; j < 6; j++)
+			{
+				int colo = this.color[i][j];
+				NBTTagCompound tag = new NBTTagCompound();
+				tag.setInteger("KeyColor:" + j, colo);
+				typeList.appendTag(tag);
+			}
+			keyList.appendTag(typeList);
+		}
+		nbtTagCompound.setTag("KeyList", keyList);
 
 		if(this.customName != null)
 		{
@@ -168,11 +192,11 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		rotationSpeed = nbtTagCompound.getFloat("SpotLightRotationSpeed");
 		secondaryLazer = nbtTagCompound.getBoolean("SpotLightSecondaryLaser");
 		reverseRotation = nbtTagCompound.getBoolean("SpotLightReverseRotation");
-		
+
 		timeLineMode = nbtTagCompound.getBoolean("SpotLightTimeLineMode");
+		timeLine = nbtTagCompound.getInteger("SpotLightTimeLine");
 
 		NBTTagList tagList = nbtTagCompound.getTagList("Inventory");
-
 		for(int i = 0; i < tagList.tagCount(); i++)
 		{
 			NBTTagCompound tag = (NBTTagCompound)tagList.tagAt(i);
@@ -183,23 +207,40 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
 			}
 		}
+
+		NBTTagList tagList2 = nbtTagCompound.getTagList("HasKey");
+		for(int i = 0; i < hasKey.length; i++)
+		{
+			NBTTagCompound tag = (NBTTagCompound)tagList2.tagAt(i);
+			if(tag != null)
+			{
+				boolean boo = tag.getBoolean("Key" + i);
+				hasKey[i] = boo;
+			}
+		}
+
+		NBTTagList tagList3 = nbtTagCompound.getTagList("KeyList");
+		for(int i = 0; i < 120; i++)
+		{
+			NBTTagList tagList4 = nbtTagCompound.getTagList("TypeList:Key:" + i);
+			for(int j = 0; j < 6; j++)
+			{
+				NBTTagCompound tag = (NBTTagCompound)tagList4.tagAt(j);
+				if(tag != null)
+				{
+					int colo = tag.getInteger("KeyColor:" + j);
+					color[i][j] = colo;
+				}
+			}
+		}
+
 		if(nbtTagCompound.hasKey("Name"))
 		{
 			this.customName = nbtTagCompound.getString("Name");
 		}
 	}
 
-	public Packet getDescriptionPacket()
-	{
-		NBTTagCompound nbttagcompound = new NBTTagCompound();
-		this.writeToNBT(nbttagcompound);
-		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4, nbttagcompound);
-	}
-
-	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
-	{
-		this.readFromNBT(pkt.data);
-	}
+	// --Setter------------------------
 
 	public void setRedValue(int i)
 	{
@@ -282,6 +323,25 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		}
 	}
 
+	public void setTimeLineMode(int i)
+	{
+		if(i == 1)
+		{
+			this.timeLineMode = true;
+		}
+		else
+		{
+			this.timeLineMode = false;
+		}
+	}
+
+	public void setTimeLine(int i)
+	{
+		this.timeLine = i;
+	}
+
+	// --Getter--------------------------
+
 	public int getRedValue()
 	{
 		return this.red;
@@ -340,6 +400,16 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	public boolean getReverseRotation()
 	{
 		return this.reverseRotation;
+	}
+
+	public boolean getTimeLineMode()
+	{
+		return this.timeLineMode;
+	}
+
+	public int getTimeLine()
+	{
+		return this.timeLine;
 	}
 
 	public boolean isUseableByPlayer(EntityPlayer player)
@@ -442,6 +512,24 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	public boolean isItemValidForSlot(int i, ItemStack itemstack)
 	{
 		return false;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public double getMaxRenderDistanceSquared()
+	{
+		return 65536.0D;
+	}
+
+	public Packet getDescriptionPacket()
+	{
+		NBTTagCompound nbttagcompound = new NBTTagCompound();
+		this.writeToNBT(nbttagcompound);
+		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4, nbttagcompound);
+	}
+
+	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
+	{
+		this.readFromNBT(pkt.data);
 	}
 
 	public void addNbtTagToItem()

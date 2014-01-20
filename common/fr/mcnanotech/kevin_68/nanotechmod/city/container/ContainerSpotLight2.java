@@ -8,17 +8,16 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
 
-public class ContainerSpotLight extends Container
+public class ContainerSpotLight2 extends Container
 {
 	protected TileEntitySpotLight tileSpotLight;
 	private World worldObj;
 	private boolean addSlot;
 
-	public ContainerSpotLight(TileEntitySpotLight tileEntity, InventoryPlayer inventoryPlayer, World world)
+	public ContainerSpotLight2(TileEntitySpotLight tileEntity, InventoryPlayer inventoryPlayer, World world)
 	{
 		this.worldObj = world;
 		this.tileSpotLight = tileEntity;
-		addSlotToContainer(new Slot(tileEntity, 1, 0, 115));
 		bindPlayerInventory(inventoryPlayer);
 	}
 
@@ -32,7 +31,7 @@ public class ContainerSpotLight extends Container
 	{
 		for(int i = 0; i < 9; i++)
 		{
-			addSlotToContainer(new Slot(inventoryPlayer, i, 11 + i * 18, 142));
+			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
 		}
 	}
 
