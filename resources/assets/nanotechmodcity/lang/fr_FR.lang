@@ -6,10 +6,9 @@ tile.trashcan.name=Poubelle
 tile.spotlight.name=Projecteur
 tile.trail.name=Chemin
 tile.fountain.name=Fontaine
-tile.lamp.name=Lampe #ici
 tile.modernFence.name=Barrière Moderne
 tile.sunShade.name=Parasol
-tile.lamp.name=Lampadaire #et ici
+tile.lamp.name=Lampadaire
 tile.textSpotLight.name=Projecteur de texte
 
 #Items
