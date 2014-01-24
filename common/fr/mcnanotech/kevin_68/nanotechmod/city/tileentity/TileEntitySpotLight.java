@@ -24,8 +24,13 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 public class TileEntitySpotLight extends TileEntity implements IInventory
 {
 	private ItemStack[] inventory = new ItemStack[2];
-	private boolean[] hasKey = new boolean[120];
-	private int[][] color = new int[120][6];
+	private byte[] hasKey = new byte[121];
+	private byte[] redkey = new byte[121];
+	private byte[] greenkey = new byte[121];
+	private byte[] bluekey = new byte[121];
+	private byte[] darkRedkey = new byte[121];
+	private byte[] darkGreenkey = new byte[121];
+	private byte[] darkBluekey = new byte[121];
 	private String customName;
 
 	@SideOnly(Side.CLIENT)
@@ -49,6 +54,8 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 
 	public boolean timeLineMode;
 	public int timeLine;
+	public int createKeyTime;
+	public int selectedbuttonid;
 
 	public void updateEntity()
 	{
@@ -123,9 +130,18 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		nbtTagCompound.setBoolean("SpotLightSecondaryLaser", secondaryLazer);
 		nbtTagCompound.setBoolean("SpotLightReverseRotation", reverseRotation);
 
+		nbtTagCompound.setInteger("SpotlightSelectedButtonId", selectedbuttonid);
 		nbtTagCompound.setBoolean("SpotLightTimeLineMode", timeLineMode);
 		nbtTagCompound.setInteger("SpotLightTimeLine", timeLine);
-
+		nbtTagCompound.setInteger("SpotLightCreateKeyTime", createKeyTime);
+		nbtTagCompound.setByteArray("SpotLightHasKey", hasKey);
+		nbtTagCompound.setByteArray("SpotLightTimeRed", redkey);
+		nbtTagCompound.setByteArray("SpotLightTimeGreen", greenkey);
+		nbtTagCompound.setByteArray("SpotLightTimeBlue", bluekey);
+		nbtTagCompound.setByteArray("SpotLightTimeDarkRed", darkRedkey);
+		nbtTagCompound.setByteArray("SpotLightTimeDarkGreen", darkGreenkey);
+		nbtTagCompound.setByteArray("SpotLightTimeDarkBlue", darkBluekey);
+		
 		NBTTagList itemList = new NBTTagList();
 		for(int j = 0; j < inventory.length; j++)
 		{
@@ -139,38 +155,6 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 			}
 		}
 		nbtTagCompound.setTag("Inventory", itemList);
-
-		NBTTagList booleanList = new NBTTagList();
-		for(int i = 0; i < hasKey.length; i++)
-		{
-			boolean boo = this.hasKey[i];
-			NBTTagCompound tag = new NBTTagCompound();
-			tag.setBoolean("Key" + i, boo);
-			booleanList.appendTag(tag);
-		}
-		nbtTagCompound.setTag("HasKey", booleanList);
-
-		if(this.customName != null)
-		{
-			nbtTagCompound.setString("Name", this.customName);
-		}
-
-		NBTTagList keyList = new NBTTagList();
-		for(int i = 0; i < 120; i++)
-		{
-			NBTTagList typeList = new NBTTagList();
-			typeList.setName("TypeList:Key:" + i);
-			for(int j = 0; j < 6; j++)
-			{
-				int colo = this.color[i][j];
-				NBTTagCompound tag = new NBTTagCompound();
-				tag.setInteger("KeyColor:" + j, colo);
-				typeList.appendTag(tag);
-			}
-			keyList.appendTag(typeList);
-		}
-		nbtTagCompound.setTag("KeyList", keyList);
-
 		if(this.customName != null)
 		{
 			nbtTagCompound.setString("Name", this.customName);
@@ -193,8 +177,17 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		secondaryLazer = nbtTagCompound.getBoolean("SpotLightSecondaryLaser");
 		reverseRotation = nbtTagCompound.getBoolean("SpotLightReverseRotation");
 
+		selectedbuttonid = nbtTagCompound.getInteger("SpotlightSelectedButtonId");
 		timeLineMode = nbtTagCompound.getBoolean("SpotLightTimeLineMode");
 		timeLine = nbtTagCompound.getInteger("SpotLightTimeLine");
+		createKeyTime = nbtTagCompound.getInteger("SpotLightCreateKeyTime");
+		hasKey = nbtTagCompound.getByteArray("SpotLightHasKey");
+		redkey = nbtTagCompound.getByteArray("SpotLightTimeRed");
+		greenkey = nbtTagCompound.getByteArray("SpotLightTimeGreen");
+		bluekey = nbtTagCompound.getByteArray("SpotLightTimeBlue");
+		darkRedkey = nbtTagCompound.getByteArray("SpotLightTimeDarkRed");
+		darkGreenkey = nbtTagCompound.getByteArray("SpotLightTimeDarkGreen");
+		darkBluekey = nbtTagCompound.getByteArray("SpotLightTimeDarkBlue");
 
 		NBTTagList tagList = nbtTagCompound.getTagList("Inventory");
 		for(int i = 0; i < tagList.tagCount(); i++)
@@ -205,32 +198,6 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 			if(slot >= 0 && slot < inventory.length)
 			{
 				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
-			}
-		}
-
-		NBTTagList tagList2 = nbtTagCompound.getTagList("HasKey");
-		for(int i = 0; i < hasKey.length; i++)
-		{
-			NBTTagCompound tag = (NBTTagCompound)tagList2.tagAt(i);
-			if(tag != null)
-			{
-				boolean boo = tag.getBoolean("Key" + i);
-				hasKey[i] = boo;
-			}
-		}
-
-		NBTTagList tagList3 = nbtTagCompound.getTagList("KeyList");
-		for(int i = 0; i < 120; i++)
-		{
-			NBTTagList tagList4 = nbtTagCompound.getTagList("TypeList:Key:" + i);
-			for(int j = 0; j < 6; j++)
-			{
-				NBTTagCompound tag = (NBTTagCompound)tagList4.tagAt(j);
-				if(tag != null)
-				{
-					int colo = tag.getInteger("KeyColor:" + j);
-					color[i][j] = colo;
-				}
 			}
 		}
 
@@ -339,6 +306,52 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	{
 		this.timeLine = i;
 	}
+	
+	public void setCreateKeyTime(int i)
+	{
+		createKeyTime = i;
+	}
+	
+	public void setSelectedButtonId(int i)
+	{
+		this.selectedbuttonid = i;
+	}
+	
+	public void setKey(int time, int i)
+	{
+		this.hasKey[time] = (byte)i;
+	}
+	
+	public void setRedKey(int time, int color)
+	{
+		this.redkey[time] = (byte)color;
+	}
+	
+	public void setGreenKey(int time, int color)
+	{
+		this.greenkey[time] = (byte)color;
+	}
+	
+	public void setBlueKey(int time, int color)
+	{
+		this.bluekey[time] = (byte)color;
+	}
+	
+	public void setDarkRedKey(int time, int color)
+	{
+		this.darkRedkey[time] = (byte)color;
+	}
+	
+	public void setDarkGreenKey(int time, int color)
+	{
+		this.darkGreenkey[time] = (byte)color;
+	}
+	
+	public void setDarkBlueKey(int time, int color)
+	{
+		this.darkBluekey[time] = (byte)color;
+	}
+
 
 	// --Getter--------------------------
 
@@ -410,6 +423,51 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	public int getTimeLine()
 	{
 		return this.timeLine;
+	}
+	
+	public int getCreateKeyTime()
+	{
+		return this.createKeyTime;
+	}
+	
+	public int getSelectedButtonid()
+	{
+		return this.selectedbuttonid;
+	}
+	
+	public boolean hasKey(int time)
+	{
+		return this.hasKey[time] == 1 ? true : false;
+	}
+	
+	public int getRedKey(int time)
+	{
+		return this.redkey[time];
+	}
+	
+	public int getGreenKey(int time)
+	{
+		return this.greenkey[time];
+	}
+	
+	public int getBlueKey(int time)
+	{
+		return this.bluekey[time];
+	}
+	
+	public int getDarkRedKey(int time)
+	{
+		return this.darkRedkey[time];
+	}
+	
+	public int getDarkGreenKey(int time)
+	{
+		return this.darkGreenkey[time];
+	}
+	
+	public int getDarkBlueKey(int time)
+	{
+		return this.darkBluekey[time];
 	}
 
 	public boolean isUseableByPlayer(EntityPlayer player)

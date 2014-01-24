@@ -55,12 +55,26 @@ public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 		this.buttonList.add(new GuiButton(0, width / 2 - 155, y + 157, 65, 20, I18n.getString("container.spotlight.copy")));
 		this.buttonList.add(new GuiButton(1, width / 2 - 69, y + 157, 65, 20, I18n.getString("container.spotlight.paste")));
 		this.buttonList.add(new GuiButton(2, width / 2 + 90, y + 185, 65, 20, I18n.getString("container.spotlight.back")));
-		this.buttonList.add(new GuiButton(3, width / 2 - 155, y + 80, 120, 20, I18n.getString("container.spotlight.addKey")));
+		this.buttonList.add(new GuiButton(3, width / 2 - 155, y + 70, 120, 20, I18n.getString("container.spotlight.addKey")));
 		this.buttonList.add(timeLineModeButton = new FFMTGuiBooleanButton(4, width / 2 - 155, y + 185, 65, 20, I18n.getString("container.spotlight.timeline"), tileSpotLight.getTimeLineMode()));
+
+		for(int i = 0; i < 121; i++)
+		{
+			boolean hasKey = tileSpotLight.hasKey(i);
+			if(hasKey)
+			{
+				this.buttonList.add(new GuiTimeKey(10 + i, width / 2 - 149 + (int)(i * 2.5), y + 50 + ((i % 2)) * 4));
+			}
+		}
+
+		sendSpotLightPacket(-1, 15);
 	}
 
 	protected void actionPerformed(GuiButton guibutton)
 	{
+		int x = (width - xSize) / 2;
+		int y = (height - ySize) / 2;
+
 		if(guibutton.id == 0)
 		{
 			sendSpotLightPacket(0, 12);
@@ -82,12 +96,30 @@ public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 			this.sendSpotLightPacket((int)(tileSpotLight.getTimeLineMode() ? 0 : 1), 13);
 			timeLineModeButton.toggle();
 		}
+		else if(guibutton.id == 5)
+		{
+			if(tileSpotLight.getSelectedButtonid() != -1)
+			{
+				if(tileSpotLight.hasKey(tileSpotLight.getSelectedButtonid()))
+				{
+					//guiconfirm 
+				}
+			}
+		}
+		else if(guibutton.id >= 10)
+		{
+			int keyid = guibutton.id - 10;
+			if(tileSpotLight.hasKey(keyid))
+			{
+				sendSpotLightPacket(keyid, 15);
+			}
+		}
 	}
 
 	@Override
 	public void handlerSliderAction(int sliderId, float sliderValue)
 	{
-		
+
 	}
 
 	@Override
@@ -134,6 +166,20 @@ public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 		this.drawTexturedModalRect(x - 20, y + 40, 0, 0, 256, 21);
 		this.drawTexturedModalRect(x + 225, y + 40, 0, 22, 256, 43);
 		this.mc.renderEngine.bindTexture(widget);
-		this.drawTexturedModalRect(x - 20 + (int)(tileSpotLight.getTimeLine()/4), y + 40, 0, 3, 1, 24);
+		this.drawTexturedModalRect(x - 20 + (int)(tileSpotLight.getTimeLine() / 4), y + 40, 0, 3, 1, 24);
+
+		if(tileSpotLight.getSelectedButtonid() != -1)
+		{
+			if(tileSpotLight.hasKey(tileSpotLight.getSelectedButtonid()))
+			{
+				this.drawString(this.fontRenderer, EnumChatFormatting.RED + I18n.getString("container.spotlight.red") + " : " + tileSpotLight.getRedKey(tileSpotLight.getSelectedButtonid()), x + 110, y + 70, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.GREEN + I18n.getString("container.spotlight.green") + " : " + tileSpotLight.getGreenKey(tileSpotLight.getSelectedButtonid()), x + 110, y + 80, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.BLUE + I18n.getString("container.spotlight.blue") + " : " + tileSpotLight.getBlueKey(tileSpotLight.getSelectedButtonid()), x + 110, y + 90, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.DARK_RED + I18n.getString("container.spotlight.darkred") + " : " + tileSpotLight.getDarkRedKey(tileSpotLight.getSelectedButtonid()), x + 110, y + 100, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.DARK_GREEN + I18n.getString("container.spotlight.darkgreen") + " : " + tileSpotLight.getDarkGreenKey(tileSpotLight.getSelectedButtonid()), x + 110, y + 110, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.DARK_BLUE + I18n.getString("container.spotlight.darkblue") + " : " + tileSpotLight.getDarkBlueKey(tileSpotLight.getSelectedButtonid()), x + 110, y + 120, 0xffffff);
+				this.buttonList.add(new GuiButton(5, 80, 120, 80, 20, "test"));
+			}
+		}
 	}
 }

@@ -77,13 +77,8 @@ public class ItemDebug extends Item
 				if(tile instanceof TileEntitySpotLight)
 				{
 					TileEntitySpotLight te = (TileEntitySpotLight)tile;
-					player.addChatMessage("Powered: " + EnumChatFormatting.AQUA + String.valueOf(te.isActive));
-					player.addChatMessage("Red: " + EnumChatFormatting.AQUA + String.valueOf(te.red));
-					player.addChatMessage("Green: " + EnumChatFormatting.AQUA + String.valueOf(te.green));
-					player.addChatMessage("Blue: " + EnumChatFormatting.AQUA + String.valueOf(te.blue));
-					player.addChatMessage("Darkred: " + EnumChatFormatting.AQUA + String.valueOf(te.darkRed));
-					player.addChatMessage("Darkgreen: " + EnumChatFormatting.AQUA + String.valueOf(te.darkGreen));
-					player.addChatMessage("Darkblue: " + EnumChatFormatting.AQUA + String.valueOf(te.darkBlue));
+					for(int i = 0; i < 120; i += 2)
+					player.addChatMessage("HasKey: " + i + EnumChatFormatting.AQUA + String.valueOf(te.hasKey(i)) + EnumChatFormatting.WHITE + "  HasKey: " + (i + 1) + EnumChatFormatting.AQUA + String.valueOf(te.hasKey(i + 1)));
 					return true;
 				}
 

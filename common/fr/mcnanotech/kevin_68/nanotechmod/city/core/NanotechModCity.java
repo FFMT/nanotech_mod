@@ -33,7 +33,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTrashCan;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 
 @Mod(modid = "NanotechModCity", name = "Nanotech mod City", version = "@VERSION@")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTMC|light", "NTMC|fount", "NTMC|text", "NTMC|text2", "NTMC|text3"}, packetHandler = PacketHandler.class)
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTMC|light", "NTMC|lightKey", "NTMC|fount", "NTMC|text", "NTMC|text2", "NTMC|text3"}, packetHandler = PacketHandler.class)
 public class NanotechModCity
 {
 	@Instance("NanotechModCity")
