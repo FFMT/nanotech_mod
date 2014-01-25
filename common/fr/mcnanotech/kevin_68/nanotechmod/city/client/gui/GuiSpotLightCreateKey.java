@@ -25,9 +25,6 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 	protected InventoryPlayer invPlayer;
 	protected TileEntitySpotLight tileSpotLight;
 	protected World world;
-
-	private int time;
-
 	public GuiSpotLightCreateKey(InventoryPlayer playerInventory, TileEntitySpotLight tileEntity, World world)
 	{
 		super(new ContainerSpotLight2(tileEntity, playerInventory, world));
@@ -42,8 +39,8 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		super.initGui();
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x + 3, y + 10, 170, 20, "Time: 0.0", 0));
-		this.buttonList.add(new GuiButton(1, x + 13, y + 115, 150, 20, I18n.getString("container.spotlight.cancel")));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x + 3, y + 10, 170, 20, I18n.getString("container.spotlight.time") + ": 0.0", 0));
+		this.buttonList.add(new GuiButton(1, x + 13, y + 115, 150, 20, I18n.getString("container.spotlight.back")));
 		this.buttonList.add(new GuiButton(2, x + 13, y + 90, 150, 20, I18n.getString("container.spotlight.createkey")));
 	}
 
@@ -55,8 +52,14 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		}
 		if(guibutton.id == 2)
 		{
-			// si pour time existe une clef, demander si overwrite sinon creer
-			
+			if(tileSpotLight.hasKey((tileSpotLight.getCreateKeyTime())))
+			{
+				this.mc.displayGuiScreen(new GuiSpotLightConfirm(tileSpotLight, invPlayer, world, I18n.getString("container.spotlight.sure") + " " + I18n.getString("container.spotlight.overwrite"), I18n.getString("container.spotlight.overwrite"), I18n.getString("container.spotlight.cancel"), 1));
+			}
+			else
+			{
+				this.createKey(tileSpotLight.getCreateKeyTime());
+			}
 		}
 	}
 
@@ -65,7 +68,7 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 	{
 		if(sliderId == 0)
 		{
-			this.time = (int)(sliderValue * 120);
+			sendSpotLightPacket((int)(sliderValue * 120), 14);
 		}
 	}
 
@@ -75,11 +78,29 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		String name = "";
 		if(sliderId == 0)
 		{
-			name = "Time: " + (float)(((int)((float)(sliderValue * 120))) / 2.0F);
+			name = I18n.getString("container.spotlight.time") + ": " + (float)(((int)((float)(sliderValue * 120))) / 2.0F);
 		}
 		return name;
 	}
 
+	private void sendKeyPacket(int value, int type, int time)
+	{
+		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
+		DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
+		try
+		{
+			dataoutputstream.writeInt(type);
+			dataoutputstream.writeInt(value);
+			dataoutputstream.writeInt(time);
+			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|lightKey", bytearrayoutputstream.toByteArray()));
+		}
+		catch(Exception exception)
+		{
+			exception.printStackTrace();
+			NanotechMod.nanoLog.severe("Failed to send a packet from a SpotLight Key");
+		}
+	}
+	
 	private void sendSpotLightPacket(int value, int type)
 	{
 		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
@@ -95,6 +116,23 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 			exception.printStackTrace();
 			NanotechMod.nanoLog.severe("Failed to send a packet from a SpotLight");
 		}
+	}
+
+	
+	public void createKey(int time)
+	{
+		sendKeyPacket(1, 0, time);
+		sendKeyPacket(tileSpotLight.getRedValue(), 1, time);
+		sendKeyPacket(tileSpotLight.getGreenValue(), 2, time);
+		sendKeyPacket(tileSpotLight.getBlueValue(), 3, time);
+		sendKeyPacket(tileSpotLight.getDarkRedValue(), 4, time);
+		sendKeyPacket(tileSpotLight.getDarkGreenValue(), 5, time);
+		sendKeyPacket(tileSpotLight.getDarkBlueValue(), 6, time);
+		sendKeyPacket(tileSpotLight.getAngle1(), 7, time);
+		sendKeyPacket(tileSpotLight.getAngle2(), 8, time);
+		sendKeyPacket(tileSpotLight.getAutoRotate() ? 1 : 0, 9, time);
+		sendKeyPacket(tileSpotLight.getRotationSpeed(), 10, time);
+		//this.mc.displayGuiScreen(new GuiSpotLightTimeLine(invPlayer, tileSpotLight, world));
 	}
 
 	@Override

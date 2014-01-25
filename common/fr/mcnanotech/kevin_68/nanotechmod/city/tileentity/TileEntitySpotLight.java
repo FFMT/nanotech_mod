@@ -24,8 +24,18 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 public class TileEntitySpotLight extends TileEntity implements IInventory
 {
 	private ItemStack[] inventory = new ItemStack[2];
-	private boolean[] hasKey = new boolean[120];
-	private int[][] color = new int[120][6];
+	private int[] keyList = new int[121];
+	private int[] redkey = new int[121];
+	private int[] greenkey = new int[121];
+	private int[] bluekey = new int[121];
+	private int[] darkRedkey = new int[121];
+	private int[] darkGreenkey = new int[121];
+	private int[] darkBluekey = new int[121];
+	private int[] angle1key = new int[121];
+	private int[] angle2key = new int[121];
+	private int[] autoRotatekey = new int[121];
+	private int[] rotateSpeedkey = new int[121];
+	
 	private String customName;
 
 	@SideOnly(Side.CLIENT)
@@ -43,12 +53,14 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	public int angle1;
 	public int angle2;
 	public boolean autoRotate;
-	public float rotationSpeed;
+	public int rotationSpeed;
 	public boolean secondaryLazer;
 	public boolean reverseRotation;
 
 	public boolean timeLineMode;
 	public int timeLine;
+	public int createKeyTime;
+	public int selectedbuttonid;
 
 	public void updateEntity()
 	{
@@ -119,13 +131,26 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		nbtTagCompound.setInteger("SpotLightAngle1", angle1);
 		nbtTagCompound.setInteger("SpotLightAngle2", angle2);
 		nbtTagCompound.setBoolean("SpotLightAutoRotate", autoRotate);
-		nbtTagCompound.setFloat("SpotLightRotationSpeed", rotationSpeed);
+		nbtTagCompound.setInteger("SpotLightRotationSpeed", rotationSpeed);
 		nbtTagCompound.setBoolean("SpotLightSecondaryLaser", secondaryLazer);
 		nbtTagCompound.setBoolean("SpotLightReverseRotation", reverseRotation);
 
+		nbtTagCompound.setInteger("SpotlightSelectedButtonId", selectedbuttonid);
 		nbtTagCompound.setBoolean("SpotLightTimeLineMode", timeLineMode);
 		nbtTagCompound.setInteger("SpotLightTimeLine", timeLine);
-
+		nbtTagCompound.setInteger("SpotLightCreateKeyTime", createKeyTime);
+		nbtTagCompound.setIntArray("SpotLightHasKey", keyList);
+		nbtTagCompound.setIntArray("SpotLightTimeRed", redkey);
+		nbtTagCompound.setIntArray("SpotLightTimeGreen", greenkey);
+		nbtTagCompound.setIntArray("SpotLightTimeBlue", bluekey);
+		nbtTagCompound.setIntArray("SpotLightTimeDarkRed", darkRedkey);
+		nbtTagCompound.setIntArray("SpotLightTimeDarkGreen", darkGreenkey);
+		nbtTagCompound.setIntArray("SpotLightTimeDarkBlue", darkBluekey);
+		nbtTagCompound.setIntArray("SpotLightTimeAngle1", angle1key);
+		nbtTagCompound.setIntArray("SpotLightTimeAngle2", angle2key);
+		nbtTagCompound.setIntArray("SpotLightTimeAutoRotate", autoRotatekey);
+		nbtTagCompound.setIntArray("SpotLightTimeRotateSpeed", rotateSpeedkey);
+		
 		NBTTagList itemList = new NBTTagList();
 		for(int j = 0; j < inventory.length; j++)
 		{
@@ -139,38 +164,6 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 			}
 		}
 		nbtTagCompound.setTag("Inventory", itemList);
-
-		NBTTagList booleanList = new NBTTagList();
-		for(int i = 0; i < hasKey.length; i++)
-		{
-			boolean boo = this.hasKey[i];
-			NBTTagCompound tag = new NBTTagCompound();
-			tag.setBoolean("Key" + i, boo);
-			booleanList.appendTag(tag);
-		}
-		nbtTagCompound.setTag("HasKey", booleanList);
-
-		if(this.customName != null)
-		{
-			nbtTagCompound.setString("Name", this.customName);
-		}
-
-		NBTTagList keyList = new NBTTagList();
-		for(int i = 0; i < 120; i++)
-		{
-			NBTTagList typeList = new NBTTagList();
-			typeList.setName("TypeList:Key:" + i);
-			for(int j = 0; j < 6; j++)
-			{
-				int colo = this.color[i][j];
-				NBTTagCompound tag = new NBTTagCompound();
-				tag.setInteger("KeyColor:" + j, colo);
-				typeList.appendTag(tag);
-			}
-			keyList.appendTag(typeList);
-		}
-		nbtTagCompound.setTag("KeyList", keyList);
-
 		if(this.customName != null)
 		{
 			nbtTagCompound.setString("Name", this.customName);
@@ -189,12 +182,25 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		angle1 = nbtTagCompound.getInteger("SpotLightAngle1");
 		angle2 = nbtTagCompound.getInteger("SpotLightAngle2");
 		autoRotate = nbtTagCompound.getBoolean("SpotLightAutoRotate");
-		rotationSpeed = nbtTagCompound.getFloat("SpotLightRotationSpeed");
+		rotationSpeed = nbtTagCompound.getInteger("SpotLightRotationSpeed");
 		secondaryLazer = nbtTagCompound.getBoolean("SpotLightSecondaryLaser");
 		reverseRotation = nbtTagCompound.getBoolean("SpotLightReverseRotation");
 
+		selectedbuttonid = nbtTagCompound.getInteger("SpotlightSelectedButtonId");
 		timeLineMode = nbtTagCompound.getBoolean("SpotLightTimeLineMode");
 		timeLine = nbtTagCompound.getInteger("SpotLightTimeLine");
+		createKeyTime = nbtTagCompound.getInteger("SpotLightCreateKeyTime");
+		keyList = nbtTagCompound.getIntArray("SpotLightHasKey");
+		redkey = nbtTagCompound.getIntArray("SpotLightTimeRed");
+		greenkey = nbtTagCompound.getIntArray("SpotLightTimeGreen");
+		bluekey = nbtTagCompound.getIntArray("SpotLightTimeBlue");
+		darkRedkey = nbtTagCompound.getIntArray("SpotLightTimeDarkRed");
+		darkGreenkey = nbtTagCompound.getIntArray("SpotLightTimeDarkGreen");
+		darkBluekey = nbtTagCompound.getIntArray("SpotLightTimeDarkBlue");
+		angle1key = nbtTagCompound.getIntArray("SpotLightTimeAngle1");
+		angle2key = nbtTagCompound.getIntArray("SpotLightTimeAngle2");
+		autoRotatekey = nbtTagCompound.getIntArray("SpotLightTimeAutoRotate");
+		rotateSpeedkey = nbtTagCompound.getIntArray("SpotLightTimeRotateSpeed");
 
 		NBTTagList tagList = nbtTagCompound.getTagList("Inventory");
 		for(int i = 0; i < tagList.tagCount(); i++)
@@ -205,32 +211,6 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 			if(slot >= 0 && slot < inventory.length)
 			{
 				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
-			}
-		}
-
-		NBTTagList tagList2 = nbtTagCompound.getTagList("HasKey");
-		for(int i = 0; i < hasKey.length; i++)
-		{
-			NBTTagCompound tag = (NBTTagCompound)tagList2.tagAt(i);
-			if(tag != null)
-			{
-				boolean boo = tag.getBoolean("Key" + i);
-				hasKey[i] = boo;
-			}
-		}
-
-		NBTTagList tagList3 = nbtTagCompound.getTagList("KeyList");
-		for(int i = 0; i < 120; i++)
-		{
-			NBTTagList tagList4 = nbtTagCompound.getTagList("TypeList:Key:" + i);
-			for(int j = 0; j < 6; j++)
-			{
-				NBTTagCompound tag = (NBTTagCompound)tagList4.tagAt(j);
-				if(tag != null)
-				{
-					int colo = tag.getInteger("KeyColor:" + j);
-					color[i][j] = colo;
-				}
 			}
 		}
 
@@ -339,6 +319,71 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	{
 		this.timeLine = i;
 	}
+	
+	public void setCreateKeyTime(int i)
+	{
+		createKeyTime = i;
+	}
+	
+	public void setSelectedButtonId(int i)
+	{
+		this.selectedbuttonid = i;
+	}
+	
+	public void setKey(int time, int i)
+	{
+		this.keyList[time] = i;
+	}
+	
+	public void setRedKey(int time, int color)
+	{
+		this.redkey[time] = color;
+	}
+	
+	public void setGreenKey(int time, int color)
+	{
+		this.greenkey[time] = color;
+	}
+	
+	public void setBlueKey(int time, int color)
+	{
+		this.bluekey[time] = color;
+	}
+	
+	public void setDarkRedKey(int time, int color)
+	{
+		this.darkRedkey[time] = color;
+	}
+	
+	public void setDarkGreenKey(int time, int color)
+	{
+		this.darkGreenkey[time] = color;
+	}
+	
+	public void setDarkBlueKey(int time, int color)
+	{
+		this.darkBluekey[time] = color;
+	}
+	
+	public void setAngle1Key(int time, int i)
+	{
+		this.angle1key[time] = i;
+	}
+
+	public void setAngle2Key(int time, int i)
+	{
+		this.angle2key[time] = i;
+	}
+	
+	public void setAutoRotateKey(int time, int i)
+	{
+		this.autoRotatekey[time] = i;
+	}
+	
+	public void setRotationSpeedKey(int time, int i)
+	{
+		this.rotateSpeedkey[time] = i;
+	}
 
 	// --Getter--------------------------
 
@@ -387,7 +432,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		return this.autoRotate;
 	}
 
-	public float getRotationSpeed()
+	public int getRotationSpeed()
 	{
 		return this.rotationSpeed;
 	}
@@ -410,6 +455,71 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	public int getTimeLine()
 	{
 		return this.timeLine;
+	}
+	
+	public int getCreateKeyTime()
+	{
+		return this.createKeyTime;
+	}
+	
+	public int getSelectedButtonid()
+	{
+		return this.selectedbuttonid;
+	}
+	
+	public boolean hasKey(int time)
+	{
+		return this.keyList[time] == 1 ? true : false;
+	}
+	
+	public int getRedKey(int time)
+	{
+		return this.redkey[time];
+	}
+	
+	public int getGreenKey(int time)
+	{
+		return this.greenkey[time];
+	}
+	
+	public int getBlueKey(int time)
+	{
+		return this.bluekey[time];
+	}
+	
+	public int getDarkRedKey(int time)
+	{
+		return this.darkRedkey[time];
+	}
+	
+	public int getDarkGreenKey(int time)
+	{
+		return this.darkGreenkey[time];
+	}
+	
+	public int getDarkBlueKey(int time)
+	{
+		return this.darkBluekey[time];
+	}
+	
+	public int getAngle1Key(int time)
+	{
+		return this.angle1key[time];
+	}
+	
+	public int getAngle2Key(int time)
+	{
+		return this.angle2key[time];
+	}
+	
+	public boolean getAutoRotateKey(int time)
+	{
+		return this.autoRotatekey[time] == 1 ? true : false;
+	}
+	
+	public int getRotationSpeedKey(int time)
+	{
+		return this.rotateSpeedkey[time];
 	}
 
 	public boolean isUseableByPlayer(EntityPlayer player)

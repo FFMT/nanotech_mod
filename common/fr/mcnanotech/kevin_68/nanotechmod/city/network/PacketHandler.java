@@ -26,6 +26,11 @@ public class PacketHandler implements IPacketHandler
 		{
 			handleSpotLightPacket(packet, playerSender);
 		}
+		
+		if(packet.channel.equals("NTMC|lightKey"))
+		{
+			handleSpotLightKeyPacket(packet, playerSender);
+		}
 
 		if(packet.channel.equals("NTMC|fount"))
 		{
@@ -52,54 +57,54 @@ public class PacketHandler implements IPacketHandler
 	{
 		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
 		int type;
-		int color;
+		int value;
 		try
 		{
 			data = new DataInputStream(new ByteArrayInputStream(packet.data));
 			type = data.readInt();
-			color = data.readInt();
+			value = data.readInt();
 			ContainerSpotLight containerSpotLight = (ContainerSpotLight)player.openContainer;
 			TileEntitySpotLight tileSpotLight = containerSpotLight.getSpotLight();
 			switch(type)
 			{
 			case 0:
-				tileSpotLight.setRedValue(color);
+				tileSpotLight.setRedValue(value);
 				break;
 			case 1:
-				tileSpotLight.setGreenValue(color);
+				tileSpotLight.setGreenValue(value);
 				break;
 			case 2:
-				tileSpotLight.setBlueValue(color);
+				tileSpotLight.setBlueValue(value);
 				break;
 			case 3:
-				tileSpotLight.setDarkRedValue(color);
+				tileSpotLight.setDarkRedValue(value);
 				break;
 			case 4:
-				tileSpotLight.setDarkGreenValue(color);
+				tileSpotLight.setDarkGreenValue(value);
 				break;
 			case 5:
-				tileSpotLight.setDarkBlueValue(color);
+				tileSpotLight.setDarkBlueValue(value);
 				break;
 			case 6:
-				tileSpotLight.setAngle1Value(color);
+				tileSpotLight.setAngle1Value(value);
 				break;
 			case 7:
-				tileSpotLight.setAngle2Value(color);
+				tileSpotLight.setAngle2Value(value);
 				break;
 			case 8:
-				tileSpotLight.setRotateValue(color);
+				tileSpotLight.setRotateValue(value);
 				break;
 			case 9:
-				tileSpotLight.setRotationSpeed(color);
+				tileSpotLight.setRotationSpeed(value);
 				break;
 			case 10:
-				tileSpotLight.setSecondaryLazer(color);
+				tileSpotLight.setSecondaryLazer(value);
 				break;
 			case 11:
-				tileSpotLight.setReverseRotation(color);
+				tileSpotLight.setReverseRotation(value);
 				break;
 			case 12:
-				if(color == 0)
+				if(value == 0)
 				{
 					tileSpotLight.addNbtTagToItem();
 					break;
@@ -110,7 +115,74 @@ public class PacketHandler implements IPacketHandler
 					break;
 				}
 			case 13:
-				tileSpotLight.setTimeLineMode(color);
+				tileSpotLight.setTimeLineMode(value);
+				break;
+			case 14:
+				tileSpotLight.setCreateKeyTime(value);
+				break;
+			case 15:
+				tileSpotLight.setSelectedButtonId(value);
+				break;
+			default:
+				NanotechMod.nanoLog.severe("A SpotLight packet has a bad type, this is a bug");
+			}
+			player.worldObj.markBlockForUpdate(tileSpotLight.xCoord, tileSpotLight.yCoord, tileSpotLight.zCoord);
+		}
+		catch(Exception exception)
+		{
+			exception.printStackTrace();
+			NanotechMod.nanoLog.severe("Failed to handle SpotLight packet");
+		}
+	}
+	
+	private void handleSpotLightKeyPacket(Packet250CustomPayload packet, EntityPlayer player)
+	{
+		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
+		int type;
+		int value;
+		int time;
+		try
+		{
+			data = new DataInputStream(new ByteArrayInputStream(packet.data));
+			type = data.readInt();
+			value = data.readInt();
+			time = data.readInt();
+			ContainerSpotLight containerSpotLight = (ContainerSpotLight)player.openContainer;
+			TileEntitySpotLight tileSpotLight = containerSpotLight.getSpotLight();
+			switch(type)
+			{
+			case 0:
+				tileSpotLight.setKey(time, value);
+				break;
+			case 1:
+				tileSpotLight.setRedKey(time, value);
+				break;
+			case 2:
+				tileSpotLight.setGreenKey(time, value);
+				break;
+			case 3:
+				tileSpotLight.setBlueKey(time, value);
+				break;
+			case 4:
+				tileSpotLight.setDarkRedKey(time, value);
+				break;
+			case 5:
+				tileSpotLight.setDarkGreenKey(time, value);
+				break;
+			case 6:
+				tileSpotLight.setDarkBlueKey(time, value);
+				break;
+			case 7:
+				tileSpotLight.setAngle1Key(time, value);
+				break;
+			case 8:
+				tileSpotLight.setAngle2Key(time, value);
+				break;
+			case 9:
+				tileSpotLight.setAutoRotateKey(time, value);
+				break;
+			case 10:
+				tileSpotLight.setRotationSpeedKey(time, value);
 				break;
 			default:
 				NanotechMod.nanoLog.severe("A SpotLight packet has a bad type, this is a bug");
