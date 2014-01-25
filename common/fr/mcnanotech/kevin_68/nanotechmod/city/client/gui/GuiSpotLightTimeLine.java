@@ -3,12 +3,9 @@ package fr.mcnanotech.kevin_68.nanotechmod.city.client.gui;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
@@ -17,13 +14,11 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerSpotLight;
-import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechModCity;
-import fr.mcnanotech.kevin_68.nanotechmod.city.items.NanotechCityItems;
+import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerSpotLight2;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiBooleanButton;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
-import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 
 public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 {
@@ -31,6 +26,7 @@ public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 	protected TileEntitySpotLight tileSpotLight;
 	protected World world;
 	public FFMTGuiBooleanButton timeLineModeButton;
+	public GuiButton removebutton;
 	protected static final ResourceLocation texture = new ResourceLocation("nanotechmodcity:textures/gui/spotlight1.png");
 	protected static final ResourceLocation texture2 = new ResourceLocation("nanotechmodcity:textures/gui/spotlight2.png");
 	protected static final ResourceLocation timeline = new ResourceLocation("nanotechmodcity:textures/gui/timeline.png");
@@ -52,22 +48,22 @@ public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 		this.ySize = 256;
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
+		sendSpotLightPacket(-1, 15);
 		this.buttonList.add(new GuiButton(0, width / 2 - 155, y + 157, 65, 20, I18n.getString("container.spotlight.copy")));
 		this.buttonList.add(new GuiButton(1, width / 2 - 69, y + 157, 65, 20, I18n.getString("container.spotlight.paste")));
 		this.buttonList.add(new GuiButton(2, width / 2 + 90, y + 185, 65, 20, I18n.getString("container.spotlight.back")));
 		this.buttonList.add(new GuiButton(3, width / 2 - 155, y + 70, 120, 20, I18n.getString("container.spotlight.addKey")));
 		this.buttonList.add(timeLineModeButton = new FFMTGuiBooleanButton(4, width / 2 - 155, y + 185, 65, 20, I18n.getString("container.spotlight.timeline"), tileSpotLight.getTimeLineMode()));
-
+		this.buttonList.add(removebutton = new GuiButton(5, width / 2 - 155, y + 95, 120, 20, I18n.getString("container.spotlight.deleteKey")));
+		removebutton.enabled = false;
+		
 		for(int i = 0; i < 121; i++)
 		{
-			boolean hasKey = tileSpotLight.hasKey(i);
-			if(hasKey)
+			if(tileSpotLight.hasKey(i))
 			{
 				this.buttonList.add(new GuiTimeKey(10 + i, width / 2 - 149 + (int)(i * 2.5), y + 50 + ((i % 2)) * 4));
 			}
 		}
-
-		sendSpotLightPacket(-1, 15);
 	}
 
 	protected void actionPerformed(GuiButton guibutton)
@@ -102,7 +98,7 @@ public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 			{
 				if(tileSpotLight.hasKey(tileSpotLight.getSelectedButtonid()))
 				{
-					//guiconfirm 
+					this.mc.displayGuiScreen(new GuiSpotLightConfirm(tileSpotLight, invPlayer, world, I18n.getString("container.spotlight.sure") + " " + I18n.getString("container.spotlight.deleteKey"), I18n.getString("container.spotlight.deleteKey"), I18n.getString("container.spotlight.cancel"), 0));
 				}
 			}
 		}
@@ -112,6 +108,7 @@ public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 			if(tileSpotLight.hasKey(keyid))
 			{
 				sendSpotLightPacket(keyid, 15);
+				removebutton.enabled = true;
 			}
 		}
 	}
@@ -133,6 +130,24 @@ public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 	{
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
+	}
+	
+	private void sendKeyPacket(int value, int type, int time)
+	{
+		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
+		DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
+		try
+		{
+			dataoutputstream.writeInt(type);
+			dataoutputstream.writeInt(value);
+			dataoutputstream.writeInt(time);
+			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|lightKey", bytearrayoutputstream.toByteArray()));
+		}
+		catch(Exception exception)
+		{
+			exception.printStackTrace();
+			NanotechMod.nanoLog.severe("Failed to send a packet from a SpotLight Key");
+		}
 	}
 
 	private void sendSpotLightPacket(int value, int type)
@@ -172,14 +187,19 @@ public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 		{
 			if(tileSpotLight.hasKey(tileSpotLight.getSelectedButtonid()))
 			{
-				this.drawString(this.fontRenderer, EnumChatFormatting.RED + I18n.getString("container.spotlight.red") + " : " + tileSpotLight.getRedKey(tileSpotLight.getSelectedButtonid()), x + 110, y + 70, 0xffffff);
-				this.drawString(this.fontRenderer, EnumChatFormatting.GREEN + I18n.getString("container.spotlight.green") + " : " + tileSpotLight.getGreenKey(tileSpotLight.getSelectedButtonid()), x + 110, y + 80, 0xffffff);
-				this.drawString(this.fontRenderer, EnumChatFormatting.BLUE + I18n.getString("container.spotlight.blue") + " : " + tileSpotLight.getBlueKey(tileSpotLight.getSelectedButtonid()), x + 110, y + 90, 0xffffff);
-				this.drawString(this.fontRenderer, EnumChatFormatting.DARK_RED + I18n.getString("container.spotlight.darkred") + " : " + tileSpotLight.getDarkRedKey(tileSpotLight.getSelectedButtonid()), x + 110, y + 100, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.RED + I18n.getString("container.spotlight.red") + " : " + tileSpotLight.getRedKey(tileSpotLight.getSelectedButtonid()), x + 100, y + 70, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.GREEN + I18n.getString("container.spotlight.green") + " : " + tileSpotLight.getGreenKey(tileSpotLight.getSelectedButtonid()), x + 100, y + 80, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.BLUE + I18n.getString("container.spotlight.blue") + " : " + tileSpotLight.getBlueKey(tileSpotLight.getSelectedButtonid()), x + 100, y + 90, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.DARK_RED + I18n.getString("container.spotlight.darkred") + " : " + tileSpotLight.getDarkRedKey(tileSpotLight.getSelectedButtonid()), x + 100, y + 100, 0xffffff);
 				this.drawString(this.fontRenderer, EnumChatFormatting.DARK_GREEN + I18n.getString("container.spotlight.darkgreen") + " : " + tileSpotLight.getDarkGreenKey(tileSpotLight.getSelectedButtonid()), x + 110, y + 110, 0xffffff);
-				this.drawString(this.fontRenderer, EnumChatFormatting.DARK_BLUE + I18n.getString("container.spotlight.darkblue") + " : " + tileSpotLight.getDarkBlueKey(tileSpotLight.getSelectedButtonid()), x + 110, y + 120, 0xffffff);
-				this.buttonList.add(new GuiButton(5, 80, 120, 80, 20, "test"));
+				this.drawString(this.fontRenderer, EnumChatFormatting.DARK_BLUE + I18n.getString("container.spotlight.darkblue") + " : " + tileSpotLight.getDarkBlueKey(tileSpotLight.getSelectedButtonid()), x + 100, y + 120, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.WHITE + I18n.getString("container.spotlight.angle") + " 1 : " + tileSpotLight.getAngle1Key(tileSpotLight.getSelectedButtonid()), x + 100, y + 130, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.WHITE + I18n.getString("container.spotlight.angle") + " 2 : " + tileSpotLight.getAngle2Key(tileSpotLight.getSelectedButtonid()), x + 100, y + 140, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.WHITE + I18n.getString("container.spotlight.rotate") + " : " + tileSpotLight.getAutoRotateKey(tileSpotLight.getSelectedButtonid()), x + 185, y + 70, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.WHITE + I18n.getString("container.spotlight.rotationspeed") + " : " + tileSpotLight.getRotationSpeedKey(tileSpotLight.getSelectedButtonid()), x + 185, y + 80, 0xffffff);
+
 			}
 		}
 	}
+
 }

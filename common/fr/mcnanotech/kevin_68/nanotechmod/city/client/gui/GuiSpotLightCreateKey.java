@@ -39,8 +39,8 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		super.initGui();
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x + 3, y + 10, 170, 20, "Time: 0.0", 0));
-		this.buttonList.add(new GuiButton(1, x + 13, y + 115, 150, 20, I18n.getString("container.spotlight.cancel")));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x + 3, y + 10, 170, 20, I18n.getString("container.spotlight.time") + ": 0.0", 0));
+		this.buttonList.add(new GuiButton(1, x + 13, y + 115, 150, 20, I18n.getString("container.spotlight.back")));
 		this.buttonList.add(new GuiButton(2, x + 13, y + 90, 150, 20, I18n.getString("container.spotlight.createkey")));
 	}
 
@@ -52,10 +52,9 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		}
 		if(guibutton.id == 2)
 		{
-			// si pour time existe une clef, demander si overwrite sinon creer
 			if(tileSpotLight.hasKey((tileSpotLight.getCreateKeyTime())))
 			{
-				
+				this.mc.displayGuiScreen(new GuiSpotLightConfirm(tileSpotLight, invPlayer, world, I18n.getString("container.spotlight.sure") + " " + I18n.getString("container.spotlight.overwrite"), I18n.getString("container.spotlight.overwrite"), I18n.getString("container.spotlight.cancel"), 1));
 			}
 			else
 			{
@@ -79,7 +78,7 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		String name = "";
 		if(sliderId == 0)
 		{
-			name = "Time: " + (float)(((int)((float)(sliderValue * 120))) / 2.0F);
+			name = I18n.getString("container.spotlight.time") + ": " + (float)(((int)((float)(sliderValue * 120))) / 2.0F);
 		}
 		return name;
 	}
@@ -129,6 +128,10 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		sendKeyPacket(tileSpotLight.getDarkRedValue(), 4, time);
 		sendKeyPacket(tileSpotLight.getDarkGreenValue(), 5, time);
 		sendKeyPacket(tileSpotLight.getDarkBlueValue(), 6, time);
+		sendKeyPacket(tileSpotLight.getAngle1(), 7, time);
+		sendKeyPacket(tileSpotLight.getAngle2(), 8, time);
+		sendKeyPacket(tileSpotLight.getAutoRotate() ? 1 : 0, 9, time);
+		sendKeyPacket(tileSpotLight.getRotationSpeed(), 10, time);
 		//this.mc.displayGuiScreen(new GuiSpotLightTimeLine(invPlayer, tileSpotLight, world));
 	}
 

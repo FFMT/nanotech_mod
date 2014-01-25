@@ -172,6 +172,18 @@ public class PacketHandler implements IPacketHandler
 			case 6:
 				tileSpotLight.setDarkBlueKey(time, value);
 				break;
+			case 7:
+				tileSpotLight.setAngle1Key(time, value);
+				break;
+			case 8:
+				tileSpotLight.setAngle2Key(time, value);
+				break;
+			case 9:
+				tileSpotLight.setAutoRotateKey(time, value);
+				break;
+			case 10:
+				tileSpotLight.setRotationSpeedKey(time, value);
+				break;
 			default:
 				NanotechMod.nanoLog.severe("A SpotLight packet has a bad type, this is a bug");
 			}
