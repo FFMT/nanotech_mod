@@ -34,8 +34,8 @@ public class GuiPortableChest extends GuiContainer
 
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
-		this.fontRenderer.drawString(this.playerInventory.isInvNameLocalized() ? this.playerInventory.getInvName() : I18n.getString(this.playerInventory.getInvName()), 8, 129, 0);
-		this.fontRenderer.drawString(this.tileChest.isInvNameLocalized() ? this.tileChest.getInvName() : I18n.getString(this.tileChest.getInvName()), 8, 7, 0);
+		this.fontRenderer.drawString(I18n.getString(this.playerInventory.getInvName()), 8, 129, 0);
+		this.fontRenderer.drawString(this.tileChest.isInvNameLocalized() ? this.tileChest.getCustomGuiName() : I18n.getString(this.tileChest.getInvName()), 8, 7, 0);
 	}
 
 	@Override

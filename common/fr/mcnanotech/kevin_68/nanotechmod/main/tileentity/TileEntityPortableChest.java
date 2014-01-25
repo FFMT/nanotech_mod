@@ -16,7 +16,6 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 	{
 		super.readFromNBT(nbttag);
 		NBTTagList nbttaglist = nbttag.getTagList("Items");
-		this.inventory = new ItemStack[this.getSizeInventory()];
 
 		if(nbttag.hasKey("CustomName"))
 		{
@@ -147,6 +146,11 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 	public void setCustomGuiName(String name)
 	{
 		this.customName = name;
+	}
+	
+	public String getCustomGuiName()
+	{
+		return this.customName;
 	}
 
 	@Override

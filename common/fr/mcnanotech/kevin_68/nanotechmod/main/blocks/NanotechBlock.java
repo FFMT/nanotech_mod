@@ -10,7 +10,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechOther;
 public class NanotechBlock
 {
 	// Blocks statement
-	public static Block portal, portalFrame, nanoGrass, fakeOre, speed, jumper, multiplier, smoker, barbedwire, nanoWood, nanoLeaves, nanoSaplings, nanoPlanks, nanoOre, confusion, falling, notfalling, sodium, mossystone, theDeathHead, listerJukebox, liquidNitrogen, nanoStairs, nanoSlabSingle, nanoSlabDouble, nanoFence, satelite, nukeBuildingBlock, nukeBuildingStairs, present, portableChest;
+	public static Block portal, portalFrame, nanoGrass, fakeOre, speed, jumper, multiplier, smoker, barbedwire, nanoWood, nanoLeaves, nanoSaplings, nanoPlanks, nanoOre, confusion, falling, notfalling, sodium, mossystone, theDeathHead, listerJukebox, liquidNitrogen, nanoStairs, nanoSlabSingle, nanoSlabDouble, nanoFence, satelite, nukeBuildingBlock, nukeBuildingStairs, present, machine;
 
 	// Blocks Initialization
 	public static void initBlock()
@@ -44,7 +44,7 @@ public class NanotechBlock
 		nukeBuildingBlock = new BlockBuildingNuke(NanotechMod.nukeStairsID).setUnlocalizedName("nukeBuildingBlock").setTextureName("nanotechmod:nukebuilding");
 		nukeBuildingStairs = new BlockNanoStairs(NanotechMod.nukeID, nukeBuildingBlock, 0).setUnlocalizedName("nukeBuildingStairs").setCreativeTab(null);
 		present = new BlockPresent(NanotechMod.presentID).setUnlocalizedName("present").setHardness(1.0F).setResistance(2.5F).setCreativeTab(NanotechMod.CREATIVE_TAB_B).setTextureName("nanotechmod:present");
-		portableChest = new BlockPortableChest(NanotechMod.portableChestID, Material.wood).setUnlocalizedName("portableChest").setHardness(1.0F).setResistance(15.0F).setCreativeTab(NanotechMod.CREATIVE_TAB_B).setTextureName("nanotechmod:portablechest");
+		machine = new BlockNanotechMachine(NanotechMod.machineID, Material.wood).setUnlocalizedName("machine").setHardness(1.0F).setResistance(15.0F).setCreativeTab(NanotechMod.CREATIVE_TAB_B).setTextureName("nanotechmod:portablechest");
 		
 		if(NanotechOther.liquidNitrogen.getBlockID() == -1)
 		{
@@ -90,6 +90,6 @@ public class NanotechBlock
 		GameRegistry.registerBlock(nukeBuildingBlock, ItemBlockNukeBuildingBlock.class, "nukeBuildingBlock", "NanotechMod");
 		GameRegistry.registerBlock(nukeBuildingStairs, "nukeBuildingStairs");
 		GameRegistry.registerBlock(present, "present");
-		GameRegistry.registerBlock(portableChest, "portableChest");
+		GameRegistry.registerBlock(machine, ItemBlockMachine.class, "machine", "NanotechMod");
 	}
 }
