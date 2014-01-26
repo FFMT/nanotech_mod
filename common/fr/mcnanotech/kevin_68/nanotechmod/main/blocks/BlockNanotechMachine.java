@@ -7,11 +7,13 @@ import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.FakePlayer;
 import cpw.mods.fml.common.network.FMLNetworkHandler;
@@ -151,4 +153,43 @@ public class BlockNanotechMachine extends Block
 	{
 		super.breakBlock(world, x, y, z, side, metadata);
 	}
+	
+    public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)
+    {
+    	if(world.getBlockMetadata(x, y, z) == 0)
+    	{
+			ItemStack chestStack = new ItemStack(this, 1, 0);
+			TileEntity te = world.getBlockTileEntity(x, y, z);
+			if(te != null && te instanceof TileEntityPortableChest)
+			{
+				TileEntityPortableChest teChest = (TileEntityPortableChest)te;
+				NBTTagCompound nbttag = new NBTTagCompound();
+				
+				NBTTagList nbttaglist = new NBTTagList();
+				for(int i = 0; i < teChest.inventory.length; i++)
+				{
+					if(teChest.inventory[i] != null)
+					{
+						NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+						nbttagcompound1.setByte("Slot", (byte)i);
+						teChest.inventory[i].writeToNBT(nbttagcompound1);
+						nbttaglist.appendTag(nbttagcompound1);
+					}
+				}
+
+				nbttag.setTag("Items", nbttaglist);
+				chestStack.setTagCompound(nbttag);
+
+				if(teChest.isInvNameLocalized())
+				{
+					chestStack.setItemName(teChest.getCustomGuiName());
+				}
+			}
+			return chestStack;
+    	}
+    	else
+    	{
+    		return super.getPickBlock(target, world, x, y, z);
+    	}
+    }
 }
