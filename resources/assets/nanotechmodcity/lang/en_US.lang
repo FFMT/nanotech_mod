@@ -43,6 +43,7 @@ container.spotlight.deleteKey=Delete Key
 container.spotlight.sure=Are you sure to
 container.spotlight.overwrite=Overwrite Key
 container.spotlight.time=Time
+container.spotlight.settimelineto=Set Time to
 container.textspotlight.scale=Scale
 container.textspotlight.height=Height
 container.configcopier.empty=Empty

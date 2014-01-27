@@ -35,7 +35,9 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	private int[] angle2key = new int[121];
 	private int[] autoRotatekey = new int[121];
 	private int[] rotateSpeedkey = new int[121];
-	
+	private int[] secondaryLazerkey = new int[121];
+	private int[] reverseRotationkey = new int[121];
+
 	private String customName;
 
 	@SideOnly(Side.CLIENT)
@@ -58,7 +60,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	public boolean reverseRotation;
 
 	public boolean timeLineMode;
-	public int timeLine;
+	public int timeLine, lastTimeUse;
 	public int createKeyTime;
 	public int selectedbuttonid;
 
@@ -66,6 +68,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	{
 		if(this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
 		{
+
 			if(getTimeLineMode())
 			{
 				if(getTimeLine() > 1200)
@@ -77,6 +80,29 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 					setTimeLine(getTimeLine() + 1);
 				}
 
+				if(!this.worldObj.isRemote)
+				{
+					int time = getTimeLine() / 10;
+					if(hasKey(time) && lastTimeUse != time)
+					{
+						lastTimeUse = time;
+						System.out.println("time:" + time);
+						setRedValue(getRedKey(time));
+						setGreenValue(getGreenKey(time));
+						setBlueValue(getBlueKey(time));
+						setDarkRedValue(getDarkRedKey(time));
+						setDarkGreenValue(getDarkGreenKey(time));
+						setDarkBlueValue(getDarkBlueKey(time));
+						setAngle1Value(getAngle1Key(time));
+						setAngle2Value(getAngle2Key(time));
+						setRotateValue(getAutoRotateKey(time) ? 1 : 0);
+						setRotationSpeed(getRotationSpeedKey(time));
+						setSecondaryLazer(getSecondaryLazerKey(time) ? 1 : 0);
+						setReverseRotation(getReverseRotationKey(time) ? 1 : 0);
+						
+						this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+					}
+				}
 			}
 			this.isActive = true;
 		}
@@ -150,7 +176,9 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		nbtTagCompound.setIntArray("SpotLightTimeAngle2", angle2key);
 		nbtTagCompound.setIntArray("SpotLightTimeAutoRotate", autoRotatekey);
 		nbtTagCompound.setIntArray("SpotLightTimeRotateSpeed", rotateSpeedkey);
-		
+		nbtTagCompound.setIntArray("SpotLightTimeSecondaryLazer", secondaryLazerkey);
+		nbtTagCompound.setIntArray("SpotLightTimeReverseRotation", reverseRotationkey);
+
 		NBTTagList itemList = new NBTTagList();
 		for(int j = 0; j < inventory.length; j++)
 		{
@@ -201,6 +229,8 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		angle2key = nbtTagCompound.getIntArray("SpotLightTimeAngle2");
 		autoRotatekey = nbtTagCompound.getIntArray("SpotLightTimeAutoRotate");
 		rotateSpeedkey = nbtTagCompound.getIntArray("SpotLightTimeRotateSpeed");
+		secondaryLazerkey = nbtTagCompound.getIntArray("SpotLightTimeSecondaryLazer");
+		reverseRotationkey = nbtTagCompound.getIntArray("SpotLightTimeReverseRotation");
 
 		NBTTagList tagList = nbtTagCompound.getTagList("Inventory");
 		for(int i = 0; i < tagList.tagCount(); i++)
@@ -319,52 +349,52 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	{
 		this.timeLine = i;
 	}
-	
+
 	public void setCreateKeyTime(int i)
 	{
 		createKeyTime = i;
 	}
-	
+
 	public void setSelectedButtonId(int i)
 	{
 		this.selectedbuttonid = i;
 	}
-	
+
 	public void setKey(int time, int i)
 	{
 		this.keyList[time] = i;
 	}
-	
+
 	public void setRedKey(int time, int color)
 	{
 		this.redkey[time] = color;
 	}
-	
+
 	public void setGreenKey(int time, int color)
 	{
 		this.greenkey[time] = color;
 	}
-	
+
 	public void setBlueKey(int time, int color)
 	{
 		this.bluekey[time] = color;
 	}
-	
+
 	public void setDarkRedKey(int time, int color)
 	{
 		this.darkRedkey[time] = color;
 	}
-	
+
 	public void setDarkGreenKey(int time, int color)
 	{
 		this.darkGreenkey[time] = color;
 	}
-	
+
 	public void setDarkBlueKey(int time, int color)
 	{
 		this.darkBluekey[time] = color;
 	}
-	
+
 	public void setAngle1Key(int time, int i)
 	{
 		this.angle1key[time] = i;
@@ -374,15 +404,25 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	{
 		this.angle2key[time] = i;
 	}
-	
+
 	public void setAutoRotateKey(int time, int i)
 	{
 		this.autoRotatekey[time] = i;
 	}
-	
+
 	public void setRotationSpeedKey(int time, int i)
 	{
 		this.rotateSpeedkey[time] = i;
+	}
+
+	public void setSecondaryLazerKey(int time, int i)
+	{
+		this.secondaryLazerkey[time] = i;
+	}
+
+	public void setReverseRotationKey(int time, int i)
+	{
+		this.reverseRotationkey[time] = i;
 	}
 
 	// --Getter--------------------------
@@ -456,70 +496,80 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	{
 		return this.timeLine;
 	}
-	
+
 	public int getCreateKeyTime()
 	{
 		return this.createKeyTime;
 	}
-	
+
 	public int getSelectedButtonid()
 	{
 		return this.selectedbuttonid;
 	}
-	
+
 	public boolean hasKey(int time)
 	{
 		return this.keyList[time] == 1 ? true : false;
 	}
-	
+
 	public int getRedKey(int time)
 	{
 		return this.redkey[time];
 	}
-	
+
 	public int getGreenKey(int time)
 	{
 		return this.greenkey[time];
 	}
-	
+
 	public int getBlueKey(int time)
 	{
 		return this.bluekey[time];
 	}
-	
+
 	public int getDarkRedKey(int time)
 	{
 		return this.darkRedkey[time];
 	}
-	
+
 	public int getDarkGreenKey(int time)
 	{
 		return this.darkGreenkey[time];
 	}
-	
+
 	public int getDarkBlueKey(int time)
 	{
 		return this.darkBluekey[time];
 	}
-	
+
 	public int getAngle1Key(int time)
 	{
 		return this.angle1key[time];
 	}
-	
+
 	public int getAngle2Key(int time)
 	{
 		return this.angle2key[time];
 	}
-	
+
 	public boolean getAutoRotateKey(int time)
 	{
 		return this.autoRotatekey[time] == 1 ? true : false;
 	}
-	
+
 	public int getRotationSpeedKey(int time)
 	{
 		return this.rotateSpeedkey[time];
+	}
+
+	public boolean getSecondaryLazerKey(int time)
+	{
+		return this.secondaryLazerkey[time] == 1 ? true : false;
+	}
+
+	public boolean getReverseRotationKey(int time)
+	{
+		return this.reverseRotationkey[time] == 1 ? true : false;
 	}
 
 	public boolean isUseableByPlayer(EntityPlayer player)
@@ -662,6 +712,21 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 			newStack.getTagCompound().setInteger("SpotLightRotationSpeed", (int)getRotationSpeed());
 			newStack.getTagCompound().setInteger("SpotLightSecondaryLazer", (getSecondaryLazer() ? 1 : 0));
 			newStack.getTagCompound().setInteger("SpotLightReverseRotation", (getReverseRotation() ? 0 : 1));
+
+			newStack.getTagCompound().setInteger("SpotLightTimeLineMode", timeLineMode ? 1 : 0);
+			newStack.getTagCompound().setIntArray("SpotLightHasKey", keyList);
+			newStack.getTagCompound().setIntArray("SpotLightTimeRed", redkey);
+			newStack.getTagCompound().setIntArray("SpotLightTimeGreen", greenkey);
+			newStack.getTagCompound().setIntArray("SpotLightTimeBlue", bluekey);
+			newStack.getTagCompound().setIntArray("SpotLightTimeDarkRed", darkRedkey);
+			newStack.getTagCompound().setIntArray("SpotLightTimeDarkGreen", darkGreenkey);
+			newStack.getTagCompound().setIntArray("SpotLightTimeDarkBlue", darkBluekey);
+			newStack.getTagCompound().setIntArray("SpotLightTimeAngle1", angle1key);
+			newStack.getTagCompound().setIntArray("SpotLightTimeAngle2", angle2key);
+			newStack.getTagCompound().setIntArray("SpotLightTimeAutoRotate", autoRotatekey);
+			newStack.getTagCompound().setIntArray("SpotLightTimeRotateSpeed", rotateSpeedkey);
+			newStack.getTagCompound().setIntArray("SpotLightTimeSecondaryLazer", secondaryLazerkey);
+			newStack.getTagCompound().setIntArray("SpotLightTimeReverseRotation", reverseRotationkey);
 			setInventorySlotContents(1, newStack);
 		}
 	}
@@ -722,6 +787,62 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 					if(stack.getTagCompound().hasKey("SpotLightReverseRotation"))
 					{
 						setReverseRotation((stack.getTagCompound().getInteger("SpotLightReverseRotation") == 1 ? 0 : 1));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightTimeLineMode"))
+					{
+						setTimeLineMode((stack.getTagCompound().getInteger("SpotLightTimeLineMode")));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightHasKey"))
+					{
+						keyList = (stack.getTagCompound().getIntArray("SpotLightHasKey"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightTimeRed"))
+					{
+						redkey = (stack.getTagCompound().getIntArray("SpotLightTimeRed"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightTimeGreen"))
+					{
+						greenkey = (stack.getTagCompound().getIntArray("SpotLightTimeGreen"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightTimeBlue"))
+					{
+						bluekey = (stack.getTagCompound().getIntArray("SpotLightTimeBlue"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightTimeDarkRed"))
+					{
+						darkRedkey = (stack.getTagCompound().getIntArray("SpotLightTimeDarkRed"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightTimeDarkGreen"))
+					{
+						darkGreenkey = (stack.getTagCompound().getIntArray("SpotLightTimeDarkGreen"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightTimeDarkBlue"))
+					{
+						darkBluekey = (stack.getTagCompound().getIntArray("SpotLightTimeDarkBlue"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightTimeAngle1"))
+					{
+						angle1key = (stack.getTagCompound().getIntArray("SpotLightTimeAngle1"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightTimeAngle2"))
+					{
+						angle2key = (stack.getTagCompound().getIntArray("SpotLightTimeAngle2"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightTimeAutoRotate"))
+					{
+						autoRotatekey = (stack.getTagCompound().getIntArray("SpotLightTimeAutoRotate"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightTimeRotateSpeed"))
+					{
+						rotateSpeedkey = (stack.getTagCompound().getIntArray("SpotLightTimeRotateSpeed"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightTimeSecondaryLazer"))
+					{
+						secondaryLazerkey = (stack.getTagCompound().getIntArray("SpotLightTimeSecondaryLazer"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightTimeReverseRotation"))
+					{
+						reverseRotationkey = (stack.getTagCompound().getIntArray("SpotLightTimeReverseRotation"));
 					}
 				}
 			}

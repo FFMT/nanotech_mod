@@ -123,6 +123,9 @@ public class PacketHandler implements IPacketHandler
 			case 15:
 				tileSpotLight.setSelectedButtonId(value);
 				break;
+			case 16:
+				tileSpotLight.setTimeLine(value);
+				break;
 			default:
 				NanotechMod.nanoLog.severe("A SpotLight packet has a bad type, this is a bug");
 			}
@@ -183,6 +186,12 @@ public class PacketHandler implements IPacketHandler
 				break;
 			case 10:
 				tileSpotLight.setRotationSpeedKey(time, value);
+				break;
+			case 11:
+				tileSpotLight.setSecondaryLazerKey(time, value);
+				break;
+			case 12:
+				tileSpotLight.setReverseRotationKey(time, value);
 				break;
 			default:
 				NanotechMod.nanoLog.severe("A SpotLight packet has a bad type, this is a bug");

@@ -42,6 +42,7 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x + 3, y + 10, 170, 20, I18n.getString("container.spotlight.time") + ": 0.0", 0));
 		this.buttonList.add(new GuiButton(1, x + 13, y + 115, 150, 20, I18n.getString("container.spotlight.back")));
 		this.buttonList.add(new GuiButton(2, x + 13, y + 90, 150, 20, I18n.getString("container.spotlight.createkey")));
+		sendSpotLightPacket(0, 14);
 	}
 
 	protected void actionPerformed(GuiButton guibutton)
@@ -132,6 +133,8 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		sendKeyPacket(tileSpotLight.getAngle2(), 8, time);
 		sendKeyPacket(tileSpotLight.getAutoRotate() ? 1 : 0, 9, time);
 		sendKeyPacket(tileSpotLight.getRotationSpeed(), 10, time);
+		sendKeyPacket(tileSpotLight.getSecondaryLazer() ? 1 : 0, 11, time);
+		sendKeyPacket(tileSpotLight.getReverseRotation() ? 1 : 0, 12, time);
 		//this.mc.displayGuiScreen(new GuiSpotLightTimeLine(invPlayer, tileSpotLight, world));
 	}
 

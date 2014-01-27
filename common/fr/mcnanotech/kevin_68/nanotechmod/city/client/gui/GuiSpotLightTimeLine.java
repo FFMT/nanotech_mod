@@ -55,6 +55,7 @@ public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 		this.buttonList.add(new GuiButton(3, width / 2 - 155, y + 70, 120, 20, I18n.getString("container.spotlight.addKey")));
 		this.buttonList.add(timeLineModeButton = new FFMTGuiBooleanButton(4, width / 2 - 155, y + 185, 65, 20, I18n.getString("container.spotlight.timeline"), tileSpotLight.getTimeLineMode()));
 		this.buttonList.add(removebutton = new GuiButton(5, width / 2 - 155, y + 95, 120, 20, I18n.getString("container.spotlight.deleteKey")));
+		this.buttonList.add(new GuiButton(6, width / 2 - 155, y + 120, 120, 20, I18n.getString("container.spotlight.settimelineto") + " 0"));
 		removebutton.enabled = false;
 		
 		for(int i = 0; i < 121; i++)
@@ -101,6 +102,10 @@ public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 					this.mc.displayGuiScreen(new GuiSpotLightConfirm(tileSpotLight, invPlayer, world, I18n.getString("container.spotlight.sure") + " " + I18n.getString("container.spotlight.deleteKey"), I18n.getString("container.spotlight.deleteKey"), I18n.getString("container.spotlight.cancel"), 0));
 				}
 			}
+		}
+		else if(guibutton.id == 6)
+		{
+			sendSpotLightPacket(0, 16);
 		}
 		else if(guibutton.id >= 10)
 		{
@@ -181,23 +186,25 @@ public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 		this.drawTexturedModalRect(x - 20, y + 40, 0, 0, 256, 21);
 		this.drawTexturedModalRect(x + 225, y + 40, 0, 22, 256, 43);
 		this.mc.renderEngine.bindTexture(widget);
-		this.drawTexturedModalRect(x - 20 + (int)(tileSpotLight.getTimeLine() / 4), y + 40, 0, 3, 1, 24);
-
+		this.drawTexturedModalRect(x - 20 + (int)(tileSpotLight.getTimeLine() / 4), y + 40, 0, 3, 1, 12);
+		
 		if(tileSpotLight.getSelectedButtonid() != -1)
 		{
 			if(tileSpotLight.hasKey(tileSpotLight.getSelectedButtonid()))
 			{
+				this.drawTexturedModalRect(x - 22 + (int)(tileSpotLight.getSelectedButtonid() * 2.5), y + 62, 0, 13, 5, 19);
 				this.drawString(this.fontRenderer, EnumChatFormatting.RED + I18n.getString("container.spotlight.red") + " : " + tileSpotLight.getRedKey(tileSpotLight.getSelectedButtonid()), x + 100, y + 70, 0xffffff);
 				this.drawString(this.fontRenderer, EnumChatFormatting.GREEN + I18n.getString("container.spotlight.green") + " : " + tileSpotLight.getGreenKey(tileSpotLight.getSelectedButtonid()), x + 100, y + 80, 0xffffff);
 				this.drawString(this.fontRenderer, EnumChatFormatting.BLUE + I18n.getString("container.spotlight.blue") + " : " + tileSpotLight.getBlueKey(tileSpotLight.getSelectedButtonid()), x + 100, y + 90, 0xffffff);
-				this.drawString(this.fontRenderer, EnumChatFormatting.DARK_RED + I18n.getString("container.spotlight.darkred") + " : " + tileSpotLight.getDarkRedKey(tileSpotLight.getSelectedButtonid()), x + 100, y + 100, 0xffffff);
-				this.drawString(this.fontRenderer, EnumChatFormatting.DARK_GREEN + I18n.getString("container.spotlight.darkgreen") + " : " + tileSpotLight.getDarkGreenKey(tileSpotLight.getSelectedButtonid()), x + 110, y + 110, 0xffffff);
-				this.drawString(this.fontRenderer, EnumChatFormatting.DARK_BLUE + I18n.getString("container.spotlight.darkblue") + " : " + tileSpotLight.getDarkBlueKey(tileSpotLight.getSelectedButtonid()), x + 100, y + 120, 0xffffff);
-				this.drawString(this.fontRenderer, EnumChatFormatting.WHITE + I18n.getString("container.spotlight.angle") + " 1 : " + tileSpotLight.getAngle1Key(tileSpotLight.getSelectedButtonid()), x + 100, y + 130, 0xffffff);
-				this.drawString(this.fontRenderer, EnumChatFormatting.WHITE + I18n.getString("container.spotlight.angle") + " 2 : " + tileSpotLight.getAngle2Key(tileSpotLight.getSelectedButtonid()), x + 100, y + 140, 0xffffff);
-				this.drawString(this.fontRenderer, EnumChatFormatting.WHITE + I18n.getString("container.spotlight.rotate") + " : " + tileSpotLight.getAutoRotateKey(tileSpotLight.getSelectedButtonid()), x + 185, y + 70, 0xffffff);
-				this.drawString(this.fontRenderer, EnumChatFormatting.WHITE + I18n.getString("container.spotlight.rotationspeed") + " : " + tileSpotLight.getRotationSpeedKey(tileSpotLight.getSelectedButtonid()), x + 185, y + 80, 0xffffff);
-
+				this.drawString(this.fontRenderer, EnumChatFormatting.DARK_RED + I18n.getString("container.spotlight.darkred") + " : " + tileSpotLight.getDarkRedKey(tileSpotLight.getSelectedButtonid()), x + 185, y + 70, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.DARK_GREEN + I18n.getString("container.spotlight.darkgreen") + " : " + tileSpotLight.getDarkGreenKey(tileSpotLight.getSelectedButtonid()), x + 185, y + 80, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.DARK_BLUE + I18n.getString("container.spotlight.darkblue") + " : " + tileSpotLight.getDarkBlueKey(tileSpotLight.getSelectedButtonid()), x + 185, y + 90, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.WHITE + I18n.getString("container.spotlight.angle") + " 1 : " + tileSpotLight.getAngle1Key(tileSpotLight.getSelectedButtonid()), x + 100, y + 100, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.WHITE + I18n.getString("container.spotlight.angle") + " 2 : " + tileSpotLight.getAngle2Key(tileSpotLight.getSelectedButtonid()), x + 185, y + 100, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.WHITE + I18n.getString("container.spotlight.rotate") + " : " + (tileSpotLight.getAutoRotateKey(tileSpotLight.getSelectedButtonid()) == false ? I18n.getString("container.spotlight.true") : I18n.getString("container.spotlight.false")), x + 100, y + 110, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.WHITE + I18n.getString("container.spotlight.rotationspeed") + " : " + tileSpotLight.getRotationSpeedKey(tileSpotLight.getSelectedButtonid()), x + 100, y + 120, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.WHITE + I18n.getString("container.spotlight.rotationreverse") + " : " + (tileSpotLight.getReverseRotationKey(tileSpotLight.getSelectedButtonid()) == true ? I18n.getString("container.spotlight.true") : I18n.getString("container.spotlight.false")), x + 100, y + 130, 0xffffff);
+				this.drawString(this.fontRenderer, EnumChatFormatting.WHITE + I18n.getString("container.spotlight.secondlazer") + " : " + (tileSpotLight.getSecondaryLazerKey(tileSpotLight.getSelectedButtonid()) == false ? I18n.getString("container.spotlight.true") : I18n.getString("container.spotlight.false")), x + 100, y + 140, 0xffffff);
 			}
 		}
 	}
