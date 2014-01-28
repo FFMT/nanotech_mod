@@ -126,6 +126,9 @@ public class PacketHandler implements IPacketHandler
 			case 16:
 				tileSpotLight.setTimeLine(value);
 				break;
+			case 17:
+				tileSpotLight.setSmoothMode(value);
+				break;
 			default:
 				NanotechMod.nanoLog.severe("A SpotLight packet has a bad type, this is a bug");
 			}

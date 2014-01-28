@@ -2,6 +2,7 @@ package fr.mcnanotech.kevin_68.nanotechmod.city.tileentity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
+import java.util.ArrayList;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -63,6 +64,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	public int timeLine, lastTimeUse;
 	public int createKeyTime;
 	public int selectedbuttonid;
+	public boolean smoothMode;
 
 	public void updateEntity()
 	{
@@ -82,25 +84,123 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 
 				if(!this.worldObj.isRemote)
 				{
-					int time = getTimeLine() / 10;
-					if(hasKey(time) && lastTimeUse != time)
+					if(getSmoothMode())
 					{
-						lastTimeUse = time;
-						System.out.println("time:" + time);
-						setRedValue(getRedKey(time));
-						setGreenValue(getGreenKey(time));
-						setBlueValue(getBlueKey(time));
-						setDarkRedValue(getDarkRedKey(time));
-						setDarkGreenValue(getDarkGreenKey(time));
-						setDarkBlueValue(getDarkBlueKey(time));
-						setAngle1Value(getAngle1Key(time));
-						setAngle2Value(getAngle2Key(time));
-						setRotateValue(getAutoRotateKey(time) ? 1 : 0);
-						setRotationSpeed(getRotationSpeedKey(time));
-						setSecondaryLazer(getSecondaryLazerKey(time) ? 1 : 0);
-						setReverseRotation(getReverseRotationKey(time) ? 1 : 0);
-						
-						this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+						ArrayList<Integer> keys = new ArrayList();
+						ArrayList<Integer> timeBetwinKey = new ArrayList();
+						ArrayList<Integer> timeToChange = new ArrayList();
+						int[] redKeyValue = new int[242];
+
+						for(int i = 0; i != 121; i++)
+						{
+							if(hasKey(i))
+							{
+								keys.add(keys.size(), i * 10);
+							}
+						}
+
+						if(!keys.isEmpty() && keys.size() > 1)
+						{
+							for(int i = 0; i != keys.size(); i++)
+							{
+								if(i == 0)
+								{
+									timeBetwinKey.add(i, keys.get(i) + (1210 - keys.get(keys.size() - 1)));
+									timeToChange.add(i, keys.get(i));
+								}
+								else
+								{
+									timeBetwinKey.add(i, keys.get(i) - keys.get(i - 1));
+									timeToChange.add(i, timeToChange.get(i - 1) + timeBetwinKey.get(i));
+								}
+
+								// System.out.println("Time betwin " + (i - 1) +
+								// " and " + i + " = " + timeBetwinKey.get(i));
+								// System.out.println("Time to Change " + i +
+								// " " + timeToChange.get(i));
+							}
+						}
+
+						if(!keys.isEmpty() && keys.size() > 1)
+						{
+							for(int i = 0; i != timeBetwinKey.size(); i++)
+							{
+								if(i == 0)
+								{
+									//TODO fix
+									/*if((getTimeLine() > timeToChange.get(timeToChange.size() - 1) && getTimeLine() <= 1210) || (getTimeLine() >= 0 && getTimeLine() <= timeToChange.get(i)))
+									{
+										int prevKeyRed = this.getRedKey(timeToChange.get(timeToChange.size() - 1) / 10);
+										int nextKeyRed = this.getRedKey(timeToChange.get(i) / 10);
+										int numberRed = (nextKeyRed - prevKeyRed) / timeBetwinKey.get(i);
+
+										if(getTimeLine() < timeToChange.get(i))
+										{
+											int remainingTime = timeBetwinKey.get(i) - timeToChange.get(i);
+
+											setRedValue((int)(numberRed * (remainingTime - (timeToChange.get(i) - getTimeLine()))));
+										}
+										else
+										{
+											int time = timeBetwinKey.get(i) - (1210 - timeToChange.get(timeToChange.size() - 1));
+
+											setRedValue((int)(numberRed * (time - (timeToChange.get(i) - getTimeLine()))));
+										}
+										this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+									}*/
+								}
+								else
+								{
+									if(getTimeLine() > timeToChange.get(i - 1) && getTimeLine() <= timeToChange.get(i))
+									{
+										int prevKeyRed = this.getRedKey(timeToChange.get(i - 1) / 10);
+										int nextKeyRed = this.getRedKey(timeToChange.get(i) / 10);
+										if(prevKeyRed < nextKeyRed)
+										{
+											float numberRed = (nextKeyRed - prevKeyRed) / (timeBetwinKey.get(i) / 10);
+											setRedValue((int)(numberRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10));
+											//System.out.println("Number : " + numberRed);
+											//System.out.println("Set red : " + (int)(numberRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10));
+
+										}
+										else
+										{
+											float numberRed = (prevKeyRed - nextKeyRed) / (timeBetwinKey.get(i) / 10);
+											setRedValue((int)(prevKeyRed - (numberRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+											//System.out.println("Number : " + numberRed);
+											//System.out.println("Set red : " + (int)(prevKeyRed - (numberRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+
+										}
+										this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+										//System.out.println("Prev : " + prevKeyRed);
+										//System.out.println("Next : " + nextKeyRed);
+
+									}
+								}
+							}
+						}
+					}
+					else
+					{
+						int time = getTimeLine() / 10;
+						if(hasKey(time) && lastTimeUse != time)
+						{
+							lastTimeUse = time;
+							// System.out.println("time:" + time);
+							setRedValue(getRedKey(time));
+							setGreenValue(getGreenKey(time));
+							setBlueValue(getBlueKey(time));
+							setDarkRedValue(getDarkRedKey(time));
+							setDarkGreenValue(getDarkGreenKey(time));
+							setDarkBlueValue(getDarkBlueKey(time));
+							setAngle1Value(getAngle1Key(time));
+							setAngle2Value(getAngle2Key(time));
+							setRotateValue(getAutoRotateKey(time) ? 1 : 0);
+							setRotationSpeed(getRotationSpeedKey(time));
+							setSecondaryLazer(getSecondaryLazerKey(time) ? 1 : 0);
+							setReverseRotation(getReverseRotationKey(time) ? 1 : 0);
+							this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+						}
 					}
 				}
 			}
@@ -178,6 +278,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		nbtTagCompound.setIntArray("SpotLightTimeRotateSpeed", rotateSpeedkey);
 		nbtTagCompound.setIntArray("SpotLightTimeSecondaryLazer", secondaryLazerkey);
 		nbtTagCompound.setIntArray("SpotLightTimeReverseRotation", reverseRotationkey);
+		nbtTagCompound.setBoolean("SpotLightSmoothMode", smoothMode);
 
 		NBTTagList itemList = new NBTTagList();
 		for(int j = 0; j < inventory.length; j++)
@@ -231,6 +332,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		rotateSpeedkey = nbtTagCompound.getIntArray("SpotLightTimeRotateSpeed");
 		secondaryLazerkey = nbtTagCompound.getIntArray("SpotLightTimeSecondaryLazer");
 		reverseRotationkey = nbtTagCompound.getIntArray("SpotLightTimeReverseRotation");
+		smoothMode = nbtTagCompound.getBoolean("SpotLightSmoothMode");
 
 		NBTTagList tagList = nbtTagCompound.getTagList("Inventory");
 		for(int i = 0; i < tagList.tagCount(); i++)
@@ -425,6 +527,18 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		this.reverseRotationkey[time] = i;
 	}
 
+	public void setSmoothMode(int i)
+	{
+		if(i == 1)
+		{
+			this.smoothMode = true;
+		}
+		else
+		{
+			this.smoothMode = false;
+		}
+	}
+
 	// --Getter--------------------------
 
 	public int getRedValue()
@@ -570,6 +684,11 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	public boolean getReverseRotationKey(int time)
 	{
 		return this.reverseRotationkey[time] == 1 ? true : false;
+	}
+
+	public boolean getSmoothMode()
+	{
+		return this.smoothMode;
 	}
 
 	public boolean isUseableByPlayer(EntityPlayer player)
@@ -727,6 +846,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 			newStack.getTagCompound().setIntArray("SpotLightTimeRotateSpeed", rotateSpeedkey);
 			newStack.getTagCompound().setIntArray("SpotLightTimeSecondaryLazer", secondaryLazerkey);
 			newStack.getTagCompound().setIntArray("SpotLightTimeReverseRotation", reverseRotationkey);
+			newStack.getTagCompound().setBoolean("SpotLightSmoothMode", smoothMode);
 			setInventorySlotContents(1, newStack);
 		}
 	}
@@ -843,6 +963,10 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 					if(stack.getTagCompound().hasKey("SpotLightTimeReverseRotation"))
 					{
 						reverseRotationkey = (stack.getTagCompound().getIntArray("SpotLightTimeReverseRotation"));
+					}
+					if(stack.getTagCompound().hasKey("SpotLightSmoothMode"))
+					{
+						setSmoothMode((int)((stack.getTagCompound().getBoolean("SpotLightSmoothmode")) ? 1 : 0));
 					}
 				}
 			}

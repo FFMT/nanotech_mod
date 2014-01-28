@@ -44,6 +44,7 @@ container.spotlight.sure=Etes-vous sûr de
 container.spotlight.overwrite=Réécrire la clée
 container.spotlight.time=Temps
 container.spotlight.settimelineto=Remise à
+container.spotlight.smooth=Mode Fluide
 container.textspotlight.scale=Taille
 container.textspotlight.height=Hauteur
 container.configcopier.empty=Vide
