@@ -113,11 +113,6 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 									timeBetwinKey.add(i, keys.get(i) - keys.get(i - 1));
 									timeToChange.add(i, timeToChange.get(i - 1) + timeBetwinKey.get(i));
 								}
-
-								// System.out.println("Time betwin " + (i - 1) +
-								// " and " + i + " = " + timeBetwinKey.get(i));
-								// System.out.println("Time to Change " + i +
-								// " " + timeToChange.get(i));
 							}
 						}
 
@@ -127,27 +122,43 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 							{
 								if(i == 0)
 								{
-									//TODO fix
-									/*if((getTimeLine() > timeToChange.get(timeToChange.size() - 1) && getTimeLine() <= 1210) || (getTimeLine() >= 0 && getTimeLine() <= timeToChange.get(i)))
+									if((getTimeLine() > timeToChange.get(timeToChange.size() - 1) && getTimeLine() <= 1210) || (getTimeLine() >= 0 && getTimeLine() <= timeToChange.get(i)))
 									{
 										int prevKeyRed = this.getRedKey(timeToChange.get(timeToChange.size() - 1) / 10);
 										int nextKeyRed = this.getRedKey(timeToChange.get(i) / 10);
-										int numberRed = (nextKeyRed - prevKeyRed) / timeBetwinKey.get(i);
-
-										if(getTimeLine() < timeToChange.get(i))
+										int percentAfter0 = timeToChange.get(i)/timeBetwinKey.get(0);
+										int redKeyAt0 = (nextKeyRed - prevKeyRed) * percentAfter0;
+										
+										//Unworking TODO fix
+										if(getTimeLine() <= timeToChange.get(i))
 										{
-											int remainingTime = timeBetwinKey.get(i) - timeToChange.get(i);
-
-											setRedValue((int)(numberRed * (remainingTime - (timeToChange.get(i) - getTimeLine()))));
+											if(prevKeyRed < nextKeyRed)
+											{
+												float numberRed = (nextKeyRed - redKeyAt0) / (timeToChange.get(i) / 10);
+												setRedValue((int)(redKeyAt0 + (numberRed * (timeToChange.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+											}
+											else
+											{	
+												float numberRed = (redKeyAt0 - nextKeyRed) / (timeToChange.get(i) / 10);
+												setRedValue((int)(redKeyAt0 - (numberRed * (timeToChange.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+											}
 										}
 										else
 										{
-											int time = timeBetwinKey.get(i) - (1210 - timeToChange.get(timeToChange.size() - 1));
-
-											setRedValue((int)(numberRed * (time - (timeToChange.get(i) - getTimeLine()))));
+											if(prevKeyRed < nextKeyRed)
+											{
+												float numberRed = (redKeyAt0 - prevKeyRed) / (timeBetwinKey.get(i) / 10);
+												setRedValue((int)(prevKeyRed + (numberRed * ((timeBetwinKey.get(i) - timeToChange.get(i)) - (timeToChange.get(i) - getTimeLine())) / 10)));
+											}
+											else
+											{
+												float numberRed = (prevKeyRed - redKeyAt0) / (timeBetwinKey.get(i) / 10);
+												setRedValue((int)(prevKeyRed - (numberRed * ((timeBetwinKey.get(i) - timeToChange.get(i)) - (timeToChange.get(i) - getTimeLine())) / 10)));
+											}
 										}
+										//End
 										this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-									}*/
+									}
 								}
 								else
 								{
@@ -155,26 +166,84 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 									{
 										int prevKeyRed = this.getRedKey(timeToChange.get(i - 1) / 10);
 										int nextKeyRed = this.getRedKey(timeToChange.get(i) / 10);
+										int prevKeyGreen = this.getGreenKey(timeToChange.get(i - 1) / 10);
+										int nextKeyGreen = this.getGreenKey(timeToChange.get(i) / 10);
+										int prevKeyBlue = this.getBlueKey(timeToChange.get(i - 1) / 10);
+										int nextKeyBlue = this.getBlueKey(timeToChange.get(i) / 10);
+										
+										int prevKeyDarkRed = this.getDarkRedKey(timeToChange.get(i - 1) / 10);
+										int nextKeyDarkRed = this.getDarkRedKey(timeToChange.get(i) / 10);
+										int prevKeyDarkGreen = this.getDarkGreenKey(timeToChange.get(i - 1) / 10);
+										int nextKeyDarkGreen = this.getDarkGreenKey(timeToChange.get(i) / 10);
+										int prevKeyDarkBlue = this.getDarkBlueKey(timeToChange.get(i - 1) / 10);
+										int nextKeyDarkBlue = this.getDarkBlueKey(timeToChange.get(i) / 10);
+										
 										if(prevKeyRed < nextKeyRed)
 										{
 											float numberRed = (nextKeyRed - prevKeyRed) / (timeBetwinKey.get(i) / 10);
-											setRedValue((int)(numberRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10));
-											//System.out.println("Number : " + numberRed);
-											//System.out.println("Set red : " + (int)(numberRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10));
-
+											setRedValue((int)(prevKeyRed + (numberRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
 										}
 										else
 										{
 											float numberRed = (prevKeyRed - nextKeyRed) / (timeBetwinKey.get(i) / 10);
 											setRedValue((int)(prevKeyRed - (numberRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
-											//System.out.println("Number : " + numberRed);
-											//System.out.println("Set red : " + (int)(prevKeyRed - (numberRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
-
+										}
+										
+										if(prevKeyGreen < nextKeyGreen)
+										{
+											float numberGreen = (nextKeyGreen - prevKeyGreen) / (timeBetwinKey.get(i) / 10);
+											setGreenValue((int)(prevKeyGreen + (numberGreen * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+										}
+										else
+										{
+											float numberGreen = (prevKeyGreen - nextKeyGreen) / (timeBetwinKey.get(i) / 10);
+											setGreenValue((int)(prevKeyGreen - (numberGreen * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+										}
+										
+										if(prevKeyBlue < nextKeyBlue)
+										{
+											float numberBlue = (nextKeyBlue - prevKeyBlue) / (timeBetwinKey.get(i) / 10);
+											setBlueValue((int)(nextKeyBlue + (numberBlue * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+										}
+										else
+										{
+											float numberBlue = (prevKeyBlue - nextKeyBlue) / (timeBetwinKey.get(i) / 10);
+											setBlueValue((int)(prevKeyBlue - (numberBlue * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+										}
+										
+										if(prevKeyDarkRed < nextKeyDarkRed)
+										{
+											float numberDarkRed = (nextKeyDarkRed - prevKeyDarkRed) / (timeBetwinKey.get(i) / 10);
+											setDarkRedValue((int)(prevKeyDarkRed + (numberDarkRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+										}
+										else
+										{
+											float numberDarkRed = (prevKeyDarkRed - nextKeyDarkRed) / (timeBetwinKey.get(i) / 10);
+											setDarkRedValue((int)(prevKeyDarkRed - (numberDarkRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+										}
+										
+										if(prevKeyDarkGreen < nextKeyDarkGreen)
+										{
+											float numberDarkGreen = (nextKeyDarkGreen - prevKeyDarkGreen) / (timeBetwinKey.get(i) / 10);
+											setDarkGreenValue((int)(prevKeyDarkGreen + (numberDarkGreen * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+										}
+										else
+										{
+											float numberDarkGreen = (prevKeyDarkGreen - nextKeyDarkGreen) / (timeBetwinKey.get(i) / 10);
+											setDarkGreenValue((int)(prevKeyDarkGreen - (numberDarkGreen * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+										}
+										
+										if(prevKeyDarkBlue < nextKeyDarkBlue)
+										{
+											float numberDarkBlue = (nextKeyDarkBlue - prevKeyDarkBlue) / (timeBetwinKey.get(i) / 10);
+											setDarkBlueValue((int)(nextKeyDarkBlue + (numberDarkBlue * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+										}
+										else
+										{
+											float numberDarkBlue = (prevKeyDarkBlue - nextKeyDarkBlue) / (timeBetwinKey.get(i) / 10);
+											setDarkBlueValue((int)(prevKeyDarkBlue - (numberDarkBlue * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
 										}
 										this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-										//System.out.println("Prev : " + prevKeyRed);
-										//System.out.println("Next : " + nextKeyRed);
-
 									}
 								}
 							}
@@ -186,7 +255,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 						if(hasKey(time) && lastTimeUse != time)
 						{
 							lastTimeUse = time;
-							// System.out.println("time:" + time);
+							
 							setRedValue(getRedKey(time));
 							setGreenValue(getGreenKey(time));
 							setBlueValue(getBlueKey(time));
