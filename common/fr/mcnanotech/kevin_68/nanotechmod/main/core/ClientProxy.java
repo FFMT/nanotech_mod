@@ -8,6 +8,10 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
+import fr.mcnanotech.kevin_68.nanotechmod.city.blocks.NanotechCityBlock;
+import fr.mcnanotech.kevin_68.nanotechmod.city.client.renderer.tileentity.TileEntityTrashCanRender;
+import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTrashCan;
+import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.RenderCrazyGuy;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.RenderCreeperDriller;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.RenderDancer;
@@ -27,6 +31,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.items.ItemLightSa
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.items.ItemNanomiteArrowGunRender;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.items.ItemScytheRender;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.tileentity.TileEntityButtonRender;
+import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.tileentity.TileEntityPortableChestRender;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.MobCrazyGuy;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.MobCreeperDriller;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.MobDancer;
@@ -44,7 +49,9 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.entity.others.EntitySuperBottleOf
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.RenderEvent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityButton;
+import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPortableChest;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.NanotechClientTickHandler;
+import fr.minecraftforgefrance.ffmtlibs.FFMTClientRegistry;
 
 public class ClientProxy extends CommonProxy
 {
@@ -87,6 +94,7 @@ public class ClientProxy extends CommonProxy
 	public void registerTileEntityRenders()
 	{
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityButton.class, new TileEntityButtonRender());
+		FFMTClientRegistry.bindTESRWithInventoryRender(NanotechBlock.machine, 0, TileEntityPortableChest.class, new TileEntityPortableChestRender());
 	}
 
 	@Override

@@ -5,17 +5,22 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.INetworkManager;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityPortableChest extends TileEntity implements IInventory
 {
 	public ItemStack[] inventory = new ItemStack[72];
 	private String customName;
+	private byte direction;
 
 	public void readFromNBT(NBTTagCompound nbttag)
 	{
 		super.readFromNBT(nbttag);
 		NBTTagList nbttaglist = nbttag.getTagList("Items");
+		direction = nbttag.getByte("Direction");
 
 		if(nbttag.hasKey("CustomName"))
 		{
@@ -38,6 +43,7 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 	{
 		super.writeToNBT(nbttag);
 		NBTTagList nbttaglist = new NBTTagList();
+		nbttag.setByte("Direction", direction);
 
 		for(int i = 0; i < this.inventory.length; i++)
 		{
@@ -56,6 +62,28 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 		{
 			nbttag.setString("CustomName", this.customName);
 		}
+	}
+
+	public byte getDirection()
+	{
+		return this.direction;
+	}
+
+	public void setDirection(byte b)
+	{
+		this.direction = b;
+	}
+
+	public Packet getDescriptionPacket()
+	{
+		NBTTagCompound nbttagcompound = new NBTTagCompound();
+		this.writeToNBT(nbttagcompound);
+		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4, nbttagcompound);
+	}
+
+	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
+	{
+		this.readFromNBT(pkt.data);
 	}
 
 	@Override
@@ -147,7 +175,7 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 	{
 		this.customName = name;
 	}
-	
+
 	public String getCustomGuiName()
 	{
 		return this.customName;

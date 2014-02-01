@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
-import fr.mcnanotech.kevin_68.nanotechmod.main.client.model.ModelButton;
+import fr.mcnanotech.kevin_68.nanotechmod.main.client.model.blocks.ModelButton;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityButton;
 
 public class TileEntityButtonRender extends TileEntitySpecialRenderer

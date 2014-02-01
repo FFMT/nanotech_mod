@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotechmod.main.client.model;
+package fr.mcnanotech.kevin_68.nanotechmod.main.client.model.blocks;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

@@ -13,12 +13,16 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.FakePlayer;
 import cpw.mods.fml.common.network.FMLNetworkHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPortableChest;
+import fr.minecraftforgefrance.ffmtlibs.FFMTClientRegistry;
 
 public class BlockNanotechMachine extends Block
 {
@@ -27,6 +31,23 @@ public class BlockNanotechMachine extends Block
 	protected BlockNanotechMachine(int id, Material material)
 	{
 		super(id, material);
+	}
+
+	public boolean renderAsNormalBlock()
+	{
+		return false;
+	}
+
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public int getRenderType()
+	{
+		return FFMTClientRegistry.tesrRenderId;
 	}
 
 	public boolean hasTileEntity(int metadata)
@@ -62,7 +83,7 @@ public class BlockNanotechMachine extends Block
 			{
 				TileEntityPortableChest teChest = (TileEntityPortableChest)te;
 				NBTTagCompound nbttag = new NBTTagCompound();
-				
+
 				NBTTagList nbttaglist = new NBTTagList();
 				for(int i = 0; i < teChest.inventory.length; i++)
 				{
@@ -100,17 +121,23 @@ public class BlockNanotechMachine extends Block
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
 	{
+		int direction = MathHelper.floor_double((double)(living.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
+
 		if(stack.getItemDamage() == 0 && stack.hasTagCompound())
 		{
 			TileEntity te = world.getBlockTileEntity(x, y, z);
 			if(te != null && te instanceof TileEntityPortableChest)
 			{
 				TileEntityPortableChest teChest = (TileEntityPortableChest)te;
+
+				teChest.setDirection((byte)direction);
+				//world.markBlockForUpdate(x, y, z);
+
 				if(stack.hasDisplayName())
 				{
 					teChest.setCustomGuiName(stack.getDisplayName());
 				}
-				
+
 				NBTTagList nbttaglist = stack.getTagCompound().getTagList("Items");
 				for(int i = 0; i < nbttaglist.tagCount(); i++)
 				{
@@ -130,16 +157,16 @@ public class BlockNanotechMachine extends Block
 	{
 		if(!world.isRemote && !player.capabilities.isCreativeMode && world.getBlockMetadata(x, y, z) == 0)
 		{
-	        player.addStat(StatList.mineBlockStatArray[this.blockID], 1);
-	        player.addExhaustion(0.025F);
+			player.addStat(StatList.mineBlockStatArray[this.blockID], 1);
+			player.addExhaustion(0.025F);
 			int i1 = EnchantmentHelper.getFortuneModifier(player);
 			if(!player.getEntityName().contains("[") || !(player instanceof FakePlayer))
 			{
 				ArrayList<ItemStack> items = getBlockDropped(world, x, y, z, world.getBlockMetadata(x, y, z), i1);
-	            for (ItemStack is : items)
-	            {
-	                this.dropBlockAsItem_do(world, x, y, z, is);
-	            }
+				for(ItemStack is : items)
+				{
+					this.dropBlockAsItem_do(world, x, y, z, is);
+				}
 			}
 		}
 		world.setBlockToAir(x, y, z);
@@ -153,18 +180,18 @@ public class BlockNanotechMachine extends Block
 	{
 		super.breakBlock(world, x, y, z, side, metadata);
 	}
-	
-    public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)
-    {
-    	if(world.getBlockMetadata(x, y, z) == 0)
-    	{
+
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)
+	{
+		if(world.getBlockMetadata(x, y, z) == 0)
+		{
 			ItemStack chestStack = new ItemStack(this, 1, 0);
 			TileEntity te = world.getBlockTileEntity(x, y, z);
 			if(te != null && te instanceof TileEntityPortableChest)
 			{
 				TileEntityPortableChest teChest = (TileEntityPortableChest)te;
 				NBTTagCompound nbttag = new NBTTagCompound();
-				
+
 				NBTTagList nbttaglist = new NBTTagList();
 				for(int i = 0; i < teChest.inventory.length; i++)
 				{
@@ -186,10 +213,10 @@ public class BlockNanotechMachine extends Block
 				}
 			}
 			return chestStack;
-    	}
-    	else
-    	{
-    		return super.getPickBlock(target, world, x, y, z);
-    	}
-    }
+		}
+		else
+		{
+			return super.getPickBlock(target, world, x, y, z);
+		}
+	}
 }
