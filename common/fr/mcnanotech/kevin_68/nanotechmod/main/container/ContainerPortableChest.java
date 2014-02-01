@@ -24,6 +24,7 @@ public class ContainerPortableChest extends Container
 			}
 		}
 		this.bindPlayerInventory(playerInventory);
+		tileentity.openChest();
 	}
 
 	private void bindPlayerInventory(InventoryPlayer playerInventory)
@@ -81,5 +82,11 @@ public class ContainerPortableChest extends Container
 			}
 		}
 		return itemstack;
+	}
+
+	public void onContainerClosed(EntityPlayer player)
+	{
+		super.onContainerClosed(player);
+		tileEntity.closeChest();
 	}
 }

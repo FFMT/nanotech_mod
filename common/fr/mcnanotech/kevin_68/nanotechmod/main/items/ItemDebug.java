@@ -14,6 +14,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySunShade;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityMultiplier;
+import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPortableChest;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
 
 public class ItemDebug extends Item
@@ -87,6 +88,12 @@ public class ItemDebug extends Item
 					TileEntitySunShade te = (TileEntitySunShade)tile;
 					player.addChatMessage("Open: " + EnumChatFormatting.AQUA + te.getIsOpen());
 					return true;
+				}
+				
+				if(tile instanceof TileEntityPortableChest)
+				{
+					TileEntityPortableChest te = (TileEntityPortableChest)tile;
+					player.addChatMessage("Direction: " + te.getDirection());
 				}
 			}
 		}

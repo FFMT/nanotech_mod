@@ -1,5 +1,10 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.tileentity;
 
+import java.util.Iterator;
+import java.util.List;
+
+import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerPortableChest;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -9,19 +14,24 @@ import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 
 public class TileEntityPortableChest extends TileEntity implements IInventory
 {
 	public ItemStack[] inventory = new ItemStack[72];
 	private String customName;
 	private byte direction;
+	public float lidAngle;
+	public float prevLidAngle;
+	public int numUsingPlayers;
+	private int ticksSinceSync;
 
 	public void readFromNBT(NBTTagCompound nbttag)
 	{
 		super.readFromNBT(nbttag);
-		NBTTagList nbttaglist = nbttag.getTagList("Items");
 		direction = nbttag.getByte("Direction");
 
+		NBTTagList nbttaglist = nbttag.getTagList("Items");
 		if(nbttag.hasKey("CustomName"))
 		{
 			this.customName = nbttag.getString("CustomName");
@@ -42,9 +52,9 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 	public void writeToNBT(NBTTagCompound nbttag)
 	{
 		super.writeToNBT(nbttag);
-		NBTTagList nbttaglist = new NBTTagList();
 		nbttag.setByte("Direction", direction);
 
+		NBTTagList nbttaglist = new NBTTagList();
 		for(int i = 0; i < this.inventory.length; i++)
 		{
 			if(this.inventory[i] != null)
@@ -196,12 +206,20 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 	@Override
 	public void openChest()
 	{
+		if(this.numUsingPlayers < 0)
+		{
+			this.numUsingPlayers = 0;
+		}
 
+		++this.numUsingPlayers;
+		this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, this.getBlockType().blockID, 1, this.numUsingPlayers);
 	}
 
 	@Override
 	public void closeChest()
 	{
+		--this.numUsingPlayers;
+		this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, this.getBlockType().blockID, 1, this.numUsingPlayers);
 
 	}
 
@@ -209,5 +227,79 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 	public boolean isItemValidForSlot(int slotId, ItemStack stack)
 	{
 		return true;
+	}
+
+	public boolean receiveClientEvent(int eventId, int eventValue)
+	{
+		if(eventId == 1)
+		{
+			this.numUsingPlayers = eventValue;
+			return true;
+		}
+		else
+		{
+			return super.receiveClientEvent(eventId, eventValue);
+		}
+	}
+
+	public void updateEntity()
+	{
+		super.updateEntity();
+		++this.ticksSinceSync;
+
+		if(!this.worldObj.isRemote && this.numUsingPlayers != 0 && (this.ticksSinceSync + this.xCoord + this.yCoord + this.zCoord) % 200 == 0)
+		{
+			this.numUsingPlayers = 0;
+			List list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getAABBPool().getAABB(this.xCoord - 5, this.yCoord - 5, this.zCoord - 5, this.xCoord + 6, this.yCoord + 6, this.zCoord + 6));
+			Iterator iterator = list.iterator();
+
+			while(iterator.hasNext())
+			{
+				EntityPlayer entityplayer = (EntityPlayer)iterator.next();
+
+				if(entityplayer.openContainer instanceof ContainerPortableChest)
+				{
+					++this.numUsingPlayers;
+				}
+			}
+		}
+
+		this.prevLidAngle = this.lidAngle;
+
+		if(this.numUsingPlayers > 0 && this.lidAngle == 0.0F)
+		{
+			this.worldObj.playSoundEffect(((double)this.xCoord + 0.5), (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D, "random.chestopen", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+		}
+
+		if(this.numUsingPlayers == 0 && this.lidAngle > 0.0F || this.numUsingPlayers > 0 && this.lidAngle < 1.0F)
+		{
+			float f1 = this.lidAngle;
+
+			if(this.numUsingPlayers > 0)
+			{
+				this.lidAngle += 0.1F;
+			}
+			else
+			{
+				this.lidAngle -= 0.1F;
+			}
+
+			if(this.lidAngle > 1.0F)
+			{
+				this.lidAngle = 1.0F;
+			}
+
+			float f2 = 0.5F;
+
+			if(this.lidAngle < f2 && f1 >= f2)
+			{
+				this.worldObj.playSoundEffect((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D, "random.chestclosed", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+			}
+
+			if(this.lidAngle < 0.0F)
+			{
+				this.lidAngle = 0.0F;
+			}
+		}
 	}
 }

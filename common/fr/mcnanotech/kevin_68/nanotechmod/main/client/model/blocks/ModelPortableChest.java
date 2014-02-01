@@ -6,23 +6,23 @@ import net.minecraft.entity.Entity;
 
 public class ModelPortableChest extends ModelBase
 {
-	ModelRenderer Shape1;
-	ModelRenderer Shape2;
-	ModelRenderer Shape3;
-	ModelRenderer Shape4;
-	ModelRenderer Shape5;
-	ModelRenderer Shape6;
-	ModelRenderer Shape7;
-	ModelRenderer Shape8;
-	ModelRenderer Shape9;
-	ModelRenderer Shape10;
-	ModelRenderer Shape11;
-	ModelRenderer Shape12;
-	ModelRenderer Shape13;
-	ModelRenderer Shape14;
-	ModelRenderer Shape15;
-	ModelRenderer Shape16;
-	ModelRenderer Shape17;
+	public ModelRenderer Shape1;
+	public ModelRenderer Shape2;
+	public ModelRenderer Shape3;
+	public ModelRenderer Shape4;
+	public ModelRenderer Shape5;
+	public ModelRenderer Shape6;
+	public ModelRenderer Shape7;
+	public ModelRenderer Shape8;
+	public ModelRenderer Shape9;
+	public ModelRenderer Shape10;
+	public ModelRenderer Shape11;
+	public ModelRenderer Shape12;
+	public ModelRenderer Shape13;
+	public ModelRenderer Shape14;
+	public ModelRenderer Shape15;
+	public ModelRenderer Shape16;
+	public ModelRenderer Shape17;
 
 	public ModelPortableChest()
 	{
@@ -60,38 +60,38 @@ public class ModelPortableChest extends ModelBase
 		Shape5.mirror = true;
 		setRotation(Shape5, 0F, 0F, 0F);
 		Shape6 = new ModelRenderer(this, 30, 15);
-		Shape6.addBox(-7F, -15F, 6F, 14, 5, 1);
-		Shape6.setRotationPoint(0F, 24F, 0F);
+		Shape6.addBox(-7F, -5F, 0F, 14, 5, 1);
+		Shape6.setRotationPoint(0F, 14F, 6F);
 		Shape6.setTextureSize(128, 64);
 		Shape6.mirror = true;
 		setRotation(Shape6, 0F, 0F, 0F);
 		Shape7 = new ModelRenderer(this, 30, 15);
-		Shape7.addBox(-7F, -15F, -7F, 14, 5, 1);
-		Shape7.setRotationPoint(0F, 24F, 0F);
+		Shape7.addBox(-7F, -5F, -13F, 14, 5, 1);
+		Shape7.setRotationPoint(0F, 14F, 6F);
 		Shape7.setTextureSize(128, 64);
 		Shape7.mirror = true;
 		setRotation(Shape7, 0F, 0F, 0F);
 		Shape8 = new ModelRenderer(this, 30, 21);
-		Shape8.addBox(-7F, -15F, -6F, 1, 5, 12);
-		Shape8.setRotationPoint(0F, 24F, 0F);
+		Shape8.addBox(-7F, -5F, -12F, 1, 5, 12);
+		Shape8.setRotationPoint(0F, 14F, 6F);
 		Shape8.setTextureSize(128, 64);
 		Shape8.mirror = true;
 		setRotation(Shape8, 0F, 0F, 0F);
 		Shape9 = new ModelRenderer(this, 30, 21);
-		Shape9.addBox(6F, -15F, -6F, 1, 5, 12);
-		Shape9.setRotationPoint(0F, 24F, 0F);
+		Shape9.addBox(6F, -5F, -12F, 1, 5, 12);
+		Shape9.setRotationPoint(0F, 14F, 6F);
 		Shape9.setTextureSize(128, 64);
 		Shape9.mirror = true;
 		setRotation(Shape9, 0F, 0F, 0F);
 		Shape10 = new ModelRenderer(this, 42, 0);
-		Shape10.addBox(-6F, -15F, -6F, 12, 1, 12);
-		Shape10.setRotationPoint(0F, 24F, 0F);
+		Shape10.addBox(-6F, -5F, -12F, 12, 1, 12);
+		Shape10.setRotationPoint(0F, 14F, 6F);
 		Shape10.setTextureSize(128, 64);
 		Shape10.mirror = true;
 		setRotation(Shape10, 0F, 0F, 0F);
 		Shape11 = new ModelRenderer(this, 0, 0);
-		Shape11.addBox(-0.5F, -12F, -8F, 1, 3, 1);
-		Shape11.setRotationPoint(0F, 24F, 0F);
+		Shape11.addBox(-0.5F, -2F, -14F, 1, 3, 1);
+		Shape11.setRotationPoint(0F, 14F, 6F);
 		Shape11.setTextureSize(128, 64);
 		Shape11.mirror = true;
 		setRotation(Shape11, 0F, 0F, 0F);
@@ -133,27 +133,25 @@ public class ModelPortableChest extends ModelBase
 		setRotation(Shape17, 0F, 0F, 0F);
 	}
 
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
+	public void render(float f)
 	{
-		super.render(entity, f, f1, f2, f3, f4, f5);
-		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		Shape1.render(f5);
-		Shape2.render(f5);
-		Shape3.render(f5);
-		Shape4.render(f5);
-		Shape5.render(f5);
-		Shape6.render(f5);
-		Shape7.render(f5);
-		Shape8.render(f5);
-		Shape9.render(f5);
-		Shape10.render(f5);
-		Shape11.render(f5);
-		Shape12.render(f5);
-		Shape13.render(f5);
-		Shape14.render(f5);
-		Shape15.render(f5);
-		Shape16.render(f5);
-		Shape17.render(f5);
+		Shape1.render(f);
+		Shape2.render(f);
+		Shape3.render(f);
+		Shape4.render(f);
+		Shape5.render(f);
+		Shape6.render(f);
+		Shape7.render(f);
+		Shape8.render(f);
+		Shape9.render(f);
+		Shape10.render(f);
+		Shape11.render(f);
+		Shape12.render(f);
+		Shape13.render(f);
+		Shape14.render(f);
+		Shape15.render(f);
+		Shape16.render(f);
+		Shape17.render(f);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z)
@@ -161,10 +159,5 @@ public class ModelPortableChest extends ModelBase
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
-	}
-
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
-	{
-		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 }

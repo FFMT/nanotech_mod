@@ -8,9 +8,6 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
-import fr.mcnanotech.kevin_68.nanotechmod.city.blocks.NanotechCityBlock;
-import fr.mcnanotech.kevin_68.nanotechmod.city.client.renderer.tileentity.TileEntityTrashCanRender;
-import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTrashCan;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.RenderCrazyGuy;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.RenderCreeperDriller;
@@ -25,6 +22,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.RenderSuperEnderm
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.RenderSuperZombie;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.RenderTheDeath;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.items.ItemAltersRender;
+import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.items.ItemBlockPortableChestRender;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.items.ItemCrazyGlassesGunRender;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.items.ItemDebugRender;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.items.ItemLightSaberRender;
@@ -88,6 +86,7 @@ public class ClientProxy extends CommonProxy
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.nanomiteBow.itemID, new ItemNanomiteArrowGunRender());
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.crazyGlassesGun.itemID, new ItemCrazyGlassesGunRender());
 		MinecraftForgeClient.registerItemRenderer(NanotechItem.lightSaber.itemID, new ItemLightSaberRender());
+		MinecraftForgeClient.registerItemRenderer(NanotechBlock.machine.blockID, new ItemBlockPortableChestRender());
 	}
 
 	@Override

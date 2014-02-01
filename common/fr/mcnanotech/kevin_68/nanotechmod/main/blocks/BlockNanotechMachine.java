@@ -13,6 +13,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
@@ -31,6 +32,16 @@ public class BlockNanotechMachine extends Block
 	protected BlockNanotechMachine(int id, Material material)
 	{
 		super(id, material);
+	}
+
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int side, int metadata)
+	{
+		if(metadata == 0)
+		{
+			return Block.chest.getBlockTextureFromSide(0);
+		}
+		return blockIcon;
 	}
 
 	public boolean renderAsNormalBlock()
@@ -123,34 +134,36 @@ public class BlockNanotechMachine extends Block
 	{
 		int direction = MathHelper.floor_double((double)(living.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
 
-		if(stack.getItemDamage() == 0 && stack.hasTagCompound())
+		if(stack.getItemDamage() == 0)
 		{
 			TileEntity te = world.getBlockTileEntity(x, y, z);
 			if(te != null && te instanceof TileEntityPortableChest)
 			{
 				TileEntityPortableChest teChest = (TileEntityPortableChest)te;
-
 				teChest.setDirection((byte)direction);
-				//world.markBlockForUpdate(x, y, z);
 
-				if(stack.hasDisplayName())
+				if(stack.hasTagCompound())
 				{
-					teChest.setCustomGuiName(stack.getDisplayName());
-				}
-
-				NBTTagList nbttaglist = stack.getTagCompound().getTagList("Items");
-				for(int i = 0; i < nbttaglist.tagCount(); i++)
-				{
-					NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.tagAt(i);
-					int j = nbttagcompound1.getByte("Slot");
-
-					if(j >= 0 && j < teChest.inventory.length)
+					if(stack.hasDisplayName())
 					{
-						teChest.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+						teChest.setCustomGuiName(stack.getDisplayName());
+					}
+
+					NBTTagList nbttaglist = stack.getTagCompound().getTagList("Items");
+					for(int i = 0; i < nbttaglist.tagCount(); i++)
+					{
+						NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.tagAt(i);
+						int j = nbttagcompound1.getByte("Slot");
+
+						if(j >= 0 && j < teChest.inventory.length)
+						{
+							teChest.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+						}
 					}
 				}
 			}
 		}
+		world.markBlockForUpdate(x, y, z);
 	}
 
 	public boolean removeBlockByPlayer(World world, EntityPlayer player, int x, int y, int z)
@@ -218,5 +231,12 @@ public class BlockNanotechMachine extends Block
 		{
 			return super.getPickBlock(target, world, x, y, z);
 		}
+	}
+
+	public boolean onBlockEventReceived(World world, int x, int y, int z, int eventId, int eventValue)
+	{
+		super.onBlockEventReceived(world, x, y, z, eventId, eventValue);
+		TileEntity tileentity = world.getBlockTileEntity(x, y, z);
+		return tileentity != null ? tileentity.receiveClientEvent(eventId, eventValue) : false;
 	}
 }
