@@ -15,7 +15,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
 @SideOnly(Side.CLIENT)
 public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 {
-	protected static final ResourceLocation texture = new ResourceLocation("textures/entity/beacon_beam.png");
+	private static final ResourceLocation texture = new ResourceLocation("textures/entity/beacon_beam.png");
 
 	public void renderTileEntitySpotLightAt(TileEntitySpotLight tileentity, double x, double y, double z, float par8)
 	{

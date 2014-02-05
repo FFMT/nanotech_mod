@@ -9,7 +9,8 @@ tile.fountain.name=Fontaine
 tile.modernFence.name=Barrière Moderne
 tile.sunShade.name=Parasol
 tile.lamp.name=Lampadaire
-tile.textSpotLight.name=Projecteur de texte
+tile.textSpotLight.name=Projecteur de Texte
+tile.machine.portableChest.name=Coffre Portable
 
 #Items
 item.configCopier.name=Copieur de configuration

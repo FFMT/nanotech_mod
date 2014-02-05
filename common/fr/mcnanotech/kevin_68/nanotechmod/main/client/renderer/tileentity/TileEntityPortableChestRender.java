@@ -28,22 +28,22 @@ public class TileEntityPortableChestRender extends TileEntityInventorySpecialRen
 	@Override
 	public void renderInventory(double x, double y, double z)
 	{
-		this.renderTileEntityAtPortableChest(null, x, y, z, 0);
+		this.renderTileEntityAtPortableChest(null, x, y, z, 0, true);
 	}
 
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float tick)
 	{
-		this.renderTileEntityAtPortableChest((TileEntityPortableChest)tileentity, x, y, z, tick);
+		this.renderTileEntityAtPortableChest((TileEntityPortableChest)tileentity, x, y, z, tick, false);
 	}
 
-	public void renderTileEntityAtPortableChest(TileEntityPortableChest tePortableChest, double x, double y, double z, float tick)
+	public void renderTileEntityAtPortableChest(TileEntityPortableChest tePortableChest, double x, double y, double z, float tick, boolean isInv)
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
 		this.bindTexture(texture);
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		if(tePortableChest != null)
+		if(tePortableChest != null && !isInv)
 		{
 			GL11.glRotatef(180F + 90F * tePortableChest.getDirection(), 0.0F, 1.0F, 0.0F);
 			float angle = tePortableChest.prevLidAngle + (tePortableChest.lidAngle - tePortableChest.prevLidAngle) * tick;

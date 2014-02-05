@@ -10,6 +10,7 @@ tile.modernFence.name=Modern Fence
 tile.sunShade.name=SunShade
 tile.lamp.name=Lamp
 tile.textSpotLight.name=Text Spotlight
+tile.machine.portableChest.name=Portable Chest
 
 #Items
 item.configCopier.name=Config copier
