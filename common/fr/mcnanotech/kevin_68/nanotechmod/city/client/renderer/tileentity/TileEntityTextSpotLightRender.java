@@ -54,7 +54,7 @@ public class TileEntityTextSpotLightRender extends TileEntitySpecialRenderer
 			GL11.glScalef(f1, -f1, -f1);
 			this.modelSign.renderSign();
 			GL11.glPopMatrix();
-			FontRenderer fontrenderer = this.getFontRenderer();
+			FontRenderer fontrenderer = this.func_147498_b();
 			f2 = 0.016666668F * f1;
 			GL11.glTranslatef(0.0F, 0.5F * f1, 0.07F * f1);
 			GL11.glScalef(f2 * 5, -f2 * 5, f2 * 5);

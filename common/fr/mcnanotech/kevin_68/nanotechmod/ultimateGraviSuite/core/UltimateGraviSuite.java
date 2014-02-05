@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.core;
+/*package fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.core;
 
 import ic2.api.item.Items;
 
@@ -217,4 +217,4 @@ public class UltimateGraviSuite
 
 		return nbt;
 	}
-}
+}*/

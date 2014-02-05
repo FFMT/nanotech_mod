@@ -2,10 +2,11 @@ package fr.mcnanotech.kevin_68.nanotechmod.city.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -15,11 +16,11 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySunShade;
 
 public class BlockSunShade extends Block
 {
-	public Icon stick;
+	public IIcon stick;
 
-	public BlockSunShade(int id, Material material)
+	public BlockSunShade()
 	{
-		super(id, material);
+		super(Material.wood);
 	}
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
@@ -29,7 +30,7 @@ public class BlockSunShade extends Block
 			int metadata = world.getBlockMetadata(x, y, z);
 			if(metadata == 0)
 			{
-				TileEntity te = world.getBlockTileEntity(x, y, z);
+				TileEntity te = world.getTileEntity(x, y, z);
 
 				if(te != null && te instanceof TileEntitySunShade)
 				{
@@ -40,7 +41,7 @@ public class BlockSunShade extends Block
 			}
 			else if(metadata == 1)
 			{
-				TileEntity te = world.getBlockTileEntity(x, y - 1, z);
+				TileEntity te = world.getTileEntity(x, y - 1, z);
 
 				if(te != null && te instanceof TileEntitySunShade)
 				{
@@ -50,7 +51,7 @@ public class BlockSunShade extends Block
 				}
 				else
 				{
-					te = world.getBlockTileEntity(x, y - 2, z);
+					te = world.getTileEntity(x, y - 2, z);
 					if(te != null && te instanceof TileEntitySunShade)
 					{
 						TileEntitySunShade tesunshade = (TileEntitySunShade)te;
@@ -62,7 +63,7 @@ public class BlockSunShade extends Block
 
 			else if(metadata == 3)
 			{
-				TileEntity te = world.getBlockTileEntity(x, y - 2, z);
+				TileEntity te = world.getTileEntity(x, y - 2, z);
 				if(te != null && te instanceof TileEntitySunShade)
 				{
 					TileEntitySunShade tesunshade = (TileEntitySunShade)te;
@@ -140,7 +141,7 @@ public class BlockSunShade extends Block
 				{
 					for(int k = -1; k < 2; ++k)
 					{
-						if(world.getBlockId(x + j, y + 2, z + k) == this.blockID)
+						if(world.getBlock(x + j, y + 2, z + k).equals(this))
 						{
 							world.setBlockToAir(x + j, y + 2, z + k);
 						}
@@ -148,7 +149,7 @@ public class BlockSunShade extends Block
 				}
 			}
 		}
-		else if(metadata == 1 && world.getBlockMetadata(x, y - 1, z) == 0 && world.getBlockId(x, y - 1, z) == this.blockID)
+		else if(metadata == 1 && world.getBlockMetadata(x, y - 1, z) == 0 && world.getBlock(x, y - 1, z).equals(this))
 		{
 			world.setBlockToAir(x, y, z);
 			world.setBlockToAir(x, y - 1, z);
@@ -162,7 +163,7 @@ public class BlockSunShade extends Block
 				{
 					for(int k = -1; k < 2; ++k)
 					{
-						if(world.getBlockId(x + j, y + 1, z + k) == this.blockID)
+						if(world.getBlock(x + j, y + 1, z + k).equals(this))
 						{
 							world.setBlockToAir(x + j, y + 1, z + k);
 						}
@@ -170,7 +171,7 @@ public class BlockSunShade extends Block
 				}
 			}
 		}
-		else if(world.getBlockMetadata(x, y - 2, z) == 0 && world.getBlockId(x, y - 2, z) == this.blockID)
+		else if(world.getBlockMetadata(x, y - 2, z) == 0 && world.getBlock(x, y - 2, z).equals(this))
 		{
 			world.setBlockToAir(x, y - 1, z);
 			world.setBlockToAir(x, y - 2, z);
@@ -184,7 +185,7 @@ public class BlockSunShade extends Block
 				{
 					for(int k = -1; k < 2; ++k)
 					{
-						if(world.getBlockId(x + j, y, z + k) == this.blockID)
+						if(world.getBlock(x + j, y, z + k).equals(this))
 						{
 							world.setBlockToAir(x + j, y, z + k);
 						}
@@ -194,23 +195,23 @@ public class BlockSunShade extends Block
 		}
 		else if(metadata == 2)
 		{
-			world.setBlock(x, y, z, this.blockID, 2, 1);
+			world.setBlock(x, y, z, this, 2, 1);
 		}
 	}
 
-	public void registerIcons(IconRegister iconregister)
+	public void registerIcons(IIconRegister iconregister)
 	{}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int metadata)
+	public IIcon getIcon(int side, int metadata)
 	{
 		if(metadata == 2)
 		{
-			return Block.cloth.getIcon(0, 0);
+			return Blocks.wool.getIcon(0, 0);
 		}
 		else
 		{
-			return Block.wood.getIcon(3, 0);
+			return Blocks.log.getIcon(3, 0);
 		}
 	}
 

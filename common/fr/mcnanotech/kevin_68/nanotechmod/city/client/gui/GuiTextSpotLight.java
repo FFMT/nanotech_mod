@@ -2,14 +2,11 @@ package fr.mcnanotech.kevin_68.nanotechmod.city.client.gui;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-import java.io.File;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -19,7 +16,6 @@ import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerTextSpotLight;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTextSpotLight;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiBooleanButton;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
@@ -49,24 +45,24 @@ public class GuiTextSpotLight extends FFMTGuiContainerSliderBase
 		int x = (this.width - this.xSize) / 2;
 		int y = (this.height - this.ySize) / 2;
 		Keyboard.enableRepeatEvents(true);
-		this.textField = new GuiTextField(this.fontRenderer, x + 13, y + 30, 300, 12);
+		this.textField = new GuiTextField(this.fontRendererObj, x + 13, y + 30, 300, 12);
 		this.textField.setTextColor(-1);
 		this.textField.setDisabledTextColour(-1);
 		this.textField.setEnableBackgroundDrawing(false);
 		this.textField.setMaxStringLength(40);
 		this.textField.setEnabled(true);
 		this.textField.setText(tileTextSpotLight.getText());
-		this.buttonList.add(autoRotateButton = new FFMTGuiBooleanButton(1, width / 2 - 155, y + 69, 150, 20, I18n.getString("container.spotlight.rotate"), tileTextSpotLight.getRotate()));
-		this.buttonList.add(angleButton = new FFMTGuiSliderForContainer(this, 2, width / 2 - 155, y + 47, 310, 20, I18n.getString("container.spotlight.angle") + " : " + tileTextSpotLight.getAngle(), (float)(tileTextSpotLight.getAngle()) / 360.0F));
-		this.buttonList.add(speedRotationButton = new FFMTGuiSliderForContainer(this, 3, width / 2 - 155, y + 91, I18n.getString("container.spotlight.rotationspeed") + " : " + (tileTextSpotLight.getRotationSpeed() / 10.0F), (float)(tileTextSpotLight.getRotationSpeed()) / 50.0F));
-		this.buttonList.add(reverseRotationButton = new FFMTGuiBooleanButton(4, width / 2 - 155, y + 113, I18n.getString("container.spotlight.rotationreverse"), !tileTextSpotLight.getReverseRotation()));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 5, width / 2 + 5, y + 69, EnumChatFormatting.RED + I18n.getString("container.spotlight.red") + " : " + tileTextSpotLight.getRedValue(), (float)(tileTextSpotLight.getRedValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 6, width / 2 + 5, y + 91, EnumChatFormatting.GREEN + I18n.getString("container.spotlight.green") + " : " + tileTextSpotLight.getGreenValue(), (float)(tileTextSpotLight.getGreenValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 7, width / 2 + 5, y + 113, EnumChatFormatting.BLUE + I18n.getString("container.spotlight.blue") + " : " + tileTextSpotLight.getBlueValue(), (float)(tileTextSpotLight.getBlueValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 8, width / 2 + 5, y + 135, I18n.getString("container.textspotlight.scale") + " : " + tileTextSpotLight.getScale() / 10.0F, (float)(tileTextSpotLight.getScale()) / 50.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 9, width / 2 - 155, y + 135, I18n.getString("container.textspotlight.height") + " : " + tileTextSpotLight.getHeight() / 10.0F, (float)(tileTextSpotLight.getHeight()) / 50.0F));
-		this.buttonList.add(new GuiButton(10, width / 2 - 155, y + 157, 65, 20, I18n.getString("container.spotlight.copy")));
-		this.buttonList.add(new GuiButton(11, width / 2 - 69, y + 157, 65, 20, I18n.getString("container.spotlight.paste")));
+		this.buttonList.add(autoRotateButton = new FFMTGuiBooleanButton(1, width / 2 - 155, y + 69, 150, 20, I18n.format("container.spotlight.rotate"), tileTextSpotLight.getRotate()));
+		this.buttonList.add(angleButton = new FFMTGuiSliderForContainer(this, 2, width / 2 - 155, y + 47, 310, 20, I18n.format("container.spotlight.angle") + " : " + tileTextSpotLight.getAngle(), (float)(tileTextSpotLight.getAngle()) / 360.0F));
+		this.buttonList.add(speedRotationButton = new FFMTGuiSliderForContainer(this, 3, width / 2 - 155, y + 91, I18n.format("container.spotlight.rotationspeed") + " : " + (tileTextSpotLight.getRotationSpeed() / 10.0F), (float)(tileTextSpotLight.getRotationSpeed()) / 50.0F));
+		this.buttonList.add(reverseRotationButton = new FFMTGuiBooleanButton(4, width / 2 - 155, y + 113, I18n.format("container.spotlight.rotationreverse"), !tileTextSpotLight.getReverseRotation()));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 5, width / 2 + 5, y + 69, EnumChatFormatting.RED + I18n.format("container.spotlight.red") + " : " + tileTextSpotLight.getRedValue(), (float)(tileTextSpotLight.getRedValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 6, width / 2 + 5, y + 91, EnumChatFormatting.GREEN + I18n.format("container.spotlight.green") + " : " + tileTextSpotLight.getGreenValue(), (float)(tileTextSpotLight.getGreenValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 7, width / 2 + 5, y + 113, EnumChatFormatting.BLUE + I18n.format("container.spotlight.blue") + " : " + tileTextSpotLight.getBlueValue(), (float)(tileTextSpotLight.getBlueValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 8, width / 2 + 5, y + 135, I18n.format("container.textspotlight.scale") + " : " + tileTextSpotLight.getScale() / 10.0F, (float)(tileTextSpotLight.getScale()) / 50.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 9, width / 2 - 155, y + 135, I18n.format("container.textspotlight.height") + " : " + tileTextSpotLight.getHeight() / 10.0F, (float)(tileTextSpotLight.getHeight()) / 50.0F));
+		this.buttonList.add(new GuiButton(10, width / 2 - 155, y + 157, 65, 20, I18n.format("container.spotlight.copy")));
+		this.buttonList.add(new GuiButton(11, width / 2 - 69, y + 157, 65, 20, I18n.format("container.spotlight.paste")));
 
 		if(!tileTextSpotLight.getRotate())
 		{
@@ -170,11 +166,11 @@ public class GuiTextSpotLight extends FFMTGuiContainerSliderBase
 		{
 			this.sendTextSpotLightPacket((int)(sliderValue * 50), 3);
 		}
-		else if (sliderId == 8)
+		else if(sliderId == 8)
 		{
 			this.sendTextSpotLightPacket(sliderValue * 50);
 		}
-		else if (sliderId == 9)
+		else if(sliderId == 9)
 		{
 			this.sendTextSpotLightPacket((int)(sliderValue * 50), 9);
 		}
@@ -189,36 +185,36 @@ public class GuiTextSpotLight extends FFMTGuiContainerSliderBase
 	{
 		String name = "";
 		int multiValue = 0;
-		
+
 		switch(sliderId)
 		{
 		case 2:
-			name = I18n.getString("container.spotlight.angle") + " : ";
+			name = I18n.format("container.spotlight.angle") + " : ";
 			multiValue = 360;
 			break;
 		case 3:
-			name = I18n.getString("container.spotlight.rotationspeed") + " : ";
+			name = I18n.format("container.spotlight.rotationspeed") + " : ";
 			break;
 		case 5:
-			name = EnumChatFormatting.RED + I18n.getString("container.spotlight.red") + " : ";
+			name = EnumChatFormatting.RED + I18n.format("container.spotlight.red") + " : ";
 			multiValue = 255;
 			break;
 		case 6:
-			name = EnumChatFormatting.GREEN + I18n.getString("container.spotlight.green") + " : ";
+			name = EnumChatFormatting.GREEN + I18n.format("container.spotlight.green") + " : ";
 			multiValue = 255;
 			break;
 		case 7:
-			name = EnumChatFormatting.BLUE + I18n.getString("container.spotlight.blue") + " : ";
+			name = EnumChatFormatting.BLUE + I18n.format("container.spotlight.blue") + " : ";
 			multiValue = 255;
 			break;
 		case 8:
-			name = I18n.getString("container.textspotlight.scale") + " : ";
+			name = I18n.format("container.textspotlight.scale") + " : ";
 			break;
 		case 9:
-			name = I18n.getString("container.textspotlight.height") + " : ";
+			name = I18n.format("container.textspotlight.height") + " : ";
 			break;
 		}
-		
+
 		if(sliderId == 3)
 		{
 			return name + (tileTextSpotLight.getRotationSpeed() / 10.0F);
@@ -233,7 +229,7 @@ public class GuiTextSpotLight extends FFMTGuiContainerSliderBase
 		}
 		else
 		{
-			return name + (int)(sliderValue * multiValue);	
+			return name + (int)(sliderValue * multiValue);
 		}
 	}
 
@@ -245,15 +241,18 @@ public class GuiTextSpotLight extends FFMTGuiContainerSliderBase
 		{
 			dataoutputstream.writeInt(type);
 			dataoutputstream.writeInt(value);
-			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|text", bytearrayoutputstream.toByteArray()));
+			// TODO this.mc.getNetHandler().addToSendQueue(new
+			// Packet250CustomPayload("NTMC|text",
+			// bytearrayoutputstream.toByteArray()));
 		}
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			NanotechMod.nanoLog.severe("Failed to send a packet from a TextSpotLight");
+			// TODO
+			// NanotechMod.nanoLog.severe("Failed to send a packet from a TextSpotLight");
 		}
 	}
-	
+
 	private void sendTextSpotLightPacket(String text)
 	{
 		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
@@ -261,12 +260,15 @@ public class GuiTextSpotLight extends FFMTGuiContainerSliderBase
 		try
 		{
 			dataoutputstream.writeUTF(text);
-			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|text2", bytearrayoutputstream.toByteArray()));
+			// TODO this.mc.getNetHandler().addToSendQueue(new
+			// Packet250CustomPayload("NTMC|text2",
+			// bytearrayoutputstream.toByteArray()));
 		}
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			NanotechMod.nanoLog.severe("Failed to send a packet from a TextSpotLight");
+			// TODO
+			// NanotechMod.nanoLog.severe("Failed to send a packet from a TextSpotLight");
 		}
 	}
 
@@ -277,12 +279,15 @@ public class GuiTextSpotLight extends FFMTGuiContainerSliderBase
 		try
 		{
 			dataoutputstream.writeFloat(value);
-			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|text3", bytearrayoutputstream.toByteArray()));
+			// TODO this.mc.getNetHandler().addToSendQueue(new
+			// Packet250CustomPayload("NTMC|text3",
+			// bytearrayoutputstream.toByteArray()));
 		}
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			NanotechMod.nanoLog.severe("Failed to send a packet from a TextSpotLight");
+			// TODO
+			// NanotechMod.nanoLog.severe("Failed to send a packet from a TextSpotLight");
 		}
 	}
 }

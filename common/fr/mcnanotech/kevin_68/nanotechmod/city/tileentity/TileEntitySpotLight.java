@@ -1,26 +1,17 @@
 package fr.mcnanotech.kevin_68.nanotechmod.city.tileentity;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 import java.util.ArrayList;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
-import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.city.items.NanotechCityItems;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
+import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechCityList;
 
 public class TileEntitySpotLight extends TileEntity implements IInventory
 {
@@ -126,10 +117,10 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 									{
 										int prevKeyRed = this.getRedKey(timeToChange.get(timeToChange.size() - 1) / 10);
 										int nextKeyRed = this.getRedKey(timeToChange.get(i) / 10);
-										int percentAfter0 = timeToChange.get(i)/timeBetwinKey.get(0);
+										int percentAfter0 = timeToChange.get(i) / timeBetwinKey.get(0);
 										int redKeyAt0 = (nextKeyRed - prevKeyRed) * percentAfter0;
-										
-										//Unworking TODO fix
+
+										// Unworking TODO fix
 										if(getTimeLine() <= timeToChange.get(i))
 										{
 											if(prevKeyRed < nextKeyRed)
@@ -138,7 +129,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 												setRedValue((int)(redKeyAt0 + (numberRed * (timeToChange.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
 											}
 											else
-											{	
+											{
 												float numberRed = (redKeyAt0 - nextKeyRed) / (timeToChange.get(i) / 10);
 												setRedValue((int)(redKeyAt0 - (numberRed * (timeToChange.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
 											}
@@ -156,7 +147,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 												setRedValue((int)(prevKeyRed - (numberRed * ((timeBetwinKey.get(i) - timeToChange.get(i)) - (timeToChange.get(i) - getTimeLine())) / 10)));
 											}
 										}
-										//End
+										// End
 										this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 									}
 								}
@@ -170,14 +161,14 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 										int nextKeyGreen = this.getGreenKey(timeToChange.get(i) / 10);
 										int prevKeyBlue = this.getBlueKey(timeToChange.get(i - 1) / 10);
 										int nextKeyBlue = this.getBlueKey(timeToChange.get(i) / 10);
-										
+
 										int prevKeyDarkRed = this.getDarkRedKey(timeToChange.get(i - 1) / 10);
 										int nextKeyDarkRed = this.getDarkRedKey(timeToChange.get(i) / 10);
 										int prevKeyDarkGreen = this.getDarkGreenKey(timeToChange.get(i - 1) / 10);
 										int nextKeyDarkGreen = this.getDarkGreenKey(timeToChange.get(i) / 10);
 										int prevKeyDarkBlue = this.getDarkBlueKey(timeToChange.get(i - 1) / 10);
 										int nextKeyDarkBlue = this.getDarkBlueKey(timeToChange.get(i) / 10);
-										
+
 										if(prevKeyRed < nextKeyRed)
 										{
 											float numberRed = (nextKeyRed - prevKeyRed) / (timeBetwinKey.get(i) / 10);
@@ -188,7 +179,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 											float numberRed = (prevKeyRed - nextKeyRed) / (timeBetwinKey.get(i) / 10);
 											setRedValue((int)(prevKeyRed - (numberRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
 										}
-										
+
 										if(prevKeyGreen < nextKeyGreen)
 										{
 											float numberGreen = (nextKeyGreen - prevKeyGreen) / (timeBetwinKey.get(i) / 10);
@@ -199,7 +190,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 											float numberGreen = (prevKeyGreen - nextKeyGreen) / (timeBetwinKey.get(i) / 10);
 											setGreenValue((int)(prevKeyGreen - (numberGreen * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
 										}
-										
+
 										if(prevKeyBlue < nextKeyBlue)
 										{
 											float numberBlue = (nextKeyBlue - prevKeyBlue) / (timeBetwinKey.get(i) / 10);
@@ -210,7 +201,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 											float numberBlue = (prevKeyBlue - nextKeyBlue) / (timeBetwinKey.get(i) / 10);
 											setBlueValue((int)(prevKeyBlue - (numberBlue * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
 										}
-										
+
 										if(prevKeyDarkRed < nextKeyDarkRed)
 										{
 											float numberDarkRed = (nextKeyDarkRed - prevKeyDarkRed) / (timeBetwinKey.get(i) / 10);
@@ -221,7 +212,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 											float numberDarkRed = (prevKeyDarkRed - nextKeyDarkRed) / (timeBetwinKey.get(i) / 10);
 											setDarkRedValue((int)(prevKeyDarkRed - (numberDarkRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
 										}
-										
+
 										if(prevKeyDarkGreen < nextKeyDarkGreen)
 										{
 											float numberDarkGreen = (nextKeyDarkGreen - prevKeyDarkGreen) / (timeBetwinKey.get(i) / 10);
@@ -232,7 +223,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 											float numberDarkGreen = (prevKeyDarkGreen - nextKeyDarkGreen) / (timeBetwinKey.get(i) / 10);
 											setDarkGreenValue((int)(prevKeyDarkGreen - (numberDarkGreen * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
 										}
-										
+
 										if(prevKeyDarkBlue < nextKeyDarkBlue)
 										{
 											float numberDarkBlue = (nextKeyDarkBlue - prevKeyDarkBlue) / (timeBetwinKey.get(i) / 10);
@@ -255,7 +246,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 						if(hasKey(time) && lastTimeUse != time)
 						{
 							lastTimeUse = time;
-							
+
 							setRedValue(getRedKey(time));
 							setGreenValue(getGreenKey(time));
 							setBlueValue(getBlueKey(time));
@@ -403,10 +394,10 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		reverseRotationkey = nbtTagCompound.getIntArray("SpotLightTimeReverseRotation");
 		smoothMode = nbtTagCompound.getBoolean("SpotLightSmoothMode");
 
-		NBTTagList tagList = nbtTagCompound.getTagList("Inventory");
+		NBTTagList tagList = nbtTagCompound.getTagList("Inventory", 10);
 		for(int i = 0; i < tagList.tagCount(); i++)
 		{
-			NBTTagCompound tag = (NBTTagCompound)tagList.tagAt(i);
+			NBTTagCompound tag = (NBTTagCompound)tagList.getCompoundTagAt(i);
 			byte slot = tag.getByte("Slot");
 
 			if(slot >= 0 && slot < inventory.length)
@@ -762,7 +753,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
-		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -831,13 +822,13 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	}
 
 	@Override
-	public String getInvName()
+	public String getInventoryName()
 	{
 		return "container.spotLight";
 	}
 
 	@Override
-	public boolean isInvNameLocalized()
+	public boolean hasCustomInventoryName()
 	{
 		return this.customName != null && this.customName.length() > 0;
 	}
@@ -849,11 +840,11 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	}
 
 	@Override
-	public void openChest()
+	public void openInventory()
 	{}
 
 	@Override
-	public void closeChest()
+	public void closeInventory()
 	{}
 
 	@Override
@@ -868,23 +859,21 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		return 65536.0D;
 	}
 
-	public Packet getDescriptionPacket()
-	{
-		NBTTagCompound nbttagcompound = new NBTTagCompound();
-		this.writeToNBT(nbttagcompound);
-		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4, nbttagcompound);
-	}
-
-	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
-	{
-		this.readFromNBT(pkt.data);
-	}
+	/*
+	 * public Packet getDescriptionPacket() { NBTTagCompound nbttagcompound =
+	 * new NBTTagCompound(); this.writeToNBT(nbttagcompound); return new
+	 * Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4,
+	 * nbttagcompound); }
+	 * 
+	 * public void onDataPacket(INetworkManager net, Packet132TileEntityData
+	 * pkt) { this.readFromNBT(pkt.data); }
+	 */
 
 	public void addNbtTagToItem()
 	{
 		ItemStack stack = getStackInSlot(1);
-		ItemStack newStack = new ItemStack(NanotechCityItems.configCopy);
-		if(stack != null && stack.itemID == NanotechCityItems.configCopy.itemID)
+		ItemStack newStack = new ItemStack(NanotechCityList.configCopier);
+		if(stack != null && stack.getItem() == NanotechCityList.configCopier)
 		{
 			newStack.setTagCompound(new NBTTagCompound());
 			newStack.getTagCompound().setInteger("Type", 0);
@@ -923,7 +912,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	public void setConfig()
 	{
 		ItemStack stack = getStackInSlot(1);
-		if(stack != null && stack.itemID == NanotechCityItems.configCopy.itemID)
+		if(stack != null && stack.getItem() == NanotechCityList.configCopier)
 		{
 			if(stack.hasTagCompound())
 			{

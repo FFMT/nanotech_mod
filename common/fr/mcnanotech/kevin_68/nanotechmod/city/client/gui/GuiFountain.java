@@ -7,7 +7,6 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
@@ -15,7 +14,6 @@ import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerFountain;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityFountain;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 
 public class GuiFountain extends GuiContainer
 {
@@ -120,12 +118,15 @@ public class GuiFountain extends GuiContainer
 			dataoutputstream.writeFloat(width);
 			dataoutputstream.writeBoolean(doRotate);
 			dataoutputstream.writeBoolean(isAnimated);
-			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|fount", bytearrayoutputstream.toByteArray()));
+			// TODO this.mc.getNetHandler().addToSendQueue(new
+			// Packet250CustomPayload("NTMC|fount",
+			// bytearrayoutputstream.toByteArray()));
 		}
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			NanotechMod.nanoLog.severe("Failed to send a packet from a fountain");
+			// TODO
+			// NanotechModCity.nanoLog.severe("Failed to send a packet from a fountain");
 		}
 	}
 
@@ -153,11 +154,11 @@ public class GuiFountain extends GuiContainer
 			animPos = 10;
 		}
 
-		fontRenderer.drawString(I18n.getString("container.fountain"), 6, 6, 4210752);
-		fontRenderer.drawString(String.valueOf(tileFoutain.height), xSize / 2 - 5, ySize + -143, 4210752);
-		fontRenderer.drawString(String.valueOf(tileFoutain.width), xSize / 2 - 5, ySize + -121, 4210752);
-		fontRenderer.drawString(String.valueOf(tileFoutain.rotate), xSize / 2 - rotatePos, ySize + -99, 4210752);
-		fontRenderer.drawString(String.valueOf(tileFoutain.animated), xSize / 2 - animPos, ySize + -77, 4210752);
+		fontRendererObj.drawString(I18n.format("container.fountain"), 6, 6, 4210752);
+		fontRendererObj.drawString(String.valueOf(tileFoutain.height), xSize / 2 - 5, ySize + -143, 4210752);
+		fontRendererObj.drawString(String.valueOf(tileFoutain.width), xSize / 2 - 5, ySize + -121, 4210752);
+		fontRendererObj.drawString(String.valueOf(tileFoutain.rotate), xSize / 2 - rotatePos, ySize + -99, 4210752);
+		fontRendererObj.drawString(String.valueOf(tileFoutain.animated), xSize / 2 - animPos, ySize + -77, 4210752);
 	}
 
 	@Override

@@ -5,14 +5,11 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.city.items.NanotechCityItems;
+import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechCityList;
 
 public class TileEntityTextSpotLight extends TileEntity implements IInventory
 {
@@ -139,11 +136,11 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 		this.scale = nbtTagCompound.getFloat("Scale");
 		this.height = nbtTagCompound.getInteger("Height");
 
-		NBTTagList tagList = nbtTagCompound.getTagList("Inventory");
+		NBTTagList tagList = nbtTagCompound.getTagList("Inventory", 10);
 
 		for(int i = 0; i < tagList.tagCount(); i++)
 		{
-			NBTTagCompound tag = (NBTTagCompound)tagList.tagAt(i);
+			NBTTagCompound tag = (NBTTagCompound)tagList.getCompoundTagAt(i);
 			byte slot = tag.getByte("Slot");
 
 			if(slot >= 0 && slot < inventory.length)
@@ -157,17 +154,15 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 		}
 	}
 
-	public Packet getDescriptionPacket()
-	{
-		NBTTagCompound nbttagcompound = new NBTTagCompound();
-		this.writeToNBT(nbttagcompound);
-		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4, nbttagcompound);
-	}
-
-	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
-	{
-		this.readFromNBT(pkt.data);
-	}
+	/*
+	 * public Packet getDescriptionPacket() { NBTTagCompound nbttagcompound =
+	 * new NBTTagCompound(); this.writeToNBT(nbttagcompound); return new
+	 * Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4,
+	 * nbttagcompound); }
+	 * 
+	 * public void onDataPacket(INetworkManager net, Packet132TileEntityData
+	 * pkt) { this.readFromNBT(pkt.data); }
+	 */
 
 	public void setText(String s)
 	{
@@ -271,7 +266,7 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
-		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -339,13 +334,13 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 	}
 
 	@Override
-	public String getInvName()
+	public String getInventoryName()
 	{
 		return "container.textspotLight";
 	}
 
 	@Override
-	public boolean isInvNameLocalized()
+	public boolean hasCustomInventoryName()
 	{
 		return this.customName != null && this.customName.length() > 0;
 	}
@@ -357,11 +352,11 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 	}
 
 	@Override
-	public void openChest()
+	public void openInventory()
 	{}
 
 	@Override
-	public void closeChest()
+	public void closeInventory()
 	{}
 
 	@Override
@@ -369,11 +364,12 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 	{
 		return false;
 	}
+
 	public void addNbtTagToItem()
 	{
 		ItemStack stack = getStackInSlot(1);
-		ItemStack newStack = new ItemStack(NanotechCityItems.configCopy);
-		if(stack != null && stack.itemID == NanotechCityItems.configCopy.itemID)
+		ItemStack newStack = new ItemStack(NanotechCityList.configCopier);
+		if(stack != null && stack.getItem() == NanotechCityList.configCopier)
 		{
 			newStack.setTagCompound(new NBTTagCompound());
 			newStack.getTagCompound().setInteger("Type", 1);
@@ -394,7 +390,7 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 	public void setConfig()
 	{
 		ItemStack stack = getStackInSlot(1);
-		if(stack != null && stack.itemID == NanotechCityItems.configCopy.itemID)
+		if(stack != null && stack.getItem() == NanotechCityList.configCopier)
 		{
 			if(stack.hasTagCompound())
 			{

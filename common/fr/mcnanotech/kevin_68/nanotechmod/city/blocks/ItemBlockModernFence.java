@@ -1,26 +1,27 @@
 package fr.mcnanotech.kevin_68.nanotechmod.city.blocks;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockModernFence extends ItemBlock
 {
-	public ItemBlockModernFence(int id)
+	public ItemBlockModernFence(Block block)
 	{
-		super(id);
+		super(block);
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister iconRegister)
+	public void registerIcons(IIconRegister iconRegister)
 	{
 		this.itemIcon = iconRegister.registerIcon("nanotechmodcity:modernFence");
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamage(int par1)
+	public IIcon getIconFromDamage(int par1)
 	{
 		return itemIcon;
 	}

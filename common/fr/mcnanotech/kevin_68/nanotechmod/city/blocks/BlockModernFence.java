@@ -5,8 +5,9 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
@@ -15,13 +16,13 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityModernFence;
 
 public class BlockModernFence extends BlockContainer
 {
-	public BlockModernFence(int id)
+	public BlockModernFence()
 	{
-		super(id, Material.iron);
+		super(Material.iron);
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world)
+	public TileEntity createNewTileEntity(World world, int metadata)
 	{
 		return new TileEntityModernFence();
 	}
@@ -171,14 +172,13 @@ public class BlockModernFence extends BlockContainer
 
 	public boolean canConnectFenceTo(IBlockAccess blockAccess, int x, int y, int z, boolean b)
 	{
-		int l = blockAccess.getBlockId(x, y, z);
+		Block block = blockAccess.getBlock(x, y, z);
 
-		if(l != this.blockID && b)
+		if(block.equals(this) && b)
 		{
-			Block block = Block.blocksList[l];
-			return block != null && block.blockMaterial.isOpaque() && block.renderAsNormalBlock() ? block.blockMaterial != Material.pumpkin : false;
+			return block != this && block != Blocks.fence_gate ? (block.getMaterial().isOpaque() && block.renderAsNormalBlock() ? block.getMaterial() != Material.gourd : false) : true;
 		}
-		else if(l == this.blockID)
+		else if(block == this)
 		{
 			return true;
 		}
@@ -188,7 +188,7 @@ public class BlockModernFence extends BlockContainer
 		}
 	}
 
-	public void registerIcons(IconRegister iconregister)
+	public void registerIcons(IIconRegister iconregister)
 	{
 		this.blockIcon = iconregister.registerIcon("iron_block");
 	}

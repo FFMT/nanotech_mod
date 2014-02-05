@@ -1,24 +1,9 @@
 package fr.mcnanotech.kevin_68.nanotechmod.city.network;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet250CustomPayload;
-import cpw.mods.fml.common.network.IPacketHandler;
-import cpw.mods.fml.common.network.Player;
-import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerFountain;
-import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerSpotLight;
-import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerTextSpotLight;
-import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityFountain;
-import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
-import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTextSpotLight;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
-
-public class PacketHandler implements IPacketHandler
+public class PacketHandler //implements IPacketHandler
 {
-	@Override
+	/*@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player)
 	{
 		EntityPlayer playerSender = (EntityPlayer)player;
@@ -357,5 +342,5 @@ public class PacketHandler implements IPacketHandler
 			exception.printStackTrace();
 			NanotechMod.nanoLog.severe("Failed to handle TextSpotLight packet");
 		}
-	}
+	}*/
 }

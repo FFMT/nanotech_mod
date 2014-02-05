@@ -2,36 +2,35 @@ package fr.mcnanotech.kevin_68.nanotechmod.city.blocks;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechModCity;
-import fr.mcnanotech.kevin_68.nanotechmod.city.items.NanotechCityItems;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
 
 public class BlockSpotLight extends BlockContainer
 {
-	private Icon top;
-	private Icon side;
+	private IIcon top;
+	private IIcon side;
 
-	public BlockSpotLight(int id)
+	public BlockSpotLight()
 	{
-		super(id, Material.iron);
+		super(Material.iron);
 	}
 
-	public TileEntity createNewTileEntity(World world)
+	public TileEntity createNewTileEntity(World world, int metadata)
 	{
 		return new TileEntitySpotLight();
 	}
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
-		TileEntity tileentity = world.getBlockTileEntity(x, y, z);
+		TileEntity tileentity = world.getTileEntity(x, y, z);
 		ItemStack itemstack = player.inventory.getCurrentItem();
 
 		if(tileentity == null || player.isSneaking())
@@ -61,14 +60,14 @@ public class BlockSpotLight extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister iconregister)
+	public void registerIcons(IIconRegister iconregister)
 	{
 		this.side = iconregister.registerIcon("nanotechmodcity:SpotLightSides");
 		this.top = iconregister.registerIcon("nanotechmodcity:SpotLightTopAndBottom");
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int metadata)
+	public IIcon getIcon(int side, int metadata)
 	{
 		if(side == 1 || side == 0)
 		{

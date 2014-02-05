@@ -6,7 +6,6 @@ import java.io.DataOutputStream;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
@@ -14,7 +13,6 @@ import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerSpotLight2;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 
@@ -25,6 +23,7 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 	protected InventoryPlayer invPlayer;
 	protected TileEntitySpotLight tileSpotLight;
 	protected World world;
+
 	public GuiSpotLightCreateKey(InventoryPlayer playerInventory, TileEntitySpotLight tileEntity, World world)
 	{
 		super(new ContainerSpotLight2(tileEntity, playerInventory, world));
@@ -39,9 +38,9 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		super.initGui();
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x + 3, y + 10, 170, 20, I18n.getString("container.spotlight.time") + ": 0.0", 0));
-		this.buttonList.add(new GuiButton(1, x + 13, y + 115, 150, 20, I18n.getString("container.spotlight.back")));
-		this.buttonList.add(new GuiButton(2, x + 13, y + 90, 150, 20, I18n.getString("container.spotlight.createkey")));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x + 3, y + 10, 170, 20, I18n.format("container.spotlight.time") + ": 0.0", 0));
+		this.buttonList.add(new GuiButton(1, x + 13, y + 115, 150, 20, I18n.format("container.spotlight.back")));
+		this.buttonList.add(new GuiButton(2, x + 13, y + 90, 150, 20, I18n.format("container.spotlight.createkey")));
 		sendSpotLightPacket(0, 14);
 	}
 
@@ -55,7 +54,7 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		{
 			if(tileSpotLight.hasKey((tileSpotLight.getCreateKeyTime())))
 			{
-				this.mc.displayGuiScreen(new GuiSpotLightConfirm(tileSpotLight, invPlayer, world, I18n.getString("container.spotlight.sure") + " " + I18n.getString("container.spotlight.overwrite"), I18n.getString("container.spotlight.overwrite"), I18n.getString("container.spotlight.cancel"), 1));
+				this.mc.displayGuiScreen(new GuiSpotLightConfirm(tileSpotLight, invPlayer, world, I18n.format("container.spotlight.sure") + " " + I18n.format("container.spotlight.overwrite"), I18n.format("container.spotlight.overwrite"), I18n.format("container.spotlight.cancel"), 1));
 			}
 			else
 			{
@@ -79,7 +78,7 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		String name = "";
 		if(sliderId == 0)
 		{
-			name = I18n.getString("container.spotlight.time") + ": " + (float)(((int)((float)(sliderValue * 120))) / 2.0F);
+			name = I18n.format("container.spotlight.time") + ": " + (float)(((int)((float)(sliderValue * 120))) / 2.0F);
 		}
 		return name;
 	}
@@ -93,15 +92,18 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 			dataoutputstream.writeInt(type);
 			dataoutputstream.writeInt(value);
 			dataoutputstream.writeInt(time);
-			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|lightKey", bytearrayoutputstream.toByteArray()));
+			// TODO this.mc.getNetHandler().addToSendQueue(new
+			// Packet250CustomPayload("NTMC|lightKey",
+			// bytearrayoutputstream.toByteArray()));
 		}
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			NanotechMod.nanoLog.severe("Failed to send a packet from a SpotLight Key");
+			// TODO
+			// NanotechModCity.nanoLog.severe("Failed to send a packet from a SpotLight Key");
 		}
 	}
-	
+
 	private void sendSpotLightPacket(int value, int type)
 	{
 		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
@@ -110,16 +112,18 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		{
 			dataoutputstream.writeInt(type);
 			dataoutputstream.writeInt(value);
-			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
+			// TODO this.mc.getNetHandler().addToSendQueue(new
+			// Packet250CustomPayload("NTMC|light",
+			// bytearrayoutputstream.toByteArray()));
 		}
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			NanotechMod.nanoLog.severe("Failed to send a packet from a SpotLight");
+			// TODO
+			// NanotechModCity.nanoLog.severe("Failed to send a packet from a SpotLight");
 		}
 	}
 
-	
 	public void createKey(int time)
 	{
 		sendKeyPacket(1, 0, time);
@@ -135,7 +139,8 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		sendKeyPacket(tileSpotLight.getRotationSpeed(), 10, time);
 		sendKeyPacket(tileSpotLight.getSecondaryLazer() ? 1 : 0, 11, time);
 		sendKeyPacket(tileSpotLight.getReverseRotation() ? 1 : 0, 12, time);
-		//this.mc.displayGuiScreen(new GuiSpotLightTimeLine(invPlayer, tileSpotLight, world));
+		// this.mc.displayGuiScreen(new GuiSpotLightTimeLine(invPlayer,
+		// tileSpotLight, world));
 	}
 
 	@Override

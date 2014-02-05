@@ -1,14 +1,11 @@
 package fr.mcnanotech.kevin_68.nanotechmod.city.tileentity;
 
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.city.blocks.NanotechCityBlock;
+import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechCityList;
 
 public class TileEntitySunShade extends TileEntity
 {
@@ -26,17 +23,15 @@ public class TileEntitySunShade extends TileEntity
 		isOpen = nbtTagCompound.getBoolean("open");
 	}
 
-	public Packet getDescriptionPacket()
-	{
-		NBTTagCompound nbttagcompound = new NBTTagCompound();
-		this.writeToNBT(nbttagcompound);
-		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4, nbttagcompound);
-	}
-
-	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
-	{
-		this.readFromNBT(pkt.data);
-	}
+	/*
+	 * public Packet getDescriptionPacket() { NBTTagCompound nbttagcompound =
+	 * new NBTTagCompound(); this.writeToNBT(nbttagcompound); return new
+	 * Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4,
+	 * nbttagcompound); }
+	 * 
+	 * public void onDataPacket(INetworkManager net, Packet132TileEntityData
+	 * pkt) { this.readFromNBT(pkt.data); }
+	 */
 
 	public boolean getIsOpen()
 	{
@@ -70,11 +65,11 @@ public class TileEntitySunShade extends TileEntity
 					{
 						if(j == 0 && k == 0)
 						{
-							this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityBlock.sunShade.blockID, 3, 3);
+							this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityList.sunShade, 3, 3);
 						}
 						else
 						{
-							this.worldObj.setBlock(xCoord + j, yCoord + 2, zCoord + k, NanotechCityBlock.sunShade.blockID, 2, 3);
+							this.worldObj.setBlock(xCoord + j, yCoord + 2, zCoord + k, NanotechCityList.sunShade, 2, 3);
 						}
 					}
 					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
@@ -94,7 +89,7 @@ public class TileEntitySunShade extends TileEntity
 				{
 					if(j == 0 && k == 0)
 					{
-						this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityBlock.sunShade.blockID, 1, 3);
+						this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityList.sunShade, 1, 3);
 					}
 					else
 					{

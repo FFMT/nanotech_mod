@@ -2,7 +2,7 @@ package fr.mcnanotech.kevin_68.nanotechmod.city.blocks;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -14,13 +14,13 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTextSpotLigh
 
 public class BlockTextSpotLight extends BlockContainer
 {
-	protected BlockTextSpotLight(int id)
+	protected BlockTextSpotLight()
 	{
-		super(id, Material.iron);
+		super(Material.iron);
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world)
+	public TileEntity createNewTileEntity(World world, int metadata)
 	{
 		return new TileEntityTextSpotLight();
 	}
@@ -41,14 +41,14 @@ public class BlockTextSpotLight extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister iconregister)
+	public void registerIcons(IIconRegister iconregister)
 	{
 		this.blockIcon = iconregister.registerIcon("nanotechmodcity:SpotLightSides");
 	}
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
-		TileEntity tileentity = world.getBlockTileEntity(x, y, z);
+		TileEntity tileentity = world.getTileEntity(x, y, z);
 		ItemStack itemstack = player.inventory.getCurrentItem();
 
 		if(tileentity == null || player.isSneaking())

@@ -3,20 +3,16 @@ package fr.mcnanotech.kevin_68.nanotechmod.city.client.gui;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerSpotLight2;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
-import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.network.packet.Packet250CustomPayload;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
 
 public class GuiSpotLightConfirm extends GuiContainer
 {
@@ -29,7 +25,7 @@ public class GuiSpotLightConfirm extends GuiContainer
 	protected InventoryPlayer invPlayer;
 	protected TileEntitySpotLight tileSpotLight;
 	protected World world;
-	
+
 	public GuiSpotLightConfirm(TileEntitySpotLight tile, InventoryPlayer invplay, World world, String actionname, String yesbutton, String nobutton, int guiid)
 	{
 		super(new ContainerSpotLight2(tile, invplay, world));
@@ -41,7 +37,7 @@ public class GuiSpotLightConfirm extends GuiContainer
 		tileSpotLight = tile;
 		this.world = world;
 	}
-	
+
 	@Override
 	public void initGui()
 	{
@@ -51,7 +47,7 @@ public class GuiSpotLightConfirm extends GuiContainer
 		this.buttonList.add(new GuiButton(1, x + 13, y + 90, 150, 20, yes));
 		this.buttonList.add(new GuiButton(2, x + 13, y + 115, 150, 20, no));
 	}
-	
+
 	protected void actionPerformed(GuiButton guibutton)
 	{
 		if(guibutton.id == 1)
@@ -61,7 +57,7 @@ public class GuiSpotLightConfirm extends GuiContainer
 				sendKeyPacket(0, 0, tileSpotLight.getSelectedButtonid());
 				this.mc.displayGuiScreen(new GuiSpotLightTimeLine(invPlayer, tileSpotLight, world));
 			}
-			else 
+			else
 			{
 				sendKeyPacket(0, 0, tileSpotLight.getCreateKeyTime());
 				createKey(tileSpotLight.getCreateKeyTime());
@@ -80,7 +76,7 @@ public class GuiSpotLightConfirm extends GuiContainer
 			}
 		}
 	}
-	
+
 	private void sendKeyPacket(int value, int type, int time)
 	{
 		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
@@ -90,15 +86,18 @@ public class GuiSpotLightConfirm extends GuiContainer
 			dataoutputstream.writeInt(type);
 			dataoutputstream.writeInt(value);
 			dataoutputstream.writeInt(time);
-			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|lightKey", bytearrayoutputstream.toByteArray()));
+			// TODO this.mc.getNetHandler().addToSendQueue(new
+			// Packet250CustomPayload("NTMC|lightKey",
+			// bytearrayoutputstream.toByteArray()));
 		}
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			NanotechMod.nanoLog.severe("Failed to send a packet from a SpotLight Key");
+			// TODO
+			// NanotechModCity.nanoLog.severe("Failed to send a packet from a SpotLight Key");
 		}
 	}
-	
+
 	public void createKey(int time)
 	{
 		sendKeyPacket(1, 0, time);
@@ -108,9 +107,10 @@ public class GuiSpotLightConfirm extends GuiContainer
 		sendKeyPacket(tileSpotLight.getDarkRedValue(), 4, time);
 		sendKeyPacket(tileSpotLight.getDarkGreenValue(), 5, time);
 		sendKeyPacket(tileSpotLight.getDarkBlueValue(), 6, time);
-		//this.mc.displayGuiScreen(new GuiSpotLightTimeLine(invPlayer, tileSpotLight, world));
+		// this.mc.displayGuiScreen(new GuiSpotLightTimeLine(invPlayer,
+		// tileSpotLight, world));
 	}
-	
+
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
@@ -119,6 +119,6 @@ public class GuiSpotLightConfirm extends GuiContainer
 		int y = (height - ySize) / 2;
 		this.mc.renderEngine.bindTexture(texture);
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-		this.drawCenteredString(this.fontRenderer, action, width/2, y + 10, 0xff0000);
+		this.drawCenteredString(this.fontRendererObj, action, width / 2, y + 10, 0xff0000);
 	}
 }

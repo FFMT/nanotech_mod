@@ -6,15 +6,8 @@ import net.minecraft.item.Item;
 
 public class NanotechCityItems
 {
-	public static Item configCopy;
-	
 	public static void initItems()
 	{
-		configCopy = new ItemConfigCopy(NanotechModCity.configCopyID).setUnlocalizedName("configCopier").setCreativeTab(NanotechModCity.cityTab);
-	}
-
-	public static void registerItem()
-	{
-		GameRegistry.registerItem(configCopy, "configCopier", "NanotechModCity");
+		GameRegistry.registerItem(new ItemConfigCopy().setUnlocalizedName("configCopier").setCreativeTab(NanotechModCity.cityTab), "configCopier", "NanotechModCity");
 	}
 }

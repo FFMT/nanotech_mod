@@ -39,7 +39,7 @@ public class TileEntityLampLightRender extends TileEntitySpecialRenderer
 		GL11.glPopMatrix();
 	}
 
-	private void adjustLightFixture(World world, int i, int j, int k, Block block)
+	/*private void adjustLightFixture(World world, int i, int j, int k, Block block)
 	{
 		Tessellator tess = Tessellator.instance;
 		float brightness = block.getBlockBrightness(world, i, j, k);
@@ -48,5 +48,5 @@ public class TileEntityLampLightRender extends TileEntitySpecialRenderer
 		int divModifier = skyLight / 65536;
 		tess.setColorOpaque_F(brightness, brightness, brightness);
 		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)modulousModifier, divModifier);
-	}
+	}*/
 }

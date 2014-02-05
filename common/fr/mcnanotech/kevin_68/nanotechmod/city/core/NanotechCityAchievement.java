@@ -1,8 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotechmod.city.core;
 
-import cpw.mods.fml.common.Loader;
 import net.minecraft.stats.Achievement;
-import fr.mcnanotech.kevin_68.nanotechmod.city.blocks.NanotechCityBlock;
+import cpw.mods.fml.common.Loader;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechAchievement;
 
 public class NanotechCityAchievement
@@ -11,9 +10,9 @@ public class NanotechCityAchievement
 
 	public static void initAchievement()
 	{
-		blockSpotLight = new Achievement(12581, "blockSpotLight", 1, -1, NanotechCityBlock.spotLight, Loader.isModLoaded("NanotechMod") ? NanotechAchievement.getInstallModAchievement() : null).registerAchievement();
-		blockTrail = new Achievement(12582, "blockTrail", 1, -2, NanotechCityBlock.trail, Loader.isModLoaded("NanotechMod") ? NanotechAchievement.getInstallModAchievement() : null).registerAchievement();
-		blockTrashCan = new Achievement(12583, "blockTrashCan", 1, -3, NanotechCityBlock.trashcan, Loader.isModLoaded("NanotechMod") ? NanotechAchievement.getInstallModAchievement() : null).registerAchievement();
+		blockSpotLight = new Achievement("nanotechmodcityachievement1", "blockSpotLight", 1, -1, NanotechCityList.spotLight, Loader.isModLoaded("NanotechMod") ? NanotechAchievement.getInstallModAchievement() : null);
+		blockTrail = new Achievement("nanotechmodcityachievement2", "blockTrail", 1, -2, NanotechCityList.trail, Loader.isModLoaded("NanotechMod") ? NanotechAchievement.getInstallModAchievement() : null);
+		blockTrashCan = new Achievement("nanotechmodcityachievement3", "blockTrashCan", 1, -3, NanotechCityList.trashcan, Loader.isModLoaded("NanotechMod") ? NanotechAchievement.getInstallModAchievement() : null);
 	}
 
 	public static void addAchievementInPage()

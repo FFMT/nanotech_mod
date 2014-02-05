@@ -3,13 +3,9 @@ package fr.mcnanotech.kevin_68.nanotechmod.city.client.gui;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -17,10 +13,7 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerSpotLight;
-import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechModCity;
-import fr.mcnanotech.kevin_68.nanotechmod.city.items.NanotechCityItems;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiBooleanButton;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
@@ -56,23 +49,23 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, width / 2 + 5, y + 47, EnumChatFormatting.RED + I18n.getString("container.spotlight.red") + " : " + tileSpotLight.getRedValue(), (float)(tileSpotLight.getRedValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 1, width / 2 + 5, y + 69, EnumChatFormatting.GREEN + I18n.getString("container.spotlight.green") + " : " + tileSpotLight.getGreenValue(), (float)(tileSpotLight.getGreenValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 2, width / 2 + 5, y + 91, EnumChatFormatting.BLUE + I18n.getString("container.spotlight.blue") + " : " + tileSpotLight.getBlueValue(), (float)(tileSpotLight.getBlueValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 3, width / 2 + 5, y + 113, EnumChatFormatting.DARK_RED + I18n.getString("container.spotlight.darkred") + " : " + tileSpotLight.getDarkRedValue(), (float)(tileSpotLight.getDarkRedValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 4, width / 2 + 5, y + 135, EnumChatFormatting.DARK_GREEN + I18n.getString("container.spotlight.darkgreen") + " : " + tileSpotLight.getDarkGreenValue(), (float)(tileSpotLight.getDarkGreenValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 5, width / 2 + 5, y + 157, EnumChatFormatting.DARK_BLUE + I18n.getString("container.spotlight.darkblue") + " : " + tileSpotLight.getDarkBlueValue(), (float)(tileSpotLight.getDarkBlueValue()) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 6, width / 2 - 155, y + 25, 310, 20, EnumChatFormatting.WHITE + I18n.getString("container.spotlight.angle") + " 1 : " + tileSpotLight.getAngle1(), (float)(tileSpotLight.getAngle1()) / 360.0F));
-		this.buttonList.add(angle2Button = new FFMTGuiSliderForContainer(this, 7, width / 2 - 155, y + 47, I18n.getString("container.spotlight.angle") + " 2 : " + tileSpotLight.getAngle2(), (float)(tileSpotLight.getAngle2()) / 180.0F));
-		this.buttonList.add(autoRotateButton = new FFMTGuiBooleanButton(8, width / 2 - 155, y + 69, 150, 20, I18n.getString("container.spotlight.rotate"), tileSpotLight.getAutoRotate()));
-		this.buttonList.add(speedRotationButton = new FFMTGuiSliderForContainer(this, 9, width / 2 - 155, y + 91, I18n.getString("container.spotlight.rotationspeed") + " : " + (tileSpotLight.getRotationSpeed() / 10.0F), (float)(tileSpotLight.getRotationSpeed()) / 50.0F));
-		this.buttonList.add(reverseRotationButton = new FFMTGuiBooleanButton(11, width / 2 - 155, y + 113, I18n.getString("container.spotlight.rotationreverse"), !tileSpotLight.getReverseRotation()));
-		this.buttonList.add(secondaryLazerButton = new FFMTGuiBooleanButton(10, width / 2 - 155, y + 135, I18n.getString("container.spotlight.secondlazer"), tileSpotLight.getSecondaryLazer()));
-		this.buttonList.add(new GuiButton(12, width / 2 - 155, y + 157, 65, 20, I18n.getString("container.spotlight.copy")));
-		this.buttonList.add(new GuiButton(13, width / 2 - 69, y + 157, 65, 20, I18n.getString("container.spotlight.paste")));
-		this.buttonList.add(new GuiButton(14, width / 2 + 90, y + 185, 65, 20, I18n.getString("container.spotlight.timeline")));
-		this.buttonList.add(timeLineModeButton = new FFMTGuiBooleanButton(15, width / 2 - 155, y + 185, 65, 20, I18n.getString("container.spotlight.timeline"), tileSpotLight.getTimeLineMode()));
-		
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, width / 2 + 5, y + 47, EnumChatFormatting.RED + I18n.format("container.spotlight.red") + " : " + tileSpotLight.getRedValue(), (float)(tileSpotLight.getRedValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 1, width / 2 + 5, y + 69, EnumChatFormatting.GREEN + I18n.format("container.spotlight.green") + " : " + tileSpotLight.getGreenValue(), (float)(tileSpotLight.getGreenValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 2, width / 2 + 5, y + 91, EnumChatFormatting.BLUE + I18n.format("container.spotlight.blue") + " : " + tileSpotLight.getBlueValue(), (float)(tileSpotLight.getBlueValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 3, width / 2 + 5, y + 113, EnumChatFormatting.DARK_RED + I18n.format("container.spotlight.darkred") + " : " + tileSpotLight.getDarkRedValue(), (float)(tileSpotLight.getDarkRedValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 4, width / 2 + 5, y + 135, EnumChatFormatting.DARK_GREEN + I18n.format("container.spotlight.darkgreen") + " : " + tileSpotLight.getDarkGreenValue(), (float)(tileSpotLight.getDarkGreenValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 5, width / 2 + 5, y + 157, EnumChatFormatting.DARK_BLUE + I18n.format("container.spotlight.darkblue") + " : " + tileSpotLight.getDarkBlueValue(), (float)(tileSpotLight.getDarkBlueValue()) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 6, width / 2 - 155, y + 25, 310, 20, EnumChatFormatting.WHITE + I18n.format("container.spotlight.angle") + " 1 : " + tileSpotLight.getAngle1(), (float)(tileSpotLight.getAngle1()) / 360.0F));
+		this.buttonList.add(angle2Button = new FFMTGuiSliderForContainer(this, 7, width / 2 - 155, y + 47, I18n.format("container.spotlight.angle") + " 2 : " + tileSpotLight.getAngle2(), (float)(tileSpotLight.getAngle2()) / 180.0F));
+		this.buttonList.add(autoRotateButton = new FFMTGuiBooleanButton(8, width / 2 - 155, y + 69, 150, 20, I18n.format("container.spotlight.rotate"), tileSpotLight.getAutoRotate()));
+		this.buttonList.add(speedRotationButton = new FFMTGuiSliderForContainer(this, 9, width / 2 - 155, y + 91, I18n.format("container.spotlight.rotationspeed") + " : " + (tileSpotLight.getRotationSpeed() / 10.0F), (float)(tileSpotLight.getRotationSpeed()) / 50.0F));
+		this.buttonList.add(reverseRotationButton = new FFMTGuiBooleanButton(11, width / 2 - 155, y + 113, I18n.format("container.spotlight.rotationreverse"), !tileSpotLight.getReverseRotation()));
+		this.buttonList.add(secondaryLazerButton = new FFMTGuiBooleanButton(10, width / 2 - 155, y + 135, I18n.format("container.spotlight.secondlazer"), tileSpotLight.getSecondaryLazer()));
+		this.buttonList.add(new GuiButton(12, width / 2 - 155, y + 157, 65, 20, I18n.format("container.spotlight.copy")));
+		this.buttonList.add(new GuiButton(13, width / 2 - 69, y + 157, 65, 20, I18n.format("container.spotlight.paste")));
+		this.buttonList.add(new GuiButton(14, width / 2 + 90, y + 185, 65, 20, I18n.format("container.spotlight.timeline")));
+		this.buttonList.add(timeLineModeButton = new FFMTGuiBooleanButton(15, width / 2 - 155, y + 185, 65, 20, I18n.format("container.spotlight.timeline"), tileSpotLight.getTimeLineMode()));
+
 		if(!tileSpotLight.getAutoRotate())
 		{
 			angle2Button.disable();
@@ -164,39 +157,39 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		switch(sliderId)
 		{
 		case 0:
-			name = EnumChatFormatting.RED + I18n.getString("container.spotlight.red") + " : ";
+			name = EnumChatFormatting.RED + I18n.format("container.spotlight.red") + " : ";
 			multiValue = 255;
 			break;
 		case 1:
-			name = EnumChatFormatting.GREEN + I18n.getString("container.spotlight.green") + " : ";
+			name = EnumChatFormatting.GREEN + I18n.format("container.spotlight.green") + " : ";
 			multiValue = 255;
 			break;
 		case 2:
-			name = EnumChatFormatting.BLUE + I18n.getString("container.spotlight.blue") + " : ";
+			name = EnumChatFormatting.BLUE + I18n.format("container.spotlight.blue") + " : ";
 			multiValue = 255;
 			break;
 		case 3:
-			name = EnumChatFormatting.DARK_RED + I18n.getString("container.spotlight.darkred") + " : ";
+			name = EnumChatFormatting.DARK_RED + I18n.format("container.spotlight.darkred") + " : ";
 			multiValue = 255;
 			break;
 		case 4:
-			name = EnumChatFormatting.DARK_GREEN + I18n.getString("container.spotlight.darkgreen") + " : ";
+			name = EnumChatFormatting.DARK_GREEN + I18n.format("container.spotlight.darkgreen") + " : ";
 			multiValue = 255;
 			break;
 		case 5:
-			name = EnumChatFormatting.DARK_BLUE + I18n.getString("container.spotlight.darkblue") + " : ";
+			name = EnumChatFormatting.DARK_BLUE + I18n.format("container.spotlight.darkblue") + " : ";
 			multiValue = 255;
 			break;
 		case 6:
-			name = I18n.getString("container.spotlight.angle") + " 1 : ";
+			name = I18n.format("container.spotlight.angle") + " 1 : ";
 			multiValue = 360;
 			break;
 		case 7:
-			name = I18n.getString("container.spotlight.angle") + " 2 : ";
+			name = I18n.format("container.spotlight.angle") + " 2 : ";
 			multiValue = 180;
 			break;
 		case 9:
-			name = I18n.getString("container.spotlight.rotationspeed") + " : ";
+			name = I18n.format("container.spotlight.rotationspeed") + " : ";
 			break;
 		}
 		if(sliderId == 9)
@@ -224,12 +217,15 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		{
 			dataoutputstream.writeInt(type);
 			dataoutputstream.writeInt(value);
-			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|light", bytearrayoutputstream.toByteArray()));
+			// TODO this.mc.getNetHandler().addToSendQueue(new
+			// Packet250CustomPayload("NTMC|light",
+			// bytearrayoutputstream.toByteArray()));
 		}
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			NanotechMod.nanoLog.severe("Failed to send a packet from a SpotLight");
+			// TODO
+			// NanotechModCity.nanoLog.severe("Failed to send a packet from a SpotLight");
 		}
 	}
 

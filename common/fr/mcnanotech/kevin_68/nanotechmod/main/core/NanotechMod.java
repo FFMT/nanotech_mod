@@ -1,4 +1,4 @@
-package fr.mcnanotech.kevin_68.nanotechmod.main.core;
+/*package fr.mcnanotech.kevin_68.nanotechmod.main.core;
 
 import java.util.logging.Logger;
 
@@ -258,4 +258,4 @@ public class NanotechMod
 			NanotechRecipe.InitFallingBlockRecipes(8);
 		}
 	}
-}
+}*/

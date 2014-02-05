@@ -92,14 +92,13 @@ public class TileEntityModernFence extends TileEntity
 
 	public boolean canConnectFenceTo(World world, int x, int y, int z, boolean b)
 	{
-		int l = world.getBlockId(x, y, z);
+		Block block = world.getBlock(x, y, z);
 
-		if(l != this.getBlockType().blockID && b)
+		if(block != this.getBlockType() && b)
 		{
-			Block block = Block.blocksList[l];
-			return block != null && block.blockMaterial.isOpaque() && block.renderAsNormalBlock() ? block.blockMaterial != Material.pumpkin : false;
+			return block != null && block.getMaterial().isOpaque() && block.renderAsNormalBlock() ? block.getMaterial() != Material.gourd : false;
 		}
-		else if(l == this.getBlockType().blockID)
+		else if(block == this.getBlockType())
 		{
 			return true;
 		}

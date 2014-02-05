@@ -1,10 +1,10 @@
 package fr.mcnanotech.kevin_68.nanotechmod.city.core;
 
-import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -12,15 +12,11 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.city.blocks.NanotechCityBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.city.items.NanotechCityItems;
-import fr.mcnanotech.kevin_68.nanotechmod.city.network.GuiHandler;
-import fr.mcnanotech.kevin_68.nanotechmod.city.network.PacketHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityFountain;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityLamp;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityLampLight;
@@ -30,75 +26,70 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySunShade;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTextSpotLight;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTrail;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTrashCan;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 
-@Mod(modid = "NanotechModCity", name = "Nanotech mod City", version = "@VERSION@")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"NTMC|light", "NTMC|lightKey", "NTMC|fount", "NTMC|text", "NTMC|text2", "NTMC|text3"}, packetHandler = PacketHandler.class)
+@Mod(modid = NanotechModCity.MODID, name = "Nanotech mod City", version = "@VERSION@")
 public class NanotechModCity
 {
+	public static final String MODID = "NanotechModCity";
+
 	@Instance("NanotechModCity")
 	public static NanotechModCity modInstance;
 
 	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotechmod.city.core.ClientProxy", serverSide = "fr.mcnanotech.kevin_68.nanotechmod.city.core.CommonProxy")
 	public static CommonProxy proxy;
 
-	public static int trashcanID, spotLightID, trailID, fountainID, lampID, sunShadeID, modernFenceID, textSpotLightID;
-
-	public static int configCopyID;
-	
 	public static CreativeTabs cityTab = new CreativeTabs("NanotechModCity")
 	{
+		@Override
 		@SideOnly(Side.CLIENT)
-		public int getTabIconItemIndex()
+		public Item getTabIconItem()
 		{
-			return NanotechCityBlock.lamp.blockID;
+			return Item.getItemFromBlock(NanotechCityList.lamp);
 		}
 	};
 
 	@EventHandler
 	public void PreInit(FMLPreInitializationEvent event)
 	{
-		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
-		try
-		{
-			cfg.load();
-			trashcanID = cfg.getBlock("Trash can", 1100).getInt();
-			spotLightID = cfg.getBlock("SpotLight", 1101).getInt();
-			trailID = cfg.getBlock("Trail", 1121).getInt();
-			fountainID = cfg.getBlock("Fountain", 1122).getInt();
-			lampID = cfg.getBlock("Lamp", 1123).getInt();
-			sunShadeID = cfg.getBlock("SunShade", 1124).getInt();
-			modernFenceID = cfg.getBlock("ModernFence", 1125).getInt();
-			textSpotLightID = cfg.getBlock("Text Spotlight", 1126).getInt();
-			
-			configCopyID = cfg.getItem("Condif Copy", 5100).getInt();
-		}
-		catch(Exception ex)
-		{
-			NanotechMod.nanoLog.severe("Failed to load configuration");
-		}
-		finally
-		{
-			if(cfg.hasChanged())
-			{
-				cfg.save();
-			}
-		}
+		/*
+		 * Configuration cfg = new
+		 * Configuration(event.getSuggestedConfigurationFile()); try {
+		 * cfg.load(); trashcanID = cfg.getBlock("Trash can", 1100).getInt();
+		 * spotLightID = cfg.getBlock("SpotLight", 1101).getInt(); trailID =
+		 * cfg.getBlock("Trail", 1121).getInt(); fountainID =
+		 * cfg.getBlock("Fountain", 1122).getInt(); lampID =
+		 * cfg.getBlock("Lamp", 1123).getInt(); sunShadeID =
+		 * cfg.getBlock("SunShade", 1124).getInt(); modernFenceID =
+		 * cfg.getBlock("ModernFence", 1125).getInt(); textSpotLightID =
+		 * cfg.getBlock("Text Spotlight", 1126).getInt();
+		 * 
+		 * configCopyID = cfg.getItem("Condif Copy", 5100).getInt(); }
+		 * catch(Exception ex) {
+		 * NanotechMod.nanoLog.severe("Failed to load configuration"); } finally
+		 * { if(cfg.hasChanged()) { cfg.save(); } }
+		 */
 
 		NanotechCityBlock.initBlock();
-		NanotechCityBlock.blockRegistry();
 		NanotechCityItems.initItems();
-		NanotechCityItems.registerItem();
 		NanotechCityAchievement.initAchievement();
 	}
 
 	@EventHandler
 	public void Init(FMLInitializationEvent event)
 	{
-		GameRegistry.registerCraftingHandler(new CityCraftingHandler());
+		System.out.println(String.valueOf(NanotechCityList.fountain != null));
+		System.out.println(String.valueOf(NanotechCityList.lamp != null));
+		System.out.println(String.valueOf(NanotechCityList.modernFence != null));
+		System.out.println(String.valueOf(NanotechCityList.spotLight != null));
+		System.out.println(String.valueOf(NanotechCityList.sunShade != null));
+		System.out.println(String.valueOf(NanotechCityList.textSpotLight != null));
+		System.out.println(String.valueOf(NanotechCityList.trail != null));
+		System.out.println(String.valueOf(NanotechCityList.trashcan != null));
+		// TODO GameRegistry.registerCraftingHandler(new CityCraftingHandler());
 
-		NetworkRegistry.instance().registerGuiHandler(this.modInstance, new GuiHandler());
-		NetworkRegistry.instance().registerChannel(new PacketHandler(), "nanotechmodcity");
+		//NetworkRegistry.instance().registerGuiHandler(this.modInstance, new GuiHandler());
+		// TODO NetworkRegistry.instance().registerChannel(new PacketHandler(),
+		// "nanotechmodcity");
 
 		GameRegistry.registerTileEntity(TileEntitySpotLight.class, "SpotLight");
 		GameRegistry.registerTileEntity(TileEntityTrail.class, "Trail");
@@ -112,18 +103,19 @@ public class NanotechModCity
 
 		proxy.registerTileRenders();
 
-		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.lamp, 1), new Object[] {"IDI", "GSG", "III", 'I', Item.ingotIron, 'D', Block.daylightSensor, 'G', Block.thinGlass, 'S', Block.glowStone});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.sunShade, 1), new Object[] {"WWW", " S ", " S ", 'W', Block.cloth, 'S', Item.stick});
-		GameRegistry.addShapelessRecipe(new ItemStack(NanotechCityBlock.trail, 1), new Object[] {Block.grass, Block.gravel});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.fountain, 1), new Object[] {"S S", "SWS", "SPS", 'S', new ItemStack(Block.stoneSingleSlab, 0), 'W', Item.bucketWater, 'P', Block.pistonBase});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.modernFence, 4), new Object[] {"I I", "III", "I I", 'I', Item.ingotIron});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.trashcan, 1), new Object[] {"I I", "ICI", "III", 'I', Item.ingotIron, 'C', Block.cactus});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.spotLight), new Object[] {"OAO", "RGB", "OAO", 'O', Block.obsidian, 'A', Block.glass, 'R', new ItemStack(Item.dyePowder, 1, 1), 'G', new ItemStack(Item.dyePowder, 1, 2), 'B', new ItemStack(Item.dyePowder, 1, 4)});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityList.lamp, 1), new Object[] {"IDI", "GSG", "III", 'I', Items.iron_ingot, 'D', Blocks.daylight_detector, 'G', Blocks.glass_pane, 'S', Blocks.glowstone});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityList.sunShade, 1), new Object[] {"WWW", " S ", " S ", 'W', Blocks.wool, 'S', Items.stick});
+		GameRegistry.addShapelessRecipe(new ItemStack(NanotechCityList.trail, 1), new Object[] {Blocks.grass, Blocks.gravel});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityList.fountain, 1), new Object[] {"S S", "SWS", "SPS", 'S', new ItemStack(Blocks.stone_slab, 0), 'W', Items.water_bucket, 'P', Blocks.piston});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityList.modernFence, 4), new Object[] {"I I", "III", "I I", 'I', Items.iron_ingot});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityList.trashcan, 1), new Object[] {"I I", "ICI", "III", 'I', Items.iron_ingot, 'C', Blocks.cactus});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityList.spotLight), new Object[] {"OAO", "RGB", "OAO", 'O', Blocks.obsidian, 'A', Blocks.glass, 'R', new ItemStack(Items.dye, 1, 1), 'G', new ItemStack(Items.dye, 1, 2), 'B', new ItemStack(Items.dye, 1, 4)});
 	}
 
 	@EventHandler
 	public void PostInit(FMLPostInitializationEvent event)
 	{
 		NanotechCityAchievement.addAchievementInPage();
+		
 	}
 }

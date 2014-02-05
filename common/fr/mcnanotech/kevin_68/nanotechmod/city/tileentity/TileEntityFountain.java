@@ -2,9 +2,6 @@ package fr.mcnanotech.kevin_68.nanotechmod.city.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import cpw.mods.fml.relauncher.Side;
@@ -140,21 +137,21 @@ public class TileEntityFountain extends TileEntity
 		animated = nbtTagCompound.getBoolean("FountainAnimated");
 	}
 
-	public Packet getDescriptionPacket()
+	/*public Packet getDescriptionPacket()
 	{
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		this.writeToNBT(nbttagcompound);
 		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4, nbttagcompound);
-	}
+	}TODO
 
 	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
 	{
 		this.readFromNBT(pkt.data);
-	}
+	}*/
 
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
-		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -19,7 +19,7 @@ public class GuiHandler implements IGuiHandler
 	@Override
 	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
 	{
-		TileEntity tileentity = world.getBlockTileEntity(x, y, z);
+		TileEntity tileentity = world.getTileEntity(x, y, z);
 		if(tileentity instanceof TileEntitySpotLight)
 		{
 			return new ContainerSpotLight((TileEntitySpotLight)tileentity, player.inventory, world);
@@ -39,7 +39,7 @@ public class GuiHandler implements IGuiHandler
 	@Override
 	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
 	{
-		TileEntity tileentity = world.getBlockTileEntity(x, y, z);
+		TileEntity tileentity = world.getTileEntity(x, y, z);
 		if(tileentity instanceof TileEntitySpotLight)
 		{
 			return new GuiSpotLight(player.inventory, (TileEntitySpotLight)tileentity, world);

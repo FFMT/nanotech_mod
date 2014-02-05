@@ -2,9 +2,10 @@ package fr.mcnanotech.kevin_68.nanotechmod.city.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -13,12 +14,12 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTrail;
 
 public class BlockTrail extends Block
 {
-	private Icon top, left, bottom, right, topRight, topLeft, topBottom, topLeftBottom, topRightBottom, topLeftRight, leftRight, leftBottom, leftBottomRight, rightBottom, all, topRightDTR, topLeftDTL, leftBottomDBL, rightBottomDBR, topLeftBottomDTL, topLeftBottomDBL, topLeftBottomDTLBL, topRightBottomDTR, topRightBottomDBR, topRightBottomDTRBR, topLeftRightDTL, topLeftRightDTR, topLeftRightDTLTR,
-			leftBottomRightDBL, leftBottomRightDBR, leftBottomRightDBLBR, allDTL, allDTR, allDBL, allDBR, allDTLTR, allDTLBL, allDTLBR, allDTRBL, allDTRBR, allDBLBR, allDTLTRBR, allDTRBRBL, allDBRBLTL, allDBLTLTR, allDTLTRBLBR, nothing, empty, handIcon;
+	private IIcon top, left, bottom, right, topRight, topLeft, topBottom, topLeftBottom, topRightBottom, topLeftRight, leftRight, leftBottom, leftBottomRight, rightBottom, all, topRightDTR, topLeftDTL, leftBottomDBL, rightBottomDBR, topLeftBottomDTL, topLeftBottomDBL, topLeftBottomDTLBL, topRightBottomDTR, topRightBottomDBR, topRightBottomDTRBR, topLeftRightDTL, topLeftRightDTR,
+			topLeftRightDTLTR, leftBottomRightDBL, leftBottomRightDBR, leftBottomRightDBLBR, allDTL, allDTR, allDBL, allDBR, allDTLTR, allDTLBL, allDTLBR, allDTRBL, allDTRBR, allDBLBR, allDTLTRBR, allDTRBRBL, allDBRBLTL, allDBLTLTR, allDTLTRBLBR, nothing, empty, handIcon;
 
-	public BlockTrail(int id, Material material)
+	public BlockTrail()
 	{
-		super(id, material);
+		super(Material.ground);
 	}
 
 	public TileEntity createTileEntity(World world, int metadata)
@@ -59,7 +60,7 @@ public class BlockTrail extends Block
 		{
 			for(int l1 = -1; l1 <= 1; ++l1)
 			{
-				int i2 = blockaccess.getBiomeGenForCoords(x + l1, z + k1).getBiomeGrassColor();
+				int i2 = blockaccess.getBiomeGenForCoords(x + l1, z + k1).getBiomeGrassColor(x + l1, y, z + k1);
 				l += (i2 & 16711680) >> 16;
 				i1 += (i2 & 65280) >> 8;
 				j1 += i2 & 255;
@@ -69,202 +70,202 @@ public class BlockTrail extends Block
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
+	public IIcon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
 		if(side == 1)
 		{
 			// --------8--------------------------------------------------------------------------------------------------------------------
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z + 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z - 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z - 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x + 1, y, z + 1) == this && blockAccess.getBlock(x - 1, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z - 1) == this && blockAccess.getBlock(x - 1, y, z - 1) == this)
 			{
 				return this.allDTLTRBLBR;
 			}
 			// --------7--------------------------------------------------------------------------------------------------------------------
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z + 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z - 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z - 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x - 1, y, z + 1) == this && blockAccess.getBlock(x - 1, y, z - 1) == this && blockAccess.getBlock(x + 1, y, z - 1) == this)
 			{
 				return this.allDBLTLTR;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z + 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z + 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z - 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x + 1, y, z + 1) == this && blockAccess.getBlock(x - 1, y, z + 1) == this && blockAccess.getBlock(x - 1, y, z - 1) == this)
 			{
 				return this.allDBRBLTL;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z - 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z + 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x + 1, y, z - 1) == this && blockAccess.getBlock(x + 1, y, z + 1) == this && blockAccess.getBlock(x - 1, y, z + 1) == this)
 			{
 				return this.allDTRBRBL;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z - 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z - 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x - 1, y, z - 1) == this && blockAccess.getBlock(x + 1, y, z - 1) == this && blockAccess.getBlock(x + 1, y, z + 1) == this)
 			{
 				return this.allDTLTRBR;
 			}
 			// --------6--------------------------------------------------------------------------------------------------------------------
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x - 1, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z + 1) == this)
 			{
 				return this.allDBLBR;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z - 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x + 1, y, z - 1) == this && blockAccess.getBlock(x + 1, y, z + 1) == this)
 			{
 				return this.allDTRBR;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z - 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x + 1, y, z - 1) == this && blockAccess.getBlock(x - 1, y, z + 1) == this)
 			{
 				return this.allDTRBL;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z - 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x - 1, y, z - 1) == this && blockAccess.getBlock(x + 1, y, z + 1) == this)
 			{
 				return this.allDTLBR;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z - 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x - 1, y, z - 1) == this && blockAccess.getBlock(x - 1, y, z + 1) == this)
 			{
 				return this.allDTLBL;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z - 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z - 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x - 1, y, z - 1) == this && blockAccess.getBlock(x + 1, y, z - 1) == this)
 			{
 				return this.allDTLTR;
 			}
 
 			// --------5--------------------------------------------------------------------------------------------------------------------
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x + 1, y, z + 1) == this)
 			{
 				return this.allDBR;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x - 1, y, z + 1) == this)
 			{
 				return this.allDBL;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z - 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x + 1, y, z - 1) == this)
 			{
 				return this.allDTR;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z - 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x - 1, y, z - 1) == this)
 			{
 				return this.allDTL;
 			}
-			if(blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z + 1) == this)
 			{
 				return this.leftBottomRightDBLBR;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z - 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z - 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z - 1) == this && blockAccess.getBlock(x + 1, y, z - 1) == this)
 			{
 				return this.topLeftRightDTLTR;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z - 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z - 1) == this && blockAccess.getBlock(x + 1, y, z + 1) == this)
 			{
 				return this.topRightBottomDTRBR;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z - 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x - 1, y, z - 1) == this && blockAccess.getBlock(x - 1, y, z + 1) == this)
 			{
 				return this.topLeftBottomDTLBL;
 			}
 			// --------4--------------------------------------------------------------------------------------------------------------------
-			if(blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x + 1, y, z + 1) == this)
 			{
 				return this.leftBottomRightDBR;
 			}
-			if(blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z + 1) == this)
 			{
 				return this.leftBottomRightDBL;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z - 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x + 1, y, z - 1) == this)
 			{
 				return this.topLeftRightDTR;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z - 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z - 1) == this)
 			{
 				return this.topLeftRightDTL;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z + 1) == this)
 			{
 				return this.topRightBottomDBR;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z - 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z - 1) == this)
 			{
 				return this.topRightBottomDTR;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x - 1, y, z + 1) == this)
 			{
 				return this.topLeftBottomDBL;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z - 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x - 1, y, z - 1) == this)
 			{
 				return this.topLeftBottomDTL;
 			}
 
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x - 1, y, z) == this)
 			{
 				return this.all;
 			}
 			// --------3--------------------------------------------------------------------------------------------------------------------
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z - 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x + 1, y, z - 1) == this)
 			{
 				return this.topRightDTR;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x - 1, y, z - 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x - 1, y, z - 1) == this)
 			{
 				return this.topLeftDTL;
 			}
-			if(blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x - 1, y, z + 1) == this)
 			{
 				return this.leftBottomDBL;
 			}
-			if(blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x + 1, y, z + 1) == this)
 			{
 				return this.rightBottomDBR;
 			}
 
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x + 1, y, z) == this)
 			{
 				return this.topLeftRight;
 			}
-			if(blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x, y, z + 1) == this)
 			{
 				return this.leftBottomRight;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x, y, z + 1) == this)
 			{
 				return this.topRightBottom;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x, y, z + 1) == this)
 			{
 				return this.topLeftBottom;
 			}
 			// --------2--------------------------------------------------------------------------------------------------------------------
-			if(blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x + 1, y, z) == this.blockID)
+			if(blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x + 1, y, z) == this)
 			{
 				return this.leftRight;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z + 1) == this)
 			{
 				return this.topBottom;
 			}
-			if(blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x, y, z + 1) == this)
 			{
 				return this.rightBottom;
 			}
-			if(blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x, y, z + 1) == this)
 			{
 				return this.leftBottom;
 			}
-			if(blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z - 1) == this.blockID)
+			if(blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x, y, z - 1) == this)
 			{
 				return this.topRight;
 			}
-			if(blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x, y, z - 1) == this.blockID)
+			if(blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x, y, z - 1) == this)
 			{
 				return this.topLeft;
 			}
 			// --------1--------------------------------------------------------------------------------------------------------------------
-			if(blockAccess.getBlockId(x - 1, y, z) == this.blockID)
+			if(blockAccess.getBlock(x - 1, y, z) == this)
 			{
 				return this.left;
 			}
-			if(blockAccess.getBlockId(x + 1, y, z) == this.blockID)
+			if(blockAccess.getBlock(x + 1, y, z) == this)
 			{
 				return this.right;
 			}
-			if(blockAccess.getBlockId(x, y, z - 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z - 1) == this)
 			{
 				return this.top;
 			}
-			if(blockAccess.getBlockId(x, y, z + 1) == this.blockID)
+			if(blockAccess.getBlock(x, y, z + 1) == this)
 			{
 				return this.bottom;
 			}
@@ -274,7 +275,7 @@ public class BlockTrail extends Block
 		return this.empty;
 	}
 
-	public void registerIcons(IconRegister iconRegister)
+	public void registerIcons(IIconRegister iconRegister)
 	{
 		this.top = iconRegister.registerIcon("nanotechmodcity:trailTop");
 		this.topRight = iconRegister.registerIcon("nanotechmodcity:trailTopRight");
@@ -327,8 +328,8 @@ public class BlockTrail extends Block
 		this.handIcon = iconRegister.registerIcon("nanotechmodcity:TrailInHand");
 	}
 
-	public Icon getIcon(int side, int metadata)
+	public IIcon getIcon(int side, int metadata)
 	{
-		return side == 1 ? handIcon : Block.grass.getIcon(side, 0);
+		return side == 1 ? handIcon : Blocks.grass.getIcon(side, 0);
 	}
 }

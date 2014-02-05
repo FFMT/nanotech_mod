@@ -4,7 +4,7 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
@@ -18,12 +18,12 @@ import fr.minecraftforgefrance.ffmtlibs.FFMTClientRegistry;
 
 public class BlockTrashcan extends Block
 {
-	public BlockTrashcan(int id)
+	public BlockTrashcan()
 	{
-		super(id, Material.iron);
+		super(Material.iron);
 	}
 
-	public void registerIcons(IconRegister iconregister)
+	public void registerIcons(IIconRegister iconregister)
 	{
 		blockIcon = iconregister.registerIcon("nanotechmodcity:trash_can");
 	}

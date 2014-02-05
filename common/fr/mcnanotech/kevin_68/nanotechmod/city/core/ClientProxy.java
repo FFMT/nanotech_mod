@@ -36,6 +36,6 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityModernFence.class, new TileEntityModernFenceRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTextSpotLight.class, new TileEntityTextSpotLightRender());
 		
-		FFMTClientRegistry.bindTESRWithInventoryRender(NanotechCityBlock.trashcan, 0, TileEntityTrashCan.class, new TileEntityTrashCanRender());
+		FFMTClientRegistry.bindTESRWithInventoryRender(NanotechCityList.trashcan, 0, TileEntityTrashCan.class, new TileEntityTrashCanRender());
 	}
 }

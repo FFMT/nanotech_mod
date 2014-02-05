@@ -2,22 +2,22 @@ package fr.mcnanotech.kevin_68.nanotechmod.city.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechCityList;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityLamp;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityLampLight;
-import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 
 public class BlockLamp extends Block
 {
-	public BlockLamp(int id, Material material)
+	public BlockLamp()
 	{
-		super(id, material);
+		super(Material.iron);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -74,24 +74,25 @@ public class BlockLamp extends Block
 		return -1;
 	}
 
-	public void breakBlock(World world, int x, int y, int z, int id, int metadata)
+	@Override
+	public void breakBlock(World world, int x, int y, int z, Block bloc, int metadata)
 	{
 		for(int i = -3; i < 4; ++i)
 		{
-			if(world.getBlockId(x, y + i, z) == this.blockID)
+			if(world.getBlock(x, y + i, z).equals(this))
 			{
 				world.setBlockToAir(x, y + i, z);
 			}
 		}
-		super.breakBlock(world, x, y, z, id, metadata);
+		super.breakBlock(world, x, y, z, bloc, metadata);
 	}
 
-	public Icon getIcon(int side, int metadata)
+	public IIcon getIcon(int side, int metadata)
 	{
-		return NanotechCityBlock.spotLight.getIcon(0, 0);
+		return NanotechCityList.spotLight.getIcon(0, 0);
 	}
 
-	public void registerIcons(IconRegister iconregister)
+	public void registerIcons(IIconRegister iconregister)
 	{}
 
 	public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z)
