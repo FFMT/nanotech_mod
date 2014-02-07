@@ -67,6 +67,7 @@ public class BlockSpotLight extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
+	@Override
 	public IIcon getIcon(int side, int metadata)
 	{
 		if(side == 1 || side == 0)

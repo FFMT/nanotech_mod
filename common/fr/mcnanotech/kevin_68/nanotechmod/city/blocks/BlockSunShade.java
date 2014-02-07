@@ -36,6 +36,7 @@ public class BlockSunShade extends Block
 				{
 					TileEntitySunShade tesunshade = (TileEntitySunShade)te;
 					tesunshade.switchSunShade();
+					world.markBlockForUpdate(x, y, z);
 					return true;
 				}
 			}
@@ -47,6 +48,7 @@ public class BlockSunShade extends Block
 				{
 					TileEntitySunShade tesunshade = (TileEntitySunShade)te;
 					tesunshade.switchSunShade();
+					world.markBlockForUpdate(x, y, z);
 					return true;
 				}
 				else
@@ -56,6 +58,7 @@ public class BlockSunShade extends Block
 					{
 						TileEntitySunShade tesunshade = (TileEntitySunShade)te;
 						tesunshade.switchSunShade();
+						world.markBlockForUpdate(x, y, z);
 						return true;
 					}
 				}
@@ -68,6 +71,7 @@ public class BlockSunShade extends Block
 				{
 					TileEntitySunShade tesunshade = (TileEntitySunShade)te;
 					tesunshade.switchSunShade();
+					world.markBlockForUpdate(x, y, z);
 					return true;
 				}
 			}

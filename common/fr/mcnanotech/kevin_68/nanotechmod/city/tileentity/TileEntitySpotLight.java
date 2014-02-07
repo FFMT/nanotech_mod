@@ -7,11 +7,13 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechCityList;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.PacketHandler;
 
 public class TileEntitySpotLight extends TileEntity implements IInventory
 {
@@ -859,15 +861,11 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		return 65536.0D;
 	}
 
-	/*
-	 * public Packet getDescriptionPacket() { NBTTagCompound nbttagcompound =
-	 * new NBTTagCompound(); this.writeToNBT(nbttagcompound); return new
-	 * Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4,
-	 * nbttagcompound); }
-	 * 
-	 * public void onDataPacket(INetworkManager net, Packet132TileEntityData
-	 * pkt) { this.readFromNBT(pkt.data); }
-	 */
+    @Override
+    public Packet getDescriptionPacket()
+    {
+        return PacketHandler.getPacket(this);
+    }
 
 	public void addNbtTagToItem()
 	{

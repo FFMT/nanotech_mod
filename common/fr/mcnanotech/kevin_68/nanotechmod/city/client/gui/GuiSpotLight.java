@@ -1,11 +1,15 @@
 package fr.mcnanotech.kevin_68.nanotechmod.city.client.gui;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.network.play.client.C17PacketCustomPayload;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -211,22 +215,22 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 
 	private void sendSpotLightPacket(int value, int type)
 	{
-		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-		DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-		try
-		{
-			dataoutputstream.writeInt(type);
-			dataoutputstream.writeInt(value);
-			// TODO this.mc.getNetHandler().addToSendQueue(new
-			// Packet250CustomPayload("NTMC|light",
-			// bytearrayoutputstream.toByteArray()));
-		}
-		catch(Exception exception)
-		{
-			exception.printStackTrace();
-			// TODO
-			// NanotechModCity.nanoLog.severe("Failed to send a packet from a SpotLight");
-		}
+		String s = "NTMC|SpotLight";
+        ByteBuf bytebuf = Unpooled.buffer();
+
+        try
+        {
+        	bytebuf.writeInt(value);
+            this.mc.getNetHandler().addToSendQueue(new C17PacketCustomPayload(s, bytebuf));
+        }
+        catch (Exception exception)
+        {
+            System.out.println("Failed to send a packet");
+        }
+        finally
+        {
+            bytebuf.release();
+        }
 	}
 
 	@Override

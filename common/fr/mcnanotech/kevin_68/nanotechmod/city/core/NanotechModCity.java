@@ -12,11 +12,14 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.city.blocks.NanotechCityBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.city.items.NanotechCityItems;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.GuiHandler;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.PacketHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityFountain;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityLamp;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityLampLight;
@@ -87,9 +90,8 @@ public class NanotechModCity
 		System.out.println(String.valueOf(NanotechCityList.trashcan != null));
 		// TODO GameRegistry.registerCraftingHandler(new CityCraftingHandler());
 
-		//NetworkRegistry.instance().registerGuiHandler(this.modInstance, new GuiHandler());
-		// TODO NetworkRegistry.instance().registerChannel(new PacketHandler(),
-		// "nanotechmodcity");
+		NetworkRegistry.INSTANCE.registerGuiHandler(this.modInstance, new GuiHandler());
+		PacketHandler.INSTANCE.ordinal();
 
 		GameRegistry.registerTileEntity(TileEntitySpotLight.class, "SpotLight");
 		GameRegistry.registerTileEntity(TileEntityTrail.class, "Trail");

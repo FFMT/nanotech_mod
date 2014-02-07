@@ -1,346 +1,169 @@
 package fr.mcnanotech.kevin_68.nanotechmod.city.network;
 
+import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
 
-public class PacketHandler //implements IPacketHandler
+import java.util.EnumMap;
+
+import net.minecraft.network.Packet;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.network.FMLEmbeddedChannel;
+import cpw.mods.fml.common.network.FMLIndexedMessageToMessageCodec;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.internal.FMLProxyPacket;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+/**
+ * Thanks to @author cpw
+ */
+public enum PacketHandler
 {
-	/*@Override
-	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player)
-	{
-		EntityPlayer playerSender = (EntityPlayer)player;
-		if(packet.channel.equals("NTMC|light"))
-		{
-			handleSpotLightPacket(packet, playerSender);
-		}
-		
-		if(packet.channel.equals("NTMC|lightKey"))
-		{
-			handleSpotLightKeyPacket(packet, playerSender);
-		}
+	INSTANCE;
 
-		if(packet.channel.equals("NTMC|fount"))
+	/**
+	 * Our channel "pair" from {@link NetworkRegistry}
+	 */
+	private EnumMap<Side, FMLEmbeddedChannel> channels;
+
+	/**
+	 * Make our packet handler, and add an {@link IronChestCodec} always
+	 */
+	private PacketHandler()
+	{
+		// request a channel pair for IronChest from the network registry
+		// Add the IronChestCodec as a member of both channel pipelines
+		this.channels = NetworkRegistry.INSTANCE.newChannel("NTMC|SpotLight", new SpotLightCodec());
+		if(FMLCommonHandler.instance().getSide() == Side.CLIENT)
 		{
-			handleFountainPacket(packet, playerSender);
-		}
-		
-		if(packet.channel.equals("NTMC|text"))
-		{
-			handleTextSpotLightPacket(packet, playerSender);
-		}
-		
-		if(packet.channel.equals("NTMC|text2"))
-		{
-			handleTextSpotLightPacket2(packet, playerSender);
-		}
-		
-		if(packet.channel.equals("NTMC|text3"))
-		{
-			handleTextSpotLightPacket3(packet, playerSender);
+			addClientHandler();
 		}
 	}
 
-	private void handleSpotLightPacket(Packet250CustomPayload packet, EntityPlayer player)
+	/**
+	 * This is only called on the client side - it adds an
+	 * {@link IronChestMessageHandler} to the client side pipeline, since the
+	 * only place we expect to <em>handle</em> messages is on the client.
+	 */
+	@SideOnly(Side.CLIENT)
+	private void addClientHandler()
 	{
-		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
-		int type;
-		int value;
-		try
+		FMLEmbeddedChannel clientChannel = this.channels.get(Side.CLIENT);
+		// These two lines find the existing codec (Ironchestcodec) and insert
+		// our message handler after it
+		// in the pipeline
+		String codec = clientChannel.findChannelHandlerNameForType(SpotLightCodec.class);
+		clientChannel.pipeline().addAfter(codec, "ClientHandler", new SpotLightMessageHandler());
+	}
+
+	/**
+	 * This class simply handles the {@link IronChestMessage} when it's received
+	 * at the client side It can contain client only code, because it's only run
+	 * on the client.
+	 * 
+	 * @author cpw
+	 * 
+	 */
+	private static class SpotLightMessageHandler extends SimpleChannelInboundHandler<SpotLightMessage>
+	{
+		@Override
+		protected void channelRead0(ChannelHandlerContext ctx, SpotLightMessage msg) throws Exception
 		{
-			data = new DataInputStream(new ByteArrayInputStream(packet.data));
-			type = data.readInt();
-			value = data.readInt();
-			ContainerSpotLight containerSpotLight = (ContainerSpotLight)player.openContainer;
-			TileEntitySpotLight tileSpotLight = containerSpotLight.getSpotLight();
-			switch(type)
+			World world = FMLClientHandler.instance().getClient().theWorld;
+			TileEntity te = world.getTileEntity(msg.x, msg.y, msg.z);
+			if(te instanceof TileEntitySpotLight)
 			{
-			case 0:
-				tileSpotLight.setRedValue(value);
-				break;
-			case 1:
-				tileSpotLight.setGreenValue(value);
-				break;
-			case 2:
-				tileSpotLight.setBlueValue(value);
-				break;
-			case 3:
-				tileSpotLight.setDarkRedValue(value);
-				break;
-			case 4:
-				tileSpotLight.setDarkGreenValue(value);
-				break;
-			case 5:
-				tileSpotLight.setDarkBlueValue(value);
-				break;
-			case 6:
-				tileSpotLight.setAngle1Value(value);
-				break;
-			case 7:
-				tileSpotLight.setAngle2Value(value);
-				break;
-			case 8:
-				tileSpotLight.setRotateValue(value);
-				break;
-			case 9:
-				tileSpotLight.setRotationSpeed(value);
-				break;
-			case 10:
-				tileSpotLight.setSecondaryLazer(value);
-				break;
-			case 11:
-				tileSpotLight.setReverseRotation(value);
-				break;
-			case 12:
-				if(value == 0)
-				{
-					tileSpotLight.addNbtTagToItem();
-					break;
-				}
-				else
-				{
-					tileSpotLight.setConfig();
-					break;
-				}
-			case 13:
-				tileSpotLight.setTimeLineMode(value);
-				break;
-			case 14:
-				tileSpotLight.setCreateKeyTime(value);
-				break;
-			case 15:
-				tileSpotLight.setSelectedButtonId(value);
-				break;
-			case 16:
-				tileSpotLight.setTimeLine(value);
-				break;
-			case 17:
-				tileSpotLight.setSmoothMode(value);
-				break;
-			default:
-				NanotechMod.nanoLog.severe("A SpotLight packet has a bad type, this is a bug");
+				TileEntitySpotLight tile = (TileEntitySpotLight)te;
+				tile.setRedValue(msg.red);
 			}
-			player.worldObj.markBlockForUpdate(tileSpotLight.xCoord, tileSpotLight.yCoord, tileSpotLight.zCoord);
-		}
-		catch(Exception exception)
-		{
-			exception.printStackTrace();
-			NanotechMod.nanoLog.severe("Failed to handle SpotLight packet");
-		}
-	}
-	
-	private void handleSpotLightKeyPacket(Packet250CustomPayload packet, EntityPlayer player)
-	{
-		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
-		int type;
-		int value;
-		int time;
-		try
-		{
-			data = new DataInputStream(new ByteArrayInputStream(packet.data));
-			type = data.readInt();
-			value = data.readInt();
-			time = data.readInt();
-			ContainerSpotLight containerSpotLight = (ContainerSpotLight)player.openContainer;
-			TileEntitySpotLight tileSpotLight = containerSpotLight.getSpotLight();
-			switch(type)
-			{
-			case 0:
-				tileSpotLight.setKey(time, value);
-				break;
-			case 1:
-				tileSpotLight.setRedKey(time, value);
-				break;
-			case 2:
-				tileSpotLight.setGreenKey(time, value);
-				break;
-			case 3:
-				tileSpotLight.setBlueKey(time, value);
-				break;
-			case 4:
-				tileSpotLight.setDarkRedKey(time, value);
-				break;
-			case 5:
-				tileSpotLight.setDarkGreenKey(time, value);
-				break;
-			case 6:
-				tileSpotLight.setDarkBlueKey(time, value);
-				break;
-			case 7:
-				tileSpotLight.setAngle1Key(time, value);
-				break;
-			case 8:
-				tileSpotLight.setAngle2Key(time, value);
-				break;
-			case 9:
-				tileSpotLight.setAutoRotateKey(time, value);
-				break;
-			case 10:
-				tileSpotLight.setRotationSpeedKey(time, value);
-				break;
-			case 11:
-				tileSpotLight.setSecondaryLazerKey(time, value);
-				break;
-			case 12:
-				tileSpotLight.setReverseRotationKey(time, value);
-				break;
-			default:
-				NanotechMod.nanoLog.severe("A SpotLight packet has a bad type, this is a bug");
-			}
-			player.worldObj.markBlockForUpdate(tileSpotLight.xCoord, tileSpotLight.yCoord, tileSpotLight.zCoord);
-		}
-		catch(Exception exception)
-		{
-			exception.printStackTrace();
-			NanotechMod.nanoLog.severe("Failed to handle SpotLight packet");
 		}
 	}
 
-	private void handleFountainPacket(Packet250CustomPayload packet, EntityPlayer player)
+	/**
+	 * This is our "message". In fact, {@link FMLIndexedMessageToMessageCodec}
+	 * can handle many messages on the same channel at once, using a
+	 * discriminator byte. But for IronChest, we only need the one message, so
+	 * we have just this.
+	 * 
+	 * @author cpw
+	 * 
+	 */
+	public static class SpotLightMessage
 	{
-		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
-		float height;
-		float width;
-		boolean rotate;
-		boolean animated;
+		int x;
+		int y;
+		int z;
+		int red;
+		
+	}
 
-		try
+	/**
+	 * This is the codec that automatically transforms the
+	 * {@link FMLProxyPacket} which wraps the client and server custom payload
+	 * packets into a message we care about.
+	 * 
+	 * @author cpw
+	 * 
+	 */
+	private class SpotLightCodec extends FMLIndexedMessageToMessageCodec<SpotLightMessage>
+	{
+		/**
+		 * We register our discriminator bytes here. We only have the one type,
+		 * so we only register one.
+		 */
+		public SpotLightCodec()
 		{
-			data = new DataInputStream(new ByteArrayInputStream(packet.data));
-			height = data.readFloat();
-			width = data.readFloat();
-			rotate = data.readBoolean();
-			animated = data.readBoolean();
+			addDiscriminator(0, SpotLightMessage.class);
+		}
 
-			ContainerFountain containerFountain = (ContainerFountain)player.openContainer;
-			TileEntityFountain tilefountain = containerFountain.getFountain();
-			tilefountain.setHeight(height);
-			tilefountain.setWidth(width);
-			tilefountain.setRotate(rotate);
-			tilefountain.setAnimated(animated);
-			player.worldObj.markBlockForUpdate(tilefountain.xCoord, tilefountain.yCoord, tilefountain.zCoord);
-		}
-		catch(Exception exception)
+		@Override
+		public void encodeInto(ChannelHandlerContext ctx, SpotLightMessage msg, ByteBuf target) throws Exception
 		{
-			exception.printStackTrace();
-			NanotechMod.nanoLog.severe("Failed to handle Fountain packet");
+			target.writeInt(msg.x);
+			target.writeInt(msg.y);
+			target.writeInt(msg.z);
+			target.writeInt(msg.red);
 		}
+
+		@Override
+		public void decodeInto(ChannelHandlerContext ctx, ByteBuf dat, SpotLightMessage msg)
+		{
+			msg.x = dat.readInt();
+			msg.y = dat.readInt();
+			msg.z = dat.readInt();
+			msg.red = dat.readInt();
+		}
+
 	}
-	
-	private void handleTextSpotLightPacket(Packet250CustomPayload packet, EntityPlayer player)
+
+	/**
+	 * This is a utility method called to transform a packet from a custom
+	 * packet into a "system packet". We're called from
+	 * {@link TileEntity#getDescriptionPacket()} in this case, but there are
+	 * others. All network packet methods in minecraft have been adapted to
+	 * handle {@link FMLProxyPacket} but general purpose objects can't be
+	 * handled sadly.
+	 * 
+	 * This method uses the {@link IronChestCodec} to transform a custom packet
+	 * {@link IronChestMessage} into an {@link FMLProxyPacket} by using the
+	 * utility method {@link FMLEmbeddedChannel#generatePacketFrom(Object)} on
+	 * the channel to do exactly that.
+	 * 
+	 * @param tileEntityIronChest
+	 * @return
+	 */
+	public static Packet getPacket(TileEntitySpotLight tileEntity)
 	{
-		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
-		int value;
-		int type;
-		try
-		{
-			data = new DataInputStream(new ByteArrayInputStream(packet.data));
-			type = data.readInt();
-			value = data.readInt();
-			ContainerTextSpotLight containerSpotLight = (ContainerTextSpotLight)player.openContainer;
-			TileEntityTextSpotLight tileSpotLight = containerSpotLight.getSpotLight();
-			switch(type)
-			{
-			case 1:
-				if(value == 1)
-				{
-					tileSpotLight.setRotate(true);
-					break;
-				}
-				else
-				{
-					tileSpotLight.setRotate(false);
-					break;
-				}
-			case 2:
-				tileSpotLight.setAngle(value);
-				break;
-			case 3:
-				tileSpotLight.setRotationSpeed(value);
-				break;
-			case 4:
-				if(value == 1)
-				{
-					tileSpotLight.setReverseRotation(true);
-					break;
-				}
-				else
-				{
-					tileSpotLight.setReverseRotation(false);
-					break;
-				}
-			case 5:
-				tileSpotLight.setRedValue(value);
-				break;
-			case 6:
-				tileSpotLight.setGreenValue(value);
-				break;
-			case 7:
-				tileSpotLight.setBlueValue(value);
-				break;
-			case 8:
-				tileSpotLight.setScale(value);
-				break;
-			case 9:
-				tileSpotLight.setHeight(value);
-				break;
-			case 10:
-				if(value == 0)
-				{
-					tileSpotLight.addNbtTagToItem();
-					break;
-				}
-				else
-				{
-					tileSpotLight.setConfig();
-					break;
-				}
-			default:
-				NanotechMod.nanoLog.severe("A TextSpotLight packet has a bad type, this is a bug");
-			}
-			player.worldObj.markBlockForUpdate(tileSpotLight.xCoord, tileSpotLight.yCoord, tileSpotLight.zCoord);
-		}
-		catch(Exception exception)
-		{
-			exception.printStackTrace();
-			NanotechMod.nanoLog.severe("Failed to handle TextSpotLight packet");
-		}
+		SpotLightMessage msg = new SpotLightMessage();
+		msg.x = tileEntity.xCoord;
+		msg.y = tileEntity.yCoord;
+		msg.z = tileEntity.zCoord;
+		msg.red = tileEntity.getRedValue();
+		return INSTANCE.channels.get(Side.SERVER).generatePacketFrom(msg);
 	}
-	
-	private void handleTextSpotLightPacket2(Packet250CustomPayload packet, EntityPlayer player)
-	{
-		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
-		String text;
-		try
-		{
-			data = new DataInputStream(new ByteArrayInputStream(packet.data));
-			text = data.readUTF();
-			ContainerTextSpotLight containerSpotLight = (ContainerTextSpotLight)player.openContainer;
-			TileEntityTextSpotLight tileSpotLight = containerSpotLight.getSpotLight();
-			tileSpotLight.setText(text);
-			player.worldObj.markBlockForUpdate(tileSpotLight.xCoord, tileSpotLight.yCoord, tileSpotLight.zCoord);
-		}
-		catch(Exception exception)
-		{
-			exception.printStackTrace();
-			NanotechMod.nanoLog.severe("Failed to handle TextSpotLight packet");
-		}
-	}
-	
-	private void handleTextSpotLightPacket3(Packet250CustomPayload packet, EntityPlayer player)
-	{
-		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
-		Float value;
-		try
-		{
-			data = new DataInputStream(new ByteArrayInputStream(packet.data));
-			value = data.readFloat();
-			ContainerTextSpotLight containerSpotLight = (ContainerTextSpotLight)player.openContainer;
-			TileEntityTextSpotLight tileSpotLight = containerSpotLight.getSpotLight();
-			tileSpotLight.setScale(value);
-			player.worldObj.markBlockForUpdate(tileSpotLight.xCoord, tileSpotLight.yCoord, tileSpotLight.zCoord);
-		}
-		catch(Exception exception)
-		{
-			exception.printStackTrace();
-			NanotechMod.nanoLog.severe("Failed to handle TextSpotLight packet");
-		}
-	}*/
 }
