@@ -1,15 +1,8 @@
 package fr.mcnanotech.kevin_68.nanotechmod.city.client.gui;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.network.play.client.C17PacketCustomPayload;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -17,6 +10,7 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerSpotLight;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.NTMCPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiBooleanButton;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
@@ -44,6 +38,7 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		this.world = world;
 	}
 
+	@SuppressWarnings({"unchecked", "unused"})
 	@Override
 	public void initGui()
 	{
@@ -88,7 +83,7 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 	{
 		if(guibutton.id == 8)
 		{
-			this.sendSpotLightPacket((int)(tileSpotLight.getAutoRotate() ? 0 : 1), 8);
+			NTMCPacketHelper.sendPacket(this.tileSpotLight, (tileSpotLight.getAutoRotate() ? 0 : 1), 9);
 			autoRotateButton.toggle();
 			if(tileSpotLight.getAutoRotate())
 			{
@@ -105,21 +100,21 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		}
 		else if(guibutton.id == 10)
 		{
-			this.sendSpotLightPacket((int)(tileSpotLight.getSecondaryLazer() ? 0 : 1), 10);
+			NTMCPacketHelper.sendPacket(this.tileSpotLight, (int)(tileSpotLight.getSecondaryLazer() ? 0 : 1), 10);
 			secondaryLazerButton.toggle();
 		}
 		else if(guibutton.id == 11)
 		{
-			this.sendSpotLightPacket((int)(tileSpotLight.getReverseRotation() ? 0 : 1), 11);
+			NTMCPacketHelper.sendPacket(this.tileSpotLight, (int)(tileSpotLight.getReverseRotation() ? 0 : 1), 11);
 			reverseRotationButton.toggle();
 		}
 		else if(guibutton.id == 12)
 		{
-			sendSpotLightPacket(0, 12);
+			NTMCPacketHelper.sendPacket(this.tileSpotLight, 0, 12);
 		}
 		else if(guibutton.id == 13)
 		{
-			sendSpotLightPacket(1, 12);
+			NTMCPacketHelper.sendPacket(this.tileSpotLight, 1, 12);
 		}
 		else if(guibutton.id == 14)
 		{
@@ -127,7 +122,7 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		}
 		else if(guibutton.id == 15)
 		{
-			this.sendSpotLightPacket((int)(tileSpotLight.getTimeLineMode() ? 0 : 1), 13);
+			NTMCPacketHelper.sendPacket(this.tileSpotLight, (int)(tileSpotLight.getTimeLineMode() ? 0 : 1), 13);
 			timeLineModeButton.toggle();
 		}
 	}
@@ -137,19 +132,19 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 	{
 		if(sliderId == 6)
 		{
-			this.sendSpotLightPacket((int)(sliderValue * 360), sliderId);
+			NTMCPacketHelper.sendPacket(this.tileSpotLight, (int)(sliderValue * 360), sliderId);
 		}
 		else if(sliderId == 7)
 		{
-			this.sendSpotLightPacket((int)(sliderValue * 180), sliderId);
+			NTMCPacketHelper.sendPacket(this.tileSpotLight, (int)(sliderValue * 180), sliderId);
 		}
 		else if(sliderId == 9)
 		{
-			this.sendSpotLightPacket((int)(sliderValue * 50), sliderId);
+			NTMCPacketHelper.sendPacket(this.tileSpotLight, (int)(sliderValue * 50), sliderId);
 		}
 		else
 		{
-			this.sendSpotLightPacket((int)(sliderValue * 255), sliderId);
+			NTMCPacketHelper.sendPacket(this.tileSpotLight, (int)(sliderValue * 255), sliderId);
 		}
 	}
 
@@ -206,31 +201,12 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		}
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	protected void drawGuiContainerForegroundLayer(int i, int j)
 	{
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-	}
-
-	private void sendSpotLightPacket(int value, int type)
-	{
-		String s = "NTMC|SpotLight";
-        ByteBuf bytebuf = Unpooled.buffer();
-
-        try
-        {
-        	bytebuf.writeInt(value);
-            this.mc.getNetHandler().addToSendQueue(new C17PacketCustomPayload(s, bytebuf));
-        }
-        catch (Exception exception)
-        {
-            System.out.println("Failed to send a packet");
-        }
-        finally
-        {
-            bytebuf.release();
-        }
 	}
 
 	@Override

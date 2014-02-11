@@ -20,6 +20,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.blocks.NanotechCityBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.city.items.NanotechCityItems;
 import fr.mcnanotech.kevin_68.nanotechmod.city.network.GuiHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.city.network.PacketHandler;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.PacketSpotLight;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityFountain;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityLamp;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityLampLight;
@@ -41,6 +42,8 @@ public class NanotechModCity
 	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotechmod.city.core.ClientProxy", serverSide = "fr.mcnanotech.kevin_68.nanotechmod.city.core.CommonProxy")
 	public static CommonProxy proxy;
 
+	public static final PacketHandler packetHandler = new PacketHandler();
+
 	public static CreativeTabs cityTab = new CreativeTabs("NanotechModCity")
 	{
 		@Override
@@ -55,21 +58,12 @@ public class NanotechModCity
 	public void PreInit(FMLPreInitializationEvent event)
 	{
 		/*
-		 * Configuration cfg = new
-		 * Configuration(event.getSuggestedConfigurationFile()); try {
-		 * cfg.load(); trashcanID = cfg.getBlock("Trash can", 1100).getInt();
-		 * spotLightID = cfg.getBlock("SpotLight", 1101).getInt(); trailID =
-		 * cfg.getBlock("Trail", 1121).getInt(); fountainID =
-		 * cfg.getBlock("Fountain", 1122).getInt(); lampID =
-		 * cfg.getBlock("Lamp", 1123).getInt(); sunShadeID =
-		 * cfg.getBlock("SunShade", 1124).getInt(); modernFenceID =
-		 * cfg.getBlock("ModernFence", 1125).getInt(); textSpotLightID =
-		 * cfg.getBlock("Text Spotlight", 1126).getInt();
+		 * Configuration cfg = new Configuration(event.getSuggestedConfigurationFile()); try { cfg.load(); trashcanID = cfg.getBlock("Trash can", 1100).getInt(); spotLightID =
+		 * cfg.getBlock("SpotLight", 1101).getInt(); trailID = cfg.getBlock("Trail", 1121).getInt(); fountainID = cfg.getBlock("Fountain", 1122).getInt(); lampID = cfg.getBlock("Lamp", 1123).getInt();
+		 * sunShadeID = cfg.getBlock("SunShade", 1124).getInt(); modernFenceID = cfg.getBlock("ModernFence", 1125).getInt(); textSpotLightID = cfg.getBlock("Text Spotlight", 1126).getInt();
 		 * 
-		 * configCopyID = cfg.getItem("Condif Copy", 5100).getInt(); }
-		 * catch(Exception ex) {
-		 * NanotechMod.nanoLog.severe("Failed to load configuration"); } finally
-		 * { if(cfg.hasChanged()) { cfg.save(); } }
+		 * configCopyID = cfg.getItem("Condif Copy", 5100).getInt(); } catch(Exception ex) { NanotechMod.nanoLog.severe("Failed to load configuration"); } finally { if(cfg.hasChanged()) { cfg.save();
+		 * } }
 		 */
 
 		NanotechCityBlock.initBlock();
@@ -80,18 +74,11 @@ public class NanotechModCity
 	@EventHandler
 	public void Init(FMLInitializationEvent event)
 	{
-		System.out.println(String.valueOf(NanotechCityList.fountain != null));
-		System.out.println(String.valueOf(NanotechCityList.lamp != null));
-		System.out.println(String.valueOf(NanotechCityList.modernFence != null));
-		System.out.println(String.valueOf(NanotechCityList.spotLight != null));
-		System.out.println(String.valueOf(NanotechCityList.sunShade != null));
-		System.out.println(String.valueOf(NanotechCityList.textSpotLight != null));
-		System.out.println(String.valueOf(NanotechCityList.trail != null));
-		System.out.println(String.valueOf(NanotechCityList.trashcan != null));
 		// TODO GameRegistry.registerCraftingHandler(new CityCraftingHandler());
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(this.modInstance, new GuiHandler());
-		PacketHandler.INSTANCE.ordinal();
+		packetHandler.initialise();
+		packetHandler.registerPacket(PacketSpotLight.class);
 
 		GameRegistry.registerTileEntity(TileEntitySpotLight.class, "SpotLight");
 		GameRegistry.registerTileEntity(TileEntityTrail.class, "Trail");
@@ -118,6 +105,6 @@ public class NanotechModCity
 	public void PostInit(FMLPostInitializationEvent event)
 	{
 		NanotechCityAchievement.addAchievementInPage();
-		
+		packetHandler.postInitialise();
 	}
 }
