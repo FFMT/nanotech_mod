@@ -2,28 +2,28 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechDamageSource;
 
 public class ItemLightSaber extends Item
 {
-	public ItemLightSaber(int id)
+	public ItemLightSaber()
 	{
-		super(id);
+		super();
 		this.maxStackSize = 1;
 		this.setMaxDamage(1500);
 	}
 
+	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
 		if(!world.isRemote)
@@ -57,6 +57,7 @@ public class ItemLightSaber extends Item
 		return stack;
 	}
 
+	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
 	{
 		if(!player.worldObj.isRemote)
@@ -84,9 +85,10 @@ public class ItemLightSaber extends Item
 		return false;
 	}
 
+	@Override
 	public float getStrVsBlock(ItemStack stack, Block block)
 	{
-		if(block.blockID == Block.web.blockID && stack.getTagCompound().getBoolean("IsOn"))
+		if(block.equals(Blocks.web) && stack.getTagCompound().getBoolean("IsOn"))
 		{
 			return 15.0F;
 		}
@@ -98,26 +100,31 @@ public class ItemLightSaber extends Item
 	}
 
 	@SideOnly(Side.CLIENT)
+	@Override
 	public boolean isFull3D()
 	{
 		return true;
 	}
-
+	
+	@Override
 	public boolean canHarvestBlock(Block block)
 	{
-		return block.blockID == Block.web.blockID;
+		return block.equals(Blocks.web);
 	}
 
+	@Override
 	public int getItemEnchantability()
 	{
 		return 0;
 	}
-
+	
+	@Override
 	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)
 	{
 		return false;
 	}
-
+	
+	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase entityTarget, EntityLivingBase entitySource)
 	{
 		if(stack.getTagCompound().getBoolean("IsOn"))

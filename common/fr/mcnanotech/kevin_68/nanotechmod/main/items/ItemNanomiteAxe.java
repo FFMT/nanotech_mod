@@ -1,26 +1,27 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 
 public class ItemNanomiteAxe extends ItemAxe
 {
 
-	public ItemNanomiteAxe(int itemID, EnumToolMaterial toolMaterial)
+	public ItemNanomiteAxe(ToolMaterial toolMaterial)
 	{
-		super(itemID, toolMaterial);
+		super(toolMaterial);
 	}
 
-	public void registerIcons(IconRegister iconregister)
+	@Override
+	public void registerIcons(IIconRegister iconregister)
 	{
 		itemIcon = iconregister.registerIcon("nanotechmod:nanomiteAxe");
 	}
 
+	@Override
 	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)
 	{
-		if(stack.getItem().equals(this) && repairItem.getItem().itemID == NanotechItem.itemBase.itemID && repairItem.getItemDamage() == 14)
+		if(stack.getItem().equals(this) && repairItem.getItem().equals(NanotechItem.itemBase) && repairItem.getItemDamage() == 14)
 			return true;
 		return false;
 	}

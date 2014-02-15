@@ -2,7 +2,7 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -10,10 +10,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
@@ -22,23 +23,26 @@ public class ItemNanomiteArrowGun extends ItemBow
 {
 	private int timer = 0;
 
-	public ItemNanomiteArrowGun(int id)
+	public ItemNanomiteArrowGun()
 	{
-		super(id);
+		super();
 		this.maxStackSize = 1;
 		this.setMaxDamage(300000);
 	}
 
-	public void registerIcons(IconRegister iconregister)
+	@Override
+	public void registerIcons(IIconRegister iconregister)
 	{
 		itemIcon = iconregister.registerIcon("nanotechmod:nanomitebow");
 	}
 
+	@Override
 	public ItemStack onFoodEaten(ItemStack stack, World world, EntityPlayer player)
 	{
 		return stack;
 	}
 
+	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
 		if(!world.isRemote)
@@ -60,12 +64,12 @@ public class ItemNanomiteArrowGun extends ItemBow
 					{
 						stack.getTagCompound().setByte("Mode", (byte)0);
 					}
-					player.addChatMessage(this.getInfo(stack.getTagCompound().getByte("Mode")));
+					player.addChatMessage(new ChatComponentText(this.getInfo(stack.getTagCompound().getByte("Mode"))));
 				}
 				else
 				{
 					stack.getTagCompound().setByte("Mode", (byte)1);
-					player.addChatMessage(this.getInfo((byte)1));
+					player.addChatMessage(new ChatComponentText(this.getInfo((byte)1)));
 				}
 				return stack;
 			}
@@ -89,6 +93,7 @@ public class ItemNanomiteArrowGun extends ItemBow
 		return stack;
 	}
 
+	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean isCurrentItem)
 	{
 		if(isCurrentItem && entity instanceof EntityPlayer && !world.isRemote)
@@ -151,7 +156,7 @@ public class ItemNanomiteArrowGun extends ItemBow
 	{
 		boolean creativeOrInfinity = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, stack) > 0;
 
-		if(creativeOrInfinity || player.inventory.hasItem(Item.arrow.itemID))
+		if(creativeOrInfinity || player.inventory.hasItem(Items.arrow))
 		{
 			float power = 1.0F;
 			EntityArrow arrow = new EntityArrow(world, player, power * 6.0F);
@@ -185,12 +190,13 @@ public class ItemNanomiteArrowGun extends ItemBow
 			}
 			else
 			{
-				player.inventory.consumeInventoryItem(Item.arrow.itemID);
+				player.inventory.consumeInventoryItem(Items.arrow);
 			}
 			world.spawnEntityInWorld(arrow);
 		}
 	}
 
+	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
 		if(stack.hasTagCompound())

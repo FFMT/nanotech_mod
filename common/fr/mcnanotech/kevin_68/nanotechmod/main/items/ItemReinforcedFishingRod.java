@@ -1,21 +1,21 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFishingRod;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.others.EntityReinforcedFishingHook;
 
 public class ItemReinforcedFishingRod extends ItemFishingRod
 {
-	private Icon theIcon;
+	private IIcon theIcon;
 
-	public ItemReinforcedFishingRod(int id)
+	public ItemReinforcedFishingRod()
 	{
-		super(id);
+		super();
 		this.setMaxDamage(128);
 	}
 
@@ -52,14 +52,14 @@ public class ItemReinforcedFishingRod extends ItemFishingRod
 		return stack;
 	}
 
-	public void registerIcons(IconRegister par1IconRegister)
+	public void registerIcons(IIconRegister iiconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon(this.getIconString() + "_uncast");
-		this.theIcon = par1IconRegister.registerIcon(this.getIconString() + "_cast");
+		this.itemIcon = iiconRegister.registerIcon(this.getIconString() + "_uncast");
+		this.theIcon = iiconRegister.registerIcon(this.getIconString() + "_cast");
 	}
 
 	@Override
-	public Icon getIcon(ItemStack stack, int multiPassRender)
+	public IIcon getIcon(ItemStack stack, int multiPassRender)
 	{
 		if(!stack.hasTagCompound())
 		{

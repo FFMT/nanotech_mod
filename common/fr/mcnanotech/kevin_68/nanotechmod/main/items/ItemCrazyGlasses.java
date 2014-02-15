@@ -1,11 +1,10 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -18,21 +17,23 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.client.model.items.ItemCrazyGlass
 public class ItemCrazyGlasses extends ItemArmor
 {
 
-	public ItemCrazyGlasses(int par1, EnumArmorMaterial material, int renderIndex, int armorType)
+	public ItemCrazyGlasses(ArmorMaterial material, int renderIndex, int armorType)
 	{
-		super(par1, material, renderIndex, armorType);
+		super(material, renderIndex, armorType);
 	}
-
-	public void registerIcons(IconRegister iconregister)
+	@Override
+	public void registerIcons(IIconRegister iconregister)
 	{
 		itemIcon = iconregister.registerIcon("nanotechmod:crazyGlassesItem");
 	}
-
+	
+	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
 	{
-		if(stack.itemID == NanotechItem.crazyGlasses.itemID)
+		if(stack.getItem().equals(NanotechItem.crazyGlasses))
+		{
 			return "nanotechmod:textures/armor/crazyGlasses.png";
-
+		}
 		return "nanotechmod:textures/block/empty.png";
 	}
 

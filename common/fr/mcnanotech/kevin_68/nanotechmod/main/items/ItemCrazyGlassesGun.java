@@ -1,9 +1,10 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
@@ -16,23 +17,26 @@ public class ItemCrazyGlassesGun extends ItemBow
 {
 	public int timer = 0;
 
-	public ItemCrazyGlassesGun(int id)
+	public ItemCrazyGlassesGun()
 	{
-		super(id);
+		super();
 		this.maxStackSize = 1;
 		this.setMaxDamage(300000);
 	}
-
-	public void registerIcons(IconRegister iconregister)
+	
+	@Override
+	public void registerIcons(IIconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("nanotechmod:crazyglassesgunitem");
+		itemIcon = iconregister.registerIcon(NanotechMod.MODID + ":crazyglassesgunitem");
 	}
-
+	
+	@Override
 	public ItemStack onFoodEaten(ItemStack stack, World world, EntityPlayer player)
 	{
 		return stack;
 	}
-
+	
+	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
 		if(!world.isRemote)
@@ -76,6 +80,7 @@ public class ItemCrazyGlassesGun extends ItemBow
 		return stack;
 	}
 
+	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean isCurrentItem)
 	{
 		if(!world.isRemote)
@@ -101,7 +106,7 @@ public class ItemCrazyGlassesGun extends ItemBow
 							}
 							else if(timer == 6 || timer == 16 || timer == 26 || timer == 36)
 							{
-								if(FFMTContainerHelper.consumeItemWithMetadataInInventory((EntityPlayer)entity, NanotechItem.itemBase.itemID, 20))
+								if(FFMTContainerHelper.consumeItemWithMetadataInInventory((EntityPlayer)entity, NanotechItem.itemBase, 20))
 								{
 									stack.getTagCompound().setByte("Charge", (byte)(stack.getTagCompound().getByte("Charge") + 1));
 								}
@@ -152,7 +157,7 @@ public class ItemCrazyGlassesGun extends ItemBow
 
 			EntityItem iron = new EntityItem(world);
 			iron.delayBeforeCanPickup = 5;
-			iron.setEntityItemStack(new ItemStack(Item.ingotIron, 2, 0));
+			iron.setEntityItemStack(new ItemStack(Items.iron_ingot, 2, 0));
 			iron.setLocationAndAngles(player.posX, player.posY + (double)player.getEyeHeight(), player.posZ, player.rotationYaw, player.rotationPitch);
 			iron.posX -= (double)(MathHelper.cos(glasses.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
 			iron.posY -= 0.10000000149011612D;

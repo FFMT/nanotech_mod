@@ -1,6 +1,6 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,11 +11,12 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechDamageSource;
 
 public class ItemAlters extends Item
 {
-	public ItemAlters(int par1)
+	public ItemAlters()
 	{
-		super(par1);
+		super();
 	}
 
+	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
 		int highest = 0;
@@ -60,7 +61,8 @@ public class ItemAlters extends Item
 		return 1;
 	}
 
-	public void registerIcons(IconRegister iconregister)
+	@Override
+	public void registerIcons(IIconRegister iconregister)
 	{
 		this.itemIcon = iconregister.registerIcon("nanotechmod:altersItem");
 	}

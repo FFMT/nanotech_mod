@@ -1,15 +1,15 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
@@ -17,19 +17,20 @@ import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
 public class ItemDiamondBow extends ItemBow
 {
-	private Icon[] iconbuffer;
+	private IIcon[] iconbuffer;
 	private static String[] bowpullname = new String[] {"diamondbow_pull1", "diamondbow_pull2", "diamondbow_pull3"};
 
-	public ItemDiamondBow(int id)
+	public ItemDiamondBow()
 	{
-		super(id);
+		super();
 		this.maxStackSize = 1;
 		this.setMaxDamage(1000);
 	}
 
-	public void registerIcons(IconRegister iconregister)
+	@Override
+	public void registerIcons(IIconRegister iconregister)
 	{
-		iconbuffer = new Icon[bowpullname.length];
+		iconbuffer = new IIcon[bowpullname.length];
 		for(int i = 0; i < bowpullname.length; i++)
 		{
 			iconbuffer[i] = iconregister.registerIcon("nanotechmod:" + bowpullname[i]);
@@ -37,9 +38,10 @@ public class ItemDiamondBow extends ItemBow
 		itemIcon = iconregister.registerIcon("nanotechmod:diamondbow");
 	}
 
-	public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
+	@Override
+	public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
 	{
-		if(usingItem != null && usingItem.getItem().itemID == NanotechItem.diamondBow.itemID)
+		if(usingItem != null && usingItem.getItem().equals(NanotechItem.diamondBow))
 		{
 			int k = usingItem.getMaxItemUseDuration() - useRemaining;
 			if(k >= 18)
@@ -52,6 +54,7 @@ public class ItemDiamondBow extends ItemBow
 		return getIconIndex(stack);
 	}
 
+	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int itemInUseCount)
 	{
 		int charge = this.getMaxItemUseDuration(stack) - itemInUseCount;
@@ -66,7 +69,7 @@ public class ItemDiamondBow extends ItemBow
 
 		boolean creativeOrInfinity = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, stack) > 0;
 
-		if(creativeOrInfinity || player.inventory.hasItem(Item.arrow.itemID))
+		if(creativeOrInfinity || player.inventory.hasItem(Items.arrow))
 		{
 			float power = 1000000000000000000F;
 
@@ -115,7 +118,7 @@ public class ItemDiamondBow extends ItemBow
 			}
 			else
 			{
-				player.inventory.consumeInventoryItem(Item.arrow.itemID);
+				player.inventory.consumeInventoryItem(Items.arrow);
 			}
 
 			if(!world.isRemote)
@@ -125,21 +128,25 @@ public class ItemDiamondBow extends ItemBow
 		}
 	}
 
+	@Override
 	public ItemStack onFoodEaten(ItemStack stack, World world, EntityPlayer player)
 	{
 		return stack;
 	}
 
+	@Override
 	public int getMaxItemUseDuration(ItemStack stack)
 	{
 		return 1000;
 	}
 
+	@Override
 	public EnumAction getItemUseAction(ItemStack stack)
 	{
 		return EnumAction.bow;
 	}
 
+	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
 		ArrowNockEvent event = new ArrowNockEvent(player, stack);
@@ -149,13 +156,14 @@ public class ItemDiamondBow extends ItemBow
 			return event.result;
 		}
 
-		if(player.capabilities.isCreativeMode || player.inventory.hasItem(Item.arrow.itemID))
+		if(player.capabilities.isCreativeMode || player.inventory.hasItem(Items.arrow))
 		{
 			player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
 		}
 		return stack;
 	}
 
+	@Override
 	public int getItemEnchantability()
 	{
 		return 1;

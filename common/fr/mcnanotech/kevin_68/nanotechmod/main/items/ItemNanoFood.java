@@ -1,23 +1,23 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemFood;
 
 public class ItemNanoFood extends ItemFood
 {
 
-	public ItemNanoFood(int id, int healAmount, float saturation, boolean wolf)
+	public ItemNanoFood(int healAmount, float saturation, boolean wolf)
 	{
-		super(id, healAmount, saturation, wolf);
+		super(healAmount, saturation, wolf);
 	}
 
-	public ItemNanoFood(int id, int healAmount, float saturation, boolean wolf, int pID, int pDuration, int pAmplifier, float pProb)
+	public ItemNanoFood(int healAmount, float saturation, boolean wolf, int pID, int pDuration, int pAmplifier, float pProb)
 	{
-		super(id, healAmount, saturation, wolf);
+		super(healAmount, saturation, wolf);
 		this.setPotionEffect(pID, pDuration, pAmplifier, pProb);
 	}
 
-	public void registerIcons(IconRegister iconregister)
+	public void registerIcons(IIconRegister iconregister)
 	{
 		itemIcon = iconregister.registerIcon("nanotechmod:" + getUnlocalizedName().substring(5));
 	}
