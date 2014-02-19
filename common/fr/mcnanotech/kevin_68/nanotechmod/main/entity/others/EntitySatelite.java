@@ -30,7 +30,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechDamageSource;
 
 @SuppressWarnings("unused")
@@ -168,7 +168,7 @@ public class EntitySatelite extends Entity
 
 		if(this.inGround)
 		{
-			EntityItem proco = new EntityItem(worldObj, this.posX, this.posY, this.posZ, new ItemStack(NanotechModList.itemBase, 1, 8));
+			EntityItem proco = new EntityItem(worldObj, this.posX, this.posY, this.posZ, new ItemStack(NanotechItem.itemBase, 1, 8));
 			EntityItem iron = new EntityItem(worldObj, this.posX, this.posY, this.posZ, new ItemStack(Items.iron_ingot, 5));
 			EntityItem red = new EntityItem(worldObj, this.posX, this.posY, this.posZ, new ItemStack(Items.redstone, 10));
 			EntityItem gold = new EntityItem(worldObj, this.posX, this.posY, this.posZ, new ItemStack(Items.gold_ingot, 2));

@@ -9,7 +9,6 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class ItemNanomiteSword extends ItemSword
 {
@@ -20,7 +19,7 @@ public class ItemNanomiteSword extends ItemSword
 
 	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)
 	{
-		if(stack.getItem().equals(this) && repairItem.getItem() == NanotechModList.itemBase && repairItem.getItemDamage() == 14)
+		if(stack.getItem().equals(this) && repairItem.getItem() == NanotechItem.itemBase && repairItem.getItemDamage() == 14)
 			return true;
 		return false;
 	}

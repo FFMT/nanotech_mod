@@ -9,7 +9,6 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class ItemNanomiteAxe extends ItemAxe
 {
@@ -22,7 +21,7 @@ public class ItemNanomiteAxe extends ItemAxe
 	@Override
 	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)
 	{
-		if(stack.getItem().equals(this) && repairItem.getItem().equals(NanotechModList.itemBase) && repairItem.getItemDamage() == 14)
+		if(stack.getItem().equals(this) && repairItem.getItem().equals(NanotechItem.itemBase) && repairItem.getItemDamage() == 14)
 			return true;
 		return false;
 	}

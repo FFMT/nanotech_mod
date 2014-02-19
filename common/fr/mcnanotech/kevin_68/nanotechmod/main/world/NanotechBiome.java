@@ -14,7 +14,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 
 public class NanotechBiome extends BiomeGenBase
 {
@@ -27,7 +27,7 @@ public class NanotechBiome extends BiomeGenBase
 		this.spawnableCreatureList.clear();
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
-		this.topBlock = NanotechModList.nanoGrass;
+		this.topBlock = NanotechBlock.nanoGrass;
 		this.fillerBlock = Blocks.dirt;
 		this.setBiomeName("Nanotech");
 		this.theBiomeDecorator.treesPerChunk = 0;

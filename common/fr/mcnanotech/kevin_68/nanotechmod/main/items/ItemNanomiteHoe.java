@@ -9,7 +9,6 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class ItemNanomiteHoe extends ItemHoe
 {
@@ -21,7 +20,7 @@ public class ItemNanomiteHoe extends ItemHoe
 	@Override
 	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)
 	{
-		if(stack.getItem().equals(this) && repairItem.getItem() == NanotechModList.itemBase && repairItem.getItemDamage() == 14)
+		if(stack.getItem().equals(this) && repairItem.getItem() == NanotechItem.itemBase && repairItem.getItemDamage() == 14)
 			return true;
 		return false;
 	}

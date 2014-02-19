@@ -25,9 +25,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 import cpw.mods.fml.common.Loader;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.MobThedeath;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.others.EntityReinforcedFishingHook;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechOther;
 
 public class BlockLiquidNitrogen extends BlockFluidClassic
@@ -101,7 +101,7 @@ public class BlockLiquidNitrogen extends BlockFluidClassic
 			ItemStack boots = player.getCurrentArmor(1);
 			if(helmet != null && chestPlate != null && leggings != null && boots != null)
 			{
-				if(helmet.getItem().equals(NanotechModList.mysteriousHelmet) && chestPlate.getItem().equals(NanotechModList.mysteriousChestPlate) && leggings.getItem().equals(NanotechModList.mysteriousLeggings) && boots.getItem().equals(NanotechModList.mysteriousBoots))
+				if(helmet.getItem().equals(NanotechItem.mysteriousHelmet) && chestPlate.getItem().equals(NanotechItem.mysteriousChestPlate) && leggings.getItem().equals(NanotechItem.mysteriousLeggings) && boots.getItem().equals(NanotechItem.mysteriousBoots))
 				{
 					return false;
 				}

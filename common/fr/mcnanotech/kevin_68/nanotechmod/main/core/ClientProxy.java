@@ -49,6 +49,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.MobThedeath;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.others.EntityReinforcedFishingHook;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.others.EntitySatelite;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.others.EntitySuperBottleOfXp;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityButton;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPortableChest;
 import fr.minecraftforgefrance.ffmtlibs.FFMTClientRegistry;
@@ -71,15 +72,15 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(MobDancer.class, new RenderDancer());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityReinforcedFishingHook.class, new RenderFish());
-		RenderingRegistry.registerEntityRenderingHandler(EntitySuperBottleOfXp.class, new RenderSnowball(NanotechModList.superBottleOfXp));
+		RenderingRegistry.registerEntityRenderingHandler(EntitySuperBottleOfXp.class, new RenderSnowball(NanotechItem.superBottleOfXp));
 		RenderingRegistry.registerEntityRenderingHandler(EntitySatelite.class, new RenderSatelite());
 
-		MinecraftForgeClient.registerItemRenderer(NanotechModList.scythe, new ItemScytheRender());
-		MinecraftForgeClient.registerItemRenderer(NanotechModList.debug, new ItemDebugRender());
-		MinecraftForgeClient.registerItemRenderer(NanotechModList.alters, new ItemAltersRender());
-		MinecraftForgeClient.registerItemRenderer(NanotechModList.nanomiteBow, new ItemNanomiteArrowGunRender());
-		MinecraftForgeClient.registerItemRenderer(NanotechModList.crazyGlassesGun, new ItemCrazyGlassesGunRender());
-		MinecraftForgeClient.registerItemRenderer(NanotechModList.lightSaber, new ItemLightSaberRender());
+		MinecraftForgeClient.registerItemRenderer(NanotechItem.scythe, new ItemScytheRender());
+		MinecraftForgeClient.registerItemRenderer(NanotechItem.debug, new ItemDebugRender());
+		MinecraftForgeClient.registerItemRenderer(NanotechItem.alters, new ItemAltersRender());
+		MinecraftForgeClient.registerItemRenderer(NanotechItem.nanomiteBow, new ItemNanomiteArrowGunRender());
+		MinecraftForgeClient.registerItemRenderer(NanotechItem.crazyGlassesGun, new ItemCrazyGlassesGunRender());
+		MinecraftForgeClient.registerItemRenderer(NanotechItem.lightSaber, new ItemLightSaberRender());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(NanotechBlock.machine), new ItemBlockPortableChestRender());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityButton.class, new TileEntityButtonRender());

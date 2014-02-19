@@ -12,7 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechFluid;
 
 public class BucketEvent
@@ -26,7 +25,7 @@ public class BucketEvent
 		if(block.equals(NanotechFluid.blockNitrogen) && metadata == 0)
 		{
 			event.world.setBlockToAir(event.target.blockX, event.target.blockY, event.target.blockZ);
-			event.result = new ItemStack(NanotechModList.nitrogenBucket);
+			event.result = new ItemStack(NanotechFluid.bucketNitrogen);
 			event.setResult(Result.ALLOW);
 		}
 

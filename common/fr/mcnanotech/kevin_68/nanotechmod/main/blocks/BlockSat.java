@@ -23,7 +23,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityButton;
 
 public class BlockSat extends Block
@@ -257,7 +257,7 @@ public class BlockSat extends Block
 	@Override
 	public Item getItemDropped(int metadata, Random rand, int par3)
 	{
-		return NanotechModList.itemBase;
+		return NanotechItem.itemBase;
 	}
 
 	public int quantityDropped(Random rand)

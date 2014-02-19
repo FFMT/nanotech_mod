@@ -29,7 +29,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechAchievement;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechFluid;
 
@@ -202,7 +202,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 			{
 				ItemStack itemstack = this.angler.getCurrentEquippedItem();
 
-				if((this.angler.isDead) || (!this.angler.isEntityAlive()) || (itemstack == null) || !itemstack.getItem().equals(NanotechModList.reinforcedFishingRod) || (getDistanceSqToEntity(this.angler) > 2048.0D))
+				if((this.angler.isDead) || (!this.angler.isEntityAlive()) || (itemstack == null) || !itemstack.getItem().equals(NanotechItem.reinforcedFishingRod) || (getDistanceSqToEntity(this.angler) > 2048.0D))
 				{
 					setDead();
 					this.angler.fishEntity = null;
@@ -495,7 +495,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 				ItemStack stack;
 				if(this.isInNitrogen)
 				{
-					stack = new ItemStack(NanotechModList.itemBase, 1, 17);
+					stack = new ItemStack(NanotechItem.itemBase, 1, 17);
 				}
 				else
 				{

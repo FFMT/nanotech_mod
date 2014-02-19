@@ -19,7 +19,6 @@ import net.minecraftforge.fluids.FluidRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.BlockLiquidNitrogen;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.ItemNitrogenBucket;
 
 public class NanotechFluid
@@ -30,19 +29,20 @@ public class NanotechFluid
 	
 	public static void initFluid()
 	{
+		liquidNitrogen = new Fluid("liquidnitrogen").setDensity(4000).setViscosity(500).setTemperature(77).setLuminosity(0).setUnlocalizedName("liquidNitrogen");
+		FluidRegistry.registerFluid(liquidNitrogen);
 		
 		blockNitrogen = new BlockLiquidNitrogen(liquidNitrogen, Material.water).setBlockName("liquidNitrogen").setBlockTextureName(NanotechMod.MODID + ":nitrogen"); 
 		bucketNitrogen = new ItemNitrogenBucket(blockNitrogen).setUnlocalizedName("nitrogenBucket").setTextureName(NanotechMod.MODID + ":nitrogenBucket").setCreativeTab(NanotechMod.CreaI).setContainerItem(Items.bucket);
-		liquidNitrogen = new Fluid("liquidnitrogen").setDensity(4000).setViscosity(500).setTemperature(77).setLuminosity(0).setUnlocalizedName("liquidNitrogen").setBlock(blockNitrogen).setIcons(blockNitrogen.getBlockTextureFromSide(1), blockNitrogen.getBlockTextureFromSide(2));
+		liquidNitrogen.setBlock(blockNitrogen).setIcons(blockNitrogen.getBlockTextureFromSide(1), blockNitrogen.getBlockTextureFromSide(2));
 		
 		GameRegistry.registerBlock(blockNitrogen, ItemBlock.class, "blockLiquidNitrogen", NanotechMod.MODID);
 		GameRegistry.registerItem(bucketNitrogen, "nitrogenBucket", NanotechMod.MODID);
-		FluidRegistry.registerFluid(liquidNitrogen);
 	}
 	
 
 	public static void initFluidContainer()
 	{
-		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidnitrogen", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(NanotechModList.nitrogenBucket), FluidContainerRegistry.EMPTY_BUCKET);
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidnitrogen", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketNitrogen), FluidContainerRegistry.EMPTY_BUCKET);
 	}
 }

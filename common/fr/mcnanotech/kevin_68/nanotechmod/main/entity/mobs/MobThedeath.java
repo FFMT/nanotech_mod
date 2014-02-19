@@ -36,8 +36,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.others.EntityTheDeathBall;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechAchievement;
 
 public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedAttackMob
@@ -200,7 +200,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	@Override
 	public ItemStack getHeldItem()
 	{
-		return(new ItemStack(NanotechModList.scythe));
+		return(new ItemStack(NanotechItem.scythe));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -408,7 +408,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		{
 			((EntityPlayer)entity).triggerAchievement(NanotechAchievement.killTheDeath);
 
-			if(((EntityPlayer)entity).inventory.armorItemInSlot(3) != null && ItemStack.areItemStacksEqual(((EntityPlayer)entity).inventory.armorItemInSlot(3), new ItemStack(NanotechModList.crazyGlasses)))
+			if(((EntityPlayer)entity).inventory.armorItemInSlot(3) != null && ItemStack.areItemStacksEqual(((EntityPlayer)entity).inventory.armorItemInSlot(3), new ItemStack(NanotechItem.crazyGlasses)))
 			{
 				((EntityPlayer)entity).triggerAchievement(NanotechAchievement.killTheDeathWithCG);
 			}
@@ -546,10 +546,10 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	@Override
 	protected void dropFewItems(boolean killbyplayer, int lootinglevel)
 	{
-		entityDropItem(new ItemStack(NanotechModList.itemBase, 25, 2), 0.0F);
+		entityDropItem(new ItemStack(NanotechItem.itemBase, 25, 2), 0.0F);
 		dropItem(Items.diamond, 18);
 		dropItem(Items.nether_star, 1);
-		dropItem(NanotechModList.scythe, 1);
+		dropItem(NanotechItem.scythe, 1);
 	}
 
 	@Override

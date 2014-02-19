@@ -19,7 +19,6 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.model.items.ItemCrazyGlassesModel;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class ItemCrazyGlasses extends ItemArmor
 {
@@ -32,7 +31,7 @@ public class ItemCrazyGlasses extends ItemArmor
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
-		if(stack.getItem().equals(NanotechModList.crazyGlasses))
+		if(stack.getItem().equals(NanotechItem.crazyGlasses))
 		{
 			return "nanotechmod:textures/armor/crazyGlasses.png";
 		}

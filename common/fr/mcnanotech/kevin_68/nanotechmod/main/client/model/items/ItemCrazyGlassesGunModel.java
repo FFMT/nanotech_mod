@@ -11,7 +11,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 
 public class ItemCrazyGlassesGunModel extends ModelBase
 {
@@ -125,7 +125,7 @@ public class ItemCrazyGlassesGunModel extends ModelBase
 			EntityPlayer player = (EntityPlayer)entity;
 			if(player.inventory.getCurrentItem() != null)
 			{
-				if(player.inventory.getCurrentItem().equals(NanotechModList.crazyGlassesGun))
+				if(player.inventory.getCurrentItem().equals(NanotechItem.crazyGlassesGun))
 				{
 					if(player.inventory.getCurrentItem().hasTagCompound())
 					{

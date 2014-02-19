@@ -7,26 +7,18 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.main.other;
 
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.BlockLiquidNitrogen;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.BucketEvent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.EventBonemeal;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.EventTick;
@@ -34,7 +26,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.event.LivingEvent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.PlayerEvent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.PlayerTracker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.RenderEvent;
-import fr.mcnanotech.kevin_68.nanotechmod.main.items.ItemNitrogenBucket;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.GuiHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketJumper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketSmoker;
@@ -131,7 +123,7 @@ public class NanotechOther
 		// DimensionManager.registerDimension(NanotechConfiguration.dimensionID, NanotechConfiguration.dimensionID);
 
 		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechBlock.sodium), 1, 5, 6));
-		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechModList.nanoDisc), 1, 1, 2));
-		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechModList.alters), 1, 1, 10));
+		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechItem.nanoDisc), 1, 1, 2));
+		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechItem.alters), 1, 1, 10));
 	}
 }

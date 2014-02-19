@@ -86,14 +86,7 @@ public class NanotechMod
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem()
 		{
-			return null;
-		}
-
-		@Override
-		@SideOnly(Side.CLIENT)
-		public int func_151243_f()
-		{
-			return 12;
+			return NanotechItem.superBottleOfXp;
 		}
 	};
 

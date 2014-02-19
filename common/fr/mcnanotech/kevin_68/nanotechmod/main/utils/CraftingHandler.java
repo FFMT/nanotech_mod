@@ -12,7 +12,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechAchievement;
 
 public class CraftingHandler
@@ -73,11 +73,11 @@ public class CraftingHandler
 			player.triggerAchievement(NanotechAchievement.blockListerJukebox);
 		}
 
-		if(stack.getItem() == NanotechModList.alters)
+		if(stack.getItem() == NanotechItem.alters)
 		{
 			player.triggerAchievement(NanotechAchievement.itemAlters);
 		}
-		if(stack.getItem() == NanotechModList.itemBase)
+		if(stack.getItem() == NanotechItem.itemBase)
 		{
 			switch(stack.getItemDamage())
 			{
@@ -109,35 +109,35 @@ public class CraftingHandler
 				return;
 			}
 		}
-		if(stack.getItem() == NanotechModList.diamondBow)
+		if(stack.getItem() == NanotechItem.diamondBow)
 		{
 			player.triggerAchievement(NanotechAchievement.itemDiamondBow);
 		}
-		if(stack.getItem() == NanotechModList.emeraldBow)
+		if(stack.getItem() == NanotechItem.emeraldBow)
 		{
 			player.triggerAchievement(NanotechAchievement.itemEmeraldBow);
 		}
-		if(stack.getItem() == NanotechModList.nanomiteBow)
+		if(stack.getItem() == NanotechItem.nanomiteBow)
 		{
 			player.triggerAchievement(NanotechAchievement.itemNanomiteBow);
 		}
-		if(stack.getItem() == NanotechModList.mysteriousBoots || stack.getItem() == NanotechModList.mysteriousChestPlate || stack.getItem() == NanotechModList.mysteriousHelmet || stack.getItem() == NanotechModList.mysteriousLeggings)
+		if(stack.getItem() == NanotechItem.mysteriousBoots || stack.getItem() == NanotechItem.mysteriousChestPlate || stack.getItem() == NanotechItem.mysteriousHelmet || stack.getItem() == NanotechItem.mysteriousLeggings)
 		{
 			player.triggerAchievement(NanotechAchievement.itemMysteriousArmor);
 		}
-		if(stack.getItem() == NanotechModList.nanomiteBoots || stack.getItem() == NanotechModList.nanomiteChestPlate || stack.getItem() == NanotechModList.nanomiteHelmet || stack.getItem() == NanotechModList.nanomiteLeggings)
+		if(stack.getItem() == NanotechItem.nanomiteBoots || stack.getItem() == NanotechItem.nanomiteChestPlate || stack.getItem() == NanotechItem.nanomiteHelmet || stack.getItem() == NanotechItem.nanomiteLeggings)
 		{
 			player.triggerAchievement(NanotechAchievement.itemNanomiteArmor);
 		}
-		if(stack.getItem() == NanotechModList.nanomitePickaxe || stack.getItem() == NanotechModList.nanomiteAxe || stack.getItem() == NanotechModList.nanomiteShovel || stack.getItem() == NanotechModList.nanomiteHoe || stack.getItem() == NanotechModList.nanomiteSword)
+		if(stack.getItem() == NanotechItem.nanomitePickaxe || stack.getItem() == NanotechItem.nanomiteAxe || stack.getItem() == NanotechItem.nanomiteShovel || stack.getItem() == NanotechItem.nanomiteHoe || stack.getItem() == NanotechItem.nanomiteSword)
 		{
 			player.triggerAchievement(NanotechAchievement.itemNanomiteTool);
 		}
-		if(stack.getItem() == NanotechModList.reinforcedFishingRod)
+		if(stack.getItem() == NanotechItem.reinforcedFishingRod)
 		{
 			player.triggerAchievement(NanotechAchievement.itemReinforcedFishinRod);
 		}
-		if(stack.getItem() == NanotechModList.crazyGlassesGun)
+		if(stack.getItem() == NanotechItem.crazyGlassesGun)
 		{
 			player.triggerAchievement(NanotechAchievement.itemCrazyGlassesLauncher);
 		}
@@ -147,7 +147,7 @@ public class CraftingHandler
 	// TODO fml event
 	public void onSmelting(EntityPlayer player, ItemStack stack)
 	{
-		if(stack.getItem() == NanotechModList.itemBase)
+		if(stack.getItem() == NanotechItem.itemBase)
 		{
 			switch(stack.getItemDamage())
 			{

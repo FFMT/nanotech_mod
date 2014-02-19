@@ -21,7 +21,7 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 
 public class MobCrazyGuy extends EntityMob
 {
@@ -87,6 +87,6 @@ public class MobCrazyGuy extends EntityMob
 	@Override
 	protected Item getDropItem()
 	{
-		return NanotechModList.crazyGlasses;
+		return NanotechItem.crazyGlasses;
 	}
 }

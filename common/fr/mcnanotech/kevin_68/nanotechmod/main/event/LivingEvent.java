@@ -16,7 +16,7 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechAchievement;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechDamageSource;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechOther;
@@ -28,7 +28,7 @@ public class LivingEvent
 	{
 		ItemStack boots = event.entityLiving.getEquipmentInSlot(1);
 
-		if(boots != null && boots.getItem().equals(NanotechModList.mysteriousBoots))
+		if(boots != null && boots.getItem().equals(NanotechItem.mysteriousBoots))
 		{
 			boots.damageItem((int)(event.distance / 8), event.entityLiving);
 			if(boots.stackSize == 0)
@@ -113,7 +113,7 @@ public class LivingEvent
 			ItemStack leggings = event.entityLiving.getEquipmentInSlot(2);
 			ItemStack chestPlate = event.entityLiving.getEquipmentInSlot(3);
 			ItemStack helmet = event.entityLiving.getEquipmentInSlot(4);
-			if(boots != null && boots.getItem().equals(NanotechModList.mysteriousBoots) && leggings != null && leggings.getItem().equals(NanotechModList.mysteriousLeggings) && chestPlate != null && chestPlate.getItem().equals(NanotechModList.mysteriousChestPlate) && helmet != null && helmet.getItem().equals(NanotechModList.mysteriousHelmet))
+			if(boots != null && boots.getItem().equals(NanotechItem.mysteriousBoots) && leggings != null && leggings.getItem().equals(NanotechItem.mysteriousLeggings) && chestPlate != null && chestPlate.getItem().equals(NanotechItem.mysteriousChestPlate) && helmet != null && helmet.getItem().equals(NanotechItem.mysteriousHelmet))
 			{
 				boots.damageItem((int)(event.ammount / 10), event.entityLiving);
 				leggings.damageItem((int)(event.ammount / 10), event.entityLiving);

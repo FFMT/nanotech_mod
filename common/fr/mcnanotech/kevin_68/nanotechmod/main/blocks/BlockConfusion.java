@@ -16,7 +16,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 
 public class BlockConfusion extends Block
 {
@@ -58,7 +58,7 @@ public class BlockConfusion extends Block
 		ItemStack boots = player.getCurrentArmor(1);
 		if(helmet != null && chestPlate != null && leggings != null && boots != null)
 		{
-			if(helmet.getItem().equals(NanotechModList.mysteriousHelmet) && chestPlate.getItem().equals(NanotechModList.mysteriousChestPlate) && leggings.getItem().equals(NanotechModList.mysteriousLeggings) && boots.getItem().equals(NanotechModList.mysteriousBoots))
+			if(helmet.getItem().equals(NanotechItem.mysteriousHelmet) && chestPlate.getItem().equals(NanotechItem.mysteriousChestPlate) && leggings.getItem().equals(NanotechItem.mysteriousLeggings) && boots.getItem().equals(NanotechItem.mysteriousBoots))
 			{
 				return false;
 			}

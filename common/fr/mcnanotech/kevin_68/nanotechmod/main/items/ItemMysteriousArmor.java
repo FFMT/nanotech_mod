@@ -13,7 +13,6 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class ItemMysteriousArmor extends ItemArmor
 {
@@ -32,7 +31,7 @@ public class ItemMysteriousArmor extends ItemArmor
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
-		if(stack.getItem().equals(NanotechModList.mysteriousLeggings))
+		if(stack.getItem().equals(NanotechItem.mysteriousLeggings))
 		{
 			return "nanotechmod:textures/armor/Mysteriousarmor2.png";
 		}

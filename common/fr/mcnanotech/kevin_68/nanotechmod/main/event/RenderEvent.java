@@ -17,7 +17,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 
 public class RenderEvent
 {
@@ -34,7 +34,7 @@ public class RenderEvent
 		else
 		{
 			ItemStack stack = this.mc.thePlayer.inventory.armorItemInSlot(3);
-			if(this.mc.gameSettings.thirdPersonView == 0 && stack != null && stack.getItem().equals(NanotechModList.crazyGlasses))
+			if(this.mc.gameSettings.thirdPersonView == 0 && stack != null && stack.getItem().equals(NanotechItem.crazyGlasses))
 			{
 				int k = event.resolution.getScaledWidth();
 				int l = event.resolution.getScaledHeight();

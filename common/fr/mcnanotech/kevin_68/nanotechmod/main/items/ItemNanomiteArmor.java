@@ -10,7 +10,6 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class ItemNanomiteArmor extends ItemArmor
 {
@@ -22,7 +21,7 @@ public class ItemNanomiteArmor extends ItemArmor
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
-		if(stack.getItem().equals(NanotechModList.nanomiteLeggings))
+		if(stack.getItem().equals(NanotechItem.nanomiteLeggings))
 		{
 			return "nanotechmod:textures/armor/Nanomitearmor2.png";
 		}
@@ -35,7 +34,7 @@ public class ItemNanomiteArmor extends ItemArmor
 	@Override
 	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)
 	{
-		if(stack.getItem().equals(this) && repairItem.getItem().equals(NanotechModList.itemBase) && repairItem.getItemDamage() == 14)
+		if(stack.getItem().equals(this) && repairItem.getItem().equals(NanotechItem.itemBase) && repairItem.getItemDamage() == 14)
 			return true;
 		return false;
 	}

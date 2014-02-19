@@ -22,7 +22,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class BlockNanoLeaves extends BlockLeaves implements IShearable
 {

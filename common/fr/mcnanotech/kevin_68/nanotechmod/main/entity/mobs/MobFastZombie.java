@@ -25,7 +25,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 
 public class MobFastZombie extends EntityMob
 {
@@ -110,7 +110,7 @@ public class MobFastZombie extends EntityMob
 	@Override
 	protected Item getDropItem()
 	{
-		return NanotechModList.edibleFlesh;
+		return NanotechItem.edibleFlesh;
 	}
 
 	@Override

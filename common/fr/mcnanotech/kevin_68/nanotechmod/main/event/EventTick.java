@@ -22,8 +22,9 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechDamageSource;
+import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechFluid;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPortableChest;
 
 public class EventTick
@@ -36,7 +37,7 @@ public class EventTick
 		{
 			if(event.player.inventory.getStackInSlot(i) != null)
 			{
-				if(event.player.inventory.getStackInSlot(i).getItem().equals(NanotechModList.alters))
+				if(event.player.inventory.getStackInSlot(i).getItem().equals(NanotechItem.alters))
 				{
 					if(event.player.isInsideOfMaterial(Material.water) || event.player.isInsideOfMaterial(Material.lava))
 					{
@@ -59,25 +60,25 @@ public class EventTick
 			{
 				if(event.player.inventory.getStackInSlot(i) != null)
 				{
-					if(event.player.inventory.getStackInSlot(i).getItem() == NanotechModList.crazyGlasses)
+					if(event.player.inventory.getStackInSlot(i).getItem() == NanotechItem.crazyGlasses)
 					{
-						event.player.inventory.setInventorySlotContents(39, new ItemStack(NanotechModList.crazyGlasses));
-						event.player.inventory.consumeInventoryItem(NanotechModList.crazyGlasses);
+						event.player.inventory.setInventorySlotContents(39, new ItemStack(NanotechItem.crazyGlasses));
+						event.player.inventory.consumeInventoryItem(NanotechItem.crazyGlasses);
 					}
 				}
 			}
 		}
-		else if(event.player.inventory.armorItemInSlot(3) != null && event.player.inventory.armorItemInSlot(3).getItem() != NanotechModList.crazyGlasses && !event.player.capabilities.isCreativeMode)
+		else if(event.player.inventory.armorItemInSlot(3) != null && event.player.inventory.armorItemInSlot(3).getItem() != NanotechItem.crazyGlasses && !event.player.capabilities.isCreativeMode)
 		{
 			for(int i = 0; i < event.player.inventory.getSizeInventory(); i++)
 			{
 				if(event.player.inventory.getStackInSlot(i) != null)
 				{
-					if(event.player.inventory.getStackInSlot(i).getItem() == NanotechModList.crazyGlasses)
+					if(event.player.inventory.getStackInSlot(i).getItem() == NanotechItem.crazyGlasses)
 					{
 						event.player.inventory.setInventorySlotContents(i, event.player.inventory.armorItemInSlot(3).copy());
-						event.player.inventory.setInventorySlotContents(39, new ItemStack(NanotechModList.crazyGlasses));
-						event.player.inventory.consumeInventoryItem(NanotechModList.crazyGlasses);
+						event.player.inventory.setInventorySlotContents(39, new ItemStack(NanotechItem.crazyGlasses));
+						event.player.inventory.consumeInventoryItem(NanotechItem.crazyGlasses);
 					}
 				}
 			}
@@ -86,7 +87,7 @@ public class EventTick
 		{
 			if(event.player.inventory.getStackInSlot(i) != null)
 			{
-				if(event.player.inventory.getStackInSlot(i).getItem() == NanotechModList.nitrogenBucket)
+				if(event.player.inventory.getStackInSlot(i).getItem() == NanotechFluid.bucketNitrogen)
 				{
 					Random rand = new Random();
 					if(rand.nextInt(100) < 2 && this.doEffect(event.player))
@@ -175,7 +176,7 @@ public class EventTick
 		ItemStack boots = player.getCurrentArmor(1);
 		if(helmet != null && chestPlate != null && leggings != null && boots != null)
 		{
-			if(helmet.getItem().equals(NanotechModList.mysteriousHelmet) && chestPlate.getItem().equals(NanotechModList.mysteriousChestPlate) && leggings.getItem().equals(NanotechModList.mysteriousLeggings) && boots.getItem().equals(NanotechModList.mysteriousBoots))
+			if(helmet.getItem().equals(NanotechItem.mysteriousHelmet) && chestPlate.getItem().equals(NanotechItem.mysteriousChestPlate) && leggings.getItem().equals(NanotechItem.mysteriousLeggings) && boots.getItem().equals(NanotechItem.mysteriousBoots))
 			{
 				return false;
 			}

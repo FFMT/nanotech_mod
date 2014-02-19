@@ -21,7 +21,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class ItemEmeraldBow extends ItemBow
 {
@@ -48,7 +47,7 @@ public class ItemEmeraldBow extends ItemBow
 	@Override
 	public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
 	{
-		if(usingItem != null && usingItem.getItem().equals(NanotechModList.emeraldBow))
+		if(usingItem != null && usingItem.getItem().equals(NanotechItem.emeraldBow))
 		{
 			int k = usingItem.getMaxItemUseDuration() - useRemaining;
 			if(k >= 18)

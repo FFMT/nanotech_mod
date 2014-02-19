@@ -16,7 +16,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 import fr.minecraftforgefrance.ffmtlibs.FFMTContainerHelper;
 
 public class ItemCrazyGlassesGun extends ItemBow
@@ -88,7 +87,7 @@ public class ItemCrazyGlassesGun extends ItemBow
 			if(entity instanceof EntityPlayer)
 			{
 				EntityPlayer player = (EntityPlayer)entity;
-				if(player.inventory.hasItemStack(new ItemStack(NanotechModList.itemBase, 1, 20)))
+				if(player.inventory.hasItemStack(new ItemStack(NanotechItem.itemBase, 1, 20)))
 				{
 					if(!stack.hasTagCompound())
 					{
@@ -106,7 +105,7 @@ public class ItemCrazyGlassesGun extends ItemBow
 							}
 							else if(timer == 6 || timer == 16 || timer == 26 || timer == 36)
 							{
-								if(FFMTContainerHelper.consumeItemWithMetadataInInventory((EntityPlayer)entity, NanotechModList.itemBase, 20))
+								if(FFMTContainerHelper.consumeItemWithMetadataInInventory((EntityPlayer)entity, NanotechItem.itemBase, 20))
 								{
 									stack.getTagCompound().setByte("Charge", (byte)(stack.getTagCompound().getByte("Charge") + 1));
 								}
@@ -138,12 +137,12 @@ public class ItemCrazyGlassesGun extends ItemBow
 
 	public void shoot(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(player.capabilities.isCreativeMode || player.inventory.hasItemStack(new ItemStack(NanotechModList.itemBase, 1, 20)))
+		if(player.capabilities.isCreativeMode || player.inventory.hasItemStack(new ItemStack(NanotechItem.itemBase, 1, 20)))
 		{
 			world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 			EntityItem glasses = new EntityItem(world);
 			glasses.delayBeforeCanPickup = 5;
-			glasses.setEntityItemStack(new ItemStack(NanotechModList.crazyGlasses, 1, 0));
+			glasses.setEntityItemStack(new ItemStack(NanotechItem.crazyGlasses, 1, 0));
 			glasses.setLocationAndAngles(player.posX, player.posY + (double)player.getEyeHeight(), player.posZ, player.rotationYaw, player.rotationPitch);
 			glasses.posX -= (double)(MathHelper.cos(glasses.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
 			glasses.posY -= 0.10000000149011612D;

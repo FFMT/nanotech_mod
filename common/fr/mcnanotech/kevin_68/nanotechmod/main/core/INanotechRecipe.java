@@ -13,6 +13,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 
 public class INanotechRecipe implements IRecipe
 {
@@ -28,7 +29,7 @@ public class INanotechRecipe implements IRecipe
 			ItemStack stack1 = inventorycrafting.getStackInSlot(i);
 			if(stack1 != null)
 			{
-				if(stack1.getItem().equals(NanotechModList.itemBase) && stack1.getItemDamage() == 21 && stack == null)
+				if(stack1.getItem().equals(NanotechItem.itemBase) && stack1.getItemDamage() == 21 && stack == null)
 				{
 					stack = stack1;
 				}

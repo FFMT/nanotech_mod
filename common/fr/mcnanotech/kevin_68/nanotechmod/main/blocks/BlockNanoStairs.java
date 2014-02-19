@@ -13,7 +13,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class BlockNanoStairs extends BlockStairs
 {

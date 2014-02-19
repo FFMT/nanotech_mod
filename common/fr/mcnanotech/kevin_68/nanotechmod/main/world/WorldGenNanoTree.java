@@ -13,7 +13,7 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 
 public class WorldGenNanoTree extends WorldGenerator
 {
@@ -71,7 +71,7 @@ public class WorldGenNanoTree extends WorldGenerator
 					if(i1 >= 0 && i1 < 256)
 					{
 						Block block = world.getBlock(k1, i1, i2);
-						if(block != null && block != NanotechModList.nanoLeaves && block != Blocks.grass && block != NanotechModList.nanoWood && block != Blocks.dirt && block != NanotechModList.nanoGrass)
+						if(block != null && block != NanotechBlock.nanoLeaves && block != Blocks.grass && block != NanotechBlock.nanoWood && block != Blocks.dirt && block != NanotechBlock.nanoGrass)
 						{
 							flag = false;
 						}
@@ -91,12 +91,12 @@ public class WorldGenNanoTree extends WorldGenerator
 
 		Block block = world.getBlock(i, j - 1, k);
 
-		if(block != Blocks.dirt && block != Blocks.grass && block != NanotechModList.nanoGrass || j >= 256 - l - 1)
+		if(block != Blocks.dirt && block != Blocks.grass && block != NanotechBlock.nanoGrass || j >= 256 - l - 1)
 		{
 			return false;
 		}
 
-		func_50073_a(world, i, j - 1, k, NanotechModList.nanoWood);
+		func_50073_a(world, i, j - 1, k, NanotechBlock.nanoWood);
 		byte byte1 = 3;
 		int l1 = 0;
 
@@ -115,7 +115,7 @@ public class WorldGenNanoTree extends WorldGenerator
 
 					if((Math.abs(i5) != i4 || Math.abs(l5) != i4 || random.nextInt(2) != 0 && j3 != 0) && !(world.getBlock(k4, j2, k5).isOpaqueCube()))
 					{
-						setBlockAndNotifyAdequately(world, k4, j2, k5, NanotechModList.nanoLeaves, 0);
+						setBlockAndNotifyAdequately(world, k4, j2, k5, NanotechBlock.nanoLeaves, 0);
 					}
 				}
 			}
@@ -125,12 +125,12 @@ public class WorldGenNanoTree extends WorldGenerator
 		{
 			Block k3 = world.getBlock(i, j + k2, k);
 
-			if(k3 != null && k3 != NanotechModList.nanoLeaves)
+			if(k3 != null && k3 != NanotechBlock.nanoLeaves)
 			{
 				continue;
 			}
 
-			setBlockAndNotifyAdequately(world, i, j + k2, k, NanotechModList.nanoWood, field_48201_c);
+			setBlockAndNotifyAdequately(world, i, j + k2, k, NanotechBlock.nanoWood, field_48201_c);
 
 			if(!field_48200_b || k2 <= 0)
 			{
@@ -169,7 +169,7 @@ public class WorldGenNanoTree extends WorldGenerator
 				{
 					for(int j5 = k - j4; j5 <= k + j4; j5++)
 					{
-						if(world.getBlock(l4, l2, j5) != NanotechModList.nanoWood)
+						if(world.getBlock(l4, l2, j5) != NanotechBlock.nanoWood)
 						{
 							continue;
 						}

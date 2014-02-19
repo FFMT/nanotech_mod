@@ -21,8 +21,8 @@ import net.minecraftforge.client.MinecraftForgeClient;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.model.ModelTheDeath;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.MobThedeath;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 
 @SuppressWarnings("unused")
 public class RenderTheDeath extends RenderLiving
@@ -99,7 +99,7 @@ public class RenderTheDeath extends RenderLiving
 			IItemRenderer customRenderer = MinecraftForgeClient.getItemRenderer(itemstack, EQUIPPED);
 			boolean is3D = (customRenderer != null && customRenderer.shouldUseRenderHelper(EQUIPPED, itemstack, BLOCK_3D));
 
-			if(itemstack.getItem().equals(NanotechModList.scythe))
+			if(itemstack.getItem().equals(NanotechItem.scythe))
 			{
 				GL11.glRotatef(120F, 0.0F, 1.0F, 0.0F);
 				GL11.glRotatef(160F, 1.0F, 0.0F, 0.0F);

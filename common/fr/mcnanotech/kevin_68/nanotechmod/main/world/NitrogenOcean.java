@@ -8,7 +8,7 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.world;
 
 import net.minecraft.world.biome.BiomeGenBase;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 
 public class NitrogenOcean extends BiomeGenBase
 {
@@ -17,6 +17,6 @@ public class NitrogenOcean extends BiomeGenBase
 		super(id);
 		this.spawnableCreatureList.clear();
 		this.spawnableWaterCreatureList.clear();
-		this.topBlock = NanotechModList.nanoGrass;
+		this.topBlock = NanotechBlock.nanoGrass;
 	}
 }
