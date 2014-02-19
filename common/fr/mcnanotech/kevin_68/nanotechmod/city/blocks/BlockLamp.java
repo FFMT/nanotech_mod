@@ -16,7 +16,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechCityList;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityLamp;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityLampLight;
 
@@ -96,7 +95,7 @@ public class BlockLamp extends Block
 
 	public IIcon getIcon(int side, int metadata)
 	{
-		return NanotechCityList.spotLight.getIcon(2, 0);
+		return NanotechCityBlock.spotlight.getIcon(2, 0);
 	}
 
 	public void registerBlockIcons(IIconRegister iconregister)

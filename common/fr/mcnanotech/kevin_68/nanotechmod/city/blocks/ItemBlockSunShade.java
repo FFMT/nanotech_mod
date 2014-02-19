@@ -17,7 +17,6 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechCityList;
 
 public class ItemBlockSunShade extends ItemBlock
 {
@@ -55,20 +54,20 @@ public class ItemBlockSunShade extends ItemBlock
 
 			if(isReplaceable && world.isAirBlock(x, y + 1, z) && world.isAirBlock(x, y + 2, z))
 			{
-				world.setBlock(x, y, z, NanotechCityList.sunShade, 0, 3);
-				world.setBlock(x, y + 1, z, NanotechCityList.sunShade, 1, 3);
-				world.setBlock(x, y + 2, z, NanotechCityList.sunShade, 1, 3);
-				world.playSoundEffect(x, y, z, NanotechCityList.sunShade.stepSound.soundName, NanotechCityList.sunShade.stepSound.getVolume(), NanotechCityList.sunShade.stepSound.getPitch());
+				world.setBlock(x, y, z, NanotechCityBlock.sunShade, 0, 3);
+				world.setBlock(x, y + 1, z, NanotechCityBlock.sunShade, 1, 3);
+				world.setBlock(x, y + 2, z, NanotechCityBlock.sunShade, 1, 3);
+				world.playSoundEffect(x, y, z, NanotechCityBlock.sunShade.stepSound.soundName, NanotechCityBlock.sunShade.stepSound.getVolume(), NanotechCityBlock.sunShade.stepSound.getPitch());
 				--stack.stackSize;
 				return true;
 			}
 
 			else if(world.isAirBlock(x, y + 1, z) && world.isAirBlock(x, y + 2, z) && world.isAirBlock(x, y + 3, z) && side == 1 && player.canPlayerEdit(x, y + 3, z, side, stack))
 			{
-				world.setBlock(x, y + 1, z, NanotechCityList.sunShade, 0, 3);
-				world.setBlock(x, y + 2, z, NanotechCityList.sunShade, 1, 3);
-				world.setBlock(x, y + 3, z, NanotechCityList.sunShade, 1, 3);
-				world.playSoundEffect(x, y, z, NanotechCityList.sunShade.stepSound.soundName, NanotechCityList.sunShade.stepSound.getVolume(), NanotechCityList.sunShade.stepSound.getPitch());
+				world.setBlock(x, y + 1, z, NanotechCityBlock.sunShade, 0, 3);
+				world.setBlock(x, y + 2, z, NanotechCityBlock.sunShade, 1, 3);
+				world.setBlock(x, y + 3, z, NanotechCityBlock.sunShade, 1, 3);
+				world.playSoundEffect(x, y, z, NanotechCityBlock.sunShade.stepSound.soundName, NanotechCityBlock.sunShade.stepSound.getVolume(), NanotechCityBlock.sunShade.stepSound.getPitch());
 				--stack.stackSize;
 				return true;
 			}

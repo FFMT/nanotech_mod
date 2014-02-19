@@ -15,7 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechCityList;
+import fr.mcnanotech.kevin_68.nanotechmod.city.blocks.NanotechCityBlock;
 
 public class TileEntitySunShade extends TileEntity
 {
@@ -79,11 +79,11 @@ public class TileEntitySunShade extends TileEntity
 					{
 						if(j == 0 && k == 0)
 						{
-							this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityList.sunShade, 3, 3);
+							this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityBlock.sunShade, 3, 3);
 						}
 						else
 						{
-							this.worldObj.setBlock(xCoord + j, yCoord + 2, zCoord + k, NanotechCityList.sunShade, 2, 3);
+							this.worldObj.setBlock(xCoord + j, yCoord + 2, zCoord + k, NanotechCityBlock.sunShade, 2, 3);
 						}
 					}
 					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
@@ -103,7 +103,7 @@ public class TileEntitySunShade extends TileEntity
 				{
 					if(j == 0 && k == 0)
 					{
-						this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityList.sunShade, 1, 3);
+						this.worldObj.setBlock(xCoord, yCoord + 2, zCoord, NanotechCityBlock.sunShade, 1, 3);
 					}
 					else
 					{

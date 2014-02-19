@@ -11,7 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechFluid;
 
 public class ItemNitrogenBucket extends ItemBucket
 {
@@ -46,7 +46,7 @@ public class ItemNitrogenBucket extends ItemBucket
 				{
 					world.func_147480_a(x, y, z, true);
 				}
-				world.setBlock(x, y, z, NanotechModList.liquidNitrogen, 0, 3);
+				world.setBlock(x, y, z, NanotechFluid.blockNitrogen, 0, 3);
 			}
 			return true;
 		}

@@ -31,6 +31,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechAchievement;
+import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechFluid;
 
 public class EntityReinforcedFishingHook extends EntityFishHook
 {
@@ -364,7 +365,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 						d6 += 1.0D / b0;
 					}
 
-					if(this.isAABBInBlockId(this.worldObj, axisalignedbb1, NanotechModList.liquidNitrogen))
+					if(this.isAABBInBlockId(this.worldObj, axisalignedbb1, NanotechFluid.blockNitrogen))
 					{
 						this.isInNitrogen = true;
 

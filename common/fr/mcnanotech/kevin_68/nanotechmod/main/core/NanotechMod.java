@@ -30,6 +30,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechAchievement;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechConfiguration;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechDamageSource;
+import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechFluid;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechOther;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilListerJukebox;
 
@@ -111,6 +112,8 @@ public class NanotechMod
 		NanotechOther.initPotion();
 		NanotechBlock.initBlock();
 		NanotechItem.initItem();
+		NanotechFluid.initFluid();
+		NanotechFluid.initFluidContainer();
 		NanotechOther.initBiomes();
 		NanotechDamageSource.loadDamageSource();
 		NanotechEntity.initEntities();
@@ -135,7 +138,7 @@ public class NanotechMod
 	{
 		proxy.register();
 		packetHandler.postInitialise();
-		
+
 		GameRegistry.addRecipe(new INanotechRecipe());
 		NanotechRecipe.InitCommonRecipes();
 		if(NanotechConfiguration.hardRecipe)

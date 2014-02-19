@@ -7,13 +7,17 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.city.items;
 
+import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechModCity;
 
 public class NanotechCityItems
 {
+	public static Item configCopier;
+
 	public static void initItems()
 	{
-		GameRegistry.registerItem(new ItemConfigCopy().setUnlocalizedName("configCopier").setCreativeTab(NanotechModCity.cityTab), "configCopier", "NanotechModCity");
+		configCopier = new ItemConfigCopy().setUnlocalizedName("configCopier").setCreativeTab(NanotechModCity.cityTab);
+		GameRegistry.registerItem(configCopier, "configCopier", "NanotechModCity");
 	}
 }

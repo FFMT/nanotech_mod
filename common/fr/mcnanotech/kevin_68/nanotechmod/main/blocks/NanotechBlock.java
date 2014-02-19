@@ -13,7 +13,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class NanotechBlock
 {

@@ -17,7 +17,6 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechCityList;
 
 public class ItemBlockLamp extends ItemBlock
 {
@@ -54,22 +53,22 @@ public class ItemBlockLamp extends ItemBlock
 
 			if(isReplaceable && world.isAirBlock(x, y + 1, z) && world.isAirBlock(x, y + 2, z) && world.isAirBlock(x, y + 4, z))
 			{
-				world.setBlock(x, y, z, NanotechCityList.lamp, 0, 3);
-				world.setBlock(x, y + 1, z, NanotechCityList.lamp, 1, 3);
-				world.setBlock(x, y + 2, z, NanotechCityList.lamp, 1, 3);
-				world.setBlock(x, y + 3, z, NanotechCityList.lamp, 2, 3);
-				world.playSoundEffect(x, y, z, NanotechCityList.lamp.stepSound.soundName, NanotechCityList.lamp.stepSound.getVolume(), NanotechCityList.lamp.stepSound.getPitch());
+				world.setBlock(x, y, z, NanotechCityBlock.lamp, 0, 3);
+				world.setBlock(x, y + 1, z, NanotechCityBlock.lamp, 1, 3);
+				world.setBlock(x, y + 2, z, NanotechCityBlock.lamp, 1, 3);
+				world.setBlock(x, y + 3, z, NanotechCityBlock.lamp, 2, 3);
+				world.playSoundEffect(x, y, z, NanotechCityBlock.lamp.stepSound.soundName, NanotechCityBlock.lamp.stepSound.getVolume(), NanotechCityBlock.lamp.stepSound.getPitch());
 				--stack.stackSize;
 				return true;
 
 			}
 			if(world.isAirBlock(x, y + 1, z) && world.isAirBlock(x, y + 2, z) && world.isAirBlock(x, y + 3, z) && world.isAirBlock(x, y + 4, z) && side == 1 && player.canPlayerEdit(x, y + 4, z, side, stack))
 			{
-				world.setBlock(x, y + 1, z, NanotechCityList.lamp, 0, 3);
-				world.setBlock(x, y + 2, z, NanotechCityList.lamp, 1, 3);
-				world.setBlock(x, y + 3, z, NanotechCityList.lamp, 1, 3);
-				world.setBlock(x, y + 4, z, NanotechCityList.lamp, 2, 3);
-				world.playSoundEffect(x, y, z, NanotechCityList.lamp.stepSound.soundName, NanotechCityList.lamp.stepSound.getVolume(), NanotechCityList.lamp.stepSound.getPitch());
+				world.setBlock(x, y + 1, z, NanotechCityBlock.lamp, 0, 3);
+				world.setBlock(x, y + 2, z, NanotechCityBlock.lamp, 1, 3);
+				world.setBlock(x, y + 3, z, NanotechCityBlock.lamp, 1, 3);
+				world.setBlock(x, y + 4, z, NanotechCityBlock.lamp, 2, 3);
+				world.playSoundEffect(x, y, z, NanotechCityBlock.lamp.stepSound.soundName, NanotechCityBlock.lamp.stepSound.getVolume(), NanotechCityBlock.lamp.stepSound.getPitch());
 				--stack.stackSize;
 				return true;
 			}

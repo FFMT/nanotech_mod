@@ -7,14 +7,15 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.city.core;
 
-import org.apache.logging.log4j.Logger;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+
+import org.apache.logging.log4j.Logger;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -73,7 +74,7 @@ public class NanotechModCity
 	 * NanotechModCity logger
 	 */
 	public static Logger nanoCityLogger;
-	
+
 	/**
 	 * CreativeTab of NanotechModCity
 	 */
@@ -83,7 +84,7 @@ public class NanotechModCity
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem()
 		{
-			return Item.getItemFromBlock(NanotechCityList.lamp);
+			return Item.getItemFromBlock(NanotechCityBlock.lamp);
 		}
 	};
 
@@ -120,13 +121,13 @@ public class NanotechModCity
 
 		proxy.registerTileRenders();
 
-		GameRegistry.addRecipe(new ItemStack(NanotechCityList.lamp, 1), new Object[] {"IDI", "GSG", "III", 'I', Items.iron_ingot, 'D', Blocks.daylight_detector, 'G', Blocks.glass_pane, 'S', Blocks.glowstone});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityList.sunShade, 1), new Object[] {"WWW", " S ", " S ", 'W', Blocks.wool, 'S', Items.stick});
-		GameRegistry.addShapelessRecipe(new ItemStack(NanotechCityList.trail, 1), new Object[] {Blocks.grass, Blocks.gravel});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityList.fountain, 1), new Object[] {"S S", "SWS", "SPS", 'S', new ItemStack(Blocks.stone_slab, 0), 'W', Items.water_bucket, 'P', Blocks.piston});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityList.modernFence, 4), new Object[] {"I I", "III", "I I", 'I', Items.iron_ingot});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityList.trashcan, 1), new Object[] {"I I", "ICI", "III", 'I', Items.iron_ingot, 'C', Blocks.cactus});
-		GameRegistry.addRecipe(new ItemStack(NanotechCityList.spotLight), new Object[] {"OAO", "RGB", "OAO", 'O', Blocks.obsidian, 'A', Blocks.glass, 'R', new ItemStack(Items.dye, 1, 1), 'G', new ItemStack(Items.dye, 1, 2), 'B', new ItemStack(Items.dye, 1, 4)});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.lamp, 1), new Object[] {"IDI", "GSG", "III", 'I', Items.iron_ingot, 'D', Blocks.daylight_detector, 'G', Blocks.glass_pane, 'S', Blocks.glowstone});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.sunShade, 1), new Object[] {"WWW", " S ", " S ", 'W', Blocks.wool, 'S', Items.stick});
+		GameRegistry.addShapelessRecipe(new ItemStack(NanotechCityBlock.trail, 1), new Object[] {Blocks.grass, Blocks.gravel});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.fountain, 1), new Object[] {"S S", "SWS", "SPS", 'S', new ItemStack(Blocks.stone_slab, 0), 'W', Items.water_bucket, 'P', Blocks.piston});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.modernFence, 4), new Object[] {"I I", "III", "I I", 'I', Items.iron_ingot});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.trashcan, 1), new Object[] {"I I", "ICI", "III", 'I', Items.iron_ingot, 'C', Blocks.cactus});
+		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.spotlight), new Object[] {"OAO", "RGB", "OAO", 'O', Blocks.obsidian, 'A', Blocks.glass, 'R', new ItemStack(Items.dye, 1, 1), 'G', new ItemStack(Items.dye, 1, 2), 'B', new ItemStack(Items.dye, 1, 4)});
 	}
 
 	@EventHandler

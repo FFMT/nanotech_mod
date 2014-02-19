@@ -15,8 +15,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class NanotechModList
 {
-	public static final Block liquidNitrogen = GameRegistry.findBlock(NanotechMod.MODID, "blockLiquidNitrogen");
-
 	public static final Item itemBase = GameRegistry.findItem(NanotechMod.MODID, "nanotechbase");
 	public static final Item superBottleOfXp = GameRegistry.findItem(NanotechMod.MODID, "superbottleofxp");
 	public static final Item diamondBow = GameRegistry.findItem(NanotechMod.MODID, "diamondbow");

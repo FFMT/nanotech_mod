@@ -14,16 +14,26 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechModCity;
 
 public class NanotechCityBlock
 {
+	public static Block trashcan, spotlight, trail, fountain, lamp, sunShade, modernFence, textSpotlight;
 
 	public static void initBlock()
 	{
-		GameRegistry.registerBlock(new BlockTrashcan().setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundTypeStone).setBlockName("trashcan").setCreativeTab(NanotechModCity.cityTab), ItemBlock.class, "trashcan", NanotechModCity.MODID);
-		GameRegistry.registerBlock(new BlockSpotLight().setBlockTextureName(NanotechModCity.MODID + ":spotlight").setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundTypeMetal).setBlockName("spotlight").setCreativeTab(NanotechModCity.cityTab), ItemBlock.class, "spotlight", NanotechModCity.MODID);
-		GameRegistry.registerBlock(new BlockTrail().setHardness(1.0F).setResistance(10.0F).setBlockName("trail").setStepSound(Block.soundTypeGravel).setCreativeTab(NanotechModCity.cityTab), ItemBlock.class, "trail", NanotechModCity.MODID);
-		GameRegistry.registerBlock(new BlockFountain().setHardness(1.5F).setResistance(10.0F).setBlockName("fountain").setCreativeTab(NanotechModCity.cityTab), ItemBlock.class, "fountain", NanotechModCity.MODID);
-		GameRegistry.registerBlock(new BlockLamp().setHardness(3.0F).setResistance(10.0F).setStepSound(Block.soundTypeMetal).setBlockName("lamp").setCreativeTab(NanotechModCity.cityTab), ItemBlockLamp.class, "lamp", NanotechModCity.MODID);
-		GameRegistry.registerBlock(new BlockSunShade().setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundTypeCloth).setBlockName("sunShade").setCreativeTab(NanotechModCity.cityTab), ItemBlockSunShade.class, "sunShade", NanotechModCity.MODID);
-		GameRegistry.registerBlock(new BlockModernFence().setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundTypeMetal).setBlockName("modernFence").setCreativeTab(NanotechModCity.cityTab), ItemBlockModernFence.class, "modernFence", NanotechModCity.MODID);
-		GameRegistry.registerBlock(new BlockTextSpotLight().setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundTypeMetal).setBlockName("textSpotLight").setCreativeTab(NanotechModCity.cityTab), ItemBlock.class, "textSpotLight", NanotechModCity.MODID);
+		trashcan = new BlockTrashcan().setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundTypeStone).setBlockName("trashcan").setCreativeTab(NanotechModCity.cityTab);
+		spotlight = new BlockSpotLight().setBlockTextureName(NanotechModCity.MODID + ":spotlight").setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundTypeMetal).setBlockName("spotlight").setCreativeTab(NanotechModCity.cityTab);
+		trail = new BlockTrail().setHardness(1.0F).setResistance(10.0F).setBlockName("trail").setStepSound(Block.soundTypeGravel).setCreativeTab(NanotechModCity.cityTab);
+		fountain = new BlockFountain().setHardness(1.5F).setResistance(10.0F).setBlockName("fountain").setCreativeTab(NanotechModCity.cityTab);
+		lamp = new BlockLamp().setHardness(3.0F).setResistance(10.0F).setStepSound(Block.soundTypeMetal).setBlockName("lamp").setCreativeTab(NanotechModCity.cityTab);
+		sunShade = new BlockSunShade().setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundTypeCloth).setBlockName("sunShade").setCreativeTab(NanotechModCity.cityTab);
+		modernFence = new BlockModernFence().setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundTypeMetal).setBlockName("modernFence").setCreativeTab(NanotechModCity.cityTab);
+		textSpotlight = new BlockTextSpotLight().setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundTypeMetal).setBlockName("textSpotLight").setCreativeTab(NanotechModCity.cityTab);
+
+		GameRegistry.registerBlock(trashcan, ItemBlock.class, "trashcan", NanotechModCity.MODID);
+		GameRegistry.registerBlock(spotlight, ItemBlock.class, "spotlight", NanotechModCity.MODID);
+		GameRegistry.registerBlock(trail, ItemBlock.class, "trail", NanotechModCity.MODID);
+		GameRegistry.registerBlock(fountain, ItemBlock.class, "fountain", NanotechModCity.MODID);
+		GameRegistry.registerBlock(lamp, ItemBlockLamp.class, "lamp", NanotechModCity.MODID);
+		GameRegistry.registerBlock(sunShade, ItemBlockSunShade.class, "sunShade", NanotechModCity.MODID);
+		GameRegistry.registerBlock(modernFence, ItemBlockModernFence.class, "modernFence", NanotechModCity.MODID);
+		GameRegistry.registerBlock(textSpotlight, ItemBlock.class, "textSpotLight", NanotechModCity.MODID);
 	}
 }

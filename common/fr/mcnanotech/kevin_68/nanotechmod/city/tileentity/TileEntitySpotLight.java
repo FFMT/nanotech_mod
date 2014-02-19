@@ -21,8 +21,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechCityList;
 import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechModCity;
+import fr.mcnanotech.kevin_68.nanotechmod.city.items.NanotechCityItems;
 
 public class TileEntitySpotLight extends TileEntity implements IInventory
 {
@@ -796,8 +796,8 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	public void addNbtTagToItem()
 	{
 		ItemStack stack = getStackInSlot(1);
-		ItemStack newStack = new ItemStack(NanotechCityList.configCopier);
-		if(stack != null && stack.getItem() == NanotechCityList.configCopier)
+		ItemStack newStack = new ItemStack(NanotechCityItems.configCopier);
+		if(stack != null && stack.getItem() == NanotechCityItems.configCopier)
 		{
 			newStack.setTagCompound(new NBTTagCompound());
 			newStack.getTagCompound().setInteger("Type", 0);
@@ -836,7 +836,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	public void setConfig()
 	{
 		ItemStack stack = getStackInSlot(1);
-		if(stack != null && stack.getItem() == NanotechCityList.configCopier)
+		if(stack != null && stack.getItem() == NanotechCityItems.configCopier)
 		{
 			if(stack.hasTagCompound())
 			{

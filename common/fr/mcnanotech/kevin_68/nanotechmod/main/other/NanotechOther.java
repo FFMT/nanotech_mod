@@ -50,7 +50,6 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.world.NitrogenOcean;
 
 public class NanotechOther
 {
-	public static Fluid liquidNitrogen;
 
 	protected static final BiomeGenBase.Height height_nanotechBiome = new BiomeGenBase.Height(0.0F, 0.1F);
 	protected static final BiomeGenBase.Height height_nitrogenOcean = new BiomeGenBase.Height(-0.5F, 0.0F);
@@ -71,13 +70,6 @@ public class NanotechOther
 	{
 		freeze = new NanotechPotion(30, true, 3035801).setPotionName("potion.freeze").func_111184_a(SharedMonsterAttributes.movementSpeed, "7107DE5E-7CE8-4030-940E-514C1F160890", -0.50000000596046448D, 2);
 		NanotechMod.nanoLogger.info("Potion initialized");
-	}
-
-	public static void initFluid()
-	{
-		FluidRegistry.registerFluid(new Fluid("liquidnitrogen").setDensity(4000).setViscosity(500).setTemperature(77).setLuminosity(0).setUnlocalizedName("liquidNitrogen").setBlock(NanotechModList.liquidNitrogen).setIcons(NanotechModList.liquidNitrogen.getBlockTextureFromSide(1), NanotechModList.liquidNitrogen.getBlockTextureFromSide(2)));
-		GameRegistry.registerBlock(new BlockLiquidNitrogen(NanotechOther.liquidNitrogen, Material.water).setBlockName("liquidNitrogen").setBlockTextureName(NanotechMod.MODID + ":nitrogen"), ItemBlock.class, "blockLiquidNitrogen", NanotechMod.MODID);
-		GameRegistry.registerItem(new ItemNitrogenBucket(NanotechModList.liquidNitrogen).setUnlocalizedName("nitrogenBucket").setTextureName(NanotechMod.MODID + ":nitrogenBucket").setCreativeTab(NanotechMod.CreaI).setContainerItem(Items.bucket), "nitrogenBucket", NanotechMod.MODID);
 	}
 
 	public static void initBiomes()
@@ -141,10 +133,5 @@ public class NanotechOther
 		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechBlock.sodium), 1, 5, 6));
 		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechModList.nanoDisc), 1, 1, 2));
 		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechModList.alters), 1, 1, 10));
-	}
-
-	public static void initFluidContainer()
-	{
-		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidnitrogen", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(NanotechModList.nitrogenBucket), FluidContainerRegistry.EMPTY_BUCKET);
 	}
 }

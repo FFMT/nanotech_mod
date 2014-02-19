@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
-import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechCityList;
+import fr.mcnanotech.kevin_68.nanotechmod.city.blocks.NanotechCityBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 import fr.minecraftforgefrance.ffmtlibs.FFMTRegistry;
 
@@ -40,24 +40,25 @@ public class NanotechRecipe
 		GameRegistry.addRecipe(new ItemStack(NanotechModList.itemBase, 1, 13), new Object[] {" X ", "XWX", " X ", 'X', Items.iron_ingot, 'W', new ItemStack(NanotechBlock.speed, 1, 0)});
 		GameRegistry.addRecipe(new ItemStack(NanotechModList.diamondBow, 1), new Object[] {" XW", "XCW", " XW", 'X', Items.diamond, 'W', Items.string, 'C', new ItemStack(NanotechBlock.speed, 1, 0)});
 		GameRegistry.addRecipe(new ItemStack(NanotechModList.diamondBow, 1), new Object[] {"WX ", "WCX", "WX ", 'X', Items.diamond, 'W', Items.string, 'C', new ItemStack(NanotechBlock.speed, 1, 0)});
-		//GameRegistry.addRecipe(new ItemStack(NanotechModList.emeraldBow, 1), new Object[] {" XW", "XCW", " XW", 'X', Items.emerald, 'W', Items.string, 'C', NanotechModList.diamondBow});
-		//GameRegistry.addRecipe(new ItemStack(NanotechModList.emeraldBow, 1), new Object[] {"WX ", "WCX", "WX ", 'X', Items.emerald, 'W', Items.string, 'C', NanotechModList.diamondBow});
-		//GameRegistry.addRecipe(new ItemStack(NanotechModList.nanomiteBow, 1), new Object[] {"ENE", "INI", " S ", 'N', new ItemStack(NanotechModList.itemBase, 1, 14), 'I', Items.iron_ingot, 'E', NanotechModList.emeraldBow, 'S', Items.stick});
+		// GameRegistry.addRecipe(new ItemStack(NanotechModList.emeraldBow, 1), new Object[] {" XW", "XCW", " XW", 'X', Items.emerald, 'W', Items.string, 'C', NanotechModList.diamondBow});
+		// GameRegistry.addRecipe(new ItemStack(NanotechModList.emeraldBow, 1), new Object[] {"WX ", "WCX", "WX ", 'X', Items.emerald, 'W', Items.string, 'C', NanotechModList.diamondBow});
+		// GameRegistry.addRecipe(new ItemStack(NanotechModList.nanomiteBow, 1), new Object[] {"ENE", "INI", " S ", 'N', new ItemStack(NanotechModList.itemBase, 1, 14), 'I', Items.iron_ingot, 'E',
+		// NanotechModList.emeraldBow, 'S', Items.stick});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechModList.itemBase, 1, 8), new Object[] {new ItemStack(NanotechModList.itemBase, 1, 7), new ItemStack(NanotechModList.itemBase, 1, 1)});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechModList.itemBase, 1, 14), new Object[] {new ItemStack(NanotechModList.itemBase, 1, 12), new ItemStack(NanotechModList.itemBase, 1, 1)});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechModList.itemBase, 1, 15), new Object[] {Blocks.cobblestone});
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.cobblestone), new Object[] {new ItemStack(NanotechModList.itemBase, 1, 15)});
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.jump, 1, 1), new Object[] {"FBF", 'B', new ItemStack(NanotechBlock.jump, 1, 0), 'F', Items.feather});
 		GameRegistry.addRecipe(new ItemStack(NanotechModList.alters, 1), new Object[] {"ASA", 'A', Blocks.anvil, 'S', Items.stick});
-		//GameRegistry.addRecipe(new ItemStack(NanotechModList.listerJukeBox, 1), new Object[] {"CCC", "JJJ", "CCC", 'C', NanotechModList.nanoDisc, 'J', Blocks.jukebox});
+		// GameRegistry.addRecipe(new ItemStack(NanotechModList.listerJukeBox, 1), new Object[] {"CCC", "JJJ", "CCC", 'C', NanotechModList.nanoDisc, 'J', Blocks.jukebox});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechModList.reinforcedFishingRod, 1), new Object[] {Items.fishing_rod, Items.iron_ingot, Items.iron_ingot});
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.nanoFence, 4), new Object[] {"PSP", "PSP", 'P', NanotechBlock.nanoPlank, 'S', Items.stick});
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.nanoStepSingle, 6), new Object[] {"PPP", 'P', NanotechBlock.nanoPlank});
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.nanoStairs, 4), new Object[] {"P  ", "PP ", "PPP", 'P', NanotechBlock.nanoPlank});
 		GameRegistry.addRecipe(new ItemStack(NanotechBlock.nanoStairs, 4), new Object[] {"  P", " PP", "PPP", 'P', NanotechBlock.nanoPlank});
-		//GameRegistry.addShapelessRecipe(new ItemStack(NanotechModList.itemBase, 1, 20), new Object[] {NanotechModList.crazyGlasses, Items.iron_ingot, Items.iron_ingot});
-		//GameRegistry.addRecipe(new ItemStack(NanotechModList.crazyGlassesGun, 1, 0), new Object[] {"DID", "DID", " S ", 'D', NanotechModList.diamondBow, 'I', Items.iron_ingot, 'S', Items.stick});
-		GameRegistry.addRecipe(new ItemStack(NanotechModList.lightSaber, 1, 0), new Object[] {"G", "G", "S", 'G', Blocks.glass, 'S', (Loader.isModLoaded("nanotechmodcity") ? NanotechCityList.spotLight : Blocks.gold_block)});
+		// GameRegistry.addShapelessRecipe(new ItemStack(NanotechModList.itemBase, 1, 20), new Object[] {NanotechModList.crazyGlasses, Items.iron_ingot, Items.iron_ingot});
+		// GameRegistry.addRecipe(new ItemStack(NanotechModList.crazyGlassesGun, 1, 0), new Object[] {"DID", "DID", " S ", 'D', NanotechModList.diamondBow, 'I', Items.iron_ingot, 'S', Items.stick});
+		GameRegistry.addRecipe(new ItemStack(NanotechModList.lightSaber, 1, 0), new Object[] {"G", "G", "S", 'G', Blocks.glass, 'S', (Loader.isModLoaded("nanotechmodcity") ? NanotechCityBlock.spotlight : Blocks.gold_block)});
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[] {"XXX", "XXX", "XXX", 'X', "itemSodium"}));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(NanotechBlock.sodium), new Object[] {"XXX", "XXX", "XXX", 'X', "dustSodium"}));
