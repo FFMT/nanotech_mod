@@ -125,9 +125,9 @@ public class NewExplosion extends Explosion
 
 		for(Map.Entry entry : this.destroyedBlockPositions.entrySet())
 		{
-			int x = ((ChunkPosition)entry.getKey()).x;
-			int y = ((ChunkPosition)entry.getKey()).y;
-			int z = ((ChunkPosition)entry.getKey()).z;
+			int x = ((ChunkPosition)entry.getKey()).chunkPosX;//TODO check
+			int y = ((ChunkPosition)entry.getKey()).chunkPosY;//TODO check
+			int z = ((ChunkPosition)entry.getKey()).chunkPosZ;//TODO check
 
 			Block block = this.chunkCache.getBlock(x, y, z);
 
@@ -155,7 +155,7 @@ public class NewExplosion extends Explosion
 
 					int meta = this.worldObj.getBlockMetadata(x, y, z);
 
-					for(ItemStack itemStack : block.getBlockDropped(this.worldObj, x, y, z, meta, 0))
+					for(ItemStack itemStack : block.getDrops(this.worldObj, x, y, z, meta, 0))
 					{
 						if(this.worldObj.rand.nextFloat() <= this.explosionDropRate)
 						{

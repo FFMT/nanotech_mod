@@ -80,7 +80,7 @@ public class ClientProxy extends CommonProxy
 		MinecraftForgeClient.registerItemRenderer(NanotechModList.nanomiteBow, new ItemNanomiteArrowGunRender());
 		MinecraftForgeClient.registerItemRenderer(NanotechModList.crazyGlassesGun, new ItemCrazyGlassesGunRender());
 		MinecraftForgeClient.registerItemRenderer(NanotechModList.lightSaber, new ItemLightSaberRender());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(NanotechModList.machine), new ItemBlockPortableChestRender());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(NanotechBlock.machine), new ItemBlockPortableChestRender());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityButton.class, new TileEntityButtonRender());
 		FFMTClientRegistry.bindTESRWithInventoryRender(NanotechBlock.machine, 0, TileEntityPortableChest.class, new TileEntityPortableChestRender());
