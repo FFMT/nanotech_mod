@@ -15,7 +15,6 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class ItemBlockNanoSteps extends ItemBlock
 {
@@ -44,7 +43,7 @@ public class ItemBlockNanoSteps extends ItemBlock
 	@Override
 	public IIcon getIconFromDamage(int metadata)
 	{
-		return NanotechModList.nanoPlank.getIcon(2, metadata);//TODO check
+		return NanotechBlock.nanoPlank.getIcon(2, metadata);//TODO check
 	}
 
 	public int getMetadata(int metadata)

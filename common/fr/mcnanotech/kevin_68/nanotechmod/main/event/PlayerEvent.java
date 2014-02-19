@@ -10,6 +10,7 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.event;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechAchievement;
 
@@ -30,7 +31,7 @@ public class PlayerEvent
 		{
 			event.entityPlayer.triggerAchievement(NanotechAchievement.getMysteriousMat);
 		}
-		if(event.item.getEntityItem().isItemEqual(new ItemStack(NanotechModList.ore, 1, 1)))
+		if(event.item.getEntityItem().isItemEqual(new ItemStack(NanotechBlock.ore, 1, 1)))
 		{
 			event.entityPlayer.triggerAchievement(NanotechAchievement.blockSiliconOre);
 		}

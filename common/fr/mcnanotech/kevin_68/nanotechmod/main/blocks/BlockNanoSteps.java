@@ -38,26 +38,26 @@ public class BlockNanoSteps extends BlockSlab
 	@SideOnly(Side.CLIENT)
 	private static boolean isBlockSingleSlab(BlockNanoSteps block)
 	{
-		return block.equals(NanotechModList.nanoSlabSingle);
+		return block.equals(NanotechBlock.nanoStepSingle);
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)
 	{
-		return isBlockSingleSlab(this) ? new ItemStack(this) : new ItemStack(NanotechModList.nanoSlabDouble);
+		return isBlockSingleSlab(this) ? new ItemStack(this) : new ItemStack(NanotechBlock.nanoStepDouble);
 	}
 
 	@Override
 	public Item getItemDropped(int metadata, Random rand, int fortune)
 	{
-		return Item.getItemFromBlock(NanotechModList.nanoSlabSingle);
+		return Item.getItemFromBlock(NanotechBlock.nanoStepSingle);
 	}
 
 	@Override
 	protected ItemStack createStackedBlock(int metadata)
 	{
-		return new ItemStack(NanotechModList.nanoSlabSingle, 2, metadata & 7);
+		return new ItemStack(NanotechBlock.nanoStepSingle, 2, metadata & 7);
 	}
 
 	@Override
@@ -76,7 +76,7 @@ public class BlockNanoSteps extends BlockSlab
 	@Override
 	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
 	{
-		if(!item.equals(Item.getItemFromBlock(NanotechModList.nanoSlabDouble)))
+		if(!item.equals(Item.getItemFromBlock(NanotechBlock.nanoStepDouble)))
 		{
 			for(int i = 0; i < StepTypes.length; i++)
 			{
@@ -89,6 +89,6 @@ public class BlockNanoSteps extends BlockSlab
 	@Override
 	public IIcon getIcon(int side, int metadata)
 	{
-		return NanotechModList.nanoPlank.getBlockTextureFromSide(side);
+		return NanotechBlock.nanoPlank.getBlockTextureFromSide(side);
 	}
 }

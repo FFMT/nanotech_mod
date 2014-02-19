@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechAchievement;
 
@@ -19,55 +20,55 @@ public class CraftingHandler
 	// TODO fml event
 	public void onCrafting(EntityPlayer player, ItemStack stack, IInventory craftMatrix)
 	{
-		if(stack.getItem() == Item.getItemFromBlock(NanotechModList.barbedWire))
+		if(stack.getItem() == Item.getItemFromBlock(NanotechBlock.barbedWire))
 		{
 			player.triggerAchievement(NanotechAchievement.blockBarbedWire);
 		}
-		if(stack.getItem() == Item.getItemFromBlock(NanotechModList.confusion))
+		if(stack.getItem() == Item.getItemFromBlock(NanotechBlock.confusion))
 		{
 			player.triggerAchievement(NanotechAchievement.blockConfusion);
 		}
-		if(stack.getItem() == Item.getItemFromBlock(NanotechModList.notFalling))
+		if(stack.getItem() == Item.getItemFromBlock(NanotechBlock.notFalling))
 		{
 			player.triggerAchievement(NanotechAchievement.blockFalling);
 		}
-		if(stack.getItem() == Item.getItemFromBlock(NanotechModList.jump) && stack.getItemDamage() == 0)
+		if(stack.getItem() == Item.getItemFromBlock(NanotechBlock.jump) && stack.getItemDamage() == 0)
 		{
 			player.triggerAchievement(NanotechAchievement.blockJumper);
 		}
-		if(stack.getItem() == Item.getItemFromBlock(NanotechModList.jump) && stack.getItemDamage() == 1)
+		if(stack.getItem() == Item.getItemFromBlock(NanotechBlock.jump) && stack.getItemDamage() == 1)
 		{
 			player.triggerAchievement(NanotechAchievement.blockJumperAdv);
 		}
-		if(stack.getItem() == Item.getItemFromBlock(NanotechModList.mossyStone))
+		if(stack.getItem() == Item.getItemFromBlock(NanotechBlock.mossyStone))
 		{
 			player.triggerAchievement(NanotechAchievement.blockMossyStone);
 		}
-		if(stack.getItem() == Item.getItemFromBlock(NanotechModList.notFalling))
+		if(stack.getItem() == Item.getItemFromBlock(NanotechBlock.notFalling))
 		{
 			player.triggerAchievement(NanotechAchievement.blockNotFalling);
 		}
-		if(stack.getItem() == Item.getItemFromBlock(NanotechModList.portalFrame))
+		if(stack.getItem() == Item.getItemFromBlock(NanotechBlock.portalFrame))
 		{
 			player.triggerAchievement(NanotechAchievement.blockPortalFrame);
 		}
-		if(stack.getItem() == Item.getItemFromBlock(NanotechModList.smoker))
+		if(stack.getItem() == Item.getItemFromBlock(NanotechBlock.smoker))
 		{
 			player.triggerAchievement(NanotechAchievement.blockSmoker);
 		}
-		if(stack.getItem() == Item.getItemFromBlock(NanotechModList.speed) && stack.getItemDamage() == 0)
+		if(stack.getItem() == Item.getItemFromBlock(NanotechBlock.speed) && stack.getItemDamage() == 0)
 		{
 			player.triggerAchievement(NanotechAchievement.blockSpeed);
 		}
-		if(stack.getItem() == Item.getItemFromBlock(NanotechModList.speed) && stack.getItemDamage() == 1)
+		if(stack.getItem() == Item.getItemFromBlock(NanotechBlock.speed) && stack.getItemDamage() == 1)
 		{
 			player.triggerAchievement(NanotechAchievement.blockSlow);
 		}
-		if(stack.getItem() == Item.getItemFromBlock(NanotechModList.theDeathHead))
+		if(stack.getItem() == Item.getItemFromBlock(NanotechBlock.theDeathHead))
 		{
 			player.triggerAchievement(NanotechAchievement.blockTheDeath);
 		}
-		if(stack.getItem() == Item.getItemFromBlock(NanotechModList.listerJukeBox))
+		if(stack.getItem() == Item.getItemFromBlock(NanotechBlock.listerJukeBox))
 		{
 			player.triggerAchievement(NanotechAchievement.blockListerJukebox);
 		}

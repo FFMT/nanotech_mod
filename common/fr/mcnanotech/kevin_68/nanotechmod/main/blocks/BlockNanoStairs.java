@@ -26,7 +26,7 @@ public class BlockNanoStairs extends BlockStairs
 	@Override
 	public Item getItemDropped(int metadata, Random rand, int par3)
 	{
-		if(this.equals(NanotechModList.nukeBuildingStairs))
+		if(this.equals(NanotechBlock.nukeBuildingStairs))
 		{
 			return Items.iron_ingot;
 		}

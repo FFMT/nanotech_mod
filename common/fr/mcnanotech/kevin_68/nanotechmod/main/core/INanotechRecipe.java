@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 
 public class INanotechRecipe implements IRecipe
 {
@@ -47,7 +48,7 @@ public class INanotechRecipe implements IRecipe
 
 		if(stack != null && nStack != null)
 		{
-			newStack = new ItemStack(NanotechModList.present, 1, 0);
+			newStack = new ItemStack(NanotechBlock.present, 1, 0);
 			NBTTagCompound nbtTag = new NBTTagCompound();
 			nStack.writeToNBT(nbtTag);
 			newStack.setTagCompound(nbtTag);

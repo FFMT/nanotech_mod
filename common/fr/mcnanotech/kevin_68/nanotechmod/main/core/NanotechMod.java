@@ -72,7 +72,7 @@ public class NanotechMod
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem()
 		{
-			return Item.getItemFromBlock(NanotechModList.speed);
+			return Item.getItemFromBlock(NanotechBlock.speed);
 		}
 	};
 

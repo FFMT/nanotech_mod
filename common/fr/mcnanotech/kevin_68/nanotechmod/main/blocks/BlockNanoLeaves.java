@@ -96,7 +96,7 @@ public class BlockNanoLeaves extends BlockLeaves implements IShearable
 	@Override
 	public Item getItemDropped(int metadata, Random random, int par3)
 	{
-		return Item.getItemFromBlock(NanotechModList.nanoSaplings);
+		return Item.getItemFromBlock(NanotechBlock.nanoSaplings);
 	}
 
 	@Override

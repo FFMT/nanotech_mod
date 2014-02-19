@@ -20,7 +20,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechConfiguration;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilEntityTeleporter;
 import fr.mcnanotech.kevin_68.nanotechmod.main.world.NanotechTeleporter;
@@ -76,7 +75,7 @@ public class BlockNanoPortal extends Block
 		{
 			y2--;
 		}
-		if(!world.getBlock(x, y2, z).equals(NanotechModList.portalFrame))
+		if(!world.getBlock(x, y2, z).equals(NanotechBlock.portalFrame))
 		{
 			world.setBlockToAir(x, y, z);
 		}
@@ -84,19 +83,19 @@ public class BlockNanoPortal extends Block
 		boolean portalIsGood = false;
 		if(world.getBlock(x, y3, z + 1).equals(this))
 		{
-			portalIsGood = (world.getBlock(x, y2, z).equals(NanotechModList.portalFrame) && world.getBlock(x, y2, z + 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 1, z + 2).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 2, z + 2).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 3, z + 2).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 1, z - 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 2, z - 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 3, z - 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 4, z - 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 4, z).equals(NanotechModList.portalFrame));
+			portalIsGood = (world.getBlock(x, y2, z).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2, z + 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 1, z + 2).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 2, z + 2).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 3, z + 2).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 1, z - 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 2, z - 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 3, z - 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 4, z - 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 4, z).equals(NanotechBlock.portalFrame));
 		}
 		else if(world.getBlock(x, y3, z - 1).equals(this))
 		{
-			portalIsGood = (world.getBlock(x, y2, z).equals(NanotechModList.portalFrame) && world.getBlock(x, y2, z - 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 1, z - 2).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 2, z - 2).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 3, z - 2).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 1, z + 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 2, z + 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 3, z + 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 4, z + 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 4, z).equals(NanotechModList.portalFrame));
+			portalIsGood = (world.getBlock(x, y2, z).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2, z - 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 1, z - 2).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 2, z - 2).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 3, z - 2).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 1, z + 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 2, z + 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 3, z + 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 4, z + 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 4, z).equals(NanotechBlock.portalFrame));
 		}
 		else if(world.getBlock(x + 1, y3, z).equals(this))
 		{
-			portalIsGood = (world.getBlock(x, y2, z).equals(NanotechModList.portalFrame) && world.getBlock(x + 1, y2, z).equals(NanotechModList.portalFrame) && world.getBlock(x + 2, y2 + 1, z).equals(NanotechModList.portalFrame) && world.getBlock(x + 2, y2 + 2, z).equals(NanotechModList.portalFrame) && world.getBlock(x + 2, y2 + 3, z).equals(NanotechModList.portalFrame) && world.getBlock(x - 1, y2 + 1, z).equals(NanotechModList.portalFrame) && world.getBlock(x - 1, y2 + 2, z).equals(NanotechModList.portalFrame) && world.getBlock(x - 1, y2 + 3, z).equals(NanotechModList.portalFrame) && world.getBlock(x + 1, y2 + 4, z).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 4, z).equals(NanotechModList.portalFrame));
+			portalIsGood = (world.getBlock(x, y2, z).equals(NanotechBlock.portalFrame) && world.getBlock(x + 1, y2, z).equals(NanotechBlock.portalFrame) && world.getBlock(x + 2, y2 + 1, z).equals(NanotechBlock.portalFrame) && world.getBlock(x + 2, y2 + 2, z).equals(NanotechBlock.portalFrame) && world.getBlock(x + 2, y2 + 3, z).equals(NanotechBlock.portalFrame) && world.getBlock(x - 1, y2 + 1, z).equals(NanotechBlock.portalFrame) && world.getBlock(x - 1, y2 + 2, z).equals(NanotechBlock.portalFrame) && world.getBlock(x - 1, y2 + 3, z).equals(NanotechBlock.portalFrame) && world.getBlock(x + 1, y2 + 4, z).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 4, z).equals(NanotechBlock.portalFrame));
 		}
 		else if(world.getBlock(x - 1, y3, z).equals(this))
 		{
-			portalIsGood = (world.getBlock(x, y2, z).equals(NanotechModList.portalFrame) && world.getBlock(x - 1, y2, z).equals(NanotechModList.portalFrame) && world.getBlock(x - 2, y2 + 1, z).equals(NanotechModList.portalFrame) && world.getBlock(x - 2, y2 + 2, z).equals(NanotechModList.portalFrame) && world.getBlock(x - 2, y2 + 3, z).equals(NanotechModList.portalFrame) && world.getBlock(x + 1, y2 + 1, z).equals(NanotechModList.portalFrame) && world.getBlock(x + 1, y2 + 2, z).equals(NanotechModList.portalFrame) && world.getBlock(x + 1, y2 + 3, z).equals(NanotechModList.portalFrame) && world.getBlock(x + 1, y2 + 4, z).equals(NanotechModList.portalFrame) && world.getBlock(x, y2 + 4, z).equals(NanotechModList.portalFrame));
+			portalIsGood = (world.getBlock(x, y2, z).equals(NanotechBlock.portalFrame) && world.getBlock(x - 1, y2, z).equals(NanotechBlock.portalFrame) && world.getBlock(x - 2, y2 + 1, z).equals(NanotechBlock.portalFrame) && world.getBlock(x - 2, y2 + 2, z).equals(NanotechBlock.portalFrame) && world.getBlock(x - 2, y2 + 3, z).equals(NanotechBlock.portalFrame) && world.getBlock(x + 1, y2 + 1, z).equals(NanotechBlock.portalFrame) && world.getBlock(x + 1, y2 + 2, z).equals(NanotechBlock.portalFrame) && world.getBlock(x + 1, y2 + 3, z).equals(NanotechBlock.portalFrame) && world.getBlock(x + 1, y2 + 4, z).equals(NanotechBlock.portalFrame) && world.getBlock(x, y2 + 4, z).equals(NanotechBlock.portalFrame));
 		}
 
 		if(!portalIsGood)

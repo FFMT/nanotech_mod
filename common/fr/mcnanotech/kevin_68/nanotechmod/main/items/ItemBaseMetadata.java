@@ -19,8 +19,8 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
 public class ItemBaseMetadata extends Item
@@ -106,14 +106,14 @@ public class ItemBaseMetadata extends Item
 	{
 		if(stack.getItemDamage() == 16)
 		{
-			if(!world.isRemote && world.getBlock(x, y, z).equals(NanotechModList.portalFrame))
+			if(!world.isRemote && world.getBlock(x, y, z).equals(NanotechBlock.portalFrame))
 			{
-				if(world.getBlock(x, y, z).equals(NanotechModList.portalFrame) && world.getBlock(x - 1, y, z).equals(NanotechModList.portalFrame) && world.getBlock(x - 2, y + 1, z).equals(NanotechModList.portalFrame) && world.getBlock(x - 2, y + 2, z).equals(NanotechModList.portalFrame) && world.getBlock(x - 2, y + 3, z).equals(NanotechModList.portalFrame) && world.getBlock(x + 1, y + 1, z).equals(NanotechModList.portalFrame) && world.getBlock(x + 1, y + 2, z).equals(NanotechModList.portalFrame) && world.getBlock(x + 1, y + 3, z).equals(NanotechModList.portalFrame) && world.getBlock(x - 1, y + 4, z).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 4, z).equals(NanotechModList.portalFrame))
+				if(world.getBlock(x, y, z).equals(NanotechBlock.portalFrame) && world.getBlock(x - 1, y, z).equals(NanotechBlock.portalFrame) && world.getBlock(x - 2, y + 1, z).equals(NanotechBlock.portalFrame) && world.getBlock(x - 2, y + 2, z).equals(NanotechBlock.portalFrame) && world.getBlock(x - 2, y + 3, z).equals(NanotechBlock.portalFrame) && world.getBlock(x + 1, y + 1, z).equals(NanotechBlock.portalFrame) && world.getBlock(x + 1, y + 2, z).equals(NanotechBlock.portalFrame) && world.getBlock(x + 1, y + 3, z).equals(NanotechBlock.portalFrame) && world.getBlock(x - 1, y + 4, z).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 4, z).equals(NanotechBlock.portalFrame))
 				{
 					for(int i = 0; i < 3; i++)
 					{
-						world.setBlock(x, y + 1 + i, z, NanotechModList.portal);
-						world.setBlock(x - 1, y + 1 + i, z, NanotechModList.portal);
+						world.setBlock(x, y + 1 + i, z, NanotechBlock.nanoPortal);
+						world.setBlock(x - 1, y + 1 + i, z, NanotechBlock.nanoPortal);
 					}
 					if(!player.capabilities.isCreativeMode)
 					{
@@ -122,12 +122,12 @@ public class ItemBaseMetadata extends Item
 					return true;
 				}
 
-				if(world.getBlock(x, y, z).equals(NanotechModList.portalFrame) && world.getBlock(x + 1, y, z).equals(NanotechModList.portalFrame) && world.getBlock(x + 2, y + 1, z).equals(NanotechModList.portalFrame) && world.getBlock(x + 2, y + 2, z).equals(NanotechModList.portalFrame) && world.getBlock(x + 2, y + 3, z).equals(NanotechModList.portalFrame) && world.getBlock(x - 1, y + 1, z).equals(NanotechModList.portalFrame) && world.getBlock(x - 1, y + 2, z).equals(NanotechModList.portalFrame) && world.getBlock(x - 1, y + 3, z).equals(NanotechModList.portalFrame) && world.getBlock(x + 1, y + 4, z).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 4, z).equals(NanotechModList.portalFrame))
+				if(world.getBlock(x, y, z).equals(NanotechBlock.portalFrame) && world.getBlock(x + 1, y, z).equals(NanotechBlock.portalFrame) && world.getBlock(x + 2, y + 1, z).equals(NanotechBlock.portalFrame) && world.getBlock(x + 2, y + 2, z).equals(NanotechBlock.portalFrame) && world.getBlock(x + 2, y + 3, z).equals(NanotechBlock.portalFrame) && world.getBlock(x - 1, y + 1, z).equals(NanotechBlock.portalFrame) && world.getBlock(x - 1, y + 2, z).equals(NanotechBlock.portalFrame) && world.getBlock(x - 1, y + 3, z).equals(NanotechBlock.portalFrame) && world.getBlock(x + 1, y + 4, z).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 4, z).equals(NanotechBlock.portalFrame))
 				{
 					for(int i = 0; i < 3; i++)
 					{
-						world.setBlock(x, y + 1 + i, z, NanotechModList.portal);
-						world.setBlock(x + 1, y + 1 + i, z, NanotechModList.portal);
+						world.setBlock(x, y + 1 + i, z, NanotechBlock.nanoPortal);
+						world.setBlock(x + 1, y + 1 + i, z, NanotechBlock.nanoPortal);
 					}
 					if(!player.capabilities.isCreativeMode)
 					{
@@ -136,12 +136,12 @@ public class ItemBaseMetadata extends Item
 					return true;
 				}
 
-				if(world.getBlock(x, y, z).equals(NanotechModList.portalFrame) && world.getBlock(x, y, z - 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 1, z - 2).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 2, z - 2).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 3, z - 2).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 1, z + 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 2, z + 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 3, z + 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 4, z - 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 4, z).equals(NanotechModList.portalFrame))
+				if(world.getBlock(x, y, z).equals(NanotechBlock.portalFrame) && world.getBlock(x, y, z - 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 1, z - 2).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 2, z - 2).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 3, z - 2).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 1, z + 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 2, z + 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 3, z + 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 4, z - 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 4, z).equals(NanotechBlock.portalFrame))
 				{
 					for(int i = 0; i < 3; i++)
 					{
-						world.setBlock(x, y + 1 + i, z, NanotechModList.portal);
-						world.setBlock(x, y + 1 + i, z - 1, NanotechModList.portal);
+						world.setBlock(x, y + 1 + i, z, NanotechBlock.nanoPortal);
+						world.setBlock(x, y + 1 + i, z - 1, NanotechBlock.nanoPortal);
 					}
 					if(!player.capabilities.isCreativeMode)
 					{
@@ -150,12 +150,12 @@ public class ItemBaseMetadata extends Item
 					return true;
 				}
 
-				if(world.getBlock(x, y, z).equals(NanotechModList.portalFrame) && world.getBlock(x, y, z + 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 1, z + 2).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 2, z + 2).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 3, z + 2).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 1, z - 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 2, z - 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 3, z - 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 4, z + 1).equals(NanotechModList.portalFrame) && world.getBlock(x, y + 4, z).equals(NanotechModList.portalFrame))
+				if(world.getBlock(x, y, z).equals(NanotechBlock.portalFrame) && world.getBlock(x, y, z + 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 1, z + 2).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 2, z + 2).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 3, z + 2).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 1, z - 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 2, z - 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 3, z - 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 4, z + 1).equals(NanotechBlock.portalFrame) && world.getBlock(x, y + 4, z).equals(NanotechBlock.portalFrame))
 				{
 					for(int i = 0; i < 3; i++)
 					{
-						world.setBlock(x, y + 1 + i, z, NanotechModList.portal);
-						world.setBlock(x, y + 1 + i, z + 1, NanotechModList.portal);
+						world.setBlock(x, y + 1 + i, z, NanotechBlock.nanoPortal);
+						world.setBlock(x, y + 1 + i, z + 1, NanotechBlock.nanoPortal);
 					}
 					if(!player.capabilities.isCreativeMode)
 					{

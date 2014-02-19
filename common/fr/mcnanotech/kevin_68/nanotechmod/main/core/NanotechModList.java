@@ -15,36 +15,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class NanotechModList
 {
-	public static final Block portal = GameRegistry.findBlock(NanotechMod.MODID, "BlockPortal");
-	public static final Block portalFrame = GameRegistry.findBlock(NanotechMod.MODID, "BlockPortalframe");
-	public static final Block nanoGrass = GameRegistry.findBlock(NanotechMod.MODID, "BlockGrass");
-	public static final Block fakeOre = GameRegistry.findBlock(NanotechMod.MODID, "BlockFakeOre");
-	public static final Block speed = GameRegistry.findBlock(NanotechMod.MODID, "BlockSpeed");
-	public static final Block jump = GameRegistry.findBlock(NanotechMod.MODID, "BlockJumper");
-	public static final Block multiplier = GameRegistry.findBlock(NanotechMod.MODID, "BlockMultiplier");
-	public static final Block smoker = GameRegistry.findBlock(NanotechMod.MODID, "BlockSmoker");
-	public static final Block barbedWire = GameRegistry.findBlock(NanotechMod.MODID, "BlockBarbedwire");
-	public static final Block nanoWood = GameRegistry.findBlock(NanotechMod.MODID, "BlockNanowood");
-	public static final Block nanoLeaves = GameRegistry.findBlock(NanotechMod.MODID, "BlockNanoleaves");
-	public static final Block nanoSaplings = GameRegistry.findBlock(NanotechMod.MODID, "BlockNanosaplings");
-	public static final Block nanoPlank = GameRegistry.findBlock(NanotechMod.MODID, "BlockNanoplanks");
-	public static final Block ore = GameRegistry.findBlock(NanotechMod.MODID, "BlockNanoOre");
-	public static final Block confusion = GameRegistry.findBlock(NanotechMod.MODID, "BlockConfusion");
-	public static final Block falling = GameRegistry.findBlock(NanotechMod.MODID, "BlockFalling");
-	public static final Block notFalling = GameRegistry.findBlock(NanotechMod.MODID, "Blocknotfalling");
-	public static final Block sodium = GameRegistry.findBlock(NanotechMod.MODID, "BlockSodium");
-	public static final Block mossyStone = GameRegistry.findBlock(NanotechMod.MODID, "BlockMossyStone");
-	public static final Block theDeathHead = GameRegistry.findBlock(NanotechMod.MODID, "BlockTheDeathHead");
-	public static final Block listerJukeBox = GameRegistry.findBlock(NanotechMod.MODID, "ListerJukebox");
-	public static final Block nanoFence = GameRegistry.findBlock(NanotechMod.MODID, "nanoFence");
-	public static final Block nanoStairs = GameRegistry.findBlock(NanotechMod.MODID, "nanoStairs");
-	public static final Block nanoSlabSingle = GameRegistry.findBlock(NanotechMod.MODID, "BlockNanoSlabSingle");
-	public static final Block nanoSlabDouble = GameRegistry.findBlock(NanotechMod.MODID, "BlockNanoSlabDouble");
-	public static final Block satelite = GameRegistry.findBlock(NanotechMod.MODID, "satelite");
-	public static final Block nukeBuilding = GameRegistry.findBlock(NanotechMod.MODID, "nukeBuildingBlock");
-	public static final Block nukeBuildingStairs = GameRegistry.findBlock(NanotechMod.MODID, "nukeBuildingStairs");
-	public static final Block present = GameRegistry.findBlock(NanotechMod.MODID, "present");
-	public static final Block machine = GameRegistry.findBlock(NanotechMod.MODID, "machine");
 	public static final Block liquidNitrogen = GameRegistry.findBlock(NanotechMod.MODID, "blockLiquidNitrogen");
 
 	public static final Item itemBase = GameRegistry.findItem(NanotechMod.MODID, "nanotechbase");

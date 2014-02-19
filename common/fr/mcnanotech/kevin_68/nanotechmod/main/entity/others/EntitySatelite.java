@@ -29,6 +29,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechDamageSource;
 
@@ -379,9 +380,9 @@ public class EntitySatelite extends Entity
 			this.motionY -= (double)f1;
 			this.setPosition(this.posX, this.posY, this.posZ);
 
-			if(inGround && worldObj.getBlock(launcherBlockX, launcherBlockY, launcherBlockZ).equals(NanotechModList.satelite) && worldObj.getBlockMetadata(launcherBlockX, launcherBlockY, launcherBlockZ) == 2)
+			if(inGround && worldObj.getBlock(launcherBlockX, launcherBlockY, launcherBlockZ).equals(NanotechBlock.satelite) && worldObj.getBlockMetadata(launcherBlockX, launcherBlockY, launcherBlockZ) == 2)
 			{
-				this.worldObj.setBlock(launcherBlockX, launcherBlockY, launcherBlockZ, NanotechModList.satelite, 3, 3);
+				this.worldObj.setBlock(launcherBlockX, launcherBlockY, launcherBlockZ, NanotechBlock.satelite, 3, 3);
 			}
 		}
 	}

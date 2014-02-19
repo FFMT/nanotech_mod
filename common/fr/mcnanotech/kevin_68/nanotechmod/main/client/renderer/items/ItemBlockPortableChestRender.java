@@ -37,7 +37,6 @@ public class ItemBlockPortableChestRender implements IItemRenderer
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type)
 	{
-		//TODO fix NPE
 		if(item.getItemDamage() == 0)
 		{
 			switch(type)

@@ -24,6 +24,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.BlockLiquidNitrogen;
+import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.BucketEvent;
@@ -116,10 +117,10 @@ public class NanotechOther
 
 	public static void initForgeDictionary()
 	{
-		OreDictionary.registerOre("logWood", new ItemStack(NanotechModList.nanoWood));
-		OreDictionary.registerOre("plankWood", new ItemStack(NanotechModList.nanoPlank));
-		OreDictionary.registerOre("treeSapling", new ItemStack(NanotechModList.nanoSaplings));
-		OreDictionary.registerOre("treeLeaves", new ItemStack(NanotechModList.nanoLeaves));
+		OreDictionary.registerOre("logWood", new ItemStack(NanotechBlock.nanoWood));
+		OreDictionary.registerOre("plankWood", new ItemStack(NanotechBlock.nanoPlank));
+		OreDictionary.registerOre("treeSapling", new ItemStack(NanotechBlock.nanoSaplings));
+		OreDictionary.registerOre("treeLeaves", new ItemStack(NanotechBlock.nanoLeaves));
 	}
 
 	public static void initBlockHarvestlevel()
@@ -135,7 +136,7 @@ public class NanotechOther
 		// DimensionManager.registerProviderType(NanotechConfiguration.dimensionID, NanotechWorldProvider.class, false);
 		// DimensionManager.registerDimension(NanotechConfiguration.dimensionID, NanotechConfiguration.dimensionID);
 
-		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechModList.sodium), 1, 5, 6));
+		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechBlock.sodium), 1, 5, 6));
 		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechModList.nanoDisc), 1, 1, 2));
 		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechModList.alters), 1, 1, 10));
 	}
