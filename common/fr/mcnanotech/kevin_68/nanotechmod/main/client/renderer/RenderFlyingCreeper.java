@@ -1,9 +1,16 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 
@@ -33,7 +40,7 @@ public class RenderFlyingCreeper extends RenderLiving
 		return this.getFlyingTexture((MobFlyingCreeper)entity);
 	}
 
-	protected void updateMob_creeperforreurScale(MobFlyingCreeper mob, float par2)
+	protected void updateMobFlyingCreeperScale(MobFlyingCreeper mob, float par2)
 	{
 		float var4 = mob.getCreeperFlashIntensity(par2);
 		float var5 = 1.0F + MathHelper.sin(var4 * 100.0F) * var4 * 0.01F;
@@ -55,7 +62,7 @@ public class RenderFlyingCreeper extends RenderLiving
 		GL11.glScalef(var6, var7, var6);
 	}
 
-	protected int updateMob_creeperforreurColorMultiplier(MobFlyingCreeper mob, float par2, float par3)
+	protected int updateMobFlyingCreeperColorMultiplier(MobFlyingCreeper mob, float par2, float par3)
 	{
 		float var5 = mob.getCreeperFlashIntensity(par3);
 
@@ -84,7 +91,7 @@ public class RenderFlyingCreeper extends RenderLiving
 		}
 	}
 
-	protected int renderMob_creeperforreurPassModel(MobFlyingCreeper mob, int par2, float par3)
+	protected int renderMobFlyingCreeperPassModel(MobFlyingCreeper mob, int par2, float par3)
 	{
 		if(mob.getPowered())
 		{
@@ -125,22 +132,26 @@ public class RenderFlyingCreeper extends RenderLiving
 		return -1;
 	}
 
-	protected void preRenderCallback(EntityLiving entityliving, float par2)
+	@Override
+	protected void preRenderCallback(EntityLivingBase entityliving, float par2)
 	{
-		this.updateMob_creeperforreurScale((MobFlyingCreeper)entityliving, par2);
+		this.updateMobFlyingCreeperScale((MobFlyingCreeper)entityliving, par2);
 	}
 
-	protected int getColorMultiplier(EntityLiving entityliving, float par2, float par3)
+	@Override
+	protected int getColorMultiplier(EntityLivingBase entityliving, float par2, float par3)
 	{
-		return this.updateMob_creeperforreurColorMultiplier((MobFlyingCreeper)entityliving, par2, par3);
+		return this.updateMobFlyingCreeperColorMultiplier((MobFlyingCreeper)entityliving, par2, par3);
 	}
 
-	protected int shouldRenderPass(EntityLiving entityliving, int par2, float par3)
+	@Override
+	protected int shouldRenderPass(EntityLivingBase entityliving, int par2, float par3)
 	{
-		return this.renderMob_creeperforreurPassModel((MobFlyingCreeper)entityliving, par2, par3);
+		return this.renderMobFlyingCreeperPassModel((MobFlyingCreeper)entityliving, par2, par3);
 	}
 
-	protected int inheritRenderPass(EntityLiving entityliving, int par2, float par3)
+	@Override
+	protected int inheritRenderPass(EntityLivingBase entityliving, int par2, float par3)
 	{
 		return this.func_77061_b((MobFlyingCreeper)entityliving, par2, par3);
 	}

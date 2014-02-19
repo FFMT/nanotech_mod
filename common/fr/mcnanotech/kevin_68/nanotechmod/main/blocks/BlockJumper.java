@@ -1,17 +1,25 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.blocks;
 
 import java.util.List;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -21,30 +29,33 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityJumper;
 public class BlockJumper extends BlockContainer
 {
 	public static String[] type = new String[] {"basic", "advanced"};
-	public Icon[] iconbuffer;
+	public IIcon[] iconbuffer;
 
-	public BlockJumper(int id)
+	public BlockJumper()
 	{
-		super(id, Material.rock);
+		super(Material.rock);
 	}
 
+	@Override
 	public int damageDropped(int metadata)
 	{
 		return metadata;
 	}
 
-	public void registerIcons(IconRegister iconregister)
+	@Override
+	public void registerBlockIcons(IIconRegister iconregister)
 	{
-		iconbuffer = new Icon[5];
-		iconbuffer[0] = iconregister.registerIcon("nanotechmod:jumpbottom");
-		iconbuffer[1] = iconregister.registerIcon("nanotechmod:jumptop");
-		iconbuffer[2] = iconregister.registerIcon("nanotechmod:jumpside");
-		iconbuffer[3] = iconregister.registerIcon("nanotechmod:jumptop_advanced");
-		iconbuffer[4] = iconregister.registerIcon("nanotechmod:jumpside_advanced");
+		iconbuffer = new IIcon[5];
+		iconbuffer[0] = iconregister.registerIcon(this.getTextureName() + "bottom");
+		iconbuffer[1] = iconregister.registerIcon(this.getTextureName() + "top");
+		iconbuffer[2] = iconregister.registerIcon(this.getTextureName() + "side");
+		iconbuffer[3] = iconregister.registerIcon(this.getTextureName() + "top_advanced");
+		iconbuffer[4] = iconregister.registerIcon(this.getTextureName() + "side_advanced");
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int metadata)
+	@Override
+	public IIcon getIcon(int side, int metadata)
 	{
 		if(metadata == 0)
 		{
@@ -56,24 +67,28 @@ public class BlockJumper extends BlockContainer
 		}
 	}
 
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int blockid, CreativeTabs creativeTabs, List list)
+	@Override
+	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
 	{
 		for(int metadatanumber = 0; metadatanumber < type.length; metadatanumber++)
 		{
-			list.add(new ItemStack(blockid, 1, metadatanumber));
+			list.add(new ItemStack(item, 1, metadatanumber));
 		}
 	}
 
+	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
 	{
 		float var5 = 0.050F;
 		return AxisAlignedBB.getAABBPool().getAABB((double)x, (double)y, (double)z, (double)(x + 1), (double)((float)(y + 1) - var5), (double)(z + 1));
 	}
 
+	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
-		TileEntityJumper tileJumper = (TileEntityJumper)world.getBlockTileEntity(x, y, z);
+		TileEntityJumper tileJumper = (TileEntityJumper)world.getTileEntity(x, y, z);
 		entity.motionY += tileJumper.getJumpHeightValue();
 		if(world.getBlockMetadata(x, y, z) == 1)
 		{
@@ -84,20 +99,23 @@ public class BlockJumper extends BlockContainer
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t)
 	{
-		TileEntity tile_entity = world.getBlockTileEntity(x, y, z);
+		TileEntity tile_entity = world.getTileEntity(x, y, z);
 
 		if(tile_entity == null || player.isSneaking())
 		{
 			return false;
 		}
-
-		player.openGui(NanotechMod.modInstance, 0, world, x, y, z);
-
+		
+		if(!world.isRemote)
+		{
+			player.openGui(NanotechMod.modInstance, 0, world, x, y, z);
+		}
+		
 		return true;
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world)
+	public TileEntity createNewTileEntity(World world, int metadata)
 	{
 		return new TileEntityJumper();
 	}

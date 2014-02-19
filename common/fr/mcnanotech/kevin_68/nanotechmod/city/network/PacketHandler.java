@@ -1,5 +1,14 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.city.network;
 
+import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechModCity;
+import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler;
@@ -25,11 +34,6 @@ import cpw.mods.fml.common.network.internal.FMLProxyPacket;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-/**
- * Packet pipeline class. Directs all registered packet data to be handled by the packets themselves.
- * 
- * @author sirgingalot some code from: cpw
- */
 @ChannelHandler.Sharable
 public class PacketHandler extends MessageToMessageCodec<FMLProxyPacket, AbstractPacket>
 {
@@ -38,31 +42,23 @@ public class PacketHandler extends MessageToMessageCodec<FMLProxyPacket, Abstrac
 	private LinkedList<Class<? extends AbstractPacket>> packets = new LinkedList<Class<? extends AbstractPacket>>();
 	private boolean isPostInitialised = false;
 
-	/**
-	 * Register your packet with the pipeline. Discriminators are automatically set.
-	 * 
-	 * @param clazz
-	 *            the class to register
-	 * 
-	 * @return whether registration was successful. Failure may occur if 256 packets have been registered or if the registry already contains this packet
-	 */
 	public boolean registerPacket(Class<? extends AbstractPacket> clazz)
 	{
 		if(this.packets.size() > 256)
 		{
-			// You should log here!!
+			NanotechModCity.nanoCityLogger.error("packets size > 256");
 			return false;
 		}
 
 		if(this.packets.contains(clazz))
 		{
-			// You should log here!!
+			NanotechModCity.nanoCityLogger.error("packets contains clazz");
 			return false;
 		}
 
 		if(this.isPostInitialised)
 		{
-			// You should log here!!
+			NanotechModCity.nanoCityLogger.error("packetshandler is postIntialised");
 			return false;
 		}
 
@@ -70,7 +66,6 @@ public class PacketHandler extends MessageToMessageCodec<FMLProxyPacket, Abstrac
 		return true;
 	}
 
-	// In line encoding of the packet, including discriminator setting
 	@Override
 	protected void encode(ChannelHandlerContext ctx, AbstractPacket msg, List<Object> out) throws Exception
 	{
@@ -88,7 +83,6 @@ public class PacketHandler extends MessageToMessageCodec<FMLProxyPacket, Abstrac
 		out.add(proxyPacket);
 	}
 
-	// In line decoding and handling of the packet
 	@Override
 	protected void decode(ChannelHandlerContext ctx, FMLProxyPacket msg, List<Object> out) throws Exception
 	{
@@ -123,14 +117,11 @@ public class PacketHandler extends MessageToMessageCodec<FMLProxyPacket, Abstrac
 		out.add(pkt);
 	}
 
-	// Method to call from FMLInitializationEvent
 	public void initialise()
 	{
-		this.channels = NetworkRegistry.INSTANCE.newChannel("NTMC|Spotlight", this);
+		this.channels = NetworkRegistry.INSTANCE.newChannel("NTMC|Packets", this);
 	}
 
-	// Method to call from FMLPostInitializationEvent
-	// Ensures that packet discriminators are common between server and client by using logical sorting
 	public void postInitialise()
 	{
 		if(this.isPostInitialised)
@@ -162,30 +153,12 @@ public class PacketHandler extends MessageToMessageCodec<FMLProxyPacket, Abstrac
 		return Minecraft.getMinecraft().thePlayer;
 	}
 
-	/**
-	 * Send this message to everyone.
-	 * <p/>
-	 * Adapted from CPW's code in cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper
-	 * 
-	 * @param message
-	 *            The message to send
-	 */
 	public void sendToAll(AbstractPacket message)
 	{
 		this.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.ALL);
 		this.channels.get(Side.SERVER).writeAndFlush(message);
 	}
 
-	/**
-	 * Send this message to the specified player.
-	 * <p/>
-	 * Adapted from CPW's code in cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper
-	 * 
-	 * @param message
-	 *            The message to send
-	 * @param player
-	 *            The player to send it to
-	 */
 	public void sendTo(AbstractPacket message, EntityPlayerMP player)
 	{
 		this.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.PLAYER);
@@ -193,16 +166,6 @@ public class PacketHandler extends MessageToMessageCodec<FMLProxyPacket, Abstrac
 		this.channels.get(Side.SERVER).writeAndFlush(message);
 	}
 
-	/**
-	 * Send this message to everyone within a certain range of a point.
-	 * <p/>
-	 * Adapted from CPW's code in cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper
-	 * 
-	 * @param message
-	 *            The message to send
-	 * @param point
-	 *            The {@link cpw.mods.fml.common.network.NetworkRegistry.TargetPoint} around which to send
-	 */
 	public void sendToAllAround(AbstractPacket message, NetworkRegistry.TargetPoint point)
 	{
 		this.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.ALLAROUNDPOINT);
@@ -210,16 +173,6 @@ public class PacketHandler extends MessageToMessageCodec<FMLProxyPacket, Abstrac
 		this.channels.get(Side.SERVER).writeAndFlush(message);
 	}
 
-	/**
-	 * Send this message to everyone within the supplied dimension.
-	 * <p/>
-	 * Adapted from CPW's code in cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper
-	 * 
-	 * @param message
-	 *            The message to send
-	 * @param dimensionId
-	 *            The dimension id to target
-	 */
 	public void sendToDimension(AbstractPacket message, int dimensionId)
 	{
 		this.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.DIMENSION);
@@ -227,14 +180,6 @@ public class PacketHandler extends MessageToMessageCodec<FMLProxyPacket, Abstrac
 		this.channels.get(Side.SERVER).writeAndFlush(message);
 	}
 
-	/**
-	 * Send this message to the server.
-	 * <p/>
-	 * Adapted from CPW's code in cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper
-	 * 
-	 * @param message
-	 *            The message to send
-	 */
 	public void sendToServer(AbstractPacket message)
 	{
 		this.channels.get(Side.CLIENT).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.TOSERVER);

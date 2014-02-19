@@ -1,10 +1,20 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.city.core;
+
+import org.apache.logging.log4j.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -21,6 +31,9 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.items.NanotechCityItems;
 import fr.mcnanotech.kevin_68.nanotechmod.city.network.GuiHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.city.network.PacketHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.city.network.PacketSpotLight;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.PacketSpotLightKey;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.PacketTextSpotLight;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.PacketTextSpotLightString;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityFountain;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityLamp;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityLampLight;
@@ -34,16 +47,36 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTrashCan;
 @Mod(modid = NanotechModCity.MODID, name = "Nanotech mod City", version = "@VERSION@")
 public class NanotechModCity
 {
-	public static final String MODID = "NanotechModCity";
+	/**
+	 * NanotechModCity mod IDentifier
+	 */
+	public static final String MODID = "nanotechmodcity";
 
-	@Instance("NanotechModCity")
+	/**
+	 * NanotechModCity mod instance
+	 */
+	@Instance(MODID)
 	public static NanotechModCity modInstance;
 
+	/**
+	 * NanotechModCity CommonProxy
+	 */
 	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotechmod.city.core.ClientProxy", serverSide = "fr.mcnanotech.kevin_68.nanotechmod.city.core.CommonProxy")
 	public static CommonProxy proxy;
 
+	/**
+	 * NanotechModCity packethandler
+	 */
 	public static final PacketHandler packetHandler = new PacketHandler();
 
+	/**
+	 * NanotechModCity logger
+	 */
+	public static Logger nanoCityLogger;
+	
+	/**
+	 * CreativeTab of NanotechModCity
+	 */
 	public static CreativeTabs cityTab = new CreativeTabs("NanotechModCity")
 	{
 		@Override
@@ -57,28 +90,23 @@ public class NanotechModCity
 	@EventHandler
 	public void PreInit(FMLPreInitializationEvent event)
 	{
-		/*
-		 * Configuration cfg = new Configuration(event.getSuggestedConfigurationFile()); try { cfg.load(); trashcanID = cfg.getBlock("Trash can", 1100).getInt(); spotLightID =
-		 * cfg.getBlock("SpotLight", 1101).getInt(); trailID = cfg.getBlock("Trail", 1121).getInt(); fountainID = cfg.getBlock("Fountain", 1122).getInt(); lampID = cfg.getBlock("Lamp", 1123).getInt();
-		 * sunShadeID = cfg.getBlock("SunShade", 1124).getInt(); modernFenceID = cfg.getBlock("ModernFence", 1125).getInt(); textSpotLightID = cfg.getBlock("Text Spotlight", 1126).getInt();
-		 * 
-		 * configCopyID = cfg.getItem("Condif Copy", 5100).getInt(); } catch(Exception ex) { NanotechMod.nanoLog.severe("Failed to load configuration"); } finally { if(cfg.hasChanged()) { cfg.save();
-		 * } }
-		 */
-
 		NanotechCityBlock.initBlock();
 		NanotechCityItems.initItems();
 		NanotechCityAchievement.initAchievement();
 	}
 
+	@SuppressWarnings("static-access")
 	@EventHandler
 	public void Init(FMLInitializationEvent event)
 	{
-		// TODO GameRegistry.registerCraftingHandler(new CityCraftingHandler());
+		MinecraftForge.EVENT_BUS.register(new CityCraftingHandler());
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(this.modInstance, new GuiHandler());
 		packetHandler.initialise();
 		packetHandler.registerPacket(PacketSpotLight.class);
+		packetHandler.registerPacket(PacketSpotLightKey.class);
+		packetHandler.registerPacket(PacketTextSpotLight.class);
+		packetHandler.registerPacket(PacketTextSpotLightString.class);
 
 		GameRegistry.registerTileEntity(TileEntitySpotLight.class, "SpotLight");
 		GameRegistry.registerTileEntity(TileEntityTrail.class, "Trail");

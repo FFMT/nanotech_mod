@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.city.blocks;
 
 import java.util.List;
@@ -23,11 +30,12 @@ public class BlockTrashcan extends Block
 		super(Material.iron);
 	}
 
-	public void registerIcons(IIconRegister iconregister)
+	public void registerBlockIcons(IIconRegister iconregister)
 	{
 		blockIcon = iconregister.registerIcon("nanotechmodcity:trash_can");
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axisalignedBB, List list, Entity entity)
 	{
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.3125F, 1.0F);

@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
 import net.minecraft.block.Block;
@@ -12,6 +19,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechDamageSource;
 
 public class ItemLightSaber extends Item
@@ -86,7 +94,7 @@ public class ItemLightSaber extends Item
 	}
 
 	@Override
-	public float getStrVsBlock(ItemStack stack, Block block)
+	public float func_150893_a(ItemStack stack, Block block)
 	{
 		if(block.equals(Blocks.web) && stack.getTagCompound().getBoolean("IsOn"))
 		{
@@ -94,8 +102,8 @@ public class ItemLightSaber extends Item
 		}
 		else
 		{
-			Material material = block.blockMaterial;
-			return material != Material.plants && material != Material.vine && material != Material.coral && material != Material.leaves && material != Material.pumpkin ? 1.0F : 1.5F;
+			Material material = block.getMaterial();
+			return material != Material.plants && material != Material.vine && material != Material.coral && material != Material.leaves && material != Material.gourd ? 1.0F : 1.5F;
 		}
 	}
 
@@ -105,9 +113,9 @@ public class ItemLightSaber extends Item
 	{
 		return true;
 	}
-	
+
 	@Override
-	public boolean canHarvestBlock(Block block)
+	public boolean func_150897_b(Block block)
 	{
 		return block.equals(Blocks.web);
 	}
@@ -117,13 +125,13 @@ public class ItemLightSaber extends Item
 	{
 		return 0;
 	}
-	
+
 	@Override
 	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)
 	{
 		return false;
 	}
-	
+
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase entityTarget, EntityLivingBase entitySource)
 	{

@@ -1,12 +1,21 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.other;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.ChestGenHooks;
-import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
@@ -14,19 +23,19 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.TickRegistry;
-import cpw.mods.fml.relauncher.Side;
-import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
+import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.BlockLiquidNitrogen;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.BucketEvent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.EventBonemeal;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.LivingEvent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.PlayerEvent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.PlayerTracker;
-import fr.mcnanotech.kevin_68.nanotechmod.main.event.TextureEvent;
-import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotechmod.main.event.RenderEvent;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.ItemNitrogenBucket;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.GuiHandler;
-import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketHandler;
+import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketJumper;
+import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketSmoker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityButton;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
@@ -34,66 +43,54 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPortableChest;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPresent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
-import fr.mcnanotech.kevin_68.nanotechmod.main.utils.CraftingHandler;
-import fr.mcnanotech.kevin_68.nanotechmod.main.utils.NanotechServerTickHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.main.world.NanotechBiome;
-import fr.mcnanotech.kevin_68.nanotechmod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotechmod.main.world.NitrogenOcean;
-import fr.mcnanotech.kevin_68.nanotechmod.main.world.WorldGeneration;
 
 public class NanotechOther
 {
 	public static Fluid liquidNitrogen;
+
+	protected static final BiomeGenBase.Height height_nanotechBiome = new BiomeGenBase.Height(0.0F, 0.1F);
+	protected static final BiomeGenBase.Height height_nitrogenOcean = new BiomeGenBase.Height(-0.5F, 0.0F);
 
 	public static BiomeGenBase nanotechBiome;
 	public static BiomeGenBase nitrogenOcean;
 
 	public static Potion freeze;
 
-	public static void registerLiquid(int state)
+	public static void initPackets()
 	{
-		if(state == 0)
-		{
-			liquidNitrogen = new Fluid("liquidnitrogen").setDensity(4000).setViscosity(500).setTemperature(77).setLuminosity(0).setUnlocalizedName("liquidNitrogen");
-			FluidRegistry.registerFluid(liquidNitrogen);
-			liquidNitrogen = FluidRegistry.getFluid("liquidnitrogen");
-		}
-		else if(state == 1)
-		{
-			FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidnitrogen", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(NanotechItem.nitrogenBucket), FluidContainerRegistry.EMPTY_BUCKET);
-		}
-		else
-		{
-			NanotechMod.nanoLog.severe("Error on call liquid register");
-		}
+		NanotechMod.packetHandler.registerPacket(PacketJumper.class);
+		NanotechMod.packetHandler.registerPacket(PacketSmoker.class);
+		NanotechMod.nanoLogger.info("Packets initialized");
 	}
 
-	public static void registerWorld()
+	public static void initPotion()
 	{
-		nanotechBiome = new NanotechBiome(NanotechMod.nanotechBiomeID).setBiomeName("Nanotechbiome").setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.0F, 0.1F);
-		nitrogenOcean = new NitrogenOcean(NanotechMod.nitrogenOceanID).setBiomeName("NitrogenOcean").setTemperatureRainfall(-15.0F, -10.0F).setMinMaxHeight(-0.5F, 0.0F);
-
-		DimensionManager.registerProviderType(NanotechMod.dimensionID, NanotechWorldProvider.class, false);
-		DimensionManager.registerDimension(NanotechMod.dimensionID, NanotechMod.dimensionID);
-
-		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechBlock.sodium), 1, 5, 6));
-		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechItem.nanoDisc), 1, 1, 2));
-		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechItem.alters), 1, 1, 10));
-
-		GameRegistry.registerWorldGenerator(new WorldGeneration());
-
+		freeze = new NanotechPotion(30, true, 3035801).setPotionName("potion.freeze").func_111184_a(SharedMonsterAttributes.movementSpeed, "7107DE5E-7CE8-4030-940E-514C1F160890", -0.50000000596046448D, 2);
+		NanotechMod.nanoLogger.info("Potion initialized");
 	}
 
-	public static void registerPotion()
+	public static void initFluid()
 	{
-		freeze = new NanotechPotion(30, true, 3035801).setPotionName("potion.freeze").setIconIndex(0, 0).func_111184_a(SharedMonsterAttributes.movementSpeed, "7107DE5E-7CE8-4030-940E-514C1F160890", -0.50000000596046448D, 2);
+		FluidRegistry.registerFluid(new Fluid("liquidnitrogen").setDensity(4000).setViscosity(500).setTemperature(77).setLuminosity(0).setUnlocalizedName("liquidNitrogen").setBlock(NanotechModList.liquidNitrogen).setIcons(NanotechModList.liquidNitrogen.getBlockTextureFromSide(1), NanotechModList.liquidNitrogen.getBlockTextureFromSide(2)));
+		GameRegistry.registerBlock(new BlockLiquidNitrogen(NanotechOther.liquidNitrogen, Material.water).setBlockName("liquidNitrogen").setBlockTextureName(NanotechMod.MODID + ":nitrogen"), ItemBlock.class, "blockLiquidNitrogen", NanotechMod.MODID);
+		GameRegistry.registerItem(new ItemNitrogenBucket(NanotechModList.liquidNitrogen).setUnlocalizedName("nitrogenBucket").setTextureName(NanotechMod.MODID + ":nitrogenBucket").setCreativeTab(NanotechMod.CreaI).setContainerItem(Items.bucket), "nitrogenBucket", NanotechMod.MODID);
 	}
 
-	public static void registerGuiAndTileEntity()
+	public static void initBiomes()
 	{
-		NetworkRegistry.instance().registerGuiHandler(NanotechMod.modInstance, new GuiHandler());
-		NetworkRegistry.instance().registerChannel(new PacketHandler(), "nanotechmod");
+		nanotechBiome = new NanotechBiome(NanotechConfiguration.nanotechBiomeID).setBiomeName("Nanotechbiome").setTemperatureRainfall(1.2F, 0.9F).setHeight(height_nanotechBiome);
+		nitrogenOcean = new NitrogenOcean(NanotechConfiguration.nitrogenOceanID).setBiomeName("NitrogenOcean").setTemperatureRainfall(-15.0F, -10.0F).setHeight(height_nitrogenOcean);
+	}
 
+	public static void initGuiHandler()
+	{
+		NetworkRegistry.INSTANCE.registerGuiHandler(NanotechMod.modInstance, new GuiHandler());
+	}
+
+	public static void initTileEntity()
+	{
 		GameRegistry.registerTileEntity(TileEntityJumper.class, "TileEntityJumper");
 		GameRegistry.registerTileEntity(TileEntitySmoker.class, "TileEntitySmoker");
 		GameRegistry.registerTileEntity(TileEntityMultiplier.class, "TileEntityMultiplier");
@@ -103,29 +100,48 @@ public class NanotechOther
 		GameRegistry.registerTileEntity(TileEntityPortableChest.class, "TileEntityPortableChest");
 	}
 
-	public static void registerForgeDictionary()
-	{
-		OreDictionary.registerOre("logWood", new ItemStack(NanotechBlock.nanoWood));
-		OreDictionary.registerOre("plankWood", new ItemStack(NanotechBlock.nanoPlanks));
-		OreDictionary.registerOre("treeSapling", new ItemStack(NanotechBlock.nanoSaplings));
-		OreDictionary.registerOre("treeLeaves", new ItemStack(NanotechBlock.nanoLeaves));
-	}
-
-	public static void registerBlockHarvestlevel()
-	{
-		MinecraftForge.setBlockHarvestLevel(NanotechBlock.nanoGrass, "shovel", 2);
-		MinecraftForge.setBlockHarvestLevel(NanotechBlock.notfalling, "shovel", 2);
-	}
-
-	public static void registerEvent()
+	public static void initEvent()
 	{
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
 		MinecraftForge.EVENT_BUS.register(new PlayerEvent());
 		MinecraftForge.EVENT_BUS.register(new LivingEvent());
-		MinecraftForge.EVENT_BUS.register(new TextureEvent());
 		MinecraftForge.EVENT_BUS.register(new BucketEvent());
-		GameRegistry.registerPlayerTracker(new PlayerTracker());
-		GameRegistry.registerCraftingHandler(new CraftingHandler());
-		TickRegistry.registerTickHandler(new NanotechServerTickHandler(), Side.SERVER);
+		MinecraftForge.EVENT_BUS.register(new PlayerTracker());
+		MinecraftForge.EVENT_BUS.register(new RenderEvent());
+
+		// TODO fix
+		// GameRegistry.registerCraftingHandler(new CraftingHandler());
+		// TickRegistry.registerTickHandler(new NanotechServerTickHandler(), Side.SERVER);
+	}
+
+	public static void initForgeDictionary()
+	{
+		OreDictionary.registerOre("logWood", new ItemStack(NanotechModList.nanoWood));
+		OreDictionary.registerOre("plankWood", new ItemStack(NanotechModList.nanoPlank));
+		OreDictionary.registerOre("treeSapling", new ItemStack(NanotechModList.nanoSaplings));
+		OreDictionary.registerOre("treeLeaves", new ItemStack(NanotechModList.nanoLeaves));
+	}
+
+	public static void initBlockHarvestlevel()
+	{
+		// TODO fix
+		// MinecraftForge.setBlockHarvestLevel(NanotechModList.nanoGrass, "shovel", 2);
+		// MinecraftForge.setBlockHarvestLevel(NanotechModList.notFalling, "shovel", 2);
+	}
+
+	public static void initWorld()
+	{
+		// TODO fix world
+		// DimensionManager.registerProviderType(NanotechConfiguration.dimensionID, NanotechWorldProvider.class, false);
+		// DimensionManager.registerDimension(NanotechConfiguration.dimensionID, NanotechConfiguration.dimensionID);
+
+		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechModList.sodium), 1, 5, 6));
+		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechModList.nanoDisc), 1, 1, 2));
+		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechModList.alters), 1, 1, 10));
+	}
+
+	public static void initFluidContainer()
+	{
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidnitrogen", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(NanotechModList.nitrogenBucket), FluidContainerRegistry.EMPTY_BUCKET);
 	}
 }

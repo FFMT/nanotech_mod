@@ -1,54 +1,60 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.blocks;
 
 import java.util.List;
-import java.util.Random;
 
 import net.minecraft.block.BlockLog;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
-import net.minecraft.world.World;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 
 public class BlockNanoWood extends BlockLog
 {
-	private Icon topIcon;
+	private IIcon topIcon;
 
-	public BlockNanoWood(int id)
+	public BlockNanoWood()
 	{
-		super(id);
+		super();
 	}
 
-	public int idDropped(int side, Random random, int par3)
+	@Override
+	public void registerBlockIcons(IIconRegister iconregister)
 	{
-		return this.blockID;
+		blockIcon = iconregister.registerIcon(this.getTextureName());
+		topIcon = iconregister.registerIcon(this.getTextureName() + "_top");
 	}
 
-	public void registerIcons(IconRegister iconregister)
-	{
-		blockIcon = iconregister.registerIcon("nanotechmod:log");
-		topIcon = iconregister.registerIcon("nanotechmod:log_top");
-	}
-
-	public Icon getIcon(int side, int metadata)
+	@Override
+	public IIcon getIcon(int side, int metadata)
 	{
 		int k = metadata & 12;
 		return k == 0 && (side == 1 || side == 0) ? topIcon : (k == 4 && (side == 5 || side == 4) ? topIcon : (k == 8 && (side == 2 || side == 3) ? topIcon : blockIcon));
 	}
 
-	public void getSubBlocks(int id, CreativeTabs creativeTabs, List list)
+	@SuppressWarnings({"unchecked", "rawtypes"})
+	@Override
+	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
 	{
-		list.add(new ItemStack(id, 1, 0));
+		list.add(new ItemStack(item, 1, 0));
 	}
 
 	@Override
-	public boolean canSustainLeaves(World world, int x, int y, int z)
+	public boolean canSustainLeaves(IBlockAccess world, int x, int y, int z)
 	{
 		return true;
 	}
 
 	@Override
-	public boolean isWood(World world, int x, int y, int z)
+	public boolean isWood(IBlockAccess world, int x, int y, int z)
 	{
 		return true;
 	}

@@ -1,5 +1,13 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -9,6 +17,7 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
 public class MobDancer extends EntityAnimal
@@ -31,64 +40,63 @@ public class MobDancer extends EntityAnimal
 		this.tasks.addTask(7, new EntityAILookIdle(this));
 	}
 
+	@Override
 	public boolean isAIEnabled()
 	{
 		return true;
 	}
 
+	@Override
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.10D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.10D);
 	}
 
+	@Override
 	public void onLivingUpdate()
 	{
 		super.onLivingUpdate();
 		ticks++;
 	}
 
+	@Override
 	protected String getLivingSound()
 	{
 		return "";
 	}
 
+	@Override
 	protected String getHurtSound()
 	{
 		return "";
 	}
 
+	@Override
 	protected String getDeathSound()
 	{
 		return "";
 	}
 
-	protected void playStepSound(int par1, int par2, int par3, int par4)
+	@Override
+	protected void func_145780_a(int x, int y, int z, Block block)
 	{
 		this.playSound("", 0.15F, 1.0F);
 	}
 
-	protected int getDropItemId()
+	@Override
+	protected Item getDropItem()
 	{
-		return 0;
+		return null;
 	}
-
-	/*
-	 * protected void dropFewItems(boolean par1, int par2) { int j =
-	 * this.rand.nextInt(3) + this.rand.nextInt(1 + par2);
-	 * 
-	 * for (int k = 0; k < j; ++k) { this.dropItem(Item.feather.itemID, 1); }
-	 * 
-	 * if (this.isBurning()) { this.dropItem(Item.chickenCooked.itemID, 1); }
-	 * else { this.dropItem(Item.chickenRaw.itemID, 1); } }
-	 */
 
 	public MobDancer spawnBabyAnimal(EntityAgeable par1EntityAgeable)
 	{
 		return new MobDancer(this.worldObj);
 	}
 
+	@Override
 	public EntityAgeable createChild(EntityAgeable par1EntityAgeable)
 	{
 		return this.spawnBabyAnimal(par1EntityAgeable);

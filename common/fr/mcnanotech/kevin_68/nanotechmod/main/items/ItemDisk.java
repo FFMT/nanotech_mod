@@ -1,6 +1,12 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemRecord;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -9,20 +15,13 @@ public class ItemDisk extends ItemRecord
 {
 	public final String recordName;
 	public final String recordinfo;
-	public final String textureName;
 
-	public ItemDisk(String name, String info, String texture)
+	public ItemDisk(String name, String info)
 	{
 		super(name);
 		recordName = name;
 		maxStackSize = 1;
 		recordinfo = info;
-		textureName = texture;
-	}
-
-	public void registerIcons(IIconRegister iconregister)
-	{
-		this.itemIcon = iconregister.registerIcon("nanotechmod:" + textureName);
 	}
 
 	@SideOnly(Side.CLIENT)

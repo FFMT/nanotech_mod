@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.container;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -7,6 +14,8 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
 
+
+@SuppressWarnings("unused")
 public class ContainerListerJukebox extends Container
 {
 	protected TileEntityListerJukebox tileListerJukebox;

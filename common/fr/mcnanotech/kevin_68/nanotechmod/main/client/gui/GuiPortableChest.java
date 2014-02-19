@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -34,8 +41,8 @@ public class GuiPortableChest extends GuiContainer
 
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
-		this.fontRenderer.drawString(I18n.getString(this.playerInventory.getInvName()), 8, 129, 0);
-		this.fontRenderer.drawString(this.tileChest.isInvNameLocalized() ? this.tileChest.getCustomGuiName() : I18n.getString(this.tileChest.getInvName()), 8, 7, 0);
+		this.fontRendererObj.drawString(I18n.format(this.playerInventory.getInventoryName()), 8, 129, 0);
+		this.fontRendererObj.drawString(this.tileChest.hasCustomInventoryName() ? this.tileChest.getCustomGuiName() : I18n.format(this.tileChest.getInventoryName()), 8, 7, 0);
 	}
 
 	@Override

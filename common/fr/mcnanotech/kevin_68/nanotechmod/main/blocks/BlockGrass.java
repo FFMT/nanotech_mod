@@ -1,49 +1,62 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.blocks;
 
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.util.ForgeDirection;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockGrass extends Block
 {
-	private Icon iconTop;
-	private Icon iconSnowSide;
+	private IIcon iconTop;
+	private IIcon iconSnowSide;
 
-	public BlockGrass(int id)
+	public BlockGrass()
 	{
-		super(id, Material.grass);
+		super(Material.grass);
 		this.setTickRandomly(true);
 	}
 
-	public boolean canSustainPlant(World world, int x, int y, int z, ForgeDirection direction, IPlantable plant)
+	@Override
+	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plant)
 	{
 		return true;
 	}
 
-	public void registerIcons(IconRegister iconregister)
+	@Override
+	public void registerBlockIcons(IIconRegister iconregister)
 	{
-		blockIcon = iconregister.registerIcon("nanotechmod:grass_side");
-		iconTop = iconregister.registerIcon("nanotechmod:grass_top");
-		iconSnowSide = iconregister.registerIcon("nanotechmod:grass_side_snow");
+		blockIcon = iconregister.registerIcon(this.getTextureName()  + "_side");
+		iconTop = iconregister.registerIcon(this.getTextureName()  + "_top");
+		iconSnowSide = iconregister.registerIcon(this.getTextureName()  + "_side_snow");
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int metadata)
+	@Override
+	public IIcon getIcon(int side, int metadata)
 	{
-		return side == 1 ? iconTop : (side == 0 ? Block.dirt.getBlockTextureFromSide(side) : this.blockIcon);
+		return side == 1 ? iconTop : (side == 0 ? Blocks.dirt.getBlockTextureFromSide(side) : this.blockIcon);
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getBlockTexture(IBlockAccess blockaccess, int x, int y, int z, int side)
+	@Override
+	public IIcon getIcon(IBlockAccess blockaccess, int x, int y, int z, int side)
 	{
 		if(side == 1)
 		{
@@ -51,11 +64,11 @@ public class BlockGrass extends Block
 		}
 		else if(side == 0)
 		{
-			return Block.dirt.getBlockTextureFromSide(side);
+			return Blocks.dirt.getBlockTextureFromSide(side);
 		}
 		else
 		{
-			Material material = blockaccess.getBlockMaterial(x, y + 1, z);
+			Material material = blockaccess.getBlock(x, y + 1, z).getMaterial();
 			return material != Material.snow && material != Material.craftedSnow ? blockIcon : iconSnowSide;
 		}
 	}
@@ -66,7 +79,7 @@ public class BlockGrass extends Block
 		{
 			if(world.getBlockLightValue(x, y + 1, z) < 4 && world.getBlockLightOpacity(x, y + 1, z) > 2)
 			{
-				world.setBlock(x, y, z, Block.dirt.blockID, 0, 3);
+				world.setBlock(x, y, z, Blocks.dirt, 0, 3);
 			}
 			else if(world.getBlockLightValue(x, y + 1, z) >= 9)
 			{
@@ -75,19 +88,19 @@ public class BlockGrass extends Block
 					int var7 = x + par5Random.nextInt(3) - 1;
 					int var8 = y + par5Random.nextInt(5) - 3;
 					int var9 = z + par5Random.nextInt(3) - 1;
-					int var10 = world.getBlockId(var7, var8 + 1, var9);
 
-					if((world.getBlockId(var7, var8, var9) == Block.dirt.blockID && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlockId(var7, var8, var9) == Block.grass.blockID && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlockId(var7, var8, var9) == Block.mycelium.blockID && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlockId(var7, var8, var9) == Block.tilledField.blockID && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2))
+					if((world.getBlock(var7, var8, var9).equals(Blocks.dirt) && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlock(var7, var8, var9).equals(Blocks.grass) && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlock(var7, var8, var9).equals(Blocks.mycelium) && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlock(var7, var8, var9).equals(Blocks.farmland) && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2))
 					{
-						world.setBlock(var7, var8, var9, NanotechBlock.nanoGrass.blockID, 0, 3);
+						world.setBlock(var7, var8, var9, this, 0, 3);
 					}
 				}
 			}
 		}
 	}
 
-	public int idDropped(int metadata, Random random, int par3)
+	@Override
+	public Item getItemDropped(int metadata, Random random, int par3)
 	{
-		return Block.dirt.idDropped(0, random, par3);
+		return Blocks.dirt.getItemDropped(0, random, par3);
 	}
 }

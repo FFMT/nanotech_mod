@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.city.blocks;
 
 import net.minecraft.block.Block;
@@ -89,10 +96,10 @@ public class BlockLamp extends Block
 
 	public IIcon getIcon(int side, int metadata)
 	{
-		return NanotechCityList.spotLight.getIcon(0, 0);
+		return NanotechCityList.spotLight.getIcon(2, 0);
 	}
 
-	public void registerIcons(IIconRegister iconregister)
+	public void registerBlockIcons(IIconRegister iconregister)
 	{}
 
 	public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z)

@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs;
 
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -12,8 +19,9 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class MobCrazyGuy extends EntityMob
 {
@@ -40,39 +48,45 @@ public class MobCrazyGuy extends EntityMob
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(50D);
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(40.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.80D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(3.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(40.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.80D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(3.0D);
 	}
 
+	@Override
 	protected String getLivingSound()
 	{
 		return "nanotechmod:CrazyGuy";
 	}
 
+	@Override
 	protected String getHurtSound()
 	{
 		return "";
 	}
 
+	@Override
 	protected String getDeathSound()
 	{
 		return "";
 	}
 
+	@Override
 	public EnumCreatureAttribute getCreatureAttribute()
 	{
 		return EnumCreatureAttribute.UNDEAD;
 	}
 
+	@Override
 	protected boolean isAIEnabled()
 	{
 		return true;
 	}
 
-	protected int getDropItemId()
+	@Override
+	protected Item getDropItem()
 	{
-		return NanotechItem.crazyGlasses.itemID;
+		return NanotechModList.crazyGlasses;
 	}
 }

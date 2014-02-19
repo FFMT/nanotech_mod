@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.utils;
 
 import java.util.EnumSet;
@@ -9,22 +16,19 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
-import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.TickType;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechDamageSource;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPortableChest;
-import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.core.UltimateGraviSuite;
 
-public class NanotechServerTickHandler implements ITickHandler
+public class NanotechServerTickHandler
 {
-	@Override
+	// TODO fml event
 	public void tickStart(EnumSet<TickType> type, Object... tickData)
 	{}
 
-	@Override
+	// TODO fml event
 	public void tickEnd(EnumSet<TickType> type, Object... tickData)
 	{
 		EntityPlayer player = (EntityPlayer)tickData[0];
@@ -101,8 +105,8 @@ public class NanotechServerTickHandler implements ITickHandler
 								}
 							}
 						}
-						
-						while(player.worldObj.isAirBlock(x, y -1, z) && y > 0)
+
+						while(player.worldObj.isAirBlock(x, y - 1, z) && y > 0)
 						{
 							y--;
 						}
@@ -165,13 +169,7 @@ public class NanotechServerTickHandler implements ITickHandler
 		return true;
 	}
 
-	@Override
-	public EnumSet<TickType> ticks()
-	{
-		return EnumSet.of(TickType.PLAYER);
-	}
-
-	@Override
+	// TODO fml event
 	public String getLabel()
 	{
 		return "Nanotech Mod - auto set crazy glasses";

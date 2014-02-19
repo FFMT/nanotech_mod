@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.core;
 
 import net.minecraft.inventory.InventoryCrafting;
@@ -5,8 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 
 public class INanotechRecipe implements IRecipe
 {
@@ -22,7 +27,7 @@ public class INanotechRecipe implements IRecipe
 			ItemStack stack1 = inventorycrafting.getStackInSlot(i);
 			if(stack1 != null)
 			{
-				if(stack1.itemID == NanotechItem.itemBase.itemID && stack1.getItemDamage() == 21 && stack == null)
+				if(stack1.getItem().equals(NanotechModList.itemBase) && stack1.getItemDamage() == 21 && stack == null)
 				{
 					stack = stack1;
 				}
@@ -42,7 +47,7 @@ public class INanotechRecipe implements IRecipe
 
 		if(stack != null && nStack != null)
 		{
-			newStack = new ItemStack(NanotechBlock.present, 1, 0);
+			newStack = new ItemStack(NanotechModList.present, 1, 0);
 			NBTTagCompound nbtTag = new NBTTagCompound();
 			nStack.writeToNBT(nbtTag);
 			newStack.setTagCompound(nbtTag);

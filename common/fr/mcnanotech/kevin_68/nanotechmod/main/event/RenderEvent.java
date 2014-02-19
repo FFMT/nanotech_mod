@@ -1,24 +1,30 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.event;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
-import net.minecraftforge.event.ForgeSubscribe;
 
 import org.lwjgl.opengl.GL11;
 
-import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class RenderEvent
 {
 	private Minecraft mc = Minecraft.getMinecraft();
 	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/armor/crazyGlassesOverlay.png");
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onRenderGameOverlay(RenderGameOverlayEvent event)
 	{
 		if(event.isCancelable() || event.type != ElementType.EXPERIENCE)
@@ -28,7 +34,7 @@ public class RenderEvent
 		else
 		{
 			ItemStack stack = this.mc.thePlayer.inventory.armorItemInSlot(3);
-			if(this.mc.gameSettings.thirdPersonView == 0 && stack != null && stack.getItem().itemID == NanotechItem.crazyGlasses.itemID)
+			if(this.mc.gameSettings.thirdPersonView == 0 && stack != null && stack.getItem().equals(NanotechModList.crazyGlasses))
 			{
 				int k = event.resolution.getScaledWidth();
 				int l = event.resolution.getScaledHeight();

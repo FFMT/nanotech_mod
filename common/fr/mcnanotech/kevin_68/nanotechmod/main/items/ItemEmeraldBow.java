@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -14,11 +21,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class ItemEmeraldBow extends ItemBow
 {
 	private IIcon[] iconbuffer;
-	private static String[] bowpullname = new String[] {"emeraldbow_pull1", "emeraldbow_pull2", "emeraldbow_pull3"};
+	private static String[] bowpullname = new String[] {"_pull1", "_pull2", "_pull3"};
 
 	public ItemEmeraldBow()
 	{
@@ -33,15 +41,14 @@ public class ItemEmeraldBow extends ItemBow
 		iconbuffer = new IIcon[bowpullname.length];
 		for(int i = 0; i < bowpullname.length; i++)
 		{
-			iconbuffer[i] = iconregister.registerIcon("nanotechmod:" + bowpullname[i]);
+			iconbuffer[i] = iconregister.registerIcon(this.getIconString() + bowpullname[i]);
 		}
-		itemIcon = iconregister.registerIcon("nanotechmod:emeraldbow");
 	}
 
 	@Override
 	public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
 	{
-		if(usingItem != null && usingItem.getItem().equals(NanotechItem.emeraldBow))
+		if(usingItem != null && usingItem.getItem().equals(NanotechModList.emeraldBow))
 		{
 			int k = usingItem.getMaxItemUseDuration() - useRemaining;
 			if(k >= 18)
@@ -130,7 +137,7 @@ public class ItemEmeraldBow extends ItemBow
 	}
 
 	@Override
-	public ItemStack onFoodEaten(ItemStack stack, World world, EntityPlayer player)
+	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player)
 	{
 		return stack;
 	}

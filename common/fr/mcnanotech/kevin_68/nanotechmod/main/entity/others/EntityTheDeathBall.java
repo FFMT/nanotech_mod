@@ -1,8 +1,16 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.entity.others;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.projectile.EntityFireball;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.Explosion;
@@ -24,6 +32,7 @@ public class EntityTheDeathBall extends EntityFireball
 		this.setSize(1.3125F, 1.3125F);
 	}
 
+	@Override
 	protected float getMotionFactor()
 	{
 		return this.isInvulnerable() ? 0.73F : super.getMotionFactor();
@@ -36,21 +45,25 @@ public class EntityTheDeathBall extends EntityFireball
 		this.setSize(1.3125F, 1.3125F);
 	}
 
+	@Override
 	public boolean isBurning()
 	{
 		return false;
 	}
 
-	public float getBlockExplosionResistance(Explosion explosion, World world, int x, int y, int z, Block block)
+	@Override
+	public float func_145772_a(Explosion explosion, World world, int x, int y, int z, Block block)
 	{
-		float var6 = super.getBlockExplosionResistance(explosion, world, x, y, z, block);
-		if(this.isInvulnerable() && block != Block.bedrock && block != Block.endPortal && block != Block.endPortalFrame)
+		float var6 = super.func_145772_a(explosion, world, x, y, z, block);
+		if(this.isInvulnerable() && block != Blocks.bedrock && block != Blocks.end_portal && block != Blocks.end_portal_frame)
 		{
 			var6 = Math.min(0.8F, var6);
 		}
 		return var6;
 	}
 
+	@SuppressWarnings("unused")
+	@Override
 	protected void onImpact(MovingObjectPosition movingobjectposition)
 	{
 		if(!this.worldObj.isRemote)
@@ -73,13 +86,13 @@ public class EntityTheDeathBall extends EntityFireball
 				{
 					byte var2 = 0;
 
-					if(this.worldObj.difficultySetting > 1)
+					if(this.worldObj.difficultySetting.getDifficultyId() > 1)
 					{
-						if(this.worldObj.difficultySetting == 2)
+						if(this.worldObj.difficultySetting.getDifficultyId() == 2)
 						{
 							var2 = 50;
 						}
-						else if(this.worldObj.difficultySetting == 3)
+						else if(this.worldObj.difficultySetting.getDifficultyId() == 3)
 						{
 							var2 = 100;
 						}

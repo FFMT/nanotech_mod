@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.city.blocks;
 
 import net.minecraft.block.Block;
@@ -52,25 +59,11 @@ public class BlockTrail extends Block
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess blockaccess, int x, int y, int z)
 	{
-		int l = 0;
-		int i1 = 0;
-		int j1 = 0;
-
-		for(int k1 = -1; k1 <= 1; ++k1)
-		{
-			for(int l1 = -1; l1 <= 1; ++l1)
-			{
-				int i2 = blockaccess.getBiomeGenForCoords(x + l1, z + k1).getBiomeGrassColor(x + l1, y, z + k1);
-				l += (i2 & 16711680) >> 16;
-				i1 += (i2 & 65280) >> 8;
-				j1 += i2 & 255;
-			}
-		}
-		return (l / 9 & 255) << 16 | (i1 / 9 & 255) << 8 | j1 / 9 & 255;
+		return Blocks.grass.colorMultiplier(blockaccess, x, y, z);
 	}
 
 	@SideOnly(Side.CLIENT)
-	public IIcon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
+	public IIcon getIcon(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
 		if(side == 1)
 		{
@@ -275,7 +268,7 @@ public class BlockTrail extends Block
 		return this.empty;
 	}
 
-	public void registerIcons(IIconRegister iconRegister)
+	public void registerBlockIcons(IIconRegister iconRegister)
 	{
 		this.top = iconRegister.registerIcon("nanotechmodcity:trailTop");
 		this.topRight = iconRegister.registerIcon("nanotechmodcity:trailTopRight");

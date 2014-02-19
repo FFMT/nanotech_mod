@@ -1,6 +1,12 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -24,6 +30,7 @@ public class ItemDebug extends Item
 		super();
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
 	{
@@ -80,7 +87,7 @@ public class ItemDebug extends Item
 				{
 					TileEntitySpotLight te = (TileEntitySpotLight)tile;
 					for(int i = 0; i < 120; i += 2)
-						player.addChatMessage(new ChatComponentText("HasKey: " + i + EnumChatFormatting.AQUA + String.valueOf(te.hasKey(i)) + EnumChatFormatting.WHITE + "  HasKey: " + (i + 1) + EnumChatFormatting.AQUA + String.valueOf(te.hasKey(i + 1))));
+						player.addChatMessage(new ChatComponentText("HasKey: " + i + EnumChatFormatting.AQUA + String.valueOf(te.get(TileEntitySpotLight.KEYLIST, i)) + EnumChatFormatting.WHITE + "  HasKey: " + (i + 1) + EnumChatFormatting.AQUA + String.valueOf(te.get(TileEntitySpotLight.KEYLIST, i + 1))));
 					return true;
 				}
 
@@ -99,11 +106,5 @@ public class ItemDebug extends Item
 			}
 		}
 		return false;
-	}
-
-	@Override
-	public void registerIcons(IIconRegister iconregister)
-	{
-		this.itemIcon = iconregister.registerIcon("nanotechmod:itemDebug");
 	}
 }

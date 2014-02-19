@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.utils;
 
 import java.util.EnumSet;
@@ -5,13 +12,11 @@ import java.util.EnumSet;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-import cpw.mods.fml.common.ITickHandler;
-import cpw.mods.fml.common.TickType;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 
-public class NanotechClientTickHandler implements ITickHandler
+public class NanotechClientTickHandler
 {
-	@Override
+	// TODO fml event
 	public void tickStart(EnumSet<TickType> type, Object... tickData)
 	{
 		EntityPlayer player = (EntityPlayer)tickData[0];
@@ -37,19 +42,7 @@ public class NanotechClientTickHandler implements ITickHandler
 		}
 	}
 
-	@Override
-	public void tickEnd(EnumSet<TickType> type, Object... tickData)
-	{
-
-	}
-
-	@Override
-	public EnumSet<TickType> ticks()
-	{
-		return EnumSet.of(TickType.PLAYER);
-	}
-
-	@Override
+	// TODO fml event
 	public String getLabel()
 	{
 		return "Nanotech Mod - drawn the player when has alters";

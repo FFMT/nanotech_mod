@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.entity.others;
 
 import net.minecraft.entity.Entity;
@@ -33,19 +40,23 @@ public class EntityFakeGold extends Entity
 		this.prevPosZ = z;
 	}
 
+	@Override
 	protected void entityInit()
 	{}
 
+	@Override
 	protected boolean canTriggerWalking()
 	{
 		return false;
 	}
 
+	@Override
 	public boolean canBeCollidedWith()
 	{
 		return !this.isDead;
 	}
 
+	@Override
 	public void onUpdate()
 	{
 		this.prevPosX = this.posX;
@@ -85,17 +96,20 @@ public class EntityFakeGold extends Entity
 		this.worldObj.createExplosion((Entity)null, this.posX, this.posY, this.posZ, var1, true);
 	}
 
+	@Override
 	protected void writeEntityToNBT(NBTTagCompound nbttagcompound)
 	{
 		nbttagcompound.setByte("Fuse", (byte)this.fuse);
 	}
 
+	@Override
 	protected void readEntityFromNBT(NBTTagCompound nbttagcompound)
 	{
 		this.fuse = nbttagcompound.getByte("Fuse");
 	}
 
 	@SideOnly(Side.CLIENT)
+	@Override
 	public float getShadowSize()
 	{
 		return 0.0F;

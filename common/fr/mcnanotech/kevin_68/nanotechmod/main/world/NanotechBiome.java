@@ -1,13 +1,20 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.world;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class NanotechBiome extends BiomeGenBase
 {
@@ -20,8 +27,8 @@ public class NanotechBiome extends BiomeGenBase
 		this.spawnableCreatureList.clear();
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
-		this.topBlock = (byte)NanotechBlock.nanoGrass.blockID;
-		this.fillerBlock = (byte)Block.dirt.blockID;
+		this.topBlock = NanotechModList.nanoGrass;
+		this.fillerBlock = Blocks.dirt;
 		this.setBiomeName("Nanotech");
 		this.theBiomeDecorator.treesPerChunk = 0;
 		this.theBiomeDecorator.flowersPerChunk = 0;

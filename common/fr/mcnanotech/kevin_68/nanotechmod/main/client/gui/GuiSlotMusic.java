@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.client.gui;
 
 import java.io.File;
@@ -5,23 +12,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.SoundPool;
 import net.minecraft.client.gui.GuiSlot;
 import net.minecraft.client.renderer.Tessellator;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
-import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilListerJukebox;
 import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
 
 @SideOnly(Side.CLIENT)
+@SuppressWarnings({"rawtypes", "unchecked"})
 class GuiSlotMusic extends GuiSlot
 {
+
 	public final List listList;
 	public final Map mapMap;
 	final GuiListerJukebox listerGui;
@@ -49,7 +55,7 @@ class GuiSlotMusic extends GuiSlot
 		return this.listList.size();
 	}
 
-	protected void elementClicked(int slot, boolean doubleclick)
+	protected void elementClicked(int slot, boolean doubleclick, int var3, int var4)
 	{
 		if(slot < listList.size() - 1)
 		{
@@ -71,7 +77,7 @@ class GuiSlotMusic extends GuiSlot
 		this.listerGui.drawDefaultBackground();
 	}
 
-	protected void drawSlot(int slotId, int par2, int par3, int par4, Tessellator tesselator)
+	protected void drawSlot(int slotId, int par2, int par3, int par4, Tessellator par5, int par6, int par7)
 	{
 		this.listerGui.getFont().setBidiFlag(true);
 		int color = 16777215;
@@ -91,6 +97,7 @@ class GuiSlotMusic extends GuiSlot
 }
 
 @SideOnly(Side.CLIENT)
+@SuppressWarnings({"rawtypes", "unchecked"})
 class GuiSlotMusicPlaylist extends GuiSlot
 {
 	public final List listList1;
@@ -108,7 +115,9 @@ class GuiSlotMusicPlaylist extends GuiSlot
 	public final List listListMods;
 	public final Map mapMapMods;
 
-	private Map map = ObfuscationReflectionHelper.getPrivateValue(SoundPool.class, Minecraft.getMinecraft().sndManager.soundPoolStreaming, "field_77461_d", "nameToSoundPoolEntriesMapping", "b");
+	// TODO fix, maybe field_148764_a in SoundRegistry
+	// private Map map = ObfuscationReflectionHelper.getPrivateValue(SoundPool.class, Minecraft.getMinecraft().sndManager.soundPoolStreaming, "field_77461_d", "nameToSoundPoolEntriesMapping", "b");
+	private Map map = Maps.newHashMap();
 	private ArrayList arraylist = Lists.newArrayList(map.keySet());
 
 	private int playList;
@@ -141,7 +150,6 @@ class GuiSlotMusicPlaylist extends GuiSlot
 			{
 				this.mapMapMods.put(id, arraylist.get(i));
 				this.listListMods.add(id);
-				System.out.println(arraylist.get(i));
 				id++;
 			}
 		}
@@ -210,7 +218,7 @@ class GuiSlotMusicPlaylist extends GuiSlot
 		}
 	}
 
-	protected void elementClicked(int slot, boolean doubleclick)
+	protected void elementClicked(int slot, boolean doubleclick, int var3, int var4)
 	{
 		if(playList == 1)
 		{
@@ -252,7 +260,7 @@ class GuiSlotMusicPlaylist extends GuiSlot
 		this.listerGui.drawDefaultBackground();
 	}
 
-	protected void drawSlot(int slotId, int par2, int par3, int par4, Tessellator tesselator)
+	protected void drawSlot(int slotId, int par2, int par3, int par4, Tessellator var5, int par6, int par7)
 	{
 		this.listerGui.getFont().setBidiFlag(true);
 		int color = 16777215;

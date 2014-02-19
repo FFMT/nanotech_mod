@@ -1,7 +1,11 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.city.client.gui;
-
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.resources.I18n;
@@ -12,6 +16,7 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerSpotLight2;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.NTMCPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
@@ -32,6 +37,7 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		this.world = world;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initGui()
 	{
@@ -41,7 +47,7 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x + 3, y + 10, 170, 20, I18n.format("container.spotlight.time") + ": 0.0", 0));
 		this.buttonList.add(new GuiButton(1, x + 13, y + 115, 150, 20, I18n.format("container.spotlight.back")));
 		this.buttonList.add(new GuiButton(2, x + 13, y + 90, 150, 20, I18n.format("container.spotlight.createkey")));
-		sendSpotLightPacket(0, 14);
+		NTMCPacketHelper.sendPacket(this.tileSpotLight, 0, TileEntitySpotLight.CREATEKEYTIME);
 	}
 
 	protected void actionPerformed(GuiButton guibutton)
@@ -52,13 +58,13 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		}
 		if(guibutton.id == 2)
 		{
-			if(tileSpotLight.hasKey((tileSpotLight.getCreateKeyTime())))
+			if(tileSpotLight.get(TileEntitySpotLight.KEYLIST, (tileSpotLight.get(TileEntitySpotLight.CREATEKEYTIME))) == 1)
 			{
 				this.mc.displayGuiScreen(new GuiSpotLightConfirm(tileSpotLight, invPlayer, world, I18n.format("container.spotlight.sure") + " " + I18n.format("container.spotlight.overwrite"), I18n.format("container.spotlight.overwrite"), I18n.format("container.spotlight.cancel"), 1));
 			}
 			else
 			{
-				this.createKey(tileSpotLight.getCreateKeyTime());
+				this.createKey(tileSpotLight.get(TileEntitySpotLight.CREATEKEYTIME));
 			}
 		}
 	}
@@ -68,7 +74,7 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 	{
 		if(sliderId == 0)
 		{
-			sendSpotLightPacket((int)(sliderValue * 120), 14);
+			NTMCPacketHelper.sendPacket(this.tileSpotLight, (int)(sliderValue * 120), TileEntitySpotLight.CREATEKEYTIME);
 		}
 	}
 
@@ -83,64 +89,23 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		return name;
 	}
 
-	private void sendKeyPacket(int value, int type, int time)
-	{
-		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-		DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-		try
-		{
-			dataoutputstream.writeInt(type);
-			dataoutputstream.writeInt(value);
-			dataoutputstream.writeInt(time);
-			// TODO this.mc.getNetHandler().addToSendQueue(new
-			// Packet250CustomPayload("NTMC|lightKey",
-			// bytearrayoutputstream.toByteArray()));
-		}
-		catch(Exception exception)
-		{
-			exception.printStackTrace();
-			// TODO
-			// NanotechModCity.nanoLog.severe("Failed to send a packet from a SpotLight Key");
-		}
-	}
-
-	private void sendSpotLightPacket(int value, int type)
-	{
-		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-		DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-		try
-		{
-			dataoutputstream.writeInt(type);
-			dataoutputstream.writeInt(value);
-			// TODO this.mc.getNetHandler().addToSendQueue(new
-			// Packet250CustomPayload("NTMC|light",
-			// bytearrayoutputstream.toByteArray()));
-		}
-		catch(Exception exception)
-		{
-			exception.printStackTrace();
-			// TODO
-			// NanotechModCity.nanoLog.severe("Failed to send a packet from a SpotLight");
-		}
-	}
-
 	public void createKey(int time)
 	{
-		sendKeyPacket(1, 0, time);
-		sendKeyPacket(tileSpotLight.getRedValue(), 1, time);
-		sendKeyPacket(tileSpotLight.getGreenValue(), 2, time);
-		sendKeyPacket(tileSpotLight.getBlueValue(), 3, time);
-		sendKeyPacket(tileSpotLight.getDarkRedValue(), 4, time);
-		sendKeyPacket(tileSpotLight.getDarkGreenValue(), 5, time);
-		sendKeyPacket(tileSpotLight.getDarkBlueValue(), 6, time);
-		sendKeyPacket(tileSpotLight.getAngle1(), 7, time);
-		sendKeyPacket(tileSpotLight.getAngle2(), 8, time);
-		sendKeyPacket(tileSpotLight.getAutoRotate() ? 1 : 0, 9, time);
-		sendKeyPacket(tileSpotLight.getRotationSpeed(), 10, time);
-		sendKeyPacket(tileSpotLight.getSecondaryLazer() ? 1 : 0, 11, time);
-		sendKeyPacket(tileSpotLight.getReverseRotation() ? 1 : 0, 12, time);
+		NTMCPacketHelper.sendPacket(this.tileSpotLight, 1, TileEntitySpotLight.KEYLIST, time);
+		NTMCPacketHelper.sendPacket(this.tileSpotLight, tileSpotLight.get(TileEntitySpotLight.RED), TileEntitySpotLight.REDKEY, time);
+		NTMCPacketHelper.sendPacket(this.tileSpotLight, tileSpotLight.get(TileEntitySpotLight.GREEN), TileEntitySpotLight.GREENKEY, time);
+		NTMCPacketHelper.sendPacket(this.tileSpotLight, tileSpotLight.get(TileEntitySpotLight.BLUE), TileEntitySpotLight.BLUEKEY, time);
+		NTMCPacketHelper.sendPacket(this.tileSpotLight, tileSpotLight.get(TileEntitySpotLight.DARKRED), TileEntitySpotLight.DARKREDKEY, time);
+		NTMCPacketHelper.sendPacket(this.tileSpotLight, tileSpotLight.get(TileEntitySpotLight.DARKGREEN), TileEntitySpotLight.DARKGREENKEY, time);
+		NTMCPacketHelper.sendPacket(this.tileSpotLight, tileSpotLight.get(TileEntitySpotLight.DARKBLUE), TileEntitySpotLight.DARKBLUEKEY, time);
+		NTMCPacketHelper.sendPacket(this.tileSpotLight, tileSpotLight.get(TileEntitySpotLight.ANGLE1), TileEntitySpotLight.ANGLE1, time);
+		NTMCPacketHelper.sendPacket(this.tileSpotLight, tileSpotLight.get(TileEntitySpotLight.ANGLE2), TileEntitySpotLight.ANGLE2, time);
+		NTMCPacketHelper.sendPacket(this.tileSpotLight, tileSpotLight.get(TileEntitySpotLight.AUTOROTATE), 9/* TODO change */, time);
+		// sendKeyPacket(tileSpotLight.getRotationSpeed(), 10, time);
+		// sendKeyPacket(tileSpotLight.getSecondaryLazer() ? 1 : 0, 11, time);
+		// sendKeyPacket(tileSpotLight.getReverseRotation() ? 1 : 0, 12, time);
 		// this.mc.displayGuiScreen(new GuiSpotLightTimeLine(invPlayer,
-		// tileSpotLight, world));
+		// tileSpotLight, world)); TODO finish
 	}
 
 	@Override

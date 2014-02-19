@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs;
 
 import java.util.List;
@@ -21,7 +28,7 @@ import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
@@ -29,8 +36,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.others.EntityTheDeathBall;
-import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechAchievement;
 
 public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedAttackMob
@@ -63,6 +70,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		this.experienceValue = 50;
 	}
 
+	@Override
 	protected void entityInit()
 	{
 		super.entityInit();
@@ -72,26 +80,31 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	}
 
 	@SideOnly(Side.CLIENT)
+	@Override
 	public float getShadowSize()
 	{
 		return this.height / 8.0F;
 	}
 
+	@Override
 	protected String getLivingSound()
 	{
 		return "nanotechmod:monster";
 	}
 
+	@Override
 	protected String getHurtSound()
 	{
 		return "nanotechmod:monsterhurt";
 	}
 
+	@Override
 	protected String getDeathSound()
 	{
 		return "nanotechmod:monsterdeath";
 	}
 
+	@Override
 	public void onLivingUpdate()
 	{
 		this.motionY *= 0.6000000238418579D;
@@ -184,11 +197,14 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		}
 	}
 
+	@Override
 	public ItemStack getHeldItem()
 	{
-		return(new ItemStack(NanotechItem.scythe));
+		return(new ItemStack(NanotechModList.scythe));
 	}
 
+	@SuppressWarnings("rawtypes")
+	@Override
 	protected void updateAITasks()
 	{
 		int i;
@@ -202,7 +218,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 			{
 				this.field_82223_h[i - 1] = this.ticksExisted + 10 + this.rand.nextInt(10);
 
-				if(this.worldObj.difficultySetting >= 2)
+				if(this.worldObj.difficultySetting.getDifficultyId() >= 2)
 				{
 					int k = i - 1;
 					int l = this.field_82224_i[i - 1];
@@ -251,12 +267,12 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 							{
 								if(!((EntityPlayer)entitylivingbase).capabilities.disableDamage)
 								{
-									this.func_82211_c(i, entitylivingbase.entityId);
+									this.func_82211_c(i, entitylivingbase.getEntityId());
 								}
 							}
 							else
 							{
-								this.func_82211_c(i, entitylivingbase.entityId);
+								this.func_82211_c(i, entitylivingbase.getEntityId());
 							}
 
 							break;
@@ -269,7 +285,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 			if(this.getAttackTarget() != null)
 			{
-				this.func_82211_c(0, this.getAttackTarget().entityId);
+				this.func_82211_c(0, this.getAttackTarget().getEntityId());
 			}
 			else
 			{
@@ -296,12 +312,11 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 								int j2 = j + k1;
 								int k2 = i + i2;
 								int l2 = j1 + l1;
-								int i3 = this.worldObj.getBlockId(j2, k2, l2);
+								Block block = this.worldObj.getBlock(j2, k2, l2);
 
-								Block block = Block.blocksList[i3];
 								if(block != null && block.canEntityDestroy(worldObj, j2, k2, l2, this))
 								{
-									flag = this.worldObj.destroyBlock(j2, k2, l2, true) || flag;
+									flag = this.worldObj.func_147480_a(j2, k2, l2, true) || flag;
 								}
 							}
 						}
@@ -326,9 +341,11 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		this.setHealth(this.getMaxHealth() / 3.0F);
 	}
 
+	@Override
 	public void setInWeb()
 	{}
 
+	@Override
 	protected void onDeathUpdate()
 	{
 		++this.deathTicks;
@@ -360,7 +377,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 			if(this.deathTicks == 1)
 			{
-				this.worldObj.func_82739_e(1018, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
+				this.worldObj.playAuxSFX(1018, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
 			}
 		}
 
@@ -382,6 +399,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		}
 	}
 
+	@Override
 	public void onDeath(DamageSource damagesource)
 	{
 		Entity entity = damagesource.getEntity();
@@ -390,7 +408,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		{
 			((EntityPlayer)entity).triggerAchievement(NanotechAchievement.killTheDeath);
 
-			if(((EntityPlayer)entity).inventory.armorItemInSlot(3) != null && ItemStack.areItemStacksEqual(((EntityPlayer)entity).inventory.armorItemInSlot(3), new ItemStack(NanotechItem.crazyGlasses)))
+			if(((EntityPlayer)entity).inventory.armorItemInSlot(3) != null && ItemStack.areItemStacksEqual(((EntityPlayer)entity).inventory.armorItemInSlot(3), new ItemStack(NanotechModList.crazyGlasses)))
 			{
 				((EntityPlayer)entity).triggerAchievement(NanotechAchievement.killTheDeathWithCG);
 			}
@@ -399,6 +417,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		super.onDeath(damagesource);
 	}
 
+	@Override
 	public int getTotalArmorValue()
 	{
 		return 4;
@@ -481,11 +500,13 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		this.worldObj.spawnEntityInWorld(entityball);
 	}
 
+	@Override
 	public void attackEntityWithRangedAttack(EntityLivingBase livingBase, float par2)
 	{
 		this.func_82216_a(0, livingBase);
 	}
 
+	@Override
 	public boolean attackEntityFrom(DamageSource damageSource, float par2)
 	{
 		if(this.isEntityInvulnerable())
@@ -522,47 +543,55 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		}
 	}
 
+	@Override
 	protected void dropFewItems(boolean killbyplayer, int lootinglevel)
 	{
-		entityDropItem(new ItemStack(NanotechItem.itemBase, 25, 2), 0.0F);
-		dropItem(Item.diamond.itemID, 18);
-		dropItem(Item.netherStar.itemID, 1);
-		dropItem(NanotechItem.scythe.itemID, 1);
+		entityDropItem(new ItemStack(NanotechModList.itemBase, 25, 2), 0.0F);
+		dropItem(Items.diamond, 18);
+		dropItem(Items.nether_star, 1);
+		dropItem(NanotechModList.scythe, 1);
 	}
 
+	@Override
 	protected void despawnEntity()
 	{
 		this.entityAge = 0;
 	}
 
 	@SideOnly(Side.CLIENT)
+	@Override
 	public int getBrightnessForRender(float par1)
 	{
 		return 15728880;
 	}
 
+	@Override
 	public boolean canBeCollidedWith()
 	{
 		return !this.isDead;
 	}
 
+	@Override
 	protected void fall(float par1)
 	{}
 
+	@Override
 	public void addPotionEffect(PotionEffect par1PotionEffect)
 	{}
 
+	@Override
 	protected boolean isAIEnabled()
 	{
 		return true;
 	}
 
+	@Override
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(5000.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.6000000238418579D);
-		this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(5000.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.6000000238418579D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(40.0D);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -587,11 +616,13 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		this.dataWatcher.updateObject(17 + par1, Integer.valueOf(par2));
 	}
 
+	@Override
 	public EnumCreatureAttribute getCreatureAttribute()
 	{
 		return EnumCreatureAttribute.UNDEAD;
 	}
 
+	@Override
 	public void mountEntity(Entity par1Entity)
 	{
 		this.ridingEntity = null;

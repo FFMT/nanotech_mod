@@ -1,12 +1,19 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class ItemMysteriousArmor extends ItemArmor
 {
@@ -17,22 +24,15 @@ public class ItemMysteriousArmor extends ItemArmor
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerIcons(IIconRegister iconregister)
-	{
-		itemIcon = iconregister.registerIcon("nanotechmod:" + getUnlocalizedName().substring(5));
-	}
-
-	@SideOnly(Side.CLIENT)
-	@Override
 	public EnumRarity getRarity(ItemStack stack)
 	{
 		return EnumRarity.epic;
 	}
 
 	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
-		if(stack.getItem().equals(NanotechItem.mysteriousLeggings))
+		if(stack.getItem().equals(NanotechModList.mysteriousLeggings))
 		{
 			return "nanotechmod:textures/armor/Mysteriousarmor2.png";
 		}

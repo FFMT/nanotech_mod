@@ -1,17 +1,27 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.blocks;
 
 import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFalling;
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.item.EntityFallingSand;
+import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -22,48 +32,54 @@ public class BlockFakeOre extends Block
 {
 	public static String[] type = new String[] {"fakegold", "fakediamond"};
 
-	public BlockFakeOre(int id)
+	public BlockFakeOre()
 	{
-		super(id, Material.rock);
+		super(Material.rock);
 	}
 
-	public void registerIcons(IconRegister iconRegister)
+	@Override
+	public void registerBlockIcons(IIconRegister iconRegister)
 	{}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int metadata)
+	@Override
+	public IIcon getIcon(int side, int metadata)
 	{
 		if(metadata == 0)
 		{
-			return Block.oreGold.getIcon(0, 0);
+			return Blocks.gold_ore.getIcon(0, 0);
 		}
 		else
 		{
-			return Block.oreDiamond.getIcon(0, 0);
+			return Blocks.diamond_ore.getIcon(0, 0);
 		}
 	}
 
+	@Override
 	public int damageDropped(int metadata)
 	{
 		return metadata;
 	}
 
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int blockid, CreativeTabs creativeTabs, List list)
+	@Override
+	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
 	{
 		for(int metadatanumber = 0; metadatanumber < type.length; metadatanumber++)
 		{
-			list.add(new ItemStack(blockid, 1, metadatanumber));
+			list.add(new ItemStack(item, 1, metadatanumber));
 		}
 	}
 
+	@Override
 	public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player)
 	{
 		if(world.getBlockMetadata(x, y, z) == 0)
 		{
 			if(!world.isRemote)
 			{
-				world.setBlock(x, y, z, 0);
+				world.setBlock(x, y, z, this);
 				EntityFakeGold fakegold = new EntityFakeGold(world, (double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F));
 				world.spawnEntityInWorld(fakegold);
 				world.playSoundAtEntity(fakegold, "random.fuse", 1.0F, 1.0F);
@@ -76,6 +92,7 @@ public class BlockFakeOre extends Block
 		}
 	}
 
+	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
 		onBlockClicked(world, x, y, z, player);
@@ -83,29 +100,34 @@ public class BlockFakeOre extends Block
 		return true;
 	}
 
+	@Override
 	public boolean canDropFromExplosion(Explosion explosion)
 	{
 		return false;
 	}
 
-	public int tickRate()
+	@Override
+	public int tickRate(World world)
 	{
 		return 5;
 	}
 
+	@Override
 	public void onBlockAdded(World world, int x, int y, int z)
 	{
-		world.scheduleBlockUpdate(x, y, z, blockID, tickRate());
+		world.scheduleBlockUpdate(x, y, z, this, tickRate(world));
 	}
 
-	public void onNeighborBlockChange(World world, int x, int y, int z, int blockid)
+	@Override
+	public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
 	{
 		if(world.getBlockMetadata(x, y, z) == 1)
 		{
-			world.scheduleBlockUpdate(x, y, z, blockID, tickRate());
+			world.scheduleBlockUpdate(x, y, z, this, tickRate(world));
 		}
 	}
 
+	@Override
 	public void updateTick(World world, int x, int y, int z, Random random)
 	{
 		fallIfPossible(world, x, y, z);
@@ -113,27 +135,28 @@ public class BlockFakeOre extends Block
 
 	private void fallIfPossible(World world, int x, int y, int z)
 	{
-		if(BlockSand.canFallBelow(world, x, y - 1, z) && y >= 0 && world.getBlockMetadata(x, y, z) == 1)
+		// canFallBelow
+		if(BlockFalling.func_149831_e(world, x, y - 1, z) && y >= 0 && world.getBlockMetadata(x, y, z) == 1)
 		{
 			byte var5 = 32;
 
-			if(!BlockSand.fallInstantly && world.checkChunksExist(x - var5, y - var5, z - var5, x + var5, y + var5, z + var5))
+			if(!BlockFalling.fallInstantly && world.checkChunksExist(x - var5, y - var5, z - var5, x + var5, y + var5, z + var5))
 			{
-				EntityFallingSand fallingblock = new EntityFallingSand(world, (double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), blockID, 1);
+				EntityFallingBlock fallingblock = new EntityFallingBlock(world, (double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this, 1);
 				world.spawnEntityInWorld(fallingblock);
 			}
 			else
 			{
 				world.setBlockToAir(x, y, z);
 
-				while(BlockSand.canFallBelow(world, x, y - 1, z) && y > 0)
+				while(BlockSand.func_149831_e(world, x, y - 1, z) && y > 0)
 				{
 					--y;
 				}
 
 				if(y > 0)
 				{
-					world.setBlock(x, y, z, blockID, 1, 3);
+					world.setBlock(x, y, z, this, 1, 3);
 				}
 			}
 		}
@@ -141,7 +164,7 @@ public class BlockFakeOre extends Block
 
 	private void teleportNearby(World world, int x, int y, int z)
 	{
-		if(world.getBlockId(x, y, z) == blockID && world.getBlockMetadata(x, y, z) == 1)
+		if(world.getBlock(x, y, z) == this && world.getBlockMetadata(x, y, z) == 1)
 		{
 			for(int var5 = 0; var5 < 1000; ++var5)
 			{
@@ -149,11 +172,11 @@ public class BlockFakeOre extends Block
 				int var7 = y + world.rand.nextInt(8) - world.rand.nextInt(8);
 				int var8 = z + world.rand.nextInt(16) - world.rand.nextInt(16);
 
-				if(world.getBlockId(var6, var7, var8) == 0)
+				if(world.isAirBlock(var6, var7, var8))
 				{
 					if(!world.isRemote)
 					{
-						world.setBlock(var6, var7, var8, blockID, 1, 3);
+						world.setBlock(var6, var7, var8, this, 1, 3);
 						world.setBlockToAir(x, y, z);
 					}
 					else
@@ -170,11 +193,9 @@ public class BlockFakeOre extends Block
 							world.spawnParticle("portal", var16, var18, var20, (double)var13, (double)var14, (double)var15);
 						}
 					}
-
 					return;
 				}
 			}
 		}
 	}
-
 }

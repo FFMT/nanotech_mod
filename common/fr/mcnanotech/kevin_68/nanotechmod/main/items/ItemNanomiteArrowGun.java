@@ -1,8 +1,14 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -19,6 +25,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class ItemNanomiteArrowGun extends ItemBow
 {
 	private int timer = 0;
@@ -31,13 +38,7 @@ public class ItemNanomiteArrowGun extends ItemBow
 	}
 
 	@Override
-	public void registerIcons(IIconRegister iconregister)
-	{
-		itemIcon = iconregister.registerIcon("nanotechmod:nanomitebow");
-	}
-
-	@Override
-	public ItemStack onFoodEaten(ItemStack stack, World world, EntityPlayer player)
+	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player)
 	{
 		return stack;
 	}

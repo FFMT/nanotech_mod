@@ -1,8 +1,15 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class ItemNanomiteSword extends ItemSword
 {
@@ -11,14 +18,9 @@ public class ItemNanomiteSword extends ItemSword
 		super(toolMaterial);
 	}
 
-	public void registerIcons(IIconRegister iconregister)
-	{
-		itemIcon = iconregister.registerIcon("nanotechmod:nanomiteSword");
-	}
-
 	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)
 	{
-		if(stack.getItem().equals(this) && repairItem.getItem() == NanotechItem.itemBase && repairItem.getItemDamage() == 14)
+		if(stack.getItem().equals(this) && repairItem.getItem() == NanotechModList.itemBase && repairItem.getItemDamage() == 14)
 			return true;
 		return false;
 	}

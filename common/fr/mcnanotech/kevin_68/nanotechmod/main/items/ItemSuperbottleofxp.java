@@ -1,34 +1,35 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.others.EntitySuperBottleOfXp;
 
-public class ItemSuperbottleofxp extends Item
+public class ItemSuperBottleOfXp extends Item
 {
-	public ItemSuperbottleofxp(int id)
+	public ItemSuperBottleOfXp()
 	{
-		super(id);
-		this.setCreativeTab(NanotechMod.CREATIVE_TAB_I);
-	}
-
-	public void registerIcons(IconRegister iconregister)
-	{
-		itemIcon = iconregister.registerIcon("experience_bottle");
+		super();
 	}
 
 	@SideOnly(Side.CLIENT)
+	@Override
 	public boolean hasEffect(ItemStack stack)
 	{
 		return true;
 	}
 
+	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
 		if(!player.isSneaking())

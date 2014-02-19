@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.client.model;
 
 import net.minecraft.client.model.ModelBase;
@@ -8,7 +15,6 @@ import net.minecraft.util.MathHelper;
 
 import org.lwjgl.opengl.GL11;
 
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.MobDancer;
 
 public class ModelDancer extends ModelBase
@@ -116,25 +122,25 @@ public class ModelDancer extends ModelBase
 		this.leftarm.render(f5);
 		this.leftarm2.render(f5);
 		GL11.glPopMatrix();
-		
+
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)Math.sin(this.entityTicks) * 0.025F, (float)Math.abs(Math.cos(this.entityTicks)) * 0.125F - 0.02F, 0.0F);
 		GL11.glRotatef((float)Math.sin(this.entityTicks) * 0.025F, 0.0F, 1.0F, 0.0F);
 		this.rightarm.render(f5);
 		this.rightarm2.render(f5);
 		GL11.glPopMatrix();
-		
+
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)Math.sin(this.entityTicks) * 0.015F, 0.0F, 0.0F);
 		this.body.render(f5);
 		GL11.glPopMatrix();
-		
+
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)(Math.sin(this.entityTicks) * -0.025F), (float)(Math.abs(Math.cos(this.entityTicks)) * -0.125F), 0.0F);
 		this.rightleg.render(f5);
 		this.rightleg2.render(f5);
 		GL11.glPopMatrix();
-		
+
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)Math.sin(Math.PI - this.entityTicks) * 0.025F, (float)Math.abs(Math.cos(Math.PI - this.entityTicks)) * 0.125F - 0.13F, 0.0F);
 		this.leftleg.render(f5);

@@ -1,11 +1,17 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.other;
 
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
-import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class NanotechAchievement
 {
@@ -17,59 +23,59 @@ public class NanotechAchievement
 
 	public static void initAchievement()
 	{
-		installMod = new Achievement(12569, "installMod", 0, 0, new ItemStack(NanotechItem.itemBase, 1, 12), null).registerAchievement().setSpecial();
-		blockBarbedWire = new Achievement(12570, "blockBarbedWire", 1, 8, NanotechBlock.barbedwire, installMod).registerAchievement();
-		blockConfusion = new Achievement(12571, "blockConfusion", 1, 6, NanotechBlock.confusion, installMod).registerAchievement();
-		blockFalling = new Achievement(12572, "blockFalling", 1, 7, NanotechBlock.falling, installMod).registerAchievement();
-		blockJumper = new Achievement(12573, "blockJumper", -1, 5, new ItemStack(NanotechBlock.jumper, 1, 0), installMod).registerAchievement();
-		blockJumperAdv = new Achievement(12574, "blockJumperAdv", -3, 5, new ItemStack(NanotechBlock.jumper, 1, 1), blockJumper).registerAchievement();
-		blockMossyStone = new Achievement(12575, "blockMossyStone", -1, 6, NanotechBlock.mossystone, installMod).registerAchievement();
-		blockNotFalling = new Achievement(12576, "blockNotFalling", -1, 7, NanotechBlock.notfalling, installMod).registerAchievement();
-		blockPortalFrame = new Achievement(12577, "blockPortalFrame", -1, 8, NanotechBlock.portalFrame, installMod).registerAchievement();
-		blockSmoker = new Achievement(12578, "blockSmoker", 1, 5, NanotechBlock.smoker, installMod).registerAchievement();
-		blockSpeed = new Achievement(12579, "blockSpeed", -2, 3, NanotechBlock.speed, installMod).registerAchievement();
-		blockSlow = new Achievement(12580, "blockSlow", -2, 2, new ItemStack(NanotechBlock.speed, 1, 1), installMod).registerAchievement();
-		blockSiliconOre = new Achievement(12596, "blockSiliconOre", -6, 1, new ItemStack(NanotechBlock.nanoOre, 1, 0), installMod).registerAchievement();
-		blockTheDeath = new Achievement(12584, "blockTheDeath", 3, 0, NanotechBlock.theDeathHead, installMod).registerAchievement();
-		blockListerJukebox = new Achievement(12585, "blockListerJukebox", -2, 4, NanotechBlock.listerJukebox, installMod).registerAchievement();
-		killTheDeath = new Achievement(12586, "killTheDeath", 5, 0, NanotechBlock.theDeathHead, blockTheDeath).registerAchievement();
-		killTheDeathWithCG = new Achievement(12587, "killTheDeathWithCG", 7, 0, NanotechBlock.theDeathHead, killTheDeath).registerAchievement();
-		getScythe = new Achievement(12588, "getScythe", 5, 2, NanotechItem.scythe, killTheDeath).registerAchievement();
-		getMysteriousMat = new Achievement(12589, "getMysteriousMat", 5, -2, new ItemStack(NanotechItem.itemBase, 1, 2), killTheDeath).registerAchievement();
-		nanotechDim = new Achievement(12590, "nanotechDim", -3, 8, new ItemStack(NanotechBlock.nanoGrass, 0, 0), itemPortalActivator).registerAchievement();
-		itemAlters = new Achievement(12591, "itemAlters", -4, -2, new ItemStack(NanotechItem.alters, 1), installMod).registerAchievement();
-		itemSiliconore = new Achievement(12592, "itemSiliconore", -6, 2, new ItemStack(NanotechItem.itemBase, 1, 0), blockSiliconOre).registerAchievement();
-		itemSiliconplate = new Achievement(12593, "itemSiliconplate", -6, 3, new ItemStack(NanotechItem.itemBase, 1, 3), itemSiliconore).registerAchievement();
-		itemCircuit = new Achievement(12594, "itemCircuit", -6, 4, new ItemStack(NanotechItem.itemBase, 1, 5), itemSiliconplate).registerAchievement();
-		itemAdvancedcircuit = new Achievement(12595, "itemAdvancedcircuit", -6, 5, new ItemStack(NanotechItem.itemBase, 1, 6), itemCircuit).registerAchievement();
-		itemProcessor = new Achievement(12597, "itemProcessor", -6, 6, new ItemStack(NanotechItem.itemBase, 1, 7), itemAdvancedcircuit).registerAchievement();
-		itemMicroProcessor = new Achievement(12598, "itemMicroProcessor", -6, 7, new ItemStack(NanotechItem.itemBase, 1, 8), itemProcessor).registerAchievement();
-		itemCamera = new Achievement(12599, "itemCamera", -7, 7, new ItemStack(NanotechItem.itemBase, 1, 9), itemMicroProcessor).registerAchievement();
-		itemDetector = new Achievement(12600, "itemDetector", -6, 8, new ItemStack(NanotechItem.itemBase, 1, 10), itemMicroProcessor).registerAchievement();
-		itemEngine = new Achievement(12601, "itemEngine", -5, 7, new ItemStack(NanotechItem.itemBase, 1, 11), itemMicroProcessor).registerAchievement();
-		itemNanomiteFrame = new Achievement(12602, "itemNanomiteFrame", -4, 7, new ItemStack(NanotechItem.itemBase, 1, 13), itemEngine).registerAchievement();
-		itemNanomite = new Achievement(12603, "itemNanomite", -4, 6, new ItemStack(NanotechItem.itemBase, 1, 12), itemNanomiteFrame).registerAchievement();
-		itemSmallNanomite = new Achievement(12604, "itemSmallNanomite", -4, 5, new ItemStack(NanotechItem.itemBase, 1, 14), itemNanomite).registerAchievement();
-		itemStoneofdecrease = new Achievement(12605, "itemStoneofdecrease", -4, -1, new ItemStack(NanotechItem.itemBase, 1, 1), installMod).registerAchievement();
-		itemMysteriousingot = new Achievement(12607, "itemMysteriousingot", 5, -3, new ItemStack(NanotechItem.itemBase, 1, 4), getMysteriousMat).registerAchievement();
-		itemVoid = new Achievement(12608, "itemVoid", -4, -3, new ItemStack(NanotechItem.itemBase, 1, 15), installMod).registerAchievement();
-		itemPortalActivator = new Achievement(12609, "itemPortalActivator", -2, 8, new ItemStack(NanotechItem.itemBase, 1, 16), blockPortalFrame).registerAchievement();
-		itemCrazyGlasses = new Achievement(12610, "itemCrazyGlasses", -4, -4, new ItemStack(NanotechItem.crazyGlasses, 1), installMod).registerAchievement();
-		itemDiamondBow = new Achievement(12611, "itemDiamondBow", -4, -5, new ItemStack(NanotechItem.diamondBow, 1), installMod).registerAchievement();
-		itemEmeraldBow = new Achievement(12612, "itemEmeraldBow", -5, -5, new ItemStack(NanotechItem.emeraldBow, 1), itemDiamondBow).registerAchievement();
-		itemNanomiteBow = new Achievement(12613, "itemNanomiteBow", -6, -5, new ItemStack(NanotechItem.nanomiteBow, 1), itemEmeraldBow).registerAchievement().setSpecial();
-		itemMysteriousArmor = new Achievement(12614, "itemMysteriousArmor", 5, -4, new ItemStack(NanotechItem.mysteriousChestPlate, 1), itemMysteriousingot).registerAchievement().setSpecial();
-		itemNanomiteTool = new Achievement(12615, "itemNanomiteTool", -4, 3, new ItemStack(NanotechItem.nanomitePickaxe, 1), itemSmallNanomite).registerAchievement().setSpecial();
-		itemNanomiteArmor = new Achievement(12616, "itemNanomiteArmor", -5, 4, new ItemStack(NanotechItem.nanomiteChestPlate, 1), itemSmallNanomite).registerAchievement().setSpecial();
-		itemReinforcedFishinRod = new Achievement(12617, "itemReinforcedFishinRod", -4, -6, new ItemStack(NanotechItem.reinforcedFishingRod, 1), installMod).registerAchievement();
-		itemCrazyGlassesLauncher = new Achievement(12618, "itemCrazyGlassesLauncher", -5, -4, new ItemStack(NanotechItem.crazyGlassesGun, 1), itemCrazyGlasses).registerAchievement();
-		itemFrozenFish = new Achievement(12619, "itemFrozenFish", -5, -6, new ItemStack(NanotechItem.itemBase, 1, 17), itemReinforcedFishinRod).registerAchievement().setSpecial();
-		deathSatelit = new Achievement(12620, "deathSatelit", 2, -5, new ItemStack(Item.bone, 1), null).registerAchievement();
-		deathLightLaser = new Achievement(12621, "deathLightLaser", 2, -6, new ItemStack(Item.bone, 1), null).registerAchievement();
-		deathAlters = new Achievement(12622, "deathAlters", 2, -7, new ItemStack(Item.bone, 1), null).registerAchievement();
-		deathSodium = new Achievement(12623, "deathSodium", 3, -7, new ItemStack(Item.bone, 1), null).registerAchievement();
-		deathNitrogen = new Achievement(12624, "deathNitrogen", 3, -6, new ItemStack(Item.bone, 1), null).registerAchievement();
-		deathBarbedWire = new Achievement(12625, "deathBarbedWire", 3, -5, new ItemStack(Item.bone, 1), null).registerAchievement();
+		installMod = new Achievement("achievement.installMod", "installMod", 0, 0, new ItemStack(NanotechModList.itemBase, 1, 12), (Achievement)null).registerStat().setSpecial();
+		blockBarbedWire = new Achievement("achievement.blockBarbedWire", "blockBarbedWire", 1, 8, NanotechModList.barbedWire, installMod).registerStat();
+		blockConfusion = new Achievement("achievement.blockConfusion", "blockConfusion", 1, 6, NanotechModList.confusion, installMod).registerStat();
+		blockFalling = new Achievement("achievement.blockFalling", "blockFalling", 1, 7, NanotechModList.falling, installMod).registerStat();
+		blockJumper = new Achievement("achievement.blockJumper", "blockJumper", -1, 5, new ItemStack(NanotechModList.jump, 1, 0), installMod).registerStat();
+		blockJumperAdv = new Achievement("achievement.blockJumperAdv", "blockJumperAdv", -3, 5, new ItemStack(NanotechModList.jump, 1, 1), blockJumper).registerStat();
+		blockMossyStone = new Achievement("achievement.blockMossyStone", "blockMossyStone", -1, 6, NanotechModList.mossyStone, installMod).registerStat();
+		blockNotFalling = new Achievement("achievement.blockNotFalling", "blockNotFalling", -1, 7, NanotechModList.notFalling, installMod).registerStat();
+		blockPortalFrame = new Achievement("achievement.blockPortalFrame", "blockPortalFrame", -1, 8, NanotechModList.portalFrame, installMod).registerStat();
+		blockSmoker = new Achievement("achievement.blockSmoker", "blockSmoker", 1, 5, NanotechModList.smoker, installMod).registerStat();
+		blockSpeed = new Achievement("achievement.blockSpeed", "blockSpeed", -2, 3, NanotechModList.speed, installMod).registerStat();
+		blockSlow = new Achievement("achievement.blockSlow", "blockSlow", -2, 2, new ItemStack(NanotechModList.speed, 1, 1), installMod).registerStat();
+		blockSiliconOre = new Achievement("achievement.blockSiliconOre", "blockSiliconOre", -6, 1, new ItemStack(NanotechModList.ore, 1, 0), installMod).registerStat();
+		blockTheDeath = new Achievement("achievement.blockTheDeath", "blockTheDeath", 3, 0, NanotechModList.theDeathHead, installMod).registerStat();
+		blockListerJukebox = new Achievement("achievement.blockListerJukebox", "blockListerJukebox", -2, 4, NanotechModList.listerJukeBox, installMod).registerStat();
+		killTheDeath = new Achievement("achievement.killTheDeath", "killTheDeath", 5, 0, NanotechModList.theDeathHead, blockTheDeath).registerStat();
+		killTheDeathWithCG = new Achievement("achievement.killTheDeathWithCG", "killTheDeathWithCG", 7, 0, NanotechModList.theDeathHead, killTheDeath).registerStat();
+		getScythe = new Achievement("achievement.getScythe", "getScythe", 5, 2, NanotechModList.scythe, killTheDeath).registerStat();
+		getMysteriousMat = new Achievement("achievement.getMysteriousMat", "getMysteriousMat", 5, -2, new ItemStack(NanotechModList.itemBase, 1, 2), killTheDeath).registerStat();
+		nanotechDim = new Achievement("achievement.nanotechDim", "nanotechDim", -3, 8, new ItemStack(NanotechModList.nanoGrass, 0, 0), itemPortalActivator).registerStat();
+		itemAlters = new Achievement("achievement.itemAlters", "itemAlters", -4, -2, new ItemStack(NanotechModList.alters, 1), installMod).registerStat();
+		itemSiliconore = new Achievement("achievement.itemSiliconore", "itemSiliconore", -6, 2, new ItemStack(NanotechModList.itemBase, 1, 0), blockSiliconOre).registerStat();
+		itemSiliconplate = new Achievement("achievement.itemSiliconplate", "itemSiliconplate", -6, 3, new ItemStack(NanotechModList.itemBase, 1, 3), itemSiliconore).registerStat();
+		itemCircuit = new Achievement("achievement.itemCircuit", "itemCircuit", -6, 4, new ItemStack(NanotechModList.itemBase, 1, 5), itemSiliconplate).registerStat();
+		itemAdvancedcircuit = new Achievement("achievement.itemAdvancedcircuit", "itemAdvancedcircuit", -6, 5, new ItemStack(NanotechModList.itemBase, 1, 6), itemCircuit).registerStat();
+		itemProcessor = new Achievement("achievement.itemProcessor", "itemProcessor", -6, 6, new ItemStack(NanotechModList.itemBase, 1, 7), itemAdvancedcircuit).registerStat();
+		itemMicroProcessor = new Achievement("achievement.itemMicroProcessor", "itemMicroProcessor", -6, 7, new ItemStack(NanotechModList.itemBase, 1, 8), itemProcessor).registerStat();
+		itemCamera = new Achievement("achievement.itemCamera", "itemCamera", -7, 7, new ItemStack(NanotechModList.itemBase, 1, 9), itemMicroProcessor).registerStat();
+		itemDetector = new Achievement("achievement.itemDetector", "itemDetector", -6, 8, new ItemStack(NanotechModList.itemBase, 1, 10), itemMicroProcessor).registerStat();
+		itemEngine = new Achievement("achievement.itemEngine", "itemEngine", -5, 7, new ItemStack(NanotechModList.itemBase, 1, 11), itemMicroProcessor).registerStat();
+		itemNanomiteFrame = new Achievement("achievement.itemNanomiteFrame", "itemNanomiteFrame", -4, 7, new ItemStack(NanotechModList.itemBase, 1, 13), itemEngine).registerStat();
+		itemNanomite = new Achievement("achievement.itemNanomite", "itemNanomite", -4, 6, new ItemStack(NanotechModList.itemBase, 1, 12), itemNanomiteFrame).registerStat();
+		itemSmallNanomite = new Achievement("achievement.itemSmallNanomite", "itemSmallNanomite", -4, 5, new ItemStack(NanotechModList.itemBase, 1, 14), itemNanomite).registerStat();
+		itemStoneofdecrease = new Achievement("achievement.itemStoneofdecrease", "itemStoneofdecrease", -4, -1, new ItemStack(NanotechModList.itemBase, 1, 1), installMod).registerStat();
+		itemMysteriousingot = new Achievement("achievement.itemMysteriousingot", "itemMysteriousingot", 5, -3, new ItemStack(NanotechModList.itemBase, 1, 4), getMysteriousMat).registerStat();
+		itemVoid = new Achievement("achievement.itemVoid", "itemVoid", -4, -3, new ItemStack(NanotechModList.itemBase, 1, 15), installMod).registerStat();
+		itemPortalActivator = new Achievement("achievement.itemPortalActivator", "itemPortalActivator", -2, 8, new ItemStack(NanotechModList.itemBase, 1, 16), blockPortalFrame).registerStat();
+		itemCrazyGlasses = new Achievement("achievement.itemCrazyGlasses", "itemCrazyGlasses", -4, -4, new ItemStack(NanotechModList.crazyGlasses, 1), installMod).registerStat();
+		itemDiamondBow = new Achievement("achievement.itemDiamondBow", "itemDiamondBow", -4, -5, new ItemStack(NanotechModList.diamondBow, 1), installMod).registerStat();
+		itemEmeraldBow = new Achievement("achievement.itemEmeraldBow", "itemEmeraldBow", -5, -5, new ItemStack(NanotechModList.emeraldBow, 1), itemDiamondBow).registerStat();
+		itemNanomiteBow = new Achievement("achievement.itemNanomiteBow", "itemNanomiteBow", -6, -5, new ItemStack(NanotechModList.nanomiteBow, 1), itemEmeraldBow).registerStat().setSpecial();
+		itemMysteriousArmor = new Achievement("achievement.itemMysteriousArmor", "itemMysteriousArmor", 5, -4, new ItemStack(NanotechModList.mysteriousChestPlate, 1), itemMysteriousingot).registerStat().setSpecial();
+		itemNanomiteTool = new Achievement("achievement.itemNanomiteTool", "itemNanomiteTool", -4, 3, new ItemStack(NanotechModList.nanomitePickaxe, 1), itemSmallNanomite).registerStat().setSpecial();
+		itemNanomiteArmor = new Achievement("achievement.itemNanomiteArmor", "itemNanomiteArmor", -5, 4, new ItemStack(NanotechModList.nanomiteChestPlate, 1), itemSmallNanomite).registerStat().setSpecial();
+		itemReinforcedFishinRod = new Achievement("achievement.itemReinforcedFishinRod", "itemReinforcedFishinRod", -4, -6, new ItemStack(NanotechModList.reinforcedFishingRod, 1), installMod).registerStat();
+		itemCrazyGlassesLauncher = new Achievement("achievement.itemCrazyGlassesLauncher", "itemCrazyGlassesLauncher", -5, -4, new ItemStack(NanotechModList.crazyGlassesGun, 1), itemCrazyGlasses).registerStat();
+		itemFrozenFish = new Achievement("achievement.itemFrozenFish", "itemFrozenFish", -5, -6, new ItemStack(NanotechModList.itemBase, 1, 17), itemReinforcedFishinRod).registerStat().setSpecial();
+		deathSatelit = new Achievement("achievement.deathSatelit", "deathSatelit", 2, -5, new ItemStack(Items.bone, 1), null).registerStat();
+		deathLightLaser = new Achievement("achievement.deathLightLaser", "deathLightLaser", 2, -6, new ItemStack(Items.bone, 1), null).registerStat();
+		deathAlters = new Achievement("achievement.deathAlters", "deathAlters", 2, -7, new ItemStack(Items.bone, 1), null).registerStat();
+		deathSodium = new Achievement("achievement.deathSodium", "deathSodium", 3, -7, new ItemStack(Items.bone, 1), null).registerStat();
+		deathNitrogen = new Achievement("achievement.deathNitrogen", "deathNitrogen", 3, -6, new ItemStack(Items.bone, 1), null).registerStat();
+		deathBarbedWire = new Achievement("achievement.deathBarbedWire", "deathBarbedWire", 3, -5, new ItemStack(Items.bone, 1), null).registerStat();
 
 		pageNanotech = new AchievementPage("nanotechmod", installMod, blockBarbedWire, blockConfusion, blockFalling, blockJumper, blockJumperAdv, blockMossyStone, blockNotFalling, blockPortalFrame, blockSmoker, blockSpeed, blockSlow, blockTheDeath, blockSiliconOre, killTheDeath, killTheDeathWithCG, getScythe, getMysteriousMat, nanotechDim, blockListerJukebox, itemAlters, itemSiliconore, itemSiliconplate, itemCircuit, itemAdvancedcircuit, itemProcessor, itemMicroProcessor, itemCamera, itemDetector, itemEngine, itemNanomiteFrame, itemNanomite, itemSmallNanomite, itemStoneofdecrease, itemMysteriousingot, itemVoid, itemPortalActivator, itemCrazyGlasses, itemDiamondBow, itemEmeraldBow, itemNanomiteBow, itemMysteriousArmor, itemNanomiteTool, itemNanomiteArmor, itemReinforcedFishinRod, itemCrazyGlassesLauncher, itemFrozenFish, deathSatelit, deathLightLaser, deathAlters, deathSodium, deathNitrogen, deathBarbedWire);
 		AchievementPage.registerAchievementPage(pageNanotech);

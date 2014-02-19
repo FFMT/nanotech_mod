@@ -1,5 +1,13 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs;
 
+import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -21,6 +29,7 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -30,11 +39,11 @@ import net.minecraft.stats.AchievementList;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
+import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechConfiguration;
 
 public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 {
-	private EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 0.25F, NanotechMod.timeUntilNextArrow, 10.0F);
+	private EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 0.25F, NanotechConfiguration.ticksUntilNextArrow, 10.0F);
 	private EntityAIAttackOnCollide aiAttackOnCollide = new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.31F, false);
 
 	public MobSuperSkeleton(World world)
@@ -60,42 +69,49 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(50D);
-		this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(50D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(40.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
 	}
 
+	@Override
 	protected void entityInit()
 	{
 		super.entityInit();
 		this.dataWatcher.addObject(13, new Byte((byte)0));
 	}
 
+	@Override
 	public boolean isAIEnabled()
 	{
 		return true;
 	}
 
+	@Override
 	protected String getLivingSound()
 	{
 		return "mob.skeleton.say";
 	}
 
+	@Override
 	protected String getHurtSound()
 	{
 		return "mob.skeleton.hurt";
 	}
 
+	@Override
 	protected String getDeathSound()
 	{
 		return "mob.skeleton.death";
 	}
 
-	protected void playStepSound(int x, int y, int z, int par4)
+	@Override
+	protected void func_145780_a(int x, int y, int z, Block block)
 	{
 		this.playSound("mob.skeleton.step", 0.15F, 1.0F);
 	}
 
+	@Override
 	public boolean attackEntityAsMob(Entity entity)
 	{
 		if(super.attackEntityAsMob(entity))
@@ -113,11 +129,13 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		}
 	}
 
+	@Override
 	public EnumCreatureAttribute getCreatureAttribute()
 	{
 		return EnumCreatureAttribute.UNDEAD;
 	}
 
+	@Override
 	public void onLivingUpdate()
 	{
 		if(this.worldObj.isDaytime() && !this.worldObj.isRemote)
@@ -127,7 +145,7 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 			if(var1 > 0.5F && this.rand.nextFloat() * 30.0F < (var1 - 0.4F) * 2.0F && this.worldObj.canBlockSeeTheSky(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)))
 			{
 				boolean var2 = true;
-				ItemStack var3 = this.getCurrentItemOrArmor(4);
+				ItemStack var3 = this.getEquipmentInSlot(4);
 
 				if(var3 != null)
 				{
@@ -155,6 +173,7 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		super.onLivingUpdate();
 	}
 
+	@Override
 	public void onDeath(DamageSource damagesource)
 	{
 		super.onDeath(damagesource);
@@ -172,11 +191,13 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		}
 	}
 
-	protected int getDropItemId()
+	@Override
+	protected Item getDropItem()
 	{
-		return Item.arrow.itemID;
+		return Items.arrow;
 	}
 
+	@Override
 	protected void dropFewItems(boolean killbyplayer, int lootinglevel)
 	{
 		int var3;
@@ -188,7 +209,7 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 
 			for(var4 = 0; var4 < var3; ++var4)
 			{
-				this.dropItem(Item.coal.itemID, 1);
+				this.dropItem(Items.coal, 1);
 			}
 		}
 		else
@@ -197,7 +218,7 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 
 			for(var4 = 0; var4 < var3; ++var4)
 			{
-				this.dropItem(Item.arrow.itemID, 1);
+				this.dropItem(Items.arrow, 1);
 			}
 		}
 
@@ -205,24 +226,27 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 
 		for(var4 = 0; var4 < var3; ++var4)
 		{
-			this.dropItem(Item.bone.itemID, 1);
+			this.dropItem(Items.bone, 1);
 		}
 	}
 
+	@Override
 	protected void dropRareDrop(int par1)
 	{
 		if(this.getSkeletonType() == 1)
 		{
-			this.entityDropItem(new ItemStack(Item.skull.itemID, 1, 1), 0.0F);
+			this.entityDropItem(new ItemStack(Items.skull, 1, 1), 0.0F);
 		}
 	}
 
+	@Override
 	protected void addRandomArmor()
 	{
 		super.addRandomArmor();
-		this.setCurrentItemOrArmor(0, new ItemStack(Item.bow));
+		this.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
 	}
 
+	@SuppressWarnings("unused")
 	public void setCombatTask()
 	{
 		this.tasks.removeTask(this.aiAttackOnCollide);
@@ -230,31 +254,6 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		ItemStack stack = this.getHeldItem();
 		this.tasks.addTask(4, this.aiArrowAttack);
 
-	}
-
-	public void attackEntityWithRangedAttack(EntityLivingBase entityliving)
-	{
-		EntityArrow var2 = new EntityArrow(this.worldObj, this, entityliving, 1.6F, 22.0F);
-		int var3 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, this.getHeldItem());
-		int var4 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, this.getHeldItem());
-
-		if(var3 > 0)
-		{
-			var2.setDamage(var2.getDamage() + (double)var3 * 0.5D + 0.5D);
-		}
-
-		if(var4 > 0)
-		{
-			var2.setKnockbackStrength(var4);
-		}
-
-		if(EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, this.getHeldItem()) > 0 || this.getSkeletonType() == 1)
-		{
-			var2.setFire(100);
-		}
-
-		this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
-		this.worldObj.spawnEntityInWorld(var2);
 	}
 
 	public int getSkeletonType()
@@ -277,6 +276,7 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		}
 	}
 
+	@Override
 	public void readEntityFromNBT(NBTTagCompound nbttagcompound)
 	{
 		super.readEntityFromNBT(nbttagcompound);
@@ -290,6 +290,7 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		this.setCombatTask();
 	}
 
+	@Override
 	public void writeEntityToNBT(NBTTagCompound nbttagcompound)
 	{
 		super.writeEntityToNBT(nbttagcompound);
@@ -306,12 +307,13 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		}
 	}
 
+	@Override
 	public void attackEntityWithRangedAttack(EntityLivingBase par1EntityLivingBase, float par2)
 	{
-		EntityArrow entityarrow = new EntityArrow(this.worldObj, this, par1EntityLivingBase, 1.6F, (float)(14 - this.worldObj.difficultySetting * 4));
+		EntityArrow entityarrow = new EntityArrow(this.worldObj, this, par1EntityLivingBase, 1.6F, (float)(14 - this.worldObj.difficultySetting.getDifficultyId() * 4));
 		int i = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, this.getHeldItem());
 		int j = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, this.getHeldItem());
-		entityarrow.setDamage((double)(par2 * 2.0F) + this.rand.nextGaussian() * 0.25D + (double)((float)this.worldObj.difficultySetting * 0.11F));
+		entityarrow.setDamage((double)(par2 * 2.0F) + this.rand.nextGaussian() * 0.25D + (double)((float)this.worldObj.difficultySetting.getDifficultyId() * 0.11F));
 
 		if(i > 0)
 		{

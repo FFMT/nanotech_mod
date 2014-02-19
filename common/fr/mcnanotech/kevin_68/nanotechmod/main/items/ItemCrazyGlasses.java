@@ -1,7 +1,13 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,6 +19,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.model.items.ItemCrazyGlassesModel;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class ItemCrazyGlasses extends ItemArmor
 {
@@ -21,16 +28,11 @@ public class ItemCrazyGlasses extends ItemArmor
 	{
 		super(material, renderIndex, armorType);
 	}
+
 	@Override
-	public void registerIcons(IIconRegister iconregister)
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
-		itemIcon = iconregister.registerIcon("nanotechmod:crazyGlassesItem");
-	}
-	
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
-	{
-		if(stack.getItem().equals(NanotechItem.crazyGlasses))
+		if(stack.getItem().equals(NanotechModList.crazyGlasses))
 		{
 			return "nanotechmod:textures/armor/crazyGlasses.png";
 		}
@@ -47,7 +49,7 @@ public class ItemCrazyGlasses extends ItemArmor
 	private int tick = 40;
 
 	@Override
-	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack stack)
+	public void onArmorTick(World world, EntityPlayer player, ItemStack stack)
 	{
 		if(!world.isRemote)
 		{

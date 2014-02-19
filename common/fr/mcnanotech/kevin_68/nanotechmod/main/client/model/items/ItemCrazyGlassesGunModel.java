@@ -1,10 +1,17 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.client.model.items;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class ItemCrazyGlassesGunModel extends ModelBase
 {
@@ -118,7 +125,7 @@ public class ItemCrazyGlassesGunModel extends ModelBase
 			EntityPlayer player = (EntityPlayer)entity;
 			if(player.inventory.getCurrentItem() != null)
 			{
-				if(player.inventory.getCurrentItem().itemID == NanotechItem.crazyGlassesGun.itemID)
+				if(player.inventory.getCurrentItem().equals(NanotechModList.crazyGlassesGun))
 				{
 					if(player.inventory.getCurrentItem().hasTagCompound())
 					{

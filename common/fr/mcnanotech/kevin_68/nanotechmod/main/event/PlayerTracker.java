@@ -1,36 +1,33 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.event;
 
-import net.minecraft.entity.player.EntityPlayer;
-import cpw.mods.fml.common.IPlayerTracker;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechAchievement;
+import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechConfiguration;
 
-public class PlayerTracker implements IPlayerTracker
+public class PlayerTracker
 {
-	@Override
-	public void onPlayerLogin(EntityPlayer player)
+
+	@SubscribeEvent
+	public void onPlayerLogin(PlayerLoggedInEvent event)
 	{
-		player.triggerAchievement(NanotechAchievement.installMod);
+		event.player.triggerAchievement(NanotechAchievement.installMod);
 	}
 
-	@Override
-	public void onPlayerLogout(EntityPlayer player)
+	@SubscribeEvent
+	public void onPlayerChangedDimension(PlayerChangedDimensionEvent event)
 	{
-
-	}
-
-	@Override
-	public void onPlayerChangedDimension(EntityPlayer player)
-	{
-		if(player.dimension == NanotechMod.dimensionID)
+		if(event.player.dimension == NanotechConfiguration.dimensionID)
 		{
-			player.triggerAchievement(NanotechAchievement.nanotechDim);
+			event.player.triggerAchievement(NanotechAchievement.nanotechDim);
 		}
-	}
-
-	@Override
-	public void onPlayerRespawn(EntityPlayer player)
-	{
-
 	}
 }

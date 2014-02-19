@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.blocks;
 
 import net.minecraft.block.BlockContainer;
@@ -11,13 +18,13 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebo
 
 public class BlockListerJukebox extends BlockContainer
 {
-	public BlockListerJukebox(int par1, Material par2Material)
+	public BlockListerJukebox()
 	{
-		super(par1, par2Material);
+		super(Material.wood);
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world)
+	public TileEntity createNewTileEntity(World world, int metadata)
 	{
 		return new TileEntityListerJukebox();
 	}
@@ -25,7 +32,7 @@ public class BlockListerJukebox extends BlockContainer
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t)
 	{
-		TileEntity tileentity = world.getBlockTileEntity(x, y, z);
+		TileEntity tileentity = world.getTileEntity(x, y, z);
 
 		if(tileentity == null || player.isSneaking())
 		{
@@ -33,16 +40,20 @@ public class BlockListerJukebox extends BlockContainer
 		}
 
 		if(!world.isRemote)
+		{
 			player.openGui(NanotechMod.modInstance, 3, world, x, y, z);
+		}
 
 		return true;
 	}
 
+	@Override
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata)
 	{
 		world.playRecord((String)null, x, y, z);
 	}
 
+	@Override
 	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion par5Explosion)
 	{
 		this.onBlockDestroyedByPlayer(world, x, y, z, world.getBlockMetadata(x, y, z));

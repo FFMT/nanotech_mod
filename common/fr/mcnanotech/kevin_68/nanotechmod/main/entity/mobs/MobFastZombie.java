@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs;
 
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -15,9 +22,10 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class MobFastZombie extends EntityMob
 {
@@ -42,25 +50,29 @@ public class MobFastZombie extends EntityMob
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(2D);
-		this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(2D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(40.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(1.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(1D);
 	}
 
+	@Override
 	protected void fall(float damage)
 	{}
 
+	@Override
 	public int getTotalArmorValue()
 	{
 		return 3;
 	}
 
+	@Override
 	protected boolean isAIEnabled()
 	{
 		return true;
 	}
 
+	@Override
 	public void onLivingUpdate()
 	{
 		for(int k = 0; k < 2; k++)
@@ -71,46 +83,52 @@ public class MobFastZombie extends EntityMob
 		super.onLivingUpdate();
 	}
 
+	@Override
 	protected String getLivingSound()
 	{
 		return "mob.zombie.say";
 	}
 
+	@Override
 	protected String getHurtSound()
 	{
 		return "mob.zombiehurt";
 	}
 
+	@Override
 	protected String getDeathSound()
 	{
 		return "mob.zombiedead";
 	}
 
+	@Override
 	public EnumCreatureAttribute getCreatureAttribute()
 	{
 		return EnumCreatureAttribute.UNDEAD;
 	}
 
-	protected int getDropItemId()
+	@Override
+	protected Item getDropItem()
 	{
-		return NanotechItem.edibleFlesh.itemID;
+		return NanotechModList.edibleFlesh;
 	}
 
+	@Override
 	protected void dropRareDrop(int par1)
 	{
 		switch(this.rand.nextInt(4))
 		{
 		case 0:
-			this.dropItem(Item.swordIron.itemID, 1);
+			this.dropItem(Items.iron_sword, 1);
 			break;
 		case 1:
-			this.dropItem(Item.helmetDiamond.itemID, 1);
+			this.dropItem(Items.diamond_helmet, 1);
 			break;
 		case 2:
-			this.dropItem(Item.ingotGold.itemID, 1);
+			this.dropItem(Items.gold_ingot, 1);
 			break;
 		case 3:
-			this.dropItem(Item.shovelDiamond.itemID, 1);
+			this.dropItem(Items.diamond_shovel, 1);
 			break;
 		}
 	}

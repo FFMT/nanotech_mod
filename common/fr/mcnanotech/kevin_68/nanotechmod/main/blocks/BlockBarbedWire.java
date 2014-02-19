@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.blocks;
 
 import net.minecraft.block.Block;
@@ -10,11 +17,12 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechDamageSource;
 
 public class BlockBarbedWire extends Block
 {
-	public BlockBarbedWire(int id)
+	public BlockBarbedWire()
 	{
-		super(id, Material.iron);
+		super(Material.iron);
 	}
 
+	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
 		if(entity instanceof EntityLivingBase)
@@ -24,21 +32,25 @@ public class BlockBarbedWire extends Block
 		}
 	}
 
+	@Override
 	public boolean isOpaqueCube()
 	{
 		return false;
 	}
 
+	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
 	{
 		return null;
 	}
 
+	@Override
 	public int getRenderType()
 	{
 		return 1;
 	}
 
+	@Override
 	public boolean renderAsNormalBlock()
 	{
 		return false;

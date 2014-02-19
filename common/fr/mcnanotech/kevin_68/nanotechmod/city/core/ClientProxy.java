@@ -1,7 +1,13 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.city.core;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
-import fr.mcnanotech.kevin_68.nanotechmod.city.blocks.NanotechCityBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.city.client.renderer.tileentity.TileEntityFountainRender;
 import fr.mcnanotech.kevin_68.nanotechmod.city.client.renderer.tileentity.TileEntityLampLightRender;
 import fr.mcnanotech.kevin_68.nanotechmod.city.client.renderer.tileentity.TileEntityLampRender;
@@ -35,7 +41,7 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySunShade.class, new TileEntitySunShadeRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityModernFence.class, new TileEntityModernFenceRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTextSpotLight.class, new TileEntityTextSpotLightRender());
-		
+
 		FFMTClientRegistry.bindTESRWithInventoryRender(NanotechCityList.trashcan, 0, TileEntityTrashCan.class, new TileEntityTrashCanRender());
 	}
 }

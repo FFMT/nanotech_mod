@@ -1,13 +1,16 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.client.gui;
-
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 
@@ -16,12 +19,12 @@ import org.lwjgl.opengl.GL11;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerLightSaber;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.ItemLightSaber;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 
 @SideOnly(Side.CLIENT)
+@SuppressWarnings({"unchecked", "unused"})
 public class GuiLightSaber extends FFMTGuiContainerSliderBase
 {
 	private final ItemStack saberStack;
@@ -46,16 +49,15 @@ public class GuiLightSaber extends FFMTGuiContainerSliderBase
 		int red = saberStack.getTagCompound().hasKey("red") ? saberStack.getTagCompound().getInteger("red") : 0;
 		int green = saberStack.getTagCompound().hasKey("green") ? saberStack.getTagCompound().getInteger("green") : 0;
 		int blue = saberStack.getTagCompound().hasKey("blue") ? saberStack.getTagCompound().getInteger("blue") : 0;
-		System.out.println("red " + red + " | green : " + green + " | blue : " + blue);
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, width / 2 - 75, y + 7, EnumChatFormatting.RED + I18n.getString("container.lightsaber.red") + " : " + red, (float)(red) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 1, width / 2 - 75, y + 29, EnumChatFormatting.GREEN + I18n.getString("container.lightsaber.green") + " : " + green, (float)(green) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 2, width / 2 - 75, y + 51, EnumChatFormatting.BLUE + I18n.getString("container.lightsaber.blue") + " : " + blue, (float)(blue) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, width / 2 - 75, y + 7, EnumChatFormatting.RED + I18n.format("container.lightsaber.red") + " : " + red, (float)(red) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 1, width / 2 - 75, y + 29, EnumChatFormatting.GREEN + I18n.format("container.lightsaber.green") + " : " + green, (float)(green) / 255.0F));
+		this.buttonList.add(new FFMTGuiSliderForContainer(this, 2, width / 2 - 75, y + 51, EnumChatFormatting.BLUE + I18n.format("container.lightsaber.blue") + " : " + blue, (float)(blue) / 255.0F));
 	}
 
 	@Override
 	public void handlerSliderAction(int sliderId, float sliderValue)
 	{
-		this.sendSaberPacket((int)(sliderValue * 255), sliderId);
+		// this.sendSaberPacket((int)(sliderValue * 255), sliderId);
 	}
 
 	@Override
@@ -65,34 +67,24 @@ public class GuiLightSaber extends FFMTGuiContainerSliderBase
 		switch(sliderId)
 		{
 		case 0:
-			name = EnumChatFormatting.RED + I18n.getString("container.lightsaber.red") + " : ";
+			name = EnumChatFormatting.RED + I18n.format("container.lightsaber.red") + " : ";
 			break;
 		case 1:
-			name = EnumChatFormatting.GREEN + I18n.getString("container.lightsaber.green") + " : ";
+			name = EnumChatFormatting.GREEN + I18n.format("container.lightsaber.green") + " : ";
 			break;
 		case 2:
-			name = EnumChatFormatting.BLUE + I18n.getString("container.lightsaber.blue") + " : ";
+			name = EnumChatFormatting.BLUE + I18n.format("container.lightsaber.blue") + " : ";
 			break;
 		}
 		return name + (int)(sliderValue * 255);
 	}
 
-	private void sendSaberPacket(int value, int type)
-	{
-		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-		DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-		try
-		{
-			dataoutputstream.writeInt(type);
-			dataoutputstream.writeInt(value);
-			this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|saber", bytearrayoutputstream.toByteArray()));
-		}
-		catch(Exception exception)
-		{
-			exception.printStackTrace();
-			NanotechMod.nanoLog.severe("Failed to send a packet from a SpotLight");
-		}
-	}
+	// TODO packet
+	/*
+	 * private void sendSaberPacket(int value, int type) { ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream(); DataOutputStream dataoutputstream = new
+	 * DataOutputStream(bytearrayoutputstream); try { dataoutputstream.writeInt(type); dataoutputstream.writeInt(value); this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|saber",
+	 * bytearrayoutputstream.toByteArray())); } catch(Exception exception) { exception.printStackTrace(); NanotechMod.nanoLog.severe("Failed to send a packet from a SpotLight"); } }
+	 */
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)

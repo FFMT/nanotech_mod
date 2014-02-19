@@ -1,20 +1,26 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.tileentity;
 
 import java.util.Iterator;
 import java.util.List;
-
-import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerPortableChest;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerPortableChest;
 
 public class TileEntityPortableChest extends TileEntity implements IInventory
 {
@@ -31,7 +37,7 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 		super.readFromNBT(nbttag);
 		direction = nbttag.getByte("Direction");
 
-		NBTTagList nbttaglist = nbttag.getTagList("Items");
+		NBTTagList nbttaglist = nbttag.getTagList("Items", 1);
 		if(nbttag.hasKey("CustomName"))
 		{
 			this.customName = nbttag.getString("CustomName");
@@ -39,7 +45,7 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 
 		for(int i = 0; i < nbttaglist.tagCount(); i++)
 		{
-			NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.tagAt(i);
+			NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(i);
 			int j = nbttagcompound1.getByte("Slot");
 
 			if(j >= 0 && j < this.inventory.length)
@@ -68,7 +74,7 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 
 		nbttag.setTag("Items", nbttaglist);
 
-		if(this.isInvNameLocalized())
+		if(this.hasCustomInventoryName())
 		{
 			nbttag.setString("CustomName", this.customName);
 		}
@@ -84,16 +90,18 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 		this.direction = b;
 	}
 
-	public Packet getDescriptionPacket()
+	@Override
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
 	{
-		NBTTagCompound nbttagcompound = new NBTTagCompound();
-		this.writeToNBT(nbttagcompound);
-		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4, nbttagcompound);
+		readFromNBT(pkt.func_148857_g());
 	}
 
-	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
+	@Override
+	public Packet getDescriptionPacket()
 	{
-		this.readFromNBT(pkt.data);
+		NBTTagCompound nbt = new NBTTagCompound();
+		this.writeToNBT(nbt);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 3, nbt);
 	}
 
 	@Override
@@ -119,7 +127,8 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 			{
 				itemstack = this.inventory[slotId];
 				this.inventory[slotId] = null;
-				this.onInventoryChanged();
+
+				this.markDirty();
 				return itemstack;
 			}
 			else
@@ -131,7 +140,7 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 					this.inventory[slotId] = null;
 				}
 
-				this.onInventoryChanged();
+				this.markDirty();
 				return itemstack;
 			}
 		}
@@ -166,17 +175,17 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 			stack.stackSize = this.getInventoryStackLimit();
 		}
 
-		this.onInventoryChanged();
+		this.markDirty();
 	}
 
 	@Override
-	public String getInvName()
+	public String getInventoryName()
 	{
-		return this.isInvNameLocalized() ? this.customName : "container.portablechest.name";
+		return this.hasCustomInventoryName() ? this.customName : "container.portablechest.name";
 	}
 
 	@Override
-	public boolean isInvNameLocalized()
+	public boolean hasCustomInventoryName()
 	{
 		return this.customName != null && this.customName.length() > 0;
 	}
@@ -200,11 +209,11 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
-		return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) == this && player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
+		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
 	}
 
 	@Override
-	public void openChest()
+	public void openInventory()
 	{
 		if(this.numUsingPlayers < 0)
 		{
@@ -212,14 +221,14 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 		}
 
 		++this.numUsingPlayers;
-		this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, this.getBlockType().blockID, 1, this.numUsingPlayers);
+		this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, this.getBlockType(), 1, this.numUsingPlayers);
 	}
 
 	@Override
-	public void closeChest()
+	public void closeInventory()
 	{
 		--this.numUsingPlayers;
-		this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, this.getBlockType().blockID, 1, this.numUsingPlayers);
+		this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, this.getBlockType(), 1, this.numUsingPlayers);
 
 	}
 

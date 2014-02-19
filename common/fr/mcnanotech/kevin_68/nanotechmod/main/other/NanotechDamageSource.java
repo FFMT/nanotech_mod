@@ -1,10 +1,18 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.other;
 
 import java.util.Random;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.ChatMessageComponent;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.util.StatCollector;
 
 public class NanotechDamageSource extends DamageSource
@@ -32,7 +40,7 @@ public class NanotechDamageSource extends DamageSource
 		sateliteDamage = new NanotechDamageSource("sateliteDamage").setDamageBypassesArmor();
 	}
 
-	public ChatMessageComponent getDeathMessage(EntityLivingBase livingBase)
+	public IChatComponent getDeathMessage(EntityLivingBase livingBase)
 	{
 		EntityLivingBase entitylivingbase1 = livingBase.func_94060_bK();
 		int randInt = 0;
@@ -42,6 +50,6 @@ public class NanotechDamageSource extends DamageSource
 		}
 		String s = "deathMessage." + this.damageType + "." + randInt;
 		String s1 = s + ".player";
-		return entitylivingbase1 != null && StatCollector.func_94522_b(s1) ? ChatMessageComponent.createFromTranslationWithSubstitutions(s1, new Object[] {livingBase.getTranslatedEntityName(), entitylivingbase1.getTranslatedEntityName()}) : ChatMessageComponent.createFromTranslationWithSubstitutions(s, new Object[] {livingBase.getTranslatedEntityName()});
+		return entitylivingbase1 != null && StatCollector.canTranslate(s1) ? new ChatComponentTranslation(s1, new Object[] {livingBase.func_145748_c_(), entitylivingbase1.func_145748_c_()}) : new ChatComponentTranslation(s, new Object[] {livingBase.func_145748_c_()});
 	}
 }

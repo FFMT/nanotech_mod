@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.items;
 
 import net.minecraft.client.Minecraft;
@@ -5,17 +12,13 @@ import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Timer;
 import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.model.blocks.ModelPortableChest;
-import fr.mcnanotech.kevin_68.nanotechmod.main.client.model.items.ItemAltersModel;
 
 public class ItemBlockPortableChestRender implements IItemRenderer
 {
@@ -24,7 +27,7 @@ public class ItemBlockPortableChestRender implements IItemRenderer
 	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/blocks/portablechest.png");
 	protected static ResourceLocation player;
 	private static final ResourceLocation steveTextures = new ResourceLocation("textures/entity/steve.png");
-	
+
 	public ItemBlockPortableChestRender()
 	{
 		model = new ModelPortableChest();
@@ -34,6 +37,7 @@ public class ItemBlockPortableChestRender implements IItemRenderer
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type)
 	{
+		//TODO fix NPE
 		if(item.getItemDamage() == 0)
 		{
 			switch(type)
@@ -91,7 +95,7 @@ public class ItemBlockPortableChestRender implements IItemRenderer
 				GL11.glScaled(1.5F, 1.5F, 1.5F);
 				model.render(0.0625F);
 				GL11.glPopMatrix();
-				
+
 				GL11.glPushMatrix();
 				if(((AbstractClientPlayer)((Entity)data[1])).getLocationSkin() != null)
 				{
@@ -108,7 +112,7 @@ public class ItemBlockPortableChestRender implements IItemRenderer
 				GL11.glTranslatef(2.0F, 0.5F, 0.2F);
 				modelB.bipedRightArm.render(0.0625F);
 				GL11.glPopMatrix();
-				
+
 				GL11.glPushMatrix();
 				if(((AbstractClientPlayer)((Entity)data[1])).getLocationSkin() != null)
 				{

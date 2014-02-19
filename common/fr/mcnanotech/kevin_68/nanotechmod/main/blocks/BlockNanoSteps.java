@@ -1,53 +1,67 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.blocks;
 
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.BlockHalfSlab;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
-public class BlockNanoSteps extends BlockHalfSlab
+public class BlockNanoSteps extends BlockSlab
 {
 	public static final String[] StepTypes = new String[] {"nano"};
 
-	public BlockNanoSteps(int id, boolean isdouble)
+	public BlockNanoSteps(boolean isdouble)
 	{
-		super(id, isdouble, Material.wood);
-		if(!this.isDoubleSlab)
+		super(isdouble, Material.wood);
+		if(!this.field_150004_a)
 		{
 			this.setLightOpacity(0);
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
-	private static boolean isBlockSingleSlab(int id)
+	private static boolean isBlockSingleSlab(BlockNanoSteps block)
 	{
-		return id == NanotechBlock.nanoSlabSingle.blockID;
+		return block.equals(NanotechModList.nanoSlabSingle);
 	}
 
 	@SideOnly(Side.CLIENT)
-	public int idPicked(World world, int x, int y, int z)
+	@Override
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)
 	{
-		return isBlockSingleSlab(this.blockID) ? this.blockID : NanotechBlock.nanoSlabDouble.blockID;
+		return isBlockSingleSlab(this) ? new ItemStack(this) : new ItemStack(NanotechModList.nanoSlabDouble);
 	}
 
-	public int idDropped(int metadata, Random rand, int fortune)
+	@Override
+	public Item getItemDropped(int metadata, Random rand, int fortune)
 	{
-		return NanotechBlock.nanoSlabSingle.blockID;
+		return Item.getItemFromBlock(NanotechModList.nanoSlabSingle);
 	}
 
+	@Override
 	protected ItemStack createStackedBlock(int metadata)
 	{
-		return new ItemStack(NanotechBlock.nanoSlabSingle.blockID, 2, metadata & 7);
+		return new ItemStack(NanotechModList.nanoSlabSingle, 2, metadata & 7);
 	}
 
-	public String getFullSlabName(int metadata)
+	@Override
+	public String func_150002_b(int metadata)
 	{
 		if(metadata < 0 || metadata >= StepTypes.length)
 		{
@@ -57,21 +71,24 @@ public class BlockNanoSteps extends BlockHalfSlab
 		return super.getUnlocalizedName() + "." + StepTypes[metadata];
 	}
 
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int id, CreativeTabs creativeTabs, List list)
+	@Override
+	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
 	{
-		if(id != NanotechBlock.nanoSlabDouble.blockID)
+		if(!item.equals(Item.getItemFromBlock(NanotechModList.nanoSlabDouble)))
 		{
 			for(int i = 0; i < StepTypes.length; i++)
 			{
-				list.add(new ItemStack(id, 1, i));
+				list.add(new ItemStack(item, 1, i));
 			}
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int metadata)
+	@Override
+	public IIcon getIcon(int side, int metadata)
 	{
-		return NanotechBlock.nanoPlanks.getBlockTextureFromSide(side);
+		return NanotechModList.nanoPlank.getBlockTextureFromSide(side);
 	}
 }

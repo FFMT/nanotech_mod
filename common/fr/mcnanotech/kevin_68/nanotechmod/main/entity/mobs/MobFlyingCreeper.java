@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs;
 
 import net.minecraft.entity.Entity;
@@ -15,6 +22,7 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -46,17 +54,19 @@ public class MobFlyingCreeper extends EntityMob
 		this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false));
 	}
 
+	@Override
 	public boolean isAIEnabled()
 	{
 		return true;
 	}
 
+	@Override
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20D);
-		this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(40.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
 	}
 
 	public int func_82143_as()
@@ -64,9 +74,11 @@ public class MobFlyingCreeper extends EntityMob
 		return this.getAttackTarget() == null ? 3 : 3 + (int)(this.getHealth() - 1.0F);
 	}
 
+	@Override
 	protected void fall(float damage)
 	{}
 
+	@Override
 	protected void entityInit()
 	{
 		super.entityInit();
@@ -74,6 +86,7 @@ public class MobFlyingCreeper extends EntityMob
 		this.dataWatcher.addObject(17, Byte.valueOf((byte)0));
 	}
 
+	@Override
 	public void writeEntityToNBT(NBTTagCompound nbttagcompound)
 	{
 		super.writeEntityToNBT(nbttagcompound);
@@ -87,6 +100,7 @@ public class MobFlyingCreeper extends EntityMob
 		nbttagcompound.setByte("ExplosionRadius", (byte)this.explosionRadius);
 	}
 
+	@Override
 	public void readEntityFromNBT(NBTTagCompound nbttagcompound)
 	{
 		super.readEntityFromNBT(nbttagcompound);
@@ -103,6 +117,7 @@ public class MobFlyingCreeper extends EntityMob
 		}
 	}
 
+	@Override
 	public void onUpdate()
 	{
 		if(this.isEntityAlive())
@@ -150,27 +165,33 @@ public class MobFlyingCreeper extends EntityMob
 		super.onUpdate();
 	}
 
+	@Override
 	protected String getHurtSound()
 	{
 		return "mob.creeper.say";
 	}
 
+	@Override
 	protected String getDeathSound()
 	{
 		return "mob.creeper.death";
 	}
 
+	@Override
 	public void onDeath(DamageSource damagesource)
 	{
 		super.onDeath(damagesource);
 
 		if(damagesource.getEntity() instanceof EntitySkeleton)
 		{
-			int var2 = Item.record13.itemID + this.rand.nextInt(Item.recordWait.itemID - Item.record13.itemID + 1);
-			this.dropItem(var2, 1);
+			int i = Item.getIdFromItem(Items.record_13);
+			int j = Item.getIdFromItem(Items.record_wait);
+			int k = i + this.rand.nextInt(j - i + 1);
+			this.dropItem(Item.getItemById(k), 1);
 		}
 	}
 
+	@Override
 	public boolean attackEntityAsMob(Entity entity)
 	{
 		return true;
@@ -187,9 +208,10 @@ public class MobFlyingCreeper extends EntityMob
 		return ((float)this.lastActiveTime + (float)(this.timeSinceIgnited - this.lastActiveTime) * par1) / (float)(this.fuseTime - 2);
 	}
 
-	protected int getDropItemId()
+	@Override
+	protected Item getDropItem()
 	{
-		return Item.gunpowder.itemID;
+		return Items.gunpowder;
 	}
 
 	public int getCreeperState()
@@ -202,6 +224,7 @@ public class MobFlyingCreeper extends EntityMob
 		this.dataWatcher.updateObject(16, Byte.valueOf((byte)par1));
 	}
 
+	@Override
 	public void onStruckByLightning(EntityLightningBolt entitylightningbolt)
 	{
 		super.onStruckByLightning(entitylightningbolt);

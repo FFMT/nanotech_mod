@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer;
 
 import net.minecraft.client.Minecraft;
@@ -102,11 +109,13 @@ public class RenderReinforcedFishingHook extends Render
 		return texture;
 	}
 
+	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
 		return this.getTexture((EntityReinforcedFishingHook)entity);
 	}
 
+	@Override
 	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9)
 	{
 		this.doRenderFishHook((EntityReinforcedFishingHook)entity, par2, par4, par6, par8, par9);

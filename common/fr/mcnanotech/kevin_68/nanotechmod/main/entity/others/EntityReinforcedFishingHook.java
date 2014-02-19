@@ -1,7 +1,15 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.entity.others;
 
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityBoat;
@@ -9,7 +17,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityFishHook;
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.stats.StatList;
@@ -21,8 +29,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechAchievement;
 
 public class EntityReinforcedFishingHook extends EntityFishHook
@@ -30,7 +37,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 	private int xTile;
 	private int yTile;
 	private int zTile;
-	private int inTile;
+	private Block inTile;
 	private boolean inGround;
 	public int shake;
 	public EntityPlayer angler;
@@ -58,7 +65,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 		this.xTile = -1;
 		this.yTile = -1;
 		this.zTile = -1;
-		this.inTile = 0;
+		this.inTile = null;
 		this.inGround = false;
 		this.shake = 0;
 		this.ticksInAir = 0;
@@ -78,7 +85,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 		this.xTile = -1;
 		this.yTile = -1;
 		this.zTile = -1;
-		this.inTile = 0;
+		this.inTile = null;
 		this.inGround = false;
 		this.shake = 0;
 		this.ticksInAir = 0;
@@ -111,10 +118,12 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 		this.calculateVelocity(this.motionX, this.motionY, this.motionZ, 1.5F, 1.0F);
 	}
 
+	@Override
 	protected void entityInit()
 	{}
 
 	@SideOnly(Side.CLIENT)
+	@Override
 	public boolean isInRangeToRenderDist(double distance)
 	{
 		double d1 = this.boundingBox.getAverageEdgeLength() * 4.0D;
@@ -165,6 +174,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 		this.velocityZ = (this.motionZ = z);
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void onUpdate()
 	{
 		if((!this.worldObj.isRemote) && (this.angler == null))
@@ -191,7 +201,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 			{
 				ItemStack itemstack = this.angler.getCurrentEquippedItem();
 
-				if((this.angler.isDead) || (!this.angler.isEntityAlive()) || (itemstack == null) || !itemstack.getItem().equals(NanotechItem.reinforcedFishingRod) || (getDistanceSqToEntity(this.angler) > 2048.0D))
+				if((this.angler.isDead) || (!this.angler.isEntityAlive()) || (itemstack == null) || !itemstack.getItem().equals(NanotechModList.reinforcedFishingRod) || (getDistanceSqToEntity(this.angler) > 2048.0D))
 				{
 					setDead();
 					this.angler.fishEntity = null;
@@ -219,9 +229,9 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 
 			if(this.inGround)
 			{
-				int i = this.worldObj.getBlockId(this.xTile, this.yTile, this.zTile);
+				Block block = this.worldObj.getBlock(this.xTile, this.yTile, this.zTile);
 
-				if(i == this.inTile)
+				if(block == this.inTile)
 				{
 					++this.ticksInGround;
 
@@ -246,7 +256,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 
 			Vec3 vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
 			Vec3 vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
-			MovingObjectPosition movingobjectposition = this.worldObj.clip(vec3, vec31);
+			MovingObjectPosition movingobjectposition = this.worldObj.rayTraceBlocks(vec3, vec31);
 			vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
 			vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 
@@ -354,7 +364,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 						d6 += 1.0D / b0;
 					}
 
-					if(this.isAABBInBlockId(this.worldObj, axisalignedbb1, NanotechBlock.liquidNitrogen.blockID))
+					if(this.isAABBInBlockId(this.worldObj, axisalignedbb1, NanotechModList.liquidNitrogen))
 					{
 						this.isInNitrogen = true;
 
@@ -436,7 +446,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 		nbtTag.setShort("xTile", (short)this.xTile);
 		nbtTag.setShort("yTile", (short)this.yTile);
 		nbtTag.setShort("zTile", (short)this.zTile);
-		nbtTag.setByte("inTile", (byte)this.inTile);
+		nbtTag.setByte("inTile", (byte)Block.getIdFromBlock(this.inTile));
 		nbtTag.setByte("shake", (byte)this.shake);
 		nbtTag.setByte("inGround", (byte)(this.inGround ? 1 : 0));
 	}
@@ -446,7 +456,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 		this.xTile = nbtTag.getShort("xTile");
 		this.yTile = nbtTag.getShort("yTile");
 		this.zTile = nbtTag.getShort("zTile");
-		this.inTile = nbtTag.getByte("inTile") & 255;
+		this.inTile = Block.getBlockById(nbtTag.getByte("inTile") & 255);
 		this.shake = nbtTag.getByte("shake") & 255;
 		this.inGround = nbtTag.getByte("inGround") == 1;
 	}
@@ -484,11 +494,11 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 				ItemStack stack;
 				if(this.isInNitrogen)
 				{
-					stack = new ItemStack(NanotechItem.itemBase, 1, 17);
+					stack = new ItemStack(NanotechModList.itemBase, 1, 17);
 				}
 				else
 				{
-					stack = new ItemStack(Item.fishRaw, 1, 0);
+					stack = new ItemStack(Items.fish, 1, 0);
 				}
 
 				EntityItem entityitem = new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, stack);
@@ -531,7 +541,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 		}
 	}
 
-	public boolean isAABBInBlockId(World world, AxisAlignedBB axisAlignedBB, int blockId)
+	public boolean isAABBInBlockId(World world, AxisAlignedBB axisAlignedBB, Block block)
 	{
 		int i = MathHelper.floor_double(axisAlignedBB.minX);
 		int j = MathHelper.floor_double(axisAlignedBB.maxX + 1.0D);
@@ -546,7 +556,7 @@ public class EntityReinforcedFishingHook extends EntityFishHook
 			{
 				for(int i2 = i1; i2 < j1; ++i2)
 				{
-					if(world.getBlockId(k1, l1, i2) == blockId || world.getBlockId(k1, l1 - 1, i2) == blockId)
+					if(world.getBlock(k1, l1, i2).equals(block) || world.getBlock(k1, l1 - 1, i2).equals(block))
 					{
 						int j2 = world.getBlockMetadata(k1, l1, i2);
 						double d0 = (double)(l1 + 1);

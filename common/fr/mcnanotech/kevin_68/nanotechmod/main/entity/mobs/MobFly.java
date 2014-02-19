@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs;
 
 import java.util.Calendar;
@@ -31,20 +38,23 @@ public class MobFly extends EntityAmbientCreature
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(1D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(1D);
 	}
 
+	@Override
 	protected void entityInit()
 	{
 		super.entityInit();
 		this.dataWatcher.addObject(16, new Byte((byte)0));
 	}
 
+	@Override
 	protected float getSoundVolume()
 	{
 		return 0.1F;
 	}
 
+	@Override
 	protected String getLivingSound()
 	{
 		return "nanotechmod:fly";
@@ -69,11 +79,13 @@ public class MobFly extends EntityAmbientCreature
 		}
 	}
 
+	@Override
 	protected boolean isAIEnabled()
 	{
 		return true;
 	}
 
+	@Override
 	public void onUpdate()
 	{
 		super.onUpdate();
@@ -89,13 +101,14 @@ public class MobFly extends EntityAmbientCreature
 		}
 	}
 
+	@Override
 	protected void updateAITasks()
 	{
 		super.updateAITasks();
 
 		if(this.func_82235_h())
 		{
-			if(!this.worldObj.isBlockNormalCube(MathHelper.floor_double(this.posX), (int)this.posY + 1, MathHelper.floor_double(this.posZ)))
+			if(!this.worldObj.getBlock(MathHelper.floor_double(this.posX), (int)this.posY + 1, MathHelper.floor_double(this.posZ)).isNormalCube())
 			{
 				this.func_82236_f(false);
 				this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1015, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
@@ -137,21 +150,24 @@ public class MobFly extends EntityAmbientCreature
 			this.moveForward = 0.5F;
 			this.rotationYaw += var8;
 
-			if(this.rand.nextInt(100) == 0 && this.worldObj.isBlockNormalCube(MathHelper.floor_double(this.posX), (int)this.posY + 1, MathHelper.floor_double(this.posZ)))
+			if(this.rand.nextInt(100) == 0 && this.worldObj.getBlock(MathHelper.floor_double(this.posX), (int)this.posY + 1, MathHelper.floor_double(this.posZ)).isNormalCube())
 			{
 				this.func_82236_f(true);
 			}
 		}
 	}
 
+	@Override
 	protected boolean canTriggerWalking()
 	{
 		return false;
 	}
 
+	@Override
 	protected void fall(float damage)
 	{}
 
+	@Override
 	protected void updateFallState(double par1, boolean par3)
 	{}
 
@@ -160,7 +176,8 @@ public class MobFly extends EntityAmbientCreature
 		return true;
 	}
 
-	public boolean attackEntityFrom(DamageSource damagesource, int par2)
+	@Override
+	public boolean attackEntityFrom(DamageSource damagesource, float par2)
 	{
 		if(!this.worldObj.isRemote && this.func_82235_h())
 		{
@@ -170,18 +187,21 @@ public class MobFly extends EntityAmbientCreature
 		return super.attackEntityFrom(damagesource, par2);
 	}
 
+	@Override
 	public void readEntityFromNBT(NBTTagCompound nbttagcompound)
 	{
 		super.readEntityFromNBT(nbttagcompound);
 		this.dataWatcher.updateObject(16, Byte.valueOf(nbttagcompound.getByte("BatFlags")));
 	}
 
+	@Override
 	public void writeEntityToNBT(NBTTagCompound nbttagcompound)
 	{
 		super.writeEntityToNBT(nbttagcompound);
 		nbttagcompound.setByte("BatFlags", this.dataWatcher.getWatchableObjectByte(16));
 	}
 
+	@Override
 	public boolean getCanSpawnHere()
 	{
 		int var1 = MathHelper.floor_double(this.boundingBox.minY);
@@ -214,6 +234,7 @@ public class MobFly extends EntityAmbientCreature
 		}
 	}
 
+	@Override
 	public EnumCreatureAttribute getCreatureAttribute()
 	{
 		return EnumCreatureAttribute.UNDEAD;

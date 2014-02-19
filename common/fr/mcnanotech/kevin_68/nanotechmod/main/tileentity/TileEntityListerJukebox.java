@@ -1,7 +1,16 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.tileentity;
 
 import java.util.List;
 import java.util.Map;
+
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,7 +24,7 @@ public class TileEntityListerJukebox extends TileEntity
 
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
-		return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) == this && player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
+		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
 	}
 
 	public void playMusic(String music, boolean mods)
@@ -68,11 +77,11 @@ public class TileEntityListerJukebox extends TileEntity
 			timer = 0;
 			if(playRecords && !playListMap.isEmpty())
 			{
-				System.out.println(number);
+				NanotechMod.nanoLogger.debug(number);
 				String music = playListMap.get(playListList.get(number)).toString();
-				System.out.println(music);
-				boolean isPlaying = Minecraft.getMinecraft().sndManager.sndSystem.playing("streaming");
-				System.out.println(isPlaying);
+				NanotechMod.nanoLogger.debug(music);
+				boolean isPlaying = true; //Minecraft.getMinecraft().getSoundHandler().isSoundPlaying(ISound)//Minecraft.getMinecraft().sndManager.sndSystem.playing("streaming");
+				NanotechMod.nanoLogger.debug(isPlaying);
 				if(!isPlaying)
 				{
 					playMusic(music, music.contains(":") ? true : false);

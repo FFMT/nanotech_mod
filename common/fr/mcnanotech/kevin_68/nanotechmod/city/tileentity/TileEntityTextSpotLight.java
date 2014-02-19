@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.city.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -5,11 +12,15 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechCityList;
+import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechModCity;
 
 public class TileEntityTextSpotLight extends TileEntity implements IInventory
 {
@@ -22,16 +33,17 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 	private float booleanFloat;
 	public boolean isActive;
 
+	public static final int REVREVERSEROTATION = -2, REVROTATE = -1, ROTATE = 0, ANGLE = 1, ROTATIONSPEED = 2, REVERSEROTATION = 3, RED = 4, GREEN = 5, BLUE = 6, SCALE = 7, HEIGHT = 8, CONFIGCOPIER = 9;
+
 	public String signText = "";
-	private EntityPlayer field_142011_d;
-	public boolean rotate;
+	public int rotate;
 	public int angle;
-	public float rotationSpeed;
-	public boolean reverseRotation;
+	public int rotationSpeed;
+	public int reverseRotation;
 	public int red;
 	public int green;
 	public int blue;
-	public float scale;
+	public int scale;
 	public int height;
 
 	public void updateEntity()
@@ -89,14 +101,14 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 	{
 		super.writeToNBT(nbtTagCompound);
 		nbtTagCompound.setString("Text", this.signText);
-		nbtTagCompound.setBoolean("Rotate", rotate);
+		nbtTagCompound.setInteger("Rotate", rotate);
 		nbtTagCompound.setInteger("Angle", angle);
-		nbtTagCompound.setFloat("RotationSpeed", rotationSpeed);
-		nbtTagCompound.setBoolean("ReverseRotation", reverseRotation);
+		nbtTagCompound.setInteger("RotationSpeed", rotationSpeed);
+		nbtTagCompound.setInteger("ReverseRotation", reverseRotation);
 		nbtTagCompound.setInteger("Red", red);
 		nbtTagCompound.setInteger("Green", green);
 		nbtTagCompound.setInteger("Blue", blue);
-		nbtTagCompound.setFloat("Scale", scale);
+		nbtTagCompound.setInteger("Scale", scale);
 		nbtTagCompound.setInteger("Height", height);
 
 		NBTTagList itemList = new NBTTagList();
@@ -126,14 +138,14 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 	{
 		super.readFromNBT(nbtTagCompound);
 		this.signText = nbtTagCompound.getString("Text");
-		this.rotate = nbtTagCompound.getBoolean("Rotate");
+		this.rotate = nbtTagCompound.getInteger("Rotate");
 		this.angle = nbtTagCompound.getInteger("Angle");
-		this.rotationSpeed = nbtTagCompound.getFloat("RotationSpeed");
-		this.reverseRotation = nbtTagCompound.getBoolean("ReverseRotation");
+		this.rotationSpeed = nbtTagCompound.getInteger("RotationSpeed");
+		this.reverseRotation = nbtTagCompound.getInteger("ReverseRotation");
 		this.red = nbtTagCompound.getInteger("Red");
 		this.green = nbtTagCompound.getInteger("Green");
 		this.blue = nbtTagCompound.getInteger("Blue");
-		this.scale = nbtTagCompound.getFloat("Scale");
+		this.scale = nbtTagCompound.getInteger("Scale");
 		this.height = nbtTagCompound.getInteger("Height");
 
 		NBTTagList tagList = nbtTagCompound.getTagList("Inventory", 10);
@@ -154,64 +166,24 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 		}
 	}
 
-	/*
-	 * public Packet getDescriptionPacket() { NBTTagCompound nbttagcompound =
-	 * new NBTTagCompound(); this.writeToNBT(nbttagcompound); return new
-	 * Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4,
-	 * nbttagcompound); }
-	 * 
-	 * public void onDataPacket(INetworkManager net, Packet132TileEntityData
-	 * pkt) { this.readFromNBT(pkt.data); }
-	 */
+	@Override
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
+	{
+		readFromNBT(pkt.func_148857_g());
+	}
+
+	@Override
+	public Packet getDescriptionPacket()
+	{
+		NBTTagCompound nbt = new NBTTagCompound();
+		this.writeToNBT(nbt);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 3, nbt);
+	}
 
 	public void setText(String s)
 	{
 		this.signText = s;
-	}
-
-	public void setRotate(boolean b)
-	{
-		this.rotate = b;
-	}
-
-	public void setAngle(int i)
-	{
-		this.angle = i;
-	}
-
-	public void setRotationSpeed(int i)
-	{
-		this.rotationSpeed = i;
-	}
-
-	public void setReverseRotation(boolean b)
-	{
-		this.reverseRotation = b;
-	}
-
-	public void setRedValue(int i)
-	{
-		this.red = i;
-	}
-
-	public void setGreenValue(int i)
-	{
-		this.green = i;
-	}
-
-	public void setBlueValue(int i)
-	{
-		this.blue = i;
-	}
-
-	public void setScale(float i)
-	{
-		this.scale = i;
-	}
-
-	public void setHeight(int i)
-	{
-		this.height = i;
+		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
 	public String getText()
@@ -219,49 +191,87 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 		return this.signText;
 	}
 
-	public boolean getRotate()
+	public void set(int index, int value)
 	{
-		return this.rotate;
+		switch(index)
+		{
+		case ROTATE:
+			this.rotate = value;
+			break;
+		case ANGLE:
+			this.angle = value;
+			break;
+		case ROTATIONSPEED:
+			this.rotationSpeed = value;
+			break;
+		case REVERSEROTATION:
+			this.reverseRotation = value;
+			break;
+		case RED:
+			this.red = value;
+			break;
+		case GREEN:
+			this.green = value;
+			break;
+		case BLUE:
+			this.blue = value;
+			break;
+		case SCALE:
+			this.scale = value;
+			break;
+		case HEIGHT:
+			this.height = value;
+			break;
+		case CONFIGCOPIER:
+		{
+			if(value == 0)
+			{
+				this.addNbtTagToItem();
+				break;
+			}
+			else
+			{
+				this.setConfig();
+				break;
+			}
+		}
+		default:
+			NanotechModCity.nanoCityLogger.error("Wrong set index :" + index);
+			break;
+		}
+		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
-	public int getAngle()
+	public int get(int index)
 	{
-		return this.angle;
-	}
-
-	public float getRotationSpeed()
-	{
-		return this.rotationSpeed;
-	}
-
-	public boolean getReverseRotation()
-	{
-		return this.reverseRotation;
-	}
-
-	public int getRedValue()
-	{
-		return this.red;
-	}
-
-	public int getGreenValue()
-	{
-		return this.green;
-	}
-
-	public int getBlueValue()
-	{
-		return this.blue;
-	}
-
-	public float getScale()
-	{
-		return this.scale;
-	}
-
-	public int getHeight()
-	{
-		return this.height;
+		switch(index)
+		{
+		case REVREVERSEROTATION:
+			return Math.abs(reverseRotation - 1);
+		case REVROTATE:
+			return Math.abs(rotate - 1);
+		case ROTATE:
+			return this.rotate;
+		case ANGLE:
+			return this.angle;
+		case ROTATIONSPEED:
+			return this.rotationSpeed;
+		case REVERSEROTATION:
+			return this.reverseRotation;
+		case RED:
+			return this.red;
+		case GREEN:
+			return this.green;
+		case BLUE:
+			return this.blue;
+		case SCALE:
+			return this.scale;
+		case HEIGHT:
+			return this.height;
+		default:
+			NanotechModCity.nanoCityLogger.error("Wrong set index :" + index);
+			return -1;
+		}
 	}
 
 	public boolean isUseableByPlayer(EntityPlayer player)
@@ -374,15 +384,15 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 			newStack.setTagCompound(new NBTTagCompound());
 			newStack.getTagCompound().setInteger("Type", 1);
 			newStack.getTagCompound().setString("TextSpotLightText", getText());
-			newStack.getTagCompound().setInteger("TextSpotLightRed", getRedValue());
-			newStack.getTagCompound().setInteger("TextSpotLightGreen", getGreenValue());
-			newStack.getTagCompound().setInteger("TextSpotLightBlue", getBlueValue());
-			newStack.getTagCompound().setInteger("TextSpotLightAngle", getAngle());
-			newStack.getTagCompound().setInteger("TextSpotLightAutoRotate", (getRotate() ? 1 : 0));
-			newStack.getTagCompound().setInteger("TextSpotLightRotationSpeed", (int)getRotationSpeed());
-			newStack.getTagCompound().setInteger("TextSpotLightReverseRotation", (getReverseRotation() ? 0 : 1));
-			newStack.getTagCompound().setFloat("TextSpotLightScale", getScale());
-			newStack.getTagCompound().setInteger("TextSpotLightHeight", getHeight());
+			newStack.getTagCompound().setInteger("TextSpotLightRed", get(RED));
+			newStack.getTagCompound().setInteger("TextSpotLightGreen", get(GREEN));
+			newStack.getTagCompound().setInteger("TextSpotLightBlue", get(BLUE));
+			newStack.getTagCompound().setInteger("TextSpotLightAngle", get(ANGLE));
+			newStack.getTagCompound().setInteger("TextSpotLightAutoRotate", get(ROTATE));
+			newStack.getTagCompound().setInteger("TextSpotLightRotationSpeed", get(ROTATIONSPEED));
+			newStack.getTagCompound().setInteger("TextSpotLightReverseRotation", get(REVERSEROTATION));
+			newStack.getTagCompound().setInteger("TextSpotLightScale", get(SCALE));
+			newStack.getTagCompound().setInteger("TextSpotLightHeight", get(HEIGHT));
 			setInventorySlotContents(1, newStack);
 		}
 	}
@@ -402,39 +412,39 @@ public class TileEntityTextSpotLight extends TileEntity implements IInventory
 					}
 					if(stack.getTagCompound().hasKey("TextSpotLightRed"))
 					{
-						setRedValue(stack.getTagCompound().getInteger("TextSpotLightRed"));
+						set(RED, stack.getTagCompound().getInteger("TextSpotLightRed"));
 					}
 					if(stack.getTagCompound().hasKey("TextSpotLightGreen"))
 					{
-						setGreenValue(stack.getTagCompound().getInteger("TextSpotLightGreen"));
+						set(GREEN, stack.getTagCompound().getInteger("TextSpotLightGreen"));
 					}
 					if(stack.getTagCompound().hasKey("TextSpotLightBlue"))
 					{
-						setBlueValue(stack.getTagCompound().getInteger("TextSpotLightBlue"));
+						set(BLUE, stack.getTagCompound().getInteger("TextSpotLightBlue"));
 					}
 					if(stack.getTagCompound().hasKey("TextSpotLightAngle"))
 					{
-						setAngle(stack.getTagCompound().getInteger("TextSpotLightAngle"));
+						set(ANGLE, stack.getTagCompound().getInteger("TextSpotLightAngle"));
 					}
 					if(stack.getTagCompound().hasKey("TextSpotLightAutoRotate"))
 					{
-						setRotate((stack.getTagCompound().getInteger("TextSpotLightAutoRotate") == 1 ? true : false));
+						set(ROTATE, stack.getTagCompound().getInteger("TextSpotLightAutoRotate"));
 					}
 					if(stack.getTagCompound().hasKey("TextSpotLightRotationSpeed"))
 					{
-						setRotationSpeed(stack.getTagCompound().getInteger("TextSpotLightRotationSpeed"));
+						set(ROTATIONSPEED, stack.getTagCompound().getInteger("TextSpotLightRotationSpeed"));
 					}
 					if(stack.getTagCompound().hasKey("TextSpotLightReverseRotation"))
 					{
-						setReverseRotation((stack.getTagCompound().getInteger("TextSpotLightReverseRotation") == 1 ? false : true));
+						set(REVERSEROTATION, stack.getTagCompound().getInteger("TextSpotLightReverseRotation"));
 					}
 					if(stack.getTagCompound().hasKey("TextSpotLightScale"))
 					{
-						setScale(stack.getTagCompound().getFloat("TextSpotLightScale"));
+						set(SCALE, stack.getTagCompound().getInteger("TextSpotLightScale"));
 					}
 					if(stack.getTagCompound().hasKey("TextSpotLightHeight"))
 					{
-						setHeight(stack.getTagCompound().getInteger("TextSpotLightHeight"));
+						set(HEIGHT, stack.getTagCompound().getInteger("TextSpotLightHeight"));
 					}
 				}
 			}

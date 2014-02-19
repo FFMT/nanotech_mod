@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.client.model;
 
 import net.minecraft.client.model.ModelBiped;
@@ -6,10 +13,7 @@ import net.minecraft.entity.Entity;
 
 public class ModelSuperEnderman extends ModelBiped
 {
-	/** Is the enderman carrying a block? */
 	public boolean isCarrying = false;
-
-	/** Is the enderman attacking an entity? */
 	public boolean isAttacking = false;
 
 	public ModelSuperEnderman()
@@ -39,9 +43,6 @@ public class ModelSuperEnderman extends ModelBiped
 		this.bipedLeftLeg.setRotationPoint(2.0F, 12.0F + var1, 0.0F);
 	}
 
-	/**
-	 * Sets the models various rotation angles.
-	 */
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity)
 	{
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, entity);

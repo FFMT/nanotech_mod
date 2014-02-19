@@ -1,35 +1,46 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.blocks;
 
 import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockNotFalling extends Block
 {
 	public static String[] type = new String[] {"gravel", "sand"};
-	private Icon[] iconbuffer;
+	private IIcon[] iconbuffer;
 
-	public BlockNotFalling(int id, Material material)
+	public BlockNotFalling()
 	{
-		super(id, material);
+		super(Material.sand);
 	}
 
-	public void registerIcons(IconRegister iconregister)
+	@Override
+	public void registerBlockIcons(IIconRegister iconregister)
 	{
-		iconbuffer = new Icon[type.length];
-		iconbuffer[0] = iconregister.registerIcon("gravel");
-		iconbuffer[1] = iconregister.registerIcon("sand");
+		iconbuffer = new IIcon[type.length];
+		iconbuffer[0] = Blocks.gravel.getBlockTextureFromSide(0);
+		iconbuffer[1] = Blocks.sand.getBlockTextureFromSide(0);
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int damage)
+	@Override
+	public IIcon getIcon(int side, int damage)
 	{
 		if(damage == 1)
 		{
@@ -41,17 +52,20 @@ public class BlockNotFalling extends Block
 		}
 	}
 
+	@Override
 	public int damageDropped(int metadata)
 	{
 		return metadata;
 	}
 
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int blockid, CreativeTabs creativeTabs, List list)
+	@Override
+	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
 	{
 		for(int metadatanumber = 0; metadatanumber < type.length; metadatanumber++)
 		{
-			list.add(new ItemStack(blockid, 1, metadatanumber));
+			list.add(new ItemStack(item, 1, metadatanumber));
 		}
 	}
 }

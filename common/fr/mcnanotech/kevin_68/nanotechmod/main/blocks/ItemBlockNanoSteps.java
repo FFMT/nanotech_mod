@@ -1,13 +1,21 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class ItemBlockNanoSteps extends ItemBlock
 {
@@ -15,12 +23,12 @@ public class ItemBlockNanoSteps extends ItemBlock
 	private final Block theHalfSlab;
 	private final Block doubleSlab;
 
-	public ItemBlockNanoSteps(int id)
+	public ItemBlockNanoSteps(Block block)
 	{
-		super(id);
-		this.theHalfSlab = NanotechBlock.nanoSlabSingle;
-		this.doubleSlab = NanotechBlock.nanoSlabDouble;
-		if(id - 256 == NanotechBlock.nanoSlabDouble.blockID)
+		super(block);
+		this.theHalfSlab = NanotechBlock.nanoStepSingle;
+		this.doubleSlab = NanotechBlock.nanoStepDouble;
+		if(block.equals(NanotechBlock.nanoStepDouble))
 		{
 			this.isFullBlock = true;
 		}
@@ -33,9 +41,10 @@ public class ItemBlockNanoSteps extends ItemBlock
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamage(int metadata)
+	@Override
+	public IIcon getIconFromDamage(int metadata)
 	{
-		return Block.blocksList[this.itemID].getIcon(2, metadata);
+		return NanotechModList.nanoPlank.getIcon(2, metadata);//TODO check
 	}
 
 	public int getMetadata(int metadata)
@@ -45,7 +54,9 @@ public class ItemBlockNanoSteps extends ItemBlock
 
 	public String getUnlocalizedName(ItemStack stack)
 	{
-		return ((BlockNanoSteps)theHalfSlab).getFullSlabName(stack.getItemDamage());
+		return ((BlockNanoSteps)theHalfSlab)
+				.func_150002_b(
+						stack.getItemDamage());
 	}
 
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float par8, float par9, float par10)
@@ -64,16 +75,16 @@ public class ItemBlockNanoSteps extends ItemBlock
 		}
 		else
 		{
-			int i1 = world.getBlockId(x, y, z);
+			Block i1 = world.getBlock(x, y, z);
 			int j1 = world.getBlockMetadata(x, y, z);
 			int k1 = j1 & 7;
 			boolean flag = (j1 & 8) != 0;
 
-			if((side == 1 && !flag || side == 0 && flag) && i1 == this.theHalfSlab.blockID && k1 == stack.getItemDamage())
+			if((side == 1 && !flag || side == 0 && flag) && i1.equals(this.theHalfSlab) && k1 == stack.getItemDamage())
 			{
-				if(world.checkNoEntityCollision(this.doubleSlab.getCollisionBoundingBoxFromPool(world, x, y, z)) && world.setBlock(x, y, z, this.doubleSlab.blockID, k1, 3))
+				if(world.checkNoEntityCollision(this.doubleSlab.getCollisionBoundingBoxFromPool(world, x, y, z)) && world.setBlock(x, y, z, this.doubleSlab, k1, 3))
 				{
-					world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this.doubleSlab.stepSound.getPlaceSound(), (this.doubleSlab.stepSound.getVolume() + 1.0F) / 2.0F, this.doubleSlab.stepSound.getPitch() * 0.8F);
+					world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this.doubleSlab.stepSound.getStepResourcePath(), (this.doubleSlab.stepSound.getVolume() + 1.0F) / 2.0F, this.doubleSlab.stepSound.getPitch() * 0.8F);
 					--stack.stackSize;
 				}
 				return true;
@@ -86,17 +97,18 @@ public class ItemBlockNanoSteps extends ItemBlock
 	}
 
 	@SideOnly(Side.CLIENT)
-	public boolean canPlaceItemBlockOnSide(World world, int x, int y, int z, int side, EntityPlayer player, ItemStack stack)
+	@Override
+	public boolean func_150936_a(World world, int x, int y, int z, int side, EntityPlayer player, ItemStack stack)
 	{
 		int i1 = x;
 		int j1 = y;
 		int k1 = z;
-		int id = world.getBlockId(x, y, z);
+		Block id = world.getBlock(x, y, z);
 		int meta = world.getBlockMetadata(x, y, z);
 		int j2 = meta & 7;
 		boolean flag = (meta & 8) != 0;
 
-		if((side == 1 && !flag || side == 0 && flag) && id == this.theHalfSlab.blockID && j2 == stack.getItemDamage())
+		if((side == 1 && !flag || side == 0 && flag) && id.equals(this.theHalfSlab) && j2 == stack.getItemDamage())
 		{
 			return true;
 		}
@@ -132,11 +144,11 @@ public class ItemBlockNanoSteps extends ItemBlock
 				++x;
 			}
 
-			id = world.getBlockId(x, y, z);
+			id = world.getBlock(x, y, z);
 			meta = world.getBlockMetadata(x, y, z);
 			j2 = meta & 7;
 			flag = (meta & 8) != 0;
-			return id == this.theHalfSlab.blockID && j2 == stack.getItemDamage() ? true : super.canPlaceItemBlockOnSide(world, i1, j1, k1, side, player, stack);
+			return id.equals(this.theHalfSlab) && j2 == stack.getItemDamage() ? true : super.func_150936_a(world, i1, j1, k1, side, player, stack);
 		}
 	}
 
@@ -172,15 +184,15 @@ public class ItemBlockNanoSteps extends ItemBlock
 			++x;
 		}
 
-		int i1 = world.getBlockId(x, y, z);
+		Block i1 = world.getBlock(x, y, z);
 		int j1 = world.getBlockMetadata(x, y, z);
 		int k1 = j1 & 7;
 
-		if(i1 == this.theHalfSlab.blockID && k1 == stack.getItemDamage())
+		if(i1.equals(this.theHalfSlab) && k1 == stack.getItemDamage())
 		{
-			if(world.checkNoEntityCollision(this.doubleSlab.getCollisionBoundingBoxFromPool(world, x, y, z)) && world.setBlock(x, y, z, this.doubleSlab.blockID, k1, 3))
+			if(world.checkNoEntityCollision(this.doubleSlab.getCollisionBoundingBoxFromPool(world, x, y, z)) && world.setBlock(x, y, z, this.doubleSlab, k1, 3))
 			{
-				world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this.doubleSlab.stepSound.getPlaceSound(), (this.doubleSlab.stepSound.getVolume() + 1.0F) / 2.0F, this.doubleSlab.stepSound.getPitch() * 0.8F);
+				world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this.doubleSlab.stepSound.getStepResourcePath(), (this.doubleSlab.stepSound.getVolume() + 1.0F) / 2.0F, this.doubleSlab.stepSound.getPitch() * 0.8F);
 				--stack.stackSize;
 			}
 

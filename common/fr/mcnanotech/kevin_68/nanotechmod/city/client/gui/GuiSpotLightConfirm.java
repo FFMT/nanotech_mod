@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.city.client.gui;
 
 import java.io.ByteArrayOutputStream;
@@ -38,6 +45,7 @@ public class GuiSpotLightConfirm extends GuiContainer
 		this.world = world;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initGui()
 	{
@@ -54,13 +62,13 @@ public class GuiSpotLightConfirm extends GuiContainer
 		{
 			if(guiopen == 0)
 			{
-				sendKeyPacket(0, 0, tileSpotLight.getSelectedButtonid());
+				sendKeyPacket(0, 0, tileSpotLight.get(TileEntitySpotLight.SELECTEDBUTTON));
 				this.mc.displayGuiScreen(new GuiSpotLightTimeLine(invPlayer, tileSpotLight, world));
 			}
 			else
 			{
-				sendKeyPacket(0, 0, tileSpotLight.getCreateKeyTime());
-				createKey(tileSpotLight.getCreateKeyTime());
+				sendKeyPacket(0, 0, tileSpotLight.get(TileEntitySpotLight.CREATEKEYTIME));
+				createKey(tileSpotLight.get(TileEntitySpotLight.CREATEKEYTIME));
 				this.mc.displayGuiScreen(new GuiSpotLightCreateKey(invPlayer, tileSpotLight, world));
 			}
 		}
@@ -101,12 +109,13 @@ public class GuiSpotLightConfirm extends GuiContainer
 	public void createKey(int time)
 	{
 		sendKeyPacket(1, 0, time);
-		sendKeyPacket(tileSpotLight.getRedValue(), 1, time);
-		sendKeyPacket(tileSpotLight.getGreenValue(), 2, time);
-		sendKeyPacket(tileSpotLight.getBlueValue(), 3, time);
-		sendKeyPacket(tileSpotLight.getDarkRedValue(), 4, time);
-		sendKeyPacket(tileSpotLight.getDarkGreenValue(), 5, time);
-		sendKeyPacket(tileSpotLight.getDarkBlueValue(), 6, time);
+		sendKeyPacket(tileSpotLight.get(TileEntitySpotLight.RED), 1, time);
+		sendKeyPacket(tileSpotLight.get(TileEntitySpotLight.GREEN), 2, time);
+		sendKeyPacket(tileSpotLight.get(TileEntitySpotLight.BLUE), 3, time);
+		sendKeyPacket(tileSpotLight.get(TileEntitySpotLight.DARKRED), 4, time);
+		sendKeyPacket(tileSpotLight.get(TileEntitySpotLight.DARKGREEN), 5, time);
+		sendKeyPacket(tileSpotLight.get(TileEntitySpotLight.DARKBLUE), 6, time);
+		// TODO END THIS
 		// this.mc.displayGuiScreen(new GuiSpotLightTimeLine(invPlayer,
 		// tileSpotLight, world));
 	}

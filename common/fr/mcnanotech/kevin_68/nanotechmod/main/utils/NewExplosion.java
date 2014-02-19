@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.utils;
 
 import java.util.ArrayList;
@@ -9,6 +16,8 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
@@ -18,6 +27,7 @@ import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
+@SuppressWarnings({"unused", "unchecked", "rawtypes"})
 public class NewExplosion extends Explosion
 {
 	private final Random ExplosionRNG = new Random();
@@ -119,9 +129,9 @@ public class NewExplosion extends Explosion
 			int y = ((ChunkPosition)entry.getKey()).y;
 			int z = ((ChunkPosition)entry.getKey()).z;
 
-			int blockId = this.chunkCache.getBlockId(x, y, z);
+			Block block = this.chunkCache.getBlock(x, y, z);
 
-			if(blockId != 0)
+			if(block != null)
 			{
 				if(((Boolean)entry.getValue()).booleanValue())
 				{
@@ -143,7 +153,6 @@ public class NewExplosion extends Explosion
 					this.worldObj.spawnParticle("explode", (effectX + this.explosionX) / 2.0D, (effectY + this.explosionY) / 2.0D, (effectZ + this.explosionZ) / 2.0D, d3, d4, d5);
 					this.worldObj.spawnParticle("smoke", effectX, effectY, effectZ, d3, d4, d5);
 
-					Block block = Block.blocksList[blockId];
 					int meta = this.worldObj.getBlockMetadata(x, y, z);
 
 					for(ItemStack itemStack : block.getBlockDropped(this.worldObj, x, y, z, meta, 0))
@@ -156,7 +165,7 @@ public class NewExplosion extends Explosion
 								blocksToDrop.put(xZposition, new HashMap());
 							Map map = (Map)blocksToDrop.get(xZposition);
 
-							ItemWithMeta itemWithMeta = new ItemWithMeta(itemStack.itemID, itemStack.getItemDamage());
+							ItemWithMeta itemWithMeta = new ItemWithMeta(itemStack.getItem(), itemStack.getItemDamage());
 
 							if(!map.containsKey(itemWithMeta))
 								map.put(itemWithMeta, new DropData(itemStack.stackSize, y));
@@ -168,8 +177,8 @@ public class NewExplosion extends Explosion
 					}
 				}
 
-				this.worldObj.setBlock(x, y, z, 0, 0, 7);
-				Block.blocksList[blockId].onBlockDestroyedByExplosion(this.worldObj, x, y, z, this);
+				this.worldObj.setBlock(x, y, z, Blocks.air, 0, 7);
+				block.onBlockDestroyedByExplosion(this.worldObj, x, y, z, this);
 			}
 		}
 
@@ -201,17 +210,17 @@ public class NewExplosion extends Explosion
 			int blockX = roundToNegInf(x);
 			int blockZ = roundToNegInf(z);
 
-			int blockId = this.chunkCache.getBlockId(blockX, blockY, blockZ);
+			Block block = this.chunkCache.getBlock(blockX, blockY, blockZ);
 			double absorption = 0.5D;
 
-			if(blockId > 0)
+			if(block != null)
 			{
-				absorption += (Block.blocksList[blockId].getExplosionResistance(this.exploder, this.worldObj, blockX, blockY, blockZ, this.explosionX, this.explosionY, this.explosionZ) + 4.0D) * 0.3D;
+				absorption += (block.getExplosionResistance(this.exploder, this.worldObj, blockX, blockY, blockZ, this.explosionX, this.explosionY, this.explosionZ) + 4.0D) * 0.3D;
 			}
 
 			if(absorption > power)
 				break;
-			if(blockId > 0)
+			if(block != null)
 			{
 				ChunkPosition position = new ChunkPosition(blockX, blockY, blockZ);
 
@@ -333,12 +342,12 @@ public class NewExplosion extends Explosion
 
 	private static class ItemWithMeta
 	{
-		int itemId;
+		Item itemId;
 		int metaData;
 
-		ItemWithMeta(int itemId, int metaData)
+		ItemWithMeta(Item item, int metaData)
 		{
-			this.itemId = itemId;
+			this.itemId = item;
 			this.metaData = metaData;
 		}
 
@@ -356,7 +365,7 @@ public class NewExplosion extends Explosion
 
 		public int hashCode()
 		{
-			return this.itemId * 31 ^ this.metaData;
+			return Item.getIdFromItem(this.itemId) * 31 ^ this.metaData;
 		}
 	}
 

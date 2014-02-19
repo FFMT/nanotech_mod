@@ -1,6 +1,12 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -59,11 +65,5 @@ public class ItemAlters extends Item
 
 		player.addPotionEffect(new PotionEffect(potion.id, 300, 0));
 		return 1;
-	}
-
-	@Override
-	public void registerIcons(IIconRegister iconregister)
-	{
-		this.itemIcon = iconregister.registerIcon("nanotechmod:altersItem");
 	}
 }

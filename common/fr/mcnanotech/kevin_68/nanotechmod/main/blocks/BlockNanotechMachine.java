@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.blocks;
 
 import java.util.ArrayList;
@@ -7,18 +14,18 @@ import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import net.minecraftforge.common.FakePlayer;
-import cpw.mods.fml.common.network.FMLNetworkHandler;
+import net.minecraftforge.common.util.FakePlayer;
+import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
@@ -29,26 +36,29 @@ public class BlockNanotechMachine extends Block
 {
 	public static String[] subName = new String[] {"portableChest"};
 
-	protected BlockNanotechMachine(int id, Material material)
+	protected BlockNanotechMachine(Material material)
 	{
-		super(id, material);
+		super(material);
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int metadata)
+	@Override
+	public IIcon getIcon(int side, int metadata)
 	{
 		if(metadata == 0)
 		{
-			return Block.chest.getBlockTextureFromSide(0);
+			return Blocks.chest.getBlockTextureFromSide(0);
 		}
 		return blockIcon;
 	}
 
+	@Override
 	public boolean renderAsNormalBlock()
 	{
 		return false;
 	}
 
+	@Override
 	public boolean isOpaqueCube()
 	{
 		return false;
@@ -61,6 +71,7 @@ public class BlockNanotechMachine extends Block
 		return FFMTClientRegistry.tesrRenderId;
 	}
 
+	@Override
 	public boolean hasTileEntity(int metadata)
 	{
 		switch(metadata)
@@ -72,6 +83,7 @@ public class BlockNanotechMachine extends Block
 		}
 	}
 
+	@Override
 	public TileEntity createTileEntity(World world, int metadata)
 	{
 		switch(metadata)
@@ -83,13 +95,14 @@ public class BlockNanotechMachine extends Block
 		}
 	}
 
-	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune)
+	@Override
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
 	{
 		if(metadata == 0)
 		{
 			ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 			ItemStack chestStack = new ItemStack(this, 1, 0);
-			TileEntity te = world.getBlockTileEntity(x, y, z);
+			TileEntity te = world.getTileEntity(x, y, z);
 			if(te != null && te instanceof TileEntityPortableChest)
 			{
 				TileEntityPortableChest teChest = (TileEntityPortableChest)te;
@@ -110,9 +123,9 @@ public class BlockNanotechMachine extends Block
 				nbttag.setTag("Items", nbttaglist);
 				chestStack.setTagCompound(nbttag);
 
-				if(teChest.isInvNameLocalized())
+				if(teChest.hasCustomInventoryName())
 				{
-					chestStack.setItemName(teChest.getCustomGuiName());
+					chestStack.setStackDisplayName(teChest.getCustomGuiName());
 				}
 			}
 			ret.add(chestStack);
@@ -120,23 +133,25 @@ public class BlockNanotechMachine extends Block
 		}
 		else
 		{
-			return super.getBlockDropped(world, x, y, z, metadata, fortune);
+			return super.getDrops(world, x, y, z, metadata, fortune);
 		}
 	}
 
+	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
 		FMLNetworkHandler.openGui(player, NanotechMod.modInstance, 1, world, x, y, z);
 		return true;
 	}
 
+	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
 	{
 		int direction = MathHelper.floor_double((double)(living.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
 
 		if(stack.getItemDamage() == 0)
 		{
-			TileEntity te = world.getBlockTileEntity(x, y, z);
+			TileEntity te = world.getTileEntity(x, y, z);
 			if(te != null && te instanceof TileEntityPortableChest)
 			{
 				TileEntityPortableChest teChest = (TileEntityPortableChest)te;
@@ -149,10 +164,10 @@ public class BlockNanotechMachine extends Block
 						teChest.setCustomGuiName(stack.getDisplayName());
 					}
 
-					NBTTagList nbttaglist = stack.getTagCompound().getTagList("Items");
+					NBTTagList nbttaglist = stack.getTagCompound().getTagList("Items", 0);// TODO check 0
 					for(int i = 0; i < nbttaglist.tagCount(); i++)
 					{
-						NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.tagAt(i);
+						NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(i);
 						int j = nbttagcompound1.getByte("Slot");
 
 						if(j >= 0 && j < teChest.inventory.length)
@@ -166,19 +181,20 @@ public class BlockNanotechMachine extends Block
 		world.markBlockForUpdate(x, y, z);
 	}
 
-	public boolean removeBlockByPlayer(World world, EntityPlayer player, int x, int y, int z)
+	@Override
+	public boolean removedByPlayer(World world, EntityPlayer player, int x, int y, int z)
 	{
 		if(!world.isRemote && !player.capabilities.isCreativeMode && world.getBlockMetadata(x, y, z) == 0)
 		{
-			player.addStat(StatList.mineBlockStatArray[this.blockID], 1);
+			player.addStat(StatList.mineBlockStatArray[Block.getIdFromBlock(this)], 1);
 			player.addExhaustion(0.025F);
 			int i1 = EnchantmentHelper.getFortuneModifier(player);
-			if(!player.getEntityName().contains("[") || !(player instanceof FakePlayer))
+			if(!player.getDisplayName().contains("[") || !(player instanceof FakePlayer))// TODO check
 			{
-				ArrayList<ItemStack> items = getBlockDropped(world, x, y, z, world.getBlockMetadata(x, y, z), i1);
+				ArrayList<ItemStack> items = getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), i1);
 				for(ItemStack is : items)
 				{
-					this.dropBlockAsItem_do(world, x, y, z, is);
+					this.dropBlockAsItem(world, x, y, z, is);
 				}
 			}
 		}
@@ -186,20 +202,23 @@ public class BlockNanotechMachine extends Block
 		return true;
 	}
 
+	@Override
 	public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int side)
 	{}
 
-	public void breakBlock(World world, int x, int y, int z, int side, int metadata)
+	@Override
+	public void breakBlock(World world, int x, int y, int z, Block block, int metadata)
 	{
-		super.breakBlock(world, x, y, z, side, metadata);
+		super.breakBlock(world, x, y, z, block, metadata);
 	}
 
+	@Override
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)
 	{
 		if(world.getBlockMetadata(x, y, z) == 0)
 		{
 			ItemStack chestStack = new ItemStack(this, 1, 0);
-			TileEntity te = world.getBlockTileEntity(x, y, z);
+			TileEntity te = world.getTileEntity(x, y, z);
 			if(te != null && te instanceof TileEntityPortableChest)
 			{
 				TileEntityPortableChest teChest = (TileEntityPortableChest)te;
@@ -220,9 +239,9 @@ public class BlockNanotechMachine extends Block
 				nbttag.setTag("Items", nbttaglist);
 				chestStack.setTagCompound(nbttag);
 
-				if(teChest.isInvNameLocalized())
+				if(teChest.hasCustomInventoryName())
 				{
-					chestStack.setItemName(teChest.getCustomGuiName());
+					chestStack.setStackDisplayName(teChest.getCustomGuiName());
 				}
 			}
 			return chestStack;
@@ -233,10 +252,11 @@ public class BlockNanotechMachine extends Block
 		}
 	}
 
+	@Override
 	public boolean onBlockEventReceived(World world, int x, int y, int z, int eventId, int eventValue)
 	{
 		super.onBlockEventReceived(world, x, y, z, eventId, eventValue);
-		TileEntity tileentity = world.getBlockTileEntity(x, y, z);
+		TileEntity tileentity = world.getTileEntity(x, y, z);
 		return tileentity != null ? tileentity.receiveClientEvent(eventId, eventValue) : false;
 	}
 }

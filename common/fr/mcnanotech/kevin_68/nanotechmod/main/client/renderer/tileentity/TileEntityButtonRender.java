@@ -1,13 +1,16 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.tileentity;
 
-import net.minecraft.block.Block;
-import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
@@ -40,16 +43,5 @@ public class TileEntityButtonRender extends TileEntitySpecialRenderer
 		this.model.renderModel((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F, tileentity.getBlockMetadata() == 2 ? true : (tileentity.getBlockMetadata() == 3 ? true : false));
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
-	}
-
-	private void adjustLightFixture(World world, int i, int j, int k, Block block)
-	{
-		Tessellator tess = Tessellator.instance;
-		float brightness = block.getBlockBrightness(world, i, j, k);
-		int skyLight = world.getLightBrightnessForSkyBlocks(i, j, k, 0);
-		int modulousModifier = skyLight % 65536;
-		int divModifier = skyLight / 65536;
-		tess.setColorOpaque_F(brightness, brightness, brightness);
-		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)modulousModifier, divModifier);
 	}
 }

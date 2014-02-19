@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.city.blocks;
 
 import net.minecraft.block.BlockContainer;
@@ -20,7 +27,7 @@ public class BlockFountain extends BlockContainer
 	{
 		super(Material.iron);
 	}
-	
+
 	@Override
 	public TileEntity createNewTileEntity(World world, int metadata)
 	{
@@ -40,18 +47,26 @@ public class BlockFountain extends BlockContainer
 		return true;
 	}
 
+	@Override
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
+
+	@Override
 	public boolean renderAsNormalBlock()
 	{
 		return false;
 	}
 
+	@Override
 	public int getRenderType()
 	{
 		return 0;
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconregister)
+	public void registerBlockIcons(IIconRegister iconregister)
 	{
 		this.blockIcon = iconregister.registerIcon("stone_slab_top");
 		this.top = iconregister.registerIcon("nanotechmodcity:fountaintop");

@@ -1,26 +1,32 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.city.core;
 
+import net.minecraft.item.Item;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 
-public class CityCraftingHandler //TODO implements ICraftingHandler
+public class CityCraftingHandler
 {
-	/*@Override
-	public void onCrafting(EntityPlayer player, ItemStack stack, IInventory craftMatrix)
+	@SubscribeEvent
+	public void onItemCrafted(ItemCraftedEvent event)
 	{
-		if(stack.itemID == NanotechCityBlock.spotLight.blockID)
+		if(event.crafting.getItem().equals(Item.getItemFromBlock(NanotechCityList.spotLight)))
 		{
-			player.triggerAchievement(NanotechCityAchievement.blockSpotLight);
+			event.player.triggerAchievement(NanotechCityAchievement.blockSpotLight);
 		}
-		if(stack.itemID == NanotechCityBlock.trail.blockID)
+		if(event.crafting.getItem().equals(Item.getItemFromBlock(NanotechCityList.trail)))
 		{
-			player.triggerAchievement(NanotechCityAchievement.blockTrail);
+			event.player.triggerAchievement(NanotechCityAchievement.blockTrail);
 		}
-		if(stack.itemID == NanotechCityBlock.trashcan.blockID)
+		if(event.crafting.getItem().equals(Item.getItemFromBlock(NanotechCityList.trashcan)))
 		{
-			player.triggerAchievement(NanotechCityAchievement.blockTrashCan);
+			event.player.triggerAchievement(NanotechCityAchievement.blockTrashCan);
 		}
 	}
-
-	@Override
-	public void onSmelting(EntityPlayer player, ItemStack item)
-	{}*/
 }

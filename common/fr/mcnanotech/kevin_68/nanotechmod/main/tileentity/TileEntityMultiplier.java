@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,7 +41,7 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 	}
 
 	@Override
-	public String getInvName()
+	public String getInventoryName()
 	{
 		return "container.multiplier";
 	}
@@ -60,7 +67,7 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
-		return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) == this && player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
+		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
 	}
 
 	@Override
@@ -79,11 +86,11 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 	{
 		super.readFromNBT(nbttagCompound);
 
-		NBTTagList tagList = nbttagCompound.getTagList("Inventory");
+		NBTTagList tagList = nbttagCompound.getTagList("Inventory", 1);
 
 		for(int i = 0; i < tagList.tagCount(); i++)
 		{
-			NBTTagCompound tag = (NBTTagCompound)tagList.tagAt(i);
+			NBTTagCompound tag = (NBTTagCompound)tagList.getCompoundTagAt(i);
 			byte slot = tag.getByte("Slot");
 
 			if(slot >= 0 && slot < inventory.length)
@@ -161,15 +168,15 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 	}
 
 	@Override
-	public void openChest()
+	public void openInventory()
 	{}
 
 	@Override
-	public void closeChest()
+	public void closeInventory()
 	{}
 
 	@Override
-	public boolean isInvNameLocalized()
+	public boolean hasCustomInventoryName()
 	{
 		return this.customName != null && this.customName.length() > 0;
 	}
@@ -192,6 +199,6 @@ public class TileEntityMultiplier extends TileEntity implements IInventory
 
 	private boolean isItemStackEqualWithoutQuantity(ItemStack stack, ItemStack stack2)
 	{
-		return stack.itemID != stack2.itemID ? false : (stack.getItemDamage() != stack2.getItemDamage() ? false : (stack.stackTagCompound == null && stack2.stackTagCompound != null ? false : stack.stackTagCompound == null || stack.stackTagCompound.equals(stack2.stackTagCompound)));
+		return !stack.getItem().equals(stack2.getItem()) ? false : (stack.getItemDamage() != stack2.getItemDamage() ? false : (stack.stackTagCompound == null && stack2.stackTagCompound != null ? false : stack.stackTagCompound == null || stack.stackTagCompound.equals(stack2.stackTagCompound)));
 	}
 }

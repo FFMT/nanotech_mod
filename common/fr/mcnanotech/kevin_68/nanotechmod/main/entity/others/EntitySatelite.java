@@ -1,19 +1,26 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.entity.others;
 
 import java.util.List;
 
 import net.minecraft.block.Block;
-import net.minecraft.enchantment.EnchantmentThorns;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.packet.Packet70GameEvent;
+import net.minecraft.network.play.server.S2BPacketChangeGameState;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
@@ -22,10 +29,10 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
-import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechDamageSource;
 
+@SuppressWarnings("unused")
 public class EntitySatelite extends Entity
 {
 	private int xTile = -1;
@@ -34,23 +41,15 @@ public class EntitySatelite extends Entity
 	public int launcherBlockX;
 	public int launcherBlockY;
 	public int launcherBlockZ;
-	private int inTile;
+	private Block inTile;
 	private int inData;
 	private boolean inGround;
-
-	/** 1 if the player can pick up the arrow */
 	public int canBePickedUp;
-
-	/** Seems to be some sort of timer for animating an arrow. */
 	public int arrowShake;
-
-	/** The owner of this arrow. */
 	public Entity shootingEntity;
 	private int ticksInGround;
 	private int ticksInAir;
 	private double damage = 2.0D;
-
-	/** The amount of knockback an arrow applies when it hits a mob. */
 	private int knockbackStrength;
 
 	public EntitySatelite(World par1World)
@@ -81,15 +80,12 @@ public class EntitySatelite extends Entity
 		launcherBlockZ = z;
 	}
 
+	@Override
 	protected void entityInit()
 	{
 		this.dataWatcher.addObject(16, Byte.valueOf((byte)0));
 	}
 
-	/**
-	 * Similar to setArrowHeading, it's point the throwable entity to a x, y, z
-	 * direction.
-	 */
 	public void setThrowableHeading(double par1, double par3, double par5, float par7, float par8)
 	{
 		float f2 = MathHelper.sqrt_double(par1 * par1 + par3 * par3 + par5 * par5);
@@ -112,10 +108,6 @@ public class EntitySatelite extends Entity
 	}
 
 	@SideOnly(Side.CLIENT)
-	/**
-	 * Sets the position and rotation. Only difference from the other one is no bounding on the rotation. Args: posX,
-	 * posY, posZ, yaw, pitch
-	 */
 	public void setPositionAndRotation2(double par1, double par3, double par5, float par7, float par8, int par9)
 	{
 		this.setPosition(par1, par3, par5);
@@ -123,9 +115,7 @@ public class EntitySatelite extends Entity
 	}
 
 	@SideOnly(Side.CLIENT)
-	/**
-	 * Sets the velocity to the args. Args: x, y, z
-	 */
+	@Override
 	public void setVelocity(double par1, double par3, double par5)
 	{
 		this.motionX = par1;
@@ -144,9 +134,8 @@ public class EntitySatelite extends Entity
 		}
 	}
 
-	/**
-	 * Called to update the entity's position/logic.
-	 */
+	@SuppressWarnings("rawtypes")
+	@Override
 	public void onUpdate()
 	{
 		super.onUpdate();
@@ -158,12 +147,12 @@ public class EntitySatelite extends Entity
 			this.prevRotationPitch = this.rotationPitch = (float)(Math.atan2(this.motionY, (double)f) * 180.0D / Math.PI);
 		}
 
-		int i = this.worldObj.getBlockId(this.xTile, this.yTile, this.zTile);
+		Block block = this.worldObj.getBlock(this.xTile, this.yTile, this.zTile);
 
-		if(i > 0)
+		if(block != null)
 		{
-			Block.blocksList[i].setBlockBoundsBasedOnState(this.worldObj, this.xTile, this.yTile, this.zTile);
-			AxisAlignedBB axisalignedbb = Block.blocksList[i].getCollisionBoundingBoxFromPool(this.worldObj, this.xTile, this.yTile, this.zTile);
+			block.setBlockBoundsBasedOnState(this.worldObj, this.xTile, this.yTile, this.zTile);
+			AxisAlignedBB axisalignedbb = block.getCollisionBoundingBoxFromPool(this.worldObj, this.xTile, this.yTile, this.zTile);
 
 			if(axisalignedbb != null && axisalignedbb.isVecInside(this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ)))
 			{
@@ -178,10 +167,10 @@ public class EntitySatelite extends Entity
 
 		if(this.inGround)
 		{
-			EntityItem proco = new EntityItem(worldObj, this.posX, this.posY, this.posZ, new ItemStack(NanotechItem.itemBase, 1, 8));
-			EntityItem iron = new EntityItem(worldObj, this.posX, this.posY, this.posZ, new ItemStack(Item.ingotIron, 5));
-			EntityItem red = new EntityItem(worldObj, this.posX, this.posY, this.posZ, new ItemStack(Item.redstone, 10));
-			EntityItem gold = new EntityItem(worldObj, this.posX, this.posY, this.posZ, new ItemStack(Item.ingotGold, 2));
+			EntityItem proco = new EntityItem(worldObj, this.posX, this.posY, this.posZ, new ItemStack(NanotechModList.itemBase, 1, 8));
+			EntityItem iron = new EntityItem(worldObj, this.posX, this.posY, this.posZ, new ItemStack(Items.iron_ingot, 5));
+			EntityItem red = new EntityItem(worldObj, this.posX, this.posY, this.posZ, new ItemStack(Items.redstone, 10));
+			EntityItem gold = new EntityItem(worldObj, this.posX, this.posY, this.posZ, new ItemStack(Items.gold_ingot, 2));
 			this.worldObj.newExplosion(null, this.posX, this.posY, this.posZ, 15, false, true);
 			if(!worldObj.isRemote)
 			{
@@ -197,7 +186,7 @@ public class EntitySatelite extends Entity
 			++this.ticksInAir;
 			Vec3 vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
 			Vec3 vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
-			MovingObjectPosition movingobjectposition = this.worldObj.rayTraceBlocks_do_do(vec3, vec31, false, true);
+			MovingObjectPosition movingobjectposition = this.worldObj.func_147447_a(vec3, vec31, false, true, false);
 			vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
 			vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 
@@ -288,14 +277,15 @@ public class EntitySatelite extends Entity
 								}
 							}
 
-							if(this.shootingEntity != null)
+							if(this.shootingEntity != null && this.shootingEntity instanceof EntityLivingBase)
 							{
-								EnchantmentThorns.func_92096_a(this.shootingEntity, entitylivingbase, this.rand);
+								EnchantmentHelper.func_151384_a(entitylivingbase, this.shootingEntity);
+								EnchantmentHelper.func_151385_b((EntityLivingBase)this.shootingEntity, entitylivingbase);
 							}
 
 							if(this.shootingEntity != null && movingobjectposition.entityHit != this.shootingEntity && movingobjectposition.entityHit instanceof EntityPlayer && this.shootingEntity instanceof EntityPlayerMP)
 							{
-								((EntityPlayerMP)this.shootingEntity).playerNetServerHandler.sendPacketToPlayer(new Packet70GameEvent(6, 0));
+								((EntityPlayerMP)this.shootingEntity).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
 							}
 						}
 
@@ -321,7 +311,7 @@ public class EntitySatelite extends Entity
 					this.xTile = movingobjectposition.blockX;
 					this.yTile = movingobjectposition.blockY;
 					this.zTile = movingobjectposition.blockZ;
-					this.inTile = this.worldObj.getBlockId(this.xTile, this.yTile, this.zTile);
+					this.inTile = this.worldObj.getBlock(this.xTile, this.yTile, this.zTile);
 					this.inData = this.worldObj.getBlockMetadata(this.xTile, this.yTile, this.zTile);
 					this.motionX = (double)((float)(movingobjectposition.hitVec.xCoord - this.posX));
 					this.motionY = (double)((float)(movingobjectposition.hitVec.yCoord - this.posY));
@@ -334,9 +324,9 @@ public class EntitySatelite extends Entity
 					this.inGround = true;
 					this.arrowShake = 7;
 
-					if(this.inTile != 0)
+					if(this.inTile != null)
 					{
-						Block.blocksList[this.inTile].onEntityCollidedWithBlock(this.worldObj, this.xTile, this.yTile, this.zTile, this);
+						this.inTile.onEntityCollidedWithBlock(this.worldObj, this.xTile, this.yTile, this.zTile, this);
 					}
 				}
 			}
@@ -388,11 +378,10 @@ public class EntitySatelite extends Entity
 			this.motionZ *= (double)f4;
 			this.motionY -= (double)f1;
 			this.setPosition(this.posX, this.posY, this.posZ);
-			this.doBlockCollisions();
 
-			if(inGround && worldObj.getBlockId(launcherBlockX, launcherBlockY, launcherBlockZ) == NanotechBlock.satelite.blockID && worldObj.getBlockMetadata(launcherBlockX, launcherBlockY, launcherBlockZ) == 2)
+			if(inGround && worldObj.getBlock(launcherBlockX, launcherBlockY, launcherBlockZ).equals(NanotechModList.satelite) && worldObj.getBlockMetadata(launcherBlockX, launcherBlockY, launcherBlockZ) == 2)
 			{
-				this.worldObj.setBlock(launcherBlockX, launcherBlockY, launcherBlockZ, NanotechBlock.satelite.blockID, 3, 3);
+				this.worldObj.setBlock(launcherBlockX, launcherBlockY, launcherBlockZ, NanotechModList.satelite, 3, 3);
 			}
 		}
 	}
@@ -405,7 +394,7 @@ public class EntitySatelite extends Entity
 		par1NBTTagCompound.setShort("xTile", (short)this.xTile);
 		par1NBTTagCompound.setShort("yTile", (short)this.yTile);
 		par1NBTTagCompound.setShort("zTile", (short)this.zTile);
-		par1NBTTagCompound.setByte("inTile", (byte)this.inTile);
+		par1NBTTagCompound.setByte("inTile", (byte)Block.getIdFromBlock(this.inTile));
 		par1NBTTagCompound.setByte("inData", (byte)this.inData);
 		par1NBTTagCompound.setByte("shake", (byte)this.arrowShake);
 		par1NBTTagCompound.setByte("inGround", (byte)(this.inGround ? 1 : 0));
@@ -419,7 +408,7 @@ public class EntitySatelite extends Entity
 		this.xTile = par1NBTTagCompound.getShort("xTile");
 		this.yTile = par1NBTTagCompound.getShort("yTile");
 		this.zTile = par1NBTTagCompound.getShort("zTile");
-		this.inTile = par1NBTTagCompound.getByte("inTile") & 255;
+		this.inTile = Block.getBlockById(par1NBTTagCompound.getByte("inTile") & 255);
 		this.inData = par1NBTTagCompound.getByte("inData") & 255;
 		this.arrowShake = par1NBTTagCompound.getByte("shake") & 255;
 		this.inGround = par1NBTTagCompound.getByte("inGround") == 1;

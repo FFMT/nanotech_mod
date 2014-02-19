@@ -1,25 +1,32 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.event;
 
-import net.minecraftforge.event.Event.Result;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.player.BonemealEvent;
+import cpw.mods.fml.common.eventhandler.Event.Result;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.BlockNanoSaplings;
-import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
 
 public class EventBonemeal
 {
 	private int counter = 0;
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onUseBonemeal(BonemealEvent event)
 	{
-		if(event.ID == NanotechBlock.nanoSaplings.blockID)
+		if(event.block.equals(NanotechModList.nanoSaplings))
 		{
 			if(!event.world.isRemote)
 			{
 				if(counter > event.world.rand.nextInt(2) + 2)
 				{
-					((BlockNanoSaplings)NanotechBlock.nanoSaplings).growTree(event.world, event.X, event.Y, event.Z, event.world.rand);
+					((BlockNanoSaplings)NanotechModList.nanoSaplings).func_149878_d(event.world, event.x, event.y, event.z, event.world.rand);
 					event.setResult(Result.ALLOW);
 					counter = 0;
 				}

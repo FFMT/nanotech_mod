@@ -1,13 +1,20 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
@@ -40,9 +47,9 @@ public class RenderSuperEnderman extends RenderLiving
 		return this.getEndermanTexture((MobSuperEnderman)entity);
 	}
 
-	public void renderMob_superenderman(MobSuperEnderman mob, double par2, double par4, double par6, float par8, float par9)
+	public void renderMobSuperenderman(MobSuperEnderman mob, double par2, double par4, double par6, float par8, float par9)
 	{
-		this.model.isCarrying = mob.getCarried() > 0;
+		this.model.isCarrying = mob.func_146080_bZ() != null;
 		this.model.isAttacking = mob.isScreaming();
 
 		if(mob.isScreaming())
@@ -52,14 +59,14 @@ public class RenderSuperEnderman extends RenderLiving
 			par6 += this.rnd.nextGaussian() * var10;
 		}
 
-		super.doRenderLiving(mob, par2, par4, par6, par8, par9);
+		super.doRender(mob, par2, par4, par6, par8, par9);
 	}
 
-	protected void renderCarrying(MobSuperEnderman mob, float par2)
+	protected void renderCarrying(MobSuperEnderman superEnderMan, float par2)
 	{
-		super.renderEquippedItems(mob, par2);
+		super.renderEquippedItems(superEnderMan, par2);
 
-		if(mob.getCarried() > 0)
+		if(superEnderMan.func_146080_bZ().getMaterial() != Material.air)
 		{
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 			GL11.glPushMatrix();
@@ -69,14 +76,13 @@ public class RenderSuperEnderman extends RenderLiving
 			GL11.glRotatef(20.0F, 1.0F, 0.0F, 0.0F);
 			GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
 			GL11.glScalef(-f1, -f1, f1);
-			int i = mob.getBrightnessForRender(par2);
+			int i = superEnderMan.getBrightnessForRender(par2);
 			int j = i % 65536;
 			int k = i / 65536;
 			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)j / 1.0F, (float)k / 1.0F);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			this.bindTexture(TextureMap.locationBlocksTexture);
-			this.renderBlocks.renderBlockAsItem(Block.blocksList[mob.getCarried()], mob.getCarryingData(), 1.0F);
+			this.field_147909_c.renderBlockAsItem(superEnderMan.func_146080_bZ(), superEnderMan.getCarryingData(), 1.0F);
 			GL11.glPopMatrix();
 			GL11.glDisable(GL12.GL_RESCALE_NORMAL);
 		}
@@ -107,23 +113,27 @@ public class RenderSuperEnderman extends RenderLiving
 		}
 	}
 
-	protected int shouldRenderPass(EntityLiving entityliving, int par2, float par3)
+	@Override
+	protected int shouldRenderPass(EntityLivingBase entityliving, int par2, float par3)
 	{
 		return this.renderEyes((MobSuperEnderman)entityliving, par2, par3);
 	}
 
-	protected void renderEquippedItems(EntityLiving entityliving, float par2)
+	@Override
+	protected void renderEquippedItems(EntityLivingBase entityliving, float par2)
 	{
 		this.renderCarrying((MobSuperEnderman)entityliving, par2);
 	}
 
-	public void doRenderLiving(EntityLiving entityliving, double par2, double par4, double par6, float par8, float par9)
+	@Override
+	public void doRender(EntityLivingBase entityliving, double par2, double par4, double par6, float par8, float par9)
 	{
-		this.renderMob_superenderman((MobSuperEnderman)entityliving, par2, par4, par6, par8, par9);
+		this.renderMobSuperenderman((MobSuperEnderman)entityliving, par2, par4, par6, par8, par9);
 	}
 
+	@Override
 	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9)
 	{
-		this.renderMob_superenderman((MobSuperEnderman)entity, par2, par4, par6, par8, par9);
+		this.renderMobSuperenderman((MobSuperEnderman)entity, par2, par4, par6, par8, par9);
 	}
 }

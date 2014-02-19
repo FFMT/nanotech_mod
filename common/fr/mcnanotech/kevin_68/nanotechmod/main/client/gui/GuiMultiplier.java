@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -25,9 +32,9 @@ public class GuiMultiplier extends GuiContainer
 	@Override
 	protected void drawGuiContainerForegroundLayer(int i, int j)
 	{
-		fontRenderer.drawString(tileMultiplier.isInvNameLocalized() ? tileMultiplier.getCustomName() : I18n.getString(tileMultiplier.getInvName()), 8, 6, 4210752);
-		fontRenderer.drawString(I18n.getString("container.input"), 50, 20, 4210752);
-		fontRenderer.drawString(I18n.getString("container.output"), 100, 20, 4210752);
+		fontRendererObj.drawString(tileMultiplier.hasCustomInventoryName() ? tileMultiplier.getCustomName() : I18n.format(tileMultiplier.getInventoryName()), 8, 6, 4210752);
+		fontRendererObj.drawString(I18n.format("container.input"), 50, 20, 4210752);
+		fontRendererObj.drawString(I18n.format("container.output"), 100, 20, 4210752);
 	}
 
 	@Override

@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.city.tileentity;
 
 import java.util.ArrayList;
@@ -15,10 +22,46 @@ import net.minecraft.util.AxisAlignedBB;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechCityList;
+import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechModCity;
 
 public class TileEntitySpotLight extends TileEntity implements IInventory
 {
 	private ItemStack[] inventory = new ItemStack[2];
+	private String customName;
+
+	@SideOnly(Side.CLIENT)
+	private long worldTimeClient;
+	@SideOnly(Side.CLIENT)
+	private float activeBooleanFloat;
+	public boolean isActive;
+
+	/**
+	 * Index
+	 */
+	public static final int REVSMOOTHMODE = -5, REVTIMELINEMODE = -4, REVREVERSEROTATION = -3, REVSECONDARYLAZER = -2, REVAUTOROTATE = -1, RED = 0, GREEN = 1, BLUE = 2, DARKRED = 3, DARKGREEN = 4, DARKBLUE = 5, ANGLE1 = 6, ANGLE2 = 7, AUTOROTATE = 8, ROTATIONSPEED = 9, SECONDARYLAZER = 10, REVERSEROTATION = 11, CONFIGCOPIER = 12, TIMELINEMODE = 13, CREATEKEYTIME = 14, SELECTEDBUTTON = 15,
+			TIMELINE = 16, SMOOTHMODE = 17;
+
+	public static final int KEYLIST = 0, REDKEY = 1, GREENKEY = 2, BLUEKEY = 3, DARKREDKEY = 4, DARKGREENKEY = 5, DARKBLUEKEY = 6, ANGLE1KEY = 7, ANGLE2KEY = 8, AUTOROTATEKEY = 9, ROTATIONSPEEDKEY = 10, SECONDARYLAZERKEY = 11, REVERSEROTATIONKEY = 12;
+
+	public int red;
+	public int green;
+	public int blue;
+	public int darkRed;
+	public int darkGreen;
+	public int darkBlue;
+	public int angle1;
+	public int angle2;
+	public int autoRotate;
+	public int rotationSpeed;
+	public int secondaryLazer;
+	public int reverseRotation;
+
+	public int timeLineMode;
+	public int timeLine, lastTimeUse;
+	public int createKeyTime;
+	public int selectedbuttonid;
+	public int smoothMode;
+
 	private int[] keyList = new int[121];
 	private int[] redkey = new int[121];
 	private int[] greenkey = new int[121];
@@ -33,52 +76,26 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	private int[] secondaryLazerkey = new int[121];
 	private int[] reverseRotationkey = new int[121];
 
-	private String customName;
-
-	@SideOnly(Side.CLIENT)
-	private long worldTimeClient;
-	@SideOnly(Side.CLIENT)
-	private float activeBooleanFloat;
-	public boolean isActive;
-
-	public int red;
-	public int green;
-	public int blue;
-	public int darkRed;
-	public int darkGreen;
-	public int darkBlue;
-	public int angle1;
-	public int angle2;
-	public boolean autoRotate;
-	public int rotationSpeed;
-	public boolean secondaryLazer;
-	public boolean reverseRotation;
-
-	public boolean timeLineMode;
-	public int timeLine, lastTimeUse;
-	public int createKeyTime;
-	public int selectedbuttonid;
-	public boolean smoothMode;
-
+	@SuppressWarnings({"unchecked", "rawtypes", "unused"})
 	public void updateEntity()
 	{
 		if(this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
 		{
 
-			if(getTimeLineMode())
+			if(get(TIMELINEMODE) == 1)
 			{
-				if(getTimeLine() > 1200)
+				if(get(TIMELINE) > 1200)
 				{
-					setTimeLine(0);
+					set(TIMELINE, 0);
 				}
 				else
 				{
-					setTimeLine(getTimeLine() + 1);
+					set(TIMELINE, get(TIMELINE) + 1);
 				}
 
 				if(!this.worldObj.isRemote)
 				{
-					if(getSmoothMode())
+					if(get(SMOOTHMODE) == 1)
 					{
 						ArrayList<Integer> keys = new ArrayList();
 						ArrayList<Integer> timeBetwinKey = new ArrayList();
@@ -87,7 +104,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 
 						for(int i = 0; i != 121; i++)
 						{
-							if(hasKey(i))
+							if(get(KEYLIST, i) == 1)
 							{
 								keys.add(keys.size(), i * 10);
 							}
@@ -116,25 +133,25 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 							{
 								if(i == 0)
 								{
-									if((getTimeLine() > timeToChange.get(timeToChange.size() - 1) && getTimeLine() <= 1210) || (getTimeLine() >= 0 && getTimeLine() <= timeToChange.get(i)))
+									if((get(TIMELINE) > timeToChange.get(timeToChange.size() - 1) && get(TIMELINE) <= 1210) || (get(TIMELINE) >= 0 && get(TIMELINE) <= timeToChange.get(i)))
 									{
-										int prevKeyRed = this.getRedKey(timeToChange.get(timeToChange.size() - 1) / 10);
-										int nextKeyRed = this.getRedKey(timeToChange.get(i) / 10);
+										int prevKeyRed = this.get(REDKEY, timeToChange.get(timeToChange.size() - 1) / 10);
+										int nextKeyRed = this.get(REDKEY, timeToChange.get(i) / 10);
 										int percentAfter0 = timeToChange.get(i) / timeBetwinKey.get(0);
 										int redKeyAt0 = (nextKeyRed - prevKeyRed) * percentAfter0;
 
 										// Unworking TODO fix
-										if(getTimeLine() <= timeToChange.get(i))
+										if(get(TIMELINE) <= timeToChange.get(i))
 										{
 											if(prevKeyRed < nextKeyRed)
 											{
 												float numberRed = (nextKeyRed - redKeyAt0) / (timeToChange.get(i) / 10);
-												setRedValue((int)(redKeyAt0 + (numberRed * (timeToChange.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+												set(RED, (int)(redKeyAt0 + (numberRed * (timeToChange.get(i) - (timeToChange.get(i) - get(TIMELINE))) / 10)));
 											}
 											else
 											{
 												float numberRed = (redKeyAt0 - nextKeyRed) / (timeToChange.get(i) / 10);
-												setRedValue((int)(redKeyAt0 - (numberRed * (timeToChange.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+												set(RED, (int)(redKeyAt0 - (numberRed * (timeToChange.get(i) - (timeToChange.get(i) - get(TIMELINE))) / 10)));
 											}
 										}
 										else
@@ -142,12 +159,12 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 											if(prevKeyRed < nextKeyRed)
 											{
 												float numberRed = (redKeyAt0 - prevKeyRed) / (timeBetwinKey.get(i) / 10);
-												setRedValue((int)(prevKeyRed + (numberRed * ((timeBetwinKey.get(i) - timeToChange.get(i)) - (timeToChange.get(i) - getTimeLine())) / 10)));
+												set(RED, (int)(prevKeyRed + (numberRed * ((timeBetwinKey.get(i) - timeToChange.get(i)) - (timeToChange.get(i) - get(TIMELINE))) / 10)));
 											}
 											else
 											{
 												float numberRed = (prevKeyRed - redKeyAt0) / (timeBetwinKey.get(i) / 10);
-												setRedValue((int)(prevKeyRed - (numberRed * ((timeBetwinKey.get(i) - timeToChange.get(i)) - (timeToChange.get(i) - getTimeLine())) / 10)));
+												set(RED, (int)(prevKeyRed - (numberRed * ((timeBetwinKey.get(i) - timeToChange.get(i)) - (timeToChange.get(i) - get(TIMELINE))) / 10)));
 											}
 										}
 										// End
@@ -156,86 +173,86 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 								}
 								else
 								{
-									if(getTimeLine() > timeToChange.get(i - 1) && getTimeLine() <= timeToChange.get(i))
+									if(get(TIMELINE) > timeToChange.get(i - 1) && get(TIMELINE) <= timeToChange.get(i))
 									{
-										int prevKeyRed = this.getRedKey(timeToChange.get(i - 1) / 10);
-										int nextKeyRed = this.getRedKey(timeToChange.get(i) / 10);
-										int prevKeyGreen = this.getGreenKey(timeToChange.get(i - 1) / 10);
-										int nextKeyGreen = this.getGreenKey(timeToChange.get(i) / 10);
-										int prevKeyBlue = this.getBlueKey(timeToChange.get(i - 1) / 10);
-										int nextKeyBlue = this.getBlueKey(timeToChange.get(i) / 10);
+										int prevKeyRed = this.get(REDKEY, timeToChange.get(i - 1) / 10);
+										int nextKeyRed = this.get(REDKEY, timeToChange.get(i) / 10);
+										int prevKeyGreen = this.get(GREENKEY, timeToChange.get(i - 1) / 10);
+										int nextKeyGreen = this.get(GREENKEY, timeToChange.get(i) / 10);
+										int prevKeyBlue = this.get(BLUEKEY, timeToChange.get(i - 1) / 10);
+										int nextKeyBlue = this.get(BLUEKEY, timeToChange.get(i) / 10);
 
-										int prevKeyDarkRed = this.getDarkRedKey(timeToChange.get(i - 1) / 10);
-										int nextKeyDarkRed = this.getDarkRedKey(timeToChange.get(i) / 10);
-										int prevKeyDarkGreen = this.getDarkGreenKey(timeToChange.get(i - 1) / 10);
-										int nextKeyDarkGreen = this.getDarkGreenKey(timeToChange.get(i) / 10);
-										int prevKeyDarkBlue = this.getDarkBlueKey(timeToChange.get(i - 1) / 10);
-										int nextKeyDarkBlue = this.getDarkBlueKey(timeToChange.get(i) / 10);
+										int prevKeyDarkRed = this.get(DARKREDKEY, timeToChange.get(i - 1) / 10);
+										int nextKeyDarkRed = this.get(DARKREDKEY, timeToChange.get(i) / 10);
+										int prevKeyDarkGreen = this.get(DARKGREENKEY, timeToChange.get(i - 1) / 10);
+										int nextKeyDarkGreen = this.get(DARKGREENKEY, timeToChange.get(i) / 10);
+										int prevKeyDarkBlue = this.get(DARKBLUEKEY, timeToChange.get(i - 1) / 10);
+										int nextKeyDarkBlue = this.get(DARKBLUEKEY, timeToChange.get(i) / 10);
 
 										if(prevKeyRed < nextKeyRed)
 										{
 											float numberRed = (nextKeyRed - prevKeyRed) / (timeBetwinKey.get(i) / 10);
-											setRedValue((int)(prevKeyRed + (numberRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+											set(RED, (int)(prevKeyRed + (numberRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - get(TIMELINE))) / 10)));
 										}
 										else
 										{
 											float numberRed = (prevKeyRed - nextKeyRed) / (timeBetwinKey.get(i) / 10);
-											setRedValue((int)(prevKeyRed - (numberRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+											set(RED, (int)(prevKeyRed - (numberRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - get(TIMELINE))) / 10)));
 										}
 
 										if(prevKeyGreen < nextKeyGreen)
 										{
 											float numberGreen = (nextKeyGreen - prevKeyGreen) / (timeBetwinKey.get(i) / 10);
-											setGreenValue((int)(prevKeyGreen + (numberGreen * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+											set(GREEN, (int)(prevKeyGreen + (numberGreen * (timeBetwinKey.get(i) - (timeToChange.get(i) - get(TIMELINE))) / 10)));
 										}
 										else
 										{
 											float numberGreen = (prevKeyGreen - nextKeyGreen) / (timeBetwinKey.get(i) / 10);
-											setGreenValue((int)(prevKeyGreen - (numberGreen * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+											set(GREEN, (int)(prevKeyGreen - (numberGreen * (timeBetwinKey.get(i) - (timeToChange.get(i) - get(TIMELINE))) / 10)));
 										}
 
 										if(prevKeyBlue < nextKeyBlue)
 										{
 											float numberBlue = (nextKeyBlue - prevKeyBlue) / (timeBetwinKey.get(i) / 10);
-											setBlueValue((int)(nextKeyBlue + (numberBlue * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+											set(BLUE, (int)(nextKeyBlue + (numberBlue * (timeBetwinKey.get(i) - (timeToChange.get(i) - get(TIMELINE))) / 10)));
 										}
 										else
 										{
 											float numberBlue = (prevKeyBlue - nextKeyBlue) / (timeBetwinKey.get(i) / 10);
-											setBlueValue((int)(prevKeyBlue - (numberBlue * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+											set(BLUE, (int)(prevKeyBlue - (numberBlue * (timeBetwinKey.get(i) - (timeToChange.get(i) - get(TIMELINE))) / 10)));
 										}
 
 										if(prevKeyDarkRed < nextKeyDarkRed)
 										{
 											float numberDarkRed = (nextKeyDarkRed - prevKeyDarkRed) / (timeBetwinKey.get(i) / 10);
-											setDarkRedValue((int)(prevKeyDarkRed + (numberDarkRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+											set(DARKRED, (int)(prevKeyDarkRed + (numberDarkRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - get(TIMELINE))) / 10)));
 										}
 										else
 										{
 											float numberDarkRed = (prevKeyDarkRed - nextKeyDarkRed) / (timeBetwinKey.get(i) / 10);
-											setDarkRedValue((int)(prevKeyDarkRed - (numberDarkRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+											set(DARKRED, (int)(prevKeyDarkRed - (numberDarkRed * (timeBetwinKey.get(i) - (timeToChange.get(i) - get(TIMELINE))) / 10)));
 										}
 
 										if(prevKeyDarkGreen < nextKeyDarkGreen)
 										{
 											float numberDarkGreen = (nextKeyDarkGreen - prevKeyDarkGreen) / (timeBetwinKey.get(i) / 10);
-											setDarkGreenValue((int)(prevKeyDarkGreen + (numberDarkGreen * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+											set(DARKGREEN, (int)(prevKeyDarkGreen + (numberDarkGreen * (timeBetwinKey.get(i) - (timeToChange.get(i) - get(TIMELINE))) / 10)));
 										}
 										else
 										{
 											float numberDarkGreen = (prevKeyDarkGreen - nextKeyDarkGreen) / (timeBetwinKey.get(i) / 10);
-											setDarkGreenValue((int)(prevKeyDarkGreen - (numberDarkGreen * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+											set(DARKGREEN, (int)(prevKeyDarkGreen - (numberDarkGreen * (timeBetwinKey.get(i) - (timeToChange.get(i) - get(TIMELINE))) / 10)));
 										}
 
 										if(prevKeyDarkBlue < nextKeyDarkBlue)
 										{
 											float numberDarkBlue = (nextKeyDarkBlue - prevKeyDarkBlue) / (timeBetwinKey.get(i) / 10);
-											setDarkBlueValue((int)(nextKeyDarkBlue + (numberDarkBlue * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+											set(DARKBLUE, (int)(nextKeyDarkBlue + (numberDarkBlue * (timeBetwinKey.get(i) - (timeToChange.get(i) - get(TIMELINE))) / 10)));
 										}
 										else
 										{
 											float numberDarkBlue = (prevKeyDarkBlue - nextKeyDarkBlue) / (timeBetwinKey.get(i) / 10);
-											setDarkBlueValue((int)(prevKeyDarkBlue - (numberDarkBlue * (timeBetwinKey.get(i) - (timeToChange.get(i) - getTimeLine())) / 10)));
+											set(DARKBLUE, (int)(prevKeyDarkBlue - (numberDarkBlue * (timeBetwinKey.get(i) - (timeToChange.get(i) - get(TIMELINE))) / 10)));
 										}
 										this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 									}
@@ -245,23 +262,23 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 					}
 					else
 					{
-						int time = getTimeLine() / 10;
-						if(hasKey(time) && lastTimeUse != time)
+						int time = get(TIMELINE) / 10;
+						if(get(KEYLIST, time) == 1 && lastTimeUse != time)
 						{
 							lastTimeUse = time;
 
-							setRedValue(getRedKey(time));
-							setGreenValue(getGreenKey(time));
-							setBlueValue(getBlueKey(time));
-							setDarkRedValue(getDarkRedKey(time));
-							setDarkGreenValue(getDarkGreenKey(time));
-							setDarkBlueValue(getDarkBlueKey(time));
-							setAngle1Value(getAngle1Key(time));
-							setAngle2Value(getAngle2Key(time));
-							setRotateValue(getAutoRotateKey(time) ? 1 : 0);
-							setRotationSpeed(getRotationSpeedKey(time));
-							setSecondaryLazer(getSecondaryLazerKey(time) ? 1 : 0);
-							setReverseRotation(getReverseRotationKey(time) ? 1 : 0);
+							set(RED, get(REDKEY, time));
+							set(GREEN, get(GREENKEY, time));
+							set(BLUE, get(BLUEKEY, time));
+							set(DARKRED, get(DARKREDKEY, time));
+							set(DARKGREEN, get(DARKGREENKEY, time));
+							set(DARKBLUE, get(DARKBLUEKEY, time));
+							set(ANGLE1, get(ANGLE1KEY, time));
+							set(ANGLE2, get(ANGLE2KEY, time));
+							set(AUTOROTATE, get(AUTOROTATEKEY, time));
+							set(ROTATIONSPEED, get(ROTATIONSPEEDKEY, time));
+							set(SECONDARYLAZER, get(SECONDARYLAZERKEY, time));
+							set(REVERSEROTATION, get(REVERSEROTATIONKEY, time));
 							this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 						}
 					}
@@ -319,13 +336,13 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		nbtTagCompound.setInteger("SpotLightDarkBlue", darkBlue);
 		nbtTagCompound.setInteger("SpotLightAngle1", angle1);
 		nbtTagCompound.setInteger("SpotLightAngle2", angle2);
-		nbtTagCompound.setBoolean("SpotLightAutoRotate", autoRotate);
+		nbtTagCompound.setInteger("SpotLightAutoRotate", autoRotate);
 		nbtTagCompound.setInteger("SpotLightRotationSpeed", rotationSpeed);
-		nbtTagCompound.setBoolean("SpotLightSecondaryLaser", secondaryLazer);
-		nbtTagCompound.setBoolean("SpotLightReverseRotation", reverseRotation);
+		nbtTagCompound.setInteger("SpotLightSecondaryLaser", secondaryLazer);
+		nbtTagCompound.setInteger("SpotLightReverseRotation", reverseRotation);
 
 		nbtTagCompound.setInteger("SpotlightSelectedButtonId", selectedbuttonid);
-		nbtTagCompound.setBoolean("SpotLightTimeLineMode", timeLineMode);
+		nbtTagCompound.setInteger("SpotLightTimeLineMode", timeLineMode);
 		nbtTagCompound.setInteger("SpotLightTimeLine", timeLine);
 		nbtTagCompound.setInteger("SpotLightCreateKeyTime", createKeyTime);
 		nbtTagCompound.setIntArray("SpotLightHasKey", keyList);
@@ -341,7 +358,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		nbtTagCompound.setIntArray("SpotLightTimeRotateSpeed", rotateSpeedkey);
 		nbtTagCompound.setIntArray("SpotLightTimeSecondaryLazer", secondaryLazerkey);
 		nbtTagCompound.setIntArray("SpotLightTimeReverseRotation", reverseRotationkey);
-		nbtTagCompound.setBoolean("SpotLightSmoothMode", smoothMode);
+		nbtTagCompound.setInteger("SpotLightSmoothMode", smoothMode);
 
 		NBTTagList itemList = new NBTTagList();
 		for(int j = 0; j < inventory.length; j++)
@@ -373,13 +390,13 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		darkBlue = nbtTagCompound.getInteger("SpotLightDarkBlue");
 		angle1 = nbtTagCompound.getInteger("SpotLightAngle1");
 		angle2 = nbtTagCompound.getInteger("SpotLightAngle2");
-		autoRotate = nbtTagCompound.getBoolean("SpotLightAutoRotate");
+		autoRotate = nbtTagCompound.getInteger("SpotLightAutoRotate");
 		rotationSpeed = nbtTagCompound.getInteger("SpotLightRotationSpeed");
-		secondaryLazer = nbtTagCompound.getBoolean("SpotLightSecondaryLaser");
-		reverseRotation = nbtTagCompound.getBoolean("SpotLightReverseRotation");
+		secondaryLazer = nbtTagCompound.getInteger("SpotLightSecondaryLaser");
+		reverseRotation = nbtTagCompound.getInteger("SpotLightReverseRotation");
 
 		selectedbuttonid = nbtTagCompound.getInteger("SpotlightSelectedButtonId");
-		timeLineMode = nbtTagCompound.getBoolean("SpotLightTimeLineMode");
+		timeLineMode = nbtTagCompound.getInteger("SpotLightTimeLineMode");
 		timeLine = nbtTagCompound.getInteger("SpotLightTimeLine");
 		createKeyTime = nbtTagCompound.getInteger("SpotLightCreateKeyTime");
 		keyList = nbtTagCompound.getIntArray("SpotLightHasKey");
@@ -395,7 +412,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		rotateSpeedkey = nbtTagCompound.getIntArray("SpotLightTimeRotateSpeed");
 		secondaryLazerkey = nbtTagCompound.getIntArray("SpotLightTimeSecondaryLazer");
 		reverseRotationkey = nbtTagCompound.getIntArray("SpotLightTimeReverseRotation");
-		smoothMode = nbtTagCompound.getBoolean("SpotLightSmoothMode");
+		smoothMode = nbtTagCompound.getInteger("SpotLightSmoothMode");
 
 		NBTTagList tagList = nbtTagCompound.getTagList("Inventory", 10);
 		for(int i = 0; i < tagList.tagCount(); i++)
@@ -415,343 +432,242 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		}
 	}
 
-	// --Setter------------------------
-
-	public void setRedValue(int i)
+	/**
+	 * Set a value
+	 * 
+	 * @param index
+	 * @param value
+	 */
+	public void set(int index, int value)
 	{
-		this.red = i;
-	}
-
-	public void setGreenValue(int i)
-	{
-		this.green = i;
-	}
-
-	public void setBlueValue(int i)
-	{
-		this.blue = i;
-	}
-
-	public void setDarkRedValue(int i)
-	{
-		this.darkRed = i;
-	}
-
-	public void setDarkGreenValue(int i)
-	{
-		this.darkGreen = i;
-	}
-
-	public void setDarkBlueValue(int i)
-	{
-		this.darkBlue = i;
-	}
-
-	public void setAngle1Value(int i)
-	{
-		this.angle1 = i;
-	}
-
-	public void setAngle2Value(int i)
-	{
-		this.angle2 = i;
-	}
-
-	public void setRotateValue(int i)
-	{
-		if(i == 1)
+		switch(index)
 		{
-			this.autoRotate = true;
+		case RED:
+			this.red = value;
+			break;
+		case GREEN:
+			this.green = value;
+			break;
+		case BLUE:
+			this.blue = value;
+			break;
+		case DARKRED:
+			this.darkRed = value;
+			break;
+		case DARKGREEN:
+			this.darkGreen = value;
+			break;
+		case DARKBLUE:
+			this.darkBlue = value;
+			break;
+		case ANGLE1:
+			this.angle1 = value;
+			break;
+		case ANGLE2:
+			this.angle2 = value;
+			break;
+		case AUTOROTATE:
+			this.autoRotate = value;
+			break;
+		case ROTATIONSPEED:
+			this.rotationSpeed = value;
+			break;
+		case SECONDARYLAZER:
+			this.secondaryLazer = value;
+			break;
+		case REVERSEROTATION:
+			this.reverseRotation = value;
+			break;
+		case CONFIGCOPIER:
+		{
+			if(value == 0)
+			{
+				this.addNbtTagToItem();
+				break;
+			}
+			else
+			{
+				this.setConfig();
+				break;
+			}
 		}
-		else
-		{
-			this.autoRotate = false;
+		case TIMELINEMODE:
+			this.timeLineMode = value;
+			break;
+		case CREATEKEYTIME:
+			this.createKeyTime = value;
+			break;
+		case SELECTEDBUTTON:
+			this.selectedbuttonid = value;
+			break;
+		case TIMELINE:
+			this.timeLine = value;
+			break;
+		case SMOOTHMODE:
+			this.smoothMode = value;
+			break;
+		default:
+			NanotechModCity.nanoCityLogger.error("Wrong set index :" + index);
+			break;
 		}
+		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
-	public void setRotationSpeed(int i)
+	/**
+	 * Set a value at time
+	 * 
+	 * @param index
+	 * @param value
+	 * @param time
+	 */
+	public void set(int index, int value, int time)
 	{
-		this.rotationSpeed = i;
-	}
-
-	public void setSecondaryLazer(int i)
-	{
-		if(i == 1)
+		switch(index)
 		{
-			this.secondaryLazer = true;
-		}
-		else
-		{
-			this.secondaryLazer = false;
-		}
-	}
-
-	public void setReverseRotation(int i)
-	{
-		if(i == 1)
-		{
-			this.reverseRotation = true;
-		}
-		else
-		{
-			this.reverseRotation = false;
-		}
-	}
-
-	public void setTimeLineMode(int i)
-	{
-		if(i == 1)
-		{
-			this.timeLineMode = true;
-		}
-		else
-		{
-			this.timeLineMode = false;
-		}
-	}
-
-	public void setTimeLine(int i)
-	{
-		this.timeLine = i;
-	}
-
-	public void setCreateKeyTime(int i)
-	{
-		createKeyTime = i;
-	}
-
-	public void setSelectedButtonId(int i)
-	{
-		this.selectedbuttonid = i;
-	}
-
-	public void setKey(int time, int i)
-	{
-		this.keyList[time] = i;
-	}
-
-	public void setRedKey(int time, int color)
-	{
-		this.redkey[time] = color;
-	}
-
-	public void setGreenKey(int time, int color)
-	{
-		this.greenkey[time] = color;
-	}
-
-	public void setBlueKey(int time, int color)
-	{
-		this.bluekey[time] = color;
-	}
-
-	public void setDarkRedKey(int time, int color)
-	{
-		this.darkRedkey[time] = color;
-	}
-
-	public void setDarkGreenKey(int time, int color)
-	{
-		this.darkGreenkey[time] = color;
-	}
-
-	public void setDarkBlueKey(int time, int color)
-	{
-		this.darkBluekey[time] = color;
-	}
-
-	public void setAngle1Key(int time, int i)
-	{
-		this.angle1key[time] = i;
-	}
-
-	public void setAngle2Key(int time, int i)
-	{
-		this.angle2key[time] = i;
-	}
-
-	public void setAutoRotateKey(int time, int i)
-	{
-		this.autoRotatekey[time] = i;
-	}
-
-	public void setRotationSpeedKey(int time, int i)
-	{
-		this.rotateSpeedkey[time] = i;
-	}
-
-	public void setSecondaryLazerKey(int time, int i)
-	{
-		this.secondaryLazerkey[time] = i;
-	}
-
-	public void setReverseRotationKey(int time, int i)
-	{
-		this.reverseRotationkey[time] = i;
-	}
-
-	public void setSmoothMode(int i)
-	{
-		if(i == 1)
-		{
-			this.smoothMode = true;
-		}
-		else
-		{
-			this.smoothMode = false;
+		case KEYLIST:
+			this.keyList[time] = value;
+			break;
+		case REDKEY:
+			this.redkey[time] = value;
+			break;
+		case GREENKEY:
+			this.greenkey[time] = value;
+			break;
+		case BLUEKEY:
+			this.bluekey[time] = value;
+			break;
+		case DARKREDKEY:
+			this.darkRedkey[time] = value;
+			break;
+		case DARKGREENKEY:
+			this.darkGreenkey[time] = value;
+			break;
+		case DARKBLUEKEY:
+			this.darkBluekey[time] = value;
+			break;
+		case ANGLE1KEY:
+			this.angle1key[time] = value;
+			break;
+		case ANGLE2KEY:
+			this.angle2key[time] = value;
+			break;
+		case AUTOROTATEKEY:
+			this.autoRotatekey[time] = value;
+			break;
+		case ROTATIONSPEEDKEY:
+			this.rotateSpeedkey[time] = value;
+			break;
+		case SECONDARYLAZERKEY:
+			this.secondaryLazerkey[time] = value;
+			break;
+		case REVERSEROTATIONKEY:
+			this.reverseRotationkey[time] = value;
+			break;
+		default:
+			NanotechModCity.nanoCityLogger.error("Wrong set index :" + index);
+			break;
 		}
 	}
 
-	// --Getter--------------------------
-
-	public int getRedValue()
+	/**
+	 * Get a value
+	 * 
+	 * @param index
+	 * @param value
+	 * @return the value
+	 */
+	public int get(int index)
 	{
-		return this.red;
+		switch(index)
+		{
+		case REVSMOOTHMODE:
+			return Math.abs(get(SMOOTHMODE) - 1);
+		case REVTIMELINEMODE:
+			return Math.abs(get(TIMELINEMODE) - 1);
+		case REVREVERSEROTATION:
+			return Math.abs(get(REVERSEROTATION) - 1);
+		case REVSECONDARYLAZER:
+			return Math.abs(get(SECONDARYLAZER) - 1);
+		case REVAUTOROTATE:
+			return Math.abs(get(AUTOROTATE) - 1);
+		case RED:
+			return this.red;
+		case GREEN:
+			return this.green;
+		case BLUE:
+			return this.blue;
+		case DARKRED:
+			return this.darkRed;
+		case DARKGREEN:
+			return this.darkGreen;
+		case DARKBLUE:
+			return this.darkBlue;
+		case ANGLE1:
+			return this.angle1;
+		case ANGLE2:
+			return this.angle2;
+		case AUTOROTATE:
+			return this.autoRotate;
+		case ROTATIONSPEED:
+			return this.rotationSpeed;
+		case SECONDARYLAZER:
+			return this.secondaryLazer;
+		case REVERSEROTATION:
+			return this.reverseRotation;
+		case TIMELINEMODE:
+			return this.timeLineMode;
+		case CREATEKEYTIME:
+			return this.createKeyTime;
+		case SELECTEDBUTTON:
+			return this.selectedbuttonid;
+		case TIMELINE:
+			return this.timeLine;
+		case SMOOTHMODE:
+			return this.smoothMode;
+		default:
+		{
+			NanotechModCity.nanoCityLogger.error("Wrong get index :" + index);
+			return -1;
+		}
+		}
 	}
 
-	public int getGreenValue()
+	public int get(int index, int time)
 	{
-		return this.green;
-	}
-
-	public int getBlueValue()
-	{
-		return this.blue;
-	}
-
-	public int getDarkRedValue()
-	{
-		return this.darkRed;
-	}
-
-	public int getDarkGreenValue()
-	{
-		return this.darkGreen;
-	}
-
-	public int getDarkBlueValue()
-	{
-		return this.darkBlue;
-	}
-
-	public int getAngle1()
-	{
-		return this.angle1;
-	}
-
-	public int getAngle2()
-	{
-		return this.angle2;
-	}
-
-	public boolean getAutoRotate()
-	{
-		return this.autoRotate;
-	}
-
-	public int getRotationSpeed()
-	{
-		return this.rotationSpeed;
-	}
-
-	public boolean getSecondaryLazer()
-	{
-		return this.secondaryLazer;
-	}
-
-	public boolean getReverseRotation()
-	{
-		return this.reverseRotation;
-	}
-
-	public boolean getTimeLineMode()
-	{
-		return this.timeLineMode;
-	}
-
-	public int getTimeLine()
-	{
-		return this.timeLine;
-	}
-
-	public int getCreateKeyTime()
-	{
-		return this.createKeyTime;
-	}
-
-	public int getSelectedButtonid()
-	{
-		return this.selectedbuttonid;
-	}
-
-	public boolean hasKey(int time)
-	{
-		return this.keyList[time] == 1 ? true : false;
-	}
-
-	public int getRedKey(int time)
-	{
-		return this.redkey[time];
-	}
-
-	public int getGreenKey(int time)
-	{
-		return this.greenkey[time];
-	}
-
-	public int getBlueKey(int time)
-	{
-		return this.bluekey[time];
-	}
-
-	public int getDarkRedKey(int time)
-	{
-		return this.darkRedkey[time];
-	}
-
-	public int getDarkGreenKey(int time)
-	{
-		return this.darkGreenkey[time];
-	}
-
-	public int getDarkBlueKey(int time)
-	{
-		return this.darkBluekey[time];
-	}
-
-	public int getAngle1Key(int time)
-	{
-		return this.angle1key[time];
-	}
-
-	public int getAngle2Key(int time)
-	{
-		return this.angle2key[time];
-	}
-
-	public boolean getAutoRotateKey(int time)
-	{
-		return this.autoRotatekey[time] == 1 ? true : false;
-	}
-
-	public int getRotationSpeedKey(int time)
-	{
-		return this.rotateSpeedkey[time];
-	}
-
-	public boolean getSecondaryLazerKey(int time)
-	{
-		return this.secondaryLazerkey[time] == 1 ? true : false;
-	}
-
-	public boolean getReverseRotationKey(int time)
-	{
-		return this.reverseRotationkey[time] == 1 ? true : false;
-	}
-
-	public boolean getSmoothMode()
-	{
-		return this.smoothMode;
+		switch(index)
+		{
+		case KEYLIST:
+			return this.keyList[time];
+		case REDKEY:
+			return this.redkey[time];
+		case GREENKEY:
+			return this.greenkey[time];
+		case BLUEKEY:
+			return this.bluekey[time];
+		case DARKREDKEY:
+			return this.darkRedkey[time];
+		case DARKGREENKEY:
+			return this.darkGreenkey[time];
+		case DARKBLUEKEY:
+			return this.darkBluekey[time];
+		case ANGLE1KEY:
+			return this.angle1key[time];
+		case ANGLE2KEY:
+			return this.angle2key[time];
+		case AUTOROTATEKEY:
+			return this.autoRotatekey[time];
+		case ROTATIONSPEEDKEY:
+			return this.rotateSpeedkey[time];
+		case SECONDARYLAZERKEY:
+			return this.secondaryLazerkey[time];
+		case REVERSEROTATIONKEY:
+			return this.reverseRotationkey[time];
+		default:
+		{
+			NanotechModCity.nanoCityLogger.error("Wrong get index :" + index);
+			return -1;
+		}
+		}
 	}
 
 	public boolean isUseableByPlayer(EntityPlayer player)
@@ -863,18 +779,19 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		return 65536.0D;
 	}
 
-    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
-    {
-    	readFromNBT(pkt.func_148857_g());
-    }
-	
-    @Override
-    public Packet getDescriptionPacket()
-    {
-        NBTTagCompound nbt = new NBTTagCompound();
-        this.writeToNBT(nbt);
-        return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 3, nbt);
-    }
+	@Override
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
+	{
+		readFromNBT(pkt.func_148857_g());
+	}
+
+	@Override
+	public Packet getDescriptionPacket()
+	{
+		NBTTagCompound nbt = new NBTTagCompound();
+		this.writeToNBT(nbt);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 3, nbt);
+	}
 
 	public void addNbtTagToItem()
 	{
@@ -884,20 +801,20 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		{
 			newStack.setTagCompound(new NBTTagCompound());
 			newStack.getTagCompound().setInteger("Type", 0);
-			newStack.getTagCompound().setInteger("SpotLightRed", getRedValue());
-			newStack.getTagCompound().setInteger("SpotLightGreen", getGreenValue());
-			newStack.getTagCompound().setInteger("SpotLightBlue", getBlueValue());
-			newStack.getTagCompound().setInteger("SpotLightDarkRed", getDarkRedValue());
-			newStack.getTagCompound().setInteger("SpotLightDarkGreen", getDarkGreenValue());
-			newStack.getTagCompound().setInteger("SpotLightDarkBlue", getDarkBlueValue());
-			newStack.getTagCompound().setInteger("SpotLightAngle1", getAngle1());
-			newStack.getTagCompound().setInteger("SpotLightAngle2", getAngle2());
-			newStack.getTagCompound().setInteger("SpotLightAutoRotate", (getAutoRotate() ? 1 : 0));
-			newStack.getTagCompound().setInteger("SpotLightRotationSpeed", (int)getRotationSpeed());
-			newStack.getTagCompound().setInteger("SpotLightSecondaryLazer", (getSecondaryLazer() ? 1 : 0));
-			newStack.getTagCompound().setInteger("SpotLightReverseRotation", (getReverseRotation() ? 0 : 1));
+			newStack.getTagCompound().setInteger("SpotLightRed", get(RED));
+			newStack.getTagCompound().setInteger("SpotLightGreen", get(GREEN));
+			newStack.getTagCompound().setInteger("SpotLightBlue", get(BLUE));
+			newStack.getTagCompound().setInteger("SpotLightDarkRed", get(DARKRED));
+			newStack.getTagCompound().setInteger("SpotLightDarkGreen", get(DARKGREEN));
+			newStack.getTagCompound().setInteger("SpotLightDarkBlue", get(DARKBLUE));
+			newStack.getTagCompound().setInteger("SpotLightAngle1", get(ANGLE1));
+			newStack.getTagCompound().setInteger("SpotLightAngle2", get(ANGLE2));
+			newStack.getTagCompound().setInteger("SpotLightAutoRotate", get(AUTOROTATE));
+			newStack.getTagCompound().setInteger("SpotLightRotationSpeed", get(ROTATIONSPEED));
+			newStack.getTagCompound().setInteger("SpotLightSecondaryLazer", get(SECONDARYLAZER));
+			newStack.getTagCompound().setInteger("SpotLightReverseRotation", get(REVERSEROTATION));
 
-			newStack.getTagCompound().setInteger("SpotLightTimeLineMode", timeLineMode ? 1 : 0);
+			newStack.getTagCompound().setInteger("SpotLightTimeLineMode", timeLineMode);
 			newStack.getTagCompound().setIntArray("SpotLightHasKey", keyList);
 			newStack.getTagCompound().setIntArray("SpotLightTimeRed", redkey);
 			newStack.getTagCompound().setIntArray("SpotLightTimeGreen", greenkey);
@@ -911,7 +828,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 			newStack.getTagCompound().setIntArray("SpotLightTimeRotateSpeed", rotateSpeedkey);
 			newStack.getTagCompound().setIntArray("SpotLightTimeSecondaryLazer", secondaryLazerkey);
 			newStack.getTagCompound().setIntArray("SpotLightTimeReverseRotation", reverseRotationkey);
-			newStack.getTagCompound().setBoolean("SpotLightSmoothMode", smoothMode);
+			newStack.getTagCompound().setInteger("SpotLightSmoothMode", smoothMode);
 			setInventorySlotContents(1, newStack);
 		}
 	}
@@ -927,55 +844,55 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 				{
 					if(stack.getTagCompound().hasKey("SpotLightRed"))
 					{
-						setRedValue(stack.getTagCompound().getInteger("SpotLightRed"));
+						set(RED, stack.getTagCompound().getInteger("SpotLightRed"));
 					}
 					if(stack.getTagCompound().hasKey("SpotLightGreen"))
 					{
-						setGreenValue(stack.getTagCompound().getInteger("SpotLightGreen"));
+						set(GREEN, stack.getTagCompound().getInteger("SpotLightGreen"));
 					}
 					if(stack.getTagCompound().hasKey("SpotLightBlue"))
 					{
-						setBlueValue(stack.getTagCompound().getInteger("SpotLightBlue"));
+						set(BLUE, stack.getTagCompound().getInteger("SpotLightBlue"));
 					}
 					if(stack.getTagCompound().hasKey("SpotLightDarkRed"))
 					{
-						setDarkRedValue(stack.getTagCompound().getInteger("SpotLightDarkRed"));
+						set(DARKRED, stack.getTagCompound().getInteger("SpotLightDarkRed"));
 					}
 					if(stack.getTagCompound().hasKey("SpotLightDarkGreen"))
 					{
-						setDarkGreenValue(stack.getTagCompound().getInteger("SpotLightDarkGreen"));
+						set(DARKGREEN, stack.getTagCompound().getInteger("SpotLightDarkGreen"));
 					}
 					if(stack.getTagCompound().hasKey("SpotLightDarkBlue"))
 					{
-						setDarkBlueValue(stack.getTagCompound().getInteger("SpotLightDarkBlue"));
+						set(DARKBLUE, stack.getTagCompound().getInteger("SpotLightDarkBlue"));
 					}
 					if(stack.getTagCompound().hasKey("SpotLightAngle1"))
 					{
-						setAngle1Value(stack.getTagCompound().getInteger("SpotLightAngle1"));
+						set(ANGLE1, stack.getTagCompound().getInteger("SpotLightAngle1"));
 					}
 					if(stack.getTagCompound().hasKey("SpotLightAngle2"))
 					{
-						setAngle2Value(stack.getTagCompound().getInteger("SpotLightAngle2"));
+						set(ANGLE2, stack.getTagCompound().getInteger("SpotLightAngle2"));
 					}
 					if(stack.getTagCompound().hasKey("SpotLightAutoRotate"))
 					{
-						setRotateValue(stack.getTagCompound().getInteger("SpotLightAutoRotate"));
+						set(AUTOROTATE, stack.getTagCompound().getInteger("SpotLightAutoRotate"));
 					}
 					if(stack.getTagCompound().hasKey("SpotLightRotationSpeed"))
 					{
-						setRotationSpeed(stack.getTagCompound().getInteger("SpotLightRotationSpeed"));
+						set(ROTATIONSPEED, stack.getTagCompound().getInteger("SpotLightRotationSpeed"));
 					}
 					if(stack.getTagCompound().hasKey("SpotLightSecondaryLazer"))
 					{
-						setSecondaryLazer(stack.getTagCompound().getInteger("SpotLightSecondaryLazer"));
+						set(SECONDARYLAZER, stack.getTagCompound().getInteger("SpotLightSecondaryLazer"));
 					}
 					if(stack.getTagCompound().hasKey("SpotLightReverseRotation"))
 					{
-						setReverseRotation((stack.getTagCompound().getInteger("SpotLightReverseRotation") == 1 ? 0 : 1));
+						set(REVERSEROTATION, (stack.getTagCompound().getInteger("SpotLightReverseRotation")));
 					}
 					if(stack.getTagCompound().hasKey("SpotLightTimeLineMode"))
 					{
-						setTimeLineMode((stack.getTagCompound().getInteger("SpotLightTimeLineMode")));
+						set(TIMELINEMODE, (stack.getTagCompound().getInteger("SpotLightTimeLineMode")));
 					}
 					if(stack.getTagCompound().hasKey("SpotLightHasKey"))
 					{
@@ -1031,7 +948,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 					}
 					if(stack.getTagCompound().hasKey("SpotLightSmoothMode"))
 					{
-						setSmoothMode((int)((stack.getTagCompound().getBoolean("SpotLightSmoothmode")) ? 1 : 0));
+						set(SMOOTHMODE, stack.getTagCompound().getInteger("SpotLightSmoothmode"));
 					}
 				}
 			}

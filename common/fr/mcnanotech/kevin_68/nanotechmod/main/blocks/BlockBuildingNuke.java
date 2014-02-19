@@ -1,3 +1,10 @@
+/**
+ * This work is made available under the terms of the Creative Commons Attribution License:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+ * 
+ * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+ */
 package fr.mcnanotech.kevin_68.nanotechmod.main.blocks;
 
 import java.util.List;
@@ -6,6 +13,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
@@ -16,22 +24,25 @@ public class BlockBuildingNuke extends Block
 {
 	public static String[] type = new String[] {"full", "half1", "half2", "half3", "half4", "quarter1", "quarter2", "quarter3", "quarter4", "nuke"};
 
-	public BlockBuildingNuke(int id)
+	public BlockBuildingNuke()
 	{
-		super(id, Material.iron);
-		this.setHardness(Block.blockIron.blockHardness);
+		super(Material.iron);
+		this.setHardness(5.0F);
 	}
 
+	@Override
 	public boolean renderAsNormalBlock()
 	{
 		return false;
 	}
 
+	@Override
 	public boolean isOpaqueCube()
 	{
 		return false;
 	}
 
+	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
 	{
 		if(world.getBlockMetadata(x, y, z) == 0 || world.getBlockMetadata(x, y, z) == 9)
@@ -80,6 +91,8 @@ public class BlockBuildingNuke extends Block
 		}
 	}
 
+	@SuppressWarnings("rawtypes")
+	@Override
 	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axis, List list, Entity entity)
 	{
 		if(world.getBlockMetadata(x, y, z) == 0 || world.getBlockMetadata(x, y, z) == 9)
@@ -138,7 +151,8 @@ public class BlockBuildingNuke extends Block
 
 	}
 
-	public void onNeighborBlockChange(World world, int x, int y, int z, int blockid)
+	@Override
+	public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
 	{
 		if(!world.isRemote)
 		{
@@ -151,16 +165,19 @@ public class BlockBuildingNuke extends Block
 		}
 	}
 
-	public int idDropped(int metadata, Random rand, int par3)
+	@Override
+	public Item getItemDropped(int metadata, Random rand, int par3)
 	{
-		return Item.ingotIron.itemID;
+		return Items.iron_ingot;
 	}
 
+	@Override
 	public int quantityDropped(Random rand)
 	{
 		return 1;
 	}
 
+	@Override
 	protected boolean canSilkHarvest()
 	{
 		return false;
