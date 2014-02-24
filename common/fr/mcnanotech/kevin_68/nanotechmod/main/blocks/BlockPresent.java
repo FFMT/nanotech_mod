@@ -11,6 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -45,7 +46,9 @@ public class BlockPresent extends Block
 			if(tile != null && tile instanceof TileEntityPresent)
 			{
 				TileEntityPresent te = (TileEntityPresent)tile;
-				this.dropBlockAsItem(world, x, y, z, te.getPresent());
+				ItemStack stack = te.getPresent() == null ? new ItemStack(Blocks.stone, 1, 0) : te.getPresent();
+				stack.stackSize = 1;
+				this.dropBlockAsItem(world, x, y, z, stack);
 				this.removedByPlayer(world, player, x, y, z);
 				world.setBlockToAir(x, y, z);
 			}

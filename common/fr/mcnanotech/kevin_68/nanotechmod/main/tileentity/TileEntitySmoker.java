@@ -69,6 +69,7 @@ public class TileEntitySmoker extends TileEntity
 	public void setSmokeInt(int newValue)
 	{
 		Smokepower = newValue;
+		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
 	public int getSmokeValue()

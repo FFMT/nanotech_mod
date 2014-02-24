@@ -28,6 +28,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.event.PlayerTracker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.RenderEvent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.GuiHandler;
+import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketJumper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketSmoker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityButton;
@@ -51,10 +52,11 @@ public class NanotechOther
 
 	public static Potion freeze;
 
-	public static void initPackets()
+	public static void initPackets(PacketHandler packetHandler)
 	{
-		NanotechMod.packetHandler.registerPacket(PacketJumper.class);
-		NanotechMod.packetHandler.registerPacket(PacketSmoker.class);
+		packetHandler.initialise();
+		packetHandler.registerPacket(PacketJumper.class);
+		packetHandler.registerPacket(PacketSmoker.class);
 		NanotechMod.nanoLogger.info("Packets initialized");
 	}
 

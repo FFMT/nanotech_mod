@@ -33,8 +33,8 @@ public class NanotechItem
 	{
 		itemBase = new ItemBaseMetadata().setUnlocalizedName("nanotechbase").setTextureName(NanotechMod.MODID + ":").setCreativeTab(NanotechMod.CreaI);
 		superBottleOfXp = new ItemSuperBottleOfXp().setUnlocalizedName("superbottleofxp").setTextureName("experience_bottle").setCreativeTab(NanotechMod.CreaI);
-		diamondBow = new ItemDiamondBow().setUnlocalizedName("diamondbow").setTextureName(NanotechMod.MODID + ":diamondbow").setCreativeTab(NanotechMod.CreaI);
-		emeraldBow = new ItemEmeraldBow().setUnlocalizedName("emeraldbow").setTextureName(NanotechMod.MODID + ":emeraldbow").setCreativeTab(NanotechMod.CreaI);
+		diamondBow = new ItemDiamondBow().setUnlocalizedName("diamondbow").setTextureName(NanotechMod.MODID + ":diamondbow").setCreativeTab(NanotechMod.CreaI).setFull3D();
+		emeraldBow = new ItemEmeraldBow().setUnlocalizedName("emeraldbow").setTextureName(NanotechMod.MODID + ":emeraldbow").setCreativeTab(NanotechMod.CreaI).setFull3D();
 		nanomiteBow = new ItemNanomiteArrowGun().setUnlocalizedName("nanomitebow").setTextureName(NanotechMod.MODID + ":nanomitebow").setCreativeTab(NanotechMod.CreaI);
 		nanomiteHelmet = new ItemNanomiteArmor(EnumArmorMaterialNanomite, 1, 0).setUnlocalizedName("nanomiteHelmet").setTextureName(NanotechMod.MODID + ":nanomiteHelmet").setCreativeTab(NanotechMod.CreaI);
 		nanomiteChestPlate = new ItemNanomiteArmor(EnumArmorMaterialNanomite, 1, 1).setUnlocalizedName("nanomiteChestPlate").setTextureName(NanotechMod.MODID + ":nanomiteChestPlate").setCreativeTab(NanotechMod.CreaI);
@@ -47,14 +47,14 @@ public class NanotechItem
 		nanomiteHoe = new ItemNanomiteHoe(EnumToolMaterialNanomite).setUnlocalizedName("nanomiteHoe").setTextureName(NanotechMod.MODID + ":nanomiteHoe").setCreativeTab(NanotechMod.CreaI);
 		mysteriousHelmet = new ItemMysteriousArmor(EnumArmorMaterialMysterious, 1, 0).setUnlocalizedName("mysteriousHelmet").setTextureName(NanotechMod.MODID + ":mysteriousHelmet").setCreativeTab(NanotechMod.CreaI);
 		mysteriousChestPlate = new ItemMysteriousArmor(EnumArmorMaterialMysterious, 1, 1).setUnlocalizedName("mysteriousChestPlate").setTextureName(NanotechMod.MODID + ":mysteriousChestPlate").setCreativeTab(NanotechMod.CreaI);
-		mysteriousLeggings = new ItemMysteriousArmor(EnumArmorMaterialMysterious, 1, 2).setUnlocalizedName("mysteriousLeggings").setTextureName(NanotechMod.MODID + ":mysteriousLeggins").setCreativeTab(NanotechMod.CreaI);
+		mysteriousLeggings = new ItemMysteriousArmor(EnumArmorMaterialMysterious, 1, 2).setUnlocalizedName("mysteriousLeggings").setTextureName(NanotechMod.MODID + ":mysteriousLeggings").setCreativeTab(NanotechMod.CreaI);
 		mysteriousBoots = new ItemMysteriousArmor(EnumArmorMaterialMysterious, 1, 3).setUnlocalizedName("mysteriousBoots").setTextureName(NanotechMod.MODID + ":mysteriousboots").setCreativeTab(NanotechMod.CreaI);
 		nanoDisc = new ItemDisk(NanotechMod.MODID + ":nanodisk", "JedBorg - Suprise").setUnlocalizedName("record").setTextureName(NanotechMod.MODID + ":nanodisk").setCreativeTab(NanotechMod.CreaI);
 		edibleFlesh = new ItemNanoFood(3, 0.6F, true).setUnlocalizedName("edibleFlesh").setTextureName(NanotechMod.MODID + ":edibleFlesh").setCreativeTab(NanotechMod.CreaI);
 		rottenChunk = new ItemNanoFood(1, 0.6F, true, Potion.hunger.id, 120, 0, 1.0F).setUnlocalizedName("rottenChunk").setTextureName(NanotechMod.MODID + ":rottenChunk").setCreativeTab(NanotechMod.CreaI);
 		scythe = new ItemScythe(EnumToolMaterialScythe).setUnlocalizedName("scythe").setTextureName(NanotechMod.MODID + ":itemScythe").setCreativeTab(NanotechMod.CreaI).setFull3D();
 		crazyGlasses = new ItemCrazyGlasses(EnumArmorMaterialCrazyGlasses, 1, 0).setUnlocalizedName("crazyGlasses").setTextureName(NanotechMod.MODID + ":crazyGlassesItem").setCreativeTab(NanotechMod.CreaI);
-		debug = new ItemDebug().setUnlocalizedName("debug").setTextureName(NanotechMod.MODID + ":debug").setCreativeTab(NanotechMod.CreaI);
+		debug = new ItemDebug().setUnlocalizedName("debug").setTextureName(NanotechMod.MODID + ":itemDebug").setCreativeTab(NanotechMod.CreaI);
 		alters = new ItemAlters().setUnlocalizedName("alters").setTextureName(NanotechMod.MODID + ":altersItem").setCreativeTab(NanotechMod.CreaI);
 		reinforcedFishingRod = new ItemReinforcedFishingRod().setUnlocalizedName("reinforcedFishingRod").setTextureName(NanotechMod.MODID + ":reinforced_fishing_rod").setCreativeTab(NanotechMod.CreaI);
 		crazyGlassesGun = new ItemCrazyGlassesGun().setUnlocalizedName("crazyGlassesGun").setTextureName(NanotechMod.MODID + "crazyglassesgunitem").setCreativeTab(NanotechMod.CreaI);

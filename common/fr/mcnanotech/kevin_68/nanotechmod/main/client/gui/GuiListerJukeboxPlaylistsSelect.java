@@ -19,7 +19,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
 
 @SideOnly(Side.CLIENT)
-@SuppressWarnings({"unchecked", "static-access"})
+@SuppressWarnings({"unchecked"})
 public class GuiListerJukeboxPlaylistsSelect extends GuiScreen
 {
 

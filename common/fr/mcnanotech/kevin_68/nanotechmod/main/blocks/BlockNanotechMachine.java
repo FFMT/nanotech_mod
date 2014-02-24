@@ -8,13 +8,16 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.blocks;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -50,6 +53,17 @@ public class BlockNanotechMachine extends Block
 			return Blocks.chest.getBlockTextureFromSide(0);
 		}
 		return blockIcon;
+	}
+	
+	@SuppressWarnings({"rawtypes", "unchecked"})
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+	{
+		for(int metadatanumber = 0; metadatanumber < subName.length; metadatanumber++)
+		{
+			list.add(new ItemStack(item, 1, metadatanumber));
+		}
 	}
 
 	@Override

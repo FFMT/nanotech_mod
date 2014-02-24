@@ -14,13 +14,14 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechModCity;
 
 public class NanotechCityBlock
 {
-	public static Block trashcan, spotlight, trail, fountain, lamp, sunShade, modernFence, textSpotlight;
-
+	public static Block trashcan, spotlight, fountain, lamp, sunShade, modernFence, textSpotlight;
+	public static BlockTrail trail;
+	
 	public static void initBlock()
 	{
 		trashcan = new BlockTrashcan().setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundTypeStone).setBlockName("trashcan").setCreativeTab(NanotechModCity.cityTab);
 		spotlight = new BlockSpotLight().setBlockTextureName(NanotechModCity.MODID + ":spotlight").setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundTypeMetal).setBlockName("spotlight").setCreativeTab(NanotechModCity.cityTab);
-		trail = new BlockTrail().setHardness(1.0F).setResistance(10.0F).setBlockName("trail").setStepSound(Block.soundTypeGravel).setCreativeTab(NanotechModCity.cityTab);
+		trail = (BlockTrail)new BlockTrail().setHardness(1.0F).setResistance(10.0F).setBlockName("trail").setStepSound(Block.soundTypeGravel).setCreativeTab(NanotechModCity.cityTab);
 		fountain = new BlockFountain().setHardness(1.5F).setResistance(10.0F).setBlockName("fountain").setCreativeTab(NanotechModCity.cityTab);
 		lamp = new BlockLamp().setHardness(3.0F).setResistance(10.0F).setStepSound(Block.soundTypeMetal).setBlockName("lamp").setCreativeTab(NanotechModCity.cityTab);
 		sunShade = new BlockSunShade().setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundTypeCloth).setBlockName("sunShade").setCreativeTab(NanotechModCity.cityTab);

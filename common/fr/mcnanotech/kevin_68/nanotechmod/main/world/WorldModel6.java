@@ -16,13 +16,13 @@ import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.ChestGenHooks;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 
 public class WorldModel6 extends WorldGenerator
 {
 	protected Block[] getValidSpawnBlocks()
 	{
-		return new Block[] {Blocks.stone, Blocks.dirt, NanotechModList.nanoGrass, Blocks.snow};
+		return new Block[] {Blocks.stone, Blocks.dirt, NanotechBlock.nanoGrass, Blocks.snow};
 	}
 
 	public boolean LocationIsValidSpawn(World world, int x, int y, int z)
@@ -73,18 +73,18 @@ public class WorldModel6 extends WorldGenerator
 			return false;
 		}
 
-		world.setBlock(x + 0, y + 0, z + 0, NanotechModList.nanoGrass);
-		world.setBlock(x + 0, y + 0, z + 1, NanotechModList.nanoGrass);
-		world.setBlock(x + 0, y + 0, z + 2, NanotechModList.nanoGrass);
-		world.setBlock(x + 0, y + 0, z + 3, NanotechModList.nanoGrass);
+		world.setBlock(x + 0, y + 0, z + 0, NanotechBlock.nanoGrass);
+		world.setBlock(x + 0, y + 0, z + 1, NanotechBlock.nanoGrass);
+		world.setBlock(x + 0, y + 0, z + 2, NanotechBlock.nanoGrass);
+		world.setBlock(x + 0, y + 0, z + 3, NanotechBlock.nanoGrass);
 		world.setBlock(x + 0, y + 0, z + 4, Blocks.dirt);
-		world.setBlock(x + 0, y + 0, z + 5, NanotechModList.nanoGrass);
-		world.setBlock(x + 0, y + 0, z + 6, NanotechModList.nanoGrass);
-		world.setBlock(x + 0, y + 0, z + 7, NanotechModList.nanoGrass);
+		world.setBlock(x + 0, y + 0, z + 5, NanotechBlock.nanoGrass);
+		world.setBlock(x + 0, y + 0, z + 6, NanotechBlock.nanoGrass);
+		world.setBlock(x + 0, y + 0, z + 7, NanotechBlock.nanoGrass);
 		world.setBlock(x + 0, y + 0, z + 8, Blocks.dirt);
-		world.setBlock(x + 0, y + 0, z + 9, NanotechModList.nanoGrass);
-		world.setBlock(x + 0, y + 0, z + 10, NanotechModList.nanoGrass);
-		world.setBlock(x + 0, y + 0, z + 11, NanotechModList.nanoGrass);
+		world.setBlock(x + 0, y + 0, z + 9, NanotechBlock.nanoGrass);
+		world.setBlock(x + 0, y + 0, z + 10, NanotechBlock.nanoGrass);
+		world.setBlock(x + 0, y + 0, z + 11, NanotechBlock.nanoGrass);
 		world.setBlockToAir(x + 0, y + 1, z + 0);
 		world.setBlockToAir(x + 0, y + 1, z + 1);
 		world.setBlockToAir(x + 0, y + 1, z + 2);
@@ -301,9 +301,9 @@ public class WorldModel6 extends WorldGenerator
 		world.setBlockToAir(x + 0, y + 18, z + 9);
 		world.setBlockToAir(x + 0, y + 18, z + 10);
 		world.setBlockToAir(x + 0, y + 18, z + 11);
-		world.setBlock(x + 1, y + 0, z + 0, NanotechModList.nanoGrass);
-		world.setBlock(x + 1, y + 0, z + 1, NanotechModList.nanoGrass);
-		world.setBlock(x + 1, y + 0, z + 2, NanotechModList.nanoGrass);
+		world.setBlock(x + 1, y + 0, z + 0, NanotechBlock.nanoGrass);
+		world.setBlock(x + 1, y + 0, z + 1, NanotechBlock.nanoGrass);
+		world.setBlock(x + 1, y + 0, z + 2, NanotechBlock.nanoGrass);
 		world.setBlock(x + 1, y + 0, z + 3, Blocks.dirt);
 		world.setBlock(x + 1, y + 0, z + 4, Blocks.dirt);
 		world.setBlock(x + 1, y + 0, z + 5, Blocks.dirt);
@@ -312,7 +312,7 @@ public class WorldModel6 extends WorldGenerator
 		world.setBlock(x + 1, y + 0, z + 8, Blocks.dirt);
 		world.setBlock(x + 1, y + 0, z + 9, Blocks.dirt);
 		world.setBlock(x + 1, y + 0, z + 10, Blocks.dirt);
-		world.setBlock(x + 1, y + 0, z + 11, NanotechModList.nanoGrass);
+		world.setBlock(x + 1, y + 0, z + 11, NanotechBlock.nanoGrass);
 		world.setBlockToAir(x + 1, y + 1, z + 0);
 		world.setBlockToAir(x + 1, y + 1, z + 1);
 		world.setBlock(x + 1, y + 1, z + 2, Blocks.stone_brick_stairs);
@@ -540,7 +540,7 @@ public class WorldModel6 extends WorldGenerator
 		world.setBlock(x + 2, y + 0, z + 8, Blocks.stonebrick);
 		world.setBlock(x + 2, y + 0, z + 9, Blocks.stonebrick);
 		world.setBlock(x + 2, y + 0, z + 10, Blocks.dirt);
-		world.setBlock(x + 2, y + 0, z + 11, NanotechModList.nanoGrass);
+		world.setBlock(x + 2, y + 0, z + 11, NanotechBlock.nanoGrass);
 		world.setBlockToAir(x + 2, y + 1, z + 0);
 		world.setBlock(x + 2, y + 1, z + 1, Blocks.stonebrick);
 		world.setBlock(x + 2, y + 1, z + 2, Blocks.stonebrick);
@@ -560,7 +560,7 @@ public class WorldModel6 extends WorldGenerator
 		world.setBlock(x + 2, y + 2, z + 4, Blocks.stonebrick);
 		world.setBlock(x + 2, y + 2, z + 5, Blocks.stonebrick);
 		world.setBlock(x + 2, y + 2, z + 6, Blocks.stonebrick);
-		world.setBlock(x + 2, y + 2, z + 7, NanotechModList.satelite, 0, 2);
+		world.setBlock(x + 2, y + 2, z + 7, NanotechBlock.satelite, 0, 2);
 		world.setBlock(x + 2, y + 2, z + 8, Blocks.stonebrick);
 		world.setBlock(x + 2, y + 2, z + 9, Blocks.stonebrick);
 		world.setBlockToAir(x + 2, y + 2, z + 10);
@@ -767,8 +767,8 @@ public class WorldModel6 extends WorldGenerator
 		world.setBlock(x + 3, y + 0, z + 7, Blocks.planks);
 		world.setBlock(x + 3, y + 0, z + 8, Blocks.planks);
 		world.setBlock(x + 3, y + 0, z + 9, Blocks.stonebrick);
-		world.setBlock(x + 3, y + 0, z + 10, NanotechModList.nanoGrass);
-		world.setBlock(x + 3, y + 0, z + 11, NanotechModList.nanoGrass);
+		world.setBlock(x + 3, y + 0, z + 10, NanotechBlock.nanoGrass);
+		world.setBlock(x + 3, y + 0, z + 11, NanotechBlock.nanoGrass);
 		world.setBlockToAir(x + 3, y + 1, z + 0);
 		world.setBlockToAir(x + 3, y + 1, z + 1);
 		world.setBlockToAir(x + 3, y + 1, z + 2);
@@ -797,7 +797,7 @@ public class WorldModel6 extends WorldGenerator
 		world.setBlockToAir(x + 3, y + 2, z + 4);
 		world.setBlockToAir(x + 3, y + 2, z + 5);
 		world.setBlockToAir(x + 3, y + 2, z + 6);
-		world.setBlock(x + 3, y + 2, z + 7, NanotechModList.satelite, 1, 2);
+		world.setBlock(x + 3, y + 2, z + 7, NanotechBlock.satelite, 1, 2);
 		world.setBlockToAir(x + 3, y + 2, z + 8);
 		world.setBlock(x + 3, y + 2, z + 9, Blocks.stonebrick);
 		world.setBlockToAir(x + 3, y + 2, z + 10);
@@ -1004,7 +1004,7 @@ public class WorldModel6 extends WorldGenerator
 		world.setBlock(x + 4, y + 0, z + 7, Blocks.planks);
 		world.setBlock(x + 4, y + 0, z + 8, Blocks.planks);
 		world.setBlock(x + 4, y + 0, z + 9, Blocks.stonebrick);
-		world.setBlock(x + 4, y + 0, z + 10, NanotechModList.nanoGrass);
+		world.setBlock(x + 4, y + 0, z + 10, NanotechBlock.nanoGrass);
 		world.setBlock(x + 4, y + 0, z + 11, Blocks.dirt);
 		world.setBlockToAir(x + 4, y + 1, z + 0);
 		world.setBlockToAir(x + 4, y + 1, z + 1);
@@ -1222,7 +1222,7 @@ public class WorldModel6 extends WorldGenerator
 		world.setBlockToAir(x + 4, y + 18, z + 9);
 		world.setBlockToAir(x + 4, y + 18, z + 10);
 		world.setBlockToAir(x + 4, y + 18, z + 11);
-		world.setBlock(x + 5, y + 0, z + 0, NanotechModList.nanoGrass);
+		world.setBlock(x + 5, y + 0, z + 0, NanotechBlock.nanoGrass);
 		world.setBlock(x + 5, y + 0, z + 1, Blocks.planks);
 		world.setBlock(x + 5, y + 0, z + 2, Blocks.planks);
 		world.setBlock(x + 5, y + 0, z + 3, Blocks.planks);
@@ -1233,7 +1233,7 @@ public class WorldModel6 extends WorldGenerator
 		world.setBlock(x + 5, y + 0, z + 8, Blocks.planks);
 		world.setBlock(x + 5, y + 0, z + 9, Blocks.stonebrick);
 		world.setBlock(x + 5, y + 0, z + 10, Blocks.dirt);
-		world.setBlock(x + 5, y + 0, z + 11, NanotechModList.nanoGrass);
+		world.setBlock(x + 5, y + 0, z + 11, NanotechBlock.nanoGrass);
 		world.setBlockToAir(x + 5, y + 1, z + 0);
 		world.setBlockToAir(x + 5, y + 1, z + 1);
 		world.setBlockToAir(x + 5, y + 1, z + 2);
@@ -1450,7 +1450,7 @@ public class WorldModel6 extends WorldGenerator
 		world.setBlockToAir(x + 5, y + 18, z + 9);
 		world.setBlockToAir(x + 5, y + 18, z + 10);
 		world.setBlockToAir(x + 5, y + 18, z + 11);
-		world.setBlock(x + 6, y + 0, z + 0, NanotechModList.nanoGrass);
+		world.setBlock(x + 6, y + 0, z + 0, NanotechBlock.nanoGrass);
 		world.setBlock(x + 6, y + 0, z + 1, Blocks.planks);
 		world.setBlock(x + 6, y + 0, z + 2, Blocks.planks);
 		world.setBlock(x + 6, y + 0, z + 3, Blocks.planks);
@@ -1678,8 +1678,8 @@ public class WorldModel6 extends WorldGenerator
 		world.setBlockToAir(x + 6, y + 18, z + 9);
 		world.setBlockToAir(x + 6, y + 18, z + 10);
 		world.setBlockToAir(x + 6, y + 18, z + 11);
-		world.setBlock(x + 7, y + 0, z + 0, NanotechModList.nanoGrass);
-		world.setBlock(x + 7, y + 0, z + 1, NanotechModList.nanoGrass);
+		world.setBlock(x + 7, y + 0, z + 0, NanotechBlock.nanoGrass);
+		world.setBlock(x + 7, y + 0, z + 1, NanotechBlock.nanoGrass);
 		world.setBlock(x + 7, y + 0, z + 2, Blocks.planks);
 		world.setBlock(x + 7, y + 0, z + 3, Blocks.planks);
 		world.setBlock(x + 7, y + 0, z + 4, Blocks.planks);
@@ -1689,7 +1689,7 @@ public class WorldModel6 extends WorldGenerator
 		world.setBlock(x + 7, y + 0, z + 8, Blocks.planks);
 		world.setBlock(x + 7, y + 0, z + 9, Blocks.stonebrick);
 		world.setBlock(x + 7, y + 0, z + 10, Blocks.dirt);
-		world.setBlock(x + 7, y + 0, z + 11, NanotechModList.nanoGrass);
+		world.setBlock(x + 7, y + 0, z + 11, NanotechBlock.nanoGrass);
 		world.setBlockToAir(x + 7, y + 1, z + 0);
 		world.setBlockToAir(x + 7, y + 1, z + 1);
 		world.setBlockToAir(x + 7, y + 1, z + 2);
@@ -1906,10 +1906,10 @@ public class WorldModel6 extends WorldGenerator
 		world.setBlockToAir(x + 7, y + 18, z + 9);
 		world.setBlockToAir(x + 7, y + 18, z + 10);
 		world.setBlockToAir(x + 7, y + 18, z + 11);
-		world.setBlock(x + 8, y + 0, z + 0, NanotechModList.nanoGrass);
-		world.setBlock(x + 8, y + 0, z + 1, NanotechModList.nanoGrass);
-		world.setBlock(x + 8, y + 0, z + 2, NanotechModList.nanoGrass);
-		world.setBlock(x + 8, y + 0, z + 3, NanotechModList.nanoGrass);
+		world.setBlock(x + 8, y + 0, z + 0, NanotechBlock.nanoGrass);
+		world.setBlock(x + 8, y + 0, z + 1, NanotechBlock.nanoGrass);
+		world.setBlock(x + 8, y + 0, z + 2, NanotechBlock.nanoGrass);
+		world.setBlock(x + 8, y + 0, z + 3, NanotechBlock.nanoGrass);
 		world.setBlock(x + 8, y + 0, z + 4, Blocks.planks);
 		world.setBlock(x + 8, y + 0, z + 5, Blocks.planks);
 		world.setBlock(x + 8, y + 0, z + 6, Blocks.planks);
@@ -1917,7 +1917,7 @@ public class WorldModel6 extends WorldGenerator
 		world.setBlock(x + 8, y + 0, z + 8, Blocks.planks);
 		world.setBlock(x + 8, y + 0, z + 9, Blocks.stonebrick);
 		world.setBlock(x + 8, y + 0, z + 10, Blocks.dirt);
-		world.setBlock(x + 8, y + 0, z + 11, NanotechModList.nanoGrass);
+		world.setBlock(x + 8, y + 0, z + 11, NanotechBlock.nanoGrass);
 		world.setBlockToAir(x + 8, y + 1, z + 0);
 		world.setBlockToAir(x + 8, y + 1, z + 1);
 		world.setBlockToAir(x + 8, y + 1, z + 2);
@@ -2134,17 +2134,17 @@ public class WorldModel6 extends WorldGenerator
 		world.setBlockToAir(x + 8, y + 18, z + 9);
 		world.setBlockToAir(x + 8, y + 18, z + 10);
 		world.setBlockToAir(x + 8, y + 18, z + 11);
-		world.setBlock(x + 9, y + 0, z + 0, NanotechModList.nanoGrass);
-		world.setBlock(x + 9, y + 0, z + 1, NanotechModList.nanoGrass);
-		world.setBlock(x + 9, y + 0, z + 2, NanotechModList.nanoGrass);
-		world.setBlock(x + 9, y + 0, z + 3, NanotechModList.nanoGrass);
-		world.setBlock(x + 9, y + 0, z + 4, NanotechModList.nanoGrass);
-		world.setBlock(x + 9, y + 0, z + 5, NanotechModList.nanoGrass);
+		world.setBlock(x + 9, y + 0, z + 0, NanotechBlock.nanoGrass);
+		world.setBlock(x + 9, y + 0, z + 1, NanotechBlock.nanoGrass);
+		world.setBlock(x + 9, y + 0, z + 2, NanotechBlock.nanoGrass);
+		world.setBlock(x + 9, y + 0, z + 3, NanotechBlock.nanoGrass);
+		world.setBlock(x + 9, y + 0, z + 4, NanotechBlock.nanoGrass);
+		world.setBlock(x + 9, y + 0, z + 5, NanotechBlock.nanoGrass);
 		world.setBlock(x + 9, y + 0, z + 6, Blocks.planks);
 		world.setBlock(x + 9, y + 0, z + 7, Blocks.planks);
 		world.setBlock(x + 9, y + 0, z + 8, Blocks.planks);
 		world.setBlock(x + 9, y + 0, z + 9, Blocks.stonebrick);
-		world.setBlock(x + 9, y + 0, z + 10, NanotechModList.nanoGrass);
+		world.setBlock(x + 9, y + 0, z + 10, NanotechBlock.nanoGrass);
 		world.setBlock(x + 9, y + 0, z + 11, Blocks.dirt);
 		world.setBlockToAir(x + 9, y + 1, z + 0);
 		world.setBlockToAir(x + 9, y + 1, z + 1);
@@ -2362,18 +2362,18 @@ public class WorldModel6 extends WorldGenerator
 		world.setBlockToAir(x + 9, y + 18, z + 9);
 		world.setBlockToAir(x + 9, y + 18, z + 10);
 		world.setBlockToAir(x + 9, y + 18, z + 11);
-		world.setBlock(x + 10, y + 0, z + 0, NanotechModList.nanoGrass);
-		world.setBlock(x + 10, y + 0, z + 1, NanotechModList.nanoGrass);
-		world.setBlock(x + 10, y + 0, z + 2, NanotechModList.nanoGrass);
-		world.setBlock(x + 10, y + 0, z + 3, NanotechModList.nanoGrass);
-		world.setBlock(x + 10, y + 0, z + 4, NanotechModList.nanoGrass);
-		world.setBlock(x + 10, y + 0, z + 5, NanotechModList.nanoGrass);
-		world.setBlock(x + 10, y + 0, z + 6, NanotechModList.nanoGrass);
-		world.setBlock(x + 10, y + 0, z + 7, NanotechModList.nanoGrass);
+		world.setBlock(x + 10, y + 0, z + 0, NanotechBlock.nanoGrass);
+		world.setBlock(x + 10, y + 0, z + 1, NanotechBlock.nanoGrass);
+		world.setBlock(x + 10, y + 0, z + 2, NanotechBlock.nanoGrass);
+		world.setBlock(x + 10, y + 0, z + 3, NanotechBlock.nanoGrass);
+		world.setBlock(x + 10, y + 0, z + 4, NanotechBlock.nanoGrass);
+		world.setBlock(x + 10, y + 0, z + 5, NanotechBlock.nanoGrass);
+		world.setBlock(x + 10, y + 0, z + 6, NanotechBlock.nanoGrass);
+		world.setBlock(x + 10, y + 0, z + 7, NanotechBlock.nanoGrass);
 		world.setBlock(x + 10, y + 0, z + 8, Blocks.planks);
 		world.setBlock(x + 10, y + 0, z + 9, Blocks.stonebrick);
-		world.setBlock(x + 10, y + 0, z + 10, NanotechModList.nanoGrass);
-		world.setBlock(x + 10, y + 0, z + 11, NanotechModList.nanoGrass);
+		world.setBlock(x + 10, y + 0, z + 10, NanotechBlock.nanoGrass);
+		world.setBlock(x + 10, y + 0, z + 11, NanotechBlock.nanoGrass);
 		world.setBlockToAir(x + 10, y + 1, z + 0);
 		world.setBlockToAir(x + 10, y + 1, z + 1);
 		world.setBlockToAir(x + 10, y + 1, z + 2);

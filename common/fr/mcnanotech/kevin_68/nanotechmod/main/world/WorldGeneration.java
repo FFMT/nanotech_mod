@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import cpw.mods.fml.common.IWorldGenerator;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechConfiguration;
 
 public class WorldGeneration implements IWorldGenerator
@@ -33,17 +33,17 @@ public class WorldGeneration implements IWorldGenerator
 		{
 			for(int i = 0; i < 4; i++)
 			{
-				(new WorldGenMinable(NanotechModList.ore, 0, 10, Blocks.stone)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
+				(new WorldGenMinable(NanotechBlock.ore, 0, 10, Blocks.stone)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 			}
 
-			(new WorldGenMinable(NanotechModList.ore, 1, 7, Blocks.stone)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
+			(new WorldGenMinable(NanotechBlock.ore, 1, 7, Blocks.stone)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(100), chunkZ * 16 + random.nextInt(16));
 
 			for(int i = 0; i < 2; i++)
 			{
-				(new WorldGenMinable(NanotechModList.fakeOre, 0, 6, Blocks.stone)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(32), chunkZ * 16 + random.nextInt(16));
+				(new WorldGenMinable(NanotechBlock.fakeOre, 0, 6, Blocks.stone)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(32), chunkZ * 16 + random.nextInt(16));
 			}
 
-			(new WorldGenMinable(NanotechModList.fakeOre, 1, 4, Blocks.stone)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(16), chunkZ * 16 + random.nextInt(16));
+			(new WorldGenMinable(NanotechBlock.fakeOre, 1, 4, Blocks.stone)).generate(world, random, chunkX * 16 + random.nextInt(16), random.nextInt(16), chunkZ * 16 + random.nextInt(16));
 			// world gen
 
 			if(random.nextInt(32) < 2 * NanotechConfiguration.structure1Prob)

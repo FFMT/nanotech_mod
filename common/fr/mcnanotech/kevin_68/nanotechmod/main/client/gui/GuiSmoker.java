@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSmoker;
+import fr.mcnanotech.kevin_68.nanotechmod.main.network.NTMPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
@@ -43,7 +44,7 @@ public class GuiSmoker extends FFMTGuiContainerSliderBase
 	@Override
 	public void handlerSliderAction(int sliderId, float sliderValue)
 	{
-		// this.sendSmokerPacket((int)(sliderValue * 15));
+		NTMPacketHelper.sendPacket(tileSmoker, (int)(sliderValue * 15));
 	}
 
 	@Override
@@ -51,13 +52,6 @@ public class GuiSmoker extends FFMTGuiContainerSliderBase
 	{
 		return I18n.format("container.smoker.power", +(int)(sliderValue * 15));
 	}
-
-	// TODO packet
-	/*
-	 * private void sendSmokerPacket(int value) { ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream(); DataOutputStream dataoutputstream = new
-	 * DataOutputStream(bytearrayoutputstream); try { dataoutputstream.writeInt(value); this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|smoker",
-	 * bytearrayoutputstream.toByteArray())); } catch(Exception exception) { exception.printStackTrace(); NanotechMod.nanoLog.severe("Failed to send a packet from a Smoker"); } }
-	 */
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int i, int j)

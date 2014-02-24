@@ -16,6 +16,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.WorldServer;
 import fr.mcnanotech.kevin_68.nanotechmod.main.world.NanotechTeleporter;
 
+@SuppressWarnings("rawtypes")
 public class UtilEntityTeleporter
 {
 	public static Entity teleportToDim(Entity entity, int targetDimId)

@@ -8,6 +8,7 @@
 package fr.mcnanotech.kevin_68.nanotechmod.city.core;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import fr.mcnanotech.kevin_68.nanotechmod.city.blocks.NanotechCityBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.city.client.renderer.tileentity.TileEntityFountainRender;
 import fr.mcnanotech.kevin_68.nanotechmod.city.client.renderer.tileentity.TileEntityLampLightRender;
@@ -16,7 +17,8 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.client.renderer.tileentity.TileEn
 import fr.mcnanotech.kevin_68.nanotechmod.city.client.renderer.tileentity.TileEntitySpotLightRender;
 import fr.mcnanotech.kevin_68.nanotechmod.city.client.renderer.tileentity.TileEntitySunShadeRender;
 import fr.mcnanotech.kevin_68.nanotechmod.city.client.renderer.tileentity.TileEntityTextSpotLightRender;
-import fr.mcnanotech.kevin_68.nanotechmod.city.client.renderer.tileentity.TileEntityTrailRender;
+import fr.mcnanotech.kevin_68.nanotechmod.city.client.renderer.tileentity.TileEntityTrailRenderISBRH;
+import fr.mcnanotech.kevin_68.nanotechmod.city.client.renderer.tileentity.TileEntityTrailRenderTESR;
 import fr.mcnanotech.kevin_68.nanotechmod.city.client.renderer.tileentity.TileEntityTrashCanRender;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityFountain;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityLamp;
@@ -31,11 +33,18 @@ import fr.minecraftforgefrance.ffmtlibs.FFMTClientRegistry;
 
 public class ClientProxy extends CommonProxy
 {
+
+	public static int renderTrailID;
+
 	@Override
 	public void registerTileRenders()
 	{
+		renderTrailID = RenderingRegistry.getNextAvailableRenderId();
+
+		RenderingRegistry.registerBlockHandler(renderTrailID, new TileEntityTrailRenderISBRH());
+
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpotLight.class, new TileEntitySpotLightRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTrail.class, new TileEntityTrailRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTrail.class, new TileEntityTrailRenderTESR());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFountain.class, new TileEntityFountainRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLamp.class, new TileEntityLampRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLampLight.class, new TileEntityLampLightRender());

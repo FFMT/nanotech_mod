@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import net.minecraft.client.Minecraft;
 
+@SuppressWarnings({"unchecked", "rawtypes", "static-access"})
 public class UtilListerJukebox
 {
 	public static String mcDir;

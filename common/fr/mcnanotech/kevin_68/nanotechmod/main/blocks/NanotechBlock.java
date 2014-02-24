@@ -41,7 +41,7 @@ public class NanotechBlock
 		falling = new BlockNanoFalling().setHardness(1.5F).setResistance(10.0F).setBlockName("falling").setCreativeTab(NanotechMod.CreaB).setStepSound(Block.soundTypeStone);
 		notFalling = new BlockNotFalling().setHardness(0.5F).setResistance(5.0F).setBlockName("notfalling").setCreativeTab(NanotechMod.CreaB).setStepSound(Block.soundTypeGravel);
 		sodium = new BlockSodium().setHardness(2.0F).setResistance(10.0F).setBlockName("sodium").setBlockTextureName(NanotechMod.MODID + ":sodium").setCreativeTab(NanotechMod.CreaB).setStepSound(Block.soundTypeStone);
-		mossyStone = new BlockBase(Material.rock).setHardness(1.0F).setResistance(10.0F).setBlockName("mossystone").setBlockTextureName(NanotechMod.MODID + ":mossycobble").setCreativeTab(NanotechMod.CreaB).setStepSound(Block.soundTypeStone);
+		mossyStone = new BlockBase(Material.rock).setHardness(1.0F).setResistance(10.0F).setBlockName("mossystone").setBlockTextureName(NanotechMod.MODID + ":mossystone").setCreativeTab(NanotechMod.CreaB).setStepSound(Block.soundTypeStone);
 		theDeathHead = new BlockTheDeathHead().setHardness(5.0F).setResistance(25.0F).setBlockName("theDeathHead").setBlockTextureName(NanotechMod.MODID + ":theDeathHead").setCreativeTab(NanotechMod.CreaB).setStepSound(Block.soundTypeStone);
 		listerJukeBox = new BlockListerJukebox().setHardness(2.0F).setResistance(10.0F).setBlockName("listerJukebox").setBlockTextureName(NanotechMod.MODID + ":listerjukebox").setCreativeTab(NanotechMod.CreaB).setStepSound(Block.soundTypeWood);
 		nanoFence = new BlockFence(NanotechMod.MODID + ":nanoplank", Material.wood).setHardness(2.0F).setResistance(5.0F).setBlockName("nanoFence").setCreativeTab(NanotechMod.CreaB).setStepSound(Block.soundTypeWood);
@@ -52,7 +52,7 @@ public class NanotechBlock
 		nukeBuilding = new BlockBuildingNuke().setHardness(2.0F).setResistance(15.0F).setBlockName("nukeBuildingBlock").setBlockTextureName(NanotechMod.MODID + ":nukebuilding").setStepSound(Block.soundTypeMetal);
 		nukeBuildingStairs = new BlockNanoStairs(nukeBuilding, 0).setBlockName("nukeBuildingStairs").setStepSound(Block.soundTypeMetal);
 		present = new BlockPresent().setHardness(1.0F).setResistance(5.0F).setBlockName("present").setBlockTextureName(NanotechMod.MODID + ":present").setCreativeTab(NanotechMod.CreaB).setStepSound(Block.soundTypeCloth);
-		machine = new BlockNanotechMachine(Material.wood).setHardness(1.0F).setResistance(15.0F).setBlockName("machine");
+		machine = new BlockNanotechMachine(Material.wood).setHardness(1.0F).setResistance(15.0F).setBlockName("machine").setCreativeTab(NanotechMod.CreaB);
 
 		GameRegistry.registerBlock(nanoPortal, ItemBlock.class, "BlockPortal", NanotechMod.MODID);
 		GameRegistry.registerBlock(portalFrame, ItemBlock.class, "BlockPortalframe", NanotechMod.MODID);

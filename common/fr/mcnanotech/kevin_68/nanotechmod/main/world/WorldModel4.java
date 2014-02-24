@@ -13,13 +13,13 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechModList;
+import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 
 public class WorldModel4 extends WorldGenerator
 {
 	protected Block[] getValidSpawnBlocks()
 	{
-		return new Block[] {Blocks.stone, Blocks.dirt, NanotechModList.nanoGrass, Blocks.snow};
+		return new Block[] {Blocks.stone, Blocks.dirt, NanotechBlock.nanoGrass, Blocks.snow};
 	}
 
 	public boolean LocationIsValidSpawn(World world, int x, int y, int z)
@@ -269,7 +269,7 @@ public class WorldModel4 extends WorldGenerator
 		world.setBlock(x + 4, y + 0, z + 1, Blocks.cobblestone);
 		world.setBlock(x + 4, y + 0, z + 2, Blocks.cobblestone);
 		world.setBlock(x + 4, y + 0, z + 3, Blocks.cobblestone);
-		world.setBlock(x + 4, y + 0, z + 4, NanotechModList.sodium);
+		world.setBlock(x + 4, y + 0, z + 4, NanotechBlock.sodium);
 		world.setBlock(x + 4, y + 0, z + 5, Blocks.cobblestone);
 		world.setBlock(x + 4, y + 0, z + 6, Blocks.cobblestone);
 		world.setBlock(x + 4, y + 1, z + 0, Blocks.log);

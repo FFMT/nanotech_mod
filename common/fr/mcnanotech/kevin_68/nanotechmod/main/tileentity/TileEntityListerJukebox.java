@@ -10,12 +10,11 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.tileentity;
 import java.util.List;
 import java.util.Map;
 
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
-
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 
+@SuppressWarnings("rawtypes")
 public class TileEntityListerJukebox extends TileEntity
 {
 	private boolean playRecords = false;
@@ -80,7 +79,7 @@ public class TileEntityListerJukebox extends TileEntity
 				NanotechMod.nanoLogger.debug(number);
 				String music = playListMap.get(playListList.get(number)).toString();
 				NanotechMod.nanoLogger.debug(music);
-				boolean isPlaying = true; //Minecraft.getMinecraft().getSoundHandler().isSoundPlaying(ISound)//Minecraft.getMinecraft().sndManager.sndSystem.playing("streaming");
+				boolean isPlaying = true; // Minecraft.getMinecraft().getSoundHandler().isSoundPlaying(ISound)//Minecraft.getMinecraft().sndManager.sndSystem.playing("streaming");
 				NanotechMod.nanoLogger.debug(isPlaying);
 				if(!isPlaying)
 				{

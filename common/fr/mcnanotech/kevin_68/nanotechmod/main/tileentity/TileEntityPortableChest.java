@@ -22,6 +22,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerPortableChest;
 
+@SuppressWarnings("rawtypes")
 public class TileEntityPortableChest extends TileEntity implements IInventory
 {
 	public ItemStack[] inventory = new ItemStack[72];

@@ -86,8 +86,14 @@ public class NanotechMod
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem()
 		{
-			return NanotechItem.superBottleOfXp;
+			return NanotechItem.itemBase;
 		}
+		
+	    @SideOnly(Side.CLIENT)
+	    public int func_151243_f()
+	    {
+	        return 12;
+	    }
 	};
 
 	@EventHandler
@@ -101,7 +107,6 @@ public class NanotechMod
 		}
 
 		NanotechConfiguration.configure(event);
-		NanotechOther.initPackets();
 		NanotechOther.initPotion();
 		NanotechBlock.initBlock();
 		NanotechItem.initItem();
@@ -118,8 +123,8 @@ public class NanotechMod
 	@EventHandler
 	public void Initnanotechmod(FMLInitializationEvent event)
 	{
-		packetHandler.initialise();
-
+		NanotechOther.initPackets(packetHandler);
+		
 		NanotechOther.initForgeDictionary();
 		NanotechOther.initBlockHarvestlevel();
 		NanotechOther.initWorld();

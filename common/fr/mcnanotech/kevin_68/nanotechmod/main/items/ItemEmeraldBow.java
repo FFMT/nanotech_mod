@@ -38,6 +38,7 @@ public class ItemEmeraldBow extends ItemBow
 	public void registerIcons(IIconRegister iconregister)
 	{
 		iconbuffer = new IIcon[bowpullname.length];
+		itemIcon = iconregister.registerIcon(this.getIconString());
 		for(int i = 0; i < bowpullname.length; i++)
 		{
 			iconbuffer[i] = iconregister.registerIcon(this.getIconString() + bowpullname[i]);

@@ -79,7 +79,7 @@ public class BlockFakeOre extends Block
 		{
 			if(!world.isRemote)
 			{
-				world.setBlock(x, y, z, this);
+				world.setBlockToAir(x, y, z);
 				EntityFakeGold fakegold = new EntityFakeGold(world, (double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F));
 				world.spawnEntityInWorld(fakegold);
 				world.playSoundAtEntity(fakegold, "random.fuse", 1.0F, 1.0F);

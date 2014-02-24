@@ -54,6 +54,7 @@ public class TileEntityJumper extends TileEntity
 	public void setJumpHeight(int newValue)
 	{
 		JumpHeight = newValue;
+		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
 	public int getJumpHeightValue()
