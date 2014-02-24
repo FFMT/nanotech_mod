@@ -88,12 +88,12 @@ public class NanotechMod
 		{
 			return NanotechItem.itemBase;
 		}
-		
-	    @SideOnly(Side.CLIENT)
-	    public int func_151243_f()
-	    {
-	        return 12;
-	    }
+
+		@SideOnly(Side.CLIENT)
+		public int func_151243_f()
+		{
+			return 12;
+		}
 	};
 
 	@EventHandler
@@ -124,7 +124,7 @@ public class NanotechMod
 	public void Initnanotechmod(FMLInitializationEvent event)
 	{
 		NanotechOther.initPackets(packetHandler);
-		
+
 		NanotechOther.initForgeDictionary();
 		NanotechOther.initBlockHarvestlevel();
 		NanotechOther.initWorld();

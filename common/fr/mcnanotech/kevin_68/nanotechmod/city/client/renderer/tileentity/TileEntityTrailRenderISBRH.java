@@ -8,14 +8,9 @@
 package fr.mcnanotech.kevin_68.nanotechmod.city.client.renderer.tileentity;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockGrass;
-import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.RenderBlocks;
-import net.minecraft.init.Blocks;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import fr.mcnanotech.kevin_68.nanotechmod.city.blocks.BlockTrail;
 import fr.mcnanotech.kevin_68.nanotechmod.city.blocks.NanotechCityBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.city.core.ClientProxy;
 import fr.mcnanotech.kevin_68.nanotechmod.city.utils.CTHelper;

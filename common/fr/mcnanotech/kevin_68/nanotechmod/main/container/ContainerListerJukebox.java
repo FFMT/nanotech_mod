@@ -14,7 +14,6 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
 
-
 @SuppressWarnings("unused")
 public class ContainerListerJukebox extends Container
 {

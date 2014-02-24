@@ -43,7 +43,7 @@ public class ItemBlockNanoSteps extends ItemBlock
 	@Override
 	public IIcon getIconFromDamage(int metadata)
 	{
-		return NanotechBlock.nanoPlank.getIcon(2, metadata);//TODO check
+		return NanotechBlock.nanoPlank.getIcon(2, metadata);// TODO check
 	}
 
 	public int getMetadata(int metadata)
@@ -53,9 +53,7 @@ public class ItemBlockNanoSteps extends ItemBlock
 
 	public String getUnlocalizedName(ItemStack stack)
 	{
-		return ((BlockNanoSteps)theHalfSlab)
-				.func_150002_b(
-						stack.getItemDamage());
+		return ((BlockNanoSteps)theHalfSlab).func_150002_b(stack.getItemDamage());
 	}
 
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float par8, float par9, float par10)

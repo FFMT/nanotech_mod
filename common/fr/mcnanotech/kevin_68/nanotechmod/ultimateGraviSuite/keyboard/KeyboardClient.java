@@ -14,13 +14,9 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.client.registry.KeyBindingRegistry;
-import cpw.mods.fml.client.registry.KeyBindingRegistry.KeyHandler;
-import cpw.mods.fml.common.TickType;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.core.ClientProxy;
-import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.core.UltimateGraviSuite;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.network.ClientPacketHelper;
 
 @SideOnly(Side.CLIENT)

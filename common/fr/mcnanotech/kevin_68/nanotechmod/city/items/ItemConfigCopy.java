@@ -24,7 +24,7 @@ public class ItemConfigCopy extends Item
 	{
 		super();
 	}
-	
+
 	public void registerIcons(IIconRegister iconregister)
 	{
 		this.itemIcon = iconregister.registerIcon("nanotechmodcity:configcopier");

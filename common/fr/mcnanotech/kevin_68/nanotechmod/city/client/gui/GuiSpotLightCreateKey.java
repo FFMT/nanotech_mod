@@ -100,7 +100,7 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		NTMCPacketHelper.sendPacket(this.tileSpotLight, tileSpotLight.get(TileEntitySpotLight.DARKBLUE), TileEntitySpotLight.DARKBLUEKEY, time);
 		NTMCPacketHelper.sendPacket(this.tileSpotLight, tileSpotLight.get(TileEntitySpotLight.ANGLE1), TileEntitySpotLight.ANGLE1, time);
 		NTMCPacketHelper.sendPacket(this.tileSpotLight, tileSpotLight.get(TileEntitySpotLight.ANGLE2), TileEntitySpotLight.ANGLE2, time);
-		NTMCPacketHelper.sendPacket(this.tileSpotLight, tileSpotLight.get(TileEntitySpotLight.AUTOROTATE), 9/* TODO change */, time);
+		NTMCPacketHelper.sendPacket(this.tileSpotLight, tileSpotLight.get(TileEntitySpotLight.AUTOROTATE), TileEntitySpotLight.AUTOROTATE, time);
 		// sendKeyPacket(tileSpotLight.getRotationSpeed(), 10, time);
 		// sendKeyPacket(tileSpotLight.getSecondaryLazer() ? 1 : 0, 11, time);
 		// sendKeyPacket(tileSpotLight.getReverseRotation() ? 1 : 0, 12, time);

@@ -53,7 +53,7 @@ public class BlockMultiplier extends BlockContainer
 		{
 			return false;
 		}
-		
+
 		if(!world.isRemote)
 		{
 			player.openGui(NanotechMod.modInstance, 0, world, x, y, z);

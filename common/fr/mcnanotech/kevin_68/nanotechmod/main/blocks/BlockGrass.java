@@ -42,9 +42,9 @@ public class BlockGrass extends Block
 	@Override
 	public void registerBlockIcons(IIconRegister iconregister)
 	{
-		blockIcon = iconregister.registerIcon(this.getTextureName()  + "_side");
-		iconTop = iconregister.registerIcon(this.getTextureName()  + "_top");
-		iconSnowSide = iconregister.registerIcon(this.getTextureName()  + "_side_snow");
+		blockIcon = iconregister.registerIcon(this.getTextureName() + "_side");
+		iconTop = iconregister.registerIcon(this.getTextureName() + "_top");
+		iconSnowSide = iconregister.registerIcon(this.getTextureName() + "_side_snow");
 	}
 
 	@SideOnly(Side.CLIENT)

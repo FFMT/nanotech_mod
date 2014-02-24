@@ -183,8 +183,13 @@ public class EventTick
 			if(Loader.isModLoaded("UltimateGraviSuite"))
 			{
 				/*
-				 * if(helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet) && chestPlate.getItem().equals(UltimateGraviSuite.ultimateGraviChestPlate) &&
-				 * leggings.getItem().equals(UltimateGraviSuite.ultimateLeggings) && boots.getItem().equals(UltimateGraviSuite.ultimateBoots)) { return false; }
+				 * if(helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet)
+				 * && chestPlate.getItem().equals(UltimateGraviSuite.
+				 * ultimateGraviChestPlate) &&
+				 * leggings.getItem().equals(UltimateGraviSuite
+				 * .ultimateLeggings) &&
+				 * boots.getItem().equals(UltimateGraviSuite.ultimateBoots)) {
+				 * return false; }
 				 */
 			}
 		}

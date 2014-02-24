@@ -16,7 +16,7 @@ public class NanotechCityBlock
 {
 	public static Block trashcan, spotlight, fountain, lamp, sunShade, modernFence, textSpotlight;
 	public static BlockTrail trail;
-	
+
 	public static void initBlock()
 	{
 		trashcan = new BlockTrashcan().setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundTypeStone).setBlockName("trashcan").setCreativeTab(NanotechModCity.cityTab);

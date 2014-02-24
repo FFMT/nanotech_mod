@@ -116,7 +116,10 @@ class GuiSlotMusicPlaylist extends GuiSlot
 	public final Map mapMapMods;
 
 	// TODO fix, maybe field_148764_a in SoundRegistry
-	// private Map map = ObfuscationReflectionHelper.getPrivateValue(SoundPool.class, Minecraft.getMinecraft().sndManager.soundPoolStreaming, "field_77461_d", "nameToSoundPoolEntriesMapping", "b");
+	// private Map map =
+	// ObfuscationReflectionHelper.getPrivateValue(SoundPool.class,
+	// Minecraft.getMinecraft().sndManager.soundPoolStreaming, "field_77461_d",
+	// "nameToSoundPoolEntriesMapping", "b");
 	private Map map = Maps.newHashMap();
 	private ArrayList arraylist = Lists.newArrayList(map.keySet());
 

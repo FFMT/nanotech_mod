@@ -100,7 +100,8 @@ public class NanotechOther
 
 		// TODO fix
 		// GameRegistry.registerCraftingHandler(new CraftingHandler());
-		// TickRegistry.registerTickHandler(new NanotechServerTickHandler(), Side.SERVER);
+		// TickRegistry.registerTickHandler(new NanotechServerTickHandler(),
+		// Side.SERVER);
 	}
 
 	public static void initForgeDictionary()
@@ -114,15 +115,19 @@ public class NanotechOther
 	public static void initBlockHarvestlevel()
 	{
 		// TODO fix
-		// MinecraftForge.setBlockHarvestLevel(NanotechModList.nanoGrass, "shovel", 2);
-		// MinecraftForge.setBlockHarvestLevel(NanotechModList.notFalling, "shovel", 2);
+		// MinecraftForge.setBlockHarvestLevel(NanotechModList.nanoGrass,
+		// "shovel", 2);
+		// MinecraftForge.setBlockHarvestLevel(NanotechModList.notFalling,
+		// "shovel", 2);
 	}
 
 	public static void initWorld()
 	{
 		// TODO fix world
-		// DimensionManager.registerProviderType(NanotechConfiguration.dimensionID, NanotechWorldProvider.class, false);
-		// DimensionManager.registerDimension(NanotechConfiguration.dimensionID, NanotechConfiguration.dimensionID);
+		// DimensionManager.registerProviderType(NanotechConfiguration.dimensionID,
+		// NanotechWorldProvider.class, false);
+		// DimensionManager.registerDimension(NanotechConfiguration.dimensionID,
+		// NanotechConfiguration.dimensionID);
 
 		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechBlock.sodium), 1, 5, 6));
 		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechItem.nanoDisc), 1, 1, 2));

@@ -31,8 +31,7 @@ public class TileEntitySmoker extends TileEntity
 			this.worldObj.spawnParticle("largesmoke", (double)f, (double)f1, (double)f2, 0.0D, 0.002D * i, 0.0D);
 		}
 	}
-	
-	
+
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
 		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;

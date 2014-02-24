@@ -7,13 +7,13 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.city.network;
 
-import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
-import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
+import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
 
 public class PacketSpotLight extends AbstractPacket
 {

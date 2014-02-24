@@ -81,9 +81,16 @@ public class GuiLightSaber extends FFMTGuiContainerSliderBase
 
 	// TODO packet
 	/*
-	 * private void sendSaberPacket(int value, int type) { ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream(); DataOutputStream dataoutputstream = new
-	 * DataOutputStream(bytearrayoutputstream); try { dataoutputstream.writeInt(type); dataoutputstream.writeInt(value); this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTM|saber",
-	 * bytearrayoutputstream.toByteArray())); } catch(Exception exception) { exception.printStackTrace(); NanotechMod.nanoLog.severe("Failed to send a packet from a SpotLight"); } }
+	 * private void sendSaberPacket(int value, int type) { ByteArrayOutputStream
+	 * bytearrayoutputstream = new ByteArrayOutputStream(); DataOutputStream
+	 * dataoutputstream = new DataOutputStream(bytearrayoutputstream); try {
+	 * dataoutputstream.writeInt(type); dataoutputstream.writeInt(value);
+	 * this.mc.getNetHandler().addToSendQueue(new
+	 * Packet250CustomPayload("NTM|saber",
+	 * bytearrayoutputstream.toByteArray())); } catch(Exception exception) {
+	 * exception.printStackTrace();
+	 * NanotechMod.nanoLog.severe("Failed to send a packet from a SpotLight"); }
+	 * }
 	 */
 
 	@Override

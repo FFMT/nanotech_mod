@@ -7,14 +7,12 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.network;
 
-import ic2.api.item.ElectricItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import cpw.mods.fml.client.FMLClientHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.core.ClientProxy;
-import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.core.UltimateGraviSuite;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items.UltimateBoots;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items.UltimateGraviChestPlate;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items.UltimateLeggings;

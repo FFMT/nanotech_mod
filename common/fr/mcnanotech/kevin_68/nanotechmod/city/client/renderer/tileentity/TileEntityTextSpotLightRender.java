@@ -73,7 +73,9 @@ public class TileEntityTextSpotLightRender extends TileEntitySpecialRenderer
 			String s = tileentity.signText;
 			fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, -20, (tileentity.get(TileEntityTextSpotLight.RED) * 65536) + (tileentity.get(TileEntityTextSpotLight.GREEN) * 256) + tileentity.get(TileEntityTextSpotLight.BLUE));
 			// GL11.glRotatef(180, 0.0F, 1.0F, 0.0F);
-			// fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, -20, (tileentity.getRedValue() * 65536) + (tileentity.getGreenValue() * 256) + tileentity.getBlueValue());
+			// fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2,
+			// -20, (tileentity.getRedValue() * 65536) +
+			// (tileentity.getGreenValue() * 256) + tileentity.getBlueValue());
 
 			GL11.glDepthMask(true);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);

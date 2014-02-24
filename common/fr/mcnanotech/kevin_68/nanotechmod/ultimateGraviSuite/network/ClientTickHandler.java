@@ -15,9 +15,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.common.ITickHandler;
-import cpw.mods.fml.common.TickType;
-import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.core.UltimateGraviSuite;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items.UltimateGraviChestPlate;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.keyboard.KeyboardClient;
 

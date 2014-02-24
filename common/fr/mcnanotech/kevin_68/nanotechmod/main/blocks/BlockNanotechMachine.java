@@ -54,7 +54,7 @@ public class BlockNanotechMachine extends Block
 		}
 		return blockIcon;
 	}
-	
+
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	@SideOnly(Side.CLIENT)
 	@Override
@@ -178,7 +178,9 @@ public class BlockNanotechMachine extends Block
 						teChest.setCustomGuiName(stack.getDisplayName());
 					}
 
-					NBTTagList nbttaglist = stack.getTagCompound().getTagList("Items", 0);// TODO check 0
+					NBTTagList nbttaglist = stack.getTagCompound().getTagList("Items", 0);// TODO
+																							// check
+																							// 0
 					for(int i = 0; i < nbttaglist.tagCount(); i++)
 					{
 						NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(i);
@@ -203,7 +205,8 @@ public class BlockNanotechMachine extends Block
 			player.addStat(StatList.mineBlockStatArray[Block.getIdFromBlock(this)], 1);
 			player.addExhaustion(0.025F);
 			int i1 = EnchantmentHelper.getFortuneModifier(player);
-			if(!player.getDisplayName().contains("[") || !(player instanceof FakePlayer))// TODO check
+			if(!player.getDisplayName().contains("[") || !(player instanceof FakePlayer))// TODO
+																							// check
 			{
 				ArrayList<ItemStack> items = getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), i1);
 				for(ItemStack is : items)
