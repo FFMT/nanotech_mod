@@ -13,6 +13,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.ChestGenHooks;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -24,7 +25,6 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.event.EventBonemeal;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.EventTick;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.LivingEvent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.PlayerEvent;
-import fr.mcnanotech.kevin_68.nanotechmod.main.event.PlayerTracker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.RenderEvent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.GuiHandler;
@@ -39,11 +39,11 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPortableChes
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPresent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.world.NanotechBiome;
+import fr.mcnanotech.kevin_68.nanotechmod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotechmod.main.world.NitrogenOcean;
 
 public class NanotechOther
 {
-
 	protected static final BiomeGenBase.Height height_nanotechBiome = new BiomeGenBase.Height(0.0F, 0.1F);
 	protected static final BiomeGenBase.Height height_nitrogenOcean = new BiomeGenBase.Height(-0.5F, 0.0F);
 
@@ -94,14 +94,8 @@ public class NanotechOther
 		MinecraftForge.EVENT_BUS.register(new PlayerEvent());
 		MinecraftForge.EVENT_BUS.register(new LivingEvent());
 		MinecraftForge.EVENT_BUS.register(new BucketEvent());
-		MinecraftForge.EVENT_BUS.register(new PlayerTracker());
 		MinecraftForge.EVENT_BUS.register(new RenderEvent());
 		MinecraftForge.EVENT_BUS.register(new EventTick());
-
-		// TODO fix
-		// GameRegistry.registerCraftingHandler(new CraftingHandler());
-		// TickRegistry.registerTickHandler(new NanotechServerTickHandler(),
-		// Side.SERVER);
 	}
 
 	public static void initForgeDictionary()
@@ -112,22 +106,10 @@ public class NanotechOther
 		OreDictionary.registerOre("treeLeaves", new ItemStack(NanotechBlock.nanoLeaves));
 	}
 
-	public static void initBlockHarvestlevel()
-	{
-		// TODO fix
-		// MinecraftForge.setBlockHarvestLevel(NanotechModList.nanoGrass,
-		// "shovel", 2);
-		// MinecraftForge.setBlockHarvestLevel(NanotechModList.notFalling,
-		// "shovel", 2);
-	}
-
 	public static void initWorld()
 	{
-		// TODO fix world
-		// DimensionManager.registerProviderType(NanotechConfiguration.dimensionID,
-		// NanotechWorldProvider.class, false);
-		// DimensionManager.registerDimension(NanotechConfiguration.dimensionID,
-		// NanotechConfiguration.dimensionID);
+		DimensionManager.registerProviderType(NanotechConfiguration.dimensionID, NanotechWorldProvider.class, false);
+		DimensionManager.registerDimension(NanotechConfiguration.dimensionID, NanotechConfiguration.dimensionID);
 
 		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechBlock.sodium), 1, 5, 6));
 		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechItem.nanoDisc), 1, 1, 2));

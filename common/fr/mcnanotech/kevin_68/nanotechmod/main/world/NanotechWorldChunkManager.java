@@ -80,7 +80,7 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 
 		for(int i1 = 0; i1 < par4 * par5; ++i1)
 		{
-			float f = (float)BiomeGenBase.biomeList[aint[i1]].getIntRainfall() / 65536.0F;
+			float f = (float)BiomeGenBase.getBiome(aint[i1]).getIntRainfall() / 65536.0F;
 
 			if(f > 1.0F)
 			{
@@ -99,32 +99,6 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 		return par1;
 	}
 
-	public float[] getTemperatures(float[] par1ArrayOfFloat, int par2, int par3, int par4, int par5)
-	{
-		IntCache.resetIntCache();
-
-		if(par1ArrayOfFloat == null || par1ArrayOfFloat.length < par4 * par5)
-		{
-			par1ArrayOfFloat = new float[par4 * par5];
-		}
-
-		int[] aint = this.myBiomeIndexLayer.getInts(par2, par3, par4, par5);
-
-		for(int i1 = 0; i1 < par4 * par5; ++i1)
-		{
-			float f = (float)BiomeGenBase.biomeList[aint[i1]].getIntTemperature() / 65536.0F;
-
-			if(f > 1.0F)
-			{
-				f = 1.0F;
-			}
-
-			par1ArrayOfFloat[i1] = f;
-		}
-
-		return par1ArrayOfFloat;
-	}
-
 	public BiomeGenBase[] getBiomesForGeneration(BiomeGenBase[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5)
 	{
 		IntCache.resetIntCache();
@@ -140,7 +114,7 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 		{
 			if(aint[i] >= 0)
 			{
-				par1ArrayOfBiomeGenBase[i] = BiomeGenBase.biomeList[aint[i]];
+				par1ArrayOfBiomeGenBase[i] = BiomeGenBase.getBiome(aint[i]);
 			}
 			else
 			{
@@ -179,7 +153,7 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 			{
 				if(aint[i] >= 0)
 				{
-					par1ArrayOfBiomeGenBase[i] = BiomeGenBase.biomeList[aint[i]];
+					par1ArrayOfBiomeGenBase[i] = BiomeGenBase.getBiome(aint[i]);
 				}
 				else
 				{
@@ -204,7 +178,7 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 
 		for(int j2 = 0; j2 < l1 * i2; ++j2)
 		{
-			BiomeGenBase biomegenbase = BiomeGenBase.biomeList[aint[j2]];
+			BiomeGenBase biomegenbase = BiomeGenBase.getBiome(aint[j2]);
 
 			if(!par4List.contains(biomegenbase))
 			{
@@ -232,7 +206,7 @@ public class NanotechWorldChunkManager extends WorldChunkManager
 		{
 			int l2 = l + k2 % l1 << 2;
 			int i3 = i1 + k2 / l1 << 2;
-			BiomeGenBase biomegenbase = BiomeGenBase.biomeList[aint[k2]];
+			BiomeGenBase biomegenbase = BiomeGenBase.getBiome(aint[k2]);
 
 			if(par4List.contains(biomegenbase) && (chunkposition == null || par5Random.nextInt(j2 + 1) == 0))
 			{

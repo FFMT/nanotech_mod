@@ -27,6 +27,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.FakePlayer;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -178,9 +179,7 @@ public class BlockNanotechMachine extends Block
 						teChest.setCustomGuiName(stack.getDisplayName());
 					}
 
-					NBTTagList nbttaglist = stack.getTagCompound().getTagList("Items", 0);// TODO
-																							// check
-																							// 0
+					NBTTagList nbttaglist = stack.getTagCompound().getTagList("Items", Constants.NBT.TAG_COMPOUND);
 					for(int i = 0; i < nbttaglist.tagCount(); i++)
 					{
 						NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(i);

@@ -31,6 +31,7 @@ public class BlockGrass extends Block
 	{
 		super(Material.grass);
 		this.setTickRandomly(true);
+		this.setHarvestLevel("shovel", 2);
 	}
 
 	@Override

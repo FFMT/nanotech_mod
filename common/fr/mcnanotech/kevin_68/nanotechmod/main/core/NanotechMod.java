@@ -126,7 +126,6 @@ public class NanotechMod
 		NanotechOther.initPackets(packetHandler);
 
 		NanotechOther.initForgeDictionary();
-		NanotechOther.initBlockHarvestlevel();
 		NanotechOther.initWorld();
 		NanotechAchievement.initAchievement();
 	}

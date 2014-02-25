@@ -28,6 +28,7 @@ public class BlockNotFalling extends Block
 	public BlockNotFalling()
 	{
 		super(Material.sand);
+		this.setHarvestLevel("shovel", 2);
 	}
 
 	@Override

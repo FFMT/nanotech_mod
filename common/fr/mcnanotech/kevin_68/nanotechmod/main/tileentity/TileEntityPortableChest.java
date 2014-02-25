@@ -20,6 +20,7 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraftforge.common.util.Constants;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerPortableChest;
 
 @SuppressWarnings("rawtypes")
@@ -38,7 +39,7 @@ public class TileEntityPortableChest extends TileEntity implements IInventory
 		super.readFromNBT(nbttag);
 		direction = nbttag.getByte("Direction");
 
-		NBTTagList nbttaglist = nbttag.getTagList("Items", 1);
+		NBTTagList nbttaglist = nbttag.getTagList("Items", Constants.NBT.TAG_COMPOUND);
 		if(nbttag.hasKey("CustomName"))
 		{
 			this.customName = nbttag.getString("CustomName");

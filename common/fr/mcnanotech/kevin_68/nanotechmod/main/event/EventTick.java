@@ -18,9 +18,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
+import cpw.mods.fml.relauncher.Side;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechDamageSource;
@@ -29,88 +32,106 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPortableChes
 
 public class EventTick
 {
-	@SuppressWarnings("static-access")
+	//TODO fix tick
 	@SubscribeEvent
 	public void playerTick(PlayerTickEvent event)
 	{
-		for(int i = 0; i < event.player.inventory.getSizeInventory(); i++)
+		if(event.phase == Phase.END)
 		{
-			if(event.player.inventory.getStackInSlot(i) != null)
+			if(event.side == Side.CLIENT)
 			{
-				if(event.player.inventory.getStackInSlot(i).getItem().equals(NanotechItem.alters))
+				this.tickClientPlayer(event.player);
+			}
+			else
+			{
+				this.tickServerPlayer(event.player);
+			}
+		}
+	}
+
+	private void tickClientPlayer(EntityPlayer player)
+	{
+		for(int i = 0; i < player.inventory.getSizeInventory(); i++)
+		{
+			if(player.inventory.getStackInSlot(i) != null)
+			{
+				if(player.inventory.getStackInSlot(i).getItem().equals(NanotechItem.alters))
 				{
-					if(event.player.isInsideOfMaterial(Material.water) || event.player.isInsideOfMaterial(Material.lava))
+					if(player.isInsideOfMaterial(Material.water) || player.isInsideOfMaterial(Material.lava))
 					{
-						if(!event.player.capabilities.isCreativeMode)
+						if(!player.capabilities.isCreativeMode)
 						{
-							Minecraft mc = Minecraft.getMinecraft();
+							Minecraft mc = FMLClientHandler.instance().getClient();
 							if(mc.gameSettings.isKeyDown(mc.gameSettings.keyBindJump))
 							{
-								// TODO if key down pressed, cancel
+								mc.gameSettings.keyBindJump.unPressAllKeys();
 							}
 						}
 					}
 				}
 			}
 		}
+	}
 
-		if(event.player.inventory.armorItemInSlot(3) == null && !event.player.capabilities.isCreativeMode)
+	private void tickServerPlayer(EntityPlayer player)
+	{
+		if(player.inventory.armorItemInSlot(3) == null && !player.capabilities.isCreativeMode)
 		{
-			for(int i = 0; i < event.player.inventory.getSizeInventory(); i++)
+			for(int i = 0; i < player.inventory.getSizeInventory(); i++)
 			{
-				if(event.player.inventory.getStackInSlot(i) != null)
+				if(player.inventory.getStackInSlot(i) != null)
 				{
-					if(event.player.inventory.getStackInSlot(i).getItem() == NanotechItem.crazyGlasses)
+					if(player.inventory.getStackInSlot(i).getItem() == NanotechItem.crazyGlasses)
 					{
-						event.player.inventory.setInventorySlotContents(39, new ItemStack(NanotechItem.crazyGlasses));
-						event.player.inventory.consumeInventoryItem(NanotechItem.crazyGlasses);
+						player.inventory.setInventorySlotContents(39, new ItemStack(NanotechItem.crazyGlasses));
+						player.inventory.consumeInventoryItem(NanotechItem.crazyGlasses);
 					}
 				}
 			}
 		}
-		else if(event.player.inventory.armorItemInSlot(3) != null && event.player.inventory.armorItemInSlot(3).getItem() != NanotechItem.crazyGlasses && !event.player.capabilities.isCreativeMode)
+		else if(player.inventory.armorItemInSlot(3) != null && player.inventory.armorItemInSlot(3).getItem() != NanotechItem.crazyGlasses && !player.capabilities.isCreativeMode)
 		{
-			for(int i = 0; i < event.player.inventory.getSizeInventory(); i++)
+			for(int i = 0; i < player.inventory.getSizeInventory(); i++)
 			{
-				if(event.player.inventory.getStackInSlot(i) != null)
+				if(player.inventory.getStackInSlot(i) != null)
 				{
-					if(event.player.inventory.getStackInSlot(i).getItem() == NanotechItem.crazyGlasses)
+					if(player.inventory.getStackInSlot(i).getItem() == NanotechItem.crazyGlasses)
 					{
-						event.player.inventory.setInventorySlotContents(i, event.player.inventory.armorItemInSlot(3).copy());
-						event.player.inventory.setInventorySlotContents(39, new ItemStack(NanotechItem.crazyGlasses));
-						event.player.inventory.consumeInventoryItem(NanotechItem.crazyGlasses);
+						player.inventory.setInventorySlotContents(i, player.inventory.armorItemInSlot(3).copy());
+						player.inventory.setInventorySlotContents(39, new ItemStack(NanotechItem.crazyGlasses));
+						player.inventory.consumeInventoryItem(NanotechItem.crazyGlasses);
 					}
 				}
 			}
 		}
-		for(int i = 0; i < event.player.inventory.getSizeInventory(); i++)
+		for(int i = 0; i < player.inventory.getSizeInventory(); i++)
 		{
-			if(event.player.inventory.getStackInSlot(i) != null)
+			if(player.inventory.getStackInSlot(i) != null)
 			{
-				if(event.player.inventory.getStackInSlot(i).getItem() == NanotechFluid.bucketNitrogen)
+				if(player.inventory.getStackInSlot(i).getItem() == NanotechFluid.bucketNitrogen)
 				{
 					Random rand = new Random();
-					if(rand.nextInt(100) < 2 && this.doEffect(event.player))
+					if(rand.nextInt(100) < 2 && this.doEffect(player))
 					{
-						event.player.attackEntityFrom(NanotechDamageSource.nitrogenDamage, 1);
+						player.attackEntityFrom(NanotechDamageSource.nitrogenDamage, 1);
 					}
 				}
 			}
 		}
 
-		for(int i = 0; i < event.player.inventory.getSizeInventory(); i++)
+		for(int i = 0; i < player.inventory.getSizeInventory(); i++)
 		{
-			if(event.player.inventory.getStackInSlot(i) != null)
+			if(player.inventory.getStackInSlot(i) != null)
 			{
-				if(event.player.inventory.getStackInSlot(i).getItem() == Item.getItemFromBlock(NanotechBlock.machine) && event.player.inventory.getStackInSlot(i).getItemDamage() == 0)
+				if(player.inventory.getStackInSlot(i).getItem() == Item.getItemFromBlock(NanotechBlock.machine) && player.inventory.getStackInSlot(i).getItemDamage() == 0)
 				{
-					if(event.player.inventory.getCurrentItem() != event.player.inventory.getStackInSlot(i))
+					if(player.inventory.getCurrentItem() != player.inventory.getStackInSlot(i))
 					{
-						int direction = MathHelper.floor_double((double)(event.player.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
+						int direction = MathHelper.floor_double((double)(player.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
 
-						int x = (int)event.player.posX;
-						int y = (int)event.player.posY;
-						int z = (int)event.player.posZ;
+						int x = (int)player.posX;
+						int y = (int)player.posY;
+						int z = (int)player.posZ;
 
 						for(int g = -3; g != 3; g++)
 						{
@@ -118,36 +139,36 @@ public class EventTick
 							{
 								for(int f = -3; f != 3; f++)
 								{
-									if(event.player.worldObj.isAirBlock((int)event.player.posX + h, (int)event.player.posY + f, (int)event.player.posZ + g))
+									if(player.worldObj.isAirBlock((int)player.posX + h, (int)player.posY + f, (int)player.posZ + g))
 									{
-										x = (int)event.player.posX + h;
-										y = (int)event.player.posY + f;
-										z = (int)event.player.posZ + g;
+										x = (int)player.posX + h;
+										y = (int)player.posY + f;
+										z = (int)player.posZ + g;
 									}
 								}
 							}
 						}
 
-						while(event.player.worldObj.isAirBlock(x, y - 1, z) && y > 0)
+						while(player.worldObj.isAirBlock(x, y - 1, z) && y > 0)
 						{
 							y--;
 						}
 
-						event.player.worldObj.setBlock(x, y, z, NanotechBlock.machine, 0, 2);
-						TileEntity te = event.player.worldObj.getTileEntity(x, y, z);
+						player.worldObj.setBlock(x, y, z, NanotechBlock.machine, 0, 2);
+						TileEntity te = player.worldObj.getTileEntity(x, y, z);
 						if(te != null && te instanceof TileEntityPortableChest)
 						{
 							TileEntityPortableChest teChest = (TileEntityPortableChest)te;
 							teChest.setDirection((byte)direction);
 
-							if(event.player.inventory.getStackInSlot(i).hasTagCompound())
+							if(player.inventory.getStackInSlot(i).hasTagCompound())
 							{
-								if(event.player.inventory.getStackInSlot(i).hasDisplayName())
+								if(player.inventory.getStackInSlot(i).hasDisplayName())
 								{
-									teChest.setCustomGuiName(event.player.inventory.getStackInSlot(i).getDisplayName());
+									teChest.setCustomGuiName(player.inventory.getStackInSlot(i).getDisplayName());
 								}
 
-								NBTTagList nbttaglist = event.player.inventory.getStackInSlot(i).getTagCompound().getTagList("Items", 1);
+								NBTTagList nbttaglist = player.inventory.getStackInSlot(i).getTagCompound().getTagList("Items", 1);
 								for(int j = 0; j < nbttaglist.tagCount(); j++)
 								{
 									NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(j);
@@ -160,8 +181,8 @@ public class EventTick
 								}
 							}
 						}
-						event.player.inventory.decrStackSize(i, 1);
-						event.player.worldObj.markBlockForUpdate(x, y, z);
+						player.inventory.decrStackSize(i, 1);
+						player.worldObj.markBlockForUpdate(x, y, z);
 					}
 				}
 			}
@@ -182,6 +203,7 @@ public class EventTick
 			}
 			if(Loader.isModLoaded("UltimateGraviSuite"))
 			{
+				// TODO ultimate
 				/*
 				 * if(helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet)
 				 * && chestPlate.getItem().equals(UltimateGraviSuite.
