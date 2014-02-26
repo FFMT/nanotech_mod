@@ -16,6 +16,7 @@ import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
@@ -90,12 +91,12 @@ public class NanotechOther
 
 	public static void initEvent()
 	{
+		FMLCommonHandler.instance().bus().register(new PlayerEvent());
+		FMLCommonHandler.instance().bus().register(new EventTick());
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
-		MinecraftForge.EVENT_BUS.register(new PlayerEvent());
 		MinecraftForge.EVENT_BUS.register(new LivingEvent());
 		MinecraftForge.EVENT_BUS.register(new BucketEvent());
 		MinecraftForge.EVENT_BUS.register(new RenderEvent());
-		MinecraftForge.EVENT_BUS.register(new EventTick());
 	}
 
 	public static void initForgeDictionary()

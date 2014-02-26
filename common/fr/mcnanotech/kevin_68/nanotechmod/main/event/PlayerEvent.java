@@ -9,9 +9,9 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.event;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.ItemPickupEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemSmeltedEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
@@ -23,23 +23,23 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechConfiguration;
 public class PlayerEvent
 {
 	@SubscribeEvent
-	public void onItemPickup(EntityItemPickupEvent event)
+	public void onItemPickup(ItemPickupEvent event)
 	{
-		if(event.item.getEntityItem().isItemEqual(new ItemStack(NanotechItem.scythe)))
+		if(event.pickedUp.getEntityItem().isItemEqual(new ItemStack(NanotechItem.scythe)))
 		{
-			event.entityPlayer.triggerAchievement(NanotechAchievement.getScythe);
+			event.player.triggerAchievement(NanotechAchievement.getScythe);
 		}
-		if(event.item.getEntityItem().isItemEqual(new ItemStack(NanotechItem.crazyGlasses)))
+		if(event.pickedUp.getEntityItem().isItemEqual(new ItemStack(NanotechItem.crazyGlasses)))
 		{
-			event.entityPlayer.triggerAchievement(NanotechAchievement.itemCrazyGlasses);
+			event.player.triggerAchievement(NanotechAchievement.itemCrazyGlasses);
 		}
-		if(event.item.getEntityItem().isItemEqual(new ItemStack(NanotechItem.itemBase, 1, 2)))
+		if(event.pickedUp.getEntityItem().isItemEqual(new ItemStack(NanotechItem.itemBase, 1, 2)))
 		{
-			event.entityPlayer.triggerAchievement(NanotechAchievement.getMysteriousMat);
+			event.player.triggerAchievement(NanotechAchievement.getMysteriousMat);
 		}
-		if(event.item.getEntityItem().isItemEqual(new ItemStack(NanotechBlock.ore, 1, 1)))
+		if(event.pickedUp.getEntityItem().isItemEqual(new ItemStack(NanotechBlock.ore, 1, 1)))
 		{
-			event.entityPlayer.triggerAchievement(NanotechAchievement.blockSiliconOre);
+			event.player.triggerAchievement(NanotechAchievement.blockSiliconOre);
 		}
 	}
 	
