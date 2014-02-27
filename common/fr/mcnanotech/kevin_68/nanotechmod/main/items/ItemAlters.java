@@ -17,11 +17,6 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechDamageSource;
 
 public class ItemAlters extends Item
 {
-	public ItemAlters()
-	{
-		super();
-	}
-
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{

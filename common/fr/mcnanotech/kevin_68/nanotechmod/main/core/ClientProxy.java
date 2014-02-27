@@ -33,6 +33,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.items.ItemDebugRe
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.items.ItemLightSaberRender;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.items.ItemNanomiteArrowGunRender;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.items.ItemScytheRender;
+import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.tileentity.BlockCerealRender;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.tileentity.TileEntityButtonRender;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.renderer.tileentity.TileEntityPortableChestRender;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.MobCrazyGuy;
@@ -56,9 +57,13 @@ import fr.minecraftforgefrance.ffmtlibs.FFMTClientRegistry;
 
 public class ClientProxy extends CommonProxy
 {
+	public static int renderCerealID;
+
 	@Override
 	public void register()
 	{
+		renderCerealID = RenderingRegistry.getNextAvailableRenderId();
+
 		RenderingRegistry.registerEntityRenderingHandler(MobThedeath.class, new RenderTheDeath());
 		RenderingRegistry.registerEntityRenderingHandler(MobSuperCreeper.class, new RenderSuperCreeper());
 		RenderingRegistry.registerEntityRenderingHandler(MobSuperSkeleton.class, new RenderMobSuperSkeleton());
@@ -86,5 +91,6 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityButton.class, new TileEntityButtonRender());
 		FFMTClientRegistry.bindTESRWithInventoryRender(NanotechBlock.machine, 0, TileEntityPortableChest.class, new TileEntityPortableChestRender());
 
+		RenderingRegistry.registerBlockHandler(renderCerealID, new BlockCerealRender());
 	}
 }

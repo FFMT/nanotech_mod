@@ -37,5 +37,4 @@ public class NTMPacketHelper
 			NanotechMod.nanoLogger.error("Failed to send a packet from a smoker");
 		}
 	}
-
 }

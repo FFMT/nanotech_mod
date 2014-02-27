@@ -19,7 +19,7 @@ public class NanotechBlock
 	/**
 	 * Only use for NPE on loading
 	 */
-	public static Block nanoPortal, portalFrame, nanoGrass, fakeOre, speed, jump, multiplier, smoker, barbedWire, nanoWood, nanoLeaves, nanoSaplings, nanoPlank, ore, confusion, falling, notFalling, sodium, mossyStone, theDeathHead, listerJukeBox, nanoFence, nanoStairs, nanoStepSingle, nanoStepDouble, satelite, nukeBuilding, nukeBuildingStairs, present, machine;
+	public static Block nanoPortal, portalFrame, nanoGrass, fakeOre, speed, jump, multiplier, smoker, barbedWire, nanoWood, nanoLeaves, nanoSaplings, nanoPlank, ore, confusion, falling, notFalling, sodium, mossyStone, theDeathHead, listerJukeBox, nanoFence, nanoStairs, nanoStepSingle, nanoStepDouble, satelite, nukeBuilding, nukeBuildingStairs, present, machine, cereal;
 
 	public static void initBlock()
 	{
@@ -53,6 +53,7 @@ public class NanotechBlock
 		nukeBuildingStairs = new BlockNanoStairs(nukeBuilding, 0).setBlockName("nukeBuildingStairs").setStepSound(Block.soundTypeMetal);
 		present = new BlockPresent().setHardness(1.0F).setResistance(5.0F).setBlockName("present").setBlockTextureName(NanotechMod.MODID + ":present").setCreativeTab(NanotechMod.CreaB).setStepSound(Block.soundTypeCloth);
 		machine = new BlockNanotechMachine(Material.wood).setHardness(1.0F).setResistance(15.0F).setBlockName("machine").setCreativeTab(NanotechMod.CreaB);
+		cereal = new BlockCereal().setHardness(0.5F).setResistance(3.0F).setBlockName("cereal").setCreativeTab(NanotechMod.CreaB).setStepSound(Block.soundTypeGrass);
 
 		GameRegistry.registerBlock(nanoPortal, ItemBlock.class, "BlockPortal", NanotechMod.MODID);
 		GameRegistry.registerBlock(portalFrame, ItemBlock.class, "BlockPortalframe", NanotechMod.MODID);
@@ -84,6 +85,7 @@ public class NanotechBlock
 		GameRegistry.registerBlock(nukeBuildingStairs, ItemBlock.class, "nukeBuildingStairs", NanotechMod.MODID);
 		GameRegistry.registerBlock(present, ItemBlock.class, "present", NanotechMod.MODID);
 		GameRegistry.registerBlock(machine, ItemBlockMachine.class, "machine", NanotechMod.MODID);
+		GameRegistry.registerBlock(cereal, ItemBlockCereal.class, "cereal", NanotechMod.MODID);
 
 		NanotechMod.nanoLogger.info("Blocks initialized");
 	}

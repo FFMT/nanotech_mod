@@ -37,6 +37,7 @@ public class BlockTrail extends Block
 	}
 
 	@SuppressWarnings("rawtypes")
+	@Override
 	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axisalignedBB, List list, Entity entity)
 	{
 		float f = 0.0625F;
