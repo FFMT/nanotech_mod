@@ -117,6 +117,8 @@ public class UltimateGraviSuite
 		GameRegistry.registerItem(ultimateLeggings, "ultimateLeggings");
 		GameRegistry.registerItem(ultimateBoots, "ultimateBoots");
 		
+		GameRegistry.registerItem(ultimateCircuit, "ultimateCircuit");
+		
 		TickRegistry.registerTickHandler(new ServerTickHandler(), Side.SERVER);
 		proxy.initCore();
 		proxy.registerRenderers();
