@@ -5,7 +5,6 @@ import java.util.Date;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -41,21 +40,14 @@ public class BlockPresent extends Block
 			int day = calendar.get(5);
 			int month = calendar.get(2);
 
-			//if((day == 24 || day == 25) && month == Calendar.DECEMBER)
-			
-				TileEntity tile = world.getBlockTileEntity(x, y, z);
-				if(tile != null && tile instanceof TileEntityPresent)
-				{
-					TileEntityPresent te = (TileEntityPresent)tile;
-					this.dropBlockAsItem_do(world, x, y, z, te.getPresent());
-					this.removeBlockByPlayer(world, player, x, y, z);
-					world.setBlockToAir(x, y, z);
-				}
-			//}
-			//else
-			//{
-			//	player.addChatMessage(I18n.getStringParams("block.present.nottime", player.username));
-			//}
+			TileEntity tile = world.getBlockTileEntity(x, y, z);
+			if(tile != null && tile instanceof TileEntityPresent)
+			{
+				TileEntityPresent te = (TileEntityPresent)tile;
+				this.dropBlockAsItem_do(world, x, y, z, new ItemStack(te.getPresent().getItem(), 1, te.getPresent().getItemDamage()));
+				this.removeBlockByPlayer(world, player, x, y, z);
+				world.setBlockToAir(x, y, z);
+			}
 		}
 		return true;
 	}

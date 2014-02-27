@@ -112,6 +112,11 @@ public class UltimateGraviSuite
 
 		ultimateCircuit = new UltimateCircuit(ultimateCircuitID).setUnlocalizedName("ultimateCircuit").setTextureName("ultimategravisuite:ultimateCircuit");
 
+		GameRegistry.registerItem(ultimateGraviChestPlate, "ultimateGraviChestPlate");
+		GameRegistry.registerItem(ultimateHelmet, "ultimateHelmet");
+		GameRegistry.registerItem(ultimateLeggings, "ultimateLeggings");
+		GameRegistry.registerItem(ultimateBoots, "ultimateBoots");
+		
 		TickRegistry.registerTickHandler(new ServerTickHandler(), Side.SERVER);
 		proxy.initCore();
 		proxy.registerRenderers();
