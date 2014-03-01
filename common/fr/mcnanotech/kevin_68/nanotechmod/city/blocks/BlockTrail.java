@@ -43,7 +43,7 @@ public class BlockTrail extends Block
 		float f = 0.0625F;
 		boolean[] flag = CTHelper.get(world, x, y, z, NanotechCityBlock.trail);
 
-		if(flag[CTHelper.VrN] || flag[CTHelper.SrN] || flag[CTHelper.tErN] || flag[CTHelper.tWrN])
+		if(flag[CTHelper.VrN] || flag[CTHelper.SrN] || flag[CTHelper.tErN] || flag[CTHelper.tWrN] || flag[CTHelper.tEWrN] || flag[CTHelper.tSEWrN])
 		{
 			this.setBlockBounds(0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F, 1.0F);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
@@ -78,7 +78,7 @@ public class BlockTrail extends Block
 			this.setBlockBounds(0.0F, 0.0F, 1.0F - (16 * f), 1.0F, 1.0F - (15 * f), 1.0F - (15 * f));
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
 		}
-		else if(flag[CTHelper.VrS] || flag[CTHelper.NrS] || flag[CTHelper.tErS] || flag[CTHelper.tWrS])
+		else if(flag[CTHelper.VrS] || flag[CTHelper.NrS] || flag[CTHelper.tErS] || flag[CTHelper.tWrS] || flag[CTHelper.tEWrS] || flag[CTHelper.tNEWrS])
 		{
 			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, f);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
@@ -113,7 +113,7 @@ public class BlockTrail extends Block
 			this.setBlockBounds(0.0F, 0.0F, (15 * f), 1.0F, 1.0F - (15 * f), (16 * f));
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
 		}
-		else if(flag[CTHelper.VrE] || flag[CTHelper.WrE] || flag[CTHelper.tNrE] || flag[CTHelper.tSrE])
+		else if(flag[CTHelper.VrE] || flag[CTHelper.WrE] || flag[CTHelper.tNrE] || flag[CTHelper.tSrE] || flag[CTHelper.tNSrE] || flag[CTHelper.tNSWrE])
 		{
 			this.setBlockBounds(0.0F, 0.0F, 0.0F, f, 1.0F, 1.0F);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
@@ -148,7 +148,7 @@ public class BlockTrail extends Block
 			this.setBlockBounds((f * 15), 0.0F, 0.0F, (16 * f), 1.0F - (15 * f), 1.0F);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
 		}
-		else if(flag[CTHelper.VrW] || flag[CTHelper.ErW] || flag[CTHelper.tNrW] || flag[CTHelper.tSrW])
+		else if(flag[CTHelper.VrW] || flag[CTHelper.ErW] || flag[CTHelper.tNrW] || flag[CTHelper.tSrW] || flag[CTHelper.tNSrW] || flag[CTHelper.tNSErW])
 		{
 			this.setBlockBounds(1.0F, 0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
@@ -1162,6 +1162,54 @@ public class BlockTrail extends Block
 			if(flag[CTHelper.tSWrsw])
 			{
 				return side == 1 ? iconBuffer[13] : (side == 3 ? iconBuffer[13] : (side == 4 ? iconBuffer[12] : iconBuffer[0]));
+			}
+			if(flag[CTHelper.tEWrN] && !flag[CTHelper.tNEWrN])
+			{
+				return side == 1 ? iconBuffer[9] : (side == 2 ? iconBuffer[9] : iconBuffer[0]);
+			}
+			if(flag[CTHelper.tEWrS] && !flag[CTHelper.tSEWrS])
+			{
+				return side == 1 ? iconBuffer[9] : (side == 3 ? iconBuffer[9] : iconBuffer[0]);
+			}
+			if(flag[CTHelper.tNSrE] && !flag[CTHelper.tNSErE])
+			{
+				return side == 1 ? iconBuffer[8] : (side == 5 ? iconBuffer[9] : iconBuffer[0]);
+			}
+			if(flag[CTHelper.tNSrW] && !flag[CTHelper.tNSWrW])
+			{
+				return side == 1 ? iconBuffer[8] : (side == 4 ? iconBuffer[9] : iconBuffer[0]);
+			}
+			if(flag[CTHelper.tNSErE])
+			{
+				return side == 1 ? iconBuffer[15] : (side == 5 ? iconBuffer[16] : iconBuffer[0]);
+			}
+			if(flag[CTHelper.tNSWrW])
+			{
+				return side == 1 ? iconBuffer[14] : (side == 4 ? iconBuffer[16] : iconBuffer[0]);
+			}
+			if(flag[CTHelper.tNEWrN])
+			{
+				return side == 1 ? iconBuffer[17] : (side == 2 ? iconBuffer[16] : iconBuffer[0]);
+			}
+			if(flag[CTHelper.tSEWrS])
+			{
+				return side == 1 ? iconBuffer[16] : (side == 3 ? iconBuffer[16] : iconBuffer[0]);
+			}
+			if(flag[CTHelper.tNSErW])
+			{
+				return side == 1 ? iconBuffer[15] : (side == 4 ? iconBuffer[17] : iconBuffer[0]);
+			}
+			if(flag[CTHelper.tNSWrE])
+			{
+				return side == 1 ? iconBuffer[14] : (side == 5 ? iconBuffer[17] : iconBuffer[0]);
+			}
+			if(flag[CTHelper.tNEWrS])
+			{
+				return side == 1 ? iconBuffer[17] : (side == 3 ? iconBuffer[17] : iconBuffer[0]);
+			}
+			if(flag[CTHelper.tSEWrN])
+			{
+				return side == 1 ? iconBuffer[16] : (side == 2 ? iconBuffer[17] : iconBuffer[0]);
 			}
 		}
 		else

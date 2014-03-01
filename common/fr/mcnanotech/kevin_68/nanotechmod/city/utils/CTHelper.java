@@ -15,7 +15,7 @@ public class CTHelper
 {
 	public static final int V = 0, N = 1, S = 2, E = 3, W = 4, VrN = 5, VrS = 6, VrE = 7, VrW = 8, VrNS = 9, VrNE = 10, VrNW = 11, VrSE = 12, VrSW = 13, VrEW = 14, VrNSE = 15, VrNSW = 16, VrNEW = 17, VrSEW = 18, VrNSEW = 19, NrS = 20, SrN = 21, ErW = 22, WrE = 23, NSrN = 24, NSrS = 25, EWrE = 26, EWrW = 27, NS = 28, NE = 29, NW = 30, SE = 31, SW = 32, EW = 33, NSE = 34, NSW = 35, NEW = 36,
 			SEW = 37, NSEW = 38, NrN = 39, SrS = 40, ErE = 41, WrW = 42, NSrNS = 43, NErNE = 44, NWrNW = 45, SErSE = 46, SWrSW = 47, EWrEW = 48, NSErNSE = 49, NSWrNSW = 50, NEWrNEW = 51, SEWrSEW = 52, NSEWrNSEW = 53, NrNE = 54, NrNW = 55, SrSE = 56, SrSW = 57, ErNE = 58, ErSE = 59, WrNW = 60, WrSW = 61, tNrE = 62, tNrW = 63, tSrE = 64, tSrW = 65, tErN = 66, tErS = 67, tWrN = 68, tWrS = 69,
-			tNrSE = 70, tNrSW = 71, tSrNE = 72, tSrNW = 73, tErNW = 74, tErSW = 75, tWrNE = 76, tWrSE = 77, tNErne = 78, tNWrnw = 79, tSErse = 80, tSWrsw = 81;
+			tNrSE = 70, tNrSW = 71, tSrNE = 72, tSrNW = 73, tErNW = 74, tErSW = 75, tWrNE = 76, tWrSE = 77, tNErne = 78, tNWrnw = 79, tSErse = 80, tSWrsw = 81, tEWrN = 82, tEWrS = 83, tNSrE = 84, tNSrW = 85, tNSErE = 86, tNSWrW = 87, tSEWrS = 88, tNEWrN = 89, tNSErW = 90, tNSWrE = 91, tSEWrN = 92, tNEWrS = 93, tNSEWrN = 94, tNSEWrS = 95, tNSEWrE = 96, tNSEWrW = 97;
 
 	public static boolean[] get(IBlockAccess iba, int x, int y, int z, Block block)
 	{
@@ -104,6 +104,22 @@ public class CTHelper
 		flag[tNWrnw] = (a(iba, cN, block) && b(iba, cS, block) && b(iba, cE, block) && a(iba, cW, block) && c(iba, cnw));
 		flag[tSErse] = (b(iba, cN, block) && a(iba, cS, block) && a(iba, cE, block) && b(iba, cW, block) && c(iba, cse));
 		flag[tSWrsw] = (b(iba, cN, block) && a(iba, cS, block) && b(iba, cE, block) && a(iba, cW, block) && c(iba, csw));
+		flag[tEWrN] = (c(iba, cN) && b(iba, cS, block) && a(iba, cE, block) && a(iba, cW, block));
+		flag[tEWrS] = (b(iba, cN, block) && c(iba, cS) && a(iba, cE, block) && a(iba, cW, block));
+		flag[tNSrE] = (a(iba, cN, block) && a(iba, cS, block) && c(iba, cE) && b(iba, cW, block));
+		flag[tNSrW] = (a(iba, cN, block) && a(iba, cS, block) && b(iba, cE, block) && c(iba, cW));
+		flag[tNSErE] = (a(iba, cN, block) && a(iba, cS, block) && f(iba, cE, block) && b(iba, cW, block));
+		flag[tNSWrW] = (a(iba, cN, block) && a(iba, cS, block) && b(iba, cE, block) && f(iba, cW, block));
+		flag[tSEWrS] = (b(iba, cN, block) && f(iba, cS, block) && a(iba, cE, block) && a(iba, cW, block));
+		flag[tNEWrN] = (f(iba, cN, block) && b(iba, cS, block) && a(iba, cE, block) && a(iba, cW, block));
+		flag[tNSErW] = (a(iba, cN, block) && a(iba, cS, block) && a(iba, cE, block) && g(iba, cW, block));
+		flag[tNSWrE] = (a(iba, cN, block) && a(iba, cS, block) && g(iba, cE, block) && a(iba, cW, block));
+		flag[tSEWrN] = (g(iba, cN, block) && a(iba, cS, block) && a(iba, cE, block) && a(iba, cW, block));
+		flag[tNEWrS] = (a(iba, cN, block) && g(iba, cS, block) && a(iba, cE, block) && a(iba, cW, block));
+		flag[tNSEWrN] = (f(iba, cN, block) && a(iba, cS, block) && a(iba, cE, block) && a(iba, cW, block));
+		flag[tNSEWrS] = (a(iba, cN, block) && f(iba, cS, block) && a(iba, cE, block) && a(iba, cW, block));
+		flag[tNSEWrE] = (a(iba, cN, block) && a(iba, cS, block) && f(iba, cE, block) && a(iba, cW, block));
+		flag[tNSEWrW] = (a(iba, cN, block) && a(iba, cS, block) && a(iba, cE, block) && f(iba, cW, block));
 		return flag;
 	}
 
@@ -135,5 +151,10 @@ public class CTHelper
 	private static boolean f(IBlockAccess iba, int[] c, Block block)
 	{
 		return iba.getBlock(c[0], c[1], c[2]) == Blocks.air && iba.getBlock(c[0], c[1] - 1, c[2]) == block;
+	}
+	
+	private static boolean g(IBlockAccess iba, int[] c, Block block)
+	{
+		return iba.getBlock(c[0], c[1], c[2]) == Blocks.air && iba.getBlock(c[0], c[1] - 1, c[2]) != block;
 	}
 }
