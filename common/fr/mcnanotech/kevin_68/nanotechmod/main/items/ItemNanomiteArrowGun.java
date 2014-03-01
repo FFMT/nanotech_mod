@@ -9,6 +9,9 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
 import java.util.List;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -21,11 +24,11 @@ import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-@SuppressWarnings({"rawtypes", "unchecked"})
 public class ItemNanomiteArrowGun extends ItemBow
 {
 	private int timer = 0;
@@ -35,6 +38,7 @@ public class ItemNanomiteArrowGun extends ItemBow
 		super();
 		this.maxStackSize = 1;
 		this.setMaxDamage(300000);
+		this.setFull3D();
 	}
 
 	@Override
@@ -237,4 +241,10 @@ public class ItemNanomiteArrowGun extends ItemBow
 		}
 		return StatCollector.translateToLocal(info);
 	}
+	
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister iconRegister)
+    {
+        this.itemIcon = iconRegister.registerIcon(this.getIconString());
+    }
 }

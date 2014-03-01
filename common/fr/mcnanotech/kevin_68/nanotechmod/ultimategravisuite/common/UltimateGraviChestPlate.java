@@ -5,16 +5,23 @@
  * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
  */
-package fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items;
+package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common;
+
+import ic2.api.item.ElectricItem;
+import ic2.api.item.IElectricItem;
+import ic2.api.item.IMetalArmor;
+import ic2.core.IC2;
 
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -33,9 +40,9 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 	public static float boostSpeed;
 	public static int boostMultiplier;
 
-	public UltimateGraviChestPlate(int id, EnumArmorMaterial armorMaterial, int slot, int layer)
+	public UltimateGraviChestPlate(ArmorMaterial armorMaterial, int slot, int layer)
 	{
-		super(id, armorMaterial, slot, layer);
+		super(armorMaterial, slot, layer);
 		minCharge = 80000;
 		dischargeOnTick = 416;
 		boostSpeed = 0.15F;
@@ -44,20 +51,20 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 		this.setMaxDamage(27);
 	}
 
-	public void registerIcons(IconRegister iconregister)
+	public void registerIcons(IIconRegister iconregister)
 	{
-		itemIcon = iconregister.registerIcon("ultimategravisuite:ultimateGraviChestPlate");
+		itemIcon = iconregister.registerIcon("UltimateGraviSuiteMod:ultimateGraviChestPlate");
 	}
 
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
 		if(!readInvisibilityStatus(stack))
 		{
-			return "ultimategravisuite:textures/armor/ultimategraviChestPlate.png";
+			return "UltimateGraviSuiteMod:textures/armor/ultimategraviChestPlate.png";
 		}
 		else
 		{
-			return "ultimategravisuite:textures/armor/ultimategraviChestPlateInvisible.png";
+			return "UltimateGraviSuiteMod:textures/armor/ultimategraviChestPlateInvisible.png";
 		}
 	}
 
@@ -72,13 +79,13 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 
 	public static int getCharge(ItemStack stack)
 	{
-		NBTTagCompound nbttagcompound = UltimateGraviSuite.getOrCreateNbtData(stack);
+		NBTTagCompound nbttagcompound = UltimateGraviSuiteMod.getOrCreateNbtData(stack);
 		int charge = nbttagcompound.getInteger("charge");
 		return charge;
 	}
 
 	@Override
-	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack stack)
+	public void onArmorTick(World world, EntityPlayer player, ItemStack stack)
 	{
 		if(!stack.isItemEnchanted())
 		{
@@ -94,13 +101,13 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 			player.setInvisible(false);
 		}
 
-		this.getArmorTexture(stack, player, 1, 1);
+		this.getArmorTexture(stack, player, 1, null);
 		IC2.platform.profilerEndSection();
 	}
 
 	public static void setCharge(ItemStack stack, int charge)
 	{
-		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		NBTTagCompound nbttag = UltimateGraviSuiteMod.getOrCreateNbtData(stack);
 		nbttag.setInteger("charge", charge);
 	}
 
@@ -136,26 +143,26 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 
 	public static boolean readFlyStatus(ItemStack stack)
 	{
-		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		NBTTagCompound nbttag = UltimateGraviSuiteMod.getOrCreateNbtData(stack);
 		return nbttag.getBoolean("isFlyActive");
 	}
 
 	public static boolean saveFlyStatus(ItemStack stack, boolean fly)
 	{
-		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		NBTTagCompound nbttag = UltimateGraviSuiteMod.getOrCreateNbtData(stack);
 		nbttag.setBoolean("isFlyActive", fly);
 		return true;
 	}
 
 	public static boolean readInvisibilityStatus(ItemStack stack)
 	{
-		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		NBTTagCompound nbttag = UltimateGraviSuiteMod.getOrCreateNbtData(stack);
 		return nbttag.getBoolean("isInvisible");
 	}
 
 	public static boolean saveInvisibilityStatus(ItemStack stack, boolean invisible)
 	{
-		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		NBTTagCompound nbttag = UltimateGraviSuiteMod.getOrCreateNbtData(stack);
 		nbttag.setBoolean("isInvisible", invisible);
 		return true;
 	}
@@ -191,15 +198,15 @@ public class UltimateGraviChestPlate extends ItemArmor implements IElectricItem,
 	}
 
 	@Override
-	public int getChargedItemId(ItemStack stack)
+	public Item getChargedItem(ItemStack stack)
 	{
-		return this.itemID;
+		return this;
 	}
 
 	@Override
-	public int getEmptyItemId(ItemStack stack)
+	public Item getEmptyItem(ItemStack stack)
 	{
-		return this.itemID;
+		return this;
 	}
 
 	@Override

@@ -5,7 +5,7 @@
  * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
  */
-package fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.network;
+package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.network;
 
 import ibxm.Player;
 

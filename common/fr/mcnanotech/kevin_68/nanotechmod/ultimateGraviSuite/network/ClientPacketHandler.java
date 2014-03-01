@@ -5,7 +5,7 @@
  * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
  */
-package fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.network;
+package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.network;
 
 import ibxm.Player;
 
@@ -14,7 +14,7 @@ import java.io.DataInputStream;
 import java.io.IOException;
 
 import net.minecraft.item.ItemStack;
-import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.core.ClientProxy;
+import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.client.ClientProxy;
 
 public class ClientPacketHandler extends ServerPacketHandler
 {

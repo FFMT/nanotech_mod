@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.BlockSapling;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,7 +23,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.world.WorldGenNanoTree;
 
 public class BlockNanoSaplings extends BlockSapling
-{// TODO maybe something missing
+{
 	public BlockNanoSaplings()
 	{
 		super();
@@ -49,11 +50,16 @@ public class BlockNanoSaplings extends BlockSapling
 		}
 	}
 
-	@SuppressWarnings({"unchecked", "rawtypes"})
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void getSubBlocks(Item item, CreativeTabs creativetabs, List list)
 	{
 		list.add(new ItemStack(item, 1, 0));
 	}
+	
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister iiconRegister)
+    {
+    	 this.blockIcon = iiconRegister.registerIcon(this.getTextureName());
+    }
 }

@@ -5,7 +5,7 @@
  * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
  */
-package fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.network;
+package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.network;
 
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -13,7 +13,8 @@ import java.util.Map;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items.UltimateQuantumHelmet;
+import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.UltimateGraviSuiteMod;
+import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.UltimateQuantumHelmet;
 
 public class ServerTickHandler implements ITickHandler
 {
@@ -31,7 +32,7 @@ public class ServerTickHandler implements ITickHandler
 			EntityPlayer player = (EntityPlayer)tickData[0];
 			ItemStack helmet = player.inventory.armorInventory[3];
 
-			if(helmet != null && helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet))
+			if(helmet != null && helmet.getItem().equals(UltimateGraviSuiteMod.ultimateHelmet))
 			{
 				UltimateQuantumHelmet.onTick(player, helmet);
 

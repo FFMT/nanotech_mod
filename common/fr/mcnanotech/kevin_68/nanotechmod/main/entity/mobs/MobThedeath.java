@@ -33,6 +33,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -51,11 +52,17 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	private int field_82222_j;
 	public int deathTicks = 0;
 
-	private static final IEntitySelector attackEntitySelector = new EntityTheDeathAttackFilter();
-
-	public MobThedeath(World par1World)
+	private static final IEntitySelector attackEntitySelector = new IEntitySelector()
 	{
-		super(par1World);
+		public boolean isEntityApplicable(Entity entity)
+		{
+			return entity instanceof EntityLivingBase && ((EntityLivingBase)entity).getCreatureAttribute() != EnumCreatureAttribute.UNDEAD;
+		}
+	};
+
+	public MobThedeath(World world)
+	{
+		super(world);
 		this.setHealth(this.getMaxHealth());
 		this.setSize(5F, 8.0F);
 		this.isImmuneToFire = true;
@@ -89,28 +96,28 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 	@Override
 	protected String getLivingSound()
 	{
-		return "nanotechmod:monster";
+		return "nanotechmod:mob.thedeath.idle";
 	}
 
 	@Override
 	protected String getHurtSound()
 	{
-		return "nanotechmod:monsterhurt";
+		return "nanotechmod:mob.thedeath.hit";
 	}
 
 	@Override
 	protected String getDeathSound()
 	{
-		return "nanotechmod:monsterdeath";
+		return "nanotechmod:mob.thedeath.death";
 	}
 
 	@Override
 	public void onLivingUpdate()
 	{
 		this.motionY *= 0.6000000238418579D;
-		double d0;
 		double d1;
-		double d2;
+		double d3;
+		double d5;
 
 		if(!this.worldObj.isRemote && this.getWatchedTargetId(0) > 0)
 		{
@@ -118,7 +125,7 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 			if(entity != null)
 			{
-				if(this.posY < entity.posY && this.posY < entity.posY + 5.0D)
+				if(this.posY < entity.posY)
 				{
 					if(this.motionY < 0.0D)
 					{
@@ -128,15 +135,15 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 					this.motionY += (0.5D - this.motionY) * 0.6000000238418579D;
 				}
 
-				double d3 = entity.posX - this.posX;
-				d0 = entity.posZ - this.posZ;
-				d1 = d3 * d3 + d0 * d0;
+				double d0 = entity.posX - this.posX;
+				d1 = entity.posZ - this.posZ;
+				d3 = d0 * d0 + d1 * d1;
 
-				if(d1 > 9.0D)
+				if(d3 > 9.0D)
 				{
-					d2 = (double)MathHelper.sqrt_double(d1);
-					this.motionX += (d3 / d2 * 0.5D - this.motionX) * 0.6000000238418579D;
-					this.motionZ += (d0 / d2 * 0.5D - this.motionZ) * 0.6000000238418579D;
+					d5 = (double)MathHelper.sqrt_double(d3);
+					this.motionX += (d0 / d5 * 0.5D - this.motionX) * 0.6000000238418579D;
+					this.motionZ += (d1 / d5 * 0.5D - this.motionZ) * 0.6000000238418579D;
 				}
 			}
 		}
@@ -159,7 +166,6 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 		for(i = 0; i < 2; ++i)
 		{
-
 			j = this.getWatchedTargetId(i + 1);
 			Entity entity1 = null;
 
@@ -170,15 +176,15 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 			if(entity1 != null)
 			{
-				d0 = this.func_82214_u(i + 1);
-				d1 = this.func_82208_v(i + 1);
-				d2 = this.func_82213_w(i + 1);
-				double d4 = entity1.posX - d0;
-				double d5 = entity1.posY + (double)entity1.getEyeHeight() - d1;
-				double d6 = entity1.posZ - d2;
-				double d7 = (double)MathHelper.sqrt_double(d4 * d4 + d6 * d6);
-				float f = (float)(Math.atan2(d6, d4) * 180.0D / Math.PI) - 90.0F;
-				float f1 = (float)(-(Math.atan2(d5, d7) * 180.0D / Math.PI));
+				d1 = this.func_82214_u(i + 1);
+				d3 = this.func_82208_v(i + 1);
+				d5 = this.func_82213_w(i + 1);
+				double d6 = entity1.posX - d1;
+				double d7 = entity1.posY + (double)entity1.getEyeHeight() - d3;
+				double d8 = entity1.posZ - d5;
+				double d9 = (double)MathHelper.sqrt_double(d6 * d6 + d8 * d8);
+				float f = (float)(Math.atan2(d8, d6) * 180.0D / Math.PI) - 90.0F;
+				float f1 = (float)(-(Math.atan2(d7, d9) * 180.0D / Math.PI));
 				this.field_82220_d[i] = this.func_82204_b(this.field_82220_d[i], f1, 40.0F);
 				this.field_82221_e[i] = this.func_82204_b(this.field_82221_e[i], f, 10.0F);
 			}
@@ -190,10 +196,10 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 
 		for(j = 0; j < 3; ++j)
 		{
-			double d8 = this.func_82214_u(j);
-			double d9 = this.func_82208_v(j);
-			double d10 = this.func_82213_w(j);
-			this.worldObj.spawnParticle("smoke", d8 + this.rand.nextGaussian() * 0.30000001192092896D, d9 + this.rand.nextGaussian() * 0.30000001192092896D, d10 + this.rand.nextGaussian() * 0.30000001192092896D, 0.0D, 0.0D, 0.0D);
+			double d10 = this.func_82214_u(j);
+			double d2 = this.func_82208_v(j);
+			double d4 = this.func_82213_w(j);
+			this.worldObj.spawnParticle("smoke", d10 + this.rand.nextGaussian() * 0.30000001192092896D, d2 + this.rand.nextGaussian() * 0.30000001192092896D, d4 + this.rand.nextGaussian() * 0.30000001192092896D, 0.0D, 0.0D, 0.0D);
 		}
 	}
 
@@ -203,14 +209,13 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 		return(new ItemStack(NanotechItem.scythe));
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Override
 	protected void updateAITasks()
 	{
 		int i;
 
 		super.updateAITasks();
-		int j;
+		int i1;
 
 		for(i = 1; i < 3; ++i)
 		{
@@ -218,13 +223,13 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 			{
 				this.field_82223_h[i - 1] = this.ticksExisted + 10 + this.rand.nextInt(10);
 
-				if(this.worldObj.difficultySetting.getDifficultyId() >= 2)
+				if(this.worldObj.difficultySetting == EnumDifficulty.NORMAL || this.worldObj.difficultySetting == EnumDifficulty.HARD)
 				{
-					int k = i - 1;
-					int l = this.field_82224_i[i - 1];
-					this.field_82224_i[k] = this.field_82224_i[i - 1] + 1;
+					int k2 = i - 1;
+					int l2 = this.field_82224_i[i - 1];
+					this.field_82224_i[k2] = this.field_82224_i[i - 1] + 1;
 
-					if(l > 15)
+					if(l2 > 15)
 					{
 						float f = 10.0F;
 						float f1 = 5.0F;
@@ -236,11 +241,11 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 					}
 				}
 
-				j = this.getWatchedTargetId(i);
+				i1 = this.getWatchedTargetId(i);
 
-				if(j > 0)
+				if(i1 > 0)
 				{
-					Entity entity = this.worldObj.getEntityByID(j);
+					Entity entity = this.worldObj.getEntityByID(i1);
 
 					if(entity != null && entity.isEntityAlive() && this.getDistanceSqToEntity(entity) <= 900.0D && this.canEntityBeSeen(entity))
 					{
@@ -255,9 +260,9 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 				}
 				else
 				{
-					List list = this.worldObj.selectEntitiesWithinAABB(EntityLivingBase.class, this.boundingBox.expand(20.0D, 8.0D, 20.0D), mobSelector);
+					List list = this.worldObj.selectEntitiesWithinAABB(EntityLivingBase.class, this.boundingBox.expand(20.0D, 8.0D, 20.0D), attackEntitySelector);
 
-					for(int i1 = 0; i1 < 10 && !list.isEmpty(); ++i1)
+					for(int k1 = 0; k1 < 10 && !list.isEmpty(); ++k1)
 					{
 						EntityLivingBase entitylivingbase = (EntityLivingBase)list.get(this.rand.nextInt(list.size()));
 
@@ -282,63 +287,58 @@ public class MobThedeath extends EntityMob implements IBossDisplayData, IRangedA
 					}
 				}
 			}
+		}
 
-			if(this.getAttackTarget() != null)
-			{
-				this.func_82211_c(0, this.getAttackTarget().getEntityId());
-			}
-			else
-			{
-				this.func_82211_c(0, 0);
-			}
+		if(this.getAttackTarget() != null)
+		{
+			this.func_82211_c(0, this.getAttackTarget().getEntityId());
+		}
+		else
+		{
+			this.func_82211_c(0, 0);
+		}
 
-			if(this.field_82222_j > 0)
-			{
-				--this.field_82222_j;
+		if(this.field_82222_j > 0)
+		{
+			--this.field_82222_j;
 
-				if(this.field_82222_j == 0 && this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"))
+			if(this.field_82222_j == 0 && this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"))
+			{
+				i = MathHelper.floor_double(this.posY);
+				i1 = MathHelper.floor_double(this.posX);
+				int j1 = MathHelper.floor_double(this.posZ);
+				boolean flag = false;
+
+				for(int l1 = -1; l1 <= 1; ++l1)
 				{
-					i = MathHelper.floor_double(this.posY);
-					j = MathHelper.floor_double(this.posX);
-					int j1 = MathHelper.floor_double(this.posZ);
-					boolean flag = false;
-
-					for(int k1 = -1; k1 <= 1; ++k1)
+					for(int i2 = -1; i2 <= 1; ++i2)
 					{
-						for(int l1 = -1; l1 <= 1; ++l1)
+						for(int j = 0; j <= 3; ++j)
 						{
-							for(int i2 = 0; i2 <= 3; ++i2)
-							{
-								int j2 = j + k1;
-								int k2 = i + i2;
-								int l2 = j1 + l1;
-								Block block = this.worldObj.getBlock(j2, k2, l2);
+							int j2 = i1 + l1;
+							int k = i + j;
+							int l = j1 + i2;
+							Block block = this.worldObj.getBlock(j2, k, l);
 
-								if(block != null && block.canEntityDestroy(worldObj, j2, k2, l2, this))
-								{
-									flag = this.worldObj.func_147480_a(j2, k2, l2, true) || flag;
-								}
+							if(!block.isAir(worldObj, j2, k, l) && block.canEntityDestroy(worldObj, j2, k, l, this))
+							{
+								flag = this.worldObj.func_147480_a(j2, k, l, true) || flag;
 							}
 						}
 					}
+				}
 
-					if(flag)
-					{
-						this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1012, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
-					}
+				if(flag)
+				{
+					this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1012, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
 				}
 			}
-
-			if(this.ticksExisted % 20 == 0)
-			{
-				this.heal(1.0F);
-			}
 		}
-	}
 
-	public void func_82206_m()
-	{
-		this.setHealth(this.getMaxHealth() / 3.0F);
+		if(this.ticksExisted % 20 == 0)
+		{
+			this.heal(1.0F);
+		}
 	}
 
 	@Override

@@ -16,9 +16,6 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 
 public class NanotechBlock
 {
-	/**
-	 * Only use for NPE on loading
-	 */
 	public static Block nanoPortal, portalFrame, nanoGrass, fakeOre, speed, jump, multiplier, smoker, barbedWire, nanoWood, nanoLeaves, nanoSaplings, nanoPlank, ore, confusion, falling, notFalling, sodium, mossyStone, theDeathHead, listerJukeBox, nanoFence, nanoStairs, nanoStepSingle, nanoStepDouble, satelite, nukeBuilding, nukeBuildingStairs, present, machine, cereal;
 
 	public static void initBlock()

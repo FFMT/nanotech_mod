@@ -8,15 +8,22 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.event;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.entity.RenderPlayer;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.ItemCrazyGlassesGun;
+import fr.mcnanotech.kevin_68.nanotechmod.main.items.ItemNanomiteArrowGun;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 
 public class RenderEvent
@@ -57,6 +64,22 @@ public class RenderEvent
 				GL11.glEnable(GL11.GL_ALPHA_TEST);
 				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			}
+		}
+	}
+
+	@SubscribeEvent
+	public void preRenderPlayer(RenderPlayerEvent.Pre event)
+	{
+		EntityPlayer player = event.entityPlayer;
+		ItemStack is = player.getCurrentEquippedItem();
+		if((is != null) && (is.getItem() instanceof ItemCrazyGlassesGun))
+		{
+			ModelBiped modelMain = ObfuscationReflectionHelper.getPrivateValue(RenderPlayer.class, event.renderer, 1);
+			ModelBiped modelArmorChestplate = ObfuscationReflectionHelper.getPrivateValue(RenderPlayer.class, event.renderer, 2);
+			ModelBiped modelArmor = ObfuscationReflectionHelper.getPrivateValue(RenderPlayer.class, event.renderer, 3);
+			modelMain.aimedBow = true;
+			modelArmorChestplate.aimedBow = true;
+			modelArmor.aimedBow = true;
 		}
 	}
 }

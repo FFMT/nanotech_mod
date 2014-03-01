@@ -11,6 +11,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 
 public class ItemCrazyGlassesGunModel extends ModelBase
@@ -107,54 +108,42 @@ public class ItemCrazyGlassesGunModel extends ModelBase
 		setRotation(Item4, 0F, 0F, 0F);
 	}
 
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
+	public void render(float f, ItemStack stack)
 	{
-		super.render(entity, f, f1, f2, f3, f4, f5);
-		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		Shape1.render(f5);
-		Shape2.render(f5);
-		Shape3.render(f5);
-		Shape4.render(f5);
-		Shape5.render(f5);
-		Shape6.render(f5);
-		Shape7.render(f5);
-		Shape8.render(f5);
+		Shape1.render(f);
+		Shape2.render(f);
+		Shape3.render(f);
+		Shape4.render(f);
+		Shape5.render(f);
+		Shape6.render(f);
+		Shape7.render(f);
+		Shape8.render(f);
 
-		if(entity instanceof EntityPlayer)
+		if(stack.hasTagCompound())
 		{
-			EntityPlayer player = (EntityPlayer)entity;
-			if(player.inventory.getCurrentItem() != null)
+			if(stack.getTagCompound().hasKey("Charge"))
 			{
-				if(player.inventory.getCurrentItem().equals(NanotechItem.crazyGlassesGun))
+				if(stack.getTagCompound().getByte("Charge") == 4)
 				{
-					if(player.inventory.getCurrentItem().hasTagCompound())
-					{
-						if(player.inventory.getCurrentItem().getTagCompound().hasKey("Charge"))
-						{
-							if(player.inventory.getCurrentItem().getTagCompound().getByte("Charge") == 4)
-							{
-								Item1.render(f5);
-								Item2.render(f5);
-								Item3.render(f5);
-								Item4.render(f5);
-							}
-							else if(player.inventory.getCurrentItem().getTagCompound().getByte("Charge") == 3)
-							{
-								Item1.render(f5);
-								Item2.render(f5);
-								Item3.render(f5);
-							}
-							else if(player.inventory.getCurrentItem().getTagCompound().getByte("Charge") == 2)
-							{
-								Item1.render(f5);
-								Item2.render(f5);
-							}
-							else if(player.inventory.getCurrentItem().getTagCompound().getByte("Charge") == 1)
-							{
-								Item1.render(f5);
-							}
-						}
-					}
+					Item1.render(f);
+					Item2.render(f);
+					Item3.render(f);
+					Item4.render(f);
+				}
+				else if(stack.getTagCompound().getByte("Charge") == 3)
+				{
+					Item1.render(f);
+					Item2.render(f);
+					Item3.render(f);
+				}
+				else if(stack.getTagCompound().getByte("Charge") == 2)
+				{
+					Item1.render(f);
+					Item2.render(f);
+				}
+				else if(stack.getTagCompound().getByte("Charge") == 1)
+				{
+					Item1.render(f);
 				}
 			}
 		}
@@ -166,10 +155,4 @@ public class ItemCrazyGlassesGunModel extends ModelBase
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
-
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
-	{
-		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-	}
-
 }

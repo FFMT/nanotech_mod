@@ -5,20 +5,20 @@
  * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
  */
-package fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.network;
+package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.network;
 
+import ic2.api.item.ElectricItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.StatCollector;
+
 import cpw.mods.fml.common.FMLCommonHandler;
-import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.core.ServerProxy;
-import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items.UltimateBoots;
-import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items.UltimateGraviChestPlate;
-import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items.UltimateLeggings;
-import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items.UltimateQuantumHelmet;
-import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.keyboard.Keyboard;
+import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.UltimateBoots;
+import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.UltimateGraviChestPlate;
+import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.UltimateLeggings;
+import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.UltimateQuantumHelmet;
 
 public class ServerPacketHelper
 {

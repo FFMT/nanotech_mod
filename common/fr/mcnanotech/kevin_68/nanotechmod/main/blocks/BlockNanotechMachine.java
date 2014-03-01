@@ -12,6 +12,7 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -275,4 +276,10 @@ public class BlockNanotechMachine extends Block
 		TileEntity tileentity = world.getTileEntity(x, y, z);
 		return tileentity != null ? tileentity.receiveClientEvent(eventId, eventValue) : false;
 	}
+	
+	@SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister iiconRegister)
+    {
+    	// Empty
+    }
 }

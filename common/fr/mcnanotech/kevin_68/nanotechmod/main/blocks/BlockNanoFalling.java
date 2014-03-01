@@ -11,6 +11,7 @@ import java.util.List;
 
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -59,7 +60,6 @@ public class BlockNanoFalling extends BlockFalling
 		return metadata;
 	}
 
-	@SuppressWarnings({"rawtypes", "unchecked"})
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
@@ -69,4 +69,10 @@ public class BlockNanoFalling extends BlockFalling
 			list.add(new ItemStack(item, 1, metadatanumber));
 		}
 	}
+	
+	@SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister iiconRegister)
+    {
+    	// Empty
+    }
 }

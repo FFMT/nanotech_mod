@@ -46,6 +46,10 @@ public class ItemCrazyGlassesGunRender implements IItemRenderer
 	@Override
 	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper)
 	{
+		if(helper == ItemRendererHelper.INVENTORY_BLOCK)
+		{
+			return true;
+		}
 		return false;
 	}
 
@@ -61,10 +65,10 @@ public class ItemCrazyGlassesGunRender implements IItemRenderer
 			GL11.glRotatef(75F, 1.0F, 0.0F, 0.0F);
 			GL11.glRotatef(-30F, 0.0F, 1.0F, 0.0F);
 			GL11.glRotatef(-65F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(100F, 1.0F, 1.0F, 0.0F);
-			GL11.glTranslatef(0.45F, -0.2F, 0.1F);
+			GL11.glRotatef(110F, 1.0F, 1.0F, 0.0F);
+			GL11.glTranslatef(0.45F, -0.1F, 0.1F);
 			GL11.glScalef(2.0F, 2.0F, 2.0F);
-			model.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+			model.render(0.0625F, item);
 			GL11.glPopMatrix();
 			break;
 		}
@@ -75,7 +79,7 @@ public class ItemCrazyGlassesGunRender implements IItemRenderer
 			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
 			GL11.glRotatef(140F, 1.0F, 0.0F, 0.0F);
 			GL11.glTranslatef(0.0F, 0.0F, -0.8F);
-			model.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+			model.render(0.0625F, item);
 			GL11.glPopMatrix();
 			break;
 		}
@@ -83,11 +87,11 @@ public class ItemCrazyGlassesGunRender implements IItemRenderer
 		{
 			GL11.glPushMatrix();
 			Minecraft.getMinecraft().renderEngine.bindTexture(texture);
-			GL11.glRotatef(-50F, 0.0F, 1.0F, 0.0F);
-			GL11.glRotatef(-10F, 1.0F, 0.0F, 0.0F);
-			GL11.glTranslatef(0.0F, 12.5F, -14.5F);
-			GL11.glScalef(17F, 17F, 17F);
-			model.render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+			GL11.glTranslatef(0.0F, -0.2F, 0.5F);
+			GL11.glRotatef(180F, 1.0F, 0.0F, 0.0F);
+			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
+			GL11.glScalef(1.7F, 1.7F, 1.7F);
+			model.render(0.0625F, item);
 			GL11.glPopMatrix();
 			break;
 		}

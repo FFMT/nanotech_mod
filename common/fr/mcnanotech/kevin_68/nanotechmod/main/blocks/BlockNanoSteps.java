@@ -12,6 +12,7 @@ import java.util.Random;
 
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -70,7 +71,6 @@ public class BlockNanoSteps extends BlockSlab
 		return super.getUnlocalizedName() + "." + StepTypes[metadata];
 	}
 
-	@SuppressWarnings({"rawtypes", "unchecked"})
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
@@ -90,4 +90,10 @@ public class BlockNanoSteps extends BlockSlab
 	{
 		return NanotechBlock.nanoPlank.getBlockTextureFromSide(side);
 	}
+	
+	@SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister iiconRegister)
+    {
+    	// Empty
+    }
 }

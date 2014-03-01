@@ -5,17 +5,24 @@
  * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
  */
-package fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items;
+package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common;
+
+import ic2.api.item.ElectricItem;
+import ic2.api.item.IElectricItem;
+import ic2.api.item.IMetalArmor;
+import ic2.core.IC2;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -36,9 +43,9 @@ public class UltimateLeggings extends ItemArmor implements IElectricItem, IMetal
 	public static float boostSpeed;
 	public static int boostMultiplier;
 
-	public UltimateLeggings(int id, EnumArmorMaterial armorMaterial, int slot, int layer)
+	public UltimateLeggings(ArmorMaterial armorMaterial, int slot, int layer)
 	{
-		super(id, armorMaterial, slot, layer);
+		super(armorMaterial, slot, layer);
 		maxCharge = 10000000;
 		transferLimit = 200000;
 		tier = 2;
@@ -47,12 +54,13 @@ public class UltimateLeggings extends ItemArmor implements IElectricItem, IMetal
 		this.setMaxDamage(27);
 	}
 
-	public void registerIcons(IconRegister iconregister)
+	public void registerIcons(IIconRegister iconregister)
 	{
 		itemIcon = iconregister.registerIcon("ultimategravisuite:ultimateLeggings");
 	}
 
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
 		if(!readInvisibilityStatus(stack))
 		{
@@ -99,9 +107,9 @@ public class UltimateLeggings extends ItemArmor implements IElectricItem, IMetal
 	}
 
 	@Override
-	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack stack)
+	public void onArmorTick(World world, EntityPlayer player, ItemStack stack)
 	{
-		this.getArmorTexture(stack, player, 1, 1);
+		this.getArmorTexture(stack, player, 1, null);
 		boolean var4 = false;
 		int var11;
 		boolean var6 = true;
@@ -162,13 +170,13 @@ public class UltimateLeggings extends ItemArmor implements IElectricItem, IMetal
 
 	public static boolean readInvisibilityStatus(ItemStack stack)
 	{
-		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		NBTTagCompound nbttag = UltimateGraviSuiteMod.getOrCreateNbtData(stack);
 		return nbttag.getBoolean("isInvisibleLeg");
 	}
 
 	public static boolean saveInvisibilityStatus(ItemStack stack, boolean invisible)
 	{
-		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		NBTTagCompound nbttag = UltimateGraviSuiteMod.getOrCreateNbtData(stack);
 		nbttag.setBoolean("isInvisibleLeg", invisible);
 		return true;
 	}
@@ -193,15 +201,15 @@ public class UltimateLeggings extends ItemArmor implements IElectricItem, IMetal
 	}
 
 	@Override
-	public int getChargedItemId(ItemStack stack)
+	public Item getChargedItem(ItemStack stack)
 	{
-		return this.itemID;
+		return this;
 	}
 
 	@Override
-	public int getEmptyItemId(ItemStack stack)
+	public Item getEmptyItem(ItemStack stack)
 	{
-		return this.itemID;
+		return this;
 	}
 
 	@Override

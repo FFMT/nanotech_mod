@@ -56,7 +56,7 @@ public class ItemCrazyGlasses extends ItemArmor
 			if(tick > 56)
 			{
 				float randPitch = -5.0F + world.rand.nextFloat() * 10;
-				world.playSoundAtEntity(player, "nanotechmod:CrazyGuy", 30.0F, randPitch);
+				world.playSoundAtEntity(player, "nanotechmod:mob.crazyguy.idle", 30.0F, randPitch);
 				tick = 0 + (int)(randPitch * 13.0F);
 			}
 			else

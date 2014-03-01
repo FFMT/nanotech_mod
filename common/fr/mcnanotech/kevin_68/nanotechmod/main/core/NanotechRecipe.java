@@ -43,7 +43,7 @@ public class NanotechRecipe
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.diamondBow, 1), new Object[] {"WX ", "WCX", "WX ", 'X', Items.diamond, 'W', Items.string, 'C', new ItemStack(NanotechBlock.speed, 1, 0)});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.emeraldBow, 1), new Object[] {" XW", "XCW", " XW", 'X', Items.emerald, 'W', Items.string, 'C', NanotechItem.diamondBow});
 		GameRegistry.addRecipe(new ItemStack(NanotechItem.emeraldBow, 1), new Object[] {"WX ", "WCX", "WX ", 'X', Items.emerald, 'W', Items.string, 'C', NanotechItem.diamondBow});
-		GameRegistry.addRecipe(new ItemStack(NanotechItem.nanomiteBow, 1), new Object[] {"ENE", "INI", " S ", 'N', new ItemStack(NanotechItem.itemBase, 1, 14), 'I', Items.iron_ingot, 'E', NanotechItem.emeraldBow, 'S', Items.stick});
+		GameRegistry.addRecipe(new ItemStack(NanotechItem.nanomiteArrowGun, 1), new Object[] {"ENE", "INI", " S ", 'N', new ItemStack(NanotechItem.itemBase, 1, 14), 'I', Items.iron_ingot, 'E', NanotechItem.emeraldBow, 'S', Items.stick});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.itemBase, 1, 8), new Object[] {new ItemStack(NanotechItem.itemBase, 1, 7), new ItemStack(NanotechItem.itemBase, 1, 1)});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.itemBase, 1, 14), new Object[] {new ItemStack(NanotechItem.itemBase, 1, 12), new ItemStack(NanotechItem.itemBase, 1, 1)});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechItem.itemBase, 1, 15), new Object[] {Blocks.cobblestone});

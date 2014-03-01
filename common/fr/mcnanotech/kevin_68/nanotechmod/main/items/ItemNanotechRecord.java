@@ -8,25 +8,20 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
 import net.minecraft.item.ItemRecord;
+import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 
-public class ItemDisk extends ItemRecord
+public class ItemNanotechRecord extends ItemRecord
 {
-	public final String recordName;
-	public final String recordinfo;
-
-	public ItemDisk(String name, String info)
+	public ItemNanotechRecord(String name)
 	{
 		super(name);
-		recordName = name;
-		maxStackSize = 1;
-		recordinfo = info;
 	}
 
-	@SideOnly(Side.CLIENT)
-	public String getRecordTitle()
+	public ResourceLocation getRecordResource(String name)
 	{
-		return this.recordinfo;
+		return new ResourceLocation(NanotechMod.MODID + ":" + name);
 	}
 }

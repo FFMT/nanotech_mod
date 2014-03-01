@@ -5,17 +5,24 @@
  * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
  */
-package fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items;
+package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common;
+
+import ic2.api.item.ElectricItem;
+import ic2.api.item.IElectricItem;
+import ic2.api.item.IMetalArmor;
+import ic2.core.IC2;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -24,6 +31,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -34,9 +42,9 @@ public class UltimateBoots extends ItemArmor implements IElectricItem, IMetalArm
 	public static float boostSpeed;
 	public static int boostMultiplier;
 
-	public UltimateBoots(int id, EnumArmorMaterial armorMaterial, int slot, int layer)
+	public UltimateBoots(ArmorMaterial armorMaterial, int slot, int layer)
 	{
-		super(id, armorMaterial, slot, layer);
+		super(armorMaterial, slot, layer);
 		minCharge = 80000;
 		this.setCreativeTab(IC2.tabIC2);
 		this.setMaxDamage(27);
@@ -44,12 +52,13 @@ public class UltimateBoots extends ItemArmor implements IElectricItem, IMetalArm
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister iconregister)
+	public void registerIcons(IIconRegister iconregister)
 	{
 		itemIcon = iconregister.registerIcon("ultimategravisuite:ultimateBoots");
 	}
 
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
 		if(!readInvisibilityStatus(stack))
 		{
@@ -61,7 +70,7 @@ public class UltimateBoots extends ItemArmor implements IElectricItem, IMetalArm
 		}
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onEntityLivingFallEvent(LivingFallEvent fallevent)
 	{
 		if(IC2.platform.isSimulating() && fallevent.entity instanceof EntityPlayer)
@@ -69,7 +78,7 @@ public class UltimateBoots extends ItemArmor implements IElectricItem, IMetalArm
 			EntityPlayer player = (EntityPlayer)fallevent.entity;
 			ItemStack stack = player.inventory.armorInventory[0];
 
-			if(stack != null && stack.itemID == this.itemID)
+			if(stack != null && stack.getItem() == this)
 			{
 				int var4 = (int)fallevent.distance - 3;
 				int var5 = this.getEnergyPerDamage() * var4;
@@ -118,9 +127,9 @@ public class UltimateBoots extends ItemArmor implements IElectricItem, IMetalArm
 	}
 
 	@Override
-	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack stack)
+	public void onArmorTick(World world, EntityPlayer player, ItemStack stack)
 	{
-		this.getArmorTexture(stack, player, 1, 1);
+		this.getArmorTexture(stack, player, 1, null);
 		boolean var4 = false;
 		int var11;
 		boolean var6 = true;
@@ -170,13 +179,13 @@ public class UltimateBoots extends ItemArmor implements IElectricItem, IMetalArm
 
 	public static boolean readInvisibilityStatus(ItemStack stack)
 	{
-		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		NBTTagCompound nbttag = UltimateGraviSuiteMod.getOrCreateNbtData(stack);
 		return nbttag.getBoolean("isInvisibleBoo");
 	}
 
 	public static boolean saveInvisibilityStatus(ItemStack stack, boolean invisible)
 	{
-		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		NBTTagCompound nbttag = UltimateGraviSuiteMod.getOrCreateNbtData(stack);
 		nbttag.setBoolean("isInvisibleBoo", invisible);
 		return true;
 	}
@@ -199,17 +208,17 @@ public class UltimateBoots extends ItemArmor implements IElectricItem, IMetalArm
 	{
 		return true;
 	}
-
+	
 	@Override
-	public int getChargedItemId(ItemStack stack)
+	public Item getChargedItem(ItemStack stack)
 	{
-		return this.itemID;
+		return this;
 	}
 
 	@Override
-	public int getEmptyItemId(ItemStack stack)
+	public Item getEmptyItem(ItemStack stack)
 	{
-		return this.itemID;
+		return this;
 	}
 
 	@Override

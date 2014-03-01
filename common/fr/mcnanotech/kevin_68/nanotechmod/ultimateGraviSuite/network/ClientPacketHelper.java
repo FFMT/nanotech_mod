@@ -5,19 +5,20 @@
  * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
  */
-package fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.network;
+package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.network;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import cpw.mods.fml.client.FMLClientHandler;
-import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.core.ClientProxy;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items.UltimateBoots;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items.UltimateGraviChestPlate;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items.UltimateLeggings;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items.UltimateQuantumHelmet;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.keyboard.KeyboardClient;
+import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.client.ClientProxy;
+import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.client.UGSClientEventHandler;
 
 public class ClientPacketHelper
 {
@@ -241,7 +242,7 @@ public class ClientPacketHelper
 
 				if(!player.onGround && player.capabilities.isFlying && KeyboardClient.isBoostKeyDown(player))
 				{
-					KeyboardClient.updatePlayerMove();
+					UGSClientEventHandler.updatePlayerMove();
 
 					if(charge <= UltimateGraviChestPlate.dischargeOnTick * UltimateGraviChestPlate.boostMultiplier && !player.capabilities.isCreativeMode)
 					{

@@ -158,7 +158,7 @@ public class PlayerEvent
 		{
 			event.player.triggerAchievement(NanotechAchievement.itemEmeraldBow);
 		}
-		if(event.crafting.getItem() == NanotechItem.nanomiteBow)
+		if(event.crafting.getItem() == NanotechItem.nanomiteArrowGun)
 		{
 			event.player.triggerAchievement(NanotechAchievement.itemNanomiteBow);
 		}

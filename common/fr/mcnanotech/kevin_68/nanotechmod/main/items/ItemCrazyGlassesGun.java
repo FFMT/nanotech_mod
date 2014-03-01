@@ -7,6 +7,9 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,6 +17,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import fr.minecraftforgefrance.ffmtlibs.FFMTContainerHelper;
@@ -50,30 +54,26 @@ public class ItemCrazyGlassesGun extends ItemBow
 				stack.getTagCompound().setBoolean("IsPlayingSound", false);
 			}
 
-			if(stack.getTagCompound().hasKey("Charge"))
+			if(stack.getTagCompound().getByte("Charge") > 0)
 			{
-				if(stack.getTagCompound().getByte("Charge") > 0)
+				if(!stack.getTagCompound().getBoolean("Reload"))
 				{
-					if(!stack.getTagCompound().getBoolean("Reload"))
+					this.shoot(stack, world, player);
+					if((stack.getTagCompound().getByte("Charge") - 1) == 0)
 					{
-						this.shoot(stack, world, player);
-						if((stack.getTagCompound().getByte("Charge") - 1) == 0)
-						{
-							stack.getTagCompound().setBoolean("Reload", true);
-							stack.getTagCompound().setBoolean("IsPlayingSound", false);
-						}
-						stack.getTagCompound().setByte("Charge", (byte)(stack.getTagCompound().getByte("Charge") - 1));
-
+						stack.getTagCompound().setBoolean("Reload", true);
+						stack.getTagCompound().setBoolean("IsPlayingSound", false);
 					}
-				}
-				else
-				{
-					stack.getTagCompound().setBoolean("Reload", true);
+					if(!player.capabilities.isCreativeMode)
+					{
+						stack.getTagCompound().setByte("Charge", (byte)(stack.getTagCompound().getByte("Charge") - 1));
+					}
+
 				}
 			}
 			else
 			{
-				stack.getTagCompound().setByte("Charge", (byte)0);
+				stack.getTagCompound().setBoolean("Reload", true);
 			}
 		}
 		return stack;
@@ -115,7 +115,7 @@ public class ItemCrazyGlassesGun extends ItemBow
 							{
 								if(!stack.getTagCompound().getBoolean("IsPlayingSound"))
 								{
-									world.playSoundAtEntity(entity, "nanotechmod:crazyglassesgunreload", 1.0F, 1.0F);
+									world.playSoundAtEntity(entity, "nanotechmod:crazyglassesgun.reload", 1.0F, 1.0F);
 									stack.getTagCompound().setBoolean("IsPlayingSound", true);
 								}
 								timer++;
@@ -141,7 +141,7 @@ public class ItemCrazyGlassesGun extends ItemBow
 		{
 			world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 			EntityItem glasses = new EntityItem(world);
-			glasses.delayBeforeCanPickup = 5;
+			glasses.delayBeforeCanPickup = 2;
 			glasses.setEntityItemStack(new ItemStack(NanotechItem.crazyGlasses, 1, 0));
 			glasses.setLocationAndAngles(player.posX, player.posY + (double)player.getEyeHeight(), player.posZ, player.rotationYaw, player.rotationPitch);
 			glasses.posX -= (double)(MathHelper.cos(glasses.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
@@ -154,24 +154,27 @@ public class ItemCrazyGlassesGun extends ItemBow
 			glasses.motionY = (double)(-MathHelper.sin(glasses.rotationPitch / 180.0F * (float)Math.PI));
 			world.spawnEntityInWorld(glasses);
 
-			EntityItem iron = new EntityItem(world);
-			iron.delayBeforeCanPickup = 5;
-			iron.setEntityItemStack(new ItemStack(Items.iron_ingot, 2, 0));
-			iron.setLocationAndAngles(player.posX, player.posY + (double)player.getEyeHeight(), player.posZ, player.rotationYaw, player.rotationPitch);
-			iron.posX -= (double)(MathHelper.cos(glasses.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
-			iron.posY -= 0.10000000149011612D;
-			iron.posZ -= (double)(MathHelper.sin(glasses.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
-			iron.setPosition(glasses.posX, glasses.posY, glasses.posZ);
-			iron.yOffset = 0.0F;
-			iron.motionX = (double)(-MathHelper.sin(glasses.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(glasses.rotationPitch / 180.0F * (float)Math.PI));
-			iron.motionZ = (double)(MathHelper.cos(glasses.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(glasses.rotationPitch / 180.0F * (float)Math.PI));
-			iron.motionY = (double)(-MathHelper.sin(glasses.rotationPitch / 180.0F * (float)Math.PI));
-			world.spawnEntityInWorld(iron);
+			if(!player.capabilities.isCreativeMode)
+			{
+				float f = 0.7F;
+				double d0 = (double)(world.rand.nextFloat() * f) + (double)(1.0F - f) * 0.5D;
+				double d1 = (double)(world.rand.nextFloat() * f) + (double)(1.0F - f) * 0.5D;
+				double d2 = (double)(world.rand.nextFloat() * f) + (double)(1.0F - f) * 0.5D;
+				EntityItem iron = new EntityItem(world, (double)player.posX + d0, (double)player.posY + d1, (double)player.posZ + d2, new ItemStack(Items.iron_ingot, 2, 0));
+				iron.delayBeforeCanPickup = 10;
+				world.spawnEntityInWorld(iron);
+			}
 		}
 	}
 
 	public int getItemEnchantability()
 	{
 		return 1;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister iIconRegister)
+	{
+		// Empty no icon
 	}
 }

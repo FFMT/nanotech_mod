@@ -33,7 +33,6 @@ tile.notfallingsand.name=Sable qui ne tombe pas
 tile.sodium.name=Bloc de sodium
 tile.mossystone.name=Roche moussue
 tile.theDeathHead.name=Tête de la Mort
-tile.blockTrail.name=Chemin
 tile.listerJukebox.name=Jukebox Listeur
 tile.liquidNitrogen.name=Azote liquide
 tile.nanoStairs.name=Escalier nano
@@ -68,7 +67,7 @@ item.plug.name=Bouchon
 item.superbottleofxp.name=Super fiole d'expérience
 item.diamondbow.name=Arc en diamant
 item.emeraldbow.name=Arc en émeraude
-item.nanomitebow.name=Cannon à flèches en nanomite
+item.nanomiteArrowGun.name=Cannon à flèches en nanomite
 item.nanomiteHelmet.name=Casque en nanomite
 item.nanomiteChestPlate.name=Plastron en nanomite
 item.nanomiteLegs.name=Jambières en nanomite
@@ -98,6 +97,7 @@ item.crazyGlassesGun.name=Lanceur de lunnette de fou
 item.cageCrazyGlasses.name=Lunnette de fou en cage
 item.lightSaber.name=Sabre laser
 item.presentPaper.name=Papier cadeau
+item.record.nanodisk.desc=JedBorg - Suprise
 
 #Entity
 entity.SuperZombie.name=Super Zombie

@@ -9,6 +9,7 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,7 +27,6 @@ public class ItemLightSaber extends Item
 {
 	public ItemLightSaber()
 	{
-		super();
 		this.maxStackSize = 1;
 		this.setMaxDamage(1500);
 	}
@@ -147,4 +147,10 @@ public class ItemLightSaber extends Item
 			return true;
 		}
 	}
+	
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister iconRegister)
+    {
+    	// Empty
+    }
 }

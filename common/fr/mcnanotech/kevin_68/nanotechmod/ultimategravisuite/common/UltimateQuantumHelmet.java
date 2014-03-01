@@ -5,12 +5,20 @@
  * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
  */
-package fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items;
+package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common;
+
+import ic2.api.item.ElectricItem;
+import ic2.api.item.IElectricItem;
+import ic2.api.item.IMetalArmor;
+import ic2.core.IC2;
+import ic2.core.Ic2Items;
+import ic2.core.item.ItemTinCan;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -44,18 +52,18 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 	private static boolean wetBiome;
 	public static int minCharge;
 
-	public UltimateQuantumHelmet(int id, EnumArmorMaterial armorMaterial, int slot, int layer)
+	public UltimateQuantumHelmet(ArmorMaterial armorMaterial, int slot, int layer)
 	{
-		super(id, armorMaterial, slot, layer);
-		genDay = UltimateGraviSuite.uhGenDay;
-		genNight = UltimateGraviSuite.uhGenNight;
+		super(armorMaterial, slot, layer);
+		genDay = UltimateGraviSuiteMod.uhGenDay;
+		genNight = UltimateGraviSuiteMod.uhGenNight;
 		minCharge = 10000;
 		dischargeOnTick = 128;
 		this.setCreativeTab(IC2.tabIC2);
 		this.setMaxDamage(27);
 	}
 
-	public void registerIcons(IconRegister iconregister)
+	public void registerIcons(IIconRegister iconregister)
 	{
 		itemIcon = iconregister.registerIcon("ultimategravisuite:ultimateHelmet");
 	}
@@ -82,14 +90,14 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 
 	public static int getCharge(ItemStack stack)
 	{
-		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		NBTTagCompound nbttag = UltimateGraviSuiteMod.getOrCreateNbtData(stack);
 		int charge = nbttag.getInteger("charge");
 		return charge;
 	}
 
 	public static void setCharge(ItemStack stack, int charge)
 	{
-		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		NBTTagCompound nbttag = UltimateGraviSuiteMod.getOrCreateNbtData(stack);
 		nbttag.setInteger("charge", charge);
 	}
 
@@ -110,7 +118,7 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 					return true;
 				}
 
-				if(player.inventory.armorInventory[var4] != null && Item.itemsList[player.inventory.armorInventory[var4].itemID] instanceof IElectricItem)
+				if(player.inventory.armorInventory[var4] != null && player.inventory.armorInventory[var4].getItem() instanceof IElectricItem)
 				{
 					var2 = ElectricItem.manager.charge(player.inventory.armorInventory[var4], var3, 3, false, false);
 					var3 -= var2;
@@ -124,7 +132,7 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 					return true;
 				}
 
-				if(player.inventory.mainInventory[var4] != null && Item.itemsList[player.inventory.mainInventory[var4].itemID] instanceof IElectricItem)
+				if(player.inventory.mainInventory[var4] != null && player.inventory.mainInventory[var4].getItem() instanceof IElectricItem)
 				{
 					var2 = ElectricItem.manager.charge(player.inventory.mainInventory[var4], var3, 3, false, false);
 					var3 -= var2;
@@ -137,19 +145,19 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 
 	public static boolean readNightVisionStatus(ItemStack stack)
 	{
-		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		NBTTagCompound nbttag = UltimateGraviSuiteMod.getOrCreateNbtData(stack);
 		return nbttag.getBoolean("isInvisible");
 	}
 
 	public static boolean saveNightVisionStatus(ItemStack stack, boolean nightvisionstatus)
 	{
-		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		NBTTagCompound nbttag = UltimateGraviSuiteMod.getOrCreateNbtData(stack);
 		nbttag.setBoolean("isInvisible", nightvisionstatus);
 		return true;
 	}
 
 	@Override
-	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack stack)
+	public void onArmorTick(World world, EntityPlayer player, ItemStack stack)
 	{
 		this.getArmorTexture(stack, player, 1, 1);
 		boolean var4 = false;
@@ -179,7 +187,7 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 
 			for(int slotId = 0; slotId < player.inventory.mainInventory.length; slotId++)
 			{
-				if(player.inventory.mainInventory[slotId] != null && player.inventory.mainInventory[slotId].itemID == Ic2Items.filledTinCan.itemID)
+				if(player.inventory.mainInventory[slotId] != null && player.inventory.mainInventory[slotId].getItem() == Ic2Items.filledTinCan.getItem())
 				{
 					SlotWithTinCanId = slotId;
 					break;
@@ -189,7 +197,7 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 			if(SlotWithTinCanId > -1)
 			{
 				ItemFood can = (ItemFood)player.inventory.mainInventory[SlotWithTinCanId].getItem();
-				player.getFoodStats().addStats(can.getHealAmount(), can.getSaturationModifier());
+				player.getFoodStats().addStats(can.func_150905_g(player.inventory.mainInventory[SlotWithTinCanId]), can.func_150906_h(player.inventory.mainInventory[SlotWithTinCanId]));
 				ItemTinCan can1 = (ItemTinCan)can;
 				can1.func_77849_c(player.inventory.mainInventory[SlotWithTinCanId], player.worldObj, player);
 				can1.onEaten(player);
@@ -290,13 +298,13 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 
 	public static boolean readInvisibilityStatus(ItemStack stack)
 	{
-		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		NBTTagCompound nbttag = UltimateGraviSuiteMod.getOrCreateNbtData(stack);
 		return nbttag.getBoolean("isInvisibleHel");
 	}
 
 	public static boolean saveInvisibilityStatus(ItemStack stack, boolean isInvisible)
 	{
-		NBTTagCompound nbttag = UltimateGraviSuite.getOrCreateNbtData(stack);
+		NBTTagCompound nbttag = UltimateGraviSuiteMod.getOrCreateNbtData(stack);
 		nbttag.setBoolean("isInvisibleHel", isInvisible);
 		return true;
 	}
@@ -356,15 +364,15 @@ public class UltimateQuantumHelmet extends ItemArmor implements IElectricItem, I
 	}
 
 	@Override
-	public int getChargedItemId(ItemStack stack)
+	public Item getChargedItem(ItemStack stack)
 	{
-		return this.itemID;
+		return this;
 	}
 
 	@Override
-	public int getEmptyItemId(ItemStack stack)
+	public Item getEmptyItem(ItemStack stack)
 	{
-		return this.itemID;
+		return this;
 	}
 
 	@Override

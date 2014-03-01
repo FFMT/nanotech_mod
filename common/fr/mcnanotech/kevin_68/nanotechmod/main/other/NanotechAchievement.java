@@ -64,7 +64,7 @@ public class NanotechAchievement
 		itemCrazyGlasses = new Achievement("achievement.itemCrazyGlasses", "itemCrazyGlasses", -4, -4, new ItemStack(NanotechItem.crazyGlasses, 1), installMod).registerStat();
 		itemDiamondBow = new Achievement("achievement.itemDiamondBow", "itemDiamondBow", -4, -5, new ItemStack(NanotechItem.diamondBow, 1), installMod).registerStat();
 		itemEmeraldBow = new Achievement("achievement.itemEmeraldBow", "itemEmeraldBow", -5, -5, new ItemStack(NanotechItem.emeraldBow, 1), itemDiamondBow).registerStat();
-		itemNanomiteBow = new Achievement("achievement.itemNanomiteBow", "itemNanomiteBow", -6, -5, new ItemStack(NanotechItem.nanomiteBow, 1), itemEmeraldBow).registerStat().setSpecial();
+		itemNanomiteBow = new Achievement("achievement.itemNanomiteBow", "itemNanomiteBow", -6, -5, new ItemStack(NanotechItem.nanomiteArrowGun, 1), itemEmeraldBow).registerStat().setSpecial();
 		itemMysteriousArmor = new Achievement("achievement.itemMysteriousArmor", "itemMysteriousArmor", 5, -4, new ItemStack(NanotechItem.mysteriousChestPlate, 1), itemMysteriousingot).registerStat().setSpecial();
 		itemNanomiteTool = new Achievement("achievement.itemNanomiteTool", "itemNanomiteTool", -4, 3, new ItemStack(NanotechItem.nanomitePickaxe, 1), itemSmallNanomite).registerStat().setSpecial();
 		itemNanomiteArmor = new Achievement("achievement.itemNanomiteArmor", "itemNanomiteArmor", -5, 4, new ItemStack(NanotechItem.nanomiteChestPlate, 1), itemSmallNanomite).registerStat().setSpecial();

@@ -43,6 +43,7 @@ tile.nuke.name=Nuke
 tile.nukeBuildingBlock.name=Nuke Structure
 tile.nukeBuildingStairs.name=Nuke Structure Stairs
 tile.present.name=Present
+item.record.nanodisk.desc=JedBorg - Suprise
 
 #Fluid
 fluid.liquidnitrogen=Liquid Nitrogen
@@ -67,7 +68,7 @@ item.plug.name=Plug
 item.superbottleofxp.name=Super bottle of xp
 item.diamondbow.name=Diamond bow
 item.emeraldbow.name=Emerald bow
-item.nanomitebow.name=Nanomite Arrow gun
+item.nanomiteArrowGun.name=Nanomite Arrow gun
 item.nanomiteHelmet.name=Nanomite Helmet
 item.nanomiteChestPlate.name=Nanomite Chestplate
 item.nanomiteLegs.name=Nanomite Leggings

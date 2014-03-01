@@ -57,7 +57,7 @@ public class MobCrazyGuy extends EntityMob
 	@Override
 	protected String getLivingSound()
 	{
-		return "nanotechmod:CrazyGuy";
+		return "nanotechmod:mob.crazyguy.idle";
 	}
 
 	@Override

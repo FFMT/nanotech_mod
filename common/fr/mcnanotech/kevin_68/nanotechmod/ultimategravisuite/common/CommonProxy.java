@@ -5,15 +5,19 @@
  * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
  */
-package fr.mcnanotech.kevin_68.nanotechmod.ultimateGraviSuite.items;
+package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common;
 
-import net.minecraft.item.Item;
+import net.minecraft.entity.player.EntityPlayer;
 
-public class UltimateCircuit extends Item
+public class CommonProxy
 {
-	public UltimateCircuit(int id)
+	public void registerKey()
 	{
-		super(id);
-		this.setCreativeTab(IC2.tabIC2);
+		
+	}
+
+	public EntityPlayer getPlayerInstance()
+	{
+		return null;
 	}
 }
