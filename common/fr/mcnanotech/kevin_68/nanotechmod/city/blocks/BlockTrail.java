@@ -43,7 +43,7 @@ public class BlockTrail extends Block
 		float f = 0.0625F;
 		boolean[] flag = CTHelper.get(world, x, y, z, NanotechCityBlock.trail);
 
-		if(flag[CTHelper.VrN] || flag[CTHelper.SrN] || flag[CTHelper.tErN] || flag[CTHelper.tWrN] || flag[CTHelper.tEWrN] || flag[CTHelper.tSEWrN])
+		if(flag[CTHelper.VrN] || flag[CTHelper.SrN] || flag[CTHelper.tErN] || flag[CTHelper.tWrN] || flag[CTHelper.tEWrN] || flag[CTHelper.tSEWrN] || flag[CTHelper.tNSEWrN])
 		{
 			this.setBlockBounds(0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F, 1.0F);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
@@ -78,7 +78,7 @@ public class BlockTrail extends Block
 			this.setBlockBounds(0.0F, 0.0F, 1.0F - (16 * f), 1.0F, 1.0F - (15 * f), 1.0F - (15 * f));
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
 		}
-		else if(flag[CTHelper.VrS] || flag[CTHelper.NrS] || flag[CTHelper.tErS] || flag[CTHelper.tWrS] || flag[CTHelper.tEWrS] || flag[CTHelper.tNEWrS])
+		else if(flag[CTHelper.VrS] || flag[CTHelper.NrS] || flag[CTHelper.tErS] || flag[CTHelper.tWrS] || flag[CTHelper.tEWrS] || flag[CTHelper.tNEWrS] || flag[CTHelper.tNSEWrS])
 		{
 			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, f);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
@@ -113,7 +113,7 @@ public class BlockTrail extends Block
 			this.setBlockBounds(0.0F, 0.0F, (15 * f), 1.0F, 1.0F - (15 * f), (16 * f));
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
 		}
-		else if(flag[CTHelper.VrE] || flag[CTHelper.WrE] || flag[CTHelper.tNrE] || flag[CTHelper.tSrE] || flag[CTHelper.tNSrE] || flag[CTHelper.tNSWrE])
+		else if(flag[CTHelper.VrE] || flag[CTHelper.WrE] || flag[CTHelper.tNrE] || flag[CTHelper.tSrE] || flag[CTHelper.tNSrE] || flag[CTHelper.tNSWrE] || flag[CTHelper.tNSEWrE])
 		{
 			this.setBlockBounds(0.0F, 0.0F, 0.0F, f, 1.0F, 1.0F);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
@@ -148,7 +148,7 @@ public class BlockTrail extends Block
 			this.setBlockBounds((f * 15), 0.0F, 0.0F, (16 * f), 1.0F - (15 * f), 1.0F);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
 		}
-		else if(flag[CTHelper.VrW] || flag[CTHelper.ErW] || flag[CTHelper.tNrW] || flag[CTHelper.tSrW] || flag[CTHelper.tNSrW] || flag[CTHelper.tNSErW])
+		else if(flag[CTHelper.VrW] || flag[CTHelper.ErW] || flag[CTHelper.tNrW] || flag[CTHelper.tSrW] || flag[CTHelper.tNSrW] || flag[CTHelper.tNSErW] || flag[CTHelper.tNSEWrW])
 		{
 			this.setBlockBounds(1.0F, 0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
@@ -907,7 +907,7 @@ public class BlockTrail extends Block
 			{
 				return side == 1 ? iconBuffer[3] : (side == 5 ? iconBuffer[3] : (side == 3 ? iconBuffer[3] : (side == 4 ? iconBuffer[3] : (side == 2 ? iconBuffer[99] : iconBuffer[100]))));
 			}
-			if(flag[CTHelper.VrNSEW] && !flag[CTHelper.NSEWrNSEW])
+			if(flag[CTHelper.VrNSEW] && !flag[CTHelper.NSEWrNSEW] && !flag[CTHelper.tNrNSEW] && !flag[CTHelper.tSrNSEW] && !flag[CTHelper.tErNSEW] && !flag[CTHelper.tWrNSEW] && !flag[CTHelper.tNSrNSEW] && !flag[CTHelper.tEWrNSEW])
 			{
 				return iconBuffer[3];
 			}
@@ -1210,6 +1210,46 @@ public class BlockTrail extends Block
 			if(flag[CTHelper.tSEWrN])
 			{
 				return side == 1 ? iconBuffer[16] : (side == 2 ? iconBuffer[17] : iconBuffer[0]);
+			}
+			if(flag[CTHelper.tNSEWrN])
+			{
+				return side == 1 ? iconBuffer[18] : (side == 2 ? iconBuffer[18] : iconBuffer[0]);
+			}
+			if(flag[CTHelper.tNSEWrS])
+			{
+				return side == 1 ? iconBuffer[18] : (side == 3 ? iconBuffer[18] : iconBuffer[0]);
+			}
+			if(flag[CTHelper.tNSEWrE])
+			{
+				return side == 1 ? iconBuffer[18] : (side == 5 ? iconBuffer[18] : iconBuffer[0]);
+			}
+			if(flag[CTHelper.tNSEWrW])
+			{
+				return side == 1 ? iconBuffer[18] : (side == 4 ? iconBuffer[18] : iconBuffer[0]);
+			}
+			if(flag[CTHelper.tNrNSEW])
+			{
+				return side == 1 ? iconBuffer[4] : (side == 2 ? iconBuffer[5] : (side == 3 ? iconBuffer[4] : (side == 4 ? iconBuffer[7] : iconBuffer[7])));
+			}
+			if(flag[CTHelper.tSrNSEW])
+			{
+				return side == 1 ? iconBuffer[5] : (side == 2 ? iconBuffer[4] : (side == 3 ? iconBuffer[5] : (side == 4 ? iconBuffer[6] : iconBuffer[6])));
+			}
+			if(flag[CTHelper.tErNSEW])
+			{
+				return side == 1 ? iconBuffer[6] : (side == 2 ? iconBuffer[6] : (side == 3 ? iconBuffer[6] : (side == 4 ? iconBuffer[4] : iconBuffer[5])));
+			}
+			if(flag[CTHelper.tWrNSEW])
+			{
+				return side == 1 ? iconBuffer[7] : (side == 2 ? iconBuffer[7] : (side == 3 ? iconBuffer[7] : (side == 4 ? iconBuffer[5] : iconBuffer[4])));
+			}
+			if(flag[CTHelper.tNSrNSEW])
+			{
+				return side == 1 ? iconBuffer[8] : (side == 2 ? iconBuffer[8] : (side == 3 ? iconBuffer[8] : iconBuffer[9]));
+			}
+			if(flag[CTHelper.tEWrNSEW])
+			{
+				return side == 1 ? iconBuffer[9] : (side == 4 ? iconBuffer[8] : (side == 5 ? iconBuffer[8] : iconBuffer[9]));
 			}
 		}
 		else
