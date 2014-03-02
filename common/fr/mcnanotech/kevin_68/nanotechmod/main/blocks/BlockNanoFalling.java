@@ -69,10 +69,10 @@ public class BlockNanoFalling extends BlockFalling
 			list.add(new ItemStack(item, 1, metadatanumber));
 		}
 	}
-	
+
 	@SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iiconRegister)
-    {
-    	// Empty
-    }
+	public void registerBlockIcons(IIconRegister iiconRegister)
+	{
+		// Empty
+	}
 }

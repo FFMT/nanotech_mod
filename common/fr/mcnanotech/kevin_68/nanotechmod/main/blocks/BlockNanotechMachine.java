@@ -276,10 +276,10 @@ public class BlockNanotechMachine extends Block
 		TileEntity tileentity = world.getTileEntity(x, y, z);
 		return tileentity != null ? tileentity.receiveClientEvent(eventId, eventValue) : false;
 	}
-	
+
 	@SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iiconRegister)
-    {
-    	// Empty
-    }
+	public void registerBlockIcons(IIconRegister iiconRegister)
+	{
+		// Empty
+	}
 }

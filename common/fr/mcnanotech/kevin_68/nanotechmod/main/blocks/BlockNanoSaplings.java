@@ -56,10 +56,10 @@ public class BlockNanoSaplings extends BlockSapling
 	{
 		list.add(new ItemStack(item, 1, 0));
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iiconRegister)
-    {
-    	 this.blockIcon = iiconRegister.registerIcon(this.getTextureName());
-    }
+
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister iiconRegister)
+	{
+		this.blockIcon = iiconRegister.registerIcon(this.getTextureName());
+	}
 }

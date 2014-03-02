@@ -236,7 +236,6 @@ public class BlockCereal extends Block
 		list.add(new ItemStack(item, 1, 2));
 		list.add(new ItemStack(item, 1, 6));
 	}
-	
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
@@ -292,6 +291,7 @@ public class BlockCereal extends Block
 		return false;
 	}
 
+	@Override
 	public boolean renderAsNormalBlock()
 	{
 		return false;
@@ -302,14 +302,17 @@ public class BlockCereal extends Block
 	{
 		return true;
 	}
-	
+
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
 	{
-		int direction = MathHelper.floor_double((double)(living.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
-		if(direction == 0 || direction == 2)
+		if(stack.getItemDamage() == 0)
 		{
-			world.setBlockMetadataWithNotify(x, y, z, 1, 2);
+			int direction = MathHelper.floor_double((double)(living.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
+			if(direction == 0 || direction == 2)
+			{
+				world.setBlockMetadataWithNotify(x, y, z, 1, 2);
+			}
 		}
 	}
 }

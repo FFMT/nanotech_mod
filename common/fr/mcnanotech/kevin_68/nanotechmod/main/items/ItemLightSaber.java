@@ -147,10 +147,10 @@ public class ItemLightSaber extends Item
 			return true;
 		}
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister iconRegister)
-    {
-    	// Empty
-    }
+
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister iconRegister)
+	{
+		// Empty
+	}
 }

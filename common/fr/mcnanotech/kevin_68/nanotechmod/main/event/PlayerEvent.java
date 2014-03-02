@@ -42,7 +42,7 @@ public class PlayerEvent
 			event.player.triggerAchievement(NanotechAchievement.blockSiliconOre);
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onPlayerLogin(PlayerLoggedInEvent event)
 	{
@@ -57,7 +57,7 @@ public class PlayerEvent
 			event.player.triggerAchievement(NanotechAchievement.nanotechDim);
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onCrafting(ItemCraftedEvent event)
 	{
@@ -183,7 +183,7 @@ public class PlayerEvent
 			event.player.triggerAchievement(NanotechAchievement.itemCrazyGlassesLauncher);
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onSmelting(ItemSmeltedEvent event)
 	{

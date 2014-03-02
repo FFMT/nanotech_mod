@@ -67,7 +67,7 @@ public class NanotechMod
 	/**
 	 * Creative tab for blocks
 	 */
-	public static CreativeTabs CreaB = new CreativeTabs("nanotechtabblock")
+	public static CreativeTabs CreaB = new CreativeTabs("nanotech.blocks")
 	{
 		@Override
 		@SideOnly(Side.CLIENT)
@@ -80,7 +80,7 @@ public class NanotechMod
 	/**
 	 * Creative tab for items
 	 */
-	public static CreativeTabs CreaI = new CreativeTabs("nanotechtabitem")
+	public static CreativeTabs CreaI = new CreativeTabs("nanotech.items")
 	{
 		@Override
 		@SideOnly(Side.CLIENT)

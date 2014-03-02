@@ -11,7 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 
 public class CommonProxy
 {
-	public void registerKey()
+	public void init()
 	{
 		
 	}

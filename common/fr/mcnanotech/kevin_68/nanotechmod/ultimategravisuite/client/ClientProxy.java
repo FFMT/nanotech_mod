@@ -19,19 +19,9 @@ import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.CommonProxy;
 
 public class ClientProxy extends CommonProxy
 {
-	public static KeyBinding flyKey, invKey, nightKey;
-	
 	@Override
-	public void registerKey()
+	public void init()
 	{
-		flyKey = new KeyBinding("Ultimate Gravi Fly Key", Keyboard.KEY_F, "key.categories.gameplay");
-		invKey = new KeyBinding("Invisibility Ultimate Gravi Key", Keyboard.KEY_G, "key.categories.gameplay");
-		nightKey = new KeyBinding("Night vision Ultimate Solar Helmet Key", Keyboard.KEY_H, "key.categories.gameplay");
-	
-		ClientRegistry.registerKeyBinding(flyKey);
-		ClientRegistry.registerKeyBinding(invKey);
-		ClientRegistry.registerKeyBinding(nightKey);
-		
 		FMLCommonHandler.instance().bus().register(new UGSClientEventHandler());
 	}
 

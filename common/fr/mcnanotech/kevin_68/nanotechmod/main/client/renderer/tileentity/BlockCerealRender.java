@@ -24,7 +24,7 @@ public class BlockCerealRender implements ISimpleBlockRenderingHandler
 	{
 		float f = 0.0625F, f2 = (3 * f) / 4;
 		Tessellator tessellator = Tessellator.instance;
-		
+
 		if(metadata == 0)
 		{
 			renderer.setRenderBounds(6 * f, 0.0F, 2 * f, 10 * f, 1.0F - (2 * f), 1.0F - (2 * f));

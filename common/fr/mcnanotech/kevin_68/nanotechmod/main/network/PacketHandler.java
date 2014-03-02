@@ -36,7 +36,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 @ChannelHandler.Sharable
 public class PacketHandler extends MessageToMessageCodec<FMLProxyPacket, AbstractPacket>
 {
-
 	private EnumMap<Side, FMLEmbeddedChannel> channels;
 	private LinkedList<Class<? extends AbstractPacket>> packets = new LinkedList<Class<? extends AbstractPacket>>();
 	private boolean isPostInitialised = false;

@@ -23,6 +23,7 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
@@ -32,7 +33,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPortableChes
 
 public class EventTick
 {
-	//TODO fix tick
+	// TODO fix tick
 	@SubscribeEvent
 	public void playerTick(PlayerTickEvent event)
 	{
@@ -197,22 +198,20 @@ public class EventTick
 		ItemStack boots = player.getCurrentArmor(1);
 		if(helmet != null && chestPlate != null && leggings != null && boots != null)
 		{
-			if(helmet.getItem().equals(NanotechItem.mysteriousHelmet) && chestPlate.getItem().equals(NanotechItem.mysteriousChestPlate) && leggings.getItem().equals(NanotechItem.mysteriousLeggings) && boots.getItem().equals(NanotechItem.mysteriousBoots))
+			if(helmet.getItem() == NanotechItem.mysteriousHelmet && chestPlate.getItem() == NanotechItem.mysteriousChestPlate && leggings.getItem() == NanotechItem.mysteriousLeggings && boots.getItem() == NanotechItem.mysteriousBoots)
 			{
 				return false;
 			}
 			if(Loader.isModLoaded("UltimateGraviSuite"))
 			{
-				// TODO ultimate
-				/*
-				 * if(helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet)
-				 * && chestPlate.getItem().equals(UltimateGraviSuite.
-				 * ultimateGraviChestPlate) &&
-				 * leggings.getItem().equals(UltimateGraviSuite
-				 * .ultimateLeggings) &&
-				 * boots.getItem().equals(UltimateGraviSuite.ultimateBoots)) {
-				 * return false; }
-				 */
+				Item ultiHelmet = GameRegistry.findItem("UltimateGraviSuite", "ultimateHelmet");
+				Item ultiChestPlate = GameRegistry.findItem("UltimateGraviSuite", "ultimateGraviChestPlate");
+				Item ultiLeggings = GameRegistry.findItem("UltimateGraviSuite", "ultimateLeggings");
+				Item ultiBoots = GameRegistry.findItem("UltimateGraviSuite", "ultimateBoots");
+				if(helmet.getItem() == ultiHelmet && chestPlate.getItem() == ultiChestPlate && leggings.getItem() == ultiLeggings && boots.getItem() == ultiBoots)
+				{
+					return false;
+				}
 			}
 		}
 		return true;

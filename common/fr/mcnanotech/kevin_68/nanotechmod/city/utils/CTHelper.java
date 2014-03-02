@@ -152,7 +152,7 @@ public class CTHelper
 	{
 		return iba.getBlock(c[0], c[1], c[2]) == Blocks.air && iba.getBlock(c[0], c[1] - 1, c[2]) == block;
 	}
-	
+
 	private static boolean g(IBlockAccess iba, int[] c, Block block)
 	{
 		return iba.getBlock(c[0], c[1], c[2]) == Blocks.air && iba.getBlock(c[0], c[1] - 1, c[2]) != block;

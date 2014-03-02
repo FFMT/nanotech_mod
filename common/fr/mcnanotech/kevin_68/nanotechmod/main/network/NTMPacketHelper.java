@@ -13,7 +13,6 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
 
 public class NTMPacketHelper
 {
-
 	public static void sendPacket(TileEntityJumper tile, int value)
 	{
 		try
@@ -35,6 +34,18 @@ public class NTMPacketHelper
 		catch(Exception exception)
 		{
 			NanotechMod.nanoLogger.error("Failed to send a packet from a smoker");
+		}
+	}
+	
+	public static void sendSaberPacket(int id, int value)
+	{
+		try
+		{
+			NanotechMod.packetHandler.sendToServer(new PacketSaber(id, value));
+		}
+		catch(Exception exception)
+		{
+			NanotechMod.nanoLogger.error("Failed to send a packet from a saber");
 		}
 	}
 }

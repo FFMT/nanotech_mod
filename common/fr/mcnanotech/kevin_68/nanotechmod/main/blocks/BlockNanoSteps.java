@@ -90,10 +90,10 @@ public class BlockNanoSteps extends BlockSlab
 	{
 		return NanotechBlock.nanoPlank.getBlockTextureFromSide(side);
 	}
-	
+
 	@SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iiconRegister)
-    {
-    	// Empty
-    }
+	public void registerBlockIcons(IIconRegister iiconRegister)
+	{
+		// Empty
+	}
 }

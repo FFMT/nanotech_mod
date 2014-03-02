@@ -20,6 +20,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerLightSaber;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.ItemLightSaber;
+import fr.mcnanotech.kevin_68.nanotechmod.main.network.NTMPacketHelper;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 
@@ -57,7 +58,7 @@ public class GuiLightSaber extends FFMTGuiContainerSliderBase
 	@Override
 	public void handlerSliderAction(int sliderId, float sliderValue)
 	{
-		// this.sendSaberPacket((int)(sliderValue * 255), sliderId);
+		NTMPacketHelper.sendSaberPacket(sliderId, (int)(sliderValue * 255));
 	}
 
 	@Override
@@ -78,20 +79,6 @@ public class GuiLightSaber extends FFMTGuiContainerSliderBase
 		}
 		return name + (int)(sliderValue * 255);
 	}
-
-	// TODO packet
-	/*
-	 * private void sendSaberPacket(int value, int type) { ByteArrayOutputStream
-	 * bytearrayoutputstream = new ByteArrayOutputStream(); DataOutputStream
-	 * dataoutputstream = new DataOutputStream(bytearrayoutputstream); try {
-	 * dataoutputstream.writeInt(type); dataoutputstream.writeInt(value);
-	 * this.mc.getNetHandler().addToSendQueue(new
-	 * Packet250CustomPayload("NTM|saber",
-	 * bytearrayoutputstream.toByteArray())); } catch(Exception exception) {
-	 * exception.printStackTrace();
-	 * NanotechMod.nanoLog.severe("Failed to send a packet from a SpotLight"); }
-	 * }
-	 */
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)

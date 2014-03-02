@@ -241,10 +241,10 @@ public class ItemNanomiteArrowGun extends ItemBow
 		}
 		return StatCollector.translateToLocal(info);
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister iconRegister)
-    {
-        this.itemIcon = iconRegister.registerIcon(this.getIconString());
-    }
+
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister iconRegister)
+	{
+		this.itemIcon = iconRegister.registerIcon(this.getIconString());
+	}
 }

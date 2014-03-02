@@ -29,6 +29,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.ai.AiCreeperDriller;
+import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechConfiguration;
 
 public class MobCreeperDriller extends EntityMob
 {
@@ -170,10 +171,12 @@ public class MobCreeperDriller extends EntityMob
 					{
 						this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)(this.explosionRadius * 0.5), var2);
 					}
-					/*
-					 * if(NanotechMod.multipleExplosion = false) {
-					 * this.setDead(); TODO fix }
-					 */
+
+					if(!NanotechConfiguration.multipleExplosion)
+					{
+						this.setDead();
+					}
+
 				}
 			}
 		}

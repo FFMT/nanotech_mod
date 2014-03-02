@@ -253,8 +253,8 @@ achievement.deathBarbedWire=Killed in barbed wire
 achievement.deathBarbedWire.desc=As the war!
 
 #CreativeTab
-itemGroup.NanotechModBlocks=Nanotech mod Blocks
-itemGroup.NanotechModItems=Nanotech mod Items
+itemGroup.nanotechmod.blocks=Nanotech mod Blocks
+itemGroup.nanotechmod.items=Nanotech mod Items
 
 #Death Message
 deathMessage.sodium.0=%s was corroded by sodium

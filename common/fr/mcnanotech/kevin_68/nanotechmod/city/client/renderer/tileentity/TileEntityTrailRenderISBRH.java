@@ -27,7 +27,7 @@ public class TileEntityTrailRenderISBRH implements ISimpleBlockRenderingHandler
 		float f = 0.0625F;
 		boolean[] flag = CTHelper.get(world, x, y, z, NanotechCityBlock.trail);
 
-		if(flag[CTHelper.VrN] || flag[CTHelper.SrN] || flag[CTHelper.tErN] || flag[CTHelper.tWrN]  || flag[CTHelper.tEWrN]  || flag[CTHelper.tSEWrN])
+		if(flag[CTHelper.VrN] || flag[CTHelper.SrN] || flag[CTHelper.tErN] || flag[CTHelper.tWrN] || flag[CTHelper.tEWrN] || flag[CTHelper.tSEWrN])
 		{
 			renderer.setRenderBounds(0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F, 1.0F);
 			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
@@ -138,7 +138,7 @@ public class TileEntityTrailRenderISBRH implements ISimpleBlockRenderingHandler
 			return true;
 		}
 
-		if(flag[CTHelper.VrW] || flag[CTHelper.ErW] || flag[CTHelper.tNrW] || flag[CTHelper.tSrW]  || flag[CTHelper.tNSrW]  || flag[CTHelper.tNSErW])
+		if(flag[CTHelper.VrW] || flag[CTHelper.ErW] || flag[CTHelper.tNrW] || flag[CTHelper.tSrW] || flag[CTHelper.tNSrW] || flag[CTHelper.tNSErW])
 		{
 			renderer.setRenderBounds(0.0F, 0.0F, 0.0F, f, 1.0F - (15 * f), 1.0F);
 			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);

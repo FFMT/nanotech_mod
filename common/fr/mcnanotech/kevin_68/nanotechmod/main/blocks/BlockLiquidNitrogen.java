@@ -17,6 +17,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
@@ -25,6 +26,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.MobThedeath;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.others.EntityReinforcedFishingHook;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
@@ -107,16 +109,14 @@ public class BlockLiquidNitrogen extends BlockFluidClassic
 				}
 				if(Loader.isModLoaded("UltimateGraviSuite"))
 				{
-					// if(helmet.getItem().equals(UltimateGraviSuite.ultimateHelmet)
-					// &&
-					// chestPlate.getItem().equals(UltimateGraviSuite.ultimateGraviChestPlate)
-					// &&
-					// leggings.getItem().equals(UltimateGraviSuite.ultimateLeggings)
-					// &&
-					// boots.getItem().equals(UltimateGraviSuite.ultimateBoots))
-					// {
-					// return false;
-					// }TODO fix
+					Item ultiHelmet = GameRegistry.findItem("UltimateGraviSuite", "ultimateHelmet");
+					Item ultiChestPlate = GameRegistry.findItem("UltimateGraviSuite", "ultimateGraviChestPlate");
+					Item ultiLeggings = GameRegistry.findItem("UltimateGraviSuite", "ultimateLeggings");
+					Item ultiBoots = GameRegistry.findItem("UltimateGraviSuite", "ultimateBoots");
+					if(helmet.getItem() == ultiHelmet && chestPlate.getItem() == ultiChestPlate && leggings.getItem() == ultiLeggings && boots.getItem() == ultiBoots)
+					{
+						return false;
+					}
 				}
 			}
 		}

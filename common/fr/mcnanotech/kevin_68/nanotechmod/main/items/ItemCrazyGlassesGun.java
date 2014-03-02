@@ -141,7 +141,7 @@ public class ItemCrazyGlassesGun extends ItemBow
 		{
 			world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 			EntityItem glasses = new EntityItem(world);
-			glasses.delayBeforeCanPickup = 2;
+			glasses.delayBeforeCanPickup = 5;
 			glasses.setEntityItemStack(new ItemStack(NanotechItem.crazyGlasses, 1, 0));
 			glasses.setLocationAndAngles(player.posX, player.posY + (double)player.getEyeHeight(), player.posZ, player.rotationYaw, player.rotationPitch);
 			glasses.posX -= (double)(MathHelper.cos(glasses.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
