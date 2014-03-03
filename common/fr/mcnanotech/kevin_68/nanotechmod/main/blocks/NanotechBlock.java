@@ -83,7 +83,9 @@ public class NanotechBlock
 		GameRegistry.registerBlock(present, ItemBlock.class, "present", NanotechMod.MODID);
 		GameRegistry.registerBlock(machine, ItemBlockMachine.class, "machine", NanotechMod.MODID);
 		GameRegistry.registerBlock(cereal, ItemBlockCereal.class, "cereal", NanotechMod.MODID);
-
+		
+		nukeBuildingStairs.setCreativeTab(null);
+		
 		NanotechMod.nanoLogger.info("Blocks initialized");
 	}
 }

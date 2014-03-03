@@ -43,7 +43,15 @@ tile.nuke.name=Nuke
 tile.nukeBuildingBlock.name=Nuke Structure
 tile.nukeBuildingStairs.name=Nuke Structure Stairs
 tile.present.name=Present
-item.record.nanodisk.desc=JedBorg - Suprise
+tile.cereal.packet1.name=Nano corn flakes
+tile.cereal.packet2.name=Nano corn flakes
+tile.cereal.bowl_empty.name=Empty bowl
+tile.cereal.bowl_quarter.name=Bowl full quarter
+tile.cereal.bowl_half.name=Bowl full half
+tile.cereal.bowl_3quarter.name=Bowl full to three quarts
+tile.cereal.bowl_quarterempty.name=Bowl empty quarter
+tile.cereal.bowl_halfempty.name=Bowl empty half
+tile.cereal.bowl_3quarterempty.name=Bowl empty to three quarts
 
 #Fluid
 fluid.liquidnitrogen=Liquid Nitrogen
@@ -98,6 +106,7 @@ item.crazyGlassesGun.name=Crazy Glasses Launcher
 item.cageCrazyGlasses.name=Caged Crazy Glasses
 item.lightSaber.name=Light saber
 item.presentPaper.name=Present paper
+item.record.nanodisk.desc=JedBorg - Suprise
 
 #Entity
 entity.SuperZombie.name=Super Zombie

@@ -192,10 +192,10 @@ public class EventTick
 
 	private boolean doEffect(EntityPlayer player)
 	{
-		ItemStack helmet = player.getCurrentArmor(4);
-		ItemStack chestPlate = player.getCurrentArmor(3);
-		ItemStack leggings = player.getCurrentArmor(2);
-		ItemStack boots = player.getCurrentArmor(1);
+		ItemStack helmet = player.getCurrentArmor(3);
+		ItemStack chestPlate = player.getCurrentArmor(2);
+		ItemStack leggings = player.getCurrentArmor(1);
+		ItemStack boots = player.getCurrentArmor(0);
 		if(helmet != null && chestPlate != null && leggings != null && boots != null)
 		{
 			if(helmet.getItem() == NanotechItem.mysteriousHelmet && chestPlate.getItem() == NanotechItem.mysteriousChestPlate && leggings.getItem() == NanotechItem.mysteriousLeggings && boots.getItem() == NanotechItem.mysteriousBoots)

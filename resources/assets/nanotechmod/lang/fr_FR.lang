@@ -43,6 +43,15 @@ tile.nuke.name=Bombe nucléaire
 tile.nukeBuildingBlock.name=Structure de bombe nucléaire
 tile.nukeBuildingStairs.name=Escalier de structure de bombe nucléaire
 tile.present.name=Cadeau
+tile.cereal.packet1.name=Nano corn flakes
+tile.cereal.packet2.name=Nano corn flakes
+tile.cereal.bowl_empty.name=Bol vide
+tile.cereal.bowl_quarter.name=Bol plein à un quart
+tile.cereal.bowl_half.name=Bol à moitier plein
+tile.cereal.bowl_3quarter.name=Bol plein aux trois quart
+tile.cereal.bowl_quarterempty.name=Bol vide d'un quart
+tile.cereal.bowl_halfempty.name=Bol à moitier vide
+tile.cereal.bowl_3quarterempty.name=Bol vide aux trois quart
 
 #Fluid
 fluid.liquidnitrogen=Azote liquide
