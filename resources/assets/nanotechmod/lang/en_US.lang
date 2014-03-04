@@ -266,14 +266,14 @@ itemGroup.nanotechmod.blocks=Nanotech mod Blocks
 itemGroup.nanotechmod.items=Nanotech mod Items
 
 #Death Message
-deathMessage.sodium.0=%s was corroded by sodium
-deathMessage.sodium.1=%s the player did not respect the safety instructions by manipulating sodium
-deathMessage.sodium.2=%s wants to become a scientist, but it does not have the required skills
-deathMessage.alters.0=%s has done too much workouts ! 
-deathMessage.nitrogen.0=%s stayed frozen in liquid nitrogen !
-deathMessage.barbedWire.0=%s stayed stuck in barbed wire !
-deathMessage.lightSaberDamage.0=%s was cuted by a light saber !
-deathMessage.sateliteDamage.0=%s was in the wrong place at the wrong time, and was crushed by satelite!
+death.attack.sodium.0=%s was corroded by sodium
+death.attack.sodium.1=%s did not respect the safety instructions by manipulating sodium
+death.attack.sodium.2=%s wants to become a scientist, but it does not have the required skills
+death.attack.alters.0=%s has done too much workouts ! 
+death.attack.nitrogen.0=%s stayed frozen in liquid nitrogen !
+death.attack.barbedWire.0=%s stayed stuck in barbed wire !
+death.attack.lightSaberDamage.0=%s was cuted by a light saber !
+death.attack.sateliteDamage.0=%s was in the wrong place at the wrong time, and was crushed by satelite!
 
 #Potion
 potion.freeze=Freeze

@@ -266,14 +266,14 @@ itemGroup.nanotech.blocks=Blocs de Nanotech mod
 itemGroup.nanotech.items=Items de Nanotech mod
 
 #Death Message
-deathMessage.sodium.0=%s a été rongé(e) par le sodium
-deathMessage.sodium.1=%s n'a pas respecté les consignes de sécurité en manipulant du sodium
-deathMessage.sodium.2=%s veut devenir scientifique mais n'a pas les compétences requises
-deathMessage.alters.0=%s a fait trop de séances d'entraînement !
-deathMessage.nitrogen.0=%s a gelé sur place!
-deathMessage.barbedWire.0=%s est resté coincé dans des barbelés!
-deathMessage.lightSaberDamage.0=%s a été coupé par un sabre laser!
-deathMessage.sateliteDamage.0=%s était au mauvais endroit au mauvais moment et a été écrasé par un satelite!
+death.attack.sodium.0=%s a été rongé(e) par le sodium
+death.attack.sodium.1=%s n'a pas respecté les consignes de sécurité en manipulant du sodium
+death.attack.sodium.2=%s veut devenir scientifique mais n'a pas les compétences requises
+death.attack.alters.0=%s a fait trop de séances d'entraînement !
+death.attack.nitrogen.0=%s a gelé sur place!
+death.attack.barbedWire.0=%s est resté coincé dans des barbelés!
+death.attack.lightSaberDamage.0=%s a été coupé par un sabre laser!
+death.attack.sateliteDamage.0=%s était au mauvais endroit au mauvais moment et a été écrasé par un satelite!
 
 #Potion
 potion.freeze=Gel

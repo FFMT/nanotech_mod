@@ -25,9 +25,9 @@ public class NanotechDamageSource extends DamageSource
 	public static DamageSource sateliteDamage;
 	public Random rand = new Random();
 
-	protected NanotechDamageSource(String par1Str)
+	protected NanotechDamageSource(String name)
 	{
-		super(par1Str);
+		super(name);
 	}
 
 	public static void loadDamageSource()
@@ -40,15 +40,16 @@ public class NanotechDamageSource extends DamageSource
 		sateliteDamage = new NanotechDamageSource("sateliteDamage").setDamageBypassesArmor();
 	}
 
-	public IChatComponent getDeathMessage(EntityLivingBase livingBase)
+	@Override
+	public IChatComponent func_151519_b(EntityLivingBase livingBase)
 	{
 		EntityLivingBase entitylivingbase1 = livingBase.func_94060_bK();
 		int randInt = 0;
 		if(this.damageType.equals("sodium"))
 		{
-			randInt = rand.nextInt(2);
+			randInt = rand.nextInt(3);
 		}
-		String s = "deathMessage." + this.damageType + "." + randInt;
+		String s = "death.attack." + this.damageType + "." + randInt;
 		String s1 = s + ".player";
 		return entitylivingbase1 != null && StatCollector.canTranslate(s1) ? new ChatComponentTranslation(s1, new Object[] {livingBase.func_145748_c_(), entitylivingbase1.func_145748_c_()}) : new ChatComponentTranslation(s, new Object[] {livingBase.func_145748_c_()});
 	}

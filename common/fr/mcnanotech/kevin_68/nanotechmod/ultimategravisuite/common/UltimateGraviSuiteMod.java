@@ -81,10 +81,10 @@ public class UltimateGraviSuiteMod
 			}
 		}
 
-		ultimateHelmet = new UltimateArmor(ArmorMaterial.DIAMOND, 0).setUnlocalizedName("ultimateSolarHelmet").setTextureName("ultimategravisuite:ultimateGraviChestPlate");
+		ultimateHelmet = new UltimateArmor(ArmorMaterial.DIAMOND, 0).setUnlocalizedName("ultimateSolarHelmet").setTextureName("ultimategravisuite:ultimateHelmet");
 		ultimateGraviChestPlate = new UltimateArmor(ArmorMaterial.DIAMOND, 1).setUnlocalizedName("ultimategraviChestPlate").setTextureName("ultimategravisuite:ultimateGraviChestPlate");
-		ultimateLeggings = new UltimateArmor(ArmorMaterial.DIAMOND, 2).setUnlocalizedName("ultimateLeggings").setTextureName("ultimategravisuite:ultimateGraviChestPlate");
-		ultimateBoots = new UltimateArmor(ArmorMaterial.DIAMOND, 3).setUnlocalizedName("ultimateBoots").setTextureName("ultimategravisuite:ultimateGraviChestPlate");
+		ultimateLeggings = new UltimateArmor(ArmorMaterial.DIAMOND, 2).setUnlocalizedName("ultimateLeggings").setTextureName("ultimategravisuite:ultimateLeggings");
+		ultimateBoots = new UltimateArmor(ArmorMaterial.DIAMOND, 3).setUnlocalizedName("ultimateBoots").setTextureName("ultimategravisuite:ultimateBoots");
 		ultimateCircuit = new Item().setUnlocalizedName("ultimateCircuit").setTextureName("ultimategravisuite:ultimateCircuit").setCreativeTab(IC2.tabIC2);
 
 		GameRegistry.registerItem(ultimateHelmet, "ultimateHelmet");
