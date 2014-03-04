@@ -1,6 +1,6 @@
 package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common;
 
-public class UGSCommonEventHandler
+public class UGSUtils
 {
 
 }

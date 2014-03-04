@@ -5,12 +5,13 @@ Nanotech_mod for mcnanotech.fr<br>
 Created by kevin_68, updated by robin4002<br><br>
 
 Todo list:
+* rewrite UGS
+* UGS: Ultimate drill
 * Fix the death hand
+* Fix the death lag
 * Better render for fountain?
 * 3 machines, nano assembler, furnace to use decrease dust, very hot furnace for silicon
-* portable chest: keep the stuff inside when break
 * camouflage armor: when weared, you become a block
 * camouflage bloc piston doors
-* UGS: Ultimate drill
 
-That's all for now
+When all is done, Nanotech mod for 1.7.2 will be released.

@@ -12,27 +12,25 @@ import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.UGSKeyboard;
 
 public class UGSKeyboardClient extends UGSKeyboard
 {
-	public KeyBinding flyKey, invKey, nightKey;
+	public KeyBinding flyKey, invKey;
 	private int lastKeyState = 0;
 
 	public UGSKeyboardClient()
 	{
 		flyKey = new KeyBinding("Ultimate Gravi Fly Key", Keyboard.KEY_F, "IC2");
 		invKey = new KeyBinding("Invisibility Ultimate Gravi Key", Keyboard.KEY_G, "IC2");
-		nightKey = new KeyBinding("Night vision Ultimate Solar Helmet Key", Keyboard.KEY_H, "IC2");
 	
 		ClientRegistry.registerKeyBinding(flyKey);
 		ClientRegistry.registerKeyBinding(invKey);
-		ClientRegistry.registerKeyBinding(nightKey);
 	}
 
 	public void sendKeyUpdate()
 	{
-		int currentKeyState = (this.flyKey.isPressed() ? 1 : 0) << 0 | (this.invKey.isPressed() ? 1 : 0) << 1 | (this.nightKey.isPressed() ? 1 : 0) << 2 | (FMLClientHandler.instance().getClient().gameSettings.keyBindForward.isPressed() ? 1 : 0) << 3;
+		int currentKeyState = (this.flyKey.isPressed() ? 1 : 0) << 0 | (this.invKey.isPressed() ? 1 : 0) << 1;
 		if(currentKeyState != this.lastKeyState)
 		{
 			// TODO send update packet
-			super.processKeyUpdate(IC2.platform.getPlayerInstance(), currentKeyState);
+			super.processKeyUpdate(FMLClientHandler.instance().getClientPlayerEntity(), currentKeyState);
 			this.lastKeyState = currentKeyState;
 		}
 	}

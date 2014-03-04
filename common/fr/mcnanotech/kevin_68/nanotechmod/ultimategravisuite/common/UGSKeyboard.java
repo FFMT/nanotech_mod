@@ -11,8 +11,6 @@ public class UGSKeyboard
 {
 	private final Map<EntityPlayer, Boolean> flyKeyState = new HashMap();
 	private final Map<EntityPlayer, Boolean> invKeyState = new HashMap();
-	private final Map<EntityPlayer, Boolean> nightKeyState = new HashMap();
-	private final Map<EntityPlayer, Boolean> forwardKeyState = new HashMap();
 
 	public boolean isFlyKeyDown(EntityPlayer player)
 	{
@@ -32,24 +30,6 @@ public class UGSKeyboard
 		return false;
 	}
 
-	public boolean isNightKeyDown(EntityPlayer player)
-	{
-		if(this.nightKeyState.containsKey(player))
-		{
-			return ((Boolean)this.nightKeyState.get(player)).booleanValue();
-		}
-		return false;
-	}
-
-	public boolean isForwardKeyDown(EntityPlayer player)
-	{
-		if(this.forwardKeyState.containsKey(player))
-		{
-			return ((Boolean)this.forwardKeyState.get(player)).booleanValue();
-		}
-		return false;
-	}
-
 	public boolean isSneakKeyDown(EntityPlayer player)
 	{
 		return player.isSneaking();
@@ -62,15 +42,11 @@ public class UGSKeyboard
 	{
 		this.flyKeyState.put(player, Boolean.valueOf((keyState & 0x1) != 0));
 		this.invKeyState.put(player, Boolean.valueOf((keyState & 0x2) != 0));
-		this.nightKeyState.put(player, Boolean.valueOf((keyState & 0x4) != 0));
-		this.forwardKeyState.put(player, Boolean.valueOf((keyState & 0x8) != 0));
 	}
 
 	public void removePlayerReferences(EntityPlayer player)
 	{
 		this.flyKeyState.remove(player);
 		this.invKeyState.remove(player);
-		this.nightKeyState.remove(player);
-		this.forwardKeyState.remove(player);
 	}
 }
