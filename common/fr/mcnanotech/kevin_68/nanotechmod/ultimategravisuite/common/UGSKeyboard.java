@@ -14,7 +14,7 @@ public class UGSKeyboard
 	{
 		if(this.flyKeyState.containsKey(player))
 		{
-			return this.flyKeyState.get(player).booleanValue();
+			return this.flyKeyState.get(player);
 		}
 		return false;
 	}
@@ -23,7 +23,7 @@ public class UGSKeyboard
 	{
 		if(this.invisibleKeyState.containsKey(player))
 		{
-			return this.invisibleKeyState.get(player).booleanValue();
+			return this.invisibleKeyState.get(player);
 		}
 		return false;
 	}

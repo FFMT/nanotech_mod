@@ -4,29 +4,179 @@ import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
 import ic2.api.item.IMetalArmor;
 import ic2.core.IC2;
+import ic2.core.IC2Potion;
+import ic2.core.Ic2Items;
+import ic2.core.item.ItemTinCan;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArmor, ISpecialArmor
 {
+	private static final Map<Integer, Integer> potionRemovalCost = new HashMap();
+
 	public UltimateArmor(ArmorMaterial armorMaterial, int slot)
 	{
 		super(armorMaterial, 0, slot);
 		this.setCreativeTab(IC2.tabIC2);
 		this.setMaxDamage(27);
 		this.setMaxStackSize(1);
+	    potionRemovalCost.put(Integer.valueOf(Potion.poison.id), Integer.valueOf(10000));
+	    potionRemovalCost.put(Integer.valueOf(IC2Potion.radiation.id), Integer.valueOf(10000));
+	    potionRemovalCost.put(Integer.valueOf(Potion.wither.id), Integer.valueOf(25000));
+	}
+
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+	{
+		if(UGSUtils.isInvisible(entity))
+		{
+			return "ultimategravisuite:textures/models/armor/ultimate_layer_3.png";
+		}
+		else if(slot == 2)
+		{
+			return "ultimategravisuite:textures/models/armor/ultimate_layer_2.png";
+		}
+		return "ultimategravisuite:textures/models/armor/ultimate_layer_1.png";
+	}
+
+	public void onArmorTick(World world, EntityPlayer player, ItemStack stack)
+	{
+		NBTTagCompound tag = UGSUtils.getTag(stack);
+	    byte timer = tag.getByte("toggleTimer");
+		if(!world.isRemote && timer > 0)
+		{
+			timer = (byte)(timer - 1);
+			tag.setByte("timer", timer);
+		}
+		switch(this.armorType)
+		{
+		case 0:
+			int air = player.getAir();
+			if((ElectricItem.manager.canUse(stack, 1000)) && (air < 100))
+			{
+				player.setAir(air + 200);
+
+				ElectricItem.manager.use(stack, 1000, null);
+			}
+
+			if((ElectricItem.manager.canUse(stack, 1000)) && (player.getFoodStats().needFood()))
+			{
+				int slot = -1;
+				for(int i = 0; i < player.inventory.mainInventory.length; i++)
+				{
+					if((player.inventory.mainInventory[i] != null) && (player.inventory.mainInventory[i].getItem() == Ic2Items.filledTinCan.getItem()))
+					{
+						slot = i;
+						break;
+					}
+				}
+				if(slot > -1)
+				{
+					ItemStack stack2 = player.inventory.mainInventory[slot];
+					ItemTinCan can = (ItemTinCan)stack2.getItem();
+					player.getFoodStats().addStats(can.func_150905_g(stack2), can.func_150906_h(stack2));
+					can.func_77849_c(stack2, player.worldObj, player);
+					can.onEaten(player);
+					if(--stack2.stackSize <= 0)
+					{
+						player.inventory.mainInventory[slot] = null;
+					}
+					ElectricItem.manager.use(stack, 1000, null);
+				}
+			}
+			
+			Iterator effectIt = player.getActivePotionEffects().iterator();
+			while(effectIt.hasNext())
+			{
+				PotionEffect effect = (PotionEffect)effectIt.next();
+				int id = effect.getPotionID();
+
+				Integer cost = potionRemovalCost.get(Integer.valueOf(id));
+				if(cost != null)
+				{
+					cost = Integer.valueOf(cost.intValue() * (effect.getAmplifier() + 1));
+					if(ElectricItem.manager.canUse(stack, cost))
+					{
+						ElectricItem.manager.use(stack, cost, null);
+						IC2.platform.removePotion(player, id);
+					}
+				}
+			}
+
+			boolean nightVision = tag.getBoolean("nightVision");
+			if(IC2.keyboard.isAltKeyDown(player) && IC2.keyboard.isModeSwitchKeyDown(player) && timer == 0)
+			{
+				timer = (byte)10;
+				nightVision = !nightVision;
+				if(!world.isRemote)
+				{
+					tag.setBoolean("nightVision", nightVision);
+					if(nightVision)
+					{
+						player.addChatComponentMessage(new ChatComponentTranslation("ultimate.night.on"));
+					}
+					else
+					{
+						player.addChatComponentMessage(new ChatComponentTranslation("ultimate.night.off"));
+					}
+				}
+			}
+			if(nightVision)
+			{
+				if(ElectricItem.manager.use(stack, 1, player))
+				{
+					int x = MathHelper.floor_double(player.posX);
+					int z = MathHelper.floor_double(player.posZ);
+					int y = MathHelper.floor_double(player.posY);
+
+					int skylight = player.worldObj.getBlockLightValue(x, y, z);
+					if(skylight < 8)
+					{
+						player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 220, 0, true));
+					}
+					else
+					{
+						IC2.platform.removePotion(player, Potion.nightVision.id);
+					}
+				}
+			}
+			else
+			{
+				IC2.platform.removePotion(player, Potion.nightVision.id);
+			}
+			break;
+		case 1:
+			if(UltimateGraviSuiteMod.keyboard.isInvisibleKeyDown(player) && timer == 0)
+			{
+				timer = (byte)10;
+				UGSUtils.switchVisibility(player);
+			}
+			break;
+		case 2:
+
+		case 3:
+		}
 	}
 
 	@Override

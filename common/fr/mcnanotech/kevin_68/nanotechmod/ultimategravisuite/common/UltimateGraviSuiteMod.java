@@ -15,6 +15,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
@@ -44,9 +45,7 @@ public class UltimateGraviSuiteMod
 	public static Item ultimateGraviChestPlate, ultimateHelmet, ultimateCircuit, ultimateLeggings, ultimateBoots;
 
 	// Config
-	public static int hudPos;
-	public static int uhGenDay;
-	public static int uhGenNight;
+	public static int hudPos, uhGenDay, uhGenNight, ultimateMinCharge, ultimateUseByTick;
 	public static boolean displayHud;
 
 	public static final UGSPacketHandler packetHandler = new UGSPacketHandler();
@@ -68,6 +67,8 @@ public class UltimateGraviSuiteMod
 			displayHud = cfg.get(cfg.CATEGORY_GENERAL, "Display hud", true).getBoolean(true);
 			uhGenDay = cfg.get(cfg.CATEGORY_GENERAL, "the output of the ultimate helmet during day time", 1024).getInt();
 			uhGenNight = cfg.get(cfg.CATEGORY_GENERAL, "the output of the ultimate helmet during night time", 0).getInt();
+			ultimateMinCharge = cfg.get(cfg.CATEGORY_GENERAL, "ultimate min charge", 10000000, "the minimum charge to use invisibility and fly").getInt();
+			ultimateUseByTick = cfg.get(cfg.CATEGORY_GENERAL, "ultimate use by tick", 1200, "the use of the ultimate by tick when fly or invisibility is enable").getInt();
 		}
 		catch(Exception e)
 		{
@@ -81,11 +82,11 @@ public class UltimateGraviSuiteMod
 			}
 		}
 
-		ultimateHelmet = new UltimateArmor(ArmorMaterial.DIAMOND, 0).setUnlocalizedName("ultimateSolarHelmet").setTextureName("ultimategravisuite:ultimateHelmet");
-		ultimateGraviChestPlate = new UltimateArmor(ArmorMaterial.DIAMOND, 1).setUnlocalizedName("ultimategraviChestPlate").setTextureName("ultimategravisuite:ultimateGraviChestPlate");
-		ultimateLeggings = new UltimateArmor(ArmorMaterial.DIAMOND, 2).setUnlocalizedName("ultimateLeggings").setTextureName("ultimategravisuite:ultimateLeggings");
-		ultimateBoots = new UltimateArmor(ArmorMaterial.DIAMOND, 3).setUnlocalizedName("ultimateBoots").setTextureName("ultimategravisuite:ultimateBoots");
-		ultimateCircuit = new Item().setUnlocalizedName("ultimateCircuit").setTextureName("ultimategravisuite:ultimateCircuit").setCreativeTab(IC2.tabIC2);
+		ultimateHelmet = new UltimateArmor(ArmorMaterial.DIAMOND, 0).setUnlocalizedName("ultimateSolarHelmet").setTextureName("ultimategravisuite:ultimate_helmet");
+		ultimateGraviChestPlate = new UltimateArmor(ArmorMaterial.DIAMOND, 1).setUnlocalizedName("ultimategraviChestPlate").setTextureName("ultimategravisuite:ultimate_gravi_chestplate");
+		ultimateLeggings = new UltimateArmor(ArmorMaterial.DIAMOND, 2).setUnlocalizedName("ultimateLeggings").setTextureName("ultimategravisuite:ultimate_leggings");
+		ultimateBoots = new UltimateArmor(ArmorMaterial.DIAMOND, 3).setUnlocalizedName("ultimateBoots").setTextureName("ultimategravisuite:ultimate_boots");
+		ultimateCircuit = new Item().setUnlocalizedName("ultimateCircuit").setTextureName("ultimategravisuite:ultimate_circuit").setCreativeTab(IC2.tabIC2);
 
 		GameRegistry.registerItem(ultimateHelmet, "ultimateHelmet");
 		GameRegistry.registerItem(ultimateGraviChestPlate, "ultimateGraviChestPlate");
@@ -99,6 +100,7 @@ public class UltimateGraviSuiteMod
 	{
 		proxy.init();
 		FMLCommonHandler.instance().bus().register(new USGCommonEventHandler());
+		MinecraftForge.EVENT_BUS.register(new USGCommonEventHandler());
 
 		packetHandler.initialise();
 		packetHandler.registerPacket(PacketKeys.class);

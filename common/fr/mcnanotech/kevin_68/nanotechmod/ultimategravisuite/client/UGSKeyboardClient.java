@@ -29,6 +29,7 @@ public class UGSKeyboardClient extends UGSKeyboard
 		int currentKeyState = (this.flyKey.isPressed() ? 1 : 0) << 0 | (this.invKey.isPressed() ? 1 : 0) << 1;
 		if(currentKeyState != this.lastKeyState)
 		{
+			this.lastKeyState = currentKeyState;
 			try
 			{
 				UltimateGraviSuiteMod.packetHandler.sendToServer(new PacketKeys(currentKeyState));
@@ -38,7 +39,6 @@ public class UGSKeyboardClient extends UGSKeyboard
 				UltimateGraviSuiteMod.ugslogger.error("Failed to send a key packet");
 			}
 			super.processKeyUpdate(FMLClientHandler.instance().getClientPlayerEntity(), currentKeyState);
-			this.lastKeyState = currentKeyState;
 		}
 	}
 }
