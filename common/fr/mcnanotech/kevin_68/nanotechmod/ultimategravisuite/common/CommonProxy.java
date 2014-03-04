@@ -13,7 +13,7 @@ public class CommonProxy
 {
 	public void init()
 	{
-		
+
 	}
 
 	public EntityPlayer getPlayerInstance()

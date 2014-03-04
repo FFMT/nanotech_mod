@@ -8,12 +8,7 @@
 package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.client;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
-
-import org.lwjgl.input.Keyboard;
-
-import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.CommonProxy;
 
@@ -22,9 +17,10 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void init()
 	{
-
+		FMLCommonHandler.instance().bus().register(new USGClientEventHandler());
 	}
 
+	@Override
 	public EntityPlayer getPlayerInstance()
 	{
 		return Minecraft.getMinecraft().thePlayer;

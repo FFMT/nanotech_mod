@@ -5,9 +5,8 @@
  * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
  */
-package fr.mcnanotech.kevin_68.nanotechmod.main.network;
+package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common;
 
-import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -35,7 +34,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @ChannelHandler.Sharable
-public class PacketHandler extends MessageToMessageCodec<FMLProxyPacket, AbstractPacket>
+public class UGSPacketHandler extends MessageToMessageCodec<FMLProxyPacket, AbstractPacket>
 {
 	private EnumMap<Side, FMLEmbeddedChannel> channels;
 	private LinkedList<Class<? extends AbstractPacket>> packets = new LinkedList<Class<? extends AbstractPacket>>();
@@ -45,19 +44,19 @@ public class PacketHandler extends MessageToMessageCodec<FMLProxyPacket, Abstrac
 	{
 		if(this.packets.size() > 256)
 		{
-			NanotechMod.nanoLogger.error("packets size > 256");
+			UltimateGraviSuiteMod.ugslogger.error("packets size > 256");
 			return false;
 		}
 
 		if(this.packets.contains(clazz))
 		{
-			NanotechMod.nanoLogger.error("packets contains clazz");
+			UltimateGraviSuiteMod.ugslogger.error("packets contains clazz");
 			return false;
 		}
 
 		if(this.isPostInitialised)
 		{
-			NanotechMod.nanoLogger.error("packetshandler is postIntialised");
+			UltimateGraviSuiteMod.ugslogger.error("packetshandler is postIntialised");
 			return false;
 		}
 
@@ -112,13 +111,12 @@ public class PacketHandler extends MessageToMessageCodec<FMLProxyPacket, Abstrac
 
 		default:
 		}
-
 		out.add(pkt);
 	}
 
 	public void initialise()
 	{
-		this.channels = NetworkRegistry.INSTANCE.newChannel("NTM|Packets", this);
+		this.channels = NetworkRegistry.INSTANCE.newChannel("UGS|Packets", this);
 	}
 
 	public void postInitialise()

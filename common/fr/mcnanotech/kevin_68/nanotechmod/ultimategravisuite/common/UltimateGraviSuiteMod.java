@@ -20,6 +20,7 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import org.apache.logging.log4j.Logger;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -40,17 +41,15 @@ public class UltimateGraviSuiteMod
 	public static UGSKeyboard keyboard;
 
 	// Items
-	public static Item ultimateGraviChestPlate;
-	public static Item ultimateHelmet;
-	public static Item ultimateCircuit;
-	public static Item ultimateLeggings;
-	public static Item ultimateBoots;
+	public static Item ultimateGraviChestPlate, ultimateHelmet, ultimateCircuit, ultimateLeggings, ultimateBoots;
 
 	// Config
 	public static int hudPos;
 	public static int uhGenDay;
 	public static int uhGenNight;
 	public static boolean displayHud;
+
+	public static final UGSPacketHandler packetHandler = new UGSPacketHandler();
 
 	public static Logger ugslogger;
 
@@ -99,6 +98,11 @@ public class UltimateGraviSuiteMod
 	public void load(FMLInitializationEvent event)
 	{
 		proxy.init();
+		FMLCommonHandler.instance().bus().register(new USGCommonEventHandler());
+
+		packetHandler.initialise();
+		packetHandler.registerPacket(PacketKeys.class);
+
 		ugslogger.info("Start Mods Check");
 		Item gravisuit = GameRegistry.findItem("GraviSuite", "graviChestPlate"); // TODO check when GraviSuite is release for 1.7.2
 		if(Loader.isModLoaded("CompactSolars"))
