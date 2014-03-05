@@ -62,7 +62,6 @@ public class EntityTheDeathBall extends EntityFireball
 		return var6;
 	}
 
-	@SuppressWarnings("unused")
 	@Override
 	protected void onImpact(MovingObjectPosition movingobjectposition)
 	{

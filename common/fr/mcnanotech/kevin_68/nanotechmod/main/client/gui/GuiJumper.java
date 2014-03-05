@@ -23,7 +23,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityJumper;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 
-@SuppressWarnings({"unchecked", "unused"})
+@SuppressWarnings({"unchecked"})
 public class GuiJumper extends FFMTGuiContainerSliderBase
 {
 	private TileEntityJumper tileJumper;

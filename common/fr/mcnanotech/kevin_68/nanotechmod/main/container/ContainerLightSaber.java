@@ -13,7 +13,6 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.world.World;
 
-@SuppressWarnings("unused")
 public class ContainerLightSaber extends Container
 {
 	private World worldObj;

@@ -17,7 +17,6 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTextSpotLigh
 public class ContainerTextSpotLight extends Container
 {
 	protected TileEntityTextSpotLight tileTextSpotLight;
-	@SuppressWarnings("unused")
 	private World worldObj;
 
 	public ContainerTextSpotLight(TileEntityTextSpotLight tileEntity, InventoryPlayer inventoryPlayer, World world)

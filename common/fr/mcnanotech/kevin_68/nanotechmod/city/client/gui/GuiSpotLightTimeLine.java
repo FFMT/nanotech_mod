@@ -43,7 +43,7 @@ public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 		this.world = world;
 	}
 
-	@SuppressWarnings({"unchecked", "unused"})
+	@SuppressWarnings({"unchecked"})
 	@Override
 	public void initGui()
 	{
@@ -72,7 +72,6 @@ public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 		}
 	}
 
-	@SuppressWarnings("unused")
 	protected void actionPerformed(GuiButton guibutton)
 	{
 		int x = (width - xSize) / 2;
@@ -141,7 +140,6 @@ public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 		return "";
 	}
 
-	@SuppressWarnings("unused")
 	@Override
 	protected void drawGuiContainerForegroundLayer(int i, int j)
 	{

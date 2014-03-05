@@ -22,7 +22,6 @@ public class GuiTimeKey extends GuiButton
 		super(par1, par2, par3, 3, 3, "");
 	}
 
-	@SuppressWarnings("unused")
 	public void drawButton(Minecraft par1Minecraft, int par2, int par3)
 	{
 		if(this.visible)

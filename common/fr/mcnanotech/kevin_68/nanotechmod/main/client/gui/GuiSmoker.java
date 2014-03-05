@@ -20,7 +20,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 
-@SuppressWarnings({"unchecked", "unused"})
+@SuppressWarnings({"unchecked"})
 public class GuiSmoker extends FFMTGuiContainerSliderBase
 {
 	private TileEntitySmoker tileSmoker;

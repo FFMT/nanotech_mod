@@ -16,11 +16,12 @@ public class CTHelper
 	public static final int V = 0, N = 1, S = 2, E = 3, W = 4, VrN = 5, VrS = 6, VrE = 7, VrW = 8, VrNS = 9, VrNE = 10, VrNW = 11, VrSE = 12, VrSW = 13, VrEW = 14, VrNSE = 15, VrNSW = 16, VrNEW = 17, VrSEW = 18, VrNSEW = 19, NrS = 20, SrN = 21, ErW = 22, WrE = 23, NSrN = 24, NSrS = 25, EWrE = 26, EWrW = 27, NS = 28, NE = 29, NW = 30, SE = 31, SW = 32, EW = 33, NSE = 34, NSW = 35, NEW = 36,
 			SEW = 37, NSEW = 38, NrN = 39, SrS = 40, ErE = 41, WrW = 42, NSrNS = 43, NErNE = 44, NWrNW = 45, SErSE = 46, SWrSW = 47, EWrEW = 48, NSErNSE = 49, NSWrNSW = 50, NEWrNEW = 51, SEWrSEW = 52, NSEWrNSEW = 53, NrNE = 54, NrNW = 55, SrSE = 56, SrSW = 57, ErNE = 58, ErSE = 59, WrNW = 60, WrSW = 61, tNrE = 62, tNrW = 63, tSrE = 64, tSrW = 65, tErN = 66, tErS = 67, tWrN = 68, tWrS = 69,
 			tNrSE = 70, tNrSW = 71, tSrNE = 72, tSrNW = 73, tErNW = 74, tErSW = 75, tWrNE = 76, tWrSE = 77, tNErne = 78, tNWrnw = 79, tSErse = 80, tSWrsw = 81, tEWrN = 82, tEWrS = 83, tNSrE = 84, tNSrW = 85, tNSErE = 86, tNSWrW = 87, tSEWrS = 88, tNEWrN = 89, tNSErW = 90, tNSWrE = 91, tSEWrN = 92, tNEWrS = 93, tNSEWrN = 94, tNSEWrS = 95, tNSEWrE = 96, tNSEWrW = 97, tNrNSEW = 98, tSrNSEW = 99,
-			tErNSEW = 100, tWrNSEW = 101, tNSrNSEW = 102, tEWrNSEW = 103;
+			tErNSEW = 100, tWrNSEW = 101, tNSrNSEW = 102, tEWrNSEW = 103, tNSErNSEW = 104, tNSWrNSEW = 105, tNEWrNSEW = 106, tSEWrNSEW = 107, tSrSEW = 108, tErSEW = 109, tWrSEW = 110, tNrNEW = 111, tErNEW = 112, tWrNEW = 113, tNrNSW = 114, tSrNSW = 115, tWrNSW = 116, tNrNSE = 117, tSrNSE = 118, tErNSE = 119, tNSrNSE = 120, tNSrNSW = 121, tEWrNEW = 122, tEWrSEW = 123, tSErSEW = 124, tSWrSEW = 125,
+			tNErNSE = 126, tSErNSE = 127, tNWrNEW = 128, tNErNEW = 129, tNWrNSW = 130, tSWrNSW = 131;
 
 	public static boolean[] get(IBlockAccess iba, int x, int y, int z, Block block)
 	{
-		boolean flag[] = new boolean[150];
+		boolean flag[] = new boolean[200];
 		int[] cN = new int[] {x, y, z - 1}, cS = new int[] {x, y, z + 1}, cE = new int[] {x + 1, y, z}, cW = new int[] {x - 1, y, z}, cnw = new int[] {x - 1, y, z - 1}, cne = new int[] {x + 1, y, z - 1}, csw = new int[] {x - 1, y, z + 1}, cse = new int[] {x + 1, y, z + 1}, cNp1 = new int[] {x, y + 1, z - 1};
 
 		flag[V] = (b(iba, cN, block) && b(iba, cS, block) && b(iba, cE, block) && b(iba, cW, block));
@@ -127,6 +128,36 @@ public class CTHelper
 		flag[tWrNSEW] = (g(iba, cN, block) && g(iba, cS, block) && g(iba, cE, block) && f(iba, cW, block));
 		flag[tNSrNSEW] = (f(iba, cN, block) && f(iba, cS, block) && g(iba, cE, block) && g(iba, cW, block));
 		flag[tEWrNSEW] = (g(iba, cN, block) && g(iba, cS, block) && f(iba, cE, block) && f(iba, cW, block));
+		flag[tNSErNSEW] = (f(iba, cN, block) && f(iba, cS, block) && f(iba, cE, block) && g(iba, cW, block));
+		flag[tNSWrNSEW] = (f(iba, cN, block) && f(iba, cS, block) && g(iba, cE, block) && f(iba, cW, block));
+		flag[tNEWrNSEW] = (f(iba, cN, block) && g(iba, cS, block) && f(iba, cE, block) && f(iba, cW, block));
+		flag[tSEWrNSEW] = (g(iba, cN, block) && f(iba, cS, block) && f(iba, cE, block) && f(iba, cW, block));
+		flag[tSrSEW] = (b(iba, cN, block) && f(iba, cS, block) && g(iba, cE, block) && g(iba, cW, block));
+		flag[tErSEW] = (b(iba, cN, block) && g(iba, cS, block) && f(iba, cE, block) && g(iba, cW, block));
+		flag[tWrSEW] = (b(iba, cN, block) && g(iba, cS, block) && g(iba, cE, block) && f(iba, cW, block));
+		flag[tNrNEW] = (f(iba, cN, block) && b(iba, cS, block) && g(iba, cE, block) && g(iba, cW, block));
+		flag[tErNEW] = (g(iba, cN, block) && b(iba, cS, block) && f(iba, cE, block) && g(iba, cW, block));
+		flag[tWrNEW] = (g(iba, cN, block) && b(iba, cS, block) && g(iba, cE, block) && f(iba, cW, block));
+		flag[tNrNSW] = (f(iba, cN, block) && g(iba, cS, block) && b(iba, cE, block) && g(iba, cW, block));
+		flag[tSrNSW] = (g(iba, cN, block) && f(iba, cS, block) && b(iba, cE, block) && g(iba, cW, block));
+		flag[tWrNSW] = (g(iba, cN, block) && g(iba, cS, block) && b(iba, cE, block) && f(iba, cW, block));
+		flag[tNrNSE] = (f(iba, cN, block) && g(iba, cS, block) && g(iba, cE, block) && b(iba, cW, block));
+		flag[tSrNSE] = (g(iba, cN, block) && f(iba, cS, block) && g(iba, cE, block) && b(iba, cW, block));
+		flag[tErNSE] = (g(iba, cN, block) && g(iba, cS, block) && f(iba, cE, block) && b(iba, cW, block));
+		flag[tNSrNSE] = (f(iba, cN, block) && f(iba, cS, block) && g(iba, cE, block) && b(iba, cW, block));
+		flag[tNSrNSW] = (f(iba, cN, block) && f(iba, cS, block) && b(iba, cE, block) && g(iba, cW, block));
+		flag[tEWrNEW] = (g(iba, cN, block) && b(iba, cS, block) && f(iba, cE, block) && f(iba, cW, block));
+		flag[tEWrSEW] = (b(iba, cN, block) && g(iba, cS, block) && f(iba, cE, block) && f(iba, cW, block));
+		
+		flag[tSErSEW] = (b(iba, cN, block) && f(iba, cS, block) && f(iba, cE, block) && g(iba, cW, block));
+		flag[tSWrSEW] = (b(iba, cN, block) && f(iba, cS, block) && g(iba, cE, block) && f(iba, cW, block));
+		flag[tNErNSE] = (f(iba, cN, block) && g(iba, cS, block) && f(iba, cE, block) && b(iba, cW, block));
+		flag[tSErNSE] = (g(iba, cN, block) && f(iba, cS, block) && f(iba, cE, block) && b(iba, cW, block));
+		flag[tNWrNEW] = (f(iba, cN, block) && b(iba, cS, block) && g(iba, cE, block) && f(iba, cW, block));
+		flag[tNErNEW] = (f(iba, cN, block) && b(iba, cS, block) && f(iba, cE, block) && g(iba, cW, block));
+		flag[tNWrNSW] = (f(iba, cN, block) && g(iba, cS, block) && b(iba, cE, block) && g(iba, cW, block));
+		flag[tSWrNSW] = (g(iba, cN, block) && f(iba, cS, block) && b(iba, cE, block) && f(iba, cW, block));
+
 		return flag;
 	}
 

@@ -24,7 +24,6 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.client.model.ModelTheDeath;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.MobThedeath;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 
-@SuppressWarnings("unused")
 public class RenderTheDeath extends RenderLiving
 {
 	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/entity/thedeath.png");

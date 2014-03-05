@@ -891,23 +891,23 @@ public class BlockTrail extends Block
 			{
 				return side == 1 ? iconBuffer[3] : (side == 3 ? iconBuffer[3] : (side == 4 ? iconBuffer[3] : (side == 2 ? iconBuffer[1] : (side == 5 ? iconBuffer[2] : iconBuffer[100]))));
 			}
-			if(flag[CTHelper.VrNSE] && !flag[CTHelper.NSErNSE])
+			if(flag[CTHelper.VrNSE] && !flag[CTHelper.NSErNSE] && !flag[CTHelper.tNrNSE] && !flag[CTHelper.tSrNSE] && !flag[CTHelper.tErNSE] && !flag[CTHelper.tNSrNSE])
 			{
 				return side == 1 ? iconBuffer[3] : (side == 3 ? iconBuffer[3] : (side == 2 ? iconBuffer[3] : (side == 5 ? iconBuffer[3] : (side == 4 ? iconBuffer[99] : iconBuffer[100]))));
 			}
-			if(flag[CTHelper.VrNSW] && !flag[CTHelper.NSWrNSW])
+			if(flag[CTHelper.VrNSW] && !flag[CTHelper.NSWrNSW] && !flag[CTHelper.tNrNSW] && !flag[CTHelper.tSrNSW] && !flag[CTHelper.tWrNSW] && !flag[CTHelper.tNSrNSW])
 			{
 				return side == 1 ? iconBuffer[3] : (side == 3 ? iconBuffer[3] : (side == 2 ? iconBuffer[3] : (side == 4 ? iconBuffer[3] : (side == 5 ? iconBuffer[99] : iconBuffer[100]))));
 			}
-			if(flag[CTHelper.VrNEW] && !flag[CTHelper.NEWrNEW])
+			if(flag[CTHelper.VrNEW] && !flag[CTHelper.NEWrNEW] && !flag[CTHelper.tNrNEW] && !flag[CTHelper.tErNEW] && !flag[CTHelper.tWrNEW] && !flag[CTHelper.tEWrNEW])
 			{
 				return side == 1 ? iconBuffer[3] : (side == 5 ? iconBuffer[3] : (side == 2 ? iconBuffer[3] : (side == 4 ? iconBuffer[3] : (side == 3 ? iconBuffer[99] : iconBuffer[100]))));
 			}
-			if(flag[CTHelper.VrSEW] && !flag[CTHelper.SEWrSEW])
+			if(flag[CTHelper.VrSEW] && !flag[CTHelper.SEWrSEW] && !flag[CTHelper.tSrSEW] && !flag[CTHelper.tErSEW] && !flag[CTHelper.tWrSEW] && !flag[CTHelper.tEWrSEW])
 			{
 				return side == 1 ? iconBuffer[3] : (side == 5 ? iconBuffer[3] : (side == 3 ? iconBuffer[3] : (side == 4 ? iconBuffer[3] : (side == 2 ? iconBuffer[99] : iconBuffer[100]))));
 			}
-			if(flag[CTHelper.VrNSEW] && !flag[CTHelper.NSEWrNSEW] && !flag[CTHelper.tNrNSEW] && !flag[CTHelper.tSrNSEW] && !flag[CTHelper.tErNSEW] && !flag[CTHelper.tWrNSEW] && !flag[CTHelper.tNSrNSEW] && !flag[CTHelper.tEWrNSEW])
+			if(flag[CTHelper.VrNSEW] && !flag[CTHelper.NSEWrNSEW] && !flag[CTHelper.tNrNSEW] && !flag[CTHelper.tSrNSEW] && !flag[CTHelper.tErNSEW] && !flag[CTHelper.tWrNSEW] && !flag[CTHelper.tNSrNSEW] && !flag[CTHelper.tEWrNSEW] && !flag[CTHelper.tNSErNSEW] && !flag[CTHelper.tNSWrNSEW] && !flag[CTHelper.tNEWrNSEW] && !flag[CTHelper.tSEWrNSEW])
 			{
 				return iconBuffer[3];
 			}
@@ -1250,6 +1250,86 @@ public class BlockTrail extends Block
 			if(flag[CTHelper.tEWrNSEW])
 			{
 				return side == 1 ? iconBuffer[9] : (side == 4 ? iconBuffer[8] : (side == 5 ? iconBuffer[8] : iconBuffer[9]));
+			}
+			if(flag[CTHelper.tNSErNSEW])
+			{
+				return side == 1 ? iconBuffer[15] : (side == 4 ? iconBuffer[17] : (side == 5 ? iconBuffer[16] : iconBuffer[15]));
+			}
+			if(flag[CTHelper.tNSWrNSEW])
+			{
+				return side == 1 ? iconBuffer[14] : (side == 4 ? iconBuffer[16] : (side == 5 ? iconBuffer[17] : iconBuffer[14]));
+			}
+			if(flag[CTHelper.tNEWrNSEW])
+			{
+				return side == 1 ? iconBuffer[17] : (side == 3 ? iconBuffer[17] : (side == 2 ? iconBuffer[16] : iconBuffer[14]));
+			}
+			if(flag[CTHelper.tSEWrNSEW])
+			{
+				return side == 1 ? iconBuffer[16] : (side == 2 ? iconBuffer[17] : (side == 3 ? iconBuffer[16] : iconBuffer[15]));
+			}
+			if(flag[CTHelper.tSrSEW])
+			{
+				return side == 1 ? iconBuffer[5] : (side == 3 ? iconBuffer[5] : (side == 2 ? iconBuffer[99] : iconBuffer[6]));
+			}
+			if(flag[CTHelper.tErSEW])
+			{
+				return side == 1 ? iconBuffer[6] : (side == 3 ? iconBuffer[6] : (side == 2 ? iconBuffer[99] : (side == 4 ? iconBuffer[4] : iconBuffer[5])));
+			}
+			if(flag[CTHelper.tWrSEW])
+			{
+				return side == 1 ? iconBuffer[7] : (side == 3 ? iconBuffer[7] : (side == 2 ? iconBuffer[99] : (side == 5 ? iconBuffer[4] : iconBuffer[5])));
+			}
+			if(flag[CTHelper.tNrNEW])
+			{
+				return side == 1 ? iconBuffer[4] : (side == 2 ? iconBuffer[4] : (side == 3 ? iconBuffer[99] : iconBuffer[7]));
+			}
+			if(flag[CTHelper.tErNEW])
+			{
+				return side == 1 ? iconBuffer[6] : (side == 2 ? iconBuffer[6] : (side == 3 ? iconBuffer[99] : (side == 4 ? iconBuffer[4] : iconBuffer[5])));
+			}
+			if(flag[CTHelper.tWrNEW])
+			{
+				return side == 1 ? iconBuffer[7] : (side == 2 ? iconBuffer[7] : (side == 3 ? iconBuffer[99] : (side == 5 ? iconBuffer[4] : iconBuffer[5])));
+			}
+			if(flag[CTHelper.tNrNSE])
+			{
+				return side == 1 ? iconBuffer[4] : (side == 2 ? iconBuffer[5] : (side == 3 ? iconBuffer[4] : (side == 4 ? iconBuffer[99] : iconBuffer[7])));
+			}
+			if(flag[CTHelper.tSrNSE])
+			{
+				return side == 1 ? iconBuffer[5] : (side == 2 ? iconBuffer[4] : (side == 3 ? iconBuffer[5] : (side == 4 ? iconBuffer[99] : iconBuffer[6])));
+			}
+			if(flag[CTHelper.tErNSE])
+			{
+				return side == 1 ? iconBuffer[6] : (side == 5 ? iconBuffer[5] : (side == 4 ? iconBuffer[99] : iconBuffer[6]));
+			}
+			if(flag[CTHelper.tNrNSW])
+			{
+				return side == 1 ? iconBuffer[4] : (side == 2 ? iconBuffer[5] : (side == 3 ? iconBuffer[4] : (side == 5 ? iconBuffer[99] : iconBuffer[7])));
+			}
+			if(flag[CTHelper.tSrNSW])
+			{
+				return side == 1 ? iconBuffer[5] : (side == 2 ? iconBuffer[4] : (side == 3 ? iconBuffer[5] : (side == 5 ? iconBuffer[99] : iconBuffer[6])));
+			}
+			if(flag[CTHelper.tWrNSW])
+			{
+				return side == 1 ? iconBuffer[7] : (side == 4 ? iconBuffer[5] : (side == 5 ? iconBuffer[99] : iconBuffer[7]));
+			}
+			if(flag[CTHelper.tNSrNSE])
+			{
+				return side == 1 ? iconBuffer[8] : (side == 2 ? iconBuffer[8] : (side == 3 ? iconBuffer[8] : (side == 5 ? iconBuffer[9] : iconBuffer[99])));
+			}
+			if(flag[CTHelper.tNSrNSW])
+			{
+				return side == 1 ? iconBuffer[8] : (side == 2 ? iconBuffer[8] : (side == 3 ? iconBuffer[8] : (side == 4 ? iconBuffer[9] : iconBuffer[99])));
+			}
+			if(flag[CTHelper.tEWrSEW])
+			{
+				return side == 1 ? iconBuffer[9] : (side == 4 ? iconBuffer[8] : (side == 5 ? iconBuffer[8] : (side == 3 ? iconBuffer[9] : iconBuffer[99])));
+			}
+			if(flag[CTHelper.tEWrNEW])
+			{
+				return side == 1 ? iconBuffer[9] : (side == 4 ? iconBuffer[8] : (side == 5 ? iconBuffer[8] : (side == 2 ? iconBuffer[9] : iconBuffer[99])));
 			}
 		}
 		else

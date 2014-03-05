@@ -33,7 +33,6 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechDamageSource;
 
-@SuppressWarnings("unused")
 public class EntitySatelite extends Entity
 {
 	private int xTile = -1;

@@ -15,7 +15,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 
-@SuppressWarnings("unused")
 public class WorldGenNanoTree extends WorldGenerator
 {
 	private final int field_48202_a;

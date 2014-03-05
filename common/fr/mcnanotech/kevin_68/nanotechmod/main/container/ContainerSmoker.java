@@ -14,7 +14,6 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
 
-@SuppressWarnings("unused")
 public class ContainerSmoker extends Container
 {
 	protected TileEntitySmoker smoker;

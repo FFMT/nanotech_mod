@@ -76,7 +76,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	private int[] secondaryLazerkey = new int[121];
 	private int[] reverseRotationkey = new int[121];
 
-	@SuppressWarnings({"unchecked", "rawtypes", "unused"})
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	public void updateEntity()
 	{
 		if(this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))

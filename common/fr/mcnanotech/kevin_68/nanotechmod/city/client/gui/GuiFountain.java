@@ -33,7 +33,7 @@ public class GuiFountain extends GuiContainer
 		tileFoutain = tileentity;
 	}
 
-	@SuppressWarnings({"unchecked", "unused"})
+	@SuppressWarnings({"unchecked"})
 	@Override
 	public void initGui()
 	{
@@ -138,7 +138,6 @@ public class GuiFountain extends GuiContainer
 		}
 	}
 
-	@SuppressWarnings("unused")
 	@Override
 	protected void drawGuiContainerForegroundLayer(int i, int j)
 	{

@@ -45,7 +45,7 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		this.world = world;
 	}
 
-	@SuppressWarnings({"unchecked", "unused"})
+	@SuppressWarnings({"unchecked"})
 	@Override
 	public void initGui()
 	{
@@ -208,7 +208,6 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		}
 	}
 
-	@SuppressWarnings("unused")
 	@Override
 	protected void drawGuiContainerForegroundLayer(int i, int j)
 	{

@@ -17,7 +17,6 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityFountain;
 public class ContainerFountain extends Container
 {
 	protected TileEntityFountain tileFountain;
-	@SuppressWarnings("unused")
 	private World worldObj;
 
 	public ContainerFountain(TileEntityFountain tileEntity, InventoryPlayer inventoryPlayer, World world)

@@ -27,7 +27,7 @@ import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
-@SuppressWarnings({"unused", "unchecked", "rawtypes"})
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class NewExplosion extends Explosion
 {
 	private final Random ExplosionRNG = new Random();

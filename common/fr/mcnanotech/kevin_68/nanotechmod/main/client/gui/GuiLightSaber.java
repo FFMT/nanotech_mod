@@ -25,7 +25,7 @@ import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
 import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
 
 @SideOnly(Side.CLIENT)
-@SuppressWarnings({"unchecked", "unused"})
+@SuppressWarnings({"unchecked"})
 public class GuiLightSaber extends FFMTGuiContainerSliderBase
 {
 	private final ItemStack saberStack;

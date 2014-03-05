@@ -246,7 +246,6 @@ public class MobSuperSkeleton extends EntityMob implements IRangedAttackMob
 		this.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
 	}
 
-	@SuppressWarnings("unused")
 	public void setCombatTask()
 	{
 		this.tasks.removeTask(this.aiAttackOnCollide);
