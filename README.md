@@ -11,7 +11,7 @@ Todo list:
 * Fix the death lag
 * Better render for fountain?
 * 3 machines, nano assembler, furnace to use decrease dust, very hot furnace for silicon
-* camouflage armor: when weared, you become a block
-* camouflage bloc piston doors
+* Synthesizer ?
+* Rewrite lister jukebox
 
 When all is done, Nanotech mod for 1.7.2 will be released.
