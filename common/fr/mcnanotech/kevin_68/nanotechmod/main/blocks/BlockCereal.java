@@ -27,7 +27,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechModCity;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.ClientProxy;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 
@@ -119,15 +118,15 @@ public class BlockCereal extends Block
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
 		iconBuffer = new IIcon[9];
-		iconBuffer[0] = iconRegister.registerIcon(NanotechModCity.MODID + ":cereal1");
-		iconBuffer[1] = iconRegister.registerIcon(NanotechModCity.MODID + ":cereal2");
-		iconBuffer[2] = iconRegister.registerIcon(NanotechModCity.MODID + ":cereal3");
-		iconBuffer[3] = iconRegister.registerIcon(NanotechModCity.MODID + ":cereal4");
-		iconBuffer[4] = iconRegister.registerIcon(NanotechModCity.MODID + ":cereal5");
-		iconBuffer[5] = iconRegister.registerIcon(NanotechModCity.MODID + ":cereal6");
-		iconBuffer[6] = iconRegister.registerIcon(NanotechModCity.MODID + ":cereal7");
-		iconBuffer[7] = iconRegister.registerIcon(NanotechModCity.MODID + ":cereal8");
-		iconBuffer[8] = iconRegister.registerIcon(NanotechModCity.MODID + ":cereal9");
+		iconBuffer[0] = iconRegister.registerIcon(NanotechMod.MODID + ":cereal1");
+		iconBuffer[1] = iconRegister.registerIcon(NanotechMod.MODID + ":cereal2");
+		iconBuffer[2] = iconRegister.registerIcon(NanotechMod.MODID + ":cereal3");
+		iconBuffer[3] = iconRegister.registerIcon(NanotechMod.MODID + ":cereal4");
+		iconBuffer[4] = iconRegister.registerIcon(NanotechMod.MODID + ":cereal5");
+		iconBuffer[5] = iconRegister.registerIcon(NanotechMod.MODID + ":cereal6");
+		iconBuffer[6] = iconRegister.registerIcon(NanotechMod.MODID + ":cereal7");
+		iconBuffer[7] = iconRegister.registerIcon(NanotechMod.MODID + ":cereal8");
+		iconBuffer[8] = iconRegister.registerIcon(NanotechMod.MODID + ":cereal9");
 	}
 
 	@SideOnly(Side.CLIENT)

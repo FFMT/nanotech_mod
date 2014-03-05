@@ -148,14 +148,13 @@ public class CTHelper
 		flag[tNSrNSW] = (f(iba, cN, block) && f(iba, cS, block) && b(iba, cE, block) && g(iba, cW, block));
 		flag[tEWrNEW] = (g(iba, cN, block) && b(iba, cS, block) && f(iba, cE, block) && f(iba, cW, block));
 		flag[tEWrSEW] = (b(iba, cN, block) && g(iba, cS, block) && f(iba, cE, block) && f(iba, cW, block));
-		
 		flag[tSErSEW] = (b(iba, cN, block) && f(iba, cS, block) && f(iba, cE, block) && g(iba, cW, block));
 		flag[tSWrSEW] = (b(iba, cN, block) && f(iba, cS, block) && g(iba, cE, block) && f(iba, cW, block));
 		flag[tNErNSE] = (f(iba, cN, block) && g(iba, cS, block) && f(iba, cE, block) && b(iba, cW, block));
 		flag[tSErNSE] = (g(iba, cN, block) && f(iba, cS, block) && f(iba, cE, block) && b(iba, cW, block));
 		flag[tNWrNEW] = (f(iba, cN, block) && b(iba, cS, block) && g(iba, cE, block) && f(iba, cW, block));
 		flag[tNErNEW] = (f(iba, cN, block) && b(iba, cS, block) && f(iba, cE, block) && g(iba, cW, block));
-		flag[tNWrNSW] = (f(iba, cN, block) && g(iba, cS, block) && b(iba, cE, block) && g(iba, cW, block));
+		flag[tNWrNSW] = (f(iba, cN, block) && g(iba, cS, block) && b(iba, cE, block) && f(iba, cW, block));
 		flag[tSWrNSW] = (g(iba, cN, block) && f(iba, cS, block) && b(iba, cE, block) && f(iba, cW, block));
 
 		return flag;

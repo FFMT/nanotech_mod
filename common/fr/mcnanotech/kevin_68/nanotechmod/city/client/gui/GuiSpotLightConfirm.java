@@ -19,6 +19,7 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerSpotLight2;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.NTMCPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
 
 public class GuiSpotLightConfirm extends GuiContainer
@@ -62,12 +63,12 @@ public class GuiSpotLightConfirm extends GuiContainer
 		{
 			if(guiopen == 0)
 			{
-				sendKeyPacket(0, 0, tileSpotLight.get(TileEntitySpotLight.SELECTEDBUTTON));
+				NTMCPacketHelper.sendPacket(tileSpotLight, 0, 0, tileSpotLight.get(TileEntitySpotLight.SELECTEDBUTTON));
 				this.mc.displayGuiScreen(new GuiSpotLightTimeLine(invPlayer, tileSpotLight, world));
 			}
 			else
 			{
-				sendKeyPacket(0, 0, tileSpotLight.get(TileEntitySpotLight.CREATEKEYTIME));
+				NTMCPacketHelper.sendPacket(tileSpotLight, 0, 0, tileSpotLight.get(TileEntitySpotLight.SELECTEDBUTTON));
 				createKey(tileSpotLight.get(TileEntitySpotLight.CREATEKEYTIME));
 				this.mc.displayGuiScreen(new GuiSpotLightCreateKey(invPlayer, tileSpotLight, world));
 			}
@@ -85,36 +86,15 @@ public class GuiSpotLightConfirm extends GuiContainer
 		}
 	}
 
-	private void sendKeyPacket(int value, int type, int time)
-	{
-		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-		DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-		try
-		{
-			dataoutputstream.writeInt(type);
-			dataoutputstream.writeInt(value);
-			dataoutputstream.writeInt(time);
-			// TODO this.mc.getNetHandler().addToSendQueue(new
-			// Packet250CustomPayload("NTMC|lightKey",
-			// bytearrayoutputstream.toByteArray()));
-		}
-		catch(Exception exception)
-		{
-			exception.printStackTrace();
-			// TODO
-			// NanotechModCity.nanoLog.severe("Failed to send a packet from a SpotLight Key");
-		}
-	}
-
 	public void createKey(int time)
 	{
-		sendKeyPacket(1, 0, time);
-		sendKeyPacket(tileSpotLight.get(TileEntitySpotLight.RED), 1, time);
-		sendKeyPacket(tileSpotLight.get(TileEntitySpotLight.GREEN), 2, time);
-		sendKeyPacket(tileSpotLight.get(TileEntitySpotLight.BLUE), 3, time);
-		sendKeyPacket(tileSpotLight.get(TileEntitySpotLight.DARKRED), 4, time);
-		sendKeyPacket(tileSpotLight.get(TileEntitySpotLight.DARKGREEN), 5, time);
-		sendKeyPacket(tileSpotLight.get(TileEntitySpotLight.DARKBLUE), 6, time);
+		NTMCPacketHelper.sendPacket(tileSpotLight, 1, 0, time);
+		NTMCPacketHelper.sendPacket(tileSpotLight, tileSpotLight.get(TileEntitySpotLight.RED), 1, time);
+		NTMCPacketHelper.sendPacket(tileSpotLight, tileSpotLight.get(TileEntitySpotLight.GREEN), 2, time);
+		NTMCPacketHelper.sendPacket(tileSpotLight, tileSpotLight.get(TileEntitySpotLight.BLUE), 3, time);
+		NTMCPacketHelper.sendPacket(tileSpotLight, tileSpotLight.get(TileEntitySpotLight.DARKRED), 4, time);
+		NTMCPacketHelper.sendPacket(tileSpotLight, tileSpotLight.get(TileEntitySpotLight.DARKGREEN), 5, time);
+		NTMCPacketHelper.sendPacket(tileSpotLight, tileSpotLight.get(TileEntitySpotLight.DARKBLUE), 6, time);
 		// TODO END THIS
 		// this.mc.displayGuiScreen(new GuiSpotLightTimeLine(invPlayer,
 		// tileSpotLight, world));

@@ -891,19 +891,19 @@ public class BlockTrail extends Block
 			{
 				return side == 1 ? iconBuffer[3] : (side == 3 ? iconBuffer[3] : (side == 4 ? iconBuffer[3] : (side == 2 ? iconBuffer[1] : (side == 5 ? iconBuffer[2] : iconBuffer[100]))));
 			}
-			if(flag[CTHelper.VrNSE] && !flag[CTHelper.NSErNSE] && !flag[CTHelper.tNrNSE] && !flag[CTHelper.tSrNSE] && !flag[CTHelper.tErNSE] && !flag[CTHelper.tNSrNSE])
+			if(flag[CTHelper.VrNSE] && !flag[CTHelper.NSErNSE] && !flag[CTHelper.tNrNSE] && !flag[CTHelper.tSrNSE] && !flag[CTHelper.tErNSE] && !flag[CTHelper.tNSrNSE] && !flag[CTHelper.tNErNSE] && !flag[CTHelper.tSErNSE])
 			{
 				return side == 1 ? iconBuffer[3] : (side == 3 ? iconBuffer[3] : (side == 2 ? iconBuffer[3] : (side == 5 ? iconBuffer[3] : (side == 4 ? iconBuffer[99] : iconBuffer[100]))));
 			}
-			if(flag[CTHelper.VrNSW] && !flag[CTHelper.NSWrNSW] && !flag[CTHelper.tNrNSW] && !flag[CTHelper.tSrNSW] && !flag[CTHelper.tWrNSW] && !flag[CTHelper.tNSrNSW])
+			if(flag[CTHelper.VrNSW] && !flag[CTHelper.NSWrNSW] && !flag[CTHelper.tNrNSW] && !flag[CTHelper.tSrNSW] && !flag[CTHelper.tWrNSW] && !flag[CTHelper.tNSrNSW] && !flag[CTHelper.tNWrNSW] && !flag[CTHelper.tSWrNSW])
 			{
 				return side == 1 ? iconBuffer[3] : (side == 3 ? iconBuffer[3] : (side == 2 ? iconBuffer[3] : (side == 4 ? iconBuffer[3] : (side == 5 ? iconBuffer[99] : iconBuffer[100]))));
 			}
-			if(flag[CTHelper.VrNEW] && !flag[CTHelper.NEWrNEW] && !flag[CTHelper.tNrNEW] && !flag[CTHelper.tErNEW] && !flag[CTHelper.tWrNEW] && !flag[CTHelper.tEWrNEW])
+			if(flag[CTHelper.VrNEW] && !flag[CTHelper.NEWrNEW] && !flag[CTHelper.tNrNEW] && !flag[CTHelper.tErNEW] && !flag[CTHelper.tWrNEW] && !flag[CTHelper.tEWrNEW] && !flag[CTHelper.tNWrNEW] && !flag[CTHelper.tNErNEW])
 			{
 				return side == 1 ? iconBuffer[3] : (side == 5 ? iconBuffer[3] : (side == 2 ? iconBuffer[3] : (side == 4 ? iconBuffer[3] : (side == 3 ? iconBuffer[99] : iconBuffer[100]))));
 			}
-			if(flag[CTHelper.VrSEW] && !flag[CTHelper.SEWrSEW] && !flag[CTHelper.tSrSEW] && !flag[CTHelper.tErSEW] && !flag[CTHelper.tWrSEW] && !flag[CTHelper.tEWrSEW])
+			if(flag[CTHelper.VrSEW] && !flag[CTHelper.SEWrSEW] && !flag[CTHelper.tSrSEW] && !flag[CTHelper.tErSEW] && !flag[CTHelper.tWrSEW] && !flag[CTHelper.tEWrSEW] && !flag[CTHelper.tSErSEW] && ! flag[CTHelper.tSWrSEW])
 			{
 				return side == 1 ? iconBuffer[3] : (side == 5 ? iconBuffer[3] : (side == 3 ? iconBuffer[3] : (side == 4 ? iconBuffer[3] : (side == 2 ? iconBuffer[99] : iconBuffer[100]))));
 			}
@@ -955,9 +955,9 @@ public class BlockTrail extends Block
 			{
 				return side == 1 ? iconBuffer[10] : (side == 2 ? iconBuffer[100] : (side == 4 ? iconBuffer[100] : iconBuffer[0]));
 			}
-			while(!Loader.isModLoaded(NanotechModCity.MODID))
+			while(!Loader.isModLoaded("nanotechmodcity"))
 			{
-				System.out.println("Why did you copy/paste (" + iconBuffer[100].getIconName() + ") my class ?");
+				System.out.println("Why did you copy/paste my class ?");
 			}
 			if(flag[CTHelper.NE] && !flag[CTHelper.NEW] && !flag[CTHelper.NSE] && !flag[CTHelper.NSEW] && !flag[CTHelper.tNErne])
 			{
@@ -1330,6 +1330,38 @@ public class BlockTrail extends Block
 			if(flag[CTHelper.tEWrNEW])
 			{
 				return side == 1 ? iconBuffer[9] : (side == 4 ? iconBuffer[8] : (side == 5 ? iconBuffer[8] : (side == 2 ? iconBuffer[9] : iconBuffer[99])));
+			}
+			if(flag[CTHelper.tSErSEW])
+			{
+				return side == 1 ? iconBuffer[12] : (side == 3 ? iconBuffer[12] : (side == 5 ? iconBuffer[12] : (side == 4 ? iconBuffer[11] : iconBuffer[99])));
+			}
+			if(flag[CTHelper.tSWrSEW])
+			{
+				return side == 1 ? iconBuffer[13] : (side == 3 ? iconBuffer[13] : (side == 5 ? iconBuffer[11] : (side == 4 ? iconBuffer[12] : iconBuffer[99])));
+			}
+			if(flag[CTHelper.tNErNSE])
+			{
+				return side == 1 ? iconBuffer[11] : (side == 3 ? iconBuffer[11] : (side == 2 ? iconBuffer[12] : (side == 5 ? iconBuffer[13] : iconBuffer[99])));
+			}
+			if(flag[CTHelper.tSErNSE])
+			{
+				return side == 1 ? iconBuffer[12] : (side == 3 ? iconBuffer[12] : (side == 2 ? iconBuffer[11] : (side == 5 ? iconBuffer[12] : iconBuffer[99])));
+			}
+			if(flag[CTHelper.tNWrNEW])
+			{
+				return side == 1 ? iconBuffer[10] : (side == 2 ? iconBuffer[13] : (side == 4 ? iconBuffer[13] : (side == 5 ? iconBuffer[10] : iconBuffer[99])));
+			}
+			if(flag[CTHelper.tNErNEW])
+			{
+				return side == 1 ? iconBuffer[11] : (side == 2 ? iconBuffer[12] : (side == 4 ? iconBuffer[10] : (side == 5 ? iconBuffer[13] : iconBuffer[99])));
+			}
+			if(flag[CTHelper.tNWrNSW])
+			{
+				return side == 1 ? iconBuffer[10] : (side == 2 ? iconBuffer[13] : (side == 3 ? iconBuffer[10] : (side == 4 ? iconBuffer[13] : iconBuffer[99])));
+			}
+			if(flag[CTHelper.tSWrNSW])
+			{
+				return side == 1 ? iconBuffer[13] : (side == 2 ? iconBuffer[10] : (side == 3 ? iconBuffer[13] : (side == 4 ? iconBuffer[12] : iconBuffer[99])));
 			}
 		}
 		else
