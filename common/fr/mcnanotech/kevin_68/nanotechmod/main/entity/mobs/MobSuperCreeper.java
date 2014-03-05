@@ -30,13 +30,14 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.ai.AiSuperCreeper;
+import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechConfiguration;
 
 public class MobSuperCreeper extends EntityMob
 {
 	private int lastActiveTime;
 	private int timeSinceIgnited;
 	private int field_82225_f = 30;
-	private int explosionRadius = 2;// NanotechMod.explosionRadius; TODO fix
+	private int explosionRadius = NanotechConfiguration.explosionRadius;
 
 	public MobSuperCreeper(World world)
 	{

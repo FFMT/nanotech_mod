@@ -126,14 +126,13 @@ public class GuiFountain extends GuiContainer
 			dataoutputstream.writeFloat(width);
 			dataoutputstream.writeBoolean(doRotate);
 			dataoutputstream.writeBoolean(isAnimated);
-			// TODO this.mc.getNetHandler().addToSendQueue(new
-			// Packet250CustomPayload("NTMC|fount",
-			// bytearrayoutputstream.toByteArray()));
+			// TODO packet 
+			// this.mc.getNetHandler().addToSendQueue(new Packet250CustomPayload("NTMC|fount", bytearrayoutputstream.toByteArray()));
 		}
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
-			// TODO
+			// TODO log
 			// NanotechModCity.nanoLog.severe("Failed to send a packet from a fountain");
 		}
 	}

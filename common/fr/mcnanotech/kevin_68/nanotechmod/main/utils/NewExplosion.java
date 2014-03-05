@@ -125,9 +125,9 @@ public class NewExplosion extends Explosion
 
 		for(Map.Entry entry : this.destroyedBlockPositions.entrySet())
 		{
-			int x = ((ChunkPosition)entry.getKey()).chunkPosX;// TODO check
-			int y = ((ChunkPosition)entry.getKey()).chunkPosY;// TODO check
-			int z = ((ChunkPosition)entry.getKey()).chunkPosZ;// TODO check
+			int x = ((ChunkPosition)entry.getKey()).chunkPosX;
+			int y = ((ChunkPosition)entry.getKey()).chunkPosY;
+			int z = ((ChunkPosition)entry.getKey()).chunkPosZ;
 
 			Block block = this.chunkCache.getBlock(x, y, z);
 

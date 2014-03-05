@@ -43,7 +43,7 @@ public class ItemBlockNanoSteps extends ItemBlock
 	@Override
 	public IIcon getIconFromDamage(int metadata)
 	{
-		return NanotechBlock.nanoPlank.getIcon(2, metadata);// TODO check
+		return doubleSlab.getIcon(2, metadata);
 	}
 
 	public int getMetadata(int metadata)

@@ -43,6 +43,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.world.NanotechBiome;
 import fr.mcnanotech.kevin_68.nanotechmod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotechmod.main.world.NitrogenOcean;
+import fr.mcnanotech.kevin_68.nanotechmod.main.world.WorldGeneration;
 
 public class NanotechOther
 {
@@ -113,6 +114,8 @@ public class NanotechOther
 	{
 		DimensionManager.registerProviderType(NanotechConfiguration.dimensionID, NanotechWorldProvider.class, false);
 		DimensionManager.registerDimension(NanotechConfiguration.dimensionID, NanotechConfiguration.dimensionID);
+		
+		GameRegistry.registerWorldGenerator(new WorldGeneration(), 0);
 
 		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechBlock.sodium), 1, 5, 6));
 		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechItem.nanoDisc), 1, 1, 2));

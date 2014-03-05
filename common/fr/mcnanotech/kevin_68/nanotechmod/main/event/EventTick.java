@@ -33,7 +33,6 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPortableChes
 
 public class EventTick
 {
-	// TODO fix tick
 	@SubscribeEvent
 	public void playerTick(PlayerTickEvent event)
 	{

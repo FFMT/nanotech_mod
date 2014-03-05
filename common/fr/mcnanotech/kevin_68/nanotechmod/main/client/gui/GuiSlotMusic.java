@@ -9,15 +9,20 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.client.gui;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import net.minecraft.client.audio.SoundCategory;
+import net.minecraft.client.audio.SoundManager;
 import net.minecraft.client.gui.GuiSlot;
 import net.minecraft.client.renderer.Tessellator;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Multimap;
 
+import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilListerJukebox;
@@ -115,11 +120,7 @@ class GuiSlotMusicPlaylist extends GuiSlot
 	public final List listListMods;
 	public final Map mapMapMods;
 
-	// TODO fix, maybe field_148764_a in SoundRegistry
-	// private Map map =
-	// ObfuscationReflectionHelper.getPrivateValue(SoundPool.class,
-	// Minecraft.getMinecraft().sndManager.soundPoolStreaming, "field_77461_d",
-	// "nameToSoundPoolEntriesMapping", "b");
+	// TODO rewrite for new sound system
 	private Map map = Maps.newHashMap();
 	private ArrayList arraylist = Lists.newArrayList(map.keySet());
 
