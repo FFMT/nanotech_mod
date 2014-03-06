@@ -103,7 +103,8 @@ public class NanotechMod
 
 		if(event.getSide().isClient())
 		{
-			UtilListerJukebox.scanFolder(Minecraft.getMinecraft());
+			UtilListerJukebox.debug();
+			UtilListerJukebox.init();
 		}
 
 		NanotechConfiguration.configure(event);
