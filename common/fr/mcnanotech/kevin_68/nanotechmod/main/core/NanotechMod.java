@@ -110,14 +110,14 @@ public class NanotechMod
 		NanotechOther.initPotion();
 		NanotechBlock.initBlock();
 		NanotechItem.initItem();
-		NanotechFluid.initFluid();
+		NanotechFluid.initFluid(event.getSide());
 		NanotechFluid.initFluidContainer();
 		NanotechOther.initBiomes();
 		NanotechDamageSource.loadDamageSource();
 		NanotechEntity.initEntities();
 		NanotechOther.initGuiHandler();
 		NanotechOther.initTileEntity();
-		NanotechOther.initEvent();
+		NanotechOther.initEvent(event.getSide());
 	}
 
 	@EventHandler

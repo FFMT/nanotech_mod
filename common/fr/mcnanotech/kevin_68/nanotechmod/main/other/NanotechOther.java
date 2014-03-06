@@ -19,6 +19,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.BucketEvent;
@@ -92,14 +93,17 @@ public class NanotechOther
 		GameRegistry.registerTileEntity(TileEntityPortableChest.class, "TileEntityPortableChest");
 	}
 
-	public static void initEvent()
+	public static void initEvent(Side side)
 	{
 		FMLCommonHandler.instance().bus().register(new PlayerEvent());
 		FMLCommonHandler.instance().bus().register(new EventTick());
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
 		MinecraftForge.EVENT_BUS.register(new LivingEvent());
 		MinecraftForge.EVENT_BUS.register(new BucketEvent());
-		MinecraftForge.EVENT_BUS.register(new RenderEvent());
+		if(side.isClient())
+		{
+			MinecraftForge.EVENT_BUS.register(new RenderEvent());
+		}
 	}
 
 	public static void initForgeDictionary()
@@ -114,7 +118,7 @@ public class NanotechOther
 	{
 		DimensionManager.registerProviderType(NanotechConfiguration.dimensionID, NanotechWorldProvider.class, false);
 		DimensionManager.registerDimension(NanotechConfiguration.dimensionID, NanotechConfiguration.dimensionID);
-		
+
 		GameRegistry.registerWorldGenerator(new WorldGeneration(), 0);
 
 		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechBlock.sodium), 1, 5, 6));

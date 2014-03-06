@@ -17,6 +17,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.BlockLiquidNitrogen;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.ItemNitrogenBucket;
@@ -27,14 +28,18 @@ public class NanotechFluid
 	public static Item bucketNitrogen;
 	public static Fluid liquidNitrogen;
 
-	public static void initFluid()
+	public static void initFluid(Side side)
 	{
 		liquidNitrogen = new Fluid("liquidnitrogen").setDensity(4000).setViscosity(500).setTemperature(77).setLuminosity(0).setUnlocalizedName("liquidNitrogen");
 		FluidRegistry.registerFluid(liquidNitrogen);
 
 		blockNitrogen = new BlockLiquidNitrogen(liquidNitrogen, Material.water).setBlockName("liquidNitrogen").setBlockTextureName(NanotechMod.MODID + ":nitrogen");
 		bucketNitrogen = new ItemNitrogenBucket(blockNitrogen).setUnlocalizedName("nitrogenBucket").setTextureName(NanotechMod.MODID + ":nitrogenBucket").setCreativeTab(NanotechMod.CreaI).setContainerItem(Items.bucket);
-		liquidNitrogen.setBlock(blockNitrogen).setIcons(blockNitrogen.getBlockTextureFromSide(1), blockNitrogen.getBlockTextureFromSide(2));
+		liquidNitrogen.setBlock(blockNitrogen);
+		if(side.isClient())
+		{
+			liquidNitrogen.setIcons(blockNitrogen.getBlockTextureFromSide(1), blockNitrogen.getBlockTextureFromSide(2));
+		}
 
 		GameRegistry.registerBlock(blockNitrogen, ItemBlock.class, "blockLiquidNitrogen", NanotechMod.MODID);
 		GameRegistry.registerItem(bucketNitrogen, "nitrogenBucket", NanotechMod.MODID);
