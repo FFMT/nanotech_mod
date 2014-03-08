@@ -58,7 +58,7 @@ public class GuiLightSaber extends FFMTGuiContainerSliderBase
 	@Override
 	public void handlerSliderAction(int sliderId, float sliderValue)
 	{
-		NTMPacketHelper.sendSaberPacket(sliderId, (int)(sliderValue * 255));
+		NTMPacketHelper.sendPacket(sliderId, (int)(sliderValue * 255));
 	}
 
 	@Override

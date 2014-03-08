@@ -32,6 +32,8 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.GuiHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketJumper;
+import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketListerJukebox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketListerJukeboxString;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketSaber;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketSmoker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityButton;
@@ -62,6 +64,8 @@ public class NanotechOther
 		packetHandler.registerPacket(PacketJumper.class);
 		packetHandler.registerPacket(PacketSmoker.class);
 		packetHandler.registerPacket(PacketSaber.class);
+		packetHandler.registerPacket(PacketListerJukebox.class);
+		packetHandler.registerPacket(PacketListerJukeboxString.class);
 		NanotechMod.nanoLogger.info("Packets initialized");
 	}
 

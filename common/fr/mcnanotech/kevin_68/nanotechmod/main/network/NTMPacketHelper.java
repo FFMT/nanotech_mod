@@ -9,6 +9,7 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.network;
 
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityJumper;
+import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
 
 public class NTMPacketHelper
@@ -36,8 +37,8 @@ public class NTMPacketHelper
 			NanotechMod.nanoLogger.error("Failed to send a packet from a smoker");
 		}
 	}
-	
-	public static void sendSaberPacket(int id, int value)
+
+	public static void sendPacket(int id, int value)
 	{
 		try
 		{
@@ -46,6 +47,30 @@ public class NTMPacketHelper
 		catch(Exception exception)
 		{
 			NanotechMod.nanoLogger.error("Failed to send a packet from a saber");
+		}
+	}
+
+	public static void sendPacket(TileEntityListerJukebox tile, int index, int indexList)
+	{
+		try
+		{
+			NanotechMod.packetHandler.sendToServer(new PacketListerJukebox(tile.xCoord, tile.yCoord, tile.zCoord, index, indexList));
+		}
+		catch(Exception exception)
+		{
+			NanotechMod.nanoLogger.error("Failed to send a packet from a listerjukebox");
+		}
+	}
+	
+	public static void sendPacket(TileEntityListerJukebox tile, String txt)
+	{
+		try
+		{
+			NanotechMod.packetHandler.sendToServer(new PacketListerJukeboxString(tile.xCoord, tile.yCoord, tile.zCoord, txt));
+		}
+		catch(Exception exception)
+		{
+			NanotechMod.nanoLogger.error("Failed to send a packet from a listerjukebox");
 		}
 	}
 }
