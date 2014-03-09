@@ -89,12 +89,16 @@ public class GuiListerJukeboxCategoryList extends GuiScreen
 			// TODO select sound gui of category
 			break;
 		}
+		default:
+		{
+			this.guiList.actionPerformed(guiButton);
+		}
 		}
 	}
 
 	public void drawScreen(int par1, int par2, float par3)
 	{
-		this.drawBackground(12);
+		this.guiList.drawScreen(par1, par2, par3);
 		this.drawCenteredString(this.fontRendererObj, I18n.format("container.listerJukebox.choseList"), this.width / 2, 16, 16777215);
 		super.drawScreen(par1, par2, par3);
 	}
