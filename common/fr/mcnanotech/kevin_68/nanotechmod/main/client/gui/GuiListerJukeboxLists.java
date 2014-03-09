@@ -47,7 +47,7 @@ public class GuiListerJukeboxLists extends GuiSlot
 		this.listList = Lists.newArrayList();
 		this.mapMap = Maps.newHashMap();
 
-		for(int i = 0; i != arrList.size() - 1; i++)
+		for(int i = 0; i != arrList.size(); i++)
 		{
 			this.mapMap.put(i, arrList.get(i));
 			this.listList.add(i);
@@ -115,8 +115,9 @@ public class GuiListerJukeboxLists extends GuiSlot
 		}
 		else if(listerGuiCategoryList != null)
 		{
+			int color = UtilListerJukebox.getCategoryColor().get(slotId);
 			this.listerGuiCategoryList.getFont().setBidiFlag(true);
-			this.listerGuiCategoryList.drawCenteredString(this.listerGuiCategoryList.getFont(), (this.mapMap.get(this.listList.get(slotId))).toString().replace(".ogg", "").replace(UtilListerJukebox.getMainDir().getName() + File.separator, ""), this.listerGuiCategoryList.width / 2, par3 + 1, 16777215);
+			this.listerGuiCategoryList.drawCenteredString(this.listerGuiCategoryList.getFont(), (this.mapMap.get(this.listList.get(slotId))).toString().replace(".ogg", "").replace(UtilListerJukebox.getMainDir().getName() + File.separator, ""), this.listerGuiCategoryList.width / 2, par3 + 1, color);
 		}
 	}
 

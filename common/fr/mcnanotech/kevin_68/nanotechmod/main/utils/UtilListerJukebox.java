@@ -58,7 +58,7 @@ public class UtilListerJukebox
 					try
 					{
 						writer.write("#This file contain all the sounds of " + Minecraft.getMinecraft().getSession().getUsername() + "\n");
-						writer.write("#musiquename|category|color");
+						writer.write("#musiquename~category~color\n");
 						NanotechMod.nanoLogger.info("Informations added");
 					}
 					catch(IOException e)
@@ -96,7 +96,7 @@ public class UtilListerJukebox
 					try
 					{
 						writer.write("#This file contain all category\n");
-						writer.write("#category|color|owner");
+						writer.write("#category~color~owner\n");
 						NanotechMod.nanoLogger.info("Informations added");
 					}
 					catch(IOException e)
@@ -145,7 +145,7 @@ public class UtilListerJukebox
 		try
 		{
 			BufferedWriter writer = new BufferedWriter(new FileWriter(txtDir, true));
-			writer.write(name + "|" + categ + "|" + color + "\n");
+			writer.write(name + "~" + categ + "~" + color + "\n");
 			writer.close();
 		}
 		catch(IOException e)
@@ -158,8 +158,10 @@ public class UtilListerJukebox
 	{
 		ArrayList<String> arrList = new ArrayList();
 		List<ModContainer> modList = Loader.instance().getModList();
-
-		for(int i = 0; i < modList.size() - 1; i++)
+	
+		arrList.add(0,"minecraft");
+		
+		for(int i = 1; i < modList.size() - 1; i++)
 		{
 			arrList.add(i, modList.get(i).getModId());
 		}
@@ -172,10 +174,10 @@ public class UtilListerJukebox
 		return getModidList().get(i);
 	}
 
-	public static ArrayList<String> getCategoryName()
+	private static ArrayList<String> getCategory()
 	{
 		ArrayList<String> arrList = new ArrayList();
-		arrList.add("default|16777215|kevin_68");
+		arrList.add(0,  "default~16777215~kevin_68");
 		try
 		{
 			BufferedReader reader = new BufferedReader(new FileReader(categDir));
@@ -184,15 +186,57 @@ public class UtilListerJukebox
 			{
 				if(!line.contains("#"))
 				{
-					arrList.add(line);
-					System.out.println(line);
+					arrList.add(arrList.size(), line);
 				}
 			}
+			arrList.add(arrList.size(), reader.readLine());
+			reader.close();
 		}
 		catch(IOException e)
 		{
 			e.printStackTrace();
 		}
 		return arrList;
+	}
+	
+	public static ArrayList<String> getCategoryName()
+	{
+		ArrayList<String> arrList = new ArrayList();
+		ArrayList<String> arrListC = getCategory();
+		for(int i = 0; i != arrListC.size() - 1; i++)
+		{
+			String[] str = arrListC.get(i).split("~");
+			arrList.add(i, str[0]);
+		}
+		return arrList;
+	}
+	
+	public static ArrayList<Integer> getCategoryColor()
+	{
+		ArrayList<Integer> arrList = new ArrayList();
+		ArrayList<String> arrListC = getCategory();
+		for(int i = 0; i != arrListC.size() - 1; i++)
+		{
+			String[] str = arrListC.get(i).split("~");
+			arrList.add(i, Integer.valueOf(str[1]));
+		}
+		return arrList;
+	}
+	
+	public static ArrayList<String> getCategoryOwner()
+	{
+		ArrayList<String> arrList = new ArrayList();
+		ArrayList<String> arrListC = getCategory();
+		for(int i = 0; i != arrListC.size() - 1; i++)
+		{
+			String[] str = arrListC.get(i).split("~");
+			arrList.add(i, str[2]);
+		}
+		return arrList;
+	}
+	
+	public static boolean categoryExist(String name)
+	{
+		return getCategoryName().contains(name);
 	}
 }

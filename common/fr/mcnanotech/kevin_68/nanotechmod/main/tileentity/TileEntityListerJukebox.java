@@ -17,7 +17,7 @@ import net.minecraft.tileentity.TileEntity;
 @SuppressWarnings("rawtypes")
 public class TileEntityListerJukebox extends TileEntity
 {
-	private int modidSelected;
+	private int modidSelected, categorySelected, redText, greenText, blueText;
 	private String txt;
 
 	public boolean isUseableByPlayer(EntityPlayer player)
@@ -30,7 +30,11 @@ public class TileEntityListerJukebox extends TileEntity
 	{
 		super.writeToNBT(nbtTagCompound);
 		nbtTagCompound.setInteger("ModidSelected", modidSelected);
-		if(txt != null && txt.isEmpty())
+		nbtTagCompound.setInteger("CategorySelected", categorySelected);
+		nbtTagCompound.setInteger("RedText", redText);
+		nbtTagCompound.setInteger("GreenText", greenText);
+		nbtTagCompound.setInteger("BlueText", blueText);
+		if(txt != null && !txt.isEmpty())
 		{
 			nbtTagCompound.setString("NameTyped", txt);
 		}
@@ -41,6 +45,10 @@ public class TileEntityListerJukebox extends TileEntity
 	{
 		super.readFromNBT(nbtTagCompound);
 		modidSelected = nbtTagCompound.getInteger("ModidSelected");
+		categorySelected = nbtTagCompound.getInteger("CategorySelected");
+		redText = nbtTagCompound.getInteger("RedText");
+		greenText = nbtTagCompound.getInteger("GreenText");
+		blueText = nbtTagCompound.getInteger("BlueText");
 		txt = nbtTagCompound.getString("NameTyped");
 	}
 
@@ -60,9 +68,33 @@ public class TileEntityListerJukebox extends TileEntity
 
 	public void set(int index, int value)
 	{
-		if(index == 0)
+		switch(index)
+		{
+		case 0:
 		{
 			modidSelected = value;
+			break;
+		}
+		case 1:
+		{
+			categorySelected = value;
+			break;
+		}
+		case 2:
+		{
+			redText = value;
+			break;
+		}
+		case 3:
+		{
+			greenText = value;
+			break;
+		}
+		case 4:
+		{
+			blueText = value;
+			break;
+		}
 		}
 		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
@@ -75,13 +107,33 @@ public class TileEntityListerJukebox extends TileEntity
 
 	public int get(int index)
 	{
-		if(index == 0)
+		switch(index)
+		{
+		case 0:
 		{
 			return modidSelected;
+
 		}
-		else
+		case 1:
+		{
+			return categorySelected;
+		}
+		case 2:
+		{
+			return redText;
+		}
+		case 3:
+		{
+			return greenText;
+		}
+		case 4:
+		{
+			return blueText;
+		}
+		default:
 		{
 			return -1;
+		}
 		}
 	}
 

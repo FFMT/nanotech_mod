@@ -129,13 +129,7 @@ container.jumper=Bloc trampoline
 container.jumper.height=Hauteur
 container.smoker=Bloc fumeur
 container.smoker.power=Puissance : %d
-container.listerJukebox.chose=Choisissez votre musique
-container.listerJukebox.stop=Arrêter
-container.listerJukebox.playAll=Tout jouer
-container.listerJukebox.playlist=Playlist
-container.listerJukebox.playlists=Playlists
-container.listerJukebox.back=Retour
-container.listerJukebox.modplaylist=Mods playlist
+
 container.lightsaber.red=Rouge
 container.lightsaber.green=Vert
 container.lightsaber.blue=Bleu

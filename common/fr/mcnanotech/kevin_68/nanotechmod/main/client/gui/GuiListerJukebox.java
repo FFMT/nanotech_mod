@@ -45,8 +45,6 @@ public class GuiListerJukebox extends GuiScreen
 		this.buttonList.add(new GuiButton(3, x - 90, y - 20, 180, 20, "Add sound"));
 		this.buttonList.add(new GuiButton(4, x - 90, y + 5, 180, 20, "Add list"));
 		this.buttonList.add(new GuiButton(5, x - 90, y + 30, 180, 20, "Stop current playing sound"));
-		NTMPacketHelper.sendPacket(tile, 0, -1);
-		NTMPacketHelper.sendPacket(tile, "");
 	}
 
 	protected void actionPerformed(GuiButton guiButton)

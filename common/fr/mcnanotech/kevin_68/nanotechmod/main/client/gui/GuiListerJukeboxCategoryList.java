@@ -16,6 +16,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotechmod.main.network.NTMPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilListerJukebox;
 
@@ -77,6 +78,11 @@ public class GuiListerJukeboxCategoryList extends GuiScreen
 		}
 		case 2:
 		{
+			if(guiList.getSelectedSlot() != -1)
+			{
+				NTMPacketHelper.sendPacket(tile, 1, guiList.getSelectedSlot());
+			}
+			this.mc.displayGuiScreen(new GuiListerJukeboxAddSound(inventory, tile, worldd));
 			break;
 		}
 		case 3:
