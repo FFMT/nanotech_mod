@@ -25,17 +25,17 @@ public class GuiListerJukeboxCategoryList extends GuiScreen
 {
 	public TileEntityListerJukebox tile;
 	public World worldd;
-	public InventoryPlayer inventoryy;
+	public InventoryPlayer inventory;
 	public boolean edit;
 	public boolean play;
 	public GuiListerJukeboxLists guiList;
 
 	public GuiListerJukeboxCategoryList(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world, boolean editMode, boolean playMode)
 	{
-		inventoryy = inventory;
-		tile = tileentity;
-		worldd = world;
-		edit = editMode;
+		this.inventory = inventory;
+		this.tile = tileentity;
+		this.worldd = world;
+		this.edit = editMode;
 	}
 
 	public void initGui()
@@ -72,7 +72,7 @@ public class GuiListerJukeboxCategoryList extends GuiScreen
 		}
 		case 1:
 		{
-			this.mc.displayGuiScreen(new GuiListerJukeboxAddSound(inventoryy, tile, worldd));
+			this.mc.displayGuiScreen(new GuiListerJukeboxAddSound(inventory, tile, worldd));
 			break;
 		}
 		case 2:

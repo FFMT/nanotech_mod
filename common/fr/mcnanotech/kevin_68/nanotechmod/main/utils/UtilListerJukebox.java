@@ -24,9 +24,9 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 public class UtilListerJukebox
 {
 	private static final File mcDir = Minecraft.getMinecraft().mcDataDir;
-	private static final File mainDir = new File(mcDir + "/nanotechmod/jukebox/");
-	private static final File txtDir = new File(mainDir + "/sounds_" + Minecraft.getMinecraft().getSession().getUsername() + ".txt");
-	private static final File categDir = new File(mainDir + "/category.txt");
+	private static final File mainDir = new File(new File(mcDir, "nanotechmod"), "jukebox");
+	private static final File txtDir = new File(mainDir, "sounds_" + Minecraft.getMinecraft().getSession().getUsername() + ".txt");
+	private static final File categDir = new File(mainDir, "category.txt");
 
 	public static void debug()
 	{
@@ -179,12 +179,13 @@ public class UtilListerJukebox
 		try
 		{
 			BufferedReader reader = new BufferedReader(new FileReader(categDir));
-			while(reader.readLine() != null)
+			String line;
+			while((line = reader.readLine()) != null)
 			{
-				if(!reader.readLine().contains("#"))
+				if(!line.contains("#"))
 				{
-					arrList.add(reader.readLine());
-					System.out.println(reader.readLine());
+					arrList.add(line);
+					System.out.println(line);
 				}
 			}
 		}

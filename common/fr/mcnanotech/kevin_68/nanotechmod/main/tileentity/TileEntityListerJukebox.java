@@ -30,7 +30,10 @@ public class TileEntityListerJukebox extends TileEntity
 	{
 		super.writeToNBT(nbtTagCompound);
 		nbtTagCompound.setInteger("ModidSelected", modidSelected);
-		nbtTagCompound.setString("NameTyped", txt);
+		if(txt != null && txt.isEmpty())
+		{
+			nbtTagCompound.setString("NameTyped", txt);
+		}
 	}
 
 	@Override
