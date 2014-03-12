@@ -128,17 +128,7 @@ public class UtilListerJukebox
 		return mainDir;
 	}
 
-	public static void write(String name)
-	{
-		write(name, "default");
-	}
-
-	public static void write(String name, String category)
-	{
-		write(name, category, 16777215);
-	}
-
-	public static void write(String name, String category, int color)
+	public static void setSound(String name, String category, int color)
 	{
 		String categ = category.length() > 1 ? category : "default";
 
@@ -154,13 +144,27 @@ public class UtilListerJukebox
 		}
 	}
 
+	public static void setCategory(String name, int color)
+	{
+		try
+		{
+			BufferedWriter writer = new BufferedWriter(new FileWriter(categDir, true));
+			writer.write(name + "~" + color + "~" + Minecraft.getMinecraft().getSession().getUsername() + "\n");
+			writer.close();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
 	public static ArrayList<String> getModidList()
 	{
 		ArrayList<String> arrList = new ArrayList();
 		List<ModContainer> modList = Loader.instance().getModList();
-	
-		arrList.add(0,"minecraft");
-		
+
+		arrList.add(0, "minecraft");
+
 		for(int i = 1; i < modList.size() - 1; i++)
 		{
 			arrList.add(i, modList.get(i).getModId());
@@ -171,13 +175,20 @@ public class UtilListerJukebox
 
 	public static String getModid(int i)
 	{
-		return getModidList().get(i);
+		if(i > -1)
+		{
+			return getModidList().get(i);
+		}
+		else
+		{
+			return "minecraft";
+		}
 	}
 
 	private static ArrayList<String> getCategory()
 	{
 		ArrayList<String> arrList = new ArrayList();
-		arrList.add(0,  "default~16777215~kevin_68");
+		arrList.add(0, "default~16777215~kevin_68");
 		try
 		{
 			BufferedReader reader = new BufferedReader(new FileReader(categDir));
@@ -198,45 +209,115 @@ public class UtilListerJukebox
 		}
 		return arrList;
 	}
-	
+
 	public static ArrayList<String> getCategoryName()
 	{
 		ArrayList<String> arrList = new ArrayList();
-		ArrayList<String> arrListC = getCategory();
-		for(int i = 0; i != arrListC.size() - 1; i++)
+		ArrayList<String> rawList = getCategory();
+		for(int i = 0; i != rawList.size() - 1; i++)
 		{
-			String[] str = arrListC.get(i).split("~");
+			String[] str = rawList.get(i).split("~");
 			arrList.add(i, str[0]);
 		}
 		return arrList;
 	}
-	
+
 	public static ArrayList<Integer> getCategoryColor()
 	{
 		ArrayList<Integer> arrList = new ArrayList();
-		ArrayList<String> arrListC = getCategory();
-		for(int i = 0; i != arrListC.size() - 1; i++)
+		ArrayList<String> rawList = getCategory();
+		for(int i = 0; i != rawList.size() - 1; i++)
 		{
-			String[] str = arrListC.get(i).split("~");
+			String[] str = rawList.get(i).split("~");
 			arrList.add(i, Integer.valueOf(str[1]));
 		}
 		return arrList;
 	}
-	
+
 	public static ArrayList<String> getCategoryOwner()
 	{
 		ArrayList<String> arrList = new ArrayList();
-		ArrayList<String> arrListC = getCategory();
-		for(int i = 0; i != arrListC.size() - 1; i++)
+		ArrayList<String> rawList = getCategory();
+		for(int i = 0; i != rawList.size() - 1; i++)
 		{
-			String[] str = arrListC.get(i).split("~");
+			String[] str = rawList.get(i).split("~");
 			arrList.add(i, str[2]);
 		}
 		return arrList;
 	}
-	
-	public static boolean categoryExist(String name)
+
+	private static ArrayList<String> getSounds()
 	{
-		return getCategoryName().contains(name);
+		ArrayList<String> arrList = new ArrayList();
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader(txtDir));
+			String line;
+			while((line = reader.readLine()) != null)
+			{
+				if(!line.contains("#"))
+				{
+					arrList.add(arrList.size(), line);
+				}
+			}
+			arrList.add(arrList.size(), reader.readLine());
+			reader.close();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		return arrList;
+	}
+
+	public static ArrayList<String> getAllSoundsName()
+	{
+		ArrayList<String> arrList = new ArrayList();
+		ArrayList<String> rawList = getSounds();
+		for(int i = 0; i != rawList.size() - 1; i++)
+		{
+			String[] str = rawList.get(i).split("~");
+			arrList.add(arrList.size(), str[0]);
+		}
+		return arrList;
+	}
+
+	public static ArrayList<String> getSoundByCategory(String category)
+	{
+		ArrayList<String> arrList = new ArrayList();
+		ArrayList<String> rawList = getSounds();
+		for(int i = 0; i != rawList.size() - 1; i++)
+		{
+			String categ = rawList.get(i).split("~")[1];
+			if(categ == category)
+			{
+				arrList.add(arrList.size(), rawList.get(i).split("~")[0]);
+			}
+		}
+		return arrList;
+	}
+
+	public static ArrayList<String> getSoundCategory()
+	{
+		ArrayList<String> arrList = new ArrayList();
+		ArrayList<String> rawList = getSounds();
+		for(int i = 0; i != rawList.size() - 1; i++)
+		{
+			String[] str = rawList.get(i).split("~");
+			arrList.add(arrList.size(), str[1]);
+		}
+		return arrList;
+	}
+
+	public static ArrayList<Integer> getSoundColor()
+	{
+		ArrayList<Integer> arrList = new ArrayList();
+		ArrayList<String> rawList = getSounds();
+		for(int i = 0; i != rawList.size() - 1; i++)
+		{
+			String[] str = rawList.get(i).split("~");
+			arrList.add(arrList.size(), Integer.valueOf(str[2]));
+		}
+		return arrList;
 	}
 }

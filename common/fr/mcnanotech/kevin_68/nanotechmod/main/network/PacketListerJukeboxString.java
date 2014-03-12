@@ -16,18 +16,19 @@ import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
 
 public class PacketListerJukeboxString extends AbstractPacket
 {
-	private int x, y, z;
+	private int x, y, z, index;
 	private String txt;
 
 	public PacketListerJukeboxString()
 	{}
 
-	public PacketListerJukeboxString(int x, int y, int z, String txt)
+	public PacketListerJukeboxString(int x, int y, int z, int index, String txt)
 	{
 		this.x = x;
 		this.y = y;
 		this.z = z;
 		this.txt = txt;
+		this.index = index;
 	}
 
 	@Override
@@ -36,6 +37,7 @@ public class PacketListerJukeboxString extends AbstractPacket
 		buffer.writeInt(x);
 		buffer.writeInt(y);
 		buffer.writeInt(z);
+		buffer.writeInt(index);
 		char[] chrs = txt.toCharArray();
 		buffer.writeShort(chrs.length - 1);
 		for(char i : chrs)
@@ -50,7 +52,7 @@ public class PacketListerJukeboxString extends AbstractPacket
 		x = buffer.readInt();
 		y = buffer.readInt();
 		z = buffer.readInt();
-
+		index = buffer.readInt();
 		short lenght = buffer.readShort();
 		String str = "";
 		for(short i = 0; i <= lenght; i++)
@@ -74,7 +76,7 @@ public class PacketListerJukeboxString extends AbstractPacket
 		if(tile instanceof TileEntityListerJukebox)
 		{
 			TileEntityListerJukebox te = (TileEntityListerJukebox)tile;
-			te.set(txt);
+			te.set(index, txt);
 		}
 	}
 }

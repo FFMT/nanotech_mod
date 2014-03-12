@@ -29,14 +29,14 @@ import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForScreen;
 
 @SideOnly(Side.CLIENT)
 @SuppressWarnings("unchecked")
-public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
+public class GuiListerJukeboxAddCategory extends FFMTGuiScreenSliderBase
 {
 	public TileEntityListerJukebox tile;
 	public World worldd;
 	public InventoryPlayer inventoryy;
 	public GuiTextField txtField;
 
-	public GuiListerJukeboxAddSound(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world)
+	public GuiListerJukeboxAddCategory(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world)
 	{
 		inventoryy = inventory;
 		tile = tileentity;
@@ -50,21 +50,19 @@ public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 		int y = this.height / 2;
 		this.buttonList.add(new GuiButton(0, x + 120, y + 80, 80, 20, "Exit"));
 		this.buttonList.add(new GuiButton(1, x - 200, y + 80, 80, 20, "Back"));
-		this.buttonList.add(new GuiButton(2, x - 200, y - 25, 80, 20, "Mod id list"));
-		this.buttonList.add(new GuiButton(3, x + 120, y - 25, 80, 20, "Category"));
-		this.buttonList.add(new FFMTGuiSliderForScreen(this, 4, x - 100, y - 25, 200, 20, EnumChatFormatting.RED + I18n.format("container.lightsaber.red") + ": " + tile.get(2), tile.get(2) / 255));
-		this.buttonList.add(new FFMTGuiSliderForScreen(this, 5, x - 100, y, 200, 20, EnumChatFormatting.GREEN + I18n.format("container.lightsaber.green") + ": " + tile.get(3), tile.get(3) / 255));
-		this.buttonList.add(new FFMTGuiSliderForScreen(this, 6, x - 100, y + 25, 200, 20, EnumChatFormatting.BLUE + I18n.format("container.lightsaber.blue") + ": " + tile.get(4), tile.get(4) / 255));
-		this.buttonList.add(new GuiButton(7, x - 40, y + 55, 80, 20, "Add sound"));
+		this.buttonList.add(new FFMTGuiSliderForScreen(this, 4, x - 100, y - 25, 200, 20, EnumChatFormatting.RED + I18n.format("container.lightsaber.red") + ": " + tile.get(5), tile.get(5) / 255));
+		this.buttonList.add(new FFMTGuiSliderForScreen(this, 5, x - 100, y, 200, 20, EnumChatFormatting.GREEN + I18n.format("container.lightsaber.green") + ": " + tile.get(6), tile.get(6) / 255));
+		this.buttonList.add(new FFMTGuiSliderForScreen(this, 6, x - 100, y + 25, 200, 20, EnumChatFormatting.BLUE + I18n.format("container.lightsaber.blue") + ": " + tile.get(7), tile.get(7) / 255));
+		this.buttonList.add(new GuiButton(7, x - 40, y + 55, 80, 20, "Add category"));
 		this.buttonList.add(new GuiButton(8, x - 40, y + 80, 80, 20, "Clear"));
 		Keyboard.enableRepeatEvents(true);
 		this.txtField = new GuiTextField(this.fontRendererObj, x - 90, y - 50, 180, 12);
-		this.txtField.setTextColor((tile.get(2) * 65536) + (tile.get(3) * 256) + tile.get(4));
+		this.txtField.setTextColor((tile.get(5) * 65536) + (tile.get(6) * 256) + tile.get(7));
 		this.txtField.setDisabledTextColour(-1);
 		this.txtField.setEnableBackgroundDrawing(false);
 		this.txtField.setMaxStringLength(40);
 		this.txtField.setEnabled(true);
-		this.txtField.setText(tile.getName(0));
+		this.txtField.setText(tile.getName(1));
 	}
 
 	protected void actionPerformed(GuiButton guiButton)
@@ -81,44 +79,26 @@ public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 			this.mc.displayGuiScreen(new GuiListerJukebox(inventoryy, tile, worldd));
 			break;
 		}
-		case 2:
-		{
-			this.mc.displayGuiScreen(new GuiListerJukeboxModidList(inventoryy, tile, worldd));
-			break;
-		}
-		case 3:
-		{
-			this.mc.displayGuiScreen(new GuiListerJukeboxCategoryList(inventoryy, tile, worldd, false, false));
-			break;
-		}
 		case 7:
 		{
-			String modid = UtilListerJukebox.getModid(tile.get(0));
-			String name = tile.getName(0);
-			String category = UtilListerJukebox.getCategoryName().get(tile.get(1) == -1 ? 0 : tile.get(1));
-			int color = (tile.get(2) * 65536) + (tile.get(3) * 256) + tile.get(4);
-			if(name != null && !name.isEmpty() && name.length() > 1)
+			String name = this.txtField.getText();
+			int color = (tile.get(5) * 65536) + (tile.get(6) * 256) + tile.get(7);
+			if(name.length() > 1)
 			{
-				if(modid != null && !modid.isEmpty() && modid.length() > 1)
-				{
-					UtilListerJukebox.setSound(modid + ":" + name, category, color);
-					break;
-				}
-				else
-				{
-					UtilListerJukebox.setSound("minecraft:" + name, category, color);
-					break;
-				}
+				UtilListerJukebox.setCategory(name, color);
+				break;
+			}
+			else
+			{
+				break;
 			}
 		}
 		case 8:
 		{
-			NTMPacketHelper.sendPacket(tile, 0, -1);
-			NTMPacketHelper.sendPacket(tile, 1, -1);
-			NTMPacketHelper.sendPacket(tile, 2, 255);
-			NTMPacketHelper.sendPacket(tile, 3, 255);
-			NTMPacketHelper.sendPacket(tile, 4, 255);
-			NTMPacketHelper.sendPacket(tile, 0, "");
+			NTMPacketHelper.sendPacket(tile, 5, 255);
+			NTMPacketHelper.sendPacket(tile, 6, 255);
+			NTMPacketHelper.sendPacket(tile, 7, 255);
+			NTMPacketHelper.sendPacket(tile, 1, "");
 			this.txtField.setTextColor((255 * 65536) + (255 * 256) + 255);
 			break;
 		}
@@ -135,7 +115,7 @@ public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 	{
 		if(this.txtField.textboxKeyTyped(par1, par2))
 		{
-			NTMPacketHelper.sendPacket(tile, 0, this.txtField.getText());
+			NTMPacketHelper.sendPacket(tile, 1, this.txtField.getText());
 		}
 		else
 		{
@@ -155,15 +135,6 @@ public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 		int y = this.height / 2;
 		this.drawBackground(12);
 		this.drawCenteredString(this.fontRendererObj, I18n.format("container.listerJukebox.addsounds"), x, 16, 16777215);
-		if(tile.get(0) != -1)
-		{
-			this.drawCenteredString(this.fontRendererObj, UtilListerJukebox.getModid(tile.get(0)), x - 160, y - 50, 16777215);
-		}
-		if(tile.get(1) != -1)
-		{
-			int color = UtilListerJukebox.getCategoryColor().get(tile.get(1));
-			this.drawCenteredString(this.fontRendererObj, UtilListerJukebox.getCategoryName().get(tile.get(1)), x + 160, y - 50, color);
-		}
 		super.drawScreen(par1, par2, par3);
 		GL11.glDisable(GL11.GL_LIGHTING);
 		this.txtField.drawTextBox();
@@ -192,8 +163,8 @@ public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 	@Override
 	public void handlerSliderAction(int sliderId, float sliderValue)
 	{
-		NTMPacketHelper.sendPacket(tile, sliderId - 2, (int)(sliderValue * 255));
-		this.txtField.setTextColor((tile.get(2) * 65536) + (tile.get(3) * 256) + tile.get(4));
+		NTMPacketHelper.sendPacket(tile, sliderId + 1, (int)(sliderValue * 255));
+		this.txtField.setTextColor((tile.get(5) * 65536) + (tile.get(6) * 256) + tile.get(7));
 	}
 
 	@Override
@@ -203,15 +174,15 @@ public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 		{
 		case 4:
 		{
-			return EnumChatFormatting.RED + I18n.format("container.lightsaber.red") + ": " + tile.get(2);
+			return EnumChatFormatting.RED + I18n.format("container.lightsaber.red") + ": " + tile.get(5);
 		}
 		case 5:
 		{
-			return EnumChatFormatting.GREEN + I18n.format("container.lightsaber.green") + ": " + tile.get(3);
+			return EnumChatFormatting.GREEN + I18n.format("container.lightsaber.green") + ": " + tile.get(6);
 		}
 		case 6:
 		{
-			return EnumChatFormatting.BLUE + I18n.format("container.lightsaber.blue") + ": " + tile.get(4);
+			return EnumChatFormatting.BLUE + I18n.format("container.lightsaber.blue") + ": " + tile.get(7);
 		}
 		default:
 		{

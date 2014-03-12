@@ -17,8 +17,8 @@ import net.minecraft.tileentity.TileEntity;
 @SuppressWarnings("rawtypes")
 public class TileEntityListerJukebox extends TileEntity
 {
-	private int modidSelected, categorySelected, redText, greenText, blueText;
-	private String txt;
+	private int modidSelected, categorySelected, redText, greenText, blueText, redCateg, greenCateg, blueCateg;
+	private String txt, txtCateg;
 
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
@@ -34,9 +34,16 @@ public class TileEntityListerJukebox extends TileEntity
 		nbtTagCompound.setInteger("RedText", redText);
 		nbtTagCompound.setInteger("GreenText", greenText);
 		nbtTagCompound.setInteger("BlueText", blueText);
+		nbtTagCompound.setInteger("RedCategory", redCateg);
+		nbtTagCompound.setInteger("GreenCategory", greenCateg);
+		nbtTagCompound.setInteger("BlueCategory", blueCateg);
 		if(txt != null && !txt.isEmpty())
 		{
 			nbtTagCompound.setString("NameTyped", txt);
+		}
+		if(txtCateg != null && !txtCateg.isEmpty())
+		{
+			nbtTagCompound.setString("CategoryTyped", txtCateg);
 		}
 	}
 
@@ -49,7 +56,11 @@ public class TileEntityListerJukebox extends TileEntity
 		redText = nbtTagCompound.getInteger("RedText");
 		greenText = nbtTagCompound.getInteger("GreenText");
 		blueText = nbtTagCompound.getInteger("BlueText");
+		redCateg = nbtTagCompound.getInteger("RedCategory");
+		greenCateg = nbtTagCompound.getInteger("GreenCategory");
+		blueCateg = nbtTagCompound.getInteger("BlueCategory");
 		txt = nbtTagCompound.getString("NameTyped");
+		txtCateg = nbtTagCompound.getString("CategoryTyped");
 	}
 
 	@Override
@@ -95,13 +106,40 @@ public class TileEntityListerJukebox extends TileEntity
 			blueText = value;
 			break;
 		}
+		case 5:
+		{
+			redCateg = value;
+			break;
+		}
+		case 6:
+		{
+			greenCateg = value;
+			break;
+		}
+		case 7:
+		{
+			blueCateg = value;
+			break;
+		}
 		}
 		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
-	public void set(String text)
+	public void set(int index, String text)
 	{
-		txt = text;
+		switch(index)
+		{
+		case 0:
+		{
+			txt = text;
+			break;
+		}
+		case 1:
+		{
+			txtCateg = text;
+			break;
+		}
+		}
 		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
@@ -130,6 +168,18 @@ public class TileEntityListerJukebox extends TileEntity
 		{
 			return blueText;
 		}
+		case 5:
+		{
+			return redCateg;
+		}
+		case 6:
+		{
+			return greenCateg;
+		}
+		case 7:
+		{
+			return blueCateg;
+		}
 		default:
 		{
 			return -1;
@@ -137,9 +187,22 @@ public class TileEntityListerJukebox extends TileEntity
 		}
 	}
 
-	public String getName()
+	public String getName(int index)
 	{
-		return txt;
+		switch(index)
+		{
+		case 0:
+		{
+			return txt;
+		}
+		case 1:
+		{
+			return txtCateg;
+		}
+		default:
+		{
+			return "";
+		}
+		}
 	}
-
 }

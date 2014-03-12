@@ -62,11 +62,11 @@ public class NTMPacketHelper
 		}
 	}
 	
-	public static void sendPacket(TileEntityListerJukebox tile, String txt)
+	public static void sendPacket(TileEntityListerJukebox tile, int index, String txt)
 	{
 		try
 		{
-			NanotechMod.packetHandler.sendToServer(new PacketListerJukeboxString(tile.xCoord, tile.yCoord, tile.zCoord, txt));
+			NanotechMod.packetHandler.sendToServer(new PacketListerJukeboxString(tile.xCoord, tile.yCoord, tile.zCoord, index, txt));
 		}
 		catch(Exception exception)
 		{

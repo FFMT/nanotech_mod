@@ -23,12 +23,14 @@ public class GuiListerJukeboxLists extends GuiSlot
 	public static int lastSlotSelected = -1;
 	final GuiListerJukeboxModidList listerGuiModList;
 	final GuiListerJukeboxCategoryList listerGuiCategoryList;
+	final GuiListerJukeboxAllSounds listerGuiAllSounds;
 
 	public GuiListerJukeboxLists(GuiListerJukeboxModidList guiLister, ArrayList<String> arrList)
 	{
 		super(guiLister.getMc(), guiLister.width, guiLister.height, 32, guiLister.height - 65 + 4, 18);
 		this.listerGuiModList = guiLister;
 		this.listerGuiCategoryList = null;
+		this.listerGuiAllSounds = null;
 		this.listList = Lists.newArrayList();
 		this.mapMap = Maps.newHashMap();
 
@@ -44,6 +46,23 @@ public class GuiListerJukeboxLists extends GuiSlot
 		super(guiLister.getMc(), guiLister.width, guiLister.height, 32, guiLister.height - 65 + 4, 18);
 		this.listerGuiModList = null;
 		this.listerGuiCategoryList = guiLister;
+		this.listerGuiAllSounds = null;
+		this.listList = Lists.newArrayList();
+		this.mapMap = Maps.newHashMap();
+
+		for(int i = 0; i != arrList.size(); i++)
+		{
+			this.mapMap.put(i, arrList.get(i));
+			this.listList.add(i);
+		}
+	}
+	
+	public GuiListerJukeboxLists(GuiListerJukeboxAllSounds guiLister, ArrayList<String> arrList)
+	{
+		super(guiLister.getMc(), guiLister.width, guiLister.height, 32, guiLister.height - 65 + 4, 18);
+		this.listerGuiModList = null;
+		this.listerGuiCategoryList = null;
+		this.listerGuiAllSounds = guiLister;
 		this.listList = Lists.newArrayList();
 		this.mapMap = Maps.newHashMap();
 
@@ -76,14 +95,7 @@ public class GuiListerJukeboxLists extends GuiSlot
 	@Override
 	protected void elementClicked(int slot, boolean doubleclick, int var3, int var4)
 	{
-		if(listerGuiModList != null)
-		{
-			lastSlotSelected = slot;
-		}
-		else if(listerGuiCategoryList != null)
-		{
-			lastSlotSelected = slot;
-		}
+		lastSlotSelected = slot;
 	}
 
 	@Override
@@ -103,6 +115,10 @@ public class GuiListerJukeboxLists extends GuiSlot
 		{
 			this.listerGuiCategoryList.drawDefaultBackground();
 		}
+		else if(listerGuiAllSounds != null)
+		{
+			this.listerGuiAllSounds.drawDefaultBackground();
+		}
 	}
 
 	@Override
@@ -118,6 +134,12 @@ public class GuiListerJukeboxLists extends GuiSlot
 			int color = UtilListerJukebox.getCategoryColor().get(slotId);
 			this.listerGuiCategoryList.getFont().setBidiFlag(true);
 			this.listerGuiCategoryList.drawCenteredString(this.listerGuiCategoryList.getFont(), (this.mapMap.get(this.listList.get(slotId))).toString().replace(".ogg", "").replace(UtilListerJukebox.getMainDir().getName() + File.separator, ""), this.listerGuiCategoryList.width / 2, par3 + 1, color);
+		}
+		else if(listerGuiAllSounds != null)
+		{
+			int color = UtilListerJukebox.getSoundColor().get(slotId);
+			this.listerGuiAllSounds.getFont().setBidiFlag(true);
+			this.listerGuiAllSounds.drawCenteredString(this.listerGuiAllSounds.getFont(), (this.mapMap.get(this.listList.get(slotId))).toString().replace(".ogg", "").replace(UtilListerJukebox.getMainDir().getName() + File.separator, ""), this.listerGuiAllSounds.width / 2, par3 + 1, color);
 		}
 	}
 

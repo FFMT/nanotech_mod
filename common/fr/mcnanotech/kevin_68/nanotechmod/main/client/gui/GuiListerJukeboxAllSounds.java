@@ -16,17 +16,20 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotechmod.main.network.NTMPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilListerJukebox;
 
 @SideOnly(Side.CLIENT)
 @SuppressWarnings("unchecked")
-public class GuiListerJukebox extends GuiScreen
+public class GuiListerJukeboxAllSounds extends GuiScreen
 {
 	public TileEntityListerJukebox tile;
 	public World worldd;
 	public InventoryPlayer inventoryy;
+	public GuiListerJukeboxLists guiList;
 
-	public GuiListerJukebox(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world)
+	public GuiListerJukeboxAllSounds(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world)
 	{
 		inventoryy = inventory;
 		tile = tileentity;
@@ -39,45 +42,51 @@ public class GuiListerJukebox extends GuiScreen
 		int x = this.width / 2;
 		int y = this.height / 2;
 		this.buttonList.add(new GuiButton(0, x + 120, y + 80, 80, 20, "Exit"));
-		this.buttonList.add(new GuiButton(1, x - 90, y - 70, 180, 20, "All sounds"));
-		this.buttonList.add(new GuiButton(2, x - 90, y - 45, 180, 20, "Sounds lists"));
-		this.buttonList.add(new GuiButton(3, x - 90, y - 20, 180, 20, "Add sound"));
-		this.buttonList.add(new GuiButton(4, x - 90, y + 5, 180, 20, "Add list"));
-		this.buttonList.add(new GuiButton(5, x - 90, y + 30, 180, 20, "Stop current playing sound"));
-		//TODO clear nbt tags
+		this.buttonList.add(new GuiButton(1, x - 200, y + 80, 80, 20, "Back"));
+		this.buttonList.add(new GuiButton(2, x - 85, y + 80, 80, 20, "Play"));
+		this.buttonList.add(new GuiButton(3, x + 5, y + 80, 80, 20, "Stop"));
+		this.guiList = new GuiListerJukeboxLists(this, UtilListerJukebox.getAllSoundsName());
+		this.guiList.registerScrollButtons(7, 8);
 	}
 
 	protected void actionPerformed(GuiButton guiButton)
 	{
-		switch(guiButton.id)
+		if(guiButton.enabled)
 		{
-		case 0:
-		{
-			this.mc.displayGuiScreen(null);
-			break;
-		}
-		case 1:
-		{
-			this.mc.displayGuiScreen(new GuiListerJukeboxAllSounds(inventoryy, tile, worldd));
-			break;
-		}
-		case 3:
-		{
-			this.mc.displayGuiScreen(new GuiListerJukeboxAddSound(inventoryy, tile, worldd));
-			break;
-		}
-		case 4:
-		{
-			this.mc.displayGuiScreen(new GuiListerJukeboxAddCategory(inventoryy, tile, worldd));
-			break;
-		}
+			switch(guiButton.id)
+			{
+			case 0:
+			{
+				this.mc.displayGuiScreen(null);
+				break;
+			}
+			case 1:
+			{
+				this.mc.displayGuiScreen(new GuiListerJukebox(inventoryy, tile, worldd));
+				break;
+			}
+			case 2:
+			{
+				//TODO play sound
+				break;
+			}
+			case 3:
+			{
+				//TODO stop sound
+				break;
+			}
+			default:
+			{
+				this.guiList.actionPerformed(guiButton);
+			}
+			}
 		}
 	}
 
 	public void drawScreen(int par1, int par2, float par3)
 	{
-		this.drawBackground(12);
-		this.drawCenteredString(this.fontRendererObj, I18n.format("container.listerJukebox.chose"), this.width / 2, 16, 16777215);
+		this.guiList.drawScreen(par1, par2, par3);
+		this.drawCenteredString(this.fontRendererObj, I18n.format("container.listerJukebox.allsound"), this.width / 2, 16, 16777215);
 		super.drawScreen(par1, par2, par3);
 	}
 
