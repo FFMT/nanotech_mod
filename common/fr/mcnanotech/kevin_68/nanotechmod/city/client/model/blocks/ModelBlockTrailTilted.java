@@ -92,6 +92,13 @@ public class ModelBlockTrailTilted extends ModelBase
 	ModelRenderer Shape78;
 	ModelRenderer Shape79;
 	ModelRenderer Shape80;
+	ModelRenderer Shape81;
+	ModelRenderer Shape82;
+	ModelRenderer Shape83;
+	ModelRenderer Shape84;
+	ModelRenderer Shape85;
+	ModelRenderer Shape86;
+	ModelRenderer Shape87;
 
 	public ModelBlockTrailTilted()
 	{
@@ -578,6 +585,48 @@ public class ModelBlockTrailTilted extends ModelBase
 		Shape80.setTextureSize(128, 64);
 		Shape80.mirror = true;
 		setRotation(Shape80, 0F, 0F, 0F);
+		Shape81 = new ModelRenderer(this, 98, 62);
+		Shape81.addBox(-7F, -2F, 7F, 14, 1, 1);
+		Shape81.setRotationPoint(0F, 24F, 0F);
+		Shape81.setTextureSize(128, 64);
+		Shape81.mirror = true;
+		setRotation(Shape81, 0F, 0F, 0F);
+		Shape82 = new ModelRenderer(this, 100, 59);
+		Shape82.addBox(-6F, -3F, 6F, 12, 1, 2);
+		Shape82.setRotationPoint(0F, 24F, 0F);
+		Shape82.setTextureSize(128, 64);
+		Shape82.mirror = true;
+		setRotation(Shape82, 0F, -0.0174533F, 0F);
+		Shape83 = new ModelRenderer(this, 102, 55);
+		Shape83.addBox(-5F, -4F, 5F, 10, 1, 3);
+		Shape83.setRotationPoint(0F, 24F, 0F);
+		Shape83.setTextureSize(128, 64);
+		Shape83.mirror = true;
+		setRotation(Shape83, 0F, 0F, 0F);
+		Shape84 = new ModelRenderer(this, 104, 50);
+		Shape84.addBox(-4F, -5F, 4F, 8, 1, 4);
+		Shape84.setRotationPoint(0F, 24F, 0F);
+		Shape84.setTextureSize(128, 64);
+		Shape84.mirror = true;
+		setRotation(Shape84, 0F, 0F, 0F);
+		Shape85 = new ModelRenderer(this, 106, 44);
+		Shape85.addBox(-3F, -6F, 3F, 6, 1, 5);
+		Shape85.setRotationPoint(0F, 24F, 0F);
+		Shape85.setTextureSize(128, 64);
+		Shape85.mirror = true;
+		setRotation(Shape85, 0F, 0F, 0F);
+		Shape86 = new ModelRenderer(this, 108, 37);
+		Shape86.addBox(-2F, -7F, 2F, 4, 1, 6);
+		Shape86.setRotationPoint(0F, 24F, 0F);
+		Shape86.setTextureSize(128, 64);
+		Shape86.mirror = true;
+		setRotation(Shape86, 0F, 0F, 0F);
+		Shape87 = new ModelRenderer(this, 110, 29);
+		Shape87.addBox(-1F, -8F, 1F, 2, 1, 7);
+		Shape87.setRotationPoint(0F, 24F, 0F);
+		Shape87.setTextureSize(128, 64);
+		Shape87.mirror = true;
+		setRotation(Shape87, 0F, 0F, 0F);
 	}
 
 	public void render(float f, int type)
@@ -697,6 +746,16 @@ public class ModelBlockTrailTilted extends ModelBase
 			Shape78.render(f);
 			Shape79.render(f);
 			Shape80.render(f);
+		}
+		else if(type == 7)
+		{
+		    Shape81.render(f);
+		    Shape82.render(f);
+		    Shape83.render(f);
+		    Shape84.render(f);
+		    Shape85.render(f);
+		    Shape86.render(f);
+		    Shape87.render(f);
 		}
 	}
 
