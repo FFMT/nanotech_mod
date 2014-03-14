@@ -51,7 +51,7 @@ public class TileEntityTrailRenderTESR extends TileEntitySpecialRenderer
 
 		boolean[] flag = CTHelper.get(tileentity.getWorldObj(), tileentity.xCoord, tileentity.yCoord, tileentity.zCoord, NanotechCityBlock.trail);
 
-		if(flag[CTHelper.VrN] || flag[CTHelper.SrN] || flag[CTHelper.tErN] || flag[CTHelper.tWrN] || flag[CTHelper.tEWrN] || flag[CTHelper.tSEWrN] || flag[CTHelper.tNSEWrN])
+		if((flag[CTHelper.VrN] || flag[CTHelper.SrN] || flag[CTHelper.tErN] || flag[CTHelper.tWrN] || flag[CTHelper.tEWrN] || flag[CTHelper.tSEWrN] || flag[CTHelper.tNSEWrN]) && !flag[CTHelper.SEWrN])
 		{
 			GL11.glScalef(1.0F, 0.99F, 0.999F);
 			GL11.glTranslatef(0.0F, -0.015F, 0.004F);
@@ -59,7 +59,7 @@ public class TileEntityTrailRenderTESR extends TileEntitySpecialRenderer
 			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
 			this.model2.render(0.0625F, 0);
 		}
-		else if(flag[CTHelper.VrS] || flag[CTHelper.NrS] || flag[CTHelper.tErS] || flag[CTHelper.tWrS] || flag[CTHelper.tEWrS] || flag[CTHelper.tNEWrS] || flag[CTHelper.tNSEWrS])
+		else if((flag[CTHelper.VrS] || flag[CTHelper.NrS] || flag[CTHelper.tErS] || flag[CTHelper.tWrS] || flag[CTHelper.tEWrS] || flag[CTHelper.tNEWrS] || flag[CTHelper.tNSEWrS]) && !flag[CTHelper.NEWrS])
 		{
 			GL11.glScalef(1.0F, 0.99F, 0.999F);
 			GL11.glTranslatef(0.0F, -0.015F, -0.0048F);
@@ -69,7 +69,7 @@ public class TileEntityTrailRenderTESR extends TileEntitySpecialRenderer
 			this.model2.render(0.0625F, 0);
 		}
 
-		else if(flag[CTHelper.VrE] || flag[CTHelper.WrE] || flag[CTHelper.tNrE] || flag[CTHelper.tSrE] || flag[CTHelper.tNSrE] || flag[CTHelper.tNSWrE] || flag[CTHelper.tNSEWrE])
+		else if((flag[CTHelper.VrE] || flag[CTHelper.WrE] || flag[CTHelper.tNrE] || flag[CTHelper.tSrE] || flag[CTHelper.tNSrE] || flag[CTHelper.tNSWrE] || flag[CTHelper.tNSEWrE]) && !flag[CTHelper.NSWrE])
 		{
 			GL11.glScalef(0.999F, 0.99F, 1.0F);
 			GL11.glTranslatef(-0.004F, -0.015F, 0.0F);
@@ -79,7 +79,7 @@ public class TileEntityTrailRenderTESR extends TileEntitySpecialRenderer
 			this.model2.render(0.0625F, 0);
 		}
 
-		else if(flag[CTHelper.VrW] || flag[CTHelper.ErW] || flag[CTHelper.tNrW] || flag[CTHelper.tSrW] || flag[CTHelper.tNSrW] || flag[CTHelper.tNSErW] || flag[CTHelper.tNSEWrW])
+		else if((flag[CTHelper.VrW] || flag[CTHelper.ErW] || flag[CTHelper.tNrW] || flag[CTHelper.tSrW] || flag[CTHelper.tNSrW] || flag[CTHelper.tNSErW] || flag[CTHelper.tNSEWrW]) && !flag[CTHelper.NSErW])
 		{
 			GL11.glScalef(0.999F, 0.99F, 1.0F);
 			GL11.glTranslatef(0.004F, -0.015F, 0.0F);
@@ -266,6 +266,50 @@ public class TileEntityTrailRenderTESR extends TileEntitySpecialRenderer
 			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
 			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
 			this.model2.render(0.0625F, 6);
+			this.bindTexture(texture6);
+			this.model2.render(0.0625F, 7);
+		}
+		else if(flag[CTHelper.NSErW])
+		{
+			GL11.glScalef(0.99F, 0.99F, 0.99F);
+			GL11.glTranslatef(0.0F, -0.015F, 0.00F);
+			this.bindTexture(texture3);
+			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
+			this.model2.render(0.0625F, 1);
+			this.bindTexture(texture6);
+			GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
+			this.model2.render(0.0625F, 7);
+		}
+		else if(flag[CTHelper.NSWrE])
+		{
+			GL11.glScalef(0.99F, 0.99F, 0.99F);
+			GL11.glTranslatef(0.0F, -0.015F, 0.00F);
+			this.bindTexture(texture3);
+			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
+			this.model2.render(0.0625F, 1);
+			this.bindTexture(texture6);
+			this.model2.render(0.0625F, 7);
+		}
+		else if(flag[CTHelper.NEWrS])
+		{
+			GL11.glScalef(0.99F, 0.99F, 0.99F);
+			GL11.glTranslatef(0.0F, -0.015F, 0.00F);
+			this.bindTexture(texture3);
+			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+			this.model2.render(0.0625F, 1);
+			this.bindTexture(texture6);
+			GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
+			this.model2.render(0.0625F, 7);
+		}
+		else if(flag[CTHelper.SEWrN])
+		{
+			GL11.glScalef(0.99F, 0.99F, 0.99F);
+			GL11.glTranslatef(0.0F, -0.015F, 0.00F);
+			this.bindTexture(texture3);
+			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+			this.model2.render(0.0625F, 1);
 			this.bindTexture(texture6);
 			this.model2.render(0.0625F, 7);
 		}

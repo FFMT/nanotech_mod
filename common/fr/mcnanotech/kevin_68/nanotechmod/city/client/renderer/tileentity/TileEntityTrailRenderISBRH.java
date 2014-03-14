@@ -27,7 +27,7 @@ public class TileEntityTrailRenderISBRH implements ISimpleBlockRenderingHandler
 		float f = 0.0625F;
 		boolean[] flag = CTHelper.get(world, x, y, z, NanotechCityBlock.trail);
 
-		if(flag[CTHelper.VrN] || flag[CTHelper.SrN] || flag[CTHelper.tErN] || flag[CTHelper.tWrN] || flag[CTHelper.tEWrN] || flag[CTHelper.tSEWrN] || flag[CTHelper.tNSEWrN])
+		if((flag[CTHelper.VrN] || flag[CTHelper.SrN] || flag[CTHelper.tErN] || flag[CTHelper.tWrN] || flag[CTHelper.tEWrN] || flag[CTHelper.tSEWrN] || flag[CTHelper.tNSEWrN]) && !flag[CTHelper.SEWrN])
 		{
 			renderer.setRenderBounds(0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F, 1.0F);
 			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
@@ -64,7 +64,7 @@ public class TileEntityTrailRenderISBRH implements ISimpleBlockRenderingHandler
 			return true;
 		}
 
-		if(flag[CTHelper.VrS] || flag[CTHelper.NrS] || flag[CTHelper.tErS] || flag[CTHelper.tWrS] || flag[CTHelper.tEWrS] || flag[CTHelper.tNEWrS] || flag[CTHelper.tNSEWrS])
+		if((flag[CTHelper.VrS] || flag[CTHelper.NrS] || flag[CTHelper.tErS] || flag[CTHelper.tWrS] || flag[CTHelper.tEWrS] || flag[CTHelper.tNEWrS] || flag[CTHelper.tNSEWrS]) && !flag[CTHelper.NEWrS])
 		{
 			renderer.setRenderBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, f);
 			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
@@ -101,7 +101,7 @@ public class TileEntityTrailRenderISBRH implements ISimpleBlockRenderingHandler
 			return true;
 		}
 
-		if(flag[CTHelper.VrE] || flag[CTHelper.WrE] || flag[CTHelper.tNrE] || flag[CTHelper.tSrE] || flag[CTHelper.tNSrE] || flag[CTHelper.tNSWrE] || flag[CTHelper.tNSEWrE])
+		if((flag[CTHelper.VrE] || flag[CTHelper.WrE] || flag[CTHelper.tNrE] || flag[CTHelper.tSrE] || flag[CTHelper.tNSrE] || flag[CTHelper.tNSWrE] || flag[CTHelper.tNSEWrE]) && ! flag[CTHelper.NSWrE])
 		{
 			renderer.setRenderBounds(0.0F, 0.0F, 0.0F, f, 1.0F, 1.0F);
 			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
@@ -138,7 +138,7 @@ public class TileEntityTrailRenderISBRH implements ISimpleBlockRenderingHandler
 			return true;
 		}
 
-		if(flag[CTHelper.VrW] || flag[CTHelper.ErW] || flag[CTHelper.tNrW] || flag[CTHelper.tSrW] || flag[CTHelper.tNSrW] || flag[CTHelper.tNSErW] || flag[CTHelper.tNSEWrW])
+		if((flag[CTHelper.VrW] || flag[CTHelper.ErW] || flag[CTHelper.tNrW] || flag[CTHelper.tSrW] || flag[CTHelper.tNSrW] || flag[CTHelper.tNSErW] || flag[CTHelper.tNSEWrW]) && !flag[CTHelper.NSErW])
 		{
 			renderer.setRenderBounds(0.0F, 0.0F, 0.0F, f, 1.0F - (15 * f), 1.0F);
 			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
@@ -897,6 +897,143 @@ public class TileEntityTrailRenderISBRH implements ISimpleBlockRenderingHandler
 			renderer.setRenderBounds(0.0F, (6 * f), (6 * f), (6 * f), (7 * f), 1.0F - (6 * f));
 			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
 			renderer.setRenderBounds(0.0F, (7 * f), (7 * f), (7 * f), (8 * f), 1.0F - (7 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			return true;
+		}
+		else if(flag[CTHelper.NSErW])
+		{
+			renderer.setRenderBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(f, f, 0.0F, 1.0F - f, (2 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(( 2 * f), ( 2 * f), 0.0F, 1.0F - ( 2 * f), (3 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(( 3 * f), ( 3 * f), 0.0F, 1.0F - ( 3 * f), (4 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(( 4 * f), ( 4 * f), 0.0F, 1.0F - ( 4 * f), (5 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(( 5 * f), ( 5 * f), 0.0F, 1.0F - ( 5 * f), (6 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(( 6 * f), ( 6 * f), 0.0F, 1.0F - ( 6 * f), (7 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(( 7 * f), ( 7 * f), 0.0F, 1.0F - ( 7 * f), (8 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			
+			renderer.setRenderBounds(1.0F - f, f, f, 1.0F, (2 * f), 1.0F - f);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(1.0F - (2 * f), (2 * f), (2 * f), 1.0F, (3 * f), 1.0F - (2 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(1.0F - (3 * f), (3 * f), (3 * f), 1.0F, (4 * f), 1.0F - (3 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(1.0F - (4 * f), (4 * f), (4 * f), 1.0F, (5 * f), 1.0F - (4 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(1.0F - (5 * f), (5 * f), (5 * f), 1.0F, (6 * f), 1.0F - (5 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(1.0F - (6 * f), (6 * f), (6 * f), 1.0F, (7 * f), 1.0F - (6 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(1.0F - (7 * f), (7 * f), (7 * f), 1.0F, (8 * f), 1.0F - (7 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			return true;
+		}
+		else if(flag[CTHelper.NSWrE])
+		{
+			renderer.setRenderBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(f, f, 0.0F, 1.0F - f, (2 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(( 2 * f), ( 2 * f), 0.0F, 1.0F - ( 2 * f), (3 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(( 3 * f), ( 3 * f), 0.0F, 1.0F - ( 3 * f), (4 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(( 4 * f), ( 4 * f), 0.0F, 1.0F - ( 4 * f), (5 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(( 5 * f), ( 5 * f), 0.0F, 1.0F - ( 5 * f), (6 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(( 6 * f), ( 6 * f), 0.0F, 1.0F - ( 6 * f), (7 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(( 7 * f), ( 7 * f), 0.0F, 1.0F - ( 7 * f), (8 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F, f, f, f, (2 * f), 1.0F - f);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F,  (2 * f),  (2 * f),  (2 * f), (3 * f), 1.0F -  (2 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F,  (3 * f),  (3 * f),  (3 * f), (4 * f), 1.0F -  (3 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F,  (4 * f),  (4 * f),  (4 * f), (5 * f), 1.0F -  (4 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F,  (5 * f),  (5 * f),  (5 * f), (6 * f), 1.0F -  (5 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F,  (6 * f),  (6 * f),  (6 * f), (7 * f), 1.0F -  (6 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F,  (7 * f),  (7 * f),  (7 * f), (8 * f), 1.0F -  (6 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			return true;
+		}
+		else if(flag[CTHelper.NEWrS])
+		{
+			renderer.setRenderBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F, 0.0F, f, 1.0F, (2 * f), 1.0F - f);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F, 0.0F, (2 * f), 1.0F, (3 * f), 1.0F - (2 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F, 0.0F, (3 * f), 1.0F, (4 * f), 1.0F - (3 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F, 0.0F, (4 * f), 1.0F, (5 * f), 1.0F - (4 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F, 0.0F, (5 * f), 1.0F, (6 * f), 1.0F - (5 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F, 0.0F, (6 * f), 1.0F, (7 * f), 1.0F - (6 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F, 0.0F, (7 * f), 1.0F, (8 * f), 1.0F - (7 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(f, f, 0.0F, 1.0F - f, (2 * f), f);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds((2 * f), (2 * f), 0.0F, 1.0F - (2 * f), (3 * f), (2 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds((3 * f), (3 * f), 0.0F, 1.0F - (3 * f), (4 * f), (3 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds((4 * f), (4 * f), 0.0F, 1.0F - (4 * f), (5 * f), (4 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds((5 * f), (5 * f), 0.0F, 1.0F - (5 * f), (6 * f), (5 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds((6 * f), (6 * f), 0.0F, 1.0F - (6 * f), (7 * f), (6 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds((7 * f), (7 * f), 0.0F, 1.0F - (7 * f), (8 * f), (7 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			return true;
+		}
+		else if(flag[CTHelper.SEWrN])
+		{
+			renderer.setRenderBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F, 0.0F, f, 1.0F, (2 * f), 1.0F - f);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F, 0.0F, (2 * f), 1.0F, (3 * f), 1.0F - (2 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F, 0.0F, (3 * f), 1.0F, (4 * f), 1.0F - (3 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F, 0.0F, (4 * f), 1.0F, (5 * f), 1.0F - (4 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F, 0.0F, (5 * f), 1.0F, (6 * f), 1.0F - (5 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F, 0.0F, (6 * f), 1.0F, (7 * f), 1.0F - (6 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(0.0F, 0.0F, (7 * f), 1.0F, (8 * f), 1.0F - (7 * f));
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds(f, f, 1.0F - f, 1.0F - f, (2 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds((2 * f), (2 * f), 1.0F - (2 * f), 1.0F - (2 * f), (3 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds((3 * f), (3 * f), 1.0F - (3 * f), 1.0F - (3 * f), (4 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds((4 * f), (4 * f), 1.0F - (4 * f), 1.0F - (4 * f), (5 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds((5 * f), (5 * f), 1.0F - (5 * f), 1.0F - (5 * f), (6 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds((6 * f), (6 * f), 1.0F - (6 * f), 1.0F - (6 * f), (7 * f), 1.0F);
+			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
+			renderer.setRenderBounds((7 * f), (7 * f), 1.0F - (7 * f), 1.0F - (7 * f), (8 * f), 1.0F);
 			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
 			return true;
 		}

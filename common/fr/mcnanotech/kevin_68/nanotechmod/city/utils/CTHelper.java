@@ -17,7 +17,7 @@ public class CTHelper
 			SEW = 37, NSEW = 38, NrN = 39, SrS = 40, ErE = 41, WrW = 42, NSrNS = 43, NErNE = 44, NWrNW = 45, SErSE = 46, SWrSW = 47, EWrEW = 48, NSErNSE = 49, NSWrNSW = 50, NEWrNEW = 51, SEWrSEW = 52, NSEWrNSEW = 53, NrNE = 54, NrNW = 55, SrSE = 56, SrSW = 57, ErNE = 58, ErSE = 59, WrNW = 60, WrSW = 61, tNrE = 62, tNrW = 63, tSrE = 64, tSrW = 65, tErN = 66, tErS = 67, tWrN = 68, tWrS = 69,
 			tNrSE = 70, tNrSW = 71, tSrNE = 72, tSrNW = 73, tErNW = 74, tErSW = 75, tWrNE = 76, tWrSE = 77, tNErne = 78, tNWrnw = 79, tSErse = 80, tSWrsw = 81, tEWrN = 82, tEWrS = 83, tNSrE = 84, tNSrW = 85, tNSErE = 86, tNSWrW = 87, tSEWrS = 88, tNEWrN = 89, tNSErW = 90, tNSWrE = 91, tSEWrN = 92, tNEWrS = 93, tNSEWrN = 94, tNSEWrS = 95, tNSEWrE = 96, tNSEWrW = 97, tNrNSEW = 98, tSrNSEW = 99,
 			tErNSEW = 100, tWrNSEW = 101, tNSrNSEW = 102, tEWrNSEW = 103, tNSErNSEW = 104, tNSWrNSEW = 105, tNEWrNSEW = 106, tSEWrNSEW = 107, tSrSEW = 108, tErSEW = 109, tWrSEW = 110, tNrNEW = 111, tErNEW = 112, tWrNEW = 113, tNrNSW = 114, tSrNSW = 115, tWrNSW = 116, tNrNSE = 117, tSrNSE = 118, tErNSE = 119, tNSrNSE = 120, tNSrNSW = 121, tEWrNEW = 122, tEWrSEW = 123, tSErSEW = 124, tSWrSEW = 125,
-			tNErNSE = 126, tSErNSE = 127, tNWrNEW = 128, tNErNEW = 129, tNWrNSW = 130, tSWrNSW = 131, NrSEW = 132, SrNEW = 133, ErNSW = 134, WrNSE = 135, NSrEW = 136, EWrNS = 137, NErSW = 138, NWrSE = 139, SErNW = 140, SWrNE = 141, NSErW = 142, NSWrE = 143, NEWrS = 144, SEWrN = 145;
+			tNErNSE = 126, tSErNSE = 127, tNWrNEW = 128, tNErNEW = 129, tNWrNSW = 130, tSWrNSW = 131, NrSEW = 132, SrNEW = 133, ErNSW = 134, WrNSE = 135, NSrEW = 136, EWrNS = 137, NErSW = 138, NWrSE = 139, SErNW = 140, SWrNE = 141, NSErW = 142, NSWrE = 143, NEWrS = 144, SEWrN = 145, tNrNS = 146, tSrNS = 147, tErEW = 148, tWrEW = 149;
 
 	public static boolean[] get(IBlockAccess iba, int x, int y, int z, Block block)
 	{
@@ -160,18 +160,22 @@ public class CTHelper
 		flag[SrNEW] = (g(iba, cN, block) && a(iba, cS, block) && g(iba, cE, block) && g(iba, cW, block));
 		flag[ErNSW] = (g(iba, cN, block) && g(iba, cS, block) && a(iba, cE, block) && g(iba, cW, block));
 		flag[WrNSE] = (g(iba, cN, block) && g(iba, cS, block) && g(iba, cE, block) && a(iba, cW, block));
-		
 		flag[NSrEW] = (a(iba, cN, block) && a(iba, cS, block) && g(iba, cE, block) && g(iba, cW, block));
 		flag[EWrNS] = (g(iba, cN, block) && g(iba, cS, block) && a(iba, cE, block) && a(iba, cW, block));
-		
 		flag[NErSW] = (a(iba, cN, block) && g(iba, cS, block) && a(iba, cE, block) && g(iba, cW, block));
 		flag[NWrSE] = (a(iba, cN, block) && g(iba, cS, block) && g(iba, cE, block) && a(iba, cW, block));
 		flag[SErNW] = (g(iba, cN, block) && a(iba, cS, block) && a(iba, cE, block) && g(iba, cW, block));
 		flag[SWrNE] = (g(iba, cN, block) && a(iba, cS, block) && g(iba, cE, block) && a(iba, cW, block));
-		flag[NSErW] = (a(iba, cN, block) && a(iba, cS, block) && a(iba, cE, block) && g(iba, cW, block));
-		flag[NSWrE] = (a(iba, cN, block) && a(iba, cS, block) && g(iba, cE, block) && a(iba, cW, block));
-		flag[NEWrS] = (a(iba, cN, block) && g(iba, cS, block) && a(iba, cE, block) && a(iba, cW, block));
-		flag[SEWrN] = (g(iba, cN, block) && a(iba, cS, block) && a(iba, cE, block) && a(iba, cW, block));
+		
+		flag[NSErW] = (a(iba, cN, block) && a(iba, cS, block) && a(iba, cE, block) && g(iba, cW, block) && c(iba, cnw) && c(iba, cne) && c(iba, csw) && c(iba, cse));
+		flag[NSWrE] = (a(iba, cN, block) && a(iba, cS, block) && g(iba, cE, block) && a(iba, cW, block) && c(iba, cnw) && c(iba, cne) && c(iba, csw) && c(iba, cse));
+		flag[NEWrS] = (a(iba, cN, block) && g(iba, cS, block) && a(iba, cE, block) && a(iba, cW, block) && c(iba, cnw) && c(iba, cne) && c(iba, csw) && c(iba, cse));
+		flag[SEWrN] = (g(iba, cN, block) && a(iba, cS, block) && a(iba, cE, block) && a(iba, cW, block) && c(iba, cnw) && c(iba, cne) && c(iba, csw) && c(iba, cse));
+		
+		flag[tNrNS] = (f(iba, cN, block) && g(iba, cS, block) && b(iba, cE, block) && b(iba, cW, block));
+		flag[tSrNS] = (g(iba, cN, block) && f(iba, cS, block) && b(iba, cE, block) && b(iba, cW, block));
+		flag[tErEW] = (b(iba, cN, block) && b(iba, cS, block) && f(iba, cE, block) && g(iba, cW, block));
+		flag[tWrEW] = (b(iba, cN, block) && b(iba, cS, block) && g(iba, cE, block) && f(iba, cW, block));
 		return flag;
 	}
 
