@@ -14,6 +14,7 @@ import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
@@ -31,10 +32,12 @@ import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForScreen;
 @SuppressWarnings("unchecked")
 public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 {
+	public static final ResourceLocation texture = new ResourceLocation("textures/gui/container/anvil.png");
 	public TileEntityListerJukebox tile;
 	public World worldd;
 	public InventoryPlayer inventoryy;
-	public GuiTextField txtField;
+	public GuiTextField nameField;
+	public GuiTextField dirField;
 
 	public GuiListerJukeboxAddSound(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world)
 	{
@@ -48,23 +51,31 @@ public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 		super.initGui();
 		int x = this.width / 2;
 		int y = this.height / 2;
-		this.buttonList.add(new GuiButton(0, x + 120, y + 80, 80, 20, "Exit"));
-		this.buttonList.add(new GuiButton(1, x - 200, y + 80, 80, 20, "Back"));
+		this.buttonList.add(new GuiButton(0, x + 120, y + 104, 80, 20, "Exit"));
+		this.buttonList.add(new GuiButton(1, x - 200, y + 104, 80, 20, "Back"));
 		this.buttonList.add(new GuiButton(2, x - 200, y - 25, 80, 20, "Mod id list"));
 		this.buttonList.add(new GuiButton(3, x + 120, y - 25, 80, 20, "Category"));
 		this.buttonList.add(new FFMTGuiSliderForScreen(this, 4, x - 100, y - 25, 200, 20, EnumChatFormatting.RED + I18n.format("container.lightsaber.red") + ": " + tile.get(2), tile.get(2) / 255));
 		this.buttonList.add(new FFMTGuiSliderForScreen(this, 5, x - 100, y, 200, 20, EnumChatFormatting.GREEN + I18n.format("container.lightsaber.green") + ": " + tile.get(3), tile.get(3) / 255));
 		this.buttonList.add(new FFMTGuiSliderForScreen(this, 6, x - 100, y + 25, 200, 20, EnumChatFormatting.BLUE + I18n.format("container.lightsaber.blue") + ": " + tile.get(4), tile.get(4) / 255));
 		this.buttonList.add(new GuiButton(7, x - 40, y + 55, 80, 20, "Add sound"));
-		this.buttonList.add(new GuiButton(8, x - 40, y + 80, 80, 20, "Clear"));
+		this.buttonList.add(new GuiButton(8, x - 40, y + 104, 80, 20, "Clear"));
 		Keyboard.enableRepeatEvents(true);
-		this.txtField = new GuiTextField(this.fontRendererObj, x - 90, y - 50, 180, 12);
-		this.txtField.setTextColor((tile.get(2) * 65536) + (tile.get(3) * 256) + tile.get(4));
-		this.txtField.setDisabledTextColour(-1);
-		this.txtField.setEnableBackgroundDrawing(false);
-		this.txtField.setMaxStringLength(40);
-		this.txtField.setEnabled(true);
-		this.txtField.setText(tile.getName(0));
+		this.nameField = new GuiTextField(this.fontRendererObj, x - 90, y - 74, 180, 12);
+		this.nameField.setTextColor((tile.get(2) * 65536) + (tile.get(3) * 256) + tile.get(4));
+		this.nameField.setDisabledTextColour(-1);
+		this.nameField.setEnableBackgroundDrawing(false);
+		this.nameField.setMaxStringLength(40);
+		this.nameField.setEnabled(true);
+		this.nameField.setText(tile.getName(0));
+
+		this.dirField = new GuiTextField(this.fontRendererObj, x - 90, y - 50, 180, 12);
+		this.dirField.setTextColor(16777215);
+		this.dirField.setDisabledTextColour(-1);
+		this.dirField.setEnableBackgroundDrawing(false);
+		this.dirField.setMaxStringLength(40);
+		this.dirField.setEnabled(true);
+		this.dirField.setText(tile.getName(2));
 	}
 
 	protected void actionPerformed(GuiButton guiButton)
@@ -94,20 +105,24 @@ public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 		case 7:
 		{
 			String modid = UtilListerJukebox.getModid(tile.get(0));
+			String dir = tile.getName(2);
 			String name = tile.getName(0);
 			String category = UtilListerJukebox.getCategoryName().get(tile.get(1) == -1 ? 0 : tile.get(1));
 			int color = (tile.get(2) * 65536) + (tile.get(3) * 256) + tile.get(4);
-			if(name != null && !name.isEmpty() && name.length() > 1)
+			if(dir != null && !dir.isEmpty() && dir.length() > 1)
 			{
-				if(modid != null && !modid.isEmpty() && modid.length() > 1)
+				if(name != null && !name.isEmpty() && name.length() > 1)
 				{
-					UtilListerJukebox.setSound(modid + ":" + name, category, color);
-					break;
-				}
-				else
-				{
-					UtilListerJukebox.setSound("minecraft:" + name, category, color);
-					break;
+					if(modid != null && !modid.isEmpty() && modid.length() > 1)
+					{
+						UtilListerJukebox.setSound(modid + ":" + dir, name, category, color);
+						break;
+					}
+					else
+					{
+						UtilListerJukebox.setSound("minecraft:" + dir, name, category, color);
+						break;
+					}
 				}
 			}
 		}
@@ -119,7 +134,8 @@ public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 			NTMPacketHelper.sendPacket(tile, 3, 255);
 			NTMPacketHelper.sendPacket(tile, 4, 255);
 			NTMPacketHelper.sendPacket(tile, 0, "");
-			this.txtField.setTextColor((255 * 65536) + (255 * 256) + 255);
+			NTMPacketHelper.sendPacket(tile, 2, "");
+			this.nameField.setTextColor((255 * 65536) + (255 * 256) + 255);
 			break;
 		}
 		}
@@ -133,9 +149,13 @@ public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 
 	protected void keyTyped(char par1, int par2)
 	{
-		if(this.txtField.textboxKeyTyped(par1, par2))
+		if(this.nameField.textboxKeyTyped(par1, par2))
 		{
-			NTMPacketHelper.sendPacket(tile, 0, this.txtField.getText());
+			NTMPacketHelper.sendPacket(tile, 0, this.nameField.getText());
+		}
+		else if(this.dirField.textboxKeyTyped(par1, par2))
+		{
+			NTMPacketHelper.sendPacket(tile, 2, this.dirField.getText());
 		}
 		else
 		{
@@ -146,7 +166,8 @@ public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 	protected void mouseClicked(int par1, int par2, int par3)
 	{
 		super.mouseClicked(par1, par2, par3);
-		this.txtField.mouseClicked(par1, par2, par3);
+		this.nameField.mouseClicked(par1, par2, par3);
+		this.dirField.mouseClicked(par1, par2, par3);
 	}
 
 	public void drawScreen(int par1, int par2, float par3)
@@ -164,9 +185,25 @@ public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 			int color = UtilListerJukebox.getCategoryColor().get(tile.get(1));
 			this.drawCenteredString(this.fontRendererObj, UtilListerJukebox.getCategoryName().get(tile.get(1)), x + 160, y - 50, color);
 		}
+		this.mc.renderEngine.bindTexture(texture);
+
+		GL11.glPushMatrix();
+		GL11.glScalef(1.8F, 1.0F, 1.0F);
+		this.drawTexturedModalRect(x - 179, y - 54, 0, 166, 110, 16);
+		this.drawTexturedModalRect(x - 179, y - 78, 0, 166, 110, 16);
+		GL11.glPopMatrix();
 		super.drawScreen(par1, par2, par3);
+		if(tile.getName(0) == "")
+		{
+			this.drawCenteredString(this.fontRendererObj, I18n.format("container.listerJukebox.fieldName"), x, y - 74, 16777215);
+		}
+		if(tile.getName(2) == "")
+		{
+			this.drawCenteredString(this.fontRendererObj, I18n.format("container.listerJukebox.fieldDir"), x, y - 50, 16777215);
+		}
 		GL11.glDisable(GL11.GL_LIGHTING);
-		this.txtField.drawTextBox();
+		this.dirField.drawTextBox();
+		this.nameField.drawTextBox();
 	}
 
 	public Minecraft getMc()
@@ -193,7 +230,7 @@ public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 	public void handlerSliderAction(int sliderId, float sliderValue)
 	{
 		NTMPacketHelper.sendPacket(tile, sliderId - 2, (int)(sliderValue * 255));
-		this.txtField.setTextColor((tile.get(2) * 65536) + (tile.get(3) * 256) + tile.get(4));
+		this.nameField.setTextColor((tile.get(2) * 65536) + (tile.get(3) * 256) + tile.get(4));
 	}
 
 	@Override

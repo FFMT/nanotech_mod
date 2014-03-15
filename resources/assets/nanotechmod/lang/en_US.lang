@@ -129,7 +129,9 @@ container.jumper=Jump Block
 container.jumper.height=Height
 container.smoker=Smoker Block
 container.smoker.power=Power : %d
-
+container.listerJukebox.fieldName=Write sound's name here
+container.listerJukebox.fieldDir=Write sound's directory here
+container.listerJukebox.fieldCateg=Write category's name here
 container.lightsaber.red=Red
 container.lightsaber.green=Green
 container.lightsaber.blue=Blue

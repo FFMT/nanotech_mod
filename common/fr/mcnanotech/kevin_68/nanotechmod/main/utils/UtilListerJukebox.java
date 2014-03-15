@@ -58,7 +58,7 @@ public class UtilListerJukebox
 					try
 					{
 						writer.write("#This file contain all the sounds of " + Minecraft.getMinecraft().getSession().getUsername() + "\n");
-						writer.write("#musiquename~category~color\n");
+						writer.write("#directory~name~category~color\n");
 						NanotechMod.nanoLogger.info("Informations added");
 					}
 					catch(IOException e)
@@ -128,14 +128,14 @@ public class UtilListerJukebox
 		return mainDir;
 	}
 
-	public static void setSound(String name, String category, int color)
+	public static void setSound(String directory, String name, String category, int color)
 	{
 		String categ = category.length() > 1 ? category : "default";
 
 		try
 		{
 			BufferedWriter writer = new BufferedWriter(new FileWriter(txtDir, true));
-			writer.write(name + "~" + categ + "~" + color + "\n");
+			writer.write(directory + "~" + name + "~" + categ + "~" + color + "\n");
 			writer.close();
 		}
 		catch(IOException e)
@@ -270,7 +270,7 @@ public class UtilListerJukebox
 		return arrList;
 	}
 
-	public static ArrayList<String> getAllSoundsName()
+	public static ArrayList<String> getAllSoundsDirectory()
 	{
 		ArrayList<String> arrList = new ArrayList();
 		ArrayList<String> rawList = getSounds();
@@ -282,16 +282,44 @@ public class UtilListerJukebox
 		return arrList;
 	}
 
-	public static ArrayList<String> getSoundByCategory(String category)
+	public static String getSoundDirectoryByName(String name)
+	{
+		String str = "";
+		ArrayList<String> rawList = getAllSoundsName();
+		ArrayList<String> sndDirList = getAllSoundsDirectory();
+		for(int i = 0; i != rawList.size() - 1; i++)
+		{
+			String sndName = rawList.get(i);
+			if(sndName == name)
+			{
+				str = sndDirList.get(i);
+			}
+		}
+		return str;
+	}
+
+	public static ArrayList<String> getAllSoundsName()
 	{
 		ArrayList<String> arrList = new ArrayList();
 		ArrayList<String> rawList = getSounds();
 		for(int i = 0; i != rawList.size() - 1; i++)
 		{
-			String categ = rawList.get(i).split("~")[1];
+			String[] str = rawList.get(i).split("~");
+			arrList.add(arrList.size(), str[1]);
+		}
+		return arrList;
+	}
+
+	public static ArrayList<String> getSoundsByCategory(String category)
+	{
+		ArrayList<String> arrList = new ArrayList();
+		ArrayList<String> rawList = getSounds();
+		for(int i = 0; i != rawList.size() - 1; i++)
+		{
+			String categ = rawList.get(i).split("~")[2];
 			if(categ == category)
 			{
-				arrList.add(arrList.size(), rawList.get(i).split("~")[0]);
+				arrList.add(arrList.size(), rawList.get(i).split("~")[1]);
 			}
 		}
 		return arrList;
@@ -304,7 +332,7 @@ public class UtilListerJukebox
 		for(int i = 0; i != rawList.size() - 1; i++)
 		{
 			String[] str = rawList.get(i).split("~");
-			arrList.add(arrList.size(), str[1]);
+			arrList.add(arrList.size(), str[2]);
 		}
 		return arrList;
 	}
@@ -316,7 +344,7 @@ public class UtilListerJukebox
 		for(int i = 0; i != rawList.size() - 1; i++)
 		{
 			String[] str = rawList.get(i).split("~");
-			arrList.add(arrList.size(), Integer.valueOf(str[2]));
+			arrList.add(arrList.size(), Integer.valueOf(str[3]));
 		}
 		return arrList;
 	}

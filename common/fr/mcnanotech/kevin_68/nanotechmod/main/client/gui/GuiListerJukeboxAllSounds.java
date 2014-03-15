@@ -41,10 +41,10 @@ public class GuiListerJukeboxAllSounds extends GuiScreen
 		super.initGui();
 		int x = this.width / 2;
 		int y = this.height / 2;
-		this.buttonList.add(new GuiButton(0, x + 120, y + 80, 80, 20, "Exit"));
-		this.buttonList.add(new GuiButton(1, x - 200, y + 80, 80, 20, "Back"));
-		this.buttonList.add(new GuiButton(2, x - 85, y + 80, 80, 20, "Play"));
-		this.buttonList.add(new GuiButton(3, x + 5, y + 80, 80, 20, "Stop"));
+		this.buttonList.add(new GuiButton(0, x + 120, y + 104, 80, 20, "Exit"));
+		this.buttonList.add(new GuiButton(1, x - 200, y + 104, 80, 20, "Back"));
+		this.buttonList.add(new GuiButton(2, x - 85, y + 104, 80, 20, "Play"));
+		this.buttonList.add(new GuiButton(3, x + 5, y + 104, 80, 20, "Stop"));
 		this.guiList = new GuiListerJukeboxLists(this, UtilListerJukebox.getAllSoundsName());
 		this.guiList.registerScrollButtons(7, 8);
 	}
@@ -67,12 +67,12 @@ public class GuiListerJukeboxAllSounds extends GuiScreen
 			}
 			case 2:
 			{
-				//TODO play sound
+				this.tile.playSound(UtilListerJukebox.getAllSoundsDirectory().get(guiList.getSelectedSlot()));
 				break;
 			}
 			case 3:
 			{
-				//TODO stop sound
+				this.tile.playSound((String)null);
 				break;
 			}
 			default:

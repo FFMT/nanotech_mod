@@ -14,6 +14,7 @@ import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
@@ -31,6 +32,8 @@ import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForScreen;
 @SuppressWarnings("unchecked")
 public class GuiListerJukeboxAddCategory extends FFMTGuiScreenSliderBase
 {
+	public static final ResourceLocation texture = new ResourceLocation("textures/gui/container/anvil.png");
+
 	public TileEntityListerJukebox tile;
 	public World worldd;
 	public InventoryPlayer inventoryy;
@@ -48,8 +51,8 @@ public class GuiListerJukeboxAddCategory extends FFMTGuiScreenSliderBase
 		super.initGui();
 		int x = this.width / 2;
 		int y = this.height / 2;
-		this.buttonList.add(new GuiButton(0, x + 120, y + 80, 80, 20, "Exit"));
-		this.buttonList.add(new GuiButton(1, x - 200, y + 80, 80, 20, "Back"));
+		this.buttonList.add(new GuiButton(0, x + 120, y + 104, 80, 20, "Exit"));
+		this.buttonList.add(new GuiButton(1, x - 200, y + 104, 80, 20, "Back"));
 		this.buttonList.add(new FFMTGuiSliderForScreen(this, 4, x - 100, y - 25, 200, 20, EnumChatFormatting.RED + I18n.format("container.lightsaber.red") + ": " + tile.get(5), tile.get(5) / 255));
 		this.buttonList.add(new FFMTGuiSliderForScreen(this, 5, x - 100, y, 200, 20, EnumChatFormatting.GREEN + I18n.format("container.lightsaber.green") + ": " + tile.get(6), tile.get(6) / 255));
 		this.buttonList.add(new FFMTGuiSliderForScreen(this, 6, x - 100, y + 25, 200, 20, EnumChatFormatting.BLUE + I18n.format("container.lightsaber.blue") + ": " + tile.get(7), tile.get(7) / 255));
@@ -135,7 +138,17 @@ public class GuiListerJukeboxAddCategory extends FFMTGuiScreenSliderBase
 		int y = this.height / 2;
 		this.drawBackground(12);
 		this.drawCenteredString(this.fontRendererObj, I18n.format("container.listerJukebox.addsounds"), x, 16, 16777215);
+		this.mc.renderEngine.bindTexture(texture);
+		GL11.glPushMatrix();
+		GL11.glScalef(1.8F, 1.0F, 1.0F);
+		this.drawTexturedModalRect(x - 179, y - 54, 0, 166, 110, 16);
+		GL11.glPopMatrix();
 		super.drawScreen(par1, par2, par3);
+		
+		if(tile.getName(1) == "")
+		{
+			this.drawCenteredString(this.fontRendererObj, I18n.format("container.listerJukebox.fieldCateg"), x, y - 50, 16777215);
+		}
 		GL11.glDisable(GL11.GL_LIGHTING);
 		this.txtField.drawTextBox();
 	}

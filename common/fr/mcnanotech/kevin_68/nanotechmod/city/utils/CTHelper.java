@@ -166,7 +166,6 @@ public class CTHelper
 		flag[NWrSE] = (a(iba, cN, block) && g(iba, cS, block) && g(iba, cE, block) && a(iba, cW, block));
 		flag[SErNW] = (g(iba, cN, block) && a(iba, cS, block) && a(iba, cE, block) && g(iba, cW, block));
 		flag[SWrNE] = (g(iba, cN, block) && a(iba, cS, block) && g(iba, cE, block) && a(iba, cW, block));
-		
 		flag[NSErW] = (a(iba, cN, block) && a(iba, cS, block) && a(iba, cE, block) && g(iba, cW, block) && c(iba, cnw) && c(iba, cne) && c(iba, csw) && c(iba, cse));
 		flag[NSWrE] = (a(iba, cN, block) && a(iba, cS, block) && g(iba, cE, block) && a(iba, cW, block) && c(iba, cnw) && c(iba, cne) && c(iba, csw) && c(iba, cse));
 		flag[NEWrS] = (a(iba, cN, block) && g(iba, cS, block) && a(iba, cE, block) && a(iba, cW, block) && c(iba, cnw) && c(iba, cne) && c(iba, csw) && c(iba, cse));

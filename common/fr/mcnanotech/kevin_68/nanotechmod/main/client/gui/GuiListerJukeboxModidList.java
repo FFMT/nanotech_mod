@@ -41,9 +41,9 @@ public class GuiListerJukeboxModidList extends GuiScreen
 		super.initGui();
 		int x = this.width / 2;
 		int y = this.height / 2;
-		this.buttonList.add(new GuiButton(0, x + 120, y + 80, 80, 20, "Exit"));
-		this.buttonList.add(new GuiButton(1, x - 200, y + 80, 80, 20, "Back"));
-		this.buttonList.add(new GuiButton(2, x - 40, y + 80, 80, 20, "Select"));
+		this.buttonList.add(new GuiButton(0, x + 120, y + 104, 80, 20, "Exit"));
+		this.buttonList.add(new GuiButton(1, x - 200, y + 104, 80, 20, "Back"));
+		this.buttonList.add(new GuiButton(2, x - 40, y + 104, 80, 20, "Select"));
 		this.guiList = new GuiListerJukeboxLists(this, UtilListerJukebox.getModidList());
 		this.guiList.registerScrollButtons(7, 8);
 	}

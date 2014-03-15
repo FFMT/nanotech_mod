@@ -7,6 +7,7 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.main.tileentity;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -18,11 +19,25 @@ import net.minecraft.tileentity.TileEntity;
 public class TileEntityListerJukebox extends TileEntity
 {
 	private int modidSelected, categorySelected, redText, greenText, blueText, redCateg, greenCateg, blueCateg;
-	private String txt, txtCateg;
+	private String txt, txtCateg, dir;
 
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
 		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
+	}
+
+	public void playSound(String dir)
+	{
+		if(worldObj.isRemote)
+		{
+			Minecraft.getMinecraft().getSoundHandler().stopSounds();
+		}
+
+		if(dir != null)
+		{
+			worldObj.playSound(xCoord, yCoord, zCoord, dir, 1.0F, 1.0F, true);
+		}
+
 	}
 
 	@Override
@@ -45,6 +60,10 @@ public class TileEntityListerJukebox extends TileEntity
 		{
 			nbtTagCompound.setString("CategoryTyped", txtCateg);
 		}
+		if(dir != null && !dir.isEmpty())
+		{
+			nbtTagCompound.setString("DirectoryTyped", dir);
+		}
 	}
 
 	@Override
@@ -61,6 +80,7 @@ public class TileEntityListerJukebox extends TileEntity
 		blueCateg = nbtTagCompound.getInteger("BlueCategory");
 		txt = nbtTagCompound.getString("NameTyped");
 		txtCateg = nbtTagCompound.getString("CategoryTyped");
+		dir = nbtTagCompound.getString("DirectoryTyped");
 	}
 
 	@Override
@@ -139,6 +159,11 @@ public class TileEntityListerJukebox extends TileEntity
 			txtCateg = text;
 			break;
 		}
+		case 2:
+		{
+			dir = text;
+			break;
+		}
 		}
 		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
@@ -198,6 +223,10 @@ public class TileEntityListerJukebox extends TileEntity
 		case 1:
 		{
 			return txtCateg;
+		}
+		case 2:
+		{
+			return dir;
 		}
 		default:
 		{

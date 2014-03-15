@@ -43,7 +43,7 @@ public class GuiListerJukebox extends GuiScreen
 		this.buttonList.add(new GuiButton(2, x - 90, y - 45, 180, 20, "Sounds lists"));
 		this.buttonList.add(new GuiButton(3, x - 90, y - 20, 180, 20, "Add sound"));
 		this.buttonList.add(new GuiButton(4, x - 90, y + 5, 180, 20, "Add list"));
-		this.buttonList.add(new GuiButton(5, x - 90, y + 30, 180, 20, "Stop current playing sound"));
+		this.buttonList.add(new GuiButton(5, x - 40, y + 80, 80, 20, "Stop sound"));
 		//TODO clear nbt tags
 	}
 
@@ -69,6 +69,11 @@ public class GuiListerJukebox extends GuiScreen
 		case 4:
 		{
 			this.mc.displayGuiScreen(new GuiListerJukeboxAddCategory(inventoryy, tile, worldd));
+			break;
+		}
+		case 5:
+		{
+			this.tile.playSound((String)null);
 			break;
 		}
 		}

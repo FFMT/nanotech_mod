@@ -9,6 +9,7 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.blocks;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.Explosion;
@@ -33,10 +34,10 @@ public class BlockListerJukebox extends BlockContainer
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t)
 	{
 		TileEntity tileentity = world.getTileEntity(x, y, z);
-
+		
 		if(tileentity == null || player.isSneaking())
 		{
-			return false;
+			return true;
 		}
 
 		if(!world.isRemote)
@@ -50,7 +51,7 @@ public class BlockListerJukebox extends BlockContainer
 	@Override
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata)
 	{
-		world.playRecord((String)null, x, y, z);
+		Minecraft.getMinecraft().getSoundHandler().stopSounds();
 	}
 
 	@Override

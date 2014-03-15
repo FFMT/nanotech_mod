@@ -12,10 +12,11 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 
-public class WorldGenNanoTree extends WorldGenerator
+public class WorldGenNanoTree extends WorldGenAbstractTree
 {
 	private final int field_48202_a;
 	private final boolean field_48200_b;
@@ -36,6 +37,7 @@ public class WorldGenNanoTree extends WorldGenerator
 		field_48200_b = flag1;
 	}
 
+	@Override
 	public boolean generate(World world, Random random, int i, int j, int k)
 	{
 		if(!world.isAirBlock(i, j + 2, k))
