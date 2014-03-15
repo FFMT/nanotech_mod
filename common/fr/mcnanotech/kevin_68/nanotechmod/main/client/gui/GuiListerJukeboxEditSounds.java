@@ -30,7 +30,7 @@ import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForScreen;
 
 @SideOnly(Side.CLIENT)
 @SuppressWarnings("unchecked")
-public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
+public class GuiListerJukeboxEditSounds extends FFMTGuiScreenSliderBase
 {
 	public static final ResourceLocation texture = new ResourceLocation("textures/gui/container/anvil.png");
 	public TileEntityListerJukebox tile;
@@ -38,12 +38,15 @@ public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 	public InventoryPlayer inventoryy;
 	public GuiTextField nameField;
 	public GuiTextField dirField;
+	int modidIndex;
 
-	public GuiListerJukeboxAddSound(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world)
+
+	public GuiListerJukeboxEditSounds(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world, int modid)
 	{
 		inventoryy = inventory;
 		tile = tileentity;
 		worldd = world;
+		modidIndex = modid;
 	}
 
 	public void initGui()
@@ -51,6 +54,15 @@ public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 		super.initGui();
 		int x = this.width / 2;
 		int y = this.height / 2;
+		NTMPacketHelper.sendPacket(tile, 0, modidIndex);
+//		NTMPacketHelper.sendPacket(tile, 1, -1);
+//		NTMPacketHelper.sendPacket(tile, 2, 255);
+//		NTMPacketHelper.sendPacket(tile, 3, 255);
+//		NTMPacketHelper.sendPacket(tile, 4, 255);
+//		NTMPacketHelper.sendPacket(tile, 0, name);
+//		NTMPacketHelper.sendPacket(tile, 2, dir);
+//		this.nameField.setTextColor((255 * 65536) + (255 * 256) + 255);
+		
 		this.buttonList.add(new GuiButton(0, x + 120, y + 104, 80, 20, "Exit"));
 		this.buttonList.add(new GuiButton(1, x - 200, y + 104, 80, 20, "Back"));
 		this.buttonList.add(new GuiButton(2, x - 200, y - 25, 80, 20, "Mod id list"));

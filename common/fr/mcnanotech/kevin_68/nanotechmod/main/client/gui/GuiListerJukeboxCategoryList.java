@@ -27,16 +27,13 @@ public class GuiListerJukeboxCategoryList extends GuiScreen
 	public TileEntityListerJukebox tile;
 	public World worldd;
 	public InventoryPlayer inventory;
-	public boolean edit;
-	public boolean play;
 	public GuiListerJukeboxLists guiList;
 
-	public GuiListerJukeboxCategoryList(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world, boolean editMode, boolean playMode)
+	public GuiListerJukeboxCategoryList(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world)
 	{
 		this.inventory = inventory;
 		this.tile = tileentity;
 		this.worldd = world;
-		this.edit = editMode;
 	}
 
 	public void initGui()
@@ -48,18 +45,7 @@ public class GuiListerJukeboxCategoryList extends GuiScreen
 		this.buttonList.add(new GuiButton(1, x - 200, y + 104, 80, 20, "Back"));
 		this.guiList = new GuiListerJukeboxLists(this, UtilListerJukebox.getCategoryName());
 		this.guiList.registerScrollButtons(7, 8);
-		if(!edit && !play)
-		{
-			this.buttonList.add(new GuiButton(2, x - 40, y + 104, 80, 20, "Select"));
-		}
-		else if(edit && !play)
-		{
-			this.buttonList.add(new GuiButton(3, x - 40, y + 104, 80, 20, "Edit"));
-		}
-		else if(!edit && play)
-		{
-			this.buttonList.add(new GuiButton(4, x - 40, y + 104, 80, 20, "Select"));
-		}
+		this.buttonList.add(new GuiButton(2, x - 40, y + 104, 80, 20, "Select"));
 	}
 
 	protected void actionPerformed(GuiButton guiButton)
@@ -83,16 +69,6 @@ public class GuiListerJukeboxCategoryList extends GuiScreen
 				NTMPacketHelper.sendPacket(tile, 1, guiList.getSelectedSlot());
 			}
 			this.mc.displayGuiScreen(new GuiListerJukeboxAddSound(inventory, tile, worldd));
-			break;
-		}
-		case 3:
-		{
-			// TODO edit gui for category
-			break;
-		}
-		case 4:
-		{
-			// TODO select sound gui of category
 			break;
 		}
 		default:

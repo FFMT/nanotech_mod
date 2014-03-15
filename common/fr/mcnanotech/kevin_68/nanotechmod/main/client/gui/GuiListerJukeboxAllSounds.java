@@ -43,8 +43,9 @@ public class GuiListerJukeboxAllSounds extends GuiScreen
 		int y = this.height / 2;
 		this.buttonList.add(new GuiButton(0, x + 120, y + 104, 80, 20, "Exit"));
 		this.buttonList.add(new GuiButton(1, x - 200, y + 104, 80, 20, "Back"));
-		this.buttonList.add(new GuiButton(2, x - 85, y + 104, 80, 20, "Play"));
-		this.buttonList.add(new GuiButton(3, x + 5, y + 104, 80, 20, "Stop"));
+		this.buttonList.add(new GuiButton(2, x - 115, y + 104, 80, 20, "Play"));
+		this.buttonList.add(new GuiButton(3, x + 35, y + 104, 80, 20, "Stop"));
+		this.buttonList.add(new GuiButton(4, x - 25, y + 104, 50, 20, "Edit"));
 		this.guiList = new GuiListerJukeboxLists(this, UtilListerJukebox.getAllSoundsName());
 		this.guiList.registerScrollButtons(7, 8);
 	}
@@ -67,12 +68,23 @@ public class GuiListerJukeboxAllSounds extends GuiScreen
 			}
 			case 2:
 			{
-				this.tile.playSound(UtilListerJukebox.getAllSoundsDirectory().get(guiList.getSelectedSlot()));
+				if(guiList.getSelectedSlot() != -1)
+				{
+					this.tile.playSound(UtilListerJukebox.getAllSoundsDirectory().get(guiList.getSelectedSlot()));
+				}
 				break;
 			}
 			case 3:
 			{
 				this.tile.playSound((String)null);
+				break;
+			}
+			case 5:
+			{
+				if(guiList.getSelectedSlot() != -1)
+				{
+					this.mc.displayGuiScreen(new GuiListerJukeboxEditSounds(inventoryy, tile, worldd, guiList.getSelectedSlot()));
+				}
 				break;
 			}
 			default:
