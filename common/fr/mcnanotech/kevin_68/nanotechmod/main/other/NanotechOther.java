@@ -120,10 +120,10 @@ public class NanotechOther
 
 	public static void initWorld()
 	{
-		DimensionManager.registerProviderType(NanotechConfiguration.dimensionID, NanotechWorldProvider.class, false);
-		DimensionManager.registerDimension(NanotechConfiguration.dimensionID, NanotechConfiguration.dimensionID);
-
-		GameRegistry.registerWorldGenerator(new WorldGeneration(), 0);
+		//DimensionManager.registerProviderType(NanotechConfiguration.dimensionID, NanotechWorldProvider.class, false);
+		//DimensionManager.registerDimension(NanotechConfiguration.dimensionID, NanotechConfiguration.dimensionID);
+		//TODO fix unable to create new world / very laggy if WorldGenerator is commented	
+		//GameRegistry.registerWorldGenerator(new WorldGeneration(), 0);
 
 		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechBlock.sodium), 1, 5, 6));
 		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechItem.nanoDisc), 1, 1, 2));
