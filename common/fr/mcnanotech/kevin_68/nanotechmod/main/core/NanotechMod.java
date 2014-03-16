@@ -97,7 +97,7 @@ public class NanotechMod
 	};
 
 	@EventHandler
-	public void PreInitnanotechmod(FMLPreInitializationEvent event)
+	public void preInitNanotechMod(FMLPreInitializationEvent event)
 	{
 		nanoLogger = event.getModLog();
 
@@ -122,7 +122,7 @@ public class NanotechMod
 	}
 
 	@EventHandler
-	public void Initnanotechmod(FMLInitializationEvent event)
+	public void initNanotechMod(FMLInitializationEvent event)
 	{
 		NanotechOther.initPackets(packetHandler);
 
@@ -132,7 +132,7 @@ public class NanotechMod
 	}
 
 	@EventHandler
-	public void PostInitnanotechmod(FMLPostInitializationEvent event)
+	public void postInitNanotechMod(FMLPostInitializationEvent event)
 	{
 		proxy.register();
 		packetHandler.postInitialise();
