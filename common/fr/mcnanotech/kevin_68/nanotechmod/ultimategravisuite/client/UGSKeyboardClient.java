@@ -12,7 +12,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.UltimateGrav
 
 public class UGSKeyboardClient extends UGSKeyboard
 {
-	public KeyBinding flyKey, invKey;
+	public static KeyBinding flyKey, invKey;
 	private int lastKeyState = 0;
 
 	public UGSKeyboardClient()
@@ -30,6 +30,8 @@ public class UGSKeyboardClient extends UGSKeyboard
 		if(currentKeyState != this.lastKeyState)
 		{
 			this.lastKeyState = currentKeyState;
+			System.out.println("fly pressed in client : " + ((currentKeyState & 0x1) != 0));
+			System.out.println("inv pressed in client : " + ((currentKeyState & 0x2) != 0));
 			try
 			{
 				UltimateGraviSuiteMod.packetHandler.sendToServer(new PacketKeys(currentKeyState));

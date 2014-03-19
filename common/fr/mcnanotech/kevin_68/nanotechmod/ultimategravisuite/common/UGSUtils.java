@@ -13,44 +13,51 @@ import net.minecraft.util.ChatComponentTranslation;
 
 public class UGSUtils
 {
-	private static final Map<EntityPlayer, Boolean> lock = new HashMap();
-
-	public static boolean isInvisible(Entity entity)
+	public static Map<EntityPlayer, Boolean> flyActive = new HashMap();
+	public static Map<EntityPlayer, Boolean> invisibilityActive = new HashMap();
+	
+	public static boolean isFlyActive(EntityPlayer player)
 	{
-		if(entity instanceof EntityPlayer)
-		{
-			EntityPlayer player = (EntityPlayer)entity;
-			ItemStack chestPlate = player.getCurrentArmor(2);
-			if(chestPlate != null && chestPlate.getItem() == UltimateGraviSuiteMod.ultimateGraviChestPlate)
-			{
-				NBTTagCompound tag = chestPlate.getTagCompound();
-				if(tag != null)
-				{
-					return tag.getBoolean("invisible");
-				}
-			}
-		}
-		return false;
+		return flyActive.containsKey(player) ? flyActive.get(player) : false;
 	}
 
-	public static void switchVisibility(EntityPlayer player)
+	public static boolean isInvisibilityActive(EntityPlayer player)
 	{
-		ItemStack chestPlate = player.getCurrentArmor(2);
-		if(chestPlate != null && chestPlate.getItem() == UltimateGraviSuiteMod.ultimateGraviChestPlate)
+		return invisibilityActive.containsKey(player) ? invisibilityActive.get(player) : false;
+	}
+
+	public static void switchVisibility(EntityPlayer player, ItemStack chestPlate)
+	{ 
+		if(ElectricItem.manager.getCharge(chestPlate) > UltimateGraviSuiteMod.ultimateMinCharge)
 		{
-			if(ElectricItem.manager.getCharge(chestPlate) > UltimateGraviSuiteMod.ultimateMinCharge)
-			{
-				NBTTagCompound tag = getTag(chestPlate);
-				tag.setBoolean("invisible", !tag.getBoolean("invisible"));
-				player.addChatComponentMessage(new ChatComponentTranslation(tag.getBoolean("invisible") ? "ultimate.inv.on" : "ultimate.inv.off"));
-			}
-			else
-			{
-				player.addChatComponentMessage(new ChatComponentTranslation("ultimate.inv.noenergy"));
-			}
+			NBTTagCompound tag = getTag(chestPlate);
+			boolean invisible = !tag.getBoolean("invisible");
+			tag.setBoolean("invisible", invisible);
+			player.addChatComponentMessage(new ChatComponentTranslation(invisible ? "ultimate.inv.on" : "ultimate.inv.off"));
+			invisibilityActive.put(player, invisible);
+		}
+		else
+		{
+			player.addChatComponentMessage(new ChatComponentTranslation("ultimate.inv.noenergy"));
 		}
 	}
 	
+	public static void switchFly(EntityPlayer player, ItemStack chestPlate)
+	{ 
+		if(ElectricItem.manager.getCharge(chestPlate) > UltimateGraviSuiteMod.ultimateMinCharge)
+		{
+			NBTTagCompound tag = getTag(chestPlate);
+			boolean fly = !tag.getBoolean("fly");
+			tag.setBoolean("fly", fly);
+			player.addChatComponentMessage(new ChatComponentTranslation(fly ? "ultimate.fly.on" : "ultimate.fly.off"));
+			flyActive.put(player, fly);
+		}
+		else
+		{
+			player.addChatComponentMessage(new ChatComponentTranslation("ultimate.inv.noenergy"));
+		}
+	}
+
 	public static NBTTagCompound getTag(ItemStack stack)
 	{
 		if(!stack.hasTagCompound())

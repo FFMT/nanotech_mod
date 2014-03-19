@@ -51,11 +51,15 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
-		if(UGSUtils.isInvisible(entity))
+		if(entity instanceof EntityPlayer)
 		{
-			return "ultimategravisuite:textures/models/armor/ultimate_layer_3.png";
+			EntityPlayer player = (EntityPlayer)entity;
+			if(UGSUtils.isInvisibilityActive(player))
+			{
+				return "ultimategravisuite:textures/models/armor/ultimate_layer_3.png";
+			}
 		}
-		else if(slot == 2)
+		if(slot == 2)
 		{
 			return "ultimategravisuite:textures/models/armor/ultimate_layer_2.png";
 		}
@@ -169,11 +173,7 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 			}
 			break;
 		case 1:
-			if(UltimateGraviSuiteMod.keyboard.isInvisibleKeyDown(player) && timer == 0)
-			{
-				timer = (byte)10;
-				UGSUtils.switchVisibility(player);
-			}
+			// TODO
 			break;
 		case 2:
 			int speedTicker;

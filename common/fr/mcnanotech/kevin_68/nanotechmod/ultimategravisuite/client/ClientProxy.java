@@ -17,7 +17,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void init()
 	{
-		FMLCommonHandler.instance().bus().register(new USGClientEventHandler());
+		FMLCommonHandler.instance().bus().register(new UGSClientEventHandler());
 	}
 
 	@Override
