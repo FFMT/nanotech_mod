@@ -34,7 +34,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArmor, ISpecialArmor
 {
-	private static final Map<Integer, Integer> potionRemovalCost = new HashMap();
+	private final Map<Integer, Integer> potionRemovalCost = new HashMap();
+	private final Map speedTickerMap = new HashMap();
 
 	public UltimateArmor(ArmorMaterial armorMaterial, int slot)
 	{
@@ -42,9 +43,9 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 		this.setCreativeTab(IC2.tabIC2);
 		this.setMaxDamage(27);
 		this.setMaxStackSize(1);
-	    potionRemovalCost.put(Integer.valueOf(Potion.poison.id), Integer.valueOf(10000));
-	    potionRemovalCost.put(Integer.valueOf(IC2Potion.radiation.id), Integer.valueOf(10000));
-	    potionRemovalCost.put(Integer.valueOf(Potion.wither.id), Integer.valueOf(25000));
+		potionRemovalCost.put(Integer.valueOf(Potion.poison.id), Integer.valueOf(10000));
+		potionRemovalCost.put(Integer.valueOf(IC2Potion.radiation.id), Integer.valueOf(10000));
+		potionRemovalCost.put(Integer.valueOf(Potion.wither.id), Integer.valueOf(25000));
 	}
 
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
@@ -63,7 +64,7 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack)
 	{
 		NBTTagCompound tag = UGSUtils.getTag(stack);
-	    byte timer = tag.getByte("toggleTimer");
+		byte timer = tag.getByte("timer");
 		if(!world.isRemote && timer > 0)
 		{
 			timer = (byte)(timer - 1);
@@ -105,7 +106,7 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 					ElectricItem.manager.use(stack, 1000, null);
 				}
 			}
-			
+
 			Iterator effectIt = player.getActivePotionEffects().iterator();
 			while(effectIt.hasNext())
 			{
@@ -174,8 +175,40 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 			}
 			break;
 		case 2:
+			int speedTicker;
+			if(ElectricItem.manager.canUse(stack, 1000) && (player.onGround && Math.abs(player.motionX) + Math.abs(player.motionZ) > 0.10000000149011612D || player.isInWater()) && player.isSprinting())
+			{
+				speedTicker = speedTickerMap.containsKey(player) ? ((Integer)speedTickerMap.get(player)).intValue() : 0;
+				++speedTicker;
 
+				if(speedTicker >= 10)
+				{
+					speedTicker = 0;
+					ElectricItem.manager.use(stack, 1000, (EntityPlayer)null);
+				}
+
+				speedTickerMap.put(player, Integer.valueOf(speedTicker));
+				float moveSpeed = 0.52F;
+
+				if(player.isInWater())
+				{
+					moveSpeed = 0.15F;
+
+					if(IC2.keyboard.isJumpKeyDown(player))
+					{
+						player.motionY += 0.10005D;
+					}
+				}
+
+				if(moveSpeed > 0.0F)
+				{
+					player.moveFlying(0.0F, 1.0F, moveSpeed);
+				}
+			}
+			break;
 		case 3:
+
+			break;
 		}
 	}
 
