@@ -14,7 +14,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechModCity;
 
 public class NanotechCityBlock
 {
-	public static Block trashcan, spotlight, fountain, lamp, sunShade, modernFence, textSpotlight;
+	public static Block trashcan, spotlight, fountain, lamp, sunShade, modernFence, textSpotlight, lightAir;
 	public static BlockTrail trail;
 
 	public static void initBlock()
@@ -27,7 +27,8 @@ public class NanotechCityBlock
 		sunShade = new BlockSunShade().setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundTypeCloth).setBlockName("sunShade").setCreativeTab(NanotechModCity.cityTab);
 		modernFence = new BlockModernFence().setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundTypeMetal).setBlockName("modernFence").setCreativeTab(NanotechModCity.cityTab);
 		textSpotlight = new BlockTextSpotLight().setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundTypeMetal).setBlockName("textSpotLight").setCreativeTab(NanotechModCity.cityTab);
-
+		lightAir = new BlockLightAir().setLightOpacity(0).setLightLevel(1.0F).setBlockName("lightAir");
+		
 		GameRegistry.registerBlock(trashcan, ItemBlock.class, "trashcan", NanotechModCity.MODID);
 		GameRegistry.registerBlock(spotlight, ItemBlock.class, "spotlight", NanotechModCity.MODID);
 		GameRegistry.registerBlock(trail, ItemBlock.class, "trail", NanotechModCity.MODID);
@@ -36,5 +37,6 @@ public class NanotechCityBlock
 		GameRegistry.registerBlock(sunShade, ItemBlockSunShade.class, "sunShade", NanotechModCity.MODID);
 		GameRegistry.registerBlock(modernFence, ItemBlockModernFence.class, "modernFence", NanotechModCity.MODID);
 		GameRegistry.registerBlock(textSpotlight, ItemBlock.class, "textSpotLight", NanotechModCity.MODID);
+		GameRegistry.registerBlock(lightAir, ItemBlock.class, "lightAir", NanotechModCity.MODID);
 	}
 }

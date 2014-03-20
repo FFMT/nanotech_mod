@@ -57,6 +57,33 @@ public class ItemBlockLamp extends ItemBlock
 				world.setBlock(x, y + 1, z, NanotechCityBlock.lamp, 1, 3);
 				world.setBlock(x, y + 2, z, NanotechCityBlock.lamp, 1, 3);
 				world.setBlock(x, y + 3, z, NanotechCityBlock.lamp, 2, 3);
+				
+				if(world.isAirBlock(x + 1, y, z))
+					world.setBlock(x + 1, y, z, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x - 1, y, z))
+					world.setBlock(x - 1, y, z, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x, y + 1, z))
+					world.setBlock(x, y, z + 1, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x, y, z - 1))
+					world.setBlock(x, y, z - 1, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x + 1, y + 1, z))
+					world.setBlock(x + 1, y + 1, z, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x - 1, y + 1, z))
+					world.setBlock(x - 1, y + 1, z, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x, y + 1, z))
+					world.setBlock(x, y + 1, z + 1, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x, y + 1, z - 1))
+					world.setBlock(x, y + 1, z - 1, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x + 1, y + 2, z))
+					world.setBlock(x + 1, y + 2, z, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x - 1, y + 2, z))
+					world.setBlock(x - 1, y + 2, z, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x, y + 2, z))
+					world.setBlock(x, y + 2, z + 1, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x, y + 2, z - 1))
+					world.setBlock(x, y + 2, z - 1, NanotechCityBlock.lightAir);
+
+				
 				world.playSoundEffect(x, y, z, NanotechCityBlock.lamp.stepSound.soundName, NanotechCityBlock.lamp.stepSound.getVolume(), NanotechCityBlock.lamp.stepSound.getPitch());
 				--stack.stackSize;
 				return true;
@@ -68,6 +95,33 @@ public class ItemBlockLamp extends ItemBlock
 				world.setBlock(x, y + 2, z, NanotechCityBlock.lamp, 1, 3);
 				world.setBlock(x, y + 3, z, NanotechCityBlock.lamp, 1, 3);
 				world.setBlock(x, y + 4, z, NanotechCityBlock.lamp, 2, 3);
+				
+				if(world.isAirBlock(x + 1, y + 1, z))
+					world.setBlock(x + 1, y + 1, z, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x - 1, y + 1, z))
+					world.setBlock(x - 1, y + 1, z, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x, y + 1, z))
+					world.setBlock(x, y + 1, z + 1, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x, y + 1, z - 1))
+					world.setBlock(x, y + 1, z - 1, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x + 1, y + 2, z))
+					world.setBlock(x + 1, y + 2, z, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x - 1, y + 2, z))
+					world.setBlock(x - 1, y + 2, z, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x, y + 2, z))
+					world.setBlock(x, y + 2, z + 1, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x, y + 2, z - 1))
+					world.setBlock(x, y + 2, z - 1, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x + 1, y + 3, z))
+					world.setBlock(x + 1, y + 3, z, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x - 1, y + 3, z))
+					world.setBlock(x - 1, y + 3, z, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x, y + 3, z))
+					world.setBlock(x, y + 3, z + 1, NanotechCityBlock.lightAir);
+				if(world.isAirBlock(x, y + 3, z - 1))
+					world.setBlock(x, y + 3, z - 1, NanotechCityBlock.lightAir);
+
+
 				world.playSoundEffect(x, y, z, NanotechCityBlock.lamp.stepSound.soundName, NanotechCityBlock.lamp.stepSound.getVolume(), NanotechCityBlock.lamp.stepSound.getPitch());
 				--stack.stackSize;
 				return true;

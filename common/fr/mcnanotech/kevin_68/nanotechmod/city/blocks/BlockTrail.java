@@ -1062,6 +1062,7 @@ public class BlockTrail extends Block
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public int getRenderType()
 	{
 		return ClientProxy.renderTrailID;

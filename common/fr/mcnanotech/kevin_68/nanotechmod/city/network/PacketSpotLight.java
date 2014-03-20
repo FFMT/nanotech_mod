@@ -54,7 +54,6 @@ public class PacketSpotLight extends AbstractPacket
 	@Override
 	public void handleClientSide(EntityPlayer player)
 	{
-
 	}
 
 	@Override

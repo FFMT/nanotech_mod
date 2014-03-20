@@ -94,6 +94,7 @@ public class NanotechModCity
 		NanotechCityBlock.initBlock();
 		NanotechCityItems.initItems();
 		NanotechCityAchievement.initAchievement();
+		NetworkRegistry.INSTANCE.registerGuiHandler(this.modInstance, new GuiHandler());
 	}
 
 	@SuppressWarnings("static-access")
@@ -102,7 +103,7 @@ public class NanotechModCity
 	{
 		MinecraftForge.EVENT_BUS.register(new CityCraftingHandler());
 
-		NetworkRegistry.INSTANCE.registerGuiHandler(this.modInstance, new GuiHandler());
+		
 		packetHandler.initialise();
 		packetHandler.registerPacket(PacketSpotLight.class);
 		packetHandler.registerPacket(PacketSpotLightKey.class);
