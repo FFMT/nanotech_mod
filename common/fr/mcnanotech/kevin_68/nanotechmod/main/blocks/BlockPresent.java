@@ -42,28 +42,12 @@ public class BlockPresent extends Block
 	{
 		if(!world.isRemote)
 		{
-<<<<<<< HEAD
 			TileEntity tile = world.getTileEntity(x, y, z);
 			if(tile != null && tile instanceof TileEntityPresent)
 			{
 				TileEntityPresent te = (TileEntityPresent)tile;
-				ItemStack stack = te.getPresent() == null ? new ItemStack(Blocks.stone, 1, 0) : te.getPresent();
-				stack.stackSize = 1;
-				this.dropBlockAsItem(world, x, y, z, stack);
+				this.dropBlockAsItem(world, x, y, z, new ItemStack(te.getPresent().getItem(), 1, te.getPresent().getItemDamage()));
 				this.removedByPlayer(world, player, x, y, z);
-=======
-			Calendar calendar = Calendar.getInstance();
-			calendar.setTime(new Date());
-			int day = calendar.get(5);
-			int month = calendar.get(2);
-
-			TileEntity tile = world.getBlockTileEntity(x, y, z);
-			if(tile != null && tile instanceof TileEntityPresent)
-			{
-				TileEntityPresent te = (TileEntityPresent)tile;
-				this.dropBlockAsItem_do(world, x, y, z, new ItemStack(te.getPresent().getItem(), 1, te.getPresent().getItemDamage()));
-				this.removeBlockByPlayer(world, player, x, y, z);
->>>>>>> 7dedea0492b5599804bd0ae5f51778d7d3dc7453
 				world.setBlockToAir(x, y, z);
 			}
 		}
