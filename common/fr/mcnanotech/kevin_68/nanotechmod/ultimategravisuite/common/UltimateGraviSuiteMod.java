@@ -99,8 +99,8 @@ public class UltimateGraviSuiteMod
 	public void load(FMLInitializationEvent event)
 	{
 		proxy.init();
-		FMLCommonHandler.instance().bus().register(new USGCommonEventHandler());
-		MinecraftForge.EVENT_BUS.register(new USGCommonEventHandler());
+		FMLCommonHandler.instance().bus().register(new UGSCommonEventHandler());
+		MinecraftForge.EVENT_BUS.register(new UGSCommonEventHandler());
 
 		packetHandler.initialise();
 		packetHandler.registerPacket(PacketKeys.class);

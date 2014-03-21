@@ -34,7 +34,7 @@ public class NanotechFluid
 		FluidRegistry.registerFluid(liquidNitrogen);
 
 		blockNitrogen = new BlockLiquidNitrogen(liquidNitrogen, Material.water).setBlockName("liquidNitrogen").setBlockTextureName(NanotechMod.MODID + ":nitrogen");
-		bucketNitrogen = new ItemNitrogenBucket(blockNitrogen).setUnlocalizedName("nitrogenBucket").setTextureName(NanotechMod.MODID + ":nitrogenBucket").setCreativeTab(NanotechMod.CreaI).setContainerItem(Items.bucket);
+		bucketNitrogen = new ItemNitrogenBucket(blockNitrogen).setUnlocalizedName("nitrogenBucket").setTextureName(NanotechMod.MODID + ":nitrogen_bucket").setCreativeTab(NanotechMod.CreaI).setContainerItem(Items.bucket);
 		liquidNitrogen.setBlock(blockNitrogen);
 		if(side.isClient())
 		{

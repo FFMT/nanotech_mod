@@ -11,6 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
@@ -45,18 +46,18 @@ public class LivingEvent
 		if(event.entityLiving.isPotionActive(NanotechOther.freeze))
 		{
 			event.entityLiving.attackEntityFrom(NanotechDamageSource.nitrogenDamage, 1);
-			Block block = event.entityLiving.worldObj.getBlock((int)event.entityLiving.posX - 1, (int)event.entityLiving.posY, (int)event.entityLiving.posZ);
+			Block block = event.entityLiving.worldObj.getBlock(MathHelper.floor_double(event.entityLiving.posX), MathHelper.floor_double(event.entityLiving.posY), MathHelper.floor_double(event.entityLiving.posZ));
 			if(block.equals(Blocks.flowing_water) || block.equals(Blocks.water))
 			{
-				event.entityLiving.worldObj.setBlock((int)event.entityLiving.posX - 1, (int)event.entityLiving.posY, (int)event.entityLiving.posZ, Blocks.ice);
+				event.entityLiving.worldObj.setBlock(MathHelper.floor_double(event.entityLiving.posX), MathHelper.floor_double(event.entityLiving.posY), MathHelper.floor_double(event.entityLiving.posZ), Blocks.ice);
 			}
 			else if(block.equals(Blocks.flowing_lava) || block.equals(Blocks.lava))
 			{
 				event.entityLiving.removePotionEffect(30);
-				if(event.entityLiving.worldObj.getBlockMetadata((int)event.entityLiving.posX - 1, (int)event.entityLiving.posY, (int)event.entityLiving.posZ) == 0)
-					event.entityLiving.worldObj.setBlock((int)event.entityLiving.posX - 1, (int)event.entityLiving.posY, (int)event.entityLiving.posZ, Blocks.obsidian);
+				if(event.entityLiving.worldObj.getBlockMetadata(MathHelper.floor_double(event.entityLiving.posX), MathHelper.floor_double(event.entityLiving.posY), MathHelper.floor_double(event.entityLiving.posZ)) == 0)
+					event.entityLiving.worldObj.setBlock(MathHelper.floor_double(event.entityLiving.posX), MathHelper.floor_double(event.entityLiving.posY), MathHelper.floor_double(event.entityLiving.posZ), Blocks.obsidian);
 				else
-					event.entityLiving.worldObj.setBlock((int)event.entityLiving.posX - 1, (int)event.entityLiving.posY, (int)event.entityLiving.posZ, Blocks.cobblestone);
+					event.entityLiving.worldObj.setBlock(MathHelper.floor_double(event.entityLiving.posX), MathHelper.floor_double(event.entityLiving.posY), MathHelper.floor_double(event.entityLiving.posZ), Blocks.cobblestone);
 			}
 
 			if(event.entityLiving.isBurning())
@@ -69,9 +70,9 @@ public class LivingEvent
 	@SubscribeEvent
 	public void onLivingDeath(LivingDeathEvent event)
 	{
-		if(event.source.equals(NanotechDamageSource.nitrogenDamage) && event.entityLiving.worldObj.isAirBlock((int)(event.entityLiving.posX - 1), (int)event.entityLiving.posY, (int)event.entityLiving.posZ))
+		if(event.source.equals(NanotechDamageSource.nitrogenDamage) && event.entityLiving.worldObj.isAirBlock(MathHelper.floor_double(event.entityLiving.posX), MathHelper.floor_double(event.entityLiving.posY), MathHelper.floor_double(event.entityLiving.posZ)))
 		{
-			event.entityLiving.worldObj.setBlock((int)(event.entityLiving.posX - 1), (int)event.entityLiving.posY, (int)event.entityLiving.posZ, Blocks.ice);
+			event.entityLiving.worldObj.setBlock(MathHelper.floor_double(event.entityLiving.posX), MathHelper.floor_double(event.entityLiving.posY), MathHelper.floor_double(event.entityLiving.posZ), Blocks.ice);
 		}
 		if(event.entity instanceof EntityPlayer)
 		{
