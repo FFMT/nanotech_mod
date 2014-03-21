@@ -46,9 +46,7 @@ public class BlockPresent extends Block
 			if(tile != null && tile instanceof TileEntityPresent)
 			{
 				TileEntityPresent te = (TileEntityPresent)tile;
-				ItemStack stack = te.getPresent() == null ? new ItemStack(Blocks.stone, 1, 0) : te.getPresent();
-				stack.stackSize = 1;
-				this.dropBlockAsItem(world, x, y, z, stack);
+				this.dropBlockAsItem(world, x, y, z, new ItemStack(te.getPresent().getItem(), 1, te.getPresent().getItemDamage()));
 				this.removedByPlayer(world, player, x, y, z);
 				world.setBlockToAir(x, y, z);
 			}
