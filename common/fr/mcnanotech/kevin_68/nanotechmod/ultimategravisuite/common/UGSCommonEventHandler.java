@@ -7,6 +7,7 @@ import java.util.Map;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -25,14 +26,30 @@ public class UGSCommonEventHandler
 			{
 				if(UltimateGraviSuiteMod.keyboard.isFlyKeyDown(event.player))
 				{
-					System.out.println(event.player.getCommandSenderName() + " pressed fly key");
 					UGSUtils.switchFly(event.player, chestPlate);
 				}
 
 				if(UltimateGraviSuiteMod.keyboard.isInvisibleKeyDown(event.player))
 				{
-					System.out.println(event.player.getCommandSenderName() + " pressed inv key");
 					UGSUtils.switchVisibility(event.player, chestPlate);
+				}
+				
+				if(!UGSUtils.isFlyActive(event.player))
+				{
+					NBTTagCompound tag = UGSUtils.getTag(chestPlate);
+					if(tag.getBoolean("fly"))
+					{
+						UGSUtils.flyActive.put(event.player, true);
+					}
+				}
+
+				if(!UGSUtils.isInvisibilityActive(event.player))
+				{
+					NBTTagCompound tag = UGSUtils.getTag(chestPlate);
+					if(tag.getBoolean("invisible"))
+					{
+						UGSUtils.invisibilityActive.put(event.player, true);
+					}
 				}
 			}
 
@@ -61,6 +78,7 @@ public class UGSCommonEventHandler
 						event.player.capabilities.allowFlying = true;
 						event.player.capabilities.isFlying = true;
 					}
+					ElectricItem.manager.discharge(chestPlate, UltimateGraviSuiteMod.ultimateUseByTick, 4, true, false);
 				}
 				else if(!event.player.capabilities.isCreativeMode)
 				{
@@ -71,6 +89,27 @@ public class UGSCommonEventHandler
 				if(event.player.posY > 262.0D && !event.player.capabilities.isCreativeMode)
 				{
 					event.player.setPosition(event.player.posX, 262.0D, event.player.posZ);
+				}
+			}
+		}
+		else
+		{
+			if(UGSUtils.isFlyActive(event.player))
+			{
+				UGSUtils.flyActive.put(event.player, false);
+				if(!event.player.capabilities.isCreativeMode)
+				{
+					event.player.capabilities.allowFlying = false;
+					event.player.capabilities.isFlying = false;
+				}
+			}
+
+			if(UGSUtils.isInvisibilityActive(event.player))
+			{
+				UGSUtils.invisibilityActive.put(event.player, false);
+				if(event.player.isInvisible() && !event.player.isPotionActive(Potion.invisibility))
+				{
+					event.player.setInvisible(false);
 				}
 			}
 		}
