@@ -86,6 +86,7 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		}
 	}
 
+	@Override
 	protected void actionPerformed(GuiButton guibutton)
 	{
 		if(guibutton.id == 8)
