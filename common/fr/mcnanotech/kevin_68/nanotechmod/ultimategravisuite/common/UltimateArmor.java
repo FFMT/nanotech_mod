@@ -131,21 +131,18 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 			}
 
 			boolean nightVision = tag.getBoolean("nightVision");
-			if(IC2.keyboard.isAltKeyDown(player) && IC2.keyboard.isModeSwitchKeyDown(player) && timer == 0)
+			if(!world.isRemote && IC2.keyboard.isAltKeyDown(player) && IC2.keyboard.isModeSwitchKeyDown(player) && timer == 0)
 			{
 				timer = (byte)10;
 				nightVision = !nightVision;
-				if(!world.isRemote)
+				tag.setBoolean("nightVision", nightVision);
+				if(nightVision)
 				{
-					tag.setBoolean("nightVision", nightVision);
-					if(nightVision)
-					{
-						player.addChatComponentMessage(new ChatComponentTranslation("ultimate.night.on"));
-					}
-					else
-					{
-						player.addChatComponentMessage(new ChatComponentTranslation("ultimate.night.off"));
-					}
+					player.addChatComponentMessage(new ChatComponentTranslation("ultimate.night.on"));
+				}
+				else
+				{
+					player.addChatComponentMessage(new ChatComponentTranslation("ultimate.night.off"));
 				}
 			}
 			if(nightVision)
