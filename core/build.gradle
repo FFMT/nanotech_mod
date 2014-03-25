@@ -11,10 +11,10 @@ else {
 sourceSets {
     main {
         java {
-            srcDir '../common' include ("fr/mcnanotech/kevin_68/nanotechmod/**)
+            srcDir '../common' include ("fr/mcnanotech/kevin_68/nanotechmod/**")
         }
         resources {
-            srcDir '../resources' include ("assets/nanotechmod/**)
+            srcDir '../resources' include ("assets/nanotechmod/**")
         }
     }
 }
@@ -40,6 +40,16 @@ processResources
 }
 
 jar {
+    from(project.sourceSets.main.output)
+    {
+        include "fr/mcnanotech/kevin_68/nanotechmod/**"
+        include "assets/nanotechmod/**"
+    }
     appendix = 'universal'
     version = "${project.version}-mc${project.minecraft.version}"
+}
+
+
+dependencies {
+    compile 'fr.minecraftforgefrance.ffmtlibs:FFMT-libs:1.3.0'
 }
