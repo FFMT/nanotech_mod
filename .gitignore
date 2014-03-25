@@ -1,4 +1,10 @@
-/libs/
-/releases/
+.gradle/
+bin/
+build/
+eclipse/
+libs/
+
 Thumbs.db
 *.DS_Store
+.classpath
+.project
