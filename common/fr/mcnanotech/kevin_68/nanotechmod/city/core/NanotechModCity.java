@@ -45,7 +45,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTextSpotLigh
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTrail;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTrashCan;
 
-@Mod(modid = NanotechModCity.MODID, name = "Nanotech mod City", version = "@VERSION@")
+@Mod(modid = NanotechModCity.MODID, name = "Nanotech mod City", version = "@VERSION@", dependencies = "required-after:FFMTLIBS")
 public class NanotechModCity
 {
 	/**
@@ -93,22 +93,14 @@ public class NanotechModCity
 	{
 		NanotechCityBlock.initBlock();
 		NanotechCityItems.initItems();
-		NanotechCityAchievement.initAchievement();
+	
 		NetworkRegistry.INSTANCE.registerGuiHandler(this.modInstance, new GuiHandler());
 	}
 
-	@SuppressWarnings("static-access")
 	@EventHandler
 	public void Init(FMLInitializationEvent event)
 	{
 		MinecraftForge.EVENT_BUS.register(new CityCraftingHandler());
-
-		
-		packetHandler.initialise();
-		packetHandler.registerPacket(PacketSpotLight.class);
-		packetHandler.registerPacket(PacketSpotLightKey.class);
-		packetHandler.registerPacket(PacketTextSpotLight.class);
-		packetHandler.registerPacket(PacketTextSpotLightString.class);
 
 		GameRegistry.registerTileEntity(TileEntitySpotLight.class, "SpotLight");
 		GameRegistry.registerTileEntity(TileEntityTrail.class, "Trail");
@@ -119,9 +111,22 @@ public class NanotechModCity
 		GameRegistry.registerTileEntity(TileEntityModernFence.class, "ModernFence");
 		GameRegistry.registerTileEntity(TileEntityTrashCan.class, "Trashcan");
 		GameRegistry.registerTileEntity(TileEntityTextSpotLight.class, "TextSpotLight");
+		
+		packetHandler.initialise();
+		packetHandler.registerPacket(PacketSpotLight.class);
+		packetHandler.registerPacket(PacketSpotLightKey.class);
+		packetHandler.registerPacket(PacketTextSpotLight.class);
+		packetHandler.registerPacket(PacketTextSpotLightString.class);
 
+}
+
+	@EventHandler
+	public void PostInit(FMLPostInitializationEvent event)
+	{
 		proxy.registerTileRenders();
-
+		NanotechCityAchievement.initAchievement();
+		NanotechCityAchievement.addAchievementInPage();
+		
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.lamp, 1), new Object[] {"IDI", "GSG", "III", 'I', Items.iron_ingot, 'D', Blocks.daylight_detector, 'G', Blocks.glass_pane, 'S', Blocks.glowstone});
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.sunShade, 1), new Object[] {"WWW", " S ", " S ", 'W', Blocks.wool, 'S', Items.stick});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechCityBlock.trail, 1), new Object[] {Blocks.grass, Blocks.gravel});
@@ -129,12 +134,7 @@ public class NanotechModCity
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.modernFence, 4), new Object[] {"I I", "III", "I I", 'I', Items.iron_ingot});
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.trashcan, 1), new Object[] {"I I", "ICI", "III", 'I', Items.iron_ingot, 'C', Blocks.cactus});
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.spotlight), new Object[] {"OAO", "RGB", "OAO", 'O', Blocks.obsidian, 'A', Blocks.glass, 'R', new ItemStack(Items.dye, 1, 1), 'G', new ItemStack(Items.dye, 1, 2), 'B', new ItemStack(Items.dye, 1, 4)});
-	}
-
-	@EventHandler
-	public void PostInit(FMLPostInitializationEvent event)
-	{
-		NanotechCityAchievement.addAchievementInPage();
+	
 		packetHandler.postInitialise();
 	}
 }

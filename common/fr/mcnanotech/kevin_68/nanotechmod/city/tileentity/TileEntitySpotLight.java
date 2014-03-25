@@ -324,7 +324,8 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 			return this.activeBooleanFloat;
 		}
 	}
-
+	
+	@Override
 	public void writeToNBT(NBTTagCompound nbtTagCompound)
 	{
 		super.writeToNBT(nbtTagCompound);
@@ -379,6 +380,7 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 		}
 	}
 
+	@Override
 	public void readFromNBT(NBTTagCompound nbtTagCompound)
 	{
 		super.readFromNBT(nbtTagCompound);

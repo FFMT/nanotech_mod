@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.biome.BiomeGenBase;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
@@ -97,8 +98,8 @@ public class NanotechEntity
 			NanotechMod.nanoLogger.info("It's halloween, monster are coming");
 		}
 
-		EntityRegistry.registerGlobalEntityID(EntityReinforcedFishingHook.class, "EntityReinforcedFishingHook", 2048);
-		EntityRegistry.registerGlobalEntityID(EntitySuperBottleOfXp.class, "EntitySuperBottleOfXp", 2049);
+		EntityRegistry.registerGlobalEntityID(EntityReinforcedFishingHook.class, "EntityReinforcedFishingHook", 3250);//TODO fix id
+		EntityRegistry.registerGlobalEntityID(EntitySuperBottleOfXp.class, "EntitySuperBottleOfXp", 3251);//TODO fix id
 		EntityRegistry.registerModEntity(EntitySatelite.class, "Satelite", 1520, NanotechMod.modInstance, 250, 1, true);
 
 	}
