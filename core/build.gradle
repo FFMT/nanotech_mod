@@ -9,10 +9,10 @@ else {
 sourceSets {
     main {
         java {
-            srcDir rootProject.projectDir + "/common" //include ("fr/mcnanotech/kevin_68/nanotechmod/**")
+            srcDir rootProject.projectDir.getPath() + "common" //include ("fr/mcnanotech/kevin_68/nanotechmod/**")
         }
         resources {
-            srcDir "../resources" //include ("assets/nanotechmod/**")
+            srcDir rootProject.projectDir.getPath() + "resources" //include ("assets/nanotechmod/**")
         }
     }
 }
@@ -39,10 +39,10 @@ processResources
 
 jar {
     destinationDir = new File(rootProject.getBuildDir(), 'libs')
-//    from(project.sourceSets.main.output)
-//    {
-//        include "fr/mcnanotech/kevin_68/nanotechmod/**"
-//    }
+    from(project.sourceSets.main.output)
+    {
+        include "fr/mcnanotech/kevin_68/nanotechmod/**"
+    }
     appendix = 'universal'
     version = "${project.version}-mc${project.minecraft.version}"
 }
