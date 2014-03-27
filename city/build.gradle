@@ -11,10 +11,10 @@ else {
 sourceSets {
     main {
         java {
-            srcDir 'common' include ("fr/mcnanotech/kevin_68/nanotechmod/**")
+            srcDir 'common' include ("fr/mcnanotech/kevin_68/nanotechmodcity/**")
         }
         resources {
-            srcDir 'resources' include ("assets/nanotechmod/**")
+            srcDir 'resources' include ("assets/nanotechmodcity/**")
         }
     }
 }
@@ -42,8 +42,8 @@ processResources
 jar {
     from(project.sourceSets.main.output)
     {
-        include "fr/mcnanotech/kevin_68/nanotechmod/**"
-        include "assets/nanotechmod/**"
+        include "fr/mcnanotech/kevin_68/nanotechmodcity/**"
+        include "assets/nanotechmodcity/**"
     }
     appendix = 'universal'
     version = "${project.version}-mc${project.minecraft.version}"
