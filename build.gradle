@@ -37,6 +37,5 @@ allprojects {
             new URL("http://ci.mcnanotech.fr/job/FFMT-libs/59/artifact/build/libs/FFMT-libs-deobf-dev-1.3.0.59-mc1.7.2.jar").withInputStream{ i -> f.withOutputStream{ it << i }}
         }
        compile files("libs/FFMT-libs-59.jar")
-        classpath files("libs/FFMT-libs-59.jar")
     }
 }
