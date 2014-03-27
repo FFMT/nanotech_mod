@@ -1,15 +1,14 @@
-def libsDir = new File('libs')
-if (!libsDir.exists()) {
-    libsDir.mkdirs()
-}
-
-def ffmtLib = new File('libs/FFMT-libs.jar')
-if (!ffmtLib.exists()) {
-    new URL('http://ci.mcnanotech.fr/job/FFMT-libs/56/artifact/build/libs/FFMT-libs-deobf-dev-1.3.0.56-mc1.7.2.jar').withInputStream{ i -> ffmtLib.withOutputStream{ it << i }}
-}
-
-
 buildscript {
+
+    def libsDir = new File('libs')
+    if (!libsDir.exists()) {
+        libsDir.mkdirs()
+    }
+
+    def ffmtLib = new File('libs/FFMT-libs.jar')
+    if (!ffmtLib.exists()) {
+        new URL('http://ci.mcnanotech.fr/job/FFMT-libs/56/artifact/build/libs/FFMT-libs-deobf-dev-1.3.0.56-mc1.7.2.jar').withInputStream{ i -> ffmtLib.withOutputStream{ it << i }}
+    }
     repositories {
         mavenCentral()
         maven {
