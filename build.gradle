@@ -1,7 +1,8 @@
+ant.get('http://ci.mcnanotech.fr/job/FFMT-libs/56/artifact/build/libs/FFMT-libs-deobf-dev-1.3.0.56-mc1.7.2.jar', file('libs'))
+
 buildscript {
     repositories {
         mavenCentral()
-        mavenLocal()
         maven {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
@@ -13,7 +14,7 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.1-SNAPSHOT'
-        compile 'fr.minecraftforgefrance.ffmtlibs:FFMT-libs:1.3.0'
+        compile files("libs/FFMT-libs-deobf-dev-1.3.0.56-mc1.7.2.jar")
     }
 }
 
