@@ -9,10 +9,10 @@ else {
 sourceSets {
     main {
         java {
-            srcDir 'common' include ("fr/mcnanotech/kevin_68/nanotechmod/**")
+            srcDir 'common' //include ("fr/mcnanotech/kevin_68/nanotechmod/**")
         }
         resources {
-            srcDir 'resources' include ("assets/nanotechmod/**")
+            srcDir 'resources' //include ("assets/nanotechmod/**")
         }
     }
 }
