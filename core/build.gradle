@@ -41,7 +41,7 @@ jar {
     destinationDir = new File(rootProject.getBuildDir(), 'libs')
     from(project.sourceSets.main.output)
     {
-        include "fr/mcnanotech/kevin_68/nanotechmod/**"
+        //include "fr/mcnanotech/kevin_68/nanotechmod/**"
     }
     appendix = 'universal'
     version = "${project.version}-mc${project.minecraft.version}"
