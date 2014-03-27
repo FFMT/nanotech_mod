@@ -23,6 +23,7 @@ public class BlockTextSpotLight extends BlockContainer
 	protected BlockTextSpotLight()
 	{
 		super(Material.iron);
+		this.setLightLevel(1.0F);
 	}
 
 	@Override

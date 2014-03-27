@@ -27,6 +27,7 @@ public class BlockSpotLight extends BlockContainer
 	public BlockSpotLight()
 	{
 		super(Material.iron);
+		this.setLightLevel(1.0F);
 	}
 
 	public TileEntity createNewTileEntity(World world, int metadata)
