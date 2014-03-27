@@ -1,1 +1,1 @@
-includeFlat 'core','city','ugs'
+include 'core','city','ugs'

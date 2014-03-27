@@ -1,7 +1,6 @@
 buildscript {
     repositories {
         mavenCentral()
-        mavenLocal()
         maven {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
@@ -16,26 +15,110 @@ buildscript {
     }
 }
 
-subprojects {
-    apply plugin: 'forge'
-    apply plugin: 'maven'
-    minecraft {
-        version = "1.7.2-10.12.0.1024"
-    }
-    version = "2.3.0"
-    archivesBaseName = "NanotechMod" + "-" + project.projectDir.name
-    group= "fr.mcnanotech.kevin_68"
-    
-    dependencies {
-        def lib = new File('libs')
-        if(!lib.exists()) {
-            lib.mkdirs
+apply plugin: 'forge'
+
+ext.buildnumber = 0
+version = "2.3.0"
+group= "fr.mcnanotech.kevin_68"
+archivesBaseName = "NanotechMod"
+
+if (System.getenv().BUILD_NUMBER) {
+    project.buildnumber = System.getenv().BUILD_NUMBER
+	version += "." + System.getenv().BUILD_NUMBER
+}
+else {
+    logger.lifecycle "SETTING BUILDNUMBER TO 0"
+}
+
+minecraft {
+    version = "1.7.2-10.12.0.1024"
+    assetDir = "run/assets"
+	
+    replace '@VERSION@', project.version
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'common'
         }
-    
-        def f = new File('libs/FFMT-libs-59.jar')
-        if (!f.exists()) {
-            new URL("http://ci.mcnanotech.fr/job/FFMT-libs/59/artifact/build/libs/FFMT-libs-deobf-dev-1.3.0.59-mc1.7.2.jar").withInputStream{ i -> f.withOutputStream{ it << i }}
+        resources {
+            srcDir 'resources'
         }
-       compile files("libs/FFMT-libs-59.jar")
     }
 }
+
+dependencies {
+    def lib = new File(rootProject.projectDir, 'libs')
+    if(!lib.exists()) {
+        lib.mkdirs
+    }
+    
+    def ffmtlib = new File(rootProject.projectDir, 'libs/FFMT-libs-59.jar')
+    if (!ffmtlib.exists()) {
+        new URL("http://ci.mcnanotech.fr/job/FFMT-libs/59/artifact/build/libs/FFMT-libs-deobf-dev-1.3.0.59-mc1.7.2.jar").withInputStream{ i -> ffmtlib.withOutputStream{ it << i }}
+    }
+    compile files(ffmtlib.getPath())
+		
+    def ic2 = new File(rootProject.projectDir, 'libs/IC2-440.jar')
+    if (!ic2.exists()) {
+        new URL("http://ic2api.player.to:8080/job/IC2_experimental/440/artifact/packages/industrialcraft-2-dev-deobf_2.1.440-experimental.jar").withInputStream{ i -> ic2.withOutputStream{ it << i }}
+    }
+    compile files(ic2.getPath())
+}
+
+processResources
+{
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+jar {
+    from project.sourceSets.main.output
+	    include "fr/mcnanotech/kevin_68/nanotechmod/main/**"
+        include "assets/nanotechmod/**"
+		include "mcmod.info"
+    appendix = 'main-universal'
+    version = "${project.version}-mc${project.minecraft.version}"
+}
+
+task cityJar(dependsOn: "jar", type: Jar){
+    from project.sourceSets.main.output
+        appendix = 'city-universal'
+        include "fr/mcnanotech/kevin_68/nanotechmod/city/**"
+        include "assets/nanotechmodcity/**"
+		version = "${project.version}-mc${project.minecraft.version}"
+}
+task ugsJar(dependsOn: "jar", type: Jar){
+    from project.sourceSets.main.output
+        appendix = 'ugs-universal'
+        include "fr/mcnanotech/kevin_68/nanotechmod/ultimategravisuite/**"
+        include "assets/ultimategravisuite/**"
+		version = "${project.version}-mc${project.minecraft.version}"
+}
+
+reobf {
+    reobf(cityJar) {
+	reobfSpec -> reobfSpec.classpath = project.sourceSets.main.compileClasspath
+    }
+	reobf(ugsJar) { 
+	reobfSpec -> reobfSpec.classpath = project.sourceSets.main.compileClasspath
+    }
+}
+
+artifacts {
+    archives cityJar
+    archives ugsJar
+}
+
+build.dependsOn ugsJar, cityJar
