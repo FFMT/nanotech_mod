@@ -9,7 +9,7 @@ else {
 sourceSets {
     main {
         java {
-            srcDir project.projectDir + "../common" //include ("fr/mcnanotech/kevin_68/nanotechmod/**")
+            srcDir rootProject.projectDir + "/common" //include ("fr/mcnanotech/kevin_68/nanotechmod/**")
         }
         resources {
             srcDir "../resources" //include ("assets/nanotechmod/**")
@@ -38,6 +38,7 @@ processResources
 }
 
 jar {
+    destinationDir = new File(rootProject.getBuildDir(), 'libs')
 //    from(project.sourceSets.main.output)
 //    {
 //        include "fr/mcnanotech/kevin_68/nanotechmod/**"

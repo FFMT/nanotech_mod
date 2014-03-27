@@ -38,6 +38,7 @@ processResources
 }
 
 jar {
+    destinationDir = new File(rootProject.getBuildDir(), 'libs')
     from(project.sourceSets.main.output)
     {
         include "fr/mcnanotech/kevin_68/nanotechmodcity/**"
