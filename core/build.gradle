@@ -1,5 +1,3 @@
-version = "2.3.0"
-
 if (System.getenv().BUILD_NUMBER) {
     project.buildnumber = System.getenv().BUILD_NUMBER
 	version += "." + System.getenv().BUILD_NUMBER
@@ -40,11 +38,10 @@ processResources
 }
 
 jar {
-    from(project.sourceSets.main.output)
-    {
-        include "fr/mcnanotech/kevin_68/nanotechmod/**"
-        include "assets/nanotechmod/**"
-    }
+//    from(project.sourceSets.main.output)
+//    {
+//        include "fr/mcnanotech/kevin_68/nanotechmod/**"
+//    }
     appendix = 'universal'
     version = "${project.version}-mc${project.minecraft.version}"
 }
