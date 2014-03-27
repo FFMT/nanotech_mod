@@ -1,4 +1,13 @@
-ant.get('http://ci.mcnanotech.fr/job/FFMT-libs/56/artifact/build/libs/FFMT-libs-deobf-dev-1.3.0.56-mc1.7.2.jar', file('libs'))
+def libsDir = new File('libs')
+if (!libsDir.exists()) {
+    libsDir.mkdirs()
+}
+
+def ffmtLib = new File('libs/FFMT-libs.jar')
+if (!ffmtLib.exists()) {
+    new URL('http://ci.mcnanotech.fr/job/FFMT-libs/56/artifact/build/libs/FFMT-libs-deobf-dev-1.3.0.56-mc1.7.2.jar').withInputStream{ i -> ffmtLib.withOutputStream{ it << i }}
+}
+
 
 buildscript {
     repositories {
@@ -14,7 +23,7 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.1-SNAPSHOT'
-        compile files("libs/FFMT-libs-deobf-dev-1.3.0.56-mc1.7.2.jar")
+        compile files("libs/FFMT-libs.jar")
     }
 }
 
