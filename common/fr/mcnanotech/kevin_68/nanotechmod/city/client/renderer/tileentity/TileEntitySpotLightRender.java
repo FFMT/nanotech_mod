@@ -25,10 +25,10 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 {
 	private static final ResourceLocation texture = new ResourceLocation("textures/entity/beacon_beam.png");
 
-	public void renderTileEntitySpotLightAt(TileEntitySpotLight tileentity, double x, double y, double z, float par8)
+	public void renderTileEntitySpotLightAt(TileEntitySpotLight tileentity, double x, double y, double z, float tick)
 	{
 		float f1 = tileentity.isActive();
-
+        GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);
 		if(f1 > 0.0F)
 		{
 			Tessellator tessellator = Tessellator.instance;
@@ -42,7 +42,7 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 			OpenGlHelper.glBlendFunc(770, 1, 1, 0);
 			tessellator.startDrawingQuads();
 			tessellator.setColorRGBA(tileentity.get(TileEntitySpotLight.RED), tileentity.get(TileEntitySpotLight.GREEN), tileentity.get(TileEntitySpotLight.BLUE), 32);
-			float f2 = (float)tileentity.getWorldObj().getTotalWorldTime() + par8;
+			float f2 = (float)tileentity.getWorldObj().getTotalWorldTime() + tick;
 			float f3 = -f2 * 0.2F - (float)MathHelper.floor_float(-f2 * 0.1F);
 			byte b0 = 1;
 			double d4 = (double)b0 * 0.2D;// taille
@@ -205,10 +205,11 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 			GL11.glEnable(GL11.GL_TEXTURE_2D);
 			GL11.glDepthMask(true);
 		}
+        GL11.glAlphaFunc(GL11.GL_GREATER, 0.5F);
 	}
 
-	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float par8)
+	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float tick)
 	{
-		this.renderTileEntitySpotLightAt((TileEntitySpotLight)tileentity, x, y, z, par8);
+		this.renderTileEntitySpotLightAt((TileEntitySpotLight)tileentity, x, y, z, tick);
 	}
 }

@@ -76,7 +76,6 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	private int[] secondaryLazerkey = new int[121];
 	private int[] reverseRotationkey = new int[121];
 
-	@SuppressWarnings({"unchecked", "rawtypes"})
 	public void updateEntity()
 	{
 		if(this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
@@ -324,7 +323,13 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 			return this.activeBooleanFloat;
 		}
 	}
-	
+
+	@SideOnly(Side.CLIENT)
+	public double getMaxRenderDistanceSquared()
+	{
+		return 65536.0D;
+	}
+
 	@Override
 	public void writeToNBT(NBTTagCompound nbtTagCompound)
 	{
@@ -678,7 +683,6 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	}
 
 	@SideOnly(Side.CLIENT)
-	@Override
 	public AxisAlignedBB getRenderBoundingBox()
 	{
 		return INFINITE_EXTENT_AABB;
@@ -772,13 +776,6 @@ public class TileEntitySpotLight extends TileEntity implements IInventory
 	public boolean isItemValidForSlot(int i, ItemStack itemstack)
 	{
 		return false;
-	}
-
-	@SideOnly(Side.CLIENT)
-	@Override
-	public double getMaxRenderDistanceSquared()
-	{
-		return 65536.0D;
 	}
 
 	@Override

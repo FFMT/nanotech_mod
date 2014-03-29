@@ -131,6 +131,6 @@ public class TileEntitySunShade extends TileEntity
 	@SideOnly(Side.CLIENT)
 	public AxisAlignedBB getRenderBoundingBox()
 	{
-		return INFINITE_EXTENT_AABB;
+		return AxisAlignedBB.getAABBPool().getAABB(xCoord - 2, yCoord, zCoord - 2, xCoord + 2, yCoord + 3, zCoord + 2);
 	}
 }

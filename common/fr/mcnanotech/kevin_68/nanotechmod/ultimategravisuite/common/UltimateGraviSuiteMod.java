@@ -189,6 +189,7 @@ public class UltimateGraviSuiteMod
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
+		packetHandler.postInitialise();
 		if(hudPos < 1 || hudPos > 4)
 		{
 			hudPos = 1;

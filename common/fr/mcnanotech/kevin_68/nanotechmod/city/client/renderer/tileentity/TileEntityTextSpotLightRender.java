@@ -28,7 +28,6 @@ public class TileEntityTextSpotLightRender extends TileEntitySpecialRenderer
 	public void renderTileEntitySignAt(TileEntityTextSpotLight tileentity, double par2, double par4, double par6, float par8)
 	{
 		float f = tileentity.isActiveFloat();
-
 		if(f > 0.0F)
 		{
 			GL11.glPushMatrix();
