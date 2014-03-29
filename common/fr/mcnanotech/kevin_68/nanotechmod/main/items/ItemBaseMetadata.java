@@ -22,7 +22,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 
-@SuppressWarnings({"unchecked", "rawtypes"})
 public class ItemBaseMetadata extends Item
 {
 	public static String[] type = new String[] {"siliconore", "stoneofdecrease", "mysteriousmaterial", "siliconplate", "mysteriousingot", "circuit", "advancedcircuit", "processor", "microprocessor", "camera", "detector", "engine", "nanomite", "nanomiteframe", "smallnanomite", "plug", "portalActivator", "fish_veryveryfrozen", "fish_veryfrozen", "fish_frozen", "cageCrazyGlasses", "presentPaper"};
