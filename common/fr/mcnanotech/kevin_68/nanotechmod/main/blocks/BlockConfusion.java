@@ -40,12 +40,12 @@ public class BlockConfusion extends Block
 			EntityPlayer player = (EntityPlayer)entity;
 			if(this.doEffect(player))
 			{
-				player.addPotionEffect(new PotionEffect(Potion.confusion.id, 20, 10));
+				player.addPotionEffect(new PotionEffect(Potion.confusion.id, 200, 10));
 				player.addPotionEffect(new PotionEffect(Potion.blindness.id, 200, 10));
 				player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 200, 10));
 				player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 200, 10));
 				player.addPotionEffect(new PotionEffect(Potion.hunger.id, 200, 10));
-				player.addPotionEffect(new PotionEffect(Potion.wither.id, 20, 10));
+				player.addPotionEffect(new PotionEffect(Potion.wither.id, 200, 10));
 			}
 		}
 	}
