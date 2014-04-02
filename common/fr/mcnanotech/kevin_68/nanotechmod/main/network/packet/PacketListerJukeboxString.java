@@ -5,33 +5,30 @@
  * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
  */
-package fr.mcnanotech.kevin_68.nanotechmod.city.network;
+package fr.mcnanotech.kevin_68.nanotechmod.main.network.packet;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
+import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
 import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
 
-public class PacketSpotLightKey extends AbstractPacket
+public class PacketListerJukeboxString extends AbstractPacket
 {
-	public int x, y, z, index, value, time;
+	private int x, y, z, index;
+	private String txt;
 
-	public PacketSpotLightKey()
-	{
+	public PacketListerJukeboxString()
+	{}
 
-	}
-
-	public PacketSpotLightKey(int x, int y, int z, int index, int value, int time)
+	public PacketListerJukeboxString(int x, int y, int z, int index, String txt)
 	{
 		this.x = x;
 		this.y = y;
 		this.z = z;
+		this.txt = txt;
 		this.index = index;
-		this.value = value;
-		this.time = time;
 	}
 
 	@Override
@@ -41,8 +38,12 @@ public class PacketSpotLightKey extends AbstractPacket
 		buffer.writeInt(y);
 		buffer.writeInt(z);
 		buffer.writeInt(index);
-		buffer.writeInt(value);
-		buffer.writeInt(time);
+		char[] chrs = txt.toCharArray();
+		buffer.writeShort(chrs.length - 1);
+		for(char i : chrs)
+		{
+			buffer.writeChar(i);
+		}
 	}
 
 	@Override
@@ -52,8 +53,13 @@ public class PacketSpotLightKey extends AbstractPacket
 		y = buffer.readInt();
 		z = buffer.readInt();
 		index = buffer.readInt();
-		value = buffer.readInt();
-		time = buffer.readInt();
+		short lenght = buffer.readShort();
+		String str = "";
+		for(short i = 0; i <= lenght; i++)
+		{
+			str += buffer.readChar();
+		}
+		txt = str;
 	}
 
 	@Override
@@ -65,14 +71,12 @@ public class PacketSpotLightKey extends AbstractPacket
 	@Override
 	public void handleServerSide(EntityPlayer player)
 	{
-		World world = player.worldObj;
-		TileEntity tile = world.getTileEntity(x, y, z);
+		TileEntity tile = player.worldObj.getTileEntity(x, y, z);
 
-		if(tile instanceof TileEntitySpotLight)
+		if(tile instanceof TileEntityListerJukebox)
 		{
-			TileEntitySpotLight te = (TileEntitySpotLight)tile;
-			te.set(index, value, time);
+			TileEntityListerJukebox te = (TileEntityListerJukebox)tile;
+			te.set(index, txt);
 		}
 	}
-
 }

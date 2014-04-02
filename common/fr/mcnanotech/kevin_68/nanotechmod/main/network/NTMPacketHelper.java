@@ -8,6 +8,11 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.network;
 
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
+import fr.mcnanotech.kevin_68.nanotechmod.main.network.packet.PacketJumper;
+import fr.mcnanotech.kevin_68.nanotechmod.main.network.packet.PacketListerJukebox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.network.packet.PacketListerJukeboxString;
+import fr.mcnanotech.kevin_68.nanotechmod.main.network.packet.PacketSaber;
+import fr.mcnanotech.kevin_68.nanotechmod.main.network.packet.PacketSmoker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;

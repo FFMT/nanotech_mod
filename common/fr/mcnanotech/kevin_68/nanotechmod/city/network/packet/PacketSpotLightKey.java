@@ -5,30 +5,33 @@
  * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
  */
-package fr.mcnanotech.kevin_68.nanotechmod.city.network;
+package fr.mcnanotech.kevin_68.nanotechmod.city.network.packet;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTextSpotLight;
+import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
 import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
 
-public class PacketTextSpotLight extends AbstractPacket
+public class PacketSpotLightKey extends AbstractPacket
 {
-	public int x, y, z, index, value;
+	public int x, y, z, index, value, time;
 
-	public PacketTextSpotLight()
-	{}
+	public PacketSpotLightKey()
+	{
 
-	public PacketTextSpotLight(int x, int y, int z, int index, int value)
+	}
+
+	public PacketSpotLightKey(int x, int y, int z, int index, int value, int time)
 	{
 		this.x = x;
 		this.y = y;
 		this.z = z;
 		this.index = index;
 		this.value = value;
+		this.time = time;
 	}
 
 	@Override
@@ -39,6 +42,7 @@ public class PacketTextSpotLight extends AbstractPacket
 		buffer.writeInt(z);
 		buffer.writeInt(index);
 		buffer.writeInt(value);
+		buffer.writeInt(time);
 	}
 
 	@Override
@@ -49,6 +53,7 @@ public class PacketTextSpotLight extends AbstractPacket
 		z = buffer.readInt();
 		index = buffer.readInt();
 		value = buffer.readInt();
+		time = buffer.readInt();
 	}
 
 	@Override
@@ -63,10 +68,10 @@ public class PacketTextSpotLight extends AbstractPacket
 		World world = player.worldObj;
 		TileEntity tile = world.getTileEntity(x, y, z);
 
-		if(tile instanceof TileEntityTextSpotLight)
+		if(tile instanceof TileEntitySpotLight)
 		{
-			TileEntityTextSpotLight te = (TileEntityTextSpotLight)tile;
-			te.set(index, value);
+			TileEntitySpotLight te = (TileEntitySpotLight)tile;
+			te.set(index, value, time);
 		}
 	}
 

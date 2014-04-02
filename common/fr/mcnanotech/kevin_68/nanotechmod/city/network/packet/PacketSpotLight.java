@@ -5,30 +5,30 @@
  * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
  */
-package fr.mcnanotech.kevin_68.nanotechmod.main.network;
+package fr.mcnanotech.kevin_68.nanotechmod.city.network.packet;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
-import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
+import net.minecraft.world.World;
+import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
 import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
 
-public class PacketListerJukeboxString extends AbstractPacket
+public class PacketSpotLight extends AbstractPacket
 {
-	private int x, y, z, index;
-	private String txt;
+	public int x, y, z, index, value;
 
-	public PacketListerJukeboxString()
+	public PacketSpotLight()
 	{}
 
-	public PacketListerJukeboxString(int x, int y, int z, int index, String txt)
+	public PacketSpotLight(int x, int y, int z, int index, int value)
 	{
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		this.txt = txt;
 		this.index = index;
+		this.value = value;
 	}
 
 	@Override
@@ -38,12 +38,7 @@ public class PacketListerJukeboxString extends AbstractPacket
 		buffer.writeInt(y);
 		buffer.writeInt(z);
 		buffer.writeInt(index);
-		char[] chrs = txt.toCharArray();
-		buffer.writeShort(chrs.length - 1);
-		for(char i : chrs)
-		{
-			buffer.writeChar(i);
-		}
+		buffer.writeInt(value);
 	}
 
 	@Override
@@ -53,30 +48,25 @@ public class PacketListerJukeboxString extends AbstractPacket
 		y = buffer.readInt();
 		z = buffer.readInt();
 		index = buffer.readInt();
-		short lenght = buffer.readShort();
-		String str = "";
-		for(short i = 0; i <= lenght; i++)
-		{
-			str += buffer.readChar();
-		}
-		txt = str;
+		value = buffer.readInt();
 	}
 
 	@Override
 	public void handleClientSide(EntityPlayer player)
 	{
-
 	}
 
 	@Override
 	public void handleServerSide(EntityPlayer player)
 	{
-		TileEntity tile = player.worldObj.getTileEntity(x, y, z);
+		World world = player.worldObj;
+		TileEntity tile = world.getTileEntity(x, y, z);
 
-		if(tile instanceof TileEntityListerJukebox)
+		if(tile instanceof TileEntitySpotLight)
 		{
-			TileEntityListerJukebox te = (TileEntityListerJukebox)tile;
-			te.set(index, txt);
+			TileEntitySpotLight te = (TileEntitySpotLight)tile;
+			te.set(index, value);
 		}
 	}
+
 }

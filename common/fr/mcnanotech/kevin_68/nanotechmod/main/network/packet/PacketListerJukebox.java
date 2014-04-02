@@ -5,28 +5,29 @@
  * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
  */
-package fr.mcnanotech.kevin_68.nanotechmod.main.network;
+package fr.mcnanotech.kevin_68.nanotechmod.main.network.packet;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
-import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
+import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
 import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
 
-public class PacketSmoker extends AbstractPacket
+public class PacketListerJukebox extends AbstractPacket
 {
-	private int x, y, z, smoke;
+	private int x, y, z, index, listIndex;
 
-	public PacketSmoker()
+	public PacketListerJukebox()
 	{}
 
-	public PacketSmoker(int x, int y, int z, int smoke)
+	public PacketListerJukebox(int x, int y, int z, int index, int listIndex)
 	{
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		this.smoke = smoke;
+		this.index = index;
+		this.listIndex = listIndex;
 	}
 
 	@Override
@@ -35,7 +36,8 @@ public class PacketSmoker extends AbstractPacket
 		buffer.writeInt(x);
 		buffer.writeInt(y);
 		buffer.writeInt(z);
-		buffer.writeInt(smoke);
+		buffer.writeInt(index);
+		buffer.writeInt(listIndex);
 	}
 
 	@Override
@@ -44,7 +46,8 @@ public class PacketSmoker extends AbstractPacket
 		x = buffer.readInt();
 		y = buffer.readInt();
 		z = buffer.readInt();
-		smoke = buffer.readInt();
+		index = buffer.readInt();
+		listIndex = buffer.readInt();
 	}
 
 	@Override
@@ -58,10 +61,10 @@ public class PacketSmoker extends AbstractPacket
 	{
 		TileEntity tile = player.worldObj.getTileEntity(x, y, z);
 
-		if(tile instanceof TileEntitySmoker)
+		if(tile instanceof TileEntityListerJukebox)
 		{
-			TileEntitySmoker te = (TileEntitySmoker)tile;
-			te.setSmokeInt(smoke);
+			TileEntityListerJukebox te = (TileEntityListerJukebox)tile;
+			te.set(index, listIndex);
 		}
 	}
 }

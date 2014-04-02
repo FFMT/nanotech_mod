@@ -7,7 +7,6 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.main.core;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
@@ -26,13 +25,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.NanotechEntity;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
-import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechAchievement;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechConfiguration;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechDamageSource;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechFluid;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechOther;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilListerJukebox;
+import fr.minecraftforgefrance.ffmtlibs.network.FFMTPacketHandler;
 
 @Mod(modid = NanotechMod.MODID, name = "Nanotech mod", version = "@VERSION@", dependencies = "required-after:FFMTLIBS")
 public class NanotechMod
@@ -57,7 +56,7 @@ public class NanotechMod
 	/**
 	 * NanotechMod packethandler
 	 */
-	public static final PacketHandler packetHandler = new PacketHandler();
+	public static final FFMTPacketHandler packetHandler = new FFMTPacketHandler("fr.mcnanotech.kevin_68.nanotechmod.main.network.packet");
 
 	/**
 	 * NanotechMod logger
@@ -124,8 +123,9 @@ public class NanotechMod
 	@EventHandler
 	public void initNanotechMod(FMLInitializationEvent event)
 	{
-		NanotechOther.initPackets(packetHandler);
-
+		packetHandler.initialise("NTM|Packets");
+		NanotechMod.nanoLogger.info("Packets initialized");
+		
 		NanotechOther.initForgeDictionary();
 		NanotechOther.initWorld();
 		NanotechAchievement.initAchievement();

@@ -8,6 +8,10 @@
 package fr.mcnanotech.kevin_68.nanotechmod.city.network;
 
 import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechModCity;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.packet.PacketSpotLight;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.packet.PacketSpotLightKey;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.packet.PacketTextSpotLight;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.packet.PacketTextSpotLightString;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTextSpotLight;
 

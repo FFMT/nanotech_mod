@@ -13,7 +13,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.ChestGenHooks;
-import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -30,12 +29,6 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.event.PlayerEvent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.event.RenderEvent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.GuiHandler;
-import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketHandler;
-import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketJumper;
-import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketListerJukebox;
-import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketListerJukeboxString;
-import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketSaber;
-import fr.mcnanotech.kevin_68.nanotechmod.main.network.PacketSmoker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityButton;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
@@ -44,9 +37,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPortableChes
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPresent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.world.NanotechBiome;
-import fr.mcnanotech.kevin_68.nanotechmod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotechmod.main.world.NitrogenOcean;
-import fr.mcnanotech.kevin_68.nanotechmod.main.world.WorldGeneration;
 
 public class NanotechOther
 {
@@ -57,17 +48,6 @@ public class NanotechOther
 	public static BiomeGenBase nitrogenOcean;
 
 	public static Potion freeze;
-
-	public static void initPackets(PacketHandler packetHandler)
-	{
-		packetHandler.initialise();
-		packetHandler.registerPacket(PacketJumper.class);
-		packetHandler.registerPacket(PacketSmoker.class);
-		packetHandler.registerPacket(PacketSaber.class);
-		packetHandler.registerPacket(PacketListerJukebox.class);
-		packetHandler.registerPacket(PacketListerJukeboxString.class);
-		NanotechMod.nanoLogger.info("Packets initialized");
-	}
 
 	public static void initPotion()
 	{
@@ -120,10 +100,13 @@ public class NanotechOther
 
 	public static void initWorld()
 	{
-		//DimensionManager.registerProviderType(NanotechConfiguration.dimensionID, NanotechWorldProvider.class, false);
-		//DimensionManager.registerDimension(NanotechConfiguration.dimensionID, NanotechConfiguration.dimensionID);
-		//TODO fix unable to create new world / very laggy if WorldGenerator is commented	
-		//GameRegistry.registerWorldGenerator(new WorldGeneration(), 0);
+		// DimensionManager.registerProviderType(NanotechConfiguration.dimensionID,
+		// NanotechWorldProvider.class, false);
+		// DimensionManager.registerDimension(NanotechConfiguration.dimensionID,
+		// NanotechConfiguration.dimensionID);
+		// TODO fix unable to create new world / very laggy if WorldGenerator is
+		// commented
+		// GameRegistry.registerWorldGenerator(new WorldGeneration(), 0);
 
 		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechBlock.sodium), 1, 5, 6));
 		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechItem.nanoDisc), 1, 1, 2));

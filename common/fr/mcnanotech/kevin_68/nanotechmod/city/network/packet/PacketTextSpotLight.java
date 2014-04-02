@@ -5,24 +5,24 @@
  * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
  */
-package fr.mcnanotech.kevin_68.nanotechmod.city.network;
+package fr.mcnanotech.kevin_68.nanotechmod.city.network.packet;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
+import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTextSpotLight;
 import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
 
-public class PacketSpotLight extends AbstractPacket
+public class PacketTextSpotLight extends AbstractPacket
 {
 	public int x, y, z, index, value;
 
-	public PacketSpotLight()
+	public PacketTextSpotLight()
 	{}
 
-	public PacketSpotLight(int x, int y, int z, int index, int value)
+	public PacketTextSpotLight(int x, int y, int z, int index, int value)
 	{
 		this.x = x;
 		this.y = y;
@@ -54,6 +54,7 @@ public class PacketSpotLight extends AbstractPacket
 	@Override
 	public void handleClientSide(EntityPlayer player)
 	{
+
 	}
 
 	@Override
@@ -62,9 +63,9 @@ public class PacketSpotLight extends AbstractPacket
 		World world = player.worldObj;
 		TileEntity tile = world.getTileEntity(x, y, z);
 
-		if(tile instanceof TileEntitySpotLight)
+		if(tile instanceof TileEntityTextSpotLight)
 		{
-			TileEntitySpotLight te = (TileEntitySpotLight)tile;
+			TileEntityTextSpotLight te = (TileEntityTextSpotLight)tile;
 			te.set(index, value);
 		}
 	}

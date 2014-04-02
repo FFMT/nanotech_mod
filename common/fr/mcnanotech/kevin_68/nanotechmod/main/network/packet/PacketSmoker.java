@@ -5,29 +5,28 @@
  * Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
  */
-package fr.mcnanotech.kevin_68.nanotechmod.main.network;
+package fr.mcnanotech.kevin_68.nanotechmod.main.network.packet;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
-import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
 import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
 
-public class PacketListerJukebox extends AbstractPacket
+public class PacketSmoker extends AbstractPacket
 {
-	private int x, y, z, index, listIndex;
+	private int x, y, z, smoke;
 
-	public PacketListerJukebox()
+	public PacketSmoker()
 	{}
 
-	public PacketListerJukebox(int x, int y, int z, int index, int listIndex)
+	public PacketSmoker(int x, int y, int z, int smoke)
 	{
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		this.index = index;
-		this.listIndex = listIndex;
+		this.smoke = smoke;
 	}
 
 	@Override
@@ -36,8 +35,7 @@ public class PacketListerJukebox extends AbstractPacket
 		buffer.writeInt(x);
 		buffer.writeInt(y);
 		buffer.writeInt(z);
-		buffer.writeInt(index);
-		buffer.writeInt(listIndex);
+		buffer.writeInt(smoke);
 	}
 
 	@Override
@@ -46,8 +44,7 @@ public class PacketListerJukebox extends AbstractPacket
 		x = buffer.readInt();
 		y = buffer.readInt();
 		z = buffer.readInt();
-		index = buffer.readInt();
-		listIndex = buffer.readInt();
+		smoke = buffer.readInt();
 	}
 
 	@Override
@@ -61,10 +58,10 @@ public class PacketListerJukebox extends AbstractPacket
 	{
 		TileEntity tile = player.worldObj.getTileEntity(x, y, z);
 
-		if(tile instanceof TileEntityListerJukebox)
+		if(tile instanceof TileEntitySmoker)
 		{
-			TileEntityListerJukebox te = (TileEntityListerJukebox)tile;
-			te.set(index, listIndex);
+			TileEntitySmoker te = (TileEntitySmoker)tile;
+			te.setSmokeInt(smoke);
 		}
 	}
 }

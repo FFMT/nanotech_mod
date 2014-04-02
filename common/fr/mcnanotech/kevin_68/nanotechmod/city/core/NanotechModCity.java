@@ -30,11 +30,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.city.blocks.NanotechCityBlock;
 import fr.mcnanotech.kevin_68.nanotechmod.city.items.NanotechCityItems;
 import fr.mcnanotech.kevin_68.nanotechmod.city.network.GuiHandler;
-import fr.mcnanotech.kevin_68.nanotechmod.city.network.PacketHandler;
-import fr.mcnanotech.kevin_68.nanotechmod.city.network.PacketSpotLight;
-import fr.mcnanotech.kevin_68.nanotechmod.city.network.PacketSpotLightKey;
-import fr.mcnanotech.kevin_68.nanotechmod.city.network.PacketTextSpotLight;
-import fr.mcnanotech.kevin_68.nanotechmod.city.network.PacketTextSpotLightString;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.packet.PacketSpotLight;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.packet.PacketSpotLightKey;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.packet.PacketTextSpotLight;
+import fr.mcnanotech.kevin_68.nanotechmod.city.network.packet.PacketTextSpotLightString;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityFountain;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityLamp;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityLampLight;
@@ -44,6 +43,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySunShade;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTextSpotLight;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTrail;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTrashCan;
+import fr.minecraftforgefrance.ffmtlibs.network.FFMTPacketHandler;
 
 @Mod(modid = NanotechModCity.MODID, name = "Nanotech mod City", version = "@VERSION@", dependencies = "required-after:FFMTLIBS")
 public class NanotechModCity
@@ -68,7 +68,7 @@ public class NanotechModCity
 	/**
 	 * NanotechModCity packethandler
 	 */
-	public static final PacketHandler packetHandler = new PacketHandler();
+	public static final FFMTPacketHandler packetHandler = new FFMTPacketHandler("fr.mcnanotech.kevin_68.nanotechmod.city.network.packet");
 
 	/**
 	 * NanotechModCity logger
@@ -93,7 +93,7 @@ public class NanotechModCity
 	{
 		NanotechCityBlock.initBlock();
 		NanotechCityItems.initItems();
-	
+
 		NetworkRegistry.INSTANCE.registerGuiHandler(this.modInstance, new GuiHandler());
 	}
 
@@ -111,14 +111,9 @@ public class NanotechModCity
 		GameRegistry.registerTileEntity(TileEntityModernFence.class, "ModernFence");
 		GameRegistry.registerTileEntity(TileEntityTrashCan.class, "Trashcan");
 		GameRegistry.registerTileEntity(TileEntityTextSpotLight.class, "TextSpotLight");
-		
-		packetHandler.initialise();
-		packetHandler.registerPacket(PacketSpotLight.class);
-		packetHandler.registerPacket(PacketSpotLightKey.class);
-		packetHandler.registerPacket(PacketTextSpotLight.class);
-		packetHandler.registerPacket(PacketTextSpotLightString.class);
 
-}
+		packetHandler.initialise("NTMC|Packets");
+	}
 
 	@EventHandler
 	public void PostInit(FMLPostInitializationEvent event)
@@ -126,7 +121,7 @@ public class NanotechModCity
 		proxy.registerTileRenders();
 		NanotechCityAchievement.initAchievement();
 		NanotechCityAchievement.addAchievementInPage();
-		
+
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.lamp, 1), new Object[] {"IDI", "GSG", "III", 'I', Items.iron_ingot, 'D', Blocks.daylight_detector, 'G', Blocks.glass_pane, 'S', Blocks.glowstone});
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.sunShade, 1), new Object[] {"WWW", " S ", " S ", 'W', Blocks.wool, 'S', Items.stick});
 		GameRegistry.addShapelessRecipe(new ItemStack(NanotechCityBlock.trail, 1), new Object[] {Blocks.grass, Blocks.gravel});
@@ -134,7 +129,7 @@ public class NanotechModCity
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.modernFence, 4), new Object[] {"I I", "III", "I I", 'I', Items.iron_ingot});
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.trashcan, 1), new Object[] {"I I", "ICI", "III", 'I', Items.iron_ingot, 'C', Blocks.cactus});
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.spotlight), new Object[] {"OAO", "RGB", "OAO", 'O', Blocks.obsidian, 'A', Blocks.glass, 'R', new ItemStack(Items.dye, 1, 1), 'G', new ItemStack(Items.dye, 1, 2), 'B', new ItemStack(Items.dye, 1, 4)});
-	
+
 		packetHandler.postInitialise();
 	}
 }
