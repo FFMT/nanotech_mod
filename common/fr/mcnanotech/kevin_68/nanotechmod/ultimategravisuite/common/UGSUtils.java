@@ -54,7 +54,7 @@ public class UGSUtils
 		}
 		else
 		{
-			player.addChatComponentMessage(new ChatComponentTranslation("ultimate.inv.noenergy"));
+			player.addChatComponentMessage(new ChatComponentTranslation("ultimate.fly.noenergy"));
 		}
 	}
 

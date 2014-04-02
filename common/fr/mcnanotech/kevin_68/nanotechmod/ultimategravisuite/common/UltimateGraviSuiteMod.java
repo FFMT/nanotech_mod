@@ -45,7 +45,7 @@ public class UltimateGraviSuiteMod
 	public static Item ultimateGraviChestPlate, ultimateHelmet, ultimateCircuit, ultimateLeggings, ultimateBoots;
 
 	// Config
-	public static int hudPos, uhGenDay, uhGenNight, ultimateMinCharge, ultimateUseByTick;
+	public static int hudPos, uhGenDay, uhGenNight, ultimateMinCharge, ultimateUseByTick, boostUseByTick;
 	public static boolean displayHud;
 
 	public static final UGSPacketHandler packetHandler = new UGSPacketHandler();
@@ -69,6 +69,7 @@ public class UltimateGraviSuiteMod
 			uhGenNight = cfg.get(cfg.CATEGORY_GENERAL, "the output of the ultimate helmet during night time", 0).getInt();
 			ultimateMinCharge = cfg.get(cfg.CATEGORY_GENERAL, "ultimate min charge", 10000000, "the minimum charge to use invisibility and fly").getInt();
 			ultimateUseByTick = cfg.get(cfg.CATEGORY_GENERAL, "ultimate use by tick", 1200, "the use of the ultimate by tick when fly or invisibility is enable").getInt();
+			boostUseByTick = cfg.get(cfg.CATEGORY_GENERAL, "boost use by tick", 6000, "the use of the ultimate by tick when you use boost mode").getInt();
 		}
 		catch(Exception e)
 		{

@@ -70,10 +70,9 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 	{
 		NBTTagCompound tag = UGSUtils.getTag(stack);
 		byte timer = tag.getByte("timer");
-		if(!world.isRemote && timer > 0)
+		if(timer > 0)
 		{
 			timer = (byte)(timer - 1);
-			tag.setByte("timer", timer);
 		}
 		switch(this.armorType)
 		{
@@ -133,6 +132,8 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 			boolean nightVision = tag.getBoolean("nightVision");
 			if(!world.isRemote && IC2.keyboard.isAltKeyDown(player) && IC2.keyboard.isModeSwitchKeyDown(player) && timer == 0)
 			{
+				System.out.println("1 : " + timer);
+				System.out.println("2 : " + tag.getByte("timer"));
 				timer = (byte)10;
 				nightVision = !nightVision;
 				tag.setBoolean("nightVision", nightVision);
@@ -169,9 +170,6 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 				IC2.platform.removePotion(player, Potion.nightVision.id);
 			}
 			break;
-		case 1:
-			// TODO
-			break;
 		case 2:
 			int speedTicker;
 			if(ElectricItem.manager.canUse(stack, 1000) && (player.onGround && Math.abs(player.motionX) + Math.abs(player.motionZ) > 0.10000000149011612D || player.isInWater()) && player.isSprinting())
@@ -207,10 +205,10 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 		case 3:
 			float jumpCharge = jumpChargeMap.containsKey(player) ? jumpChargeMap.get(player).floatValue() : 1.0F;
 
-			if(ElectricItem.manager.canUse(stack, 1000) && player.onGround && jumpCharge < 1.0F)
+			if(ElectricItem.manager.canUse(stack, 20000) && player.onGround && jumpCharge < 1.0F)
 			{
 				jumpCharge = 1.0F;
-				ElectricItem.manager.use(stack, 1000, player);
+				ElectricItem.manager.use(stack, 20000, player);
 			}
 
 			if(player.motionY >= 0.0D && jumpCharge > 0.0F && !player.isInWater())
@@ -224,7 +222,7 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 					}
 
 					player.motionY += (double)(jumpCharge * 0.45F);
-					jumpCharge = (float)((double)jumpCharge * 0.90D);
+					jumpCharge = jumpCharge * 5.90F;
 				}
 				else if(jumpCharge < 1.0F)
 				{
@@ -235,6 +233,7 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 			jumpChargeMap.put(player, jumpCharge);
 			break;
 		}
+		tag.setByte("timer", timer);
 	}
 
 	@Override

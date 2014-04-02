@@ -30,8 +30,6 @@ public class UGSKeyboardClient extends UGSKeyboard
 		if(currentKeyState != this.lastKeyState)
 		{
 			this.lastKeyState = currentKeyState;
-			System.out.println("fly pressed in client : " + ((currentKeyState & 0x1) != 0));
-			System.out.println("inv pressed in client : " + ((currentKeyState & 0x2) != 0));
 			try
 			{
 				UltimateGraviSuiteMod.packetHandler.sendToServer(new PacketKeys(currentKeyState));

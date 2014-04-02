@@ -1,6 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common;
 
 import ic2.api.item.ElectricItem;
+import ic2.core.IC2;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
@@ -60,7 +62,11 @@ public class UGSCommonEventHandler
 					event.player.setInvisible(true);
 					if(!event.player.capabilities.isCreativeMode)
 					{
-						ElectricItem.manager.discharge(chestPlate, UltimateGraviSuiteMod.ultimateUseByTick, 4, true, false);
+						if(!this.canUseChestplate(event.player, chestPlate, "ultimate.inv.noenergy", UltimateGraviSuiteMod.ultimateUseByTick))
+						{
+							event.player.setInvisible(false);
+							UGSUtils.switchVisibility(event.player, chestPlate);
+						}
 					}
 				}
 				else
@@ -77,8 +83,20 @@ public class UGSCommonEventHandler
 					{
 						event.player.capabilities.allowFlying = true;
 						event.player.capabilities.isFlying = true;
+						if(IC2.keyboard.isBoostKeyDown(event.player) && this.canUseChestplate(event.player, chestPlate, "utilmate.fly.boost.noenergy", UltimateGraviSuiteMod.boostUseByTick))
+						{
+							//TODO boost
+						}
 					}
-					ElectricItem.manager.discharge(chestPlate, UltimateGraviSuiteMod.ultimateUseByTick, 4, true, false);
+					if(!this.canUseChestplate(event.player, chestPlate, "ultimate.fly.noenergy", UltimateGraviSuiteMod.ultimateUseByTick))
+					{
+						if(!event.player.capabilities.isCreativeMode)
+						{
+							event.player.capabilities.allowFlying = false;
+							event.player.capabilities.isFlying = false;
+						}
+						UGSUtils.switchFly(event.player, chestPlate);
+					}
 				}
 				else if(!event.player.capabilities.isCreativeMode)
 				{
@@ -113,6 +131,17 @@ public class UGSCommonEventHandler
 				}
 			}
 		}
+	}
+
+	private boolean canUseChestplate(EntityPlayer player, ItemStack chestPlate, String message, int use)
+	{
+		ElectricItem.manager.discharge(chestPlate, use, 4, true, false);
+		if(ElectricItem.manager.getCharge(chestPlate) < UltimateGraviSuiteMod.ultimateMinCharge)
+		{
+			player.addChatMessage(new ChatComponentTranslation(message));
+			return false;
+		}
+		return true;
 	}
 
 	@SubscribeEvent
