@@ -19,6 +19,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -26,6 +27,9 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.MobFastZombie;
+import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.MobSuperCreeper;
+import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.MobSuperSkeleton;
 import fr.mcnanotech.kevin_68.nanotechmod.main.entity.others.EntityFakeGold;
 
 public class BlockFakeOre extends Block
@@ -89,6 +93,22 @@ public class BlockFakeOre extends Block
 		else if(world.getBlockMetadata(x, y, z) == 1)
 		{
 			teleportNearby(world, x, y, z);
+			if(!world.isRemote)
+			{
+				MobFastZombie zombie = new MobFastZombie(world);
+				zombie.setPosition(x, y, z);
+				world.spawnEntityInWorld(zombie);
+				zombie.setCurrentItemOrArmor(4, new ItemStack(Items.leather_helmet));
+				MobSuperCreeper creeper = new MobSuperCreeper(world);
+				creeper.setPosition(x, y, z);
+				world.spawnEntityInWorld(creeper);
+				MobSuperSkeleton skeleton = new MobSuperSkeleton(world);
+				skeleton.setPosition(x, y, z);
+				world.spawnEntityInWorld(skeleton);
+				skeleton.setCurrentItemOrArmor(4, new ItemStack(Items.leather_helmet));
+				creeper.mountEntity(zombie);
+				skeleton.mountEntity(creeper);
+			}
 		}
 	}
 
