@@ -222,7 +222,7 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 					}
 
 					player.motionY += (double)(jumpCharge * 0.45F);
-					jumpCharge = jumpCharge * 5.90F;
+					jumpCharge = jumpCharge * 0.875F;
 				}
 				else if(jumpCharge < 1.0F)
 				{

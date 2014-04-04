@@ -67,7 +67,7 @@ public class UltimateGraviSuiteMod
 			displayHud = cfg.get(cfg.CATEGORY_GENERAL, "Display hud", true).getBoolean(true);
 			uhGenDay = cfg.get(cfg.CATEGORY_GENERAL, "the output of the ultimate helmet during day time", 1024).getInt();
 			uhGenNight = cfg.get(cfg.CATEGORY_GENERAL, "the output of the ultimate helmet during night time", 0).getInt();
-			ultimateMinCharge = cfg.get(cfg.CATEGORY_GENERAL, "ultimate min charge", 10000000, "the minimum charge to use invisibility and fly").getInt();
+			ultimateMinCharge = cfg.get(cfg.CATEGORY_GENERAL, "ultimate min charge", 1000000, "the minimum charge to use invisibility and fly").getInt();
 			ultimateUseByTick = cfg.get(cfg.CATEGORY_GENERAL, "ultimate use by tick", 1200, "the use of the ultimate by tick when fly or invisibility is enable").getInt();
 			boostUseByTick = cfg.get(cfg.CATEGORY_GENERAL, "boost use by tick", 6000, "the use of the ultimate by tick when you use boost mode").getInt();
 		}

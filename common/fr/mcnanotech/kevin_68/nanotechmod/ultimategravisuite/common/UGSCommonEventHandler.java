@@ -83,9 +83,9 @@ public class UGSCommonEventHandler
 					{
 						event.player.capabilities.allowFlying = true;
 						event.player.capabilities.isFlying = true;
-						if(IC2.keyboard.isBoostKeyDown(event.player) && this.canUseChestplate(event.player, chestPlate, "utilmate.fly.boost.noenergy", UltimateGraviSuiteMod.boostUseByTick))
+						if(IC2.keyboard.isBoostKeyDown(event.player) && !event.player.onGround && event.player.capabilities.isFlying)
 						{
-							//TODO boost
+							this.canUseChestplate(event.player, chestPlate, "utilmate.fly.boost.noenergy", UltimateGraviSuiteMod.boostUseByTick);
 						}
 					}
 					if(!this.canUseChestplate(event.player, chestPlate, "ultimate.fly.noenergy", UltimateGraviSuiteMod.ultimateUseByTick))
