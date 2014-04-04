@@ -6,9 +6,9 @@ import org.lwjgl.input.Keyboard;
 
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
-import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.PacketKeys;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.UGSKeyboard;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.UltimateGraviSuiteMod;
+import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.packet.PacketKeys;
 
 public class UGSKeyboardClient extends UGSKeyboard
 {

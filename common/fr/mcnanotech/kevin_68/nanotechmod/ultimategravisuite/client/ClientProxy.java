@@ -9,6 +9,7 @@ package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.client;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.FMLCommonHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.CommonProxy;
 
@@ -18,6 +19,7 @@ public class ClientProxy extends CommonProxy
 	public void init()
 	{
 		FMLCommonHandler.instance().bus().register(new UGSClientEventHandler());
+		MinecraftForge.EVENT_BUS.register(new UGSClientEventHandler());
 	}
 
 	@Override

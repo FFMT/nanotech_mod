@@ -1,8 +1,9 @@
-package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common;
+package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.packet;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
+import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.UltimateGraviSuiteMod;
 import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
 
 public class PacketKeys extends AbstractPacket

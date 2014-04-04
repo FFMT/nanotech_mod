@@ -8,6 +8,7 @@ http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
 
 package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common;
 
+import fr.minecraftforgefrance.ffmtlibs.network.FFMTPacketHandler;
 import ic2.api.item.IC2Items;
 import ic2.core.IC2;
 import net.minecraft.block.Block;
@@ -48,7 +49,7 @@ public class UltimateGraviSuiteMod
 	public static int hudPos, uhGenDay, uhGenNight, ultimateMinCharge, ultimateUseByTick, boostUseByTick;
 	public static boolean displayHud;
 
-	public static final UGSPacketHandler packetHandler = new UGSPacketHandler();
+	public static final FFMTPacketHandler packetHandler = new FFMTPacketHandler("fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.packet");
 
 	public static Logger ugslogger;
 
@@ -103,11 +104,17 @@ public class UltimateGraviSuiteMod
 		FMLCommonHandler.instance().bus().register(new UGSCommonEventHandler());
 		MinecraftForge.EVENT_BUS.register(new UGSCommonEventHandler());
 
-		packetHandler.initialise();
-		packetHandler.registerPacket(PacketKeys.class);
+		packetHandler.initialise("UGS|Packets");
 
 		ugslogger.info("Start Mods Check");
-		Item gravisuit = GameRegistry.findItem("GraviSuite", "graviChestPlate"); // TODO check when GraviSuite is release for 1.7.2
+		Item gravisuit = GameRegistry.findItem("GraviSuite", "graviChestPlate"); // TODO
+																					// check
+																					// when
+																					// GraviSuite
+																					// is
+																					// release
+																					// for
+																					// 1.7.2
 		if(Loader.isModLoaded("CompactSolars"))
 		{
 			Block compactsolar = GameRegistry.findBlock("CompactSolars", "CompactSolarBlock");
@@ -116,16 +123,41 @@ public class UltimateGraviSuiteMod
 				if(Loader.isModLoaded("gregtech_addon"))
 				{
 					/*
-					 * ugslogger.info("GregTech loaded"); GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateCircuit, 1), new Object[] {"ABC", "BDB", "CBA", 'A',
-					 * GregTech_API.getGregTechItem(43, 1, 0), 'B', IC2Items.getItem("advancedCircuit"), 'C', GregTech_API.getGregTechItem(3, 1, 0), 'D', GregTech_API.getGregTechBlock(1, 1, 4)}));
-					 * GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateGraviChestPlate, 1), new Object[] {"SIS", "XGX", "SYS", 'I', GregTech_API.getGregTechItem(38, 1, 1), 'G',
-					 * gravisuit, 'S', "itemSuperconductor", 'Y', GregTech_API.getGregTechBlock(1, 1, 4), 'X', ultimateCircuit})); GameRegistry.addRecipe(new ShapedOreRecipe(new
-					 * ItemStack(ultimateHelmet, 1), new Object[] {"PSP", "XUX", "SYS", 'P', new ItemStack(compactsolar, 1, 2), 'X', ultimateCircuit, 'S', "itemSuperconductor", 'U',
-					 * IC2Items.getItem("quantumHelmet"), 'Y', GregTech_API.getGregTechBlock(1, 1, 4)})); GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateLeggings, 1), new Object[]
-					 * {"SDS", "UQU", "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', IC2Items.getItem("iridiumPlate"), 'Q', IC2Items.getItem("quantumLeggings"),
-					 * 'C', GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimateCircuit})); GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateBoots, 1), new Object[] {"SDS", "UQU",
-					 * "ICI", 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', IC2Items.getItem("iridiumPlate"), 'Q', IC2Items.getItem("quantumBoots"), 'C',
-					 * GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimateCircuit}));
+					 * ugslogger.info("GregTech loaded");
+					 * GameRegistry.addRecipe(new ShapedOreRecipe(new
+					 * ItemStack(ultimateCircuit, 1), new Object[] {"ABC",
+					 * "BDB", "CBA", 'A', GregTech_API.getGregTechItem(43, 1,
+					 * 0), 'B', IC2Items.getItem("advancedCircuit"), 'C',
+					 * GregTech_API.getGregTechItem(3, 1, 0), 'D',
+					 * GregTech_API.getGregTechBlock(1, 1, 4)}));
+					 * GameRegistry.addRecipe(new ShapedOreRecipe(new
+					 * ItemStack(ultimateGraviChestPlate, 1), new Object[]
+					 * {"SIS", "XGX", "SYS", 'I',
+					 * GregTech_API.getGregTechItem(38, 1, 1), 'G', gravisuit,
+					 * 'S', "itemSuperconductor", 'Y',
+					 * GregTech_API.getGregTechBlock(1, 1, 4), 'X',
+					 * ultimateCircuit})); GameRegistry.addRecipe(new
+					 * ShapedOreRecipe(new ItemStack(ultimateHelmet, 1), new
+					 * Object[] {"PSP", "XUX", "SYS", 'P', new
+					 * ItemStack(compactsolar, 1, 2), 'X', ultimateCircuit, 'S',
+					 * "itemSuperconductor", 'U',
+					 * IC2Items.getItem("quantumHelmet"), 'Y',
+					 * GregTech_API.getGregTechBlock(1, 1, 4)}));
+					 * GameRegistry.addRecipe(new ShapedOreRecipe(new
+					 * ItemStack(ultimateLeggings, 1), new Object[] {"SDS",
+					 * "UQU", "ICI", 'S', "itemSuperconductor", 'D',
+					 * GregTech_API.getGregTechItem(37, 1, 1), 'I',
+					 * IC2Items.getItem("iridiumPlate"), 'Q',
+					 * IC2Items.getItem("quantumLeggings"), 'C',
+					 * GregTech_API.getGregTechBlock(1, 1, 4), 'U',
+					 * ultimateCircuit})); GameRegistry.addRecipe(new
+					 * ShapedOreRecipe(new ItemStack(ultimateBoots, 1), new
+					 * Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor",
+					 * 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I',
+					 * IC2Items.getItem("iridiumPlate"), 'Q',
+					 * IC2Items.getItem("quantumBoots"), 'C',
+					 * GregTech_API.getGregTechBlock(1, 1, 4), 'U',
+					 * ultimateCircuit}));
 					 */
 				}
 				else
@@ -147,23 +179,54 @@ public class UltimateGraviSuiteMod
 		if(Loader.isModLoaded("AdvancedSolarPanel"))
 		{
 			Block advsolar = GameRegistry.findBlock("AdvancedSolarPanel", "BlockAdvSolarPanel");
-			Item ultiSolarHelmet = GameRegistry.findItem("AdvancedSolarPanel", "ultimateSolarHelmet"); // TODO check when ASP is release for 1.7.2
+			Item ultiSolarHelmet = GameRegistry.findItem("AdvancedSolarPanel", "ultimateSolarHelmet"); // TODO
+																										// check
+																										// when
+																										// ASP
+																										// is
+																										// release
+																										// for
+																										// 1.7.2
 
 			if(advsolar != null && ultiSolarHelmet != null)
 			{
 				if(Loader.isModLoaded("gregtech_addon"))
 				{
 					/*
-					 * ugslogger.info("GregTech loaded"); GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateCircuit, 1), new Object[] {"ABC", "BDB", "CBA", 'A',
-					 * GregTech_API.getGregTechItem(43, 1, 0), 'B', IC2Items.getItem("advancedCircuit"), 'C', GregTech_API.getGregTechItem(3, 1, 0), 'D', GregTech_API.getGregTechBlock(1, 1, 4)}));
-					 * GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateGraviChestPlate, 1), new Object[] {"SIS", "XGX", "SYS", 'I', GregTech_API.getGregTechItem(38, 1, 1), 'G',
-					 * gravisuit, 'S', "itemSuperconductor", 'Y', GregTech_API.getGregTechBlock(1, 1, 4), 'X', ultimateCircuit})); GameRegistry.addRecipe(new ShapedOreRecipe(new
-					 * ItemStack(ultimateHelmet, 1), new Object[] {"SAS", "XUX", "SYS", 'A', new ItemStack(advsolar, 1, 2), 'X', ultimateCircuit, 'P', "itemSuperconductor", 'U', ultiSolarHelmet, 'Y',
-					 * GregTech_API.getGregTechBlock(1, 1, 4)})); GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateLeggings, 1), new Object[] {"SDS", "UQU", "ICI", 'S',
-					 * "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', IC2Items.getItem("iridiumPlate"), 'Q', IC2Items.getItem("quantumLeggings"), 'C',
-					 * GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimateCircuit})); GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ultimateBoots, 1), new Object[] {"SDS", "UQU", "ICI",
-					 * 'S', "itemSuperconductor", 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I', IC2Items.getItem("iridiumPlate"), 'Q', IC2Items.getItem("quantumBoots"), 'C',
-					 * GregTech_API.getGregTechBlock(1, 1, 4), 'U', ultimateCircuit}));
+					 * ugslogger.info("GregTech loaded");
+					 * GameRegistry.addRecipe(new ShapedOreRecipe(new
+					 * ItemStack(ultimateCircuit, 1), new Object[] {"ABC",
+					 * "BDB", "CBA", 'A', GregTech_API.getGregTechItem(43, 1,
+					 * 0), 'B', IC2Items.getItem("advancedCircuit"), 'C',
+					 * GregTech_API.getGregTechItem(3, 1, 0), 'D',
+					 * GregTech_API.getGregTechBlock(1, 1, 4)}));
+					 * GameRegistry.addRecipe(new ShapedOreRecipe(new
+					 * ItemStack(ultimateGraviChestPlate, 1), new Object[]
+					 * {"SIS", "XGX", "SYS", 'I',
+					 * GregTech_API.getGregTechItem(38, 1, 1), 'G', gravisuit,
+					 * 'S', "itemSuperconductor", 'Y',
+					 * GregTech_API.getGregTechBlock(1, 1, 4), 'X',
+					 * ultimateCircuit})); GameRegistry.addRecipe(new
+					 * ShapedOreRecipe(new ItemStack(ultimateHelmet, 1), new
+					 * Object[] {"SAS", "XUX", "SYS", 'A', new
+					 * ItemStack(advsolar, 1, 2), 'X', ultimateCircuit, 'P',
+					 * "itemSuperconductor", 'U', ultiSolarHelmet, 'Y',
+					 * GregTech_API.getGregTechBlock(1, 1, 4)}));
+					 * GameRegistry.addRecipe(new ShapedOreRecipe(new
+					 * ItemStack(ultimateLeggings, 1), new Object[] {"SDS",
+					 * "UQU", "ICI", 'S', "itemSuperconductor", 'D',
+					 * GregTech_API.getGregTechItem(37, 1, 1), 'I',
+					 * IC2Items.getItem("iridiumPlate"), 'Q',
+					 * IC2Items.getItem("quantumLeggings"), 'C',
+					 * GregTech_API.getGregTechBlock(1, 1, 4), 'U',
+					 * ultimateCircuit})); GameRegistry.addRecipe(new
+					 * ShapedOreRecipe(new ItemStack(ultimateBoots, 1), new
+					 * Object[] {"SDS", "UQU", "ICI", 'S', "itemSuperconductor",
+					 * 'D', GregTech_API.getGregTechItem(37, 1, 1), 'I',
+					 * IC2Items.getItem("iridiumPlate"), 'Q',
+					 * IC2Items.getItem("quantumBoots"), 'C',
+					 * GregTech_API.getGregTechBlock(1, 1, 4), 'U',
+					 * ultimateCircuit}));
 					 */
 				}
 				else
