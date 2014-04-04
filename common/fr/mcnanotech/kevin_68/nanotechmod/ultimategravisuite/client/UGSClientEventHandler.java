@@ -62,8 +62,6 @@ public class UGSClientEventHandler
 						moveStrafe *= 0.3F;
 						moveForward *= 0.3F;
 					}
-					System.out.println("moveStrafe : " + moveStrafe);
-					System.out.println("moveForward : " + moveForward);
 					event.player.moveFlying(moveStrafe, moveForward, 0.15F);
 
 					if(mc.gameSettings.keyBindJump.getIsKeyPressed())
