@@ -14,7 +14,6 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechOther;
 
 public class NanotechBiomeGenLayer extends GenLayer
 {
-
 	protected BiomeGenBase[] allowedBiomes = {NanotechOther.nanotechBiome, NanotechOther.nitrogenOcean};
 
 	public NanotechBiomeGenLayer(long seed, GenLayer genlayer)

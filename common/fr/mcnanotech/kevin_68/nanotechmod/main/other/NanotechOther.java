@@ -13,6 +13,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.ChestGenHooks;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -37,7 +38,9 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPortableChes
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPresent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.world.NanotechBiome;
+import fr.mcnanotech.kevin_68.nanotechmod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotechmod.main.world.NitrogenOcean;
+import fr.mcnanotech.kevin_68.nanotechmod.main.world.WorldGeneration;
 
 public class NanotechOther
 {
@@ -100,13 +103,10 @@ public class NanotechOther
 
 	public static void initWorld()
 	{
-		// DimensionManager.registerProviderType(NanotechConfiguration.dimensionID,
-		// NanotechWorldProvider.class, false);
-		// DimensionManager.registerDimension(NanotechConfiguration.dimensionID,
-		// NanotechConfiguration.dimensionID);
-		// TODO fix unable to create new world / very laggy if WorldGenerator is
-		// commented
-		// GameRegistry.registerWorldGenerator(new WorldGeneration(), 0);
+		DimensionManager.registerProviderType(NanotechConfiguration.dimensionID, NanotechWorldProvider.class, false);
+		DimensionManager.registerDimension(NanotechConfiguration.dimensionID, NanotechConfiguration.dimensionID);
+		// TODO fix unable to create new world / very laggy if WorldGenerator is not commented
+		//GameRegistry.registerWorldGenerator(new WorldGeneration(), 0);
 
 		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechBlock.sodium), 1, 5, 6));
 		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechItem.nanoDisc), 1, 1, 2));
