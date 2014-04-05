@@ -21,8 +21,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerLightSaber;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.ItemLightSaber;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.NTMPacketHelper;
-import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
-import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiContainerSliderBase;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiSliderForContainer;
 
 @SideOnly(Side.CLIENT)
 @SuppressWarnings({"unchecked"})

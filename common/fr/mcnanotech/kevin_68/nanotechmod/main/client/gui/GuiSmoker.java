@@ -17,8 +17,8 @@ import org.lwjgl.opengl.GL11;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSmoker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.NTMPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
-import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
-import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiContainerSliderBase;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiSliderForContainer;
 
 @SuppressWarnings({"unchecked"})
 public class GuiSmoker extends FFMTGuiContainerSliderBase
