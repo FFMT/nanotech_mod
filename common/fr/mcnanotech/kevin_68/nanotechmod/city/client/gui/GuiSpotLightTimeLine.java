@@ -19,8 +19,8 @@ import org.lwjgl.opengl.GL11;
 import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerSpotLight;
 import fr.mcnanotech.kevin_68.nanotechmod.city.network.NTMCPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
-import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiBooleanButton;
-import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiBooleanButton;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiContainerSliderBase;
 
 public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 {

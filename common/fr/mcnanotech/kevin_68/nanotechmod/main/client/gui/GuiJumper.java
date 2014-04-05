@@ -20,8 +20,8 @@ import org.lwjgl.opengl.GL11;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerJumper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.NTMPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityJumper;
-import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiContainerSliderBase;
-import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForContainer;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiContainerSliderBase;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiSliderForContainer;
 
 @SuppressWarnings({"unchecked"})
 public class GuiJumper extends FFMTGuiContainerSliderBase

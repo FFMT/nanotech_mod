@@ -21,7 +21,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.entity.others.EntitySuperBottleOf
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechConfiguration;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechOther;
 import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
-import fr.minecraftforgefrance.ffmtlibs.entityhelper.FFMTEntityHelper;
+import fr.minecraftforgefrance.ffmtlibs.entity.FFMTEntityHelper;
 
 public class NanotechEntity
 {

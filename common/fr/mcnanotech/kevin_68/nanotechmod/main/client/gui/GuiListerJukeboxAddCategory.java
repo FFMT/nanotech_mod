@@ -25,8 +25,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.NTMPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilListerJukebox;
-import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiScreenSliderBase;
-import fr.minecraftforgefrance.ffmtlibs.gui.FFMTGuiSliderForScreen;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiScreenSliderBase;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiSliderForScreen;
 
 @SideOnly(Side.CLIENT)
 @SuppressWarnings("unchecked")

@@ -15,7 +15,7 @@ import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotechmod.city.client.model.blocks.ModelBlockTrashCan;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTrashCan;
-import fr.minecraftforgefrance.ffmtlibs.renderer.TileEntityInventorySpecialRenderer;
+import fr.minecraftforgefrance.ffmtlibs.client.renderer.TileEntityInventorySpecialRenderer;
 
 public class TileEntityTrashCanRender extends TileEntityInventorySpecialRenderer
 {

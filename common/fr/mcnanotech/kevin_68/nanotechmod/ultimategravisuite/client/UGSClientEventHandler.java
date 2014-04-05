@@ -177,9 +177,4 @@ public class UGSClientEventHandler
 			color = String.valueOf(EnumChatFormatting.GREEN);
 		return color + Long.toString(percentage) + "%";
 	}
-
-	public void drawCenteredString(FontRenderer font, String string, int x, int y, int color)
-	{
-		font.drawStringWithShadow(string, x - font.getStringWidth(string) / 2, y, color);
-	}
 }
