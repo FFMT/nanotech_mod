@@ -46,8 +46,9 @@ public class UltimateGraviSuiteMod
 	public static Item ultimateGraviChestPlate, ultimateHelmet, ultimateCircuit, ultimateLeggings, ultimateBoots;
 
 	// Config
-	public static int hudPos, uhGenDay, uhGenNight, ultimateMinCharge, ultimateUseByTick, boostUseByTick;
+	public static int uhGenDay, uhGenNight, ultimateMinCharge, ultimateUseByTick, boostUseByTick;
 	public static boolean displayHud;
+	public static String hudPos;
 
 	public static final FFMTPacketHandler packetHandler = new FFMTPacketHandler("fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.packet");
 
@@ -64,7 +65,7 @@ public class UltimateGraviSuiteMod
 		try
 		{
 			cfg.load();
-			hudPos = cfg.get(cfg.CATEGORY_GENERAL, "hudPosition", 1).getInt();
+			hudPos = cfg.get(cfg.CATEGORY_GENERAL, "hudPosition", "left", "hud position. Valid value : right and left").getString();
 			displayHud = cfg.get(cfg.CATEGORY_GENERAL, "Display hud", true).getBoolean(true);
 			uhGenDay = cfg.get(cfg.CATEGORY_GENERAL, "the output of the ultimate helmet during day time", 1024).getInt();
 			uhGenNight = cfg.get(cfg.CATEGORY_GENERAL, "the output of the ultimate helmet during night time", 0).getInt();
@@ -254,9 +255,5 @@ public class UltimateGraviSuiteMod
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		packetHandler.postInitialise();
-		if(hudPos < 1 || hudPos > 4)
-		{
-			hudPos = 1;
-		}
 	}
 }

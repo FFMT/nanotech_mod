@@ -79,91 +79,31 @@ public class UGSClientEventHandler
 	}
 
 	@SubscribeEvent
-	public void renderPower(RenderGameOverlayEvent event)
+	public void renderPower(RenderGameOverlayEvent.Text event)
 	{
-		if(event.isCancelable() || (event.type != ElementType.EXPERIENCE && event.type != ElementType.HEALTHMOUNT))
-		{
-			return;
-		}
-
-		GL11.glEnable(GL11.GL_BLEND);
-		int k = event.resolution.getScaledWidth();
-		int l = event.resolution.getScaledHeight();
 		ItemStack chestPlate = mc.thePlayer.inventory.armorItemInSlot(2);
-		int var8 = 0;
-		int var9 = 0;
-		int var10 = 0;
-		int var11 = 0;
-		int var12 = 0;
-		int var13 = 0;
-		String graviPercentage = "";
-		String graviStatus = "";
-		byte var14 = 3;
-		int charge;
-		long percentage;
-
 		if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuiteMod.ultimateGraviChestPlate))
 		{
-			charge = ElectricItem.manager.getCharge(chestPlate);
-			percentage = (long)(((long)charge * 100.0D) / 1000000000);
-			graviPercentage = getTextEnergyStatus(percentage);
-			var13 = mc.fontRenderer.getStringWidth(graviPercentage);
-		}
-		if(graviPercentage != "")
-		{
-
-			if(UltimateGraviSuiteMod.hudPos == 1)
+			int charge = ElectricItem.manager.getCharge(chestPlate);
+			long percentage = (long)(((long)charge * 100.0D) / 1000000000);
+			String graviPercentage = StatCollector.translateToLocalFormatted("ultimate.energy.level", getTextEnergyStatus(percentage));
+			if(UltimateGraviSuiteMod.hudPos.equals("right"))
 			{
-				var8 = 5;
-				var10 = 5;
-				var9 = 5;
-				var11 = 5 + var14 + mc.fontRenderer.FONT_HEIGHT;
-			}
-
-			if(UltimateGraviSuiteMod.hudPos == 2)
-			{
-				if(graviStatus != "")
+				event.right.add(graviPercentage);
+				if(chestPlate.hasTagCompound() && chestPlate.getTagCompound().getBoolean("fly"))
 				{
-					var8 = k - var12 - 2;
+					event.right.add(StatCollector.translateToLocal("ultimate.fly.on"));
 				}
-
-				var10 = k - var13 - 2;
-				var9 = 2;
-				var11 = 2 + var14 + mc.fontRenderer.FONT_HEIGHT;
-			}
-
-			if(UltimateGraviSuiteMod.hudPos == 3)
-			{
-				var8 = 2;
-				var10 = 2;
-				var9 = l - 2 - mc.fontRenderer.FONT_HEIGHT;
-				var11 = var9 - var14 - mc.fontRenderer.FONT_HEIGHT;
-			}
-
-			if(UltimateGraviSuiteMod.hudPos == 4)
-			{
-				if(graviStatus != "")
-				{
-					var8 = k - var12 - 2;
-				}
-
-				var10 = k - var13 - 2;
-				var9 = l - 2 - mc.fontRenderer.FONT_HEIGHT;
-				var11 = var9 - var14 - mc.fontRenderer.FONT_HEIGHT;
-			}
-
-			if(graviStatus != "")
-			{
-				this.mc.fontRenderer.drawString(graviStatus, var8, var9, 16777215);
-				this.mc.fontRenderer.drawString(graviPercentage, var10, var11, 16777215);
 			}
 			else
 			{
-				this.mc.fontRenderer.drawString(graviPercentage, var10, var9, 16777215);
+				event.left.add(graviPercentage);
+				if(chestPlate.hasTagCompound() && chestPlate.getTagCompound().getBoolean("fly"))
+				{
+					event.left.add(StatCollector.translateToLocal("ultimate.fly.on"));
+				}
 			}
 		}
-
-		GL11.glDisable(GL11.GL_BLEND);
 	}
 
 	public String getTextEnergyStatus(long percentage)
@@ -176,10 +116,5 @@ public class UGSClientEventHandler
 		else
 			color = String.valueOf(EnumChatFormatting.GREEN);
 		return color + Long.toString(percentage) + "%";
-	}
-
-	public void drawCenteredString(FontRenderer font, String string, int x, int y, int color)
-	{
-		font.drawStringWithShadow(string, x - font.getStringWidth(string) / 2, y, color);
 	}
 }

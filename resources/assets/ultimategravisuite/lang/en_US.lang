@@ -12,4 +12,4 @@ ultimate.inv.noenergy=§cNot enough energy to be invisible !
 ultimate.night.off=§cNight vision OFF
 ultimate.night.on=§aNight vision ON
 ultimate.night.noenergy=Not enough energy to enable night vision !
-gravi.energy.level=Energy level : %s
+ultimate.energy.level=Energy level : %s

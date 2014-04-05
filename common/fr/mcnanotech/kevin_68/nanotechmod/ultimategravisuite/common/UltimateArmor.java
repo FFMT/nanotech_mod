@@ -123,7 +123,7 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 					cost = Integer.valueOf(cost.intValue() * (effect.getAmplifier() + 1));
 					if(ElectricItem.manager.canUse(stack, cost))
 					{
-						ElectricItem.manager.use(stack, cost, null);
+						ElectricItem.manager.use(stack, cost, player);
 						IC2.platform.removePotion(player, id);
 					}
 				}
@@ -132,8 +132,6 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 			boolean nightVision = tag.getBoolean("nightVision");
 			if(!world.isRemote && IC2.keyboard.isAltKeyDown(player) && IC2.keyboard.isModeSwitchKeyDown(player) && timer == 0)
 			{
-				System.out.println("1 : " + timer);
-				System.out.println("2 : " + tag.getByte("timer"));
 				timer = (byte)10;
 				nightVision = !nightVision;
 				tag.setBoolean("nightVision", nightVision);
@@ -222,7 +220,7 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 					}
 
 					player.motionY += (double)(jumpCharge * 0.45F);
-					jumpCharge = jumpCharge * 0.875F;
+					jumpCharge *= 0.89F;
 				}
 				else if(jumpCharge < 1.0F)
 				{
