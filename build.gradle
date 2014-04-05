@@ -88,7 +88,7 @@ jar {
 	    include "fr/mcnanotech/kevin_68/nanotechmod/main/**"
         include "assets/nanotechmod/**"
 		include "mcmod.info"
-    appendix = 'main-universal'
+    appendix = 'core-universal'
     version = "${project.version}-mc${project.minecraft.version}"
 }
 
