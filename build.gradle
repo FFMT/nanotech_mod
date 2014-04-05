@@ -54,9 +54,9 @@ dependencies {
         lib.mkdirs
     }
     
-    def ffmtlib = new File(rootProject.projectDir, 'libs/FFMT-libs-61.jar')
+    def ffmtlib = new File(rootProject.projectDir, 'FFMT-libs-deobf-dev-1.3.0.62-mc1.7.2.jar')
     if (!ffmtlib.exists()) {
-        new URL("http://ci.mcnanotech.fr/job/FFMT-libs/61/artifact/build/libs/FFMT-libs-deobf-dev-1.3.0.61-mc1.7.2.jar").withInputStream{ i -> ffmtlib.withOutputStream{ it << i }}
+        new URL("http://ci.mcnanotech.fr/job/FFMT-libs/62/artifact/build/libs/FFMT-libs-deobf-dev-1.3.0.62-mc1.7.2.jar").withInputStream{ i -> ffmtlib.withOutputStream{ it << i }}
     }
     compile files(ffmtlib.getPath())
 		
