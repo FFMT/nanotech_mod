@@ -14,16 +14,23 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilListerJukebox;
 
 @SuppressWarnings("rawtypes")
 public class TileEntityListerJukebox extends TileEntity
 {
-	private int modidSelected, categorySelected, redText, greenText, blueText, redCateg, greenCateg, blueCateg;
+	private int modidSelected, categorySelected, redText, greenText, blueText, redCateg, greenCateg, blueCateg, lastSlotSelected;
 	private String txt, txtCateg, dir;
-
+	
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
 		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
+	}
+	
+	@Override
+	public void updateEntity()
+	{
+		//playSound(UtilListerJukebox.getAllSoundsDirectory().get(get(8)));
 	}
 
 	public void playSound(String dir)
@@ -37,7 +44,6 @@ public class TileEntityListerJukebox extends TileEntity
 		{
 			worldObj.playSound(xCoord, yCoord, zCoord, dir, 1.0F, 1.0F, true);
 		}
-
 	}
 
 	@Override
@@ -52,6 +58,7 @@ public class TileEntityListerJukebox extends TileEntity
 		nbtTagCompound.setInteger("RedCategory", redCateg);
 		nbtTagCompound.setInteger("GreenCategory", greenCateg);
 		nbtTagCompound.setInteger("BlueCategory", blueCateg);
+		nbtTagCompound.setInteger("LastSlotSelected", lastSlotSelected);
 		if(txt != null && !txt.isEmpty())
 		{
 			nbtTagCompound.setString("NameTyped", txt);
@@ -78,6 +85,7 @@ public class TileEntityListerJukebox extends TileEntity
 		redCateg = nbtTagCompound.getInteger("RedCategory");
 		greenCateg = nbtTagCompound.getInteger("GreenCategory");
 		blueCateg = nbtTagCompound.getInteger("BlueCategory");
+		lastSlotSelected = nbtTagCompound.getInteger("LastSlotSelected");
 		txt = nbtTagCompound.getString("NameTyped");
 		txtCateg = nbtTagCompound.getString("CategoryTyped");
 		dir = nbtTagCompound.getString("DirectoryTyped");
@@ -139,6 +147,11 @@ public class TileEntityListerJukebox extends TileEntity
 		case 7:
 		{
 			blueCateg = value;
+			break;
+		}
+		case 8:
+		{
+			lastSlotSelected = value;
 			break;
 		}
 		}
@@ -204,6 +217,10 @@ public class TileEntityListerJukebox extends TileEntity
 		case 7:
 		{
 			return blueCateg;
+		}
+		case 8:
+		{
+			return lastSlotSelected;
 		}
 		default:
 		{

@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
+
 import net.minecraft.client.Minecraft;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.ModContainer;
@@ -58,7 +60,7 @@ public class UtilListerJukebox
 					try
 					{
 						writer.write("#This file contain all the sounds of " + Minecraft.getMinecraft().getSession().getUsername() + "\n");
-						writer.write("#directory~name~category~color\n");
+						writer.write("#directory~&~name~&~category~&~color~&~UID\n");
 						NanotechMod.nanoLogger.info("Informations added");
 					}
 					catch(IOException e)
@@ -128,14 +130,14 @@ public class UtilListerJukebox
 		return mainDir;
 	}
 
-	public static void setSound(String directory, String name, String category, int color)
+	public static void addSound(String modid, String directory, String name, String category, int color)
 	{
 		String categ = category.length() > 1 ? category : "default";
 
 		try
 		{
 			BufferedWriter writer = new BufferedWriter(new FileWriter(txtDir, true));
-			writer.write(directory + "~" + name + "~" + categ + "~" + color + "\n");
+			writer.write(modid + "~&~" + directory + "~&~" + name + "~&~" + categ + "~&~" + color + "~&~" + FileUtils.readLines(txtDir).size() + "\n");
 			writer.close();
 		}
 		catch(IOException e)
@@ -143,19 +145,45 @@ public class UtilListerJukebox
 			e.printStackTrace();
 		}
 	}
-
-	public static void setCategory(String name, int color)
+	
+	public static ArrayList<String> getAllLines()
 	{
+		ArrayList<String> arrList = new ArrayList();
 		try
 		{
-			BufferedWriter writer = new BufferedWriter(new FileWriter(categDir, true));
-			writer.write(name + "~" + color + "~" + Minecraft.getMinecraft().getSession().getUsername() + "\n");
-			writer.close();
+			BufferedReader reader = new BufferedReader(new FileReader(txtDir));
+			String line;
+			while((line = reader.readLine()) != null)
+			{
+				if(!line.contains("#"))
+				{
+					arrList.add(arrList.size(), line);
+				}
+			}
+			arrList.add(arrList.size(), reader.readLine());
+			reader.close();
 		}
 		catch(IOException e)
 		{
 			e.printStackTrace();
 		}
+		return arrList;
+	}
+	
+	public static String[] getInfoStringbyUID(int UID)
+	{
+		ArrayList<String> rawList = getAllLines();
+		String[] list = new String[6];
+		
+		for(int i = 0; i != rawList.size() - 1; i++)
+		{
+			String[] str = rawList.get(i).split("~&~");
+			if(str[5] == String.valueOf(UID))
+			{
+				list = str;
+			}
+		}
+		return list;
 	}
 
 	public static ArrayList<String> getModidList()
@@ -185,6 +213,106 @@ public class UtilListerJukebox
 		}
 	}
 
+	public static String getModidByUID(int UID)
+	{
+		return getInfoStringbyUID(UID)[0];
+	}
+	
+	public static String getDirectoryByUID(int UID)
+	{
+		return getInfoStringbyUID(UID)[1];
+	}
+	
+	public static String getNameByUID(int UID)
+	{
+		return getInfoStringbyUID(UID)[2];
+	}
+	
+	public static String getCategoryByUID(int UID)
+	{
+		return getInfoStringbyUID(UID)[3];
+	}
+	
+	public static int getColorByUID(int UID)
+	{
+		return Integer.valueOf(getInfoStringbyUID(UID)[4]);
+	}
+	
+	public static String getStringForPlayingbyUID(int UID)
+	{
+		return getInfoStringbyUID(UID)[0] + ":" + getInfoStringbyUID(UID)[1];
+	}
+	
+	public static ArrayList<Integer> UIDS()
+	{
+		ArrayList<String> rawList = getAllLines();
+		ArrayList<Integer> list = new ArrayList();
+		
+		for(int i = 0; i != rawList.size() - 1; i++)
+		{
+			String[] str = rawList.get(i).split("~&~");
+			list.add(list.size(), Integer.valueOf(str[5]));
+		}
+		return list;
+	}
+	
+	
+	
+	
+	
+	
+
+	@Deprecated
+	public static void setSound(String directory, String name, String category, int color)
+	{
+		String categ = category.length() > 1 ? category : "default";
+
+		try
+		{
+			BufferedWriter writer = new BufferedWriter(new FileWriter(txtDir, true));
+			writer.write(directory + "~" + name + "~" + categ + "~" + color + "\n");
+			writer.close();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	@Deprecated
+	public static void setCategory(String name, int color)
+	{
+		try
+		{
+			BufferedWriter writer = new BufferedWriter(new FileWriter(categDir, true));
+			writer.write(name + "~" + color + "~" + Minecraft.getMinecraft().getSession().getUsername() + "\n");
+			writer.close();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	@Deprecated
+	public static void editSound(int index, String directory, String name, String category, int color)
+	{
+		String categ = category.length() > 1 ? category : "default";
+
+		try
+		{
+			int li = index + 2;
+			List<String> line = FileUtils.readLines(txtDir);
+			line.set(li, directory + "~" + name + "~" + categ + "~" + color + "\n");
+			FileUtils.writeLines(txtDir, line);
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	@Deprecated
 	private static ArrayList<String> getCategory()
 	{
 		ArrayList<String> arrList = new ArrayList();
@@ -210,6 +338,7 @@ public class UtilListerJukebox
 		return arrList;
 	}
 
+	@Deprecated
 	public static ArrayList<String> getCategoryName()
 	{
 		ArrayList<String> arrList = new ArrayList();
@@ -222,6 +351,7 @@ public class UtilListerJukebox
 		return arrList;
 	}
 
+	@Deprecated
 	public static ArrayList<Integer> getCategoryColor()
 	{
 		ArrayList<Integer> arrList = new ArrayList();
@@ -234,6 +364,7 @@ public class UtilListerJukebox
 		return arrList;
 	}
 
+	@Deprecated
 	public static ArrayList<String> getCategoryOwner()
 	{
 		ArrayList<String> arrList = new ArrayList();
@@ -246,6 +377,7 @@ public class UtilListerJukebox
 		return arrList;
 	}
 
+	@Deprecated
 	private static ArrayList<String> getSounds()
 	{
 		ArrayList<String> arrList = new ArrayList();
@@ -270,6 +402,7 @@ public class UtilListerJukebox
 		return arrList;
 	}
 
+	@Deprecated
 	public static ArrayList<String> getAllSoundsDirectory()
 	{
 		ArrayList<String> arrList = new ArrayList();
@@ -282,22 +415,7 @@ public class UtilListerJukebox
 		return arrList;
 	}
 
-	public static String getSoundDirectoryByName(String name)
-	{
-		String str = "";
-		ArrayList<String> rawList = getAllSoundsName();
-		ArrayList<String> sndDirList = getAllSoundsDirectory();
-		for(int i = 0; i != rawList.size() - 1; i++)
-		{
-			String sndName = rawList.get(i);
-			if(sndName == name)
-			{
-				str = sndDirList.get(i);
-			}
-		}
-		return str;
-	}
-
+	@Deprecated
 	public static ArrayList<String> getAllSoundsName()
 	{
 		ArrayList<String> arrList = new ArrayList();
@@ -310,6 +428,7 @@ public class UtilListerJukebox
 		return arrList;
 	}
 
+	@Deprecated
 	public static ArrayList<String> getSoundsByCategory(String category)
 	{
 		ArrayList<String> arrList = new ArrayList();
@@ -325,6 +444,7 @@ public class UtilListerJukebox
 		return arrList;
 	}
 
+	@Deprecated
 	public static ArrayList<String> getSoundCategory()
 	{
 		ArrayList<String> arrList = new ArrayList();
@@ -337,6 +457,7 @@ public class UtilListerJukebox
 		return arrList;
 	}
 
+	@Deprecated
 	public static ArrayList<Integer> getSoundColor()
 	{
 		ArrayList<Integer> arrList = new ArrayList();

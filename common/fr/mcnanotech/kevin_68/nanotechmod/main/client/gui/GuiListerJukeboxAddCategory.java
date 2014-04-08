@@ -32,7 +32,8 @@ import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiSliderForScreen;
 @SuppressWarnings("unchecked")
 public class GuiListerJukeboxAddCategory extends FFMTGuiScreenSliderBase
 {
-	public static final ResourceLocation texture = new ResourceLocation("textures/gui/container/anvil.png");
+	public static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/gui/icons.png");
+
 
 	public TileEntityListerJukebox tile;
 	public World worldd;
@@ -138,11 +139,10 @@ public class GuiListerJukeboxAddCategory extends FFMTGuiScreenSliderBase
 		int y = this.height / 2;
 		this.drawBackground(12);
 		this.drawCenteredString(this.fontRendererObj, I18n.format("container.listerJukebox.addsounds"), x, 16, 16777215);
+		
 		this.mc.renderEngine.bindTexture(texture);
-		GL11.glPushMatrix();
-		GL11.glScalef(1.8F, 1.0F, 1.0F);
-		this.drawTexturedModalRect(x - 179, y - 54, 0, 166, 110, 16);
-		GL11.glPopMatrix();
+		this.drawTexturedModalRect(x - 100, y - 54, 0, 0, 200, 16);
+
 		super.drawScreen(par1, par2, par3);
 		
 		if(tile.getName(1) == "")
