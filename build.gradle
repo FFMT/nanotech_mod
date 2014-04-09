@@ -55,15 +55,16 @@ dependencies {
     }
     
     def ffmtlibUrl = "http://ci.mcnanotech.fr/job/FFMT-libs/62/artifact/build/libs/FFMT-libs-deobf-dev-1.3.0.62-mc1.7.2.jar"
-    def ffmtlib = new File(rootProject.projectDir, ffmtlibUrl.tokenize("/")[-1])
+    def ffmtlib = new File(rootProject.projectDir, "libs/" + ffmtlibUrl.tokenize("/")[-1])
     if (!ffmtlib.exists()) {
         new URL(ffmtlibUrl).withInputStream{ i -> ffmtlib.withOutputStream{ it << i }}
     }
     compile files(ffmtlib.getPath())
 		
-    def ic2 = new File(rootProject.projectDir, 'libs/IC2-440.jar')
+	def ic2Url = "http://ic2api.player.to:8080/job/IC2_experimental/440/artifact/packages/industrialcraft-2-dev-deobf_2.1.440-experimental.jar"
+    def ic2 = new File(rootProject.projectDir, "libs/" + ffmtlibUrl.tokenize("/")[-1])
     if (!ic2.exists()) {
-        new URL("http://ic2api.player.to:8080/job/IC2_experimental/440/artifact/packages/industrialcraft-2-dev-deobf_2.1.440-experimental.jar").withInputStream{ i -> ic2.withOutputStream{ it << i }}
+        new URL(ic2Url).withInputStream{ i -> ic2.withOutputStream{ it << i }}
     }
     compile files(ic2.getPath())
 }
