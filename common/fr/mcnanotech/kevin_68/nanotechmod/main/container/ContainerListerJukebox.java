@@ -12,14 +12,14 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 
 public class ContainerListerJukebox extends Container
 {
-	protected TileEntityListerJukebox tileListerJukebox;
+	protected TileEntitySoundBox tileListerJukebox;
 	private World worldObj;
 
-	public ContainerListerJukebox(TileEntityListerJukebox tileEntity, InventoryPlayer inventoryPlayer, World world)
+	public ContainerListerJukebox(TileEntitySoundBox tileEntity, InventoryPlayer inventoryPlayer, World world)
 	{
 		this.worldObj = world;
 		this.tileListerJukebox = tileEntity;
@@ -41,7 +41,7 @@ public class ContainerListerJukebox extends Container
 		}
 	}
 
-	public TileEntityListerJukebox getFountain()
+	public TileEntitySoundBox getFountain()
 	{
 		return tileListerJukebox;
 	}

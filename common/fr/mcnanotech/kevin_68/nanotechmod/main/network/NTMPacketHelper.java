@@ -14,7 +14,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.network.packet.PacketListerJukebo
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.packet.PacketSaber;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.packet.PacketSmoker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityJumper;
-import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
 
 public class NTMPacketHelper
@@ -55,7 +55,7 @@ public class NTMPacketHelper
 		}
 	}
 
-	public static void sendPacket(TileEntityListerJukebox tile, int index, int indexList)
+	public static void sendPacket(TileEntitySoundBox tile, int index, int indexList)
 	{
 		try
 		{
@@ -67,7 +67,7 @@ public class NTMPacketHelper
 		}
 	}
 	
-	public static void sendPacket(TileEntityListerJukebox tile, int index, String txt)
+	public static void sendPacket(TileEntitySoundBox tile, int index, String txt)
 	{
 		try
 		{

@@ -17,7 +17,7 @@ import net.minecraft.tileentity.TileEntity;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilListerJukebox;
 
 @SuppressWarnings("rawtypes")
-public class TileEntityListerJukebox extends TileEntity
+public class TileEntitySoundBox extends TileEntity
 {
 	private int modidSelected, categorySelected, redText, greenText, blueText, redCateg, greenCateg, blueCateg, lastSlotSelected;
 	private String txt, txtCateg, dir;
@@ -35,10 +35,10 @@ public class TileEntityListerJukebox extends TileEntity
 
 	public void playSound(String dir)
 	{
-		if(worldObj.isRemote)
-		{
-			Minecraft.getMinecraft().getSoundHandler().stopSounds();
-		}
+//		if(worldObj.isRemote)
+//		{
+//			Minecraft.getMinecraft().getSoundHandler().stopSounds();
+//		}
 
 		if(dir != null)
 		{

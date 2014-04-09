@@ -16,7 +16,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
-import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilListerJukebox;
 
 public class BlockListerJukebox extends BlockContainer
@@ -29,7 +29,7 @@ public class BlockListerJukebox extends BlockContainer
 	@Override
 	public TileEntity createNewTileEntity(World world, int metadata)
 	{
-		return new TileEntityListerJukebox();
+		return new TileEntitySoundBox();
 	}
 
 	@Override

@@ -32,7 +32,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.GuiHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityButton;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityJumper;
-import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPortableChest;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPresent;
@@ -74,7 +74,7 @@ public class NanotechOther
 		GameRegistry.registerTileEntity(TileEntityJumper.class, "TileEntityJumper");
 		GameRegistry.registerTileEntity(TileEntitySmoker.class, "TileEntitySmoker");
 		GameRegistry.registerTileEntity(TileEntityMultiplier.class, "TileEntityMultiplier");
-		GameRegistry.registerTileEntity(TileEntityListerJukebox.class, "TileEntityListerJukebox");
+		GameRegistry.registerTileEntity(TileEntitySoundBox.class, "TileEntityListerJukebox");
 		GameRegistry.registerTileEntity(TileEntityButton.class, "TileEntityButton");
 		GameRegistry.registerTileEntity(TileEntityPresent.class, "TileEntityPresent");
 		GameRegistry.registerTileEntity(TileEntityPortableChest.class, "TileEntityPortableChest");

@@ -102,7 +102,6 @@ public class NanotechMod
 
 		if(event.getSide().isClient())
 		{
-			UtilListerJukebox.debug();
 			UtilListerJukebox.init();
 		}
 

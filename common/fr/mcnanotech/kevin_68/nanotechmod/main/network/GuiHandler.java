@@ -13,10 +13,10 @@ import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.gui.GuiJumper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.gui.GuiLightSaber;
-import fr.mcnanotech.kevin_68.nanotechmod.main.client.gui.GuiListerJukebox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.gui.GuiMultiplier;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.gui.GuiPortableChest;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.gui.GuiSmoker;
+import fr.mcnanotech.kevin_68.nanotechmod.main.client.gui.GuiSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerJumper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerLightSaber;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerListerJukebox;
@@ -24,10 +24,10 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerMultiplier;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerPortableChest;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSmoker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityJumper;
-import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPortableChest;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
+import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 
 public class GuiHandler implements IGuiHandler
 {
@@ -47,9 +47,9 @@ public class GuiHandler implements IGuiHandler
 		{
 			return new ContainerMultiplier((TileEntityMultiplier)tileentity, player.inventory, world);
 		}
-		if(tileentity instanceof TileEntityListerJukebox)
+		if(tileentity instanceof TileEntitySoundBox)
 		{
-			return new ContainerListerJukebox((TileEntityListerJukebox)tileentity, player.inventory, world);
+			return new ContainerListerJukebox((TileEntitySoundBox)tileentity, player.inventory, world);
 		}
 		if(tileentity instanceof TileEntityPortableChest)
 		{
@@ -79,9 +79,9 @@ public class GuiHandler implements IGuiHandler
 		{
 			return new GuiMultiplier(player.inventory, (TileEntityMultiplier)tileentity, world);
 		}
-		if(tileentity instanceof TileEntityListerJukebox)
+		if(tileentity instanceof TileEntitySoundBox)
 		{
-			return new GuiListerJukebox(player.inventory, (TileEntityListerJukebox)tileentity, world);
+			return new GuiSoundBox(player.inventory, (TileEntitySoundBox)tileentity, world);
 		}
 		if(tileentity instanceof TileEntityPortableChest)
 		{

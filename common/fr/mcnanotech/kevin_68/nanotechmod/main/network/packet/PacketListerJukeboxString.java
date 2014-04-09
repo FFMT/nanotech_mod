@@ -11,7 +11,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
-import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
 
 public class PacketListerJukeboxString extends AbstractPacket
@@ -73,9 +73,9 @@ public class PacketListerJukeboxString extends AbstractPacket
 	{
 		TileEntity tile = player.worldObj.getTileEntity(x, y, z);
 
-		if(tile instanceof TileEntityListerJukebox)
+		if(tile instanceof TileEntitySoundBox)
 		{
-			TileEntityListerJukebox te = (TileEntityListerJukebox)tile;
+			TileEntitySoundBox te = (TileEntitySoundBox)tile;
 			te.set(index, txt);
 		}
 	}
