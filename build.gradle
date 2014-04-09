@@ -61,8 +61,8 @@ dependencies {
     }
     compile files(ffmtlib.getPath())
 		
-	def ic2Url = "http://ic2api.player.to:8080/job/IC2_experimental/440/artifact/packages/industrialcraft-2-dev-deobf_2.1.440-experimental.jar"
-    def ic2 = new File(rootProject.projectDir, "libs/" + ffmtlibUrl.tokenize("/")[-1])
+    def ic2Url = "http://ic2api.player.to:8080/job/IC2_experimental/440/artifact/packages/industrialcraft-2-dev-deobf_2.1.440-experimental.jar"
+    def ic2 = new File(rootProject.projectDir, "libs/" + ic2Url.tokenize("/")[-1])
     if (!ic2.exists()) {
         new URL(ic2Url).withInputStream{ i -> ic2.withOutputStream{ it << i }}
     }
