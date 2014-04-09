@@ -43,7 +43,7 @@ public class GuiListerJukeboxCategoryList extends GuiScreen
 		int y = this.height / 2;
 		this.buttonList.add(new GuiButton(0, x + 120, y + 104, 80, 20, "Exit"));
 		this.buttonList.add(new GuiButton(1, x - 200, y + 104, 80, 20, "Back"));
-		this.guiList = new GuiListerJukeboxLists(this, UtilListerJukebox.getCategoryName());
+		this.guiList = new GuiListerJukeboxLists(this, UtilListerJukebox.UIDS());
 		this.guiList.registerScrollButtons(7, 8);
 		this.buttonList.add(new GuiButton(2, x - 40, y + 104, 80, 20, "Select"));
 	}

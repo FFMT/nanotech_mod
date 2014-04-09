@@ -22,9 +22,11 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.NTMPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilListerJukebox;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiScreenSliderBase;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiSliderForScreen;
 
@@ -32,7 +34,7 @@ import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiSliderForScreen;
 @SuppressWarnings("unchecked")
 public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 {
-	public static final ResourceLocation texture = new ResourceLocation("textures/gui/container/anvil.png");
+	public static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/gui/icons.png");
 	public TileEntityListerJukebox tile;
 	public World worldd;
 	public InventoryPlayer inventoryy;
@@ -115,12 +117,12 @@ public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 				{
 					if(modid != null && !modid.isEmpty() && modid.length() > 1)
 					{
-						UtilListerJukebox.setSound(modid + ":" + dir, name, category, color);
+						UtilListerJukebox.addSound(modid, dir, name, category, color);
 						break;
 					}
 					else
 					{
-						UtilListerJukebox.setSound("minecraft:" + dir, name, category, color);
+						UtilListerJukebox.addSound("minecraft", dir, name, category, color);
 						break;
 					}
 				}
@@ -187,11 +189,9 @@ public class GuiListerJukeboxAddSound extends FFMTGuiScreenSliderBase
 		}
 		this.mc.renderEngine.bindTexture(texture);
 
-		GL11.glPushMatrix();
-		GL11.glScalef(1.8F, 1.0F, 1.0F);
-		this.drawTexturedModalRect(x - 179, y - 54, 0, 166, 110, 16);
-		this.drawTexturedModalRect(x - 179, y - 78, 0, 166, 110, 16);
-		GL11.glPopMatrix();
+		this.drawTexturedModalRect(x - 100, y - 54, 0, 0, 200, 16);
+		this.drawTexturedModalRect(x - 100, y - 78, 0, 0, 200, 16);
+
 		super.drawScreen(par1, par2, par3);
 		if(tile.getName(0) == "")
 		{

@@ -7,6 +7,7 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.main.blocks;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -16,6 +17,7 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityListerJukebox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilListerJukebox;
 
 public class BlockListerJukebox extends BlockContainer
 {
@@ -34,7 +36,7 @@ public class BlockListerJukebox extends BlockContainer
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t)
 	{
 		TileEntity tileentity = world.getTileEntity(x, y, z);
-		
+
 		if(tileentity == null || player.isSneaking())
 		{
 			return true;

@@ -38,15 +38,15 @@ public class GuiListerJukeboxEditSounds extends FFMTGuiScreenSliderBase
 	public InventoryPlayer inventoryy;
 	public GuiTextField nameField;
 	public GuiTextField dirField;
-	int modidIndex;
+	int index;
 
 
-	public GuiListerJukeboxEditSounds(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world, int modid)
+	public GuiListerJukeboxEditSounds(InventoryPlayer inventory, TileEntityListerJukebox tileentity, World world, int indexx)
 	{
 		inventoryy = inventory;
 		tile = tileentity;
 		worldd = world;
-		modidIndex = modid;
+		index = indexx;
 	}
 
 	public void initGui()
@@ -54,8 +54,8 @@ public class GuiListerJukeboxEditSounds extends FFMTGuiScreenSliderBase
 		super.initGui();
 		int x = this.width / 2;
 		int y = this.height / 2;
-		NTMPacketHelper.sendPacket(tile, 0, modidIndex);
-//		NTMPacketHelper.sendPacket(tile, 1, -1);
+//		NTMPacketHelper.sendPacket(tile, 0, UtilListerJukebox.getModid(index));
+//		NTMPacketHelper.sendPacket(tile, 1, UtilListerJukebox.);
 //		NTMPacketHelper.sendPacket(tile, 2, 255);
 //		NTMPacketHelper.sendPacket(tile, 3, 255);
 //		NTMPacketHelper.sendPacket(tile, 4, 255);

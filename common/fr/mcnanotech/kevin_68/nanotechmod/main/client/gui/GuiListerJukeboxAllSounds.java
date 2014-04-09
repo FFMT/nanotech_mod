@@ -46,7 +46,7 @@ public class GuiListerJukeboxAllSounds extends GuiScreen
 		this.buttonList.add(new GuiButton(2, x - 115, y + 104, 80, 20, "Play"));
 		this.buttonList.add(new GuiButton(3, x + 35, y + 104, 80, 20, "Stop"));
 		this.buttonList.add(new GuiButton(4, x - 25, y + 104, 50, 20, "Edit"));
-		this.guiList = new GuiListerJukeboxLists(this, UtilListerJukebox.getAllSoundsName());
+		this.guiList = new GuiListerJukeboxLists(this, UtilListerJukebox.UIDS());
 		this.guiList.registerScrollButtons(7, 8);
 	}
 
@@ -68,9 +68,9 @@ public class GuiListerJukeboxAllSounds extends GuiScreen
 			}
 			case 2:
 			{
-				if(guiList.getSelectedSlot() != -1)
+				if(tile.get(8) != -1)
 				{
-					this.tile.playSound(UtilListerJukebox.getAllSoundsDirectory().get(guiList.getSelectedSlot()));
+					this.tile.playSound(UtilListerJukebox.getAllSoundsDirectory().get(tile.get(8)));
 				}
 				break;
 			}
@@ -79,17 +79,18 @@ public class GuiListerJukeboxAllSounds extends GuiScreen
 				this.tile.playSound((String)null);
 				break;
 			}
-			case 5:
+			case 4:
 			{
-				if(guiList.getSelectedSlot() != -1)
+				if(tile.get(8) != -1)
 				{
-					this.mc.displayGuiScreen(new GuiListerJukeboxEditSounds(inventoryy, tile, worldd, guiList.getSelectedSlot()));
+					this.mc.displayGuiScreen(new GuiListerJukeboxEditSounds(inventoryy, tile, worldd, tile.get(8)));
 				}
 				break;
 			}
 			default:
 			{
 				this.guiList.actionPerformed(guiButton);
+				NTMPacketHelper.sendPacket(tile, 8, guiList.getSelectedSlot());
 			}
 			}
 		}

@@ -20,7 +20,7 @@ public class GuiListerJukeboxLists extends GuiSlot
 {
 	public final List listList;
 	public final Map mapMap;
-	public static int lastSlotSelected = -1;
+	public static int lastSlotSelected = -1, UID = -1;
 	final GuiListerJukeboxModidList listerGuiModList;
 	final GuiListerJukeboxCategoryList listerGuiCategoryList;
 	final GuiListerJukeboxAllSounds listerGuiAllSounds;
@@ -34,14 +34,14 @@ public class GuiListerJukeboxLists extends GuiSlot
 		this.listList = Lists.newArrayList();
 		this.mapMap = Maps.newHashMap();
 
-		for(int i = 0; i != arrList.size() - 1; i++)
+		for(int i = 0; i < arrList.size(); i++)
 		{
 			this.mapMap.put(i, arrList.get(i));
 			this.listList.add(i);
 		}
 	}
 
-	public GuiListerJukeboxLists(GuiListerJukeboxCategoryList guiLister, ArrayList<String> arrList)
+	public GuiListerJukeboxLists(GuiListerJukeboxCategoryList guiLister, ArrayList<Integer> arrList)
 	{
 		super(guiLister.getMc(), guiLister.width, guiLister.height, 32, guiLister.height - 65 + 4, 18);
 		this.listerGuiModList = null;
@@ -57,7 +57,7 @@ public class GuiListerJukeboxLists extends GuiSlot
 		}
 	}
 	
-	public GuiListerJukeboxLists(GuiListerJukeboxAllSounds guiLister, ArrayList<String> arrList)
+	public GuiListerJukeboxLists(GuiListerJukeboxAllSounds guiLister, ArrayList<Integer> arrList)
 	{
 		super(guiLister.getMc(), guiLister.width, guiLister.height, 32, guiLister.height - 65 + 4, 18);
 		this.listerGuiModList = null;
@@ -96,6 +96,15 @@ public class GuiListerJukeboxLists extends GuiSlot
 	protected void elementClicked(int slot, boolean doubleclick, int var3, int var4)
 	{
 		lastSlotSelected = slot;
+		
+		if(listerGuiAllSounds != null)
+		{
+			UID = Integer.valueOf(this.mapMap.get(this.listList.get(slot)).toString());
+			if(this.listerGuiAllSounds.tile.get(8) != -1 && doubleclick)
+			{
+				this.listerGuiAllSounds.tile.playSound(UtilListerJukebox.getStringForPlayingbyUID(UID));
+			}
+		}
 	}
 
 	@Override
@@ -127,7 +136,7 @@ public class GuiListerJukeboxLists extends GuiSlot
 		if(listerGuiModList != null)
 		{
 			this.listerGuiModList.getFont().setBidiFlag(true);
-			this.listerGuiModList.drawCenteredString(this.listerGuiModList.getFont(), (this.mapMap.get(this.listList.get(slotId))).toString().replace(".ogg", "").replace(UtilListerJukebox.getMainDir().getName() + File.separator, ""), this.listerGuiModList.width / 2, par3 + 1, 16777215);
+			this.listerGuiModList.drawCenteredString(this.listerGuiModList.getFont(), this.mapMap.get(this.listList.get(slotId)).toString(), this.listerGuiModList.width / 2, par3 + 1, 16777215);
 		}
 		else if(listerGuiCategoryList != null)
 		{
@@ -137,14 +146,20 @@ public class GuiListerJukeboxLists extends GuiSlot
 		}
 		else if(listerGuiAllSounds != null)
 		{
-			int color = UtilListerJukebox.getSoundColor().get(slotId);
+			int uid = Integer.valueOf(this.mapMap.get(this.listList.get(slotId)).toString());
+			int color = UtilListerJukebox.getColorByUID(uid);
 			this.listerGuiAllSounds.getFont().setBidiFlag(true);
-			this.listerGuiAllSounds.drawCenteredString(this.listerGuiAllSounds.getFont(), (this.mapMap.get(this.listList.get(slotId))).toString().replace(".ogg", "").replace(UtilListerJukebox.getMainDir().getName() + File.separator, ""), this.listerGuiAllSounds.width / 2, par3 + 1, color);
+			this.listerGuiAllSounds.drawCenteredString(this.listerGuiAllSounds.getFont(), UtilListerJukebox.getNameByUID(uid), this.listerGuiAllSounds.width / 2, par3 + 1, color);
 		}
 	}
 
 	public static int getSelectedSlot()
 	{
 		return lastSlotSelected;
+	}
+	
+	public static int getUID()
+	{
+		return UID;
 	}
 }

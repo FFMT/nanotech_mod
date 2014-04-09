@@ -89,22 +89,6 @@ public class BlockLamp extends Block
 			{
 				world.setBlockToAir(x, y + i, z);
 			}
-			if(world.getBlock(x + 1, y + i, z).equals(NanotechCityBlock.lightAir))
-			{
-				world.setBlockToAir(x + 1, y + i, z);
-			}
-			if(world.getBlock(x - 1, y + i, z).equals(NanotechCityBlock.lightAir))
-			{
-				world.setBlockToAir(x - 1, y + i, z);
-			}
-			if(world.getBlock(x, y + i, z + 1).equals(NanotechCityBlock.lightAir))
-			{
-				world.setBlockToAir(x, y + i, z + 1);
-			}
-			if(world.getBlock(x, y + i, z - 1).equals(NanotechCityBlock.lightAir))
-			{
-				world.setBlockToAir(x, y + i, z - 1);
-			}
 		}
 		super.breakBlock(world, x, y, z, bloc, metadata);
 	}
