@@ -1,14 +1,16 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.client.gui;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.world.World;
+
+import org.lwjgl.opengl.GL11;
+
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerListerJukebox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
-import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilListerJukebox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.CategoryEntry;
 import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
 
@@ -18,10 +20,11 @@ public class GuiSoundBoxAddSound4 extends GuiContainer
 	private TileEntitySoundBox tile;
 	private InventoryPlayer inv;
 	private World wrld;
-	private String name, dir, categ;
+	private String name, dir;
+	private CategoryEntry categ;
 	private int[] color;
 
-	public GuiSoundBoxAddSound4(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, String name, int[] color, String dir, String categ)
+	public GuiSoundBoxAddSound4(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, String name, int[] color, String dir, CategoryEntry categ)
 	{
 		super(new ContainerListerJukebox(tileEntity, inventoryPlayer, world));
 		this.tile = tileEntity;
@@ -30,13 +33,13 @@ public class GuiSoundBoxAddSound4 extends GuiContainer
 		this.name = name;
 		this.color = color;
 		this.dir = dir;
+		this.categ = categ;
 	}
 
 	@Override
 	public void initGui()
 	{
 		super.initGui();
-		categ = "default";
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		this.buttonList.add(new GuiButton(3, x + 6, y + 112, 78, 20, "Cancel"));
@@ -55,7 +58,7 @@ public class GuiSoundBoxAddSound4 extends GuiContainer
 		}
 		case 4:
 		{
-			UtilListerJukebox.addSound(this.mc.thePlayer.getCommandSenderName(), UtilListerJukebox.getNextId(this.mc.thePlayer.getCommandSenderName()), dir, name, categ, (color[0] * 65536) + (color[1] * 256) + color[2]);
+			UtilSoundBox.setSound(UtilSoundBox.getPlyN(mc), UtilSoundBox.getNextId(UtilSoundBox.getPlyN(mc), false), dir, name, categ, (color[0] * 65536) + (color[1] * 256) + color[2]);
 			this.mc.displayGuiScreen(new GuiSoundBox(inv, tile, wrld));
 			break;
 		}
@@ -71,7 +74,7 @@ public class GuiSoundBoxAddSound4 extends GuiContainer
 		
 		this.drawCenteredString(fontRendererObj, name, 85, 30,  (color[0] * 65536) + (color[1] * 256) + color[2]);
 		this.drawCenteredString(fontRendererObj, dir, 85, 45, FFMTColor.WHITE);
-		this.drawCenteredString(fontRendererObj, categ, 85, 60, FFMTColor.WHITE);
+		this.drawCenteredString(fontRendererObj, categ.getName(), 85, 60, FFMTColor.WHITE);
 	}
 	
 	@Override

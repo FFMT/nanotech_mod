@@ -30,7 +30,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechConfiguration;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechDamageSource;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechFluid;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechOther;
-import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilListerJukebox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
 import fr.minecraftforgefrance.ffmtlibs.network.FFMTPacketHandler;
 
 @Mod(modid = NanotechMod.MODID, name = "Nanotech mod", version = "@VERSION@", dependencies = "required-after:FFMTLIBS")
@@ -102,7 +102,7 @@ public class NanotechMod
 
 		if(event.getSide().isClient())
 		{
-			UtilListerJukebox.init();
+			UtilSoundBox.init();
 		}
 
 		NanotechConfiguration.configure(event);
@@ -147,6 +147,21 @@ public class NanotechMod
 		{
 			NanotechRecipe.InitNormalRecipes();
 			NanotechRecipe.InitFallingBlockRecipes(8);
+		}
+	}
+	
+	public static class BaseNTMEntry
+	{
+		private final String name;
+		
+		public BaseNTMEntry(String name)
+		{
+			this.name = name;
+		}
+		
+		public String getName()
+		{
+			return name;
 		}
 	}
 }

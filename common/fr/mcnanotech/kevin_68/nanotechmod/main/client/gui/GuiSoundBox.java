@@ -2,6 +2,7 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.client.gui;
 
 import org.lwjgl.opengl.GL11;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
@@ -10,6 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerListerJukebox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
 
 public class GuiSoundBox extends GuiContainer
@@ -48,6 +50,10 @@ public class GuiSoundBox extends GuiContainer
 		{
 			this.mc.displayGuiScreen(new GuiSoundBoxAddSound1(inv, tile, wrld));
 			break;
+		}
+		case 3:
+		{
+			UtilSoundBox.setCategory(UtilSoundBox.getPlyN(mc), UtilSoundBox.getNextId(UtilSoundBox.getPlyN(mc), true), "test", 0);
 		}
 		}
 	}

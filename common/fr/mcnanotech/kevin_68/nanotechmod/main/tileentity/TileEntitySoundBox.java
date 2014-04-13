@@ -14,7 +14,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilListerJukebox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
 
 @SuppressWarnings("rawtypes")
 public class TileEntitySoundBox extends TileEntity
