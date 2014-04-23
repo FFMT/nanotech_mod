@@ -31,6 +31,7 @@ public class TileEntityTrailRenderTESR extends TileEntitySpecialRenderer
 	protected static final ResourceLocation texture5 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model5.png");
 	protected static final ResourceLocation texture6 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model6.png");
 	protected static final ResourceLocation texture7 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model7.png");
+	protected static final ResourceLocation texture8 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model8.png");
 
 	public TileEntityTrailRenderTESR()
 	{
@@ -105,7 +106,7 @@ public class TileEntityTrailRenderTESR extends TileEntitySpecialRenderer
 			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
 			this.model2.render(0.0625F, 1);
 		}
-		else if(flag[CTHelper.VrNE] || flag[CTHelper.tSrNE] || flag[CTHelper.tWrNE])
+		else if(flag[CTHelper.VrNE] || flag[CTHelper.tSrNE] || flag[CTHelper.tWrNE] || flag[CTHelper.SWswrNEnenwse])
 		{
 			GL11.glScalef(0.99F, 0.99F, 0.99F);
 			GL11.glTranslatef(-0.0045F, -0.015F, 0.0045F);
@@ -113,7 +114,7 @@ public class TileEntityTrailRenderTESR extends TileEntitySpecialRenderer
 			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
 			this.model2.render(0.0625F, 4);
 		}
-		else if(flag[CTHelper.VrNW] || flag[CTHelper.tSrNW] || flag[CTHelper.tErNW])
+		else if(flag[CTHelper.VrNW] || flag[CTHelper.tSrNW] || flag[CTHelper.tErNW] || flag[CTHelper.SEserNWnenwsw])
 		{
 			GL11.glScalef(0.99F, 0.99F, 0.99F);
 			GL11.glTranslatef(0.0046F, -0.015F, 0.0046F);
@@ -122,7 +123,7 @@ public class TileEntityTrailRenderTESR extends TileEntitySpecialRenderer
 			GL11.glRotatef(270F, 0.0F, 1.0F, 0.0F);
 			this.model2.render(0.0625F, 4);
 		}
-		else if(flag[CTHelper.VrSE] || flag[CTHelper.tNrSE] || flag[CTHelper.tWrSE])
+		else if(flag[CTHelper.VrSE] || flag[CTHelper.tNrSE] || flag[CTHelper.tWrSE] || flag[CTHelper.NWnwrSEnesesw])
 		{
 			GL11.glScalef(0.99F, 0.99F, 0.99F);
 			GL11.glTranslatef(-0.0046F, -0.015F, -0.0046F);
@@ -131,7 +132,7 @@ public class TileEntityTrailRenderTESR extends TileEntitySpecialRenderer
 			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
 			this.model2.render(0.0625F, 4);
 		}
-		else if(flag[CTHelper.VrSW] || flag[CTHelper.tNrSW] || flag[CTHelper.tErSW])
+		else if(flag[CTHelper.VrSW] || flag[CTHelper.tNrSW] || flag[CTHelper.tErSW] || flag[CTHelper.NEnerSWnwsesw])
 		{
 			GL11.glScalef(0.99F, 0.99F, 0.99F);
 			GL11.glTranslatef(0.0046F, -0.015F, -0.0046F);
@@ -312,6 +313,14 @@ public class TileEntityTrailRenderTESR extends TileEntitySpecialRenderer
 			this.model2.render(0.0625F, 1);
 			this.bindTexture(texture6);
 			this.model2.render(0.0625F, 7);
+		}
+		else if(flag[CTHelper.NSEWrnesenwsw])
+		{
+			GL11.glScalef(0.9995F, 0.9995F, 0.9995F);
+			GL11.glTranslatef(0.0F, -0.0046F, 0.0F);
+			this.bindTexture(texture8);
+			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+			this.model2.render(0.0625F, 8);
 		}
 		else
 		{

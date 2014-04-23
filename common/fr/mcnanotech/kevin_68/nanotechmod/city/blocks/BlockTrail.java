@@ -253,7 +253,7 @@ public class BlockTrail extends Block
 			this.setBlockBounds(1.0F - (f * 15), 0.0F, 0.0F, 1.0F - (16 * f), 1.0F - (15 * f), 1.0F);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
 		}
-		else if(flag[CTHelper.VrNE] || flag[CTHelper.tSrNE] || flag[CTHelper.tWrNE])
+		else if(flag[CTHelper.VrNE] || flag[CTHelper.tSrNE] || flag[CTHelper.tWrNE] || flag[CTHelper.SWswrNEnenwse])
 		{
 			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
@@ -288,7 +288,7 @@ public class BlockTrail extends Block
 			this.setBlockBounds(0.0F, (f * 15), (f * 15), 1.0F - (f * 15), (f * 16), 1.0F);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
 		}
-		else if(flag[CTHelper.VrNW] || flag[CTHelper.tSrNW] || flag[CTHelper.tErNW])
+		else if(flag[CTHelper.VrNW] || flag[CTHelper.tSrNW] || flag[CTHelper.tErNW] || flag[CTHelper.SEserNWnenwsw])
 		{
 			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
@@ -323,7 +323,7 @@ public class BlockTrail extends Block
 			this.setBlockBounds((f * 15), (f * 15), (f * 15), 1.0F, (f * 16), 1.0F);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
 		}
-		else if(flag[CTHelper.VrSE] || flag[CTHelper.tNrSE] || flag[CTHelper.tWrSE])
+		else if(flag[CTHelper.VrSE] || flag[CTHelper.tNrSE] || flag[CTHelper.tWrSE] || flag[CTHelper.NWnwrSEnesesw])
 		{
 			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
@@ -358,7 +358,7 @@ public class BlockTrail extends Block
 			this.setBlockBounds(0.0F, (f * 15), 0.0F, 1.0F - (f * 15), (f * 16), 1.0F - (f * 15));
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
 		}
-		else if(flag[CTHelper.VrSW] || flag[CTHelper.tNrSW] || flag[CTHelper.tErSW])
+		else if(flag[CTHelper.VrSW] || flag[CTHelper.tNrSW] || flag[CTHelper.tErSW] || flag[CTHelper.NEnerSWnwsesw])
 		{
 			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
@@ -1022,6 +1022,73 @@ public class BlockTrail extends Block
 			this.setBlockBounds((7 * f), (7 * f), 1.0F - (7 * f), 1.0F - (7 * f), (8 * f), 1.0F);
 			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
 		}
+		else if(flag[CTHelper.NSEWrnesenwsw])
+		{
+			this.setBlockBounds(0.0F, 0.0F, 0.0F, f, 1.0F - (15 * f), 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds(f, 0.0F, 0.0F, (2 * f), 1.0F - (14 * f), 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds((f * 2), 0.0F, 0.0F, (3 * f), 1.0F - (13 * f), 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds((f * 3), 0.0F, 0.0F, (4 * f), 1.0F - (12 * f), 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds((f * 4), 0.0F, 0.0F, (5 * f), 1.0F - (11 * f), 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds((f * 5), 0.0F, 0.0F, (6 * f), 1.0F - (10 * f), 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds((f * 6), 0.0F, 0.0F, (7 * f), 1.0F - (9 * f), 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds((f * 7), 0.0F, 0.0F, (8 * f), 1.0F - (8 * f), 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds((f * 8), 0.0F, 0.0F, (9 * f), 1.0F - (8 * f), 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds((f * 9), 0.0F, 0.0F, (10 * f), 1.0F - (9 * f), 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds((f * 10), 0.0F, 0.0F, (11 * f), 1.0F - (10 * f), 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds((f * 11), 0.0F, 0.0F, (12 * f), 1.0F - (11 * f), 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds((f * 12), 0.0F, 0.0F, (13 * f), 1.0F - (12 * f), 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds((f * 13), 0.0F, 0.0F, (14 * f), 1.0F - (13 * f), 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds((f * 14), 0.0F, 0.0F, (15 * f), 1.0F - (14 * f), 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds((f * 15), 0.0F, 0.0F, (16 * f), 1.0F - (15 * f), 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds(0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F - (15 * f), 1.0F);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds(0.0F, 0.0F, 1.0F - (2 * f), 1.0F, 1.0F - (14 * f), 1.0F - f);
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds(0.0F, 0.0F, 1.0F - (3 * f), 1.0F, 1.0F - (13 * f), 1.0F - (2 * f));
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds(0.0F, 0.0F, 1.0F - (4 * f), 1.0F, 1.0F - (12 * f), 1.0F - (3 * f));
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds(0.0F, 0.0F, 1.0F - (5 * f), 1.0F, 1.0F - (11 * f), 1.0F - (4 * f));
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds(0.0F, 0.0F, 1.0F - (6 * f), 1.0F, 1.0F - (10 * f), 1.0F - (5 * f));
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds(0.0F, 0.0F, 1.0F - (7 * f), 1.0F, 1.0F - (9 * f), 1.0F - (6 * f));
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds(0.0F, 0.0F, 1.0F - (8 * f), 1.0F, 1.0F - (8 * f), 1.0F - (7 * f));
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds(0.0F, 0.0F, 1.0F - (9 * f), 1.0F, 1.0F - (8 * f), 1.0F - (8 * f));
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds(0.0F, 0.0F, 1.0F - (10 * f), 1.0F, 1.0F - (9 * f), 1.0F - (9 * f));
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds(0.0F, 0.0F, 1.0F - (11 * f), 1.0F, 1.0F - (10 * f), 1.0F - (10 * f));
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds(0.0F, 0.0F, 1.0F - (12 * f), 1.0F, 1.0F - (11 * f), 1.0F - (11 * f));
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds(0.0F, 0.0F, 1.0F - (13 * f), 1.0F, 1.0F - (12 * f), 1.0F - (12 * f));
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds(0.0F, 0.0F, 1.0F - (14 * f), 1.0F, 1.0F - (13 * f), 1.0F - (13 * f));
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds(0.0F, 0.0F, 1.0F - (15 * f), 1.0F, 1.0F - (14 * f), 1.0F - (14 * f));
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+			this.setBlockBounds(0.0F, 0.0F, 1.0F - (16 * f), 1.0F, 1.0F - (15 * f), 1.0F - (15 * f));
+			super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+		}
 		else
 		{
 			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
@@ -1041,7 +1108,7 @@ public class BlockTrail extends Block
 	{
 		boolean[] flag = CTHelper.get(world, x, y, z, NanotechCityBlock.trail);
 
-		if(flag[CTHelper.VrNSEW] || flag[CTHelper.VrNSE] || flag[CTHelper.VrNSW] || flag[CTHelper.VrNEW] || flag[CTHelper.VrSEW] || flag[CTHelper.VrNS] || flag[CTHelper.VrEW] || flag[CTHelper.NrSEW] || flag[CTHelper.SrNEW] || flag[CTHelper.ErNSW] || flag[CTHelper.WrNSE] || flag[CTHelper.NErSW] || flag[CTHelper.NSrEW] || flag[CTHelper.EWrNS] || flag[CTHelper.NErSW] || flag[CTHelper.SErNW] || flag[CTHelper.NWrSE] || flag[CTHelper.SWrNE] || flag[CTHelper.NSErW] || flag[CTHelper.NSWrE] || flag[CTHelper.NEWrS] || flag[CTHelper.SEWrN])
+		if(flag[CTHelper.VrNSEW] || flag[CTHelper.VrNSE] || flag[CTHelper.VrNSW] || flag[CTHelper.VrNEW] || flag[CTHelper.VrSEW] || flag[CTHelper.VrNS] || flag[CTHelper.VrEW] || flag[CTHelper.NrSEW] || flag[CTHelper.SrNEW] || flag[CTHelper.ErNSW] || flag[CTHelper.WrNSE] || flag[CTHelper.NErSW] || flag[CTHelper.NSrEW] || flag[CTHelper.EWrNS] || flag[CTHelper.NErSW] || flag[CTHelper.SErNW] || flag[CTHelper.NWrSE] || flag[CTHelper.SWrNE] || flag[CTHelper.NSErW] || flag[CTHelper.NSWrE] || flag[CTHelper.NEWrS] || flag[CTHelper.SEWrN] || flag[CTHelper.NSEWrnesenwsw])
 		{
 			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
 		}
@@ -1133,11 +1200,11 @@ public class BlockTrail extends Block
 			{
 				return side == 1 || side == 4 ? iconBuffer[3] : (side == 3 || side == 2 ? iconBuffer[1] : iconBuffer[0]);
 			}
-			if(flag[CTHelper.VrNS] && !flag[CTHelper.NSrNS])
+			if(flag[CTHelper.VrNS] && !flag[CTHelper.NSrNS] && !flag[CTHelper.tNrNS] && !flag[CTHelper.tSrNS])
 			{
 				return side == 1 || side == 2 || side == 3 ? iconBuffer[3] : (side == 4 || side == 5 ? iconBuffer[99] : iconBuffer[0]);
 			}
-			if(flag[CTHelper.VrEW] && !flag[CTHelper.EWrEW])
+			if(flag[CTHelper.VrEW] && !flag[CTHelper.EWrEW] && !flag[CTHelper.tErEW] && !flag[CTHelper.tWrEW])
 			{
 				return side == 1 || side == 4 || side == 5 ? iconBuffer[3] : (side == 2 || side == 3 ? iconBuffer[99] : iconBuffer[0]);
 			}
@@ -1253,7 +1320,7 @@ public class BlockTrail extends Block
 			{
 				return side == 1 ? iconBuffer[16] : (side == 4 || side == 3 || side == 5 ? iconBuffer[100] : iconBuffer[0]);
 			}
-			if(flag[CTHelper.NSEW])
+			if(flag[CTHelper.NSEW] && !flag[CTHelper.NSEWrnesenwsw])
 			{
 				return side == 1 ? iconBuffer[18] : iconBuffer[0];
 			}
@@ -1655,7 +1722,7 @@ public class BlockTrail extends Block
 			}
 			if(flag[CTHelper.NErSW])
 			{
-				return side == 1 || side == 3 || side == 4 ? iconBuffer[11] : (side == 2 ? iconBuffer[12] : iconBuffer[13]);
+				return side == 1 || side == 3 ? iconBuffer[11] : (side == 2 ? iconBuffer[12] : (side == 4 ? iconBuffer[10] : iconBuffer[13]));
 			}
 			if(flag[CTHelper.NWrSE])
 			{
@@ -1684,6 +1751,30 @@ public class BlockTrail extends Block
 			if(flag[CTHelper.SEWrN])
 			{
 				return side == 1 || side == 3 ? iconBuffer[16] : (side == 2 ? iconBuffer[17] : iconBuffer[15]);
+			}
+			if(flag[CTHelper.tNrNS])
+			{
+				return side == 1 || side == 3 ? iconBuffer[4] : iconBuffer[5];
+			}
+			if(flag[CTHelper.tSrNS])
+			{
+				return side == 1 || side == 3 ? iconBuffer[5] : iconBuffer[4];
+			}
+			if(flag[CTHelper.tErEW])
+			{
+				return side == 1 ? iconBuffer[6] : (side == 4 ? iconBuffer[4] : iconBuffer[5]);
+			}
+			if(flag[CTHelper.tWrEW])
+			{
+				return side == 1 ? iconBuffer[7] : (side == 4 ? iconBuffer[5] : iconBuffer[4]);
+			}
+			if(flag[CTHelper.NSEWrnesenwsw])
+			{
+				return iconBuffer[18];
+			}
+			if(flag[CTHelper.SWswrNEnenwse] || flag[CTHelper.SEserNWnenwsw] || flag[CTHelper.NWnwrSEnesesw] || flag[CTHelper.NEnerSWnwsesw])
+			{
+				return iconBuffer[18];
 			}
 		}
 		else
