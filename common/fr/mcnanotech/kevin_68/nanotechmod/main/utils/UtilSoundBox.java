@@ -98,6 +98,20 @@ public class UtilSoundBox
 		NBTTagCompound playerTag = playerList.getCompoundTagAt(id);
 		return new SoundEntry(playerTag.getString("dir"), playerTag.getString("name"), playerTag.getInteger("categorie"), playerTag.getInteger("color"));
 	}
+	
+	public static ArrayList<BaseNTMEntry> getSoundsList(String player)
+	{
+		ArrayList<BaseNTMEntry> list = new ArrayList();
+		NBTTagCompound compoundBase = getData();
+		NBTTagCompound compound = compoundBase.getCompoundTag("sounds");
+		NBTTagList playerList = compound.getTagList(player, Constants.NBT.TAG_COMPOUND);
+		for(int i = 0; i < playerList.tagCount(); i++)
+		{
+			NBTTagCompound playerTag = playerList.getCompoundTagAt(i);
+			list.add(i, new SoundEntry(playerTag.getString("dir"), playerTag.getString("name"), playerTag.getInteger("categorie"), playerTag.getInteger("color")));
+		}
+		return list;
+	}
 
 	public static void setCategory(String player, int id, String name, int color)
 	{

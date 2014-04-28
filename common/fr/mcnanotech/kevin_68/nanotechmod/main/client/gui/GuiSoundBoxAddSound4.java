@@ -72,9 +72,9 @@ public class GuiSoundBoxAddSound4 extends GuiContainer
 		int y = (height - ySize) / 2;
 		fontRendererObj.drawString("Sound box" + " - " + "Add sound resume", 6, 6, 4210752);
 		
-		this.drawCenteredString(fontRendererObj, name, 85, 30,  (color[0] * 65536) + (color[1] * 256) + color[2]);
-		this.drawCenteredString(fontRendererObj, dir, 85, 45, FFMTColor.WHITE);
-		this.drawCenteredString(fontRendererObj, categ.getName(), 85, 60, FFMTColor.WHITE);
+		this.drawCenteredString(fontRendererObj, "Sound name: " + name, 85, 30,  (color[0] * 65536) + (color[1] * 256) + color[2]);
+		this.drawCenteredString(fontRendererObj, "Directory: " + dir, 85, 45, FFMTColor.WHITE);
+		this.drawCenteredString(fontRendererObj, "Category: " + categ.getName(), 85, 60, FFMTColor.WHITE);
 	}
 	
 	@Override

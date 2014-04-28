@@ -34,7 +34,7 @@ public class GuiSoundBox extends GuiContainer
 		super.initGui();
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		this.buttonList.add(new GuiButton(0, x + 10, y + 20, 156, 20, "All sounds"));
+		this.buttonList.add(new GuiButton(0, x + 10, y + 20, 156, 20, "Sounds"));
 		this.buttonList.add(new GuiButton(1, x + 10, y + 44, 156, 20, "Categories"));
 		this.buttonList.add(new GuiButton(2, x + 10, y + 68, 156, 20, "Add sound"));
 		this.buttonList.add(new GuiButton(3, x + 10, y + 92, 156, 20, "Add category"));
@@ -46,6 +46,16 @@ public class GuiSoundBox extends GuiContainer
 	{
 		switch(guibutton.id)
 		{
+		case 0:
+		{
+			this.mc.displayGuiScreen(new GuiSoundBoxAllSound(inv, tile, wrld));
+			break;
+		}
+		case 1:
+		{
+			//Categories
+			break;
+		}
 		case 2:
 		{
 			this.mc.displayGuiScreen(new GuiSoundBoxAddSound1(inv, tile, wrld));
@@ -53,7 +63,14 @@ public class GuiSoundBox extends GuiContainer
 		}
 		case 3:
 		{
-			UtilSoundBox.setCategory(UtilSoundBox.getPlyN(mc), UtilSoundBox.getNextId(UtilSoundBox.getPlyN(mc), true), "test", 0);
+			//UtilSoundBox.setCategory(UtilSoundBox.getPlyN(mc), UtilSoundBox.getNextId(UtilSoundBox.getPlyN(mc), true), "test", 0);
+			//Add categ
+			break;
+		}
+		case 4:
+		{
+			tile.stopSounds();
+			break;
 		}
 		}
 	}

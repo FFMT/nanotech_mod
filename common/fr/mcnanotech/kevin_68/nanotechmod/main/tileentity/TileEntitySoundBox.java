@@ -45,6 +45,11 @@ public class TileEntitySoundBox extends TileEntity
 			worldObj.playSound(xCoord, yCoord, zCoord, dir, 1.0F, 1.0F, true);
 		}
 	}
+	
+	public void stopSounds()
+	{
+		Minecraft.getMinecraft().getSoundHandler().stopSounds();
+	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound nbtTagCompound)

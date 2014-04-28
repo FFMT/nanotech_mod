@@ -3,7 +3,7 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.client.gui;
 import java.util.ArrayList;
 
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiLanguage;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.world.World;
 
@@ -16,7 +16,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.CategoryEntry;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
 
-public class GuiSoundBoxAddSound3 extends GuiListBase
+public class GuiSoundBoxAddSound3 extends GuiSoundBoxListBase
 {
 	private TileEntitySoundBox tile;
 	private InventoryPlayer inv;
@@ -26,7 +26,8 @@ public class GuiSoundBoxAddSound3 extends GuiListBase
 	private int[] color;
 
 	private GuiButton nextButton;
-	private GuiSoundBoxList guiSBList;
+	private ArrayList<BaseNTMEntry> categList = UtilSoundBox.getCategoryList();
+	private GuiSoundBoxList sBList;
 
 	public GuiSoundBoxAddSound3(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, String name, int[] color, String dir)
 	{
@@ -45,10 +46,11 @@ public class GuiSoundBoxAddSound3 extends GuiListBase
 		super.initGui();
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		this.buttonList.add(new GuiButton(3, x + 6, y + 112, 78, 20, "Cancel"));
-		this.buttonList.add(nextButton = new GuiButton(4, x + 88, y + 112, 78, 20, "Next"));
-		nextButton.enabled = true;// TODO change when categ done
-		//this.guiSBList = new GuiSoundBoxList(UtilSoundBox.getCategoryList(), this, this.mc, this.width, 100, 20, 80);
+		this.buttonList.add(0, new GuiButton(0, x + 6, y + 117, 78, 20, "Cancel"));
+		this.buttonList.add(1, nextButton = new GuiButton(1, x + 91, y + 117, 78, 20, "Next"));
+		nextButton.enabled = false;
+		sBList = new GuiSoundBoxList(this, categList, x + 6, y + 17, x + 169, y + 115);
+		sBList.addButton(buttonList);
 	}
 
 	@Override
@@ -56,23 +58,32 @@ public class GuiSoundBoxAddSound3 extends GuiListBase
 	{
 		switch(guibutton.id)
 		{
-		case 3:
+		case 0:
 		{
 			this.mc.displayGuiScreen(new GuiSoundBox(inv, tile, wrld));
 			break;
 		}
-		case 4:
+		case 1:
 		{
 			this.mc.displayGuiScreen(new GuiSoundBoxAddSound4(inv, tile, wrld, name, color, dir, categ));
 			break;
 		}
+		default:
+		{
+			sBList.actionPerformed(guibutton, this.buttonList);
+			break;
+		}
 		}
 	}
-
+	
 	@Override
-	public void handlerListAction(ArrayList<BaseNTMEntry> list, int slotId, boolean doubleClick, int mouseX, int mouseY)
+	public void setSelected(BaseNTMEntry entry)
 	{
-
+		if(entry instanceof CategoryEntry)
+		{
+			this.categ = (CategoryEntry)entry;
+			this.nextButton.enabled = true;
+		}
 	}
 
 	@Override
@@ -89,7 +100,7 @@ public class GuiSoundBoxAddSound3 extends GuiListBase
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		super.drawScreen(par1, par2, par3);
-		this.guiSBList.drawScreen(par1, par2, par3);
+		this.sBList.drawScreen(x, y);
 	}
 
 	@Override

@@ -55,8 +55,8 @@ public class GuiSoundBoxAddSound2 extends GuiContainer
 		
 		this.buttonList.add(new GuiButton(1, x + 6, y + 74, 160, 20, "stop"));
 		this.buttonList.add(new GuiButton(2, x + 6, y + 50, 160, 20, "test"));
-		this.buttonList.add(new GuiButton(3, x + 6, y + 112, 78, 20, "Cancel"));
-		this.buttonList.add(nextButton = new GuiButton(4, x + 88, y + 112, 78, 20, "Next"));
+		this.buttonList.add(new GuiButton(3, x + 6, y + 117, 78, 20, "Cancel"));
+		this.buttonList.add(nextButton = new GuiButton(4, x + 91, y + 117, 78, 20, "Next"));
 		nextButton.enabled = false;
 	}
 
