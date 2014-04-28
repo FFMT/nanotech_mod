@@ -26,6 +26,7 @@ public class GuiSoundBoxAllSound extends GuiSoundBoxListBase
 	private ArrayList<BaseNTMEntry> sndList = UtilSoundBox.getSoundsList(Minecraft.getMinecraft().thePlayer.getCommandSenderName());
 	private GuiSoundBoxList sBList;
 	private SoundEntry snd;
+	private boolean editMode;
 	
 	public GuiSoundBoxAllSound(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world)
 	{
@@ -60,7 +61,14 @@ public class GuiSoundBoxAllSound extends GuiSoundBoxListBase
 		}
 		case 1:
 		{
-			//Play Sound
+			if(editMode)
+			{
+				this.mc.displayGuiScreen(new GuiSoundBoxEditSound(inv, tile, wrld, snd));
+			}
+			else
+			{
+				this.tile.playSound(snd.getDir());	
+			}
 			break;
 		}
 		default:
@@ -76,9 +84,27 @@ public class GuiSoundBoxAllSound extends GuiSoundBoxListBase
 	{
 		if(entry instanceof SoundEntry)
 		{
-			this.snd = (SoundEntry)entry;
+			SoundEntry ent = (SoundEntry)entry;
+			if(snd != null && snd == ent)
+			{
+				editMode = true;
+			}
+			else
+			{
+				editMode = false;
+			}
+			
+			this.snd = ent;
+			this.updateButton(editMode);
 			this.playButton.enabled = true;
 		}
+	}
+	
+	public void updateButton(boolean edit)
+	{
+		int x = (width - xSize) / 2;
+		int y = (height - ySize) / 2;
+		this.buttonList.set(1, playButton = new GuiButton(1, x + 91, y + 117, 78, 20, edit ? "Edit" : "Play"));
 	}
 
 	@Override

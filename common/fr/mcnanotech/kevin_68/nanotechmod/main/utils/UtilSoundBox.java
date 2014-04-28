@@ -21,6 +21,7 @@ import net.minecraftforge.common.util.Constants;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod.BaseNTMEntry;
+import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
 
 public class UtilSoundBox
 {
@@ -84,6 +85,7 @@ public class UtilSoundBox
 		playerTag.setString("name", name);
 		playerTag.setInteger("categoryId", category.getId());
 		playerTag.setInteger("color", color);
+		playerTag.setInteger("id", id);
 		playerList.appendTag(playerTag);
 		compound.setTag(player, playerList);
 		compoundBase.setTag("sounds", compound);
@@ -96,7 +98,7 @@ public class UtilSoundBox
 		NBTTagCompound compound = compoundBase.getCompoundTag("sounds");
 		NBTTagList playerList = compound.getTagList(player, Constants.NBT.TAG_COMPOUND);
 		NBTTagCompound playerTag = playerList.getCompoundTagAt(id);
-		return new SoundEntry(playerTag.getString("dir"), playerTag.getString("name"), playerTag.getInteger("categorie"), playerTag.getInteger("color"));
+		return new SoundEntry(playerTag.getString("dir"), playerTag.getString("name"), playerTag.getInteger("categorie"), playerTag.getInteger("color"), playerTag.getInteger("id"));
 	}
 	
 	public static ArrayList<BaseNTMEntry> getSoundsList(String player)
@@ -108,9 +110,23 @@ public class UtilSoundBox
 		for(int i = 0; i < playerList.tagCount(); i++)
 		{
 			NBTTagCompound playerTag = playerList.getCompoundTagAt(i);
-			list.add(i, new SoundEntry(playerTag.getString("dir"), playerTag.getString("name"), playerTag.getInteger("categorie"), playerTag.getInteger("color")));
+			list.add(i, new SoundEntry(playerTag.getString("dir"), playerTag.getString("name"), playerTag.getInteger("categorie"), playerTag.getInteger("color"), playerTag.getInteger("id")));
 		}
 		return list;
+	}
+	
+	public static void deleteSound(String player, int id)
+	{
+		NBTTagCompound compoundBase = getData();
+		NBTTagCompound compound = compoundBase.getCompoundTag("sounds");
+		NBTTagList playerList = compound.getTagList(player, Constants.NBT.TAG_COMPOUND);
+		playerList.removeTag(id);
+		for(int i = id; i < playerList.tagCount(); i++)
+		{
+			NBTTagCompound playerTag = playerList.getCompoundTagAt(i);
+			playerTag.setInteger("id", playerTag.getInteger("id") - 1);
+		}
+		saveData(compoundBase);
 	}
 
 	public static void setCategory(String player, int id, String name, int color)
@@ -181,19 +197,25 @@ public class UtilSoundBox
 	public static class SoundEntry extends BaseNTMEntry
 	{
 		private final String dir;
-		private final int color, categoryId;
+		private final int color, categoryId, id;
 
-		public SoundEntry(String dir, String name, int categoryId, int color)
+		public SoundEntry(String dir, String name, int categoryId, int color, int id)
 		{
 			super(name);
 			this.dir = dir;
 			this.categoryId = categoryId;
 			this.color = color;
+			this.id = id;
 		}
 
 		public String getDir()
 		{
 			return dir;
+		}
+		
+		public int getCategoryId()
+		{
+			return categoryId;
 		}
 
 		public CategoryEntry getCategory()
@@ -204,6 +226,11 @@ public class UtilSoundBox
 		public int getColor()
 		{
 			return color;
+		}
+		
+		public int getId()
+		{
+			return id;
 		}
 	}
 

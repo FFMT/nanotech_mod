@@ -12,6 +12,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerListerJukebox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.SoundEntry;
 import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiSliderForContainer;
@@ -24,10 +25,11 @@ public class GuiSoundBoxAddSound2 extends GuiContainer
 	public GuiTextField dirField;
 	private String name, dir;
 	private int[] color;
-	
+	private boolean editMode;
+	private GuiSoundBoxEditSound gui;
 	private GuiButton nextButton;
-	
-	public GuiSoundBoxAddSound2(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, String name, int[] color)
+
+	public GuiSoundBoxAddSound2(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, String name, int[] color, boolean editMode, GuiSoundBoxEditSound gui)
 	{
 		super(new ContainerListerJukebox(tileEntity, inventoryPlayer, world));
 		this.tile = tileEntity;
@@ -35,13 +37,15 @@ public class GuiSoundBoxAddSound2 extends GuiContainer
 		this.wrld = world;
 		this.name = name;
 		this.color = color;
+		this.editMode = editMode;
+		this.gui = gui;
 	}
-	
+
 	@Override
 	public void initGui()
 	{
 		super.initGui();
-		dir = "";
+		dir = editMode ? gui.entry.getDir() : "";
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		Keyboard.enableRepeatEvents(true);
@@ -52,11 +56,11 @@ public class GuiSoundBoxAddSound2 extends GuiContainer
 		this.dirField.setMaxStringLength(40);
 		this.dirField.setEnabled(true);
 		this.dirField.setText(dir);
-		
+
 		this.buttonList.add(new GuiButton(1, x + 6, y + 74, 160, 20, "stop"));
 		this.buttonList.add(new GuiButton(2, x + 6, y + 50, 160, 20, "test"));
 		this.buttonList.add(new GuiButton(3, x + 6, y + 117, 78, 20, "Cancel"));
-		this.buttonList.add(nextButton = new GuiButton(4, x + 91, y + 117, 78, 20, "Next"));
+		this.buttonList.add(nextButton = new GuiButton(4, x + 91, y + 117, 78, 20, editMode ? "Apply" : "Next"));
 		nextButton.enabled = false;
 	}
 
@@ -77,12 +81,27 @@ public class GuiSoundBoxAddSound2 extends GuiContainer
 		}
 		case 3:
 		{
-			this.mc.displayGuiScreen(new GuiSoundBox(inv, tile, wrld));
+			if(editMode)
+			{
+				this.mc.displayGuiScreen(new GuiSoundBoxEditSound(inv, tile, wrld, this.gui.entry));
+			}
+			else
+			{
+				this.mc.displayGuiScreen(new GuiSoundBox(inv, tile, wrld));
+			}
 			break;
 		}
 		case 4:
 		{
-			this.mc.displayGuiScreen(new GuiSoundBoxAddSound3(inv, tile, wrld, name, color, dir));
+			if(editMode)
+			{
+				SoundEntry entry = new SoundEntry(dir, this.gui.entry.getName(), this.gui.entry.getCategoryId(), this.gui.entry.getColor(), this.gui.entry.getId());
+				this.mc.displayGuiScreen(new GuiSoundBoxEditSound(inv, tile, wrld, entry));
+			}
+			else
+			{
+				this.mc.displayGuiScreen(new GuiSoundBoxAddSound3(inv, tile, wrld, name, color, dir));
+			}
 			break;
 		}
 		}
@@ -93,8 +112,15 @@ public class GuiSoundBoxAddSound2 extends GuiContainer
 	{
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		fontRendererObj.drawString("Sound box" + " - " + "Add sound step 2", 6, 6, 4210752);
-	}
+		if(editMode)
+		{
+			fontRendererObj.drawString("Sound box" + " - " + "Edit sound directory", 6, 6, 4210752);
+		}
+		else
+		{
+			fontRendererObj.drawString("Sound box" + " - " + "Add sound step 2", 6, 6, 4210752);
+		}
+		}
 
 	@Override
 	public void drawScreen(int par1, int par2, float par3)
@@ -104,7 +130,7 @@ public class GuiSoundBoxAddSound2 extends GuiContainer
 		super.drawScreen(par1, par2, par3);
 		GL11.glDisable(GL11.GL_LIGHTING);
 		this.dirField.drawTextBox();
-		if(dir == "" && !this.dirField.isFocused() )
+		if(dir == "" && !this.dirField.isFocused())
 		{
 			this.drawCenteredString(this.fontRendererObj, I18n.format("container.listerJukebox.fieldDir"), x + 83, y + 22, 16777215);
 		}
@@ -120,13 +146,13 @@ public class GuiSoundBoxAddSound2 extends GuiContainer
 
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 	}
-	
+
 	public void onGuiClosed()
 	{
 		super.onGuiClosed();
 		Keyboard.enableRepeatEvents(false);
 	}
-	
+
 	@Override
 	public void updateScreen()
 	{

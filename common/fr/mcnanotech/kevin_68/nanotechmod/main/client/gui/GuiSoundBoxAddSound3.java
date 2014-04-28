@@ -91,7 +91,7 @@ public class GuiSoundBoxAddSound3 extends GuiSoundBoxListBase
 	{
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		fontRendererObj.drawString("Sound box" + " - " + "Add sound step 4", 6, 6, 4210752);
+		fontRendererObj.drawString("Sound box" + " - " + "Add sound step 3", 6, 6, 4210752);
 	}
 
 	@Override

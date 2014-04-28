@@ -9,9 +9,14 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.MouseHelper;
 import net.minecraft.util.ResourceLocation;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod.BaseNTMEntry;
+import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.CategoryEntry;
+import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.SoundEntry;
 import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
 
@@ -41,12 +46,12 @@ public class GuiSoundBoxList
 		int l = 0;
 		int currentPage = 0;
 		ButtonEntry[] entry = new ButtonEntry[numberOfLine + 1];
-
 		for(int k = 0; k < list.size(); k++)
 		{
+			int color = list.get(k) instanceof SoundEntry ? ((SoundEntry)list.get(k)).getColor() : (list.get(k) instanceof CategoryEntry ? ((CategoryEntry)list.get(k)).getColor() : 0);
 			if(l < numberOfLine)
 			{
-				entry[l] = new ButtonEntry(k + 4, list.get(k).getName(), xStart, yStart + (15 * l), (width / 2) - 2, 14, xStart + 2 + (width / 2));
+				entry[l] = new ButtonEntry(k + 4, list.get(k).getName(), xStart, yStart + (15 * l), (width / 2) - 2, 14, xStart + 2 + (width / 2), color);
 				l++;
 			}
 			else
@@ -55,7 +60,7 @@ public class GuiSoundBoxList
 				entry = new ButtonEntry[numberOfLine];
 				currentPage++;
 				l = 0;
-				entry[l] = new ButtonEntry(k + 4, list.get(k).getName(), xStart, yStart + (15 * l), (width / 2) - 2, 14, xStart + 2 + (width / 2));
+				entry[l] = new ButtonEntry(k + 4, list.get(k).getName(), xStart, yStart + (15 * l), (width / 2) - 2, 14, xStart + 2 + (width / 2), color);
 				l++;
 			}
 
@@ -207,9 +212,9 @@ public class GuiSoundBoxList
 
 	public class ButtonEntry extends BaseNTMEntry
 	{
-		public int id, x, y, width, height, xR;
+		public int id, x, y, width, height, xR, color;
 
-		public ButtonEntry(int id, String name, int x, int y, int width, int height, int xR)
+		public ButtonEntry(int id, String name, int x, int y, int width, int height, int xR, int color)
 		{
 			super(name);
 			this.id = id;
@@ -218,12 +223,13 @@ public class GuiSoundBoxList
 			this.width = width;
 			this.height = height;
 			this.xR = xR;
+			this.color = color;
 		}
 	}
 
 	public class GuiButtonList extends GuiButton
 	{
-	    private final ResourceLocation texture = new ResourceLocation(NanotechMod.MODID.toLowerCase(), "textures/gui/icons.png");
+		private final ResourceLocation texture = new ResourceLocation(NanotechMod.MODID.toLowerCase(), "textures/gui/icons.png");
 
 		public boolean selected;
 		public ButtonEntry entry;
@@ -232,6 +238,26 @@ public class GuiSoundBoxList
 		{
 			super(entry.id, isRight ? entry.xR : entry.x, entry.y, entry.width, entry.height, entry.getName());
 			this.entry = entry;
+		}
+
+		protected int getHoverState(boolean p_146114_1_)
+		{
+			byte b0 = 1;
+
+			if(!this.enabled)
+			{
+				b0 = 0;
+			}
+			else if(p_146114_1_)
+			{
+				b0 = 2;
+			}
+			else if(this.selected)
+			{
+				b0 = 3;
+			}
+
+			return b0;
 		}
 
 		@Override
@@ -250,24 +276,32 @@ public class GuiSoundBoxList
 				this.drawTexturedModalRect(this.xPosition, this.yPosition, 0, 2 + k * 14, this.width / 2, this.height);
 				this.drawTexturedModalRect(this.xPosition + this.width / 2, this.yPosition, 200 - this.width / 2, 2 + k * 14, this.width / 2, this.height);
 				this.mouseDragged(mc, mouseX, mouseY);
-				int l = 14737632;
-
-				if(packedFGColour != 0)
+				String txt;
+				if(this.displayString.length() * 4 < this.width)
 				{
-					l = packedFGColour;
+					txt = displayString;
 				}
-				else if(this.selected)
+				else
 				{
-					l = FFMTColor.GREEN;
+					txt = String.valueOf(displayString.subSequence(0, this.width / 4 - 10)) + "...";
 				}
-				else if(this.field_146123_n)
+				this.drawCenteredString(fontrenderer, txt, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, entry.color);
+				
+				if(k == 2 && !(this.displayString.length() * 4 < this.width))
 				{
-					l = 16777120;
+					this.renderOverlayText(mouseX, mouseY, displayString, entry.color);
 				}
-
-				this.drawCenteredString(fontrenderer, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, l);
 			}
 		}
-
+		
+		
+	    protected void renderOverlayText(int mouseX, int mouseY, String txt, int color)
+	    {
+	        ArrayList<String> list = new ArrayList();
+	        list.add(0, txt);
+	        
+	        //this.func_146283_a(list, mouseX, mouseY);
+	        FFMTGuiHelper.drawHoveringText(list, mouseX, mouseY, Minecraft.getMinecraft().fontRenderer, 166, 176, color);
+	    }
 	}
 }
