@@ -209,7 +209,7 @@ public class GuiSoundBoxList
 			buttonList.add(i, keepList.get(i));
 		}
 	}
-
+	
 	public class ButtonEntry extends BaseNTMEntry
 	{
 		public int id, x, y, width, height, xR, color;

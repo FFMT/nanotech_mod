@@ -72,6 +72,11 @@ public class GuiSoundBoxEditSound extends GuiContainer implements YesAction
 			this.mc.displayGuiScreen(new GuiSoundBoxAddSound2(inv, tile, wrld, "", new int[] {0, 0, 0}, true, this));
 			break;
 		}
+		case 4:
+		{
+			this.mc.displayGuiScreen(new GuiSoundBoxAddSound3(inv, tile, wrld, "", new int[] {0, 0, 0}, "", true, this));
+			break;
+		}
 		case 5:
 		{
 			this.mc.displayGuiScreen(new GuiSoundBoxConfirm(inv, tile, wrld, this, "Are you sure?"));

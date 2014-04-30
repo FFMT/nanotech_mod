@@ -34,6 +34,8 @@ public class TileEntitySoundBox extends TileEntity
 
 	public void playSound(String dir)
 	{
+		stopSounds();
+		
 		if(dir != null)
 		{
 			worldObj.playSound(xCoord, yCoord, zCoord, dir, 1.0F, 1.0F, true);

@@ -100,7 +100,7 @@ public class GuiSoundBoxAddSound2 extends GuiContainer
 			}
 			else
 			{
-				this.mc.displayGuiScreen(new GuiSoundBoxAddSound3(inv, tile, wrld, name, color, dir));
+				this.mc.displayGuiScreen(new GuiSoundBoxAddSound3(inv, tile, wrld, name, color, dir, false, null));
 			}
 			break;
 		}
