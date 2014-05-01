@@ -79,10 +79,10 @@ public class UtilSoundBox
 		NBTTagCompound compoundBase = getData();
 		NBTTagCompound compound = compoundBase.hasKey("sounds") ? compoundBase.getCompoundTag("sounds") : new NBTTagCompound();
 		NBTTagList playerList = compound.hasKey(player) ? compound.getTagList(player, Constants.NBT.TAG_COMPOUND) : new NBTTagList();
-		NBTTagCompound playerTag = playerList.tagCount() > id ? playerList.getCompoundTagAt(id) : new NBTTagCompound();
+		NBTTagCompound playerTag = new NBTTagCompound();
 		playerTag.setString("dir", dir);
 		playerTag.setString("name", name);
-		playerTag.setInteger("categoryId", category.getId());
+		playerTag.setInteger("category", category.getId());
 		playerTag.setInteger("color", color);
 		playerTag.setInteger("id", id);
 		playerList.appendTag(playerTag);
@@ -97,7 +97,7 @@ public class UtilSoundBox
 		NBTTagCompound compound = compoundBase.getCompoundTag("sounds");
 		NBTTagList playerList = compound.getTagList(player, Constants.NBT.TAG_COMPOUND);
 		NBTTagCompound playerTag = playerList.getCompoundTagAt(id);
-		return new SoundEntry(playerTag.getString("dir"), playerTag.getString("name"), playerTag.getInteger("categorie"), playerTag.getInteger("color"), playerTag.getInteger("id"));
+		return new SoundEntry(playerTag.getString("dir"), playerTag.getString("name"), playerTag.getInteger("category"), playerTag.getInteger("color"), playerTag.getInteger("id"));
 	}
 
 	public static ArrayList<BaseNTMEntry> getSoundsList(String player)
@@ -109,7 +109,7 @@ public class UtilSoundBox
 		for(int i = 0; i < playerList.tagCount(); i++)
 		{
 			NBTTagCompound playerTag = playerList.getCompoundTagAt(i);
-			list.add(i, new SoundEntry(playerTag.getString("dir"), playerTag.getString("name"), playerTag.getInteger("categorie"), playerTag.getInteger("color"), playerTag.getInteger("id")));
+			list.add(i, new SoundEntry(playerTag.getString("dir"), playerTag.getString("name"), playerTag.getInteger("category"), playerTag.getInteger("color"), playerTag.getInteger("id")));
 		}
 		return list;
 	}
@@ -128,14 +128,52 @@ public class UtilSoundBox
 		saveData(compoundBase);
 	}
 
+	public static ArrayList<BaseNTMEntry> getSoundsByCategory(CategoryEntry entry)
+	{
+		ArrayList<BaseNTMEntry> list = new ArrayList();
+		NBTTagCompound compoundBase = getData();
+		NBTTagCompound compound = compoundBase.getCompoundTag("sounds");
+		NBTTagList playerList = compound.getTagList(entry.getOwner(), Constants.NBT.TAG_COMPOUND);
+		for(int i = 0; i < playerList.tagCount(); i++)
+		{
+			NBTTagCompound playerTag = playerList.getCompoundTagAt(i);
+			if(playerTag.getInteger("category") == entry.getId())
+			{
+				list.add(new SoundEntry(playerTag.getString("dir"), playerTag.getString("name"), playerTag.getInteger("category"), playerTag.getInteger("color"), playerTag.getInteger("id")));
+			}
+		}
+		return list;
+	}
+	
+	public static void editSound(SoundEntry entry, String player)
+	{
+		NBTTagCompound compoundBase = getData();
+		NBTTagCompound compound = compoundBase.getCompoundTag("sounds");
+		NBTTagList playerList = compound.getTagList(player, Constants.NBT.TAG_COMPOUND);
+		for(int i = 0; i < playerList.tagCount(); i++)
+		{
+			NBTTagCompound sound = playerList.getCompoundTagAt(i);
+			if(sound.getInteger("id") == entry.getId())
+			{
+				sound.setString("dir", entry.getDir());
+				sound.setString("name", entry.getName());
+				sound.setInteger("category", entry.getCategoryId());
+				sound.setInteger("color", entry.color);
+				break;
+			}
+		}
+		saveData(compoundBase);
+	}
+
 	public static void setCategory(String player, int id, String name, int color)
 	{
 		NBTTagCompound compoundBase = getData();
 		NBTTagList compound = compoundBase.hasKey("categories") ? compoundBase.getTagList("categories", Constants.NBT.TAG_COMPOUND) : new NBTTagList();
-		NBTTagCompound category = compound.tagCount() > id ? compound.getCompoundTagAt(id) : new NBTTagCompound();
+		NBTTagCompound category = new NBTTagCompound();
 		category.setString("owner", player);
 		category.setString("name", name);
 		category.setInteger("color", color);
+		category.setInteger("id", id);
 		compound.appendTag(category);
 		compoundBase.setTag("categories", compound);
 		saveData(compoundBase);
@@ -145,9 +183,15 @@ public class UtilSoundBox
 	{
 		NBTTagCompound compoundBase = getData();
 		NBTTagList compound = compoundBase.getTagList("categories", Constants.NBT.TAG_COMPOUND);
-		NBTTagCompound category = compound.getCompoundTagAt(id);
-
-		return new CategoryEntry(category.getString("name"), category.getString("owner"), category.getInteger("color"), id);
+		for(int i = 0; i < compound.tagCount(); i++)
+		{
+			NBTTagCompound category = compound.getCompoundTagAt(i);
+			if(category.getInteger("id") == id)
+			{
+				return new CategoryEntry(category.getString("name"), category.getString("owner"), category.getInteger("color"), category.getInteger("id"));
+			}
+		}
+		return null;
 	}
 
 	public static ArrayList<BaseNTMEntry> getCategoryList()
@@ -158,9 +202,46 @@ public class UtilSoundBox
 		for(int i = 0; i < compound.tagCount(); i++)
 		{
 			NBTTagCompound category = compound.getCompoundTagAt(i);
-			list.add(i, new CategoryEntry(category.getString("name"), category.getString("owner"), category.getInteger("color"), i));
+			list.add(i, new CategoryEntry(category.getString("name"), category.getString("owner"), category.getInteger("color"), category.getInteger("id")));
 		}
 		return list;
+	}
+
+	public static void deleteCategory(String player, int id)
+	{
+		NBTTagCompound compoundBase = getData();
+		NBTTagList compound = compoundBase.getTagList("categories", Constants.NBT.TAG_COMPOUND);
+		for(int i = 0; i < compound.tagCount(); i++)
+		{
+			if(compound.getCompoundTagAt(i).getInteger("id") == id)
+			{
+				if(compound.getCompoundTagAt(i).getString("owner").toString().equals(player.toString()))
+				{
+					compound.removeTag(i);
+				}
+			}
+		}
+		saveData(compoundBase);
+	}
+	
+	public static void editCategory(CategoryEntry entry, String player)
+	{
+		NBTTagCompound compoundBase = getData();
+		NBTTagList compound = compoundBase.getTagList("categories", Constants.NBT.TAG_COMPOUND);
+		for(int i = 0; i < compound.tagCount(); i++)
+		{
+			if(compound.getCompoundTagAt(i).getInteger("id") == entry.getId())
+			{
+				if(compound.getCompoundTagAt(i).getString("owner").toString().equals(player.toString()))
+				{
+					NBTTagCompound category = compound.getCompoundTagAt(i);
+					category.setString("owner", entry.getOwner());
+					category.setString("name", entry.getName());
+					category.setInteger("color", entry.getColor());
+				}
+			}
+		}
+		saveData(compoundBase);
 	}
 
 	public static int getNextId(String player, boolean isCategory)
@@ -172,7 +253,16 @@ public class UtilSoundBox
 			{
 				NBTTagCompound compound = compoundBase.getCompoundTag("sounds");
 				NBTTagList playerList = compound.getTagList(player, Constants.NBT.TAG_COMPOUND);
-				return playerList.tagCount();
+				int maxId = 0;
+				for(int i = 0; i < playerList.tagCount(); i++)
+				{
+					int id = playerList.getCompoundTagAt(i).getInteger("id");
+					if(id > maxId)
+					{
+						maxId = id;
+					}
+				}
+				return (maxId + 1);
 			}
 			else
 			{
@@ -184,7 +274,16 @@ public class UtilSoundBox
 			if(compoundBase.hasKey("categories"))
 			{
 				NBTTagList compound = compoundBase.getTagList("categories", Constants.NBT.TAG_COMPOUND);
-				return compound.tagCount();
+				int maxId = 0;
+				for(int i = 0; i < compound.tagCount(); i++)
+				{
+					int id = compound.getCompoundTagAt(i).getInteger("id");
+					if(id > maxId)
+					{
+						maxId = id;
+					}
+				}
+				return (maxId + 1);
 			}
 			else
 			{

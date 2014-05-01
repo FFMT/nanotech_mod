@@ -60,7 +60,7 @@ public class GuiSoundBoxAddCategory extends FFMTGuiContainerSliderBase
 		this.buttonList.add(new FFMTGuiSliderForContainer(this, 1, x + 6, y + 64, 160, 20, EnumChatFormatting.GREEN + I18n.format("container.lightsaber.green") + ": " + color[1], color[1] / 255));
 		this.buttonList.add(new FFMTGuiSliderForContainer(this, 2, x + 6, y + 88, 160, 20, EnumChatFormatting.BLUE + I18n.format("container.lightsaber.blue") + ": " + color[2], color[2] / 255));
 		this.buttonList.add(new GuiButton(3, x + 6, y + 117, 78, 20, "Cancel"));
-		this.buttonList.add(nextButton = new GuiButton(4, x + 91, y + 117, 78, 20, editMode ? "Apply" : "Next"));
+		this.buttonList.add(nextButton = new GuiButton(4, x + 91, y + 117, 78, 20, editMode ? "Apply" : "Create"));
 		nextButton.enabled = false;
 	}
 
@@ -85,7 +85,7 @@ public class GuiSoundBoxAddCategory extends FFMTGuiContainerSliderBase
 		{
 			if(editMode)
 			{
-				CategoryEntry entry = new CategoryEntry(this.gui.entry.getName(), this.gui.entry.getOwner(), (color[0] * 65536) + (color[1] * 256) + color[2], this.gui.entry.getId());
+				CategoryEntry entry = new CategoryEntry(name, this.gui.entry.getOwner(), (color[0] * 65536) + (color[1] * 256) + color[2], this.gui.entry.getId());
 				this.mc.displayGuiScreen(new GuiSoundBoxEditCategory(inv, tile, wrld, entry));
 			}
 			else
@@ -105,7 +105,7 @@ public class GuiSoundBoxAddCategory extends FFMTGuiContainerSliderBase
 		int y = (height - ySize) / 2;
 		if(editMode)
 		{
-			fontRendererObj.drawString("Sound box" + " - " + "Edit sound name", 6, 6, 4210752);
+			fontRendererObj.drawString("Sound box" + " - " + "Edit category", 6, 6, 4210752);
 		}
 		else
 		{
@@ -123,7 +123,7 @@ public class GuiSoundBoxAddCategory extends FFMTGuiContainerSliderBase
 		this.nameField.drawTextBox();
 		if(name == "" && !this.nameField.isFocused())
 		{
-			this.drawCenteredString(this.fontRendererObj, I18n.format("container.listerJukebox.fieldName"), x + 83, y + 22, 16777215);
+			this.drawCenteredString(this.fontRendererObj, I18n.format("container.soundbox.fieldCategoryName"), x + 83, y + 22, 16777215);
 		}
 	}
 

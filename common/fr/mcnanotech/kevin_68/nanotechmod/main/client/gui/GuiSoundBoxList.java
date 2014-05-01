@@ -275,7 +275,7 @@ public class GuiSoundBoxList
 				this.drawTexturedModalRect(this.xPosition + this.width / 2, this.yPosition, 200 - this.width / 2, 2 + k * 14, this.width / 2, this.height);
 				this.mouseDragged(mc, mouseX, mouseY);
 				String txt;
-				if(this.displayString.length() * 4 < this.width)
+				if(this.displayString.length() * 5 < this.width)
 				{
 					txt = displayString;
 				}
@@ -285,7 +285,7 @@ public class GuiSoundBoxList
 				}
 				this.drawCenteredString(fontrenderer, txt, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, entry.color);
 
-				if(k == 2 && !(this.displayString.length() * 4 < this.width))
+				if(k == 2 && !(this.displayString.length() * 5 < this.width))
 				{
 					this.renderOverlayText(mouseX, mouseY, displayString, entry.color);
 				}
@@ -296,8 +296,6 @@ public class GuiSoundBoxList
 		{
 			ArrayList<String> list = new ArrayList();
 			list.add(0, txt);
-
-			// this.func_146283_a(list, mouseX, mouseY);
 			FFMTGuiHelper.drawHoveringText(list, mouseX, mouseY, Minecraft.getMinecraft().fontRenderer, 166, 176, color);
 		}
 	}

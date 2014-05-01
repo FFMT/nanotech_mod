@@ -2,45 +2,36 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.client.gui;
 
 import java.util.ArrayList;
 
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.world.World;
-
 import org.lwjgl.opengl.GL11;
 
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod.BaseNTMEntry;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.CategoryEntry;
-import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.SoundEntry;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
 
-public class GuiSoundBoxAddSound3 extends GuiSoundBoxListBase
+public class GuiSoundBoxCategories extends GuiSoundBoxListBase
 {
 	private TileEntitySoundBox tile;
 	private InventoryPlayer inv;
 	private World wrld;
-	private String name, dir;
-	private CategoryEntry categ;
-	private int[] color;
-	private boolean editMode;
-	private GuiSoundBoxEditSound gui;
-	private GuiButton nextButton;
-	private ArrayList<BaseNTMEntry> categList = UtilSoundBox.getCategoryList();
 	private GuiSoundBoxList sBList;
+	private ArrayList<BaseNTMEntry> categList = UtilSoundBox.getCategoryList();
+	private GuiButton nextButton;
+	private CategoryEntry selected;
+	private boolean editMode;
 
-	public GuiSoundBoxAddSound3(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, String name, int[] color, String dir, boolean editMode, GuiSoundBoxEditSound gui)
+	public GuiSoundBoxCategories(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world)
 	{
 		super(new ContainerSoundBox(tileEntity, inventoryPlayer, world));
 		this.tile = tileEntity;
 		this.inv = inventoryPlayer;
 		this.wrld = world;
-		this.name = name;
-		this.color = color;
-		this.dir = dir;
-		this.editMode = editMode;
-		this.gui = gui;
 	}
 
 	@Override
@@ -50,14 +41,10 @@ public class GuiSoundBoxAddSound3 extends GuiSoundBoxListBase
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		this.buttonList.add(0, new GuiButton(0, x + 6, y + 117, 78, 20, "Cancel"));
-		this.buttonList.add(1, nextButton = new GuiButton(1, x + 91, y + 117, 78, 20, editMode ? "Apply" : "Next"));
-		nextButton.enabled = false;
+		this.buttonList.add(1, nextButton = new GuiButton(1, x + 91, y + 117, 78, 20, "Next"));
 		sBList = new GuiSoundBoxList(this, categList, x + 6, y + 17, x + 169, y + 115);
 		sBList.addButton(buttonList);
-		if(editMode)
-		{
-			this.categ = gui.entry.getCategory();
-		}
+		this.nextButton.enabled = false;
 	}
 
 	@Override
@@ -67,33 +54,24 @@ public class GuiSoundBoxAddSound3 extends GuiSoundBoxListBase
 		{
 		case 0:
 		{
-			if(editMode)
-			{
-				this.mc.displayGuiScreen(new GuiSoundBoxEditSound(inv, tile, wrld, this.gui.entry, this.gui.gui));
-			}
-			else
-			{
-				this.mc.displayGuiScreen(new GuiSoundBox(inv, tile, wrld));
-			}
+			this.mc.displayGuiScreen(new GuiSoundBox(inv, tile, wrld));
 			break;
 		}
 		case 1:
 		{
 			if(editMode)
 			{
-				SoundEntry entry = new SoundEntry(this.gui.entry.getDir(), this.gui.entry.getName(), categ.getId(), this.gui.entry.getColor(), this.gui.entry.getId());
-				this.mc.displayGuiScreen(new GuiSoundBoxEditSound(inv, tile, wrld, entry, this.gui.gui));
+				this.mc.displayGuiScreen(new GuiSoundBoxEditCategory(inv, tile, wrld, selected));
 			}
 			else
 			{
-				this.mc.displayGuiScreen(new GuiSoundBoxAddSound4(inv, tile, wrld, name, color, dir, categ));
+				this.mc.displayGuiScreen(new GuiSoundBoxSoundByCategory(inv, tile, wrld, selected));
 			}
 			break;
 		}
 		default:
 		{
-			sBList.actionPerformed(guibutton, this.buttonList);
-			break;
+			this.sBList.actionPerformed(guibutton, this.buttonList);
 		}
 		}
 	}
@@ -103,7 +81,24 @@ public class GuiSoundBoxAddSound3 extends GuiSoundBoxListBase
 	{
 		if(entry instanceof CategoryEntry)
 		{
-			this.categ = (CategoryEntry)entry;
+			CategoryEntry ent = (CategoryEntry)entry;
+			if(this.selected != null && this.selected == ent)
+			{
+				if(ent.getOwner().toString().equals(UtilSoundBox.getPlyN(this.mc).toString()))
+				{
+					this.editMode = true;
+				}
+				else
+				{
+					this.editMode = false;
+				}
+			}
+			else
+			{
+				editMode = false;
+			}
+			this.selected = ent;
+			this.updateButton(editMode);
 			this.nextButton.enabled = true;
 		}
 	}
@@ -113,7 +108,14 @@ public class GuiSoundBoxAddSound3 extends GuiSoundBoxListBase
 	{
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		fontRendererObj.drawString("Sound box" + " - " + "Add sound step 3", 6, 6, 4210752);
+		fontRendererObj.drawString("Sound box" + " - " + "Categories", 6, 6, 4210752);
+	}
+	
+	public void updateButton(boolean edit)
+	{
+		int x = (width - xSize) / 2;
+		int y = (height - ySize) / 2;
+		this.buttonList.set(1, nextButton = new GuiButton(1, x + 91, y + 117, 78, 20, edit ? "Edit" : "Next"));
 	}
 
 	@Override

@@ -63,7 +63,7 @@ public class GuiSoundBoxAllSound extends GuiSoundBoxListBase
 		{
 			if(editMode)
 			{
-				this.mc.displayGuiScreen(new GuiSoundBoxEditSound(inv, tile, wrld, snd));
+				this.mc.displayGuiScreen(new GuiSoundBoxEditSound(inv, tile, wrld, snd, 0));
 			}
 			else
 			{
@@ -74,7 +74,6 @@ public class GuiSoundBoxAllSound extends GuiSoundBoxListBase
 		default:
 		{
 			sBList.actionPerformed(guibutton, this.buttonList);
-			break;
 		}
 		}
 	}

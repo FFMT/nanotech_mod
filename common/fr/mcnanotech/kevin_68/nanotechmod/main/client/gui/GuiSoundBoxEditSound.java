@@ -21,14 +21,16 @@ public class GuiSoundBoxEditSound extends GuiContainer implements YesAction
 	private InventoryPlayer inv;
 	private World wrld;
 	public SoundEntry entry;
+	public int gui;
 
-	public GuiSoundBoxEditSound(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, SoundEntry entry)
+	public GuiSoundBoxEditSound(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, SoundEntry entry, int gui)
 	{
 		super(new ContainerSoundBox(tileEntity, inventoryPlayer, world));
 		this.tile = tileEntity;
 		this.inv = inventoryPlayer;
 		this.wrld = world;
 		this.entry = entry;
+		this.gui = gui;
 	}
 
 	@Override
@@ -52,14 +54,14 @@ public class GuiSoundBoxEditSound extends GuiContainer implements YesAction
 		{
 		case 0:
 		{
-			this.mc.displayGuiScreen(new GuiSoundBoxAllSound(inv, tile, wrld));
+			
+			this.mc.displayGuiScreen(gui == 0 ? new GuiSoundBoxAllSound(inv, tile, wrld) : gui == 1 ? new GuiSoundBoxSoundByCategory(inv, tile, wrld, UtilSoundBox.getCategory(entry.getCategoryId())) : new GuiSoundBox(inv, tile, wrld) );
 			break;
 		}
 		case 1:
 		{
-			UtilSoundBox.deleteSound(UtilSoundBox.getPlyN(this.mc), entry.getId());
-			UtilSoundBox.setSound(this.mc.thePlayer.getCommandSenderName(), entry.getId(), entry.getDir(), entry.getName(), entry.getCategory(), entry.getColor());
-			this.mc.displayGuiScreen(new GuiSoundBoxAllSound(inv, tile, wrld));
+			UtilSoundBox.editSound(entry, UtilSoundBox.getPlyN(mc));
+			this.mc.displayGuiScreen(gui == 0 ? new GuiSoundBoxAllSound(inv, tile, wrld) : gui == 1 ? new GuiSoundBoxSoundByCategory(inv, tile, wrld, UtilSoundBox.getCategory(entry.getCategoryId())) : new GuiSoundBox(inv, tile, wrld) );
 			break;
 		}
 		case 2:
@@ -112,7 +114,7 @@ public class GuiSoundBoxEditSound extends GuiContainer implements YesAction
 		}
 		else
 		{
-			this.mc.displayGuiScreen(new GuiSoundBoxAllSound(inv, tile, wrld));
+			this.mc.displayGuiScreen(gui == 0 ? new GuiSoundBoxAllSound(inv, tile, wrld) : gui == 1 ? new GuiSoundBoxSoundByCategory(inv, tile, wrld, UtilSoundBox.getCategory(entry.getCategoryId())) : new GuiSoundBox(inv, tile, wrld) );
 		}
 	}
 }

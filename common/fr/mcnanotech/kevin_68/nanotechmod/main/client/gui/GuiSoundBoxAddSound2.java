@@ -75,14 +75,21 @@ public class GuiSoundBoxAddSound2 extends GuiContainer
 		}
 		case 2:
 		{
-			this.tile.playSound(dir);
+			if(tile != null)
+			{
+				this.tile.playSound(dir);
+			}
+			else
+			{
+				this.onGuiClosed();
+			}
 			break;
 		}
 		case 3:
 		{
 			if(editMode)
 			{
-				this.mc.displayGuiScreen(new GuiSoundBoxEditSound(inv, tile, wrld, this.gui.entry));
+				this.mc.displayGuiScreen(new GuiSoundBoxEditSound(inv, tile, wrld, this.gui.entry, this.gui.gui));
 			}
 			else
 			{
@@ -95,7 +102,7 @@ public class GuiSoundBoxAddSound2 extends GuiContainer
 			if(editMode)
 			{
 				SoundEntry entry = new SoundEntry(dir, this.gui.entry.getName(), this.gui.entry.getCategoryId(), this.gui.entry.getColor(), this.gui.entry.getId());
-				this.mc.displayGuiScreen(new GuiSoundBoxEditSound(inv, tile, wrld, entry));
+				this.mc.displayGuiScreen(new GuiSoundBoxEditSound(inv, tile, wrld, entry, this.gui.gui));
 			}
 			else
 			{
@@ -131,7 +138,7 @@ public class GuiSoundBoxAddSound2 extends GuiContainer
 		this.dirField.drawTextBox();
 		if(dir == "" && !this.dirField.isFocused())
 		{
-			this.drawCenteredString(this.fontRendererObj, I18n.format("container.listerJukebox.fieldDir"), x + 83, y + 22, 16777215);
+			this.drawCenteredString(this.fontRendererObj, I18n.format("container.soundbox.fieldSoundDir"), x + 83, y + 22, 16777215);
 		}
 	}
 

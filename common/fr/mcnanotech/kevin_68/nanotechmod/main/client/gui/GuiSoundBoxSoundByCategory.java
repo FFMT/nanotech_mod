@@ -1,47 +1,53 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.client.gui;
 
-import org.lwjgl.opengl.GL11;
+import java.util.ArrayList;
 
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotechmod.main.client.gui.GuiSoundBoxConfirm.YesAction;
+
+import org.lwjgl.opengl.GL11;
+
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSoundBox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod.BaseNTMEntry;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.CategoryEntry;
+import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.SoundEntry;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
 
-public class GuiSoundBoxEditCategory extends GuiContainer implements YesAction
+public class GuiSoundBoxSoundByCategory extends GuiSoundBoxListBase
 {
 	private TileEntitySoundBox tile;
 	private InventoryPlayer inv;
 	private World wrld;
-	public CategoryEntry entry;
+	private GuiSoundBoxList sBList;
+	private GuiButton playButton;
+	private SoundEntry selected;
+	private CategoryEntry categ;
 
-	public GuiSoundBoxEditCategory(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, CategoryEntry entry)
+	public GuiSoundBoxSoundByCategory(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, CategoryEntry entry)
 	{
 		super(new ContainerSoundBox(tileEntity, inventoryPlayer, world));
 		this.tile = tileEntity;
 		this.inv = inventoryPlayer;
 		this.wrld = world;
-		this.entry = entry;
+		this.categ = entry;
 	}
-	
+
 	@Override
 	public void initGui()
 	{
 		super.initGui();
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		this.buttonList.add(new GuiButton(0, x + 6, y + 117, 78, 20, "Cancel"));
-		this.buttonList.add(new GuiButton(1, x + 91, y + 117, 78, 20, "Apply"));
-		this.buttonList.add(new GuiButton(2, x + 10, y + 20, 156, 20, "Name: " + entry.getName()));
-		this.buttonList.add(new GuiButton(3, x + 10, y + 92, 156, 20, EnumChatFormatting.RED + "Delete"));
+		this.buttonList.add(0, new GuiButton(0, x + 6, y + 117, 78, 20, "Cancel"));
+		this.buttonList.add(1, playButton = new GuiButton(1, x + 91, y + 117, 78, 20, "Play"));
+		sBList = new GuiSoundBoxList(this, UtilSoundBox.getSoundsByCategory(categ), x + 6, y + 17, x + 169, y + 115);
+		sBList.addButton(buttonList);
+		this.playButton.enabled = false;
 	}
-	
+
 	@Override
 	protected void actionPerformed(GuiButton guibutton)
 	{
@@ -54,29 +60,33 @@ public class GuiSoundBoxEditCategory extends GuiContainer implements YesAction
 		}
 		case 1:
 		{
-			UtilSoundBox.editCategory(entry, UtilSoundBox.getPlyN(mc));
-			this.mc.displayGuiScreen(new GuiSoundBoxCategories(inv, tile, wrld));
+			this.tile.playSound(this.selected.getDir());
 			break;
 		}
-		case 2:
+		default:
 		{
-			this.mc.displayGuiScreen(new GuiSoundBoxAddCategory(inv, tile, wrld, true, this));
-			break;
-		}
-		case 3:
-		{
-			this.mc.displayGuiScreen(new GuiSoundBoxConfirm(inv, tile, wrld, this, "Are you sure?"));
-			break;
+			this.sBList.actionPerformed(guibutton, this.buttonList);
 		}
 		}
 	}
-	
+
+	@Override
+	public void setSelected(BaseNTMEntry entry)
+	{
+		if(entry instanceof SoundEntry)
+		{
+			this.selected = (SoundEntry)entry;
+			this.playButton.enabled = true;
+		}
+	}
+
 	@Override
 	protected void drawGuiContainerForegroundLayer(int i, int j)
 	{
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		fontRendererObj.drawString("Sound box" + " - " + "Edit category", 6, 6, 4210752);
+		fontRendererObj.drawString("Sound box" + " - ", 6, 6, 4210752);
+		fontRendererObj.drawString(categ.getName(), fontRendererObj.getStringWidth("Sound box" + " - ") + 6, 6, categ.getColor());
 	}
 
 	@Override
@@ -85,6 +95,7 @@ public class GuiSoundBoxEditCategory extends GuiContainer implements YesAction
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		super.drawScreen(par1, par2, par3);
+		this.sBList.drawScreen(x, y);
 	}
 
 	@Override
@@ -96,12 +107,5 @@ public class GuiSoundBoxEditCategory extends GuiContainer implements YesAction
 		int y = (height - ySize) / 2;
 
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-	}
-	
-	@Override
-	public void handleYesAction()
-	{
-		UtilSoundBox.deleteCategory(UtilSoundBox.getPlyN(mc), entry.getId());
-		this.mc.displayGuiScreen(new GuiSoundBoxCategories(inv, tile, wrld));
 	}
 }

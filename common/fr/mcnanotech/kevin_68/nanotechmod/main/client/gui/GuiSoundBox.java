@@ -59,7 +59,7 @@ public class GuiSoundBox extends GuiContainer
 		}
 		case 1:
 		{
-			// Categories
+			this.mc.displayGuiScreen(new GuiSoundBoxCategories(inv, tile, wrld));
 			break;
 		}
 		case 2:

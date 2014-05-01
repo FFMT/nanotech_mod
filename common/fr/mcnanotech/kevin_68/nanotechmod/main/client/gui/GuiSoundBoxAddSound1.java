@@ -72,7 +72,7 @@ public class GuiSoundBoxAddSound1 extends FFMTGuiContainerSliderBase
 		{
 			if(editMode)
 			{
-				this.mc.displayGuiScreen(new GuiSoundBoxEditSound(inv, tile, wrld, this.gui.entry));
+				this.mc.displayGuiScreen(new GuiSoundBoxEditSound(inv, tile, wrld, this.gui.entry, this.gui.gui));
 			}
 			else
 			{
@@ -85,7 +85,7 @@ public class GuiSoundBoxAddSound1 extends FFMTGuiContainerSliderBase
 			if(editMode)
 			{
 				SoundEntry entry = new SoundEntry(this.gui.entry.getDir(), name, this.gui.entry.getCategoryId(), (color[0] * 65536) + (color[1] * 256) + color[2], this.gui.entry.getId());
-				this.mc.displayGuiScreen(new GuiSoundBoxEditSound(inv, tile, wrld, entry));
+				this.mc.displayGuiScreen(new GuiSoundBoxEditSound(inv, tile, wrld, entry, this.gui.gui));
 			}
 			else
 			{
@@ -121,7 +121,7 @@ public class GuiSoundBoxAddSound1 extends FFMTGuiContainerSliderBase
 		this.nameField.drawTextBox();
 		if(name == "" && !this.nameField.isFocused())
 		{
-			this.drawCenteredString(this.fontRendererObj, I18n.format("container.listerJukebox.fieldName"), x + 83, y + 22, 16777215);
+			this.drawCenteredString(this.fontRendererObj, I18n.format("container.soundbox.fieldSoundName"), x + 83, y + 22, 16777215);
 		}
 	}
 
