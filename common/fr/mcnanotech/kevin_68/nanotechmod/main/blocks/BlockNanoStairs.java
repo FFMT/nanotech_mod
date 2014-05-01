@@ -11,21 +11,11 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.world.World;
-import fr.minecraftforgefrance.ffmtlibs.block.FFMTBlockSittable;
 
 public class BlockNanoStairs extends BlockStairs
 {
-
-	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
-	{
-		return FFMTBlockSittable.onBlockActivated(world, x, y, z, player, 0.5F, 2.0F, 0.5F, 0, 0, 0, 0);
-	}
-
 	protected BlockNanoStairs(Block block, int meta)
 	{
 		super(block, meta);

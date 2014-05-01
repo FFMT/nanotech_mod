@@ -52,6 +52,7 @@ tile.cereal.bowl_3quarter.name=Bowl full to three quarts
 tile.cereal.bowl_quarterempty.name=Bowl empty quarter
 tile.cereal.bowl_halfempty.name=Bowl empty half
 tile.cereal.bowl_3quarterempty.name=Bowl empty to three quarts
+tile.clearglass.name=Clear glass
 
 #Fluid
 fluid.liquidnitrogen=Liquid Nitrogen

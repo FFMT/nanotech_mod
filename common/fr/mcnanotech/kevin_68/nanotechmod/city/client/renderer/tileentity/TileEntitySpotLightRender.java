@@ -28,7 +28,7 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 	public void renderTileEntitySpotLightAt(TileEntitySpotLight tileentity, double x, double y, double z, float tick)
 	{
 		float f1 = tileentity.isActive();
-        GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);
+		GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);
 		if(f1 > 0.0F)
 		{
 			Tessellator tessellator = Tessellator.instance;
@@ -205,7 +205,7 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 			GL11.glEnable(GL11.GL_TEXTURE_2D);
 			GL11.glDepthMask(true);
 		}
-        GL11.glAlphaFunc(GL11.GL_GREATER, 0.5F);
+		GL11.glAlphaFunc(GL11.GL_GREATER, 0.5F);
 	}
 
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float tick)

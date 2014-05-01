@@ -9,8 +9,6 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.items;
 
 import net.minecraft.item.ItemRecord;
 import net.minecraft.util.ResourceLocation;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 
 public class ItemNanotechRecord extends ItemRecord

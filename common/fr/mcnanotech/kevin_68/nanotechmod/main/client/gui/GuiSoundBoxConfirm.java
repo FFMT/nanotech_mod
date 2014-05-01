@@ -1,16 +1,14 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.client.gui;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerListerJukebox;
+
+import org.lwjgl.opengl.GL11;
+
+import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
-import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
-import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.SoundEntry;
 import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
 
@@ -24,7 +22,7 @@ public class GuiSoundBoxConfirm extends GuiContainer
 
 	public GuiSoundBoxConfirm(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, GuiContainer gui, String txt)
 	{
-		super(new ContainerListerJukebox(tileEntity, inventoryPlayer, world));
+		super(new ContainerSoundBox(tileEntity, inventoryPlayer, world));
 		this.tile = tileEntity;
 		this.inv = inventoryPlayer;
 		this.wrld = world;

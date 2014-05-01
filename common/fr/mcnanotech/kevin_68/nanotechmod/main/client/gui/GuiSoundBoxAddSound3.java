@@ -8,8 +8,7 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
-import fr.mcnanotech.kevin_68.nanotechmod.main.client.gui.GuiSoundBoxList.GuiButtonList;
-import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerListerJukebox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod.BaseNTMEntry;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
@@ -33,7 +32,7 @@ public class GuiSoundBoxAddSound3 extends GuiSoundBoxListBase
 
 	public GuiSoundBoxAddSound3(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, String name, int[] color, String dir, boolean editMode, GuiSoundBoxEditSound gui)
 	{
-		super(new ContainerListerJukebox(tileEntity, inventoryPlayer, world));
+		super(new ContainerSoundBox(tileEntity, inventoryPlayer, world));
 		this.tile = tileEntity;
 		this.inv = inventoryPlayer;
 		this.wrld = world;
@@ -82,7 +81,7 @@ public class GuiSoundBoxAddSound3 extends GuiSoundBoxListBase
 		{
 			if(editMode)
 			{
-				SoundEntry entry = new SoundEntry(this.gui.entry.getDir(), this.gui.entry.getName(), this.categ.getId(), this.gui.entry.getColor(), this.gui.entry.getId());
+				SoundEntry entry = new SoundEntry(this.gui.entry.getDir(), this.gui.entry.getName(), categ.getId(), this.gui.entry.getColor(), this.gui.entry.getId());
 				this.mc.displayGuiScreen(new GuiSoundBoxEditSound(inv, tile, wrld, entry));
 			}
 			else

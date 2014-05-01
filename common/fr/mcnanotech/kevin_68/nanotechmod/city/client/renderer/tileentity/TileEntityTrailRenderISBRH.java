@@ -279,7 +279,7 @@ public class TileEntityTrailRenderISBRH implements ISimpleBlockRenderingHandler
 			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
 			return true;
 		}
-		else if(flag[CTHelper.VrNW] || flag[CTHelper.tSrNW] || flag[CTHelper.tErNW]  || flag[CTHelper.SEserNWnenwsw])
+		else if(flag[CTHelper.VrNW] || flag[CTHelper.tSrNW] || flag[CTHelper.tErNW] || flag[CTHelper.SEserNWnenwsw])
 		{
 			renderer.setRenderBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
 			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
@@ -315,7 +315,7 @@ public class TileEntityTrailRenderISBRH implements ISimpleBlockRenderingHandler
 			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);
 			return true;
 		}
-		else if(flag[CTHelper.VrSE] || flag[CTHelper.tNrSE] || flag[CTHelper.tWrSE]|| flag[CTHelper.NWnwrSEnesesw])
+		else if(flag[CTHelper.VrSE] || flag[CTHelper.tNrSE] || flag[CTHelper.tWrSE] || flag[CTHelper.NWnwrSEnesesw])
 		{
 			renderer.setRenderBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
 			renderer.renderStandardBlock(world.getBlock(x, y, z), x, y, z);

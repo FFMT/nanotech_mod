@@ -9,10 +9,7 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.client.model.items;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 
 public class ItemCrazyGlassesGunModel extends ModelBase
 {

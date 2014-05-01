@@ -14,8 +14,8 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.network.packet.PacketListerJukebo
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.packet.PacketSaber;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.packet.PacketSmoker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityJumper;
-import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
+import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 
 public class NTMPacketHelper
 {
@@ -66,7 +66,7 @@ public class NTMPacketHelper
 			NanotechMod.nanoLogger.error("Failed to send a packet from a listerjukebox");
 		}
 	}
-	
+
 	public static void sendPacket(TileEntitySoundBox tile, int index, String txt)
 	{
 		try

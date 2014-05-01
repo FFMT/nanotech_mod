@@ -19,7 +19,7 @@ public class UGSKeyboardClient extends UGSKeyboard
 	{
 		flyKey = new KeyBinding("Ultimate Gravi Fly Key", Keyboard.KEY_F, "IC2");
 		invKey = new KeyBinding("Invisibility Ultimate Gravi Key", Keyboard.KEY_G, "IC2");
-	
+
 		ClientRegistry.registerKeyBinding(flyKey);
 		ClientRegistry.registerKeyBinding(invKey);
 	}

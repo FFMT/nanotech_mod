@@ -2,10 +2,6 @@ package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common;
 
 import ic2.api.item.ElectricItem;
 import ic2.core.IC2;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -35,7 +31,7 @@ public class UGSCommonEventHandler
 				{
 					UGSUtils.switchVisibility(event.player, chestPlate);
 				}
-				
+
 				if(!UGSUtils.isFlyActive(event.player))
 				{
 					NBTTagCompound tag = UGSUtils.getTag(chestPlate);

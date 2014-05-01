@@ -32,15 +32,14 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.GuiHandler;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityButton;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityJumper;
-import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPortableChest;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPresent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
+import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.world.NanotechBiome;
 import fr.mcnanotech.kevin_68.nanotechmod.main.world.NanotechWorldProvider;
 import fr.mcnanotech.kevin_68.nanotechmod.main.world.NitrogenOcean;
-import fr.mcnanotech.kevin_68.nanotechmod.main.world.WorldGeneration;
 
 public class NanotechOther
 {
@@ -105,8 +104,9 @@ public class NanotechOther
 	{
 		DimensionManager.registerProviderType(NanotechConfiguration.dimensionID, NanotechWorldProvider.class, false);
 		DimensionManager.registerDimension(NanotechConfiguration.dimensionID, NanotechConfiguration.dimensionID);
-		// TODO fix unable to create new world / very laggy if WorldGenerator is not commented
-		//GameRegistry.registerWorldGenerator(new WorldGeneration(), 0);
+		// TODO fix unable to create new world / very laggy if WorldGenerator is
+		// not commented
+		// GameRegistry.registerWorldGenerator(new WorldGeneration(), 0);
 
 		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechBlock.sodium), 1, 5, 6));
 		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechItem.nanoDisc), 1, 1, 2));

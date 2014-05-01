@@ -23,7 +23,6 @@ import org.lwjgl.opengl.GL11;
 import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.ItemCrazyGlassesGun;
-import fr.mcnanotech.kevin_68.nanotechmod.main.items.ItemNanomiteArrowGun;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 
 public class RenderEvent

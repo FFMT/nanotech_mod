@@ -14,12 +14,12 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 
-public class ContainerListerJukebox extends Container
+public class ContainerSoundBox extends Container
 {
 	protected TileEntitySoundBox tileListerJukebox;
 	private World worldObj;
 
-	public ContainerListerJukebox(TileEntitySoundBox tileEntity, InventoryPlayer inventoryPlayer, World world)
+	public ContainerSoundBox(TileEntitySoundBox tileEntity, InventoryPlayer inventoryPlayer, World world)
 	{
 		this.worldObj = world;
 		this.tileListerJukebox = tileEntity;

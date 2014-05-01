@@ -7,7 +7,6 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.main.blocks;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -17,7 +16,6 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
-import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
 
 public class BlockListerJukebox extends BlockContainer
 {

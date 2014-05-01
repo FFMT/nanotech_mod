@@ -19,10 +19,10 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.client.gui.GuiSmoker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.gui.GuiSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerJumper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerLightSaber;
-import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerListerJukebox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerMultiplier;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerPortableChest;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSmoker;
+import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityMultiplier;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityPortableChest;
@@ -49,7 +49,7 @@ public class GuiHandler implements IGuiHandler
 		}
 		if(tileentity instanceof TileEntitySoundBox)
 		{
-			return new ContainerListerJukebox((TileEntitySoundBox)tileentity, player.inventory, world);
+			return new ContainerSoundBox((TileEntitySoundBox)tileentity, player.inventory, world);
 		}
 		if(tileentity instanceof TileEntityPortableChest)
 		{

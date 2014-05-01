@@ -7,9 +7,6 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.city.client.gui;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;

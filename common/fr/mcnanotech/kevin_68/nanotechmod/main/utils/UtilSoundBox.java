@@ -21,7 +21,6 @@ import net.minecraftforge.common.util.Constants;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod.BaseNTMEntry;
-import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
 
 public class UtilSoundBox
 {
@@ -100,7 +99,7 @@ public class UtilSoundBox
 		NBTTagCompound playerTag = playerList.getCompoundTagAt(id);
 		return new SoundEntry(playerTag.getString("dir"), playerTag.getString("name"), playerTag.getInteger("categorie"), playerTag.getInteger("color"), playerTag.getInteger("id"));
 	}
-	
+
 	public static ArrayList<BaseNTMEntry> getSoundsList(String player)
 	{
 		ArrayList<BaseNTMEntry> list = new ArrayList();
@@ -114,7 +113,7 @@ public class UtilSoundBox
 		}
 		return list;
 	}
-	
+
 	public static void deleteSound(String player, int id)
 	{
 		NBTTagCompound compoundBase = getData();
@@ -150,7 +149,7 @@ public class UtilSoundBox
 
 		return new CategoryEntry(category.getString("name"), category.getString("owner"), category.getInteger("color"), id);
 	}
-	
+
 	public static ArrayList<BaseNTMEntry> getCategoryList()
 	{
 		ArrayList<BaseNTMEntry> list = new ArrayList();
@@ -212,7 +211,7 @@ public class UtilSoundBox
 		{
 			return dir;
 		}
-		
+
 		public int getCategoryId()
 		{
 			return categoryId;
@@ -227,7 +226,7 @@ public class UtilSoundBox
 		{
 			return color;
 		}
-		
+
 		public int getId()
 		{
 			return id;

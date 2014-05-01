@@ -16,7 +16,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 
 public class NanotechBlock
 {
-	public static Block nanoPortal, portalFrame, nanoGrass, fakeOre, speed, jump, multiplier, smoker, barbedWire, nanoWood, nanoLeaves, nanoSaplings, nanoPlank, ore, confusion, falling, notFalling, sodium, mossyStone, theDeathHead, listerJukeBox, nanoFence, nanoStairs, nanoStepSingle, nanoStepDouble, satelite, nukeBuilding, nukeBuildingStairs, present, machine, cereal;
+	public static Block nanoPortal, portalFrame, nanoGrass, fakeOre, speed, jump, multiplier, smoker, barbedWire, nanoWood, nanoLeaves, nanoSaplings, nanoPlank, ore, confusion, falling, notFalling, sodium, mossyStone, theDeathHead, listerJukeBox, nanoFence, nanoStairs, nanoStepSingle, nanoStepDouble, satelite, nukeBuilding, nukeBuildingStairs, present, machine, cereal, clearglass;
 
 	public static void initBlock()
 	{
@@ -51,6 +51,7 @@ public class NanotechBlock
 		present = new BlockPresent().setHardness(1.0F).setResistance(5.0F).setBlockName("present").setBlockTextureName(NanotechMod.MODID + ":present").setCreativeTab(NanotechMod.CreaB).setStepSound(Block.soundTypeCloth);
 		machine = new BlockNanotechMachine(Material.wood).setHardness(1.0F).setResistance(15.0F).setBlockName("machine").setCreativeTab(NanotechMod.CreaB);
 		cereal = new BlockCereal().setHardness(0.5F).setResistance(3.0F).setBlockName("cereal").setCreativeTab(NanotechMod.CreaB).setStepSound(Block.soundTypeGrass);
+		clearglass = new BlockClearGlass().setBlockName("clearglass").setHardness(0.6F).setCreativeTab(NanotechMod.CreaB);
 
 		GameRegistry.registerBlock(nanoPortal, ItemBlock.class, "BlockPortal", NanotechMod.MODID);
 		GameRegistry.registerBlock(portalFrame, ItemBlock.class, "BlockPortalframe", NanotechMod.MODID);
@@ -83,9 +84,10 @@ public class NanotechBlock
 		GameRegistry.registerBlock(present, ItemBlock.class, "present", NanotechMod.MODID);
 		GameRegistry.registerBlock(machine, ItemBlockMachine.class, "machine", NanotechMod.MODID);
 		GameRegistry.registerBlock(cereal, ItemBlockCereal.class, "cereal", NanotechMod.MODID);
-		
+		GameRegistry.registerBlock(clearglass, ItemBlock.class, "ntm_clearglass", NanotechMod.MODID);
+
 		nukeBuildingStairs.setCreativeTab(null);
-		
+
 		NanotechMod.nanoLogger.info("Blocks initialized");
 	}
 }

@@ -10,9 +10,8 @@ import net.minecraft.world.World;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
-import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerListerJukebox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
-import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.SoundEntry;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiContainerSliderBase;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
@@ -32,7 +31,7 @@ public class GuiSoundBoxAddSound1 extends FFMTGuiContainerSliderBase
 
 	public GuiSoundBoxAddSound1(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, boolean editMode, GuiSoundBoxEditSound gui)
 	{
-		super(new ContainerListerJukebox(tileEntity, inventoryPlayer, world));
+		super(new ContainerSoundBox(tileEntity, inventoryPlayer, world));
 		this.tile = tileEntity;
 		this.inv = inventoryPlayer;
 		this.wrld = world;

@@ -3,19 +3,13 @@ package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.client;
 import ic2.api.item.ElectricItem;
 import ic2.core.IC2;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
-import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.UltimateArmor;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.UltimateGraviSuiteMod;
 
 public class UGSClientEventHandler

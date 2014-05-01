@@ -14,34 +14,32 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.SoundEntry;
 
 @SuppressWarnings("rawtypes")
 public class TileEntitySoundBox extends TileEntity
 {
 	private int modidSelected, categorySelected, redText, greenText, blueText, redCateg, greenCateg, blueCateg, lastSlotSelected;
 	private String txt, txtCateg, dir;
-	
+
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
 		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
 	}
-	
+
 	@Override
 	public void updateEntity()
-	{
-	}
+	{}
 
 	public void playSound(String dir)
 	{
 		stopSounds();
-		
+
 		if(dir != null)
 		{
 			worldObj.playSound(xCoord, yCoord, zCoord, dir, 1.0F, 1.0F, true);
 		}
 	}
-	
+
 	public void stopSounds()
 	{
 		Minecraft.getMinecraft().getSoundHandler().stopSounds();

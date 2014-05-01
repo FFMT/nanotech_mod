@@ -13,7 +13,6 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-import net.minecraft.world.gen.feature.WorldGenerator;
 import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 
 public class WorldGenNanoTree extends WorldGenAbstractTree

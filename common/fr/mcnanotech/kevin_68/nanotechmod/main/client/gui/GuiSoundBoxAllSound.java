@@ -2,17 +2,17 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.client.gui;
 
 import java.util.ArrayList;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerListerJukebox;
+
+import org.lwjgl.opengl.GL11;
+
+import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod.BaseNTMEntry;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
-import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.CategoryEntry;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.SoundEntry;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
 
@@ -27,10 +27,10 @@ public class GuiSoundBoxAllSound extends GuiSoundBoxListBase
 	private GuiSoundBoxList sBList;
 	private SoundEntry snd;
 	private boolean editMode;
-	
+
 	public GuiSoundBoxAllSound(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world)
 	{
-		super(new ContainerListerJukebox(tileEntity, inventoryPlayer, world));
+		super(new ContainerSoundBox(tileEntity, inventoryPlayer, world));
 		this.tile = tileEntity;
 		this.inv = inventoryPlayer;
 		this.wrld = world;
@@ -67,7 +67,7 @@ public class GuiSoundBoxAllSound extends GuiSoundBoxListBase
 			}
 			else
 			{
-				this.tile.playSound(snd.getDir());	
+				this.tile.playSound(snd.getDir());
 			}
 			break;
 		}
@@ -78,7 +78,7 @@ public class GuiSoundBoxAllSound extends GuiSoundBoxListBase
 		}
 		}
 	}
-	
+
 	@Override
 	public void setSelected(BaseNTMEntry entry)
 	{
@@ -93,13 +93,13 @@ public class GuiSoundBoxAllSound extends GuiSoundBoxListBase
 			{
 				editMode = false;
 			}
-			
+
 			this.snd = ent;
 			this.updateButton(editMode);
 			this.playButton.enabled = true;
 		}
 	}
-	
+
 	public void updateButton(boolean edit)
 	{
 		int x = (width - xSize) / 2;
@@ -126,7 +126,7 @@ public class GuiSoundBoxAllSound extends GuiSoundBoxListBase
 		super.drawScreen(par1, par2, par3);
 		this.sBList.drawScreen(x, y);
 	}
-	
+
 	@Override
 	protected void drawGuiContainerForegroundLayer(int i, int j)
 	{

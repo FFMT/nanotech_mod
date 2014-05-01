@@ -28,7 +28,7 @@ public class NanotechCityBlock
 		modernFence = new BlockModernFence().setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundTypeMetal).setBlockName("modernFence").setCreativeTab(NanotechModCity.cityTab);
 		textSpotlight = new BlockTextSpotLight().setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundTypeMetal).setBlockName("textSpotLight").setCreativeTab(NanotechModCity.cityTab);
 		lightAir = new BlockLightAir().setLightOpacity(0).setLightLevel(1.0F).setBlockName("lightAir");
-		
+
 		GameRegistry.registerBlock(trashcan, ItemBlock.class, "trashcan", NanotechModCity.MODID);
 		GameRegistry.registerBlock(spotlight, ItemBlock.class, "spotlight", NanotechModCity.MODID);
 		GameRegistry.registerBlock(trail, ItemBlock.class, "trail", NanotechModCity.MODID);

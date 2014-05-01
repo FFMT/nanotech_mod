@@ -124,7 +124,7 @@ public class NanotechMod
 	{
 		packetHandler.initialise("NTM|Packets");
 		NanotechMod.nanoLogger.info("Packets initialized");
-		
+
 		NanotechOther.initForgeDictionary();
 		NanotechOther.initWorld();
 		NanotechAchievement.initAchievement();
@@ -149,16 +149,16 @@ public class NanotechMod
 			NanotechRecipe.InitFallingBlockRecipes(8);
 		}
 	}
-	
+
 	public static class BaseNTMEntry
 	{
 		private final String name;
-		
+
 		public BaseNTMEntry(String name)
 		{
 			this.name = name;
 		}
-		
+
 		public String getName()
 		{
 			return name;

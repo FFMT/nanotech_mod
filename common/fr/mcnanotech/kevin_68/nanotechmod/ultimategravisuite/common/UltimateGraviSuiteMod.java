@@ -8,7 +8,6 @@ http://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
 
 package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common;
 
-import fr.minecraftforgefrance.ffmtlibs.network.FFMTPacketHandler;
 import ic2.api.item.IC2Items;
 import ic2.core.IC2;
 import net.minecraft.block.Block;
@@ -32,6 +31,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import fr.minecraftforgefrance.ffmtlibs.network.FFMTPacketHandler;
 
 @Mod(modid = "UltimateGraviSuite", name = "Ultimate Gravitation Suite", version = "@VERSION@")
 public class UltimateGraviSuiteMod

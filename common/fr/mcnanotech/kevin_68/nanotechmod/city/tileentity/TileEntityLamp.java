@@ -7,14 +7,8 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.city.tileentity;
 
-import java.nio.IntBuffer;
-
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-
-import org.lwjgl.BufferUtils;
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

@@ -1,21 +1,20 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.client.gui;
 
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerListerJukebox;
+
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+
+import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.SoundEntry;
 import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiSliderForContainer;
 
 public class GuiSoundBoxAddSound2 extends GuiContainer
 {
@@ -31,7 +30,7 @@ public class GuiSoundBoxAddSound2 extends GuiContainer
 
 	public GuiSoundBoxAddSound2(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, String name, int[] color, boolean editMode, GuiSoundBoxEditSound gui)
 	{
-		super(new ContainerListerJukebox(tileEntity, inventoryPlayer, world));
+		super(new ContainerSoundBox(tileEntity, inventoryPlayer, world));
 		this.tile = tileEntity;
 		this.inv = inventoryPlayer;
 		this.wrld = world;
@@ -120,7 +119,7 @@ public class GuiSoundBoxAddSound2 extends GuiContainer
 		{
 			fontRendererObj.drawString("Sound box" + " - " + "Add sound step 2", 6, 6, 4210752);
 		}
-		}
+	}
 
 	@Override
 	public void drawScreen(int par1, int par2, float par3)

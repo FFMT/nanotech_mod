@@ -7,14 +7,11 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.city.client.renderer.tileentity;
 
-import java.nio.FloatBuffer;
-
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
-import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotechmod.city.client.model.blocks.ModelBlockLampLight;

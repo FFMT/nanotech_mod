@@ -9,7 +9,7 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotechmod.main.client.gui.GuiSoundBoxConfirm.YesAction;
-import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerListerJukebox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.SoundEntry;
@@ -24,7 +24,7 @@ public class GuiSoundBoxEditSound extends GuiContainer implements YesAction
 
 	public GuiSoundBoxEditSound(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, SoundEntry entry)
 	{
-		super(new ContainerListerJukebox(tileEntity, inventoryPlayer, world));
+		super(new ContainerSoundBox(tileEntity, inventoryPlayer, world));
 		this.tile = tileEntity;
 		this.inv = inventoryPlayer;
 		this.wrld = world;

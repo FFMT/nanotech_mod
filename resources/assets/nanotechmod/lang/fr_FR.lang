@@ -52,6 +52,7 @@ tile.cereal.bowl_3quarter.name=Bol plein aux trois quart
 tile.cereal.bowl_quarterempty.name=Bol vide d'un quart
 tile.cereal.bowl_halfempty.name=Bol à moitier vide
 tile.cereal.bowl_3quarterempty.name=Bol vide aux trois quart
+tile.clearglass.name=Verre transparent
 
 #Fluid
 fluid.liquidnitrogen=Azote liquide

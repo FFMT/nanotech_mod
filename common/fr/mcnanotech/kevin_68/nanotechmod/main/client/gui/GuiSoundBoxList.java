@@ -3,16 +3,14 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.client.gui;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.MouseHelper;
 import net.minecraft.util.ResourceLocation;
+
+import org.lwjgl.opengl.GL11;
+
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod.BaseNTMEntry;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.CategoryEntry;
@@ -209,7 +207,7 @@ public class GuiSoundBoxList
 			buttonList.add(i, keepList.get(i));
 		}
 	}
-	
+
 	public class ButtonEntry extends BaseNTMEntry
 	{
 		public int id, x, y, width, height, xR, color;
@@ -286,22 +284,21 @@ public class GuiSoundBoxList
 					txt = String.valueOf(displayString.subSequence(0, this.width / 4 - 10)) + "...";
 				}
 				this.drawCenteredString(fontrenderer, txt, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, entry.color);
-				
+
 				if(k == 2 && !(this.displayString.length() * 4 < this.width))
 				{
 					this.renderOverlayText(mouseX, mouseY, displayString, entry.color);
 				}
 			}
 		}
-		
-		
-	    protected void renderOverlayText(int mouseX, int mouseY, String txt, int color)
-	    {
-	        ArrayList<String> list = new ArrayList();
-	        list.add(0, txt);
-	        
-	        //this.func_146283_a(list, mouseX, mouseY);
-	        FFMTGuiHelper.drawHoveringText(list, mouseX, mouseY, Minecraft.getMinecraft().fontRenderer, 166, 176, color);
-	    }
+
+		protected void renderOverlayText(int mouseX, int mouseY, String txt, int color)
+		{
+			ArrayList<String> list = new ArrayList();
+			list.add(0, txt);
+
+			// this.func_146283_a(list, mouseX, mouseY);
+			FFMTGuiHelper.drawHoveringText(list, mouseX, mouseY, Minecraft.getMinecraft().fontRenderer, 166, 176, color);
+		}
 	}
 }
