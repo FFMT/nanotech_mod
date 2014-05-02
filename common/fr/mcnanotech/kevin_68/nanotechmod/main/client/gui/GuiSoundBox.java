@@ -33,7 +33,7 @@ public class GuiSoundBox extends GuiContainer
 		super.initGui();
 		if(UtilSoundBox.getCategoryList().isEmpty())
 		{
-			UtilSoundBox.setCategory(this.mc.thePlayer.getCommandSenderName(), 0, "Default", FFMTColor.WHITE);
+			UtilSoundBox.setCategory(this.mc.thePlayer.getCommandSenderName(), "NanotechMod_0", "Default", FFMTColor.WHITE);
 		}
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
@@ -41,7 +41,8 @@ public class GuiSoundBox extends GuiContainer
 		this.buttonList.add(new GuiButton(1, x + 10, y + 44, 156, 20, "Categories"));
 		this.buttonList.add(new GuiButton(2, x + 10, y + 68, 156, 20, "Add sound"));
 		this.buttonList.add(new GuiButton(3, x + 10, y + 92, 156, 20, "Add category"));
-		this.buttonList.add(new GuiButton(4, x + 30, y + 116, 116, 20, "Stop sound"));
+		this.buttonList.add(new GuiButton(4, x + 6, y + 117, 78, 20, "Stop sounds"));
+		this.buttonList.add(new GuiButton(5, x + 91, y + 117, 78, 20, "Syncronization"));
 	}
 
 	@Override
@@ -74,7 +75,15 @@ public class GuiSoundBox extends GuiContainer
 		}
 		case 4:
 		{
-			tile.stopSounds();
+			if(tile != null)
+			{
+				tile.stopSounds();
+			}
+			break;
+		}
+		case 5:
+		{
+			this.mc.displayGuiScreen(new GuiSoundBoxSync(inv, tile, wrld));
 			break;
 		}
 		}

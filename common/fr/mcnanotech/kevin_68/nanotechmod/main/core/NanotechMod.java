@@ -19,6 +19,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -148,6 +149,12 @@ public class NanotechMod
 			NanotechRecipe.InitNormalRecipes();
 			NanotechRecipe.InitFallingBlockRecipes(8);
 		}
+	}
+	
+	@EventHandler
+	public void onServerStarted(FMLServerStartedEvent event)
+	{
+		UtilSoundBox.serverInit();
 	}
 
 	public static class BaseNTMEntry

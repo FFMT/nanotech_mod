@@ -90,7 +90,7 @@ public class GuiSoundBoxAddCategory extends FFMTGuiContainerSliderBase
 			}
 			else
 			{
-				UtilSoundBox.setCategory(UtilSoundBox.getPlyN(this.mc), UtilSoundBox.getNextId(UtilSoundBox.getPlyN(this.mc), true), name, (color[0] * 65536) + (color[1] * 256) + color[2]);
+				UtilSoundBox.setCategory(UtilSoundBox.getPlyN(this.mc), UtilSoundBox.getNextCategoryId(UtilSoundBox.getPlyN(this.mc)), name, (color[0] * 65536) + (color[1] * 256) + color[2]);
 				this.mc.displayGuiScreen(new GuiSoundBox(inv, tile, wrld));
 			}
 			break;

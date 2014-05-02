@@ -1,5 +1,7 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.client.gui;
 
+import java.util.ArrayList;
+
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -8,32 +10,25 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSoundBox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod.BaseNTMEntry;
+import fr.mcnanotech.kevin_68.nanotechmod.main.network.NTMPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.CategoryEntry;
-import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
 
-public class GuiSoundBoxAddSound4 extends GuiContainer
+public class GuiSoundBoxSync extends GuiContainer
 {
-
 	private TileEntitySoundBox tile;
 	private InventoryPlayer inv;
 	private World wrld;
-	private String name, dir;
-	private CategoryEntry categ;
-	private int[] color;
 
-	public GuiSoundBoxAddSound4(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, String name, int[] color, String dir, CategoryEntry categ)
+	public GuiSoundBoxSync(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world)
 	{
 		super(new ContainerSoundBox(tileEntity, inventoryPlayer, world));
 		this.tile = tileEntity;
 		this.inv = inventoryPlayer;
 		this.wrld = world;
-		this.name = name;
-		this.color = color;
-		this.dir = dir;
-		this.categ = categ;
 	}
 
 	@Override
@@ -42,8 +37,8 @@ public class GuiSoundBoxAddSound4 extends GuiContainer
 		super.initGui();
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		this.buttonList.add(new GuiButton(3, x + 6, y + 112, 78, 20, "Cancel"));
-		this.buttonList.add(new GuiButton(4, x + 88, y + 112, 78, 20, "Create"));
+		this.buttonList.add(new GuiButton(0, x + 6, y + 117, 78, 20, "Cancel"));
+		this.buttonList.add(new GuiButton(1, x + 91, y + 117, 78, 20, "test"));
 	}
 
 	@Override
@@ -51,15 +46,18 @@ public class GuiSoundBoxAddSound4 extends GuiContainer
 	{
 		switch(guibutton.id)
 		{
-		case 3:
+		case 0:
 		{
 			this.mc.displayGuiScreen(new GuiSoundBox(inv, tile, wrld));
 			break;
 		}
-		case 4:
+		case 1:
 		{
-			UtilSoundBox.setSound(UtilSoundBox.getPlyN(mc), UtilSoundBox.getNextSoundId(UtilSoundBox.getPlyN(mc)), dir, name, categ, (color[0] * 65536) + (color[1] * 256) + color[2]);
-			this.mc.displayGuiScreen(new GuiSoundBox(inv, tile, wrld));
+			ArrayList<BaseNTMEntry> list = UtilSoundBox.getCategoryList();
+			for(int i = 0; i < list.size(); i++)
+			{
+				NTMPacketHelper.sendSoundBoxPacket(true, (CategoryEntry)(list.get(i)));
+			}
 			break;
 		}
 		}
@@ -68,13 +66,7 @@ public class GuiSoundBoxAddSound4 extends GuiContainer
 	@Override
 	protected void drawGuiContainerForegroundLayer(int i, int j)
 	{
-		int x = (width - xSize) / 2;
-		int y = (height - ySize) / 2;
-		fontRendererObj.drawString("Sound box" + " - " + "Add sound resume", 6, 6, 4210752);
-
-		this.drawCenteredString(fontRendererObj, "Sound name: " + name, 85, 30, (color[0] * 65536) + (color[1] * 256) + color[2]);
-		this.drawCenteredString(fontRendererObj, "Directory: " + dir, 85, 45, FFMTColor.WHITE);
-		this.drawCenteredString(fontRendererObj, "Category: " + categ.getName(), 85, 60, FFMTColor.WHITE);
+		fontRendererObj.drawString("Sound box" + " - " + "Syncronization", 6, 6, 4210752);
 	}
 
 	@Override

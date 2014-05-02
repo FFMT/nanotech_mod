@@ -13,9 +13,11 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.network.packet.PacketListerJukebo
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.packet.PacketListerJukeboxString;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.packet.PacketSaber;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.packet.PacketSmoker;
+import fr.mcnanotech.kevin_68.nanotechmod.main.network.packet.PacketSoundBoxSendCategToServer;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityJumper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
+import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.CategoryEntry;
 
 public class NTMPacketHelper
 {
@@ -54,28 +56,16 @@ public class NTMPacketHelper
 			NanotechMod.nanoLogger.error("Failed to send a packet from a saber");
 		}
 	}
-
-	public static void sendPacket(TileEntitySoundBox tile, int index, int indexList)
+	
+	public static void sendSoundBoxPacket(boolean toServer, CategoryEntry entry)
 	{
 		try
 		{
-			NanotechMod.packetHandler.sendToServer(new PacketListerJukebox(tile.xCoord, tile.yCoord, tile.zCoord, index, indexList));
+			NanotechMod.packetHandler.sendToServer(new PacketSoundBoxSendCategToServer(entry));
 		}
 		catch(Exception exception)
 		{
-			NanotechMod.nanoLogger.error("Failed to send a packet from a listerjukebox");
-		}
-	}
-
-	public static void sendPacket(TileEntitySoundBox tile, int index, String txt)
-	{
-		try
-		{
-			NanotechMod.packetHandler.sendToServer(new PacketListerJukeboxString(tile.xCoord, tile.yCoord, tile.zCoord, index, txt));
-		}
-		catch(Exception exception)
-		{
-			NanotechMod.nanoLogger.error("Failed to send a packet from a listerjukebox");
+			NanotechMod.nanoLogger.error("Failed to send a packet to server from a soundbox");
 		}
 	}
 }
