@@ -50,7 +50,7 @@ public class UltimateGraviSuiteMod
 	public static boolean displayHud;
 	public static String hudPos;
 
-	public static final FFMTPacketHandler packetHandler = new FFMTPacketHandler("fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.packet");
+	public static final FFMTPacketHandler packetHandler = new FFMTPacketHandler("fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.packet", "UltimateGraviSuite");
 
 	public static Logger ugslogger;
 

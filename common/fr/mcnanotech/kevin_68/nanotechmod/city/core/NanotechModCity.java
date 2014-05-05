@@ -64,7 +64,7 @@ public class NanotechModCity
 	/**
 	 * NanotechModCity packethandler
 	 */
-	public static final FFMTPacketHandler packetHandler = new FFMTPacketHandler("fr.mcnanotech.kevin_68.nanotechmod.city.network.packet");
+	public static final FFMTPacketHandler packetHandler = new FFMTPacketHandler("fr.mcnanotech.kevin_68.nanotechmod.city.network.packet", MODID);
 
 	/**
 	 * NanotechModCity logger

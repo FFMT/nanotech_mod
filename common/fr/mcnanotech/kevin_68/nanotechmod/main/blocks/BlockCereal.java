@@ -279,6 +279,7 @@ public class BlockCereal extends Block
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public int getRenderType()
 	{
 		return ClientProxy.renderCerealID;
