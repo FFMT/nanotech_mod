@@ -10,7 +10,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockClearGlass extends Block
 {
-	private IIcon[] tex = new IIcon[50];
+	private IIcon[] tex = new IIcon[47];
 
 	public BlockClearGlass()
 	{
@@ -20,7 +20,7 @@ public class BlockClearGlass extends Block
 	@Override
 	public void registerBlockIcons(IIconRegister iconregister)
 	{
-		for(int i = 0; i < 50; i++)
+		for(int i = 0; i < this.tex.length; i++)
 		{
 			tex[i] = iconregister.registerIcon("nanotechmod:clearglass/tex" + i);
 		}
