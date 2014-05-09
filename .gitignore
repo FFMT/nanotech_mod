@@ -4,6 +4,7 @@ build/
 eclipse/
 libs/
 
+*~
 Thumbs.db
 *.DS_Store
 .classpath
