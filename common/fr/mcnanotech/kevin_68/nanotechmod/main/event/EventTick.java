@@ -40,7 +40,7 @@ public class EventTick
 		{
 			if(event.side == Side.CLIENT)
 			{
-				this.tickClientPlayer(event.player);
+				this.tickClientPlayer();
 			}
 			else
 			{
@@ -49,19 +49,19 @@ public class EventTick
 		}
 	}
 
-	private void tickClientPlayer(EntityPlayer player)
+	private void tickClientPlayer()
 	{
-		for(int i = 0; i < player.inventory.getSizeInventory(); i++)
+		Minecraft mc = FMLClientHandler.instance().getClient();
+		for(int i = 0; i < mc.thePlayer.inventory.getSizeInventory(); i++)
 		{
-			if(player.inventory.getStackInSlot(i) != null)
+			if(mc.thePlayer.inventory.getStackInSlot(i) != null)
 			{
-				if(player.inventory.getStackInSlot(i).getItem().equals(NanotechItem.alters))
+				if(mc.thePlayer.inventory.getStackInSlot(i).getItem().equals(NanotechItem.alters))
 				{
-					if(player.isInsideOfMaterial(Material.water) || player.isInsideOfMaterial(Material.lava))
+					if(mc.thePlayer.isInsideOfMaterial(Material.water) || mc.thePlayer.isInsideOfMaterial(Material.lava))
 					{
-						if(!player.capabilities.isCreativeMode)
+						if(!mc.thePlayer.capabilities.isCreativeMode)
 						{
-							Minecraft mc = FMLClientHandler.instance().getClient();
 							if(mc.gameSettings.isKeyDown(mc.gameSettings.keyBindJump))
 							{
 								mc.gameSettings.keyBindJump.unPressAllKeys();
