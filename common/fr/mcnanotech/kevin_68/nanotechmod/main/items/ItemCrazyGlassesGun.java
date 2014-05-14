@@ -19,7 +19,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fr.minecraftforgefrance.ffmtlibs.FFMTContainerHelper;
+import fr.minecraftforgefrance.ffmtlibs.container.ContainerHelper;
 
 public class ItemCrazyGlassesGun extends ItemBow
 {
@@ -104,7 +104,7 @@ public class ItemCrazyGlassesGun extends ItemBow
 							}
 							else if(timer == 6 || timer == 16 || timer == 26 || timer == 36)
 							{
-								if(FFMTContainerHelper.consumeItemWithMetadataInInventory((EntityPlayer)entity, NanotechItem.itemBase, 20))
+								if(ContainerHelper.consumeItemWithMetadataInInventory((EntityPlayer)entity, NanotechItem.itemBase, 20))
 								{
 									stack.getTagCompound().setByte("Charge", (byte)(stack.getTagCompound().getByte("Charge") + 1));
 								}

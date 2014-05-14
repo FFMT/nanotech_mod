@@ -9,8 +9,8 @@ import org.lwjgl.opengl.GL11;
 
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
-import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiHelper;
+import fr.minecraftforgefrance.ffmtlibs.entity.EggColor;
 
 public class GuiSoundBoxConfirm extends GuiContainer
 {
@@ -66,14 +66,14 @@ public class GuiSoundBoxConfirm extends GuiContainer
 	protected void drawGuiContainerForegroundLayer(int i, int j)
 	{
 		fontRendererObj.drawString("Sound box" + " - " + "Edit sound", 6, 6, 4210752);
-		FFMTGuiHelper.drawCenteredLocalizedString(this.mc.fontRenderer, txt, 83, 50, FFMTColor.RED);
+		GuiHelper.drawCenteredLocalizedString(this.mc.fontRenderer, txt, 83, 50, EggColor.RED);
 	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3)
 	{
 		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		FFMTGuiHelper.bindTexture("nanotechmod", "textures/gui/soundbox.png");
+		GuiHelper.bindTexture("nanotechmod", "textures/gui/soundbox.png");
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 

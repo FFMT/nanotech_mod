@@ -1,9 +1,9 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.network.packet;
 
-import cpw.mods.fml.common.network.ByteBufUtils;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.PacketBuffer;
+import cpw.mods.fml.common.network.ByteBufUtils;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.CategoryEntry;
 import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
@@ -27,7 +27,7 @@ public class PacketSoundBoxSendCategToServer extends AbstractPacket
 	}
 	
 	@Override
-	public void encodeInto(ChannelHandlerContext ctx, ByteBuf buffer)
+	public void encodeInto(ChannelHandlerContext ctx, PacketBuffer buffer)
 	{
 		ByteBufUtils.writeUTF8String(buffer, name);
 		ByteBufUtils.writeUTF8String(buffer, id);
@@ -36,7 +36,7 @@ public class PacketSoundBoxSendCategToServer extends AbstractPacket
 	}
 
 	@Override
-	public void decodeInto(ChannelHandlerContext ctx, ByteBuf buffer)
+	public void decodeInto(ChannelHandlerContext ctx, PacketBuffer buffer)
 	{
 		name = ByteBufUtils.readUTF8String(buffer);
 		id = ByteBufUtils.readUTF8String(buffer);

@@ -41,7 +41,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTrail;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTrashCan;
 import fr.minecraftforgefrance.ffmtlibs.network.FFMTPacketHandler;
 
-@Mod(modid = NanotechModCity.MODID, name = "Nanotech mod City", version = "@VERSION@", dependencies = "required-after:FFMTLIBS")
+@Mod(modid = NanotechModCity.MODID, name = "Nanotech mod City", version = "@VERSION@", dependencies = "required-after:ffmtlibs")
 public class NanotechModCity
 {
 	/**

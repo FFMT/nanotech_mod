@@ -18,10 +18,10 @@ import org.lwjgl.opengl.GL11;
 import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerSpotLight2;
 import fr.mcnanotech.kevin_68.nanotechmod.city.network.NTMCPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiContainerSliderBase;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiSliderForContainer;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiContainerSliderBase;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiSliderForContainer;
 
-public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
+public class GuiSpotLightCreateKey extends GuiContainerSliderBase
 {
 	protected static final ResourceLocation texture = new ResourceLocation("nanotechmodcity:textures/gui/spotlightkey.png");
 
@@ -44,7 +44,7 @@ public class GuiSpotLightCreateKey extends FFMTGuiContainerSliderBase
 		super.initGui();
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x + 3, y + 10, 170, 20, I18n.format("container.spotlight.time") + ": 0.0", 0));
+		this.buttonList.add(new GuiSliderForContainer(this, 0, x + 3, y + 10, 170, 20, I18n.format("container.spotlight.time") + ": 0.0", 0));
 		this.buttonList.add(new GuiButton(1, x + 13, y + 115, 150, 20, I18n.format("container.spotlight.back")));
 		this.buttonList.add(new GuiButton(2, x + 13, y + 90, 150, 20, I18n.format("container.spotlight.createkey")));
 		NTMCPacketHelper.sendPacket(this.tileSpotLight, 0, TileEntitySpotLight.CREATEKEYTIME);

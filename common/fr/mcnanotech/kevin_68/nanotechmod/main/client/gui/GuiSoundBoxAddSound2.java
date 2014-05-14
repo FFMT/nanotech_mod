@@ -13,8 +13,8 @@ import org.lwjgl.opengl.GL11;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.SoundEntry;
-import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiHelper;
+import fr.minecraftforgefrance.ffmtlibs.entity.EggColor;
 
 public class GuiSoundBoxAddSound2 extends GuiContainer
 {
@@ -49,7 +49,7 @@ public class GuiSoundBoxAddSound2 extends GuiContainer
 		int y = (height - ySize) / 2;
 		Keyboard.enableRepeatEvents(true);
 		this.dirField = new GuiTextField(this.fontRendererObj, x + 6, y + 20, 160, 12);
-		this.dirField.setTextColor(FFMTColor.WHITE);
+		this.dirField.setTextColor(EggColor.WHITE);
 		this.dirField.setDisabledTextColour(-1);
 		this.dirField.setEnableBackgroundDrawing(true);
 		this.dirField.setMaxStringLength(40);
@@ -146,7 +146,7 @@ public class GuiSoundBoxAddSound2 extends GuiContainer
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3)
 	{
 		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		FFMTGuiHelper.bindTexture("nanotechmod", "textures/gui/soundbox.png");
+		GuiHelper.bindTexture("nanotechmod", "textures/gui/soundbox.png");
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 

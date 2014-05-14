@@ -7,11 +7,11 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.main.network.packet;
 
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.PacketBuffer;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
@@ -30,14 +30,14 @@ public class PacketSaber extends AbstractPacket
 	}
 
 	@Override
-	public void encodeInto(ChannelHandlerContext ctx, ByteBuf buffer)
+	public void encodeInto(ChannelHandlerContext ctx, PacketBuffer buffer)
 	{
 		buffer.writeInt(this.colorId);
 		buffer.writeInt(this.colorValue);
 	}
 
 	@Override
-	public void decodeInto(ChannelHandlerContext ctx, ByteBuf buffer)
+	public void decodeInto(ChannelHandlerContext ctx, PacketBuffer buffer)
 	{
 		this.colorId = buffer.readInt();
 		this.colorValue = buffer.readInt();

@@ -14,7 +14,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.CategoryEntry;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.SoundEntry;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiHelper;
 
 public class GuiSoundBoxSoundByCategory extends GuiSoundBoxListBase
 {
@@ -102,7 +102,7 @@ public class GuiSoundBoxSoundByCategory extends GuiSoundBoxListBase
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3)
 	{
 		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		FFMTGuiHelper.bindTexture("nanotechmod", "textures/gui/soundbox.png");
+		GuiHelper.bindTexture("nanotechmod", "textures/gui/soundbox.png");
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 

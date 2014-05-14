@@ -19,23 +19,23 @@ import org.lwjgl.opengl.GL11;
 import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerSpotLight;
 import fr.mcnanotech.kevin_68.nanotechmod.city.network.NTMCPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiBooleanButton;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiContainerSliderBase;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiSliderForContainer;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiBooleanButton;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiContainerSliderBase;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiSliderForContainer;
 
-public class GuiSpotLight extends FFMTGuiContainerSliderBase
+public class GuiSpotLight extends GuiContainerSliderBase
 {
 	protected InventoryPlayer invPlayer;
 	protected TileEntitySpotLight tileSpotLight;
 	protected World world;
 	protected static final ResourceLocation texture = new ResourceLocation("nanotechmodcity:textures/gui/spotlight1.png");
 	protected static final ResourceLocation texture2 = new ResourceLocation("nanotechmodcity:textures/gui/spotlight2.png");
-	public FFMTGuiBooleanButton autoRotateButton;
-	public FFMTGuiBooleanButton secondaryLazerButton;
-	public FFMTGuiBooleanButton reverseRotationButton;
-	public FFMTGuiBooleanButton timeLineModeButton;
-	public FFMTGuiSliderForContainer angle2Button;
-	public FFMTGuiSliderForContainer speedRotationButton;
+	public GuiBooleanButton autoRotateButton;
+	public GuiBooleanButton secondaryLazerButton;
+	public GuiBooleanButton reverseRotationButton;
+	public GuiBooleanButton timeLineModeButton;
+	public GuiSliderForContainer angle2Button;
+	public GuiSliderForContainer speedRotationButton;
 
 	public GuiSpotLight(InventoryPlayer playerInventory, TileEntitySpotLight tileEntity, World world)
 	{
@@ -55,22 +55,22 @@ public class GuiSpotLight extends FFMTGuiContainerSliderBase
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, width / 2 + 5, y + 47, EnumChatFormatting.RED + I18n.format("container.spotlight.red") + " : " + tileSpotLight.get(TileEntitySpotLight.RED), (float)(tileSpotLight.get(TileEntitySpotLight.RED)) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 1, width / 2 + 5, y + 69, EnumChatFormatting.GREEN + I18n.format("container.spotlight.green") + " : " + tileSpotLight.get(TileEntitySpotLight.GREEN), (float)(tileSpotLight.get(TileEntitySpotLight.GREEN)) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 2, width / 2 + 5, y + 91, EnumChatFormatting.BLUE + I18n.format("container.spotlight.blue") + " : " + tileSpotLight.get(TileEntitySpotLight.BLUE), (float)(tileSpotLight.get(TileEntitySpotLight.BLUE)) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 3, width / 2 + 5, y + 113, EnumChatFormatting.DARK_RED + I18n.format("container.spotlight.darkred") + " : " + tileSpotLight.get(TileEntitySpotLight.DARKRED), (float)(tileSpotLight.get(TileEntitySpotLight.DARKRED)) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 4, width / 2 + 5, y + 135, EnumChatFormatting.DARK_GREEN + I18n.format("container.spotlight.darkgreen") + " : " + tileSpotLight.get(TileEntitySpotLight.DARKGREEN), (float)(tileSpotLight.get(TileEntitySpotLight.DARKGREEN)) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 5, width / 2 + 5, y + 157, EnumChatFormatting.DARK_BLUE + I18n.format("container.spotlight.darkblue") + " : " + tileSpotLight.get(TileEntitySpotLight.DARKBLUE), (float)(tileSpotLight.get(TileEntitySpotLight.DARKBLUE)) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 6, width / 2 - 155, y + 25, 310, 20, EnumChatFormatting.WHITE + I18n.format("container.spotlight.angle") + " 1 : " + tileSpotLight.get(TileEntitySpotLight.ANGLE1), (float)(tileSpotLight.get(TileEntitySpotLight.ANGLE1)) / 360.0F));
-		this.buttonList.add(angle2Button = new FFMTGuiSliderForContainer(this, 7, width / 2 - 155, y + 47, I18n.format("container.spotlight.angle") + " 2 : " + tileSpotLight.get(TileEntitySpotLight.ANGLE2), (float)(tileSpotLight.get(TileEntitySpotLight.ANGLE2)) / 180.0F));
-		this.buttonList.add(autoRotateButton = new FFMTGuiBooleanButton(8, width / 2 - 155, y + 69, 150, 20, I18n.format("container.spotlight.rotate"), (tileSpotLight.get(TileEntitySpotLight.AUTOROTATE) == 1 ? true : false)));
-		this.buttonList.add(speedRotationButton = new FFMTGuiSliderForContainer(this, 9, width / 2 - 155, y + 91, I18n.format("container.spotlight.rotationspeed") + " : " + (tileSpotLight.get(TileEntitySpotLight.ROTATIONSPEED) / 10.0F), (float)(tileSpotLight.get(TileEntitySpotLight.ROTATIONSPEED)) / 50.0F));
-		this.buttonList.add(reverseRotationButton = new FFMTGuiBooleanButton(11, width / 2 - 155, y + 113, I18n.format("container.spotlight.rotationreverse"), tileSpotLight.get(TileEntitySpotLight.REVREVERSEROTATION) == 1 ? true : false));
-		this.buttonList.add(secondaryLazerButton = new FFMTGuiBooleanButton(10, width / 2 - 155, y + 135, I18n.format("container.spotlight.secondlazer"), tileSpotLight.get(TileEntitySpotLight.SECONDARYLAZER) == 1 ? true : false));
+		this.buttonList.add(new GuiSliderForContainer(this, 0, width / 2 + 5, y + 47, EnumChatFormatting.RED + I18n.format("container.spotlight.red") + " : " + tileSpotLight.get(TileEntitySpotLight.RED), (float)(tileSpotLight.get(TileEntitySpotLight.RED)) / 255.0F));
+		this.buttonList.add(new GuiSliderForContainer(this, 1, width / 2 + 5, y + 69, EnumChatFormatting.GREEN + I18n.format("container.spotlight.green") + " : " + tileSpotLight.get(TileEntitySpotLight.GREEN), (float)(tileSpotLight.get(TileEntitySpotLight.GREEN)) / 255.0F));
+		this.buttonList.add(new GuiSliderForContainer(this, 2, width / 2 + 5, y + 91, EnumChatFormatting.BLUE + I18n.format("container.spotlight.blue") + " : " + tileSpotLight.get(TileEntitySpotLight.BLUE), (float)(tileSpotLight.get(TileEntitySpotLight.BLUE)) / 255.0F));
+		this.buttonList.add(new GuiSliderForContainer(this, 3, width / 2 + 5, y + 113, EnumChatFormatting.DARK_RED + I18n.format("container.spotlight.darkred") + " : " + tileSpotLight.get(TileEntitySpotLight.DARKRED), (float)(tileSpotLight.get(TileEntitySpotLight.DARKRED)) / 255.0F));
+		this.buttonList.add(new GuiSliderForContainer(this, 4, width / 2 + 5, y + 135, EnumChatFormatting.DARK_GREEN + I18n.format("container.spotlight.darkgreen") + " : " + tileSpotLight.get(TileEntitySpotLight.DARKGREEN), (float)(tileSpotLight.get(TileEntitySpotLight.DARKGREEN)) / 255.0F));
+		this.buttonList.add(new GuiSliderForContainer(this, 5, width / 2 + 5, y + 157, EnumChatFormatting.DARK_BLUE + I18n.format("container.spotlight.darkblue") + " : " + tileSpotLight.get(TileEntitySpotLight.DARKBLUE), (float)(tileSpotLight.get(TileEntitySpotLight.DARKBLUE)) / 255.0F));
+		this.buttonList.add(new GuiSliderForContainer(this, 6, width / 2 - 155, y + 25, 310, 20, EnumChatFormatting.WHITE + I18n.format("container.spotlight.angle") + " 1 : " + tileSpotLight.get(TileEntitySpotLight.ANGLE1), (float)(tileSpotLight.get(TileEntitySpotLight.ANGLE1)) / 360.0F));
+		this.buttonList.add(angle2Button = new GuiSliderForContainer(this, 7, width / 2 - 155, y + 47, I18n.format("container.spotlight.angle") + " 2 : " + tileSpotLight.get(TileEntitySpotLight.ANGLE2), (float)(tileSpotLight.get(TileEntitySpotLight.ANGLE2)) / 180.0F));
+		this.buttonList.add(autoRotateButton = new GuiBooleanButton(8, width / 2 - 155, y + 69, 150, 20, I18n.format("container.spotlight.rotate"), (tileSpotLight.get(TileEntitySpotLight.AUTOROTATE) == 1 ? true : false)));
+		this.buttonList.add(speedRotationButton = new GuiSliderForContainer(this, 9, width / 2 - 155, y + 91, I18n.format("container.spotlight.rotationspeed") + " : " + (tileSpotLight.get(TileEntitySpotLight.ROTATIONSPEED) / 10.0F), (float)(tileSpotLight.get(TileEntitySpotLight.ROTATIONSPEED)) / 50.0F));
+		this.buttonList.add(reverseRotationButton = new GuiBooleanButton(11, width / 2 - 155, y + 113, I18n.format("container.spotlight.rotationreverse"), tileSpotLight.get(TileEntitySpotLight.REVREVERSEROTATION) == 1 ? true : false));
+		this.buttonList.add(secondaryLazerButton = new GuiBooleanButton(10, width / 2 - 155, y + 135, I18n.format("container.spotlight.secondlazer"), tileSpotLight.get(TileEntitySpotLight.SECONDARYLAZER) == 1 ? true : false));
 		this.buttonList.add(new GuiButton(12, width / 2 - 155, y + 157, 65, 20, I18n.format("container.spotlight.copy")));
 		this.buttonList.add(new GuiButton(13, width / 2 - 69, y + 157, 65, 20, I18n.format("container.spotlight.paste")));
 		this.buttonList.add(new GuiButton(14, width / 2 + 90, y + 185, 65, 20, I18n.format("container.spotlight.timeline")));
-		this.buttonList.add(timeLineModeButton = new FFMTGuiBooleanButton(15, width / 2 - 155, y + 185, 65, 20, I18n.format("container.spotlight.timeline"), tileSpotLight.get(TileEntitySpotLight.TIMELINEMODE) == 1 ? true : false));
+		this.buttonList.add(timeLineModeButton = new GuiBooleanButton(15, width / 2 - 155, y + 185, 65, 20, I18n.format("container.spotlight.timeline"), tileSpotLight.get(TileEntitySpotLight.TIMELINEMODE) == 1 ? true : false));
 
 		if(tileSpotLight.get(TileEntitySpotLight.AUTOROTATE) == 0)
 		{

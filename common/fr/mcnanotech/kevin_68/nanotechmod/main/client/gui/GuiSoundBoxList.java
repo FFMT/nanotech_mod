@@ -15,8 +15,8 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod.BaseNTMEntry;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.CategoryEntry;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.SoundEntry;
-import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiHelper;
+import fr.minecraftforgefrance.ffmtlibs.entity.EggColor;
 
 public class GuiSoundBoxList
 {
@@ -114,7 +114,7 @@ public class GuiSoundBoxList
 
 	public void drawScreen(int x, int y)
 	{
-		FFMTGuiHelper.drawCenteredString(Minecraft.getMinecraft().fontRenderer, (currentPageDiplayed + 1) + "/" + (numberOfPage + 1), x + (width / 2) + 6, y + (height) + 5, FFMTColor.GRAY);
+		GuiHelper.drawCenteredString(Minecraft.getMinecraft().fontRenderer, (currentPageDiplayed + 1) + "/" + (numberOfPage + 1), x + (width / 2) + 6, y + (height) + 5, EggColor.GRAY);
 	}
 
 	public void addButton(List buttonList)
@@ -296,7 +296,7 @@ public class GuiSoundBoxList
 		{
 			ArrayList<String> list = new ArrayList();
 			list.add(0, txt);
-			FFMTGuiHelper.drawHoveringText(list, mouseX, mouseY, Minecraft.getMinecraft().fontRenderer, 166, 176, color);
+			GuiHelper.drawHoveringText(list, mouseX, mouseY, Minecraft.getMinecraft().fontRenderer, 166, 176, color);
 		}
 	}
 }

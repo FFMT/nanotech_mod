@@ -19,17 +19,17 @@ import org.lwjgl.opengl.GL11;
 import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerSpotLight;
 import fr.mcnanotech.kevin_68.nanotechmod.city.network.NTMCPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiBooleanButton;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiContainerSliderBase;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiBooleanButton;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiContainerSliderBase;
 
-public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
+public class GuiSpotLightTimeLine extends GuiContainerSliderBase
 {
 	protected InventoryPlayer invPlayer;
 	protected TileEntitySpotLight tileSpotLight;
 	protected World world;
-	public FFMTGuiBooleanButton timeLineModeButton;
+	public GuiBooleanButton timeLineModeButton;
 	public GuiButton removebutton;
-	public FFMTGuiBooleanButton smoothButton;
+	public GuiBooleanButton smoothButton;
 	protected static final ResourceLocation texture = new ResourceLocation("nanotechmodcity:textures/gui/spotlight1.png");
 	protected static final ResourceLocation texture2 = new ResourceLocation("nanotechmodcity:textures/gui/spotlight2.png");
 	protected static final ResourceLocation timeline = new ResourceLocation("nanotechmodcity:textures/gui/timeline.png");
@@ -57,10 +57,10 @@ public class GuiSpotLightTimeLine extends FFMTGuiContainerSliderBase
 		this.buttonList.add(new GuiButton(1, width / 2 - 69, y + 157, 65, 20, I18n.format("container.spotlight.paste")));
 		this.buttonList.add(new GuiButton(2, width / 2 + 90, y + 185, 65, 20, I18n.format("container.spotlight.back")));
 		this.buttonList.add(new GuiButton(3, width / 2 - 155, y + 69, 120, 20, I18n.format("container.spotlight.addKey")));
-		this.buttonList.add(timeLineModeButton = new FFMTGuiBooleanButton(4, width / 2 - 155, y + 185, 65, 20, I18n.format("container.spotlight.timeline"), tileSpotLight.get(TileEntitySpotLight.TIMELINEMODE) == 1 ? true : false));
+		this.buttonList.add(timeLineModeButton = new GuiBooleanButton(4, width / 2 - 155, y + 185, 65, 20, I18n.format("container.spotlight.timeline"), tileSpotLight.get(TileEntitySpotLight.TIMELINEMODE) == 1 ? true : false));
 		this.buttonList.add(removebutton = new GuiButton(5, width / 2 - 155, y + 91, 120, 20, I18n.format("container.spotlight.deleteKey")));
 		this.buttonList.add(new GuiButton(6, width / 2 - 155, y + 113, 120, 20, I18n.format("container.spotlight.settimelineto") + " 0"));
-		this.buttonList.add(smoothButton = new FFMTGuiBooleanButton(7, width / 2 - 155, y + 135, 120, 20, I18n.format("container.spotlight.smooth"), tileSpotLight.get(TileEntitySpotLight.SMOOTHMODE) == 1 ? true : false));
+		this.buttonList.add(smoothButton = new GuiBooleanButton(7, width / 2 - 155, y + 135, 120, 20, I18n.format("container.spotlight.smooth"), tileSpotLight.get(TileEntitySpotLight.SMOOTHMODE) == 1 ? true : false));
 		removebutton.enabled = false;
 
 		for(int i = 0; i < 121; i++)

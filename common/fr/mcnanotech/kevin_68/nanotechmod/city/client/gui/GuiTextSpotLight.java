@@ -21,20 +21,20 @@ import org.lwjgl.opengl.GL11;
 import fr.mcnanotech.kevin_68.nanotechmod.city.container.ContainerTextSpotLight;
 import fr.mcnanotech.kevin_68.nanotechmod.city.network.NTMCPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTextSpotLight;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiBooleanButton;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiContainerSliderBase;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiSliderForContainer;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiBooleanButton;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiContainerSliderBase;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiSliderForContainer;
 
-public class GuiTextSpotLight extends FFMTGuiContainerSliderBase
+public class GuiTextSpotLight extends GuiContainerSliderBase
 {
 	private static final ResourceLocation texture = new ResourceLocation("nanotechmodcity", "textures/gui/textspotlight.png");
 	private static final ResourceLocation texture2 = new ResourceLocation("nanotechmodcity", "textures/gui/textspotlight2.png");
 	protected TileEntityTextSpotLight tileTextSpotLight;
 	private GuiTextField textField;
-	public FFMTGuiBooleanButton autoRotateButton;
-	public FFMTGuiBooleanButton reverseRotationButton;
-	public FFMTGuiSliderForContainer angleButton;
-	public FFMTGuiSliderForContainer speedRotationButton;
+	public GuiBooleanButton autoRotateButton;
+	public GuiBooleanButton reverseRotationButton;
+	public GuiSliderForContainer angleButton;
+	public GuiSliderForContainer speedRotationButton;
 
 	public GuiTextSpotLight(InventoryPlayer playerInventory, TileEntityTextSpotLight tileEntity, World world)
 	{
@@ -58,15 +58,15 @@ public class GuiTextSpotLight extends FFMTGuiContainerSliderBase
 		this.textField.setMaxStringLength(40);
 		this.textField.setEnabled(true);
 		this.textField.setText(tileTextSpotLight.getText());
-		this.buttonList.add(autoRotateButton = new FFMTGuiBooleanButton(1, width / 2 - 155, y + 69, 150, 20, I18n.format("container.spotlight.rotate"), tileTextSpotLight.get(TileEntityTextSpotLight.ROTATE) == 1 ? true : false));
-		this.buttonList.add(angleButton = new FFMTGuiSliderForContainer(this, 2, width / 2 - 155, y + 47, 310, 20, I18n.format("container.spotlight.angle") + " : " + tileTextSpotLight.get(TileEntityTextSpotLight.ANGLE), (float)(tileTextSpotLight.get(TileEntityTextSpotLight.ANGLE)) / 360.0F));
-		this.buttonList.add(speedRotationButton = new FFMTGuiSliderForContainer(this, 3, width / 2 - 155, y + 91, I18n.format("container.spotlight.rotationspeed") + " : " + (tileTextSpotLight.get(TileEntityTextSpotLight.ROTATIONSPEED) / 10.0F), (float)(tileTextSpotLight.get(TileEntityTextSpotLight.ROTATIONSPEED)) / 50.0F));
-		this.buttonList.add(reverseRotationButton = new FFMTGuiBooleanButton(4, width / 2 - 155, y + 113, I18n.format("container.spotlight.rotationreverse"), tileTextSpotLight.get(TileEntityTextSpotLight.REVERSEROTATION) == 1 ? false : true));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 5, width / 2 + 5, y + 69, EnumChatFormatting.RED + I18n.format("container.spotlight.red") + " : " + tileTextSpotLight.get(TileEntityTextSpotLight.RED), (float)(tileTextSpotLight.get(TileEntityTextSpotLight.RED)) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 6, width / 2 + 5, y + 91, EnumChatFormatting.GREEN + I18n.format("container.spotlight.green") + " : " + tileTextSpotLight.get(TileEntityTextSpotLight.GREEN), (float)(tileTextSpotLight.get(TileEntityTextSpotLight.GREEN)) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 7, width / 2 + 5, y + 113, EnumChatFormatting.BLUE + I18n.format("container.spotlight.blue") + " : " + tileTextSpotLight.get(TileEntityTextSpotLight.BLUE), (float)(tileTextSpotLight.get(TileEntityTextSpotLight.BLUE)) / 255.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 8, width / 2 + 5, y + 135, I18n.format("container.textspotlight.scale") + " : " + tileTextSpotLight.get(TileEntityTextSpotLight.SCALE) / 10.0F, (float)(tileTextSpotLight.get(TileEntityTextSpotLight.SCALE)) / 50.0F));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 9, width / 2 - 155, y + 135, I18n.format("container.textspotlight.height") + " : " + tileTextSpotLight.get(TileEntityTextSpotLight.HEIGHT) / 10.0F, (float)(tileTextSpotLight.get(TileEntityTextSpotLight.HEIGHT)) / 50.0F));
+		this.buttonList.add(autoRotateButton = new GuiBooleanButton(1, width / 2 - 155, y + 69, 150, 20, I18n.format("container.spotlight.rotate"), tileTextSpotLight.get(TileEntityTextSpotLight.ROTATE) == 1 ? true : false));
+		this.buttonList.add(angleButton = new GuiSliderForContainer(this, 2, width / 2 - 155, y + 47, 310, 20, I18n.format("container.spotlight.angle") + " : " + tileTextSpotLight.get(TileEntityTextSpotLight.ANGLE), (float)(tileTextSpotLight.get(TileEntityTextSpotLight.ANGLE)) / 360.0F));
+		this.buttonList.add(speedRotationButton = new GuiSliderForContainer(this, 3, width / 2 - 155, y + 91, I18n.format("container.spotlight.rotationspeed") + " : " + (tileTextSpotLight.get(TileEntityTextSpotLight.ROTATIONSPEED) / 10.0F), (float)(tileTextSpotLight.get(TileEntityTextSpotLight.ROTATIONSPEED)) / 50.0F));
+		this.buttonList.add(reverseRotationButton = new GuiBooleanButton(4, width / 2 - 155, y + 113, I18n.format("container.spotlight.rotationreverse"), tileTextSpotLight.get(TileEntityTextSpotLight.REVERSEROTATION) == 1 ? false : true));
+		this.buttonList.add(new GuiSliderForContainer(this, 5, width / 2 + 5, y + 69, EnumChatFormatting.RED + I18n.format("container.spotlight.red") + " : " + tileTextSpotLight.get(TileEntityTextSpotLight.RED), (float)(tileTextSpotLight.get(TileEntityTextSpotLight.RED)) / 255.0F));
+		this.buttonList.add(new GuiSliderForContainer(this, 6, width / 2 + 5, y + 91, EnumChatFormatting.GREEN + I18n.format("container.spotlight.green") + " : " + tileTextSpotLight.get(TileEntityTextSpotLight.GREEN), (float)(tileTextSpotLight.get(TileEntityTextSpotLight.GREEN)) / 255.0F));
+		this.buttonList.add(new GuiSliderForContainer(this, 7, width / 2 + 5, y + 113, EnumChatFormatting.BLUE + I18n.format("container.spotlight.blue") + " : " + tileTextSpotLight.get(TileEntityTextSpotLight.BLUE), (float)(tileTextSpotLight.get(TileEntityTextSpotLight.BLUE)) / 255.0F));
+		this.buttonList.add(new GuiSliderForContainer(this, 8, width / 2 + 5, y + 135, I18n.format("container.textspotlight.scale") + " : " + tileTextSpotLight.get(TileEntityTextSpotLight.SCALE) / 10.0F, (float)(tileTextSpotLight.get(TileEntityTextSpotLight.SCALE)) / 50.0F));
+		this.buttonList.add(new GuiSliderForContainer(this, 9, width / 2 - 155, y + 135, I18n.format("container.textspotlight.height") + " : " + tileTextSpotLight.get(TileEntityTextSpotLight.HEIGHT) / 10.0F, (float)(tileTextSpotLight.get(TileEntityTextSpotLight.HEIGHT)) / 50.0F));
 		this.buttonList.add(new GuiButton(10, width / 2 - 155, y + 157, 65, 20, I18n.format("container.spotlight.copy")));
 		this.buttonList.add(new GuiButton(11, width / 2 - 69, y + 157, 65, 20, I18n.format("container.spotlight.paste")));
 

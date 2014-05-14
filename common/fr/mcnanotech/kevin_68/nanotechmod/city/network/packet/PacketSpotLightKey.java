@@ -7,9 +7,9 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.city.network.packet;
 
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
@@ -35,7 +35,7 @@ public class PacketSpotLightKey extends AbstractPacket
 	}
 
 	@Override
-	public void encodeInto(ChannelHandlerContext ctx, ByteBuf buffer)
+	public void encodeInto(ChannelHandlerContext ctx, PacketBuffer buffer)
 	{
 		buffer.writeInt(x);
 		buffer.writeInt(y);
@@ -46,7 +46,7 @@ public class PacketSpotLightKey extends AbstractPacket
 	}
 
 	@Override
-	public void decodeInto(ChannelHandlerContext ctx, ByteBuf buffer)
+	public void decodeInto(ChannelHandlerContext ctx, PacketBuffer buffer)
 	{
 		x = buffer.readInt();
 		y = buffer.readInt();
@@ -74,5 +74,4 @@ public class PacketSpotLightKey extends AbstractPacket
 			te.set(index, value, time);
 		}
 	}
-
 }

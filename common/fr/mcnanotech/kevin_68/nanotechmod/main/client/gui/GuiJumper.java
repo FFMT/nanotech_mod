@@ -20,11 +20,11 @@ import org.lwjgl.opengl.GL11;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerJumper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.NTMPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityJumper;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiContainerSliderBase;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiSliderForContainer;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiContainerSliderBase;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiSliderForContainer;
 
 @SuppressWarnings({"unchecked"})
-public class GuiJumper extends FFMTGuiContainerSliderBase
+public class GuiJumper extends GuiContainerSliderBase
 {
 	private TileEntityJumper tileJumper;
 	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/gui/jumper.png");
@@ -41,7 +41,7 @@ public class GuiJumper extends FFMTGuiContainerSliderBase
 		super.initGui();
 		int x = (width) / 2;
 		int y = (height - ySize) / 2;
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x - 75, y + 20, I18n.format("container.jumper.height"), (float)(tileJumper.getJumpHeightValue()) / 9.0F));
+		this.buttonList.add(new GuiSliderForContainer(this, 0, x - 75, y + 20, I18n.format("container.jumper.height"), (float)(tileJumper.getJumpHeightValue()) / 9.0F));
 	}
 
 	@Override

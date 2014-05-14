@@ -13,11 +13,11 @@ import org.lwjgl.opengl.GL11;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.SoundEntry;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiContainerSliderBase;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiSliderForContainer;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiContainerSliderBase;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiHelper;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiSliderForContainer;
 
-public class GuiSoundBoxAddSound1 extends FFMTGuiContainerSliderBase
+public class GuiSoundBoxAddSound1 extends GuiContainerSliderBase
 {
 	private TileEntitySoundBox tile;
 	private InventoryPlayer inv;
@@ -55,9 +55,9 @@ public class GuiSoundBoxAddSound1 extends FFMTGuiContainerSliderBase
 		this.nameField.setEnabled(true);
 		this.nameField.setText(name);
 
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x + 6, y + 40, 160, 20, EnumChatFormatting.RED + I18n.format("container.lightsaber.red") + ": " + color[0], color[0] / 255));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 1, x + 6, y + 64, 160, 20, EnumChatFormatting.GREEN + I18n.format("container.lightsaber.green") + ": " + color[1], color[1] / 255));
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 2, x + 6, y + 88, 160, 20, EnumChatFormatting.BLUE + I18n.format("container.lightsaber.blue") + ": " + color[2], color[2] / 255));
+		this.buttonList.add(new GuiSliderForContainer(this, 0, x + 6, y + 40, 160, 20, EnumChatFormatting.RED + I18n.format("container.lightsaber.red") + ": " + color[0], color[0] / 255));
+		this.buttonList.add(new GuiSliderForContainer(this, 1, x + 6, y + 64, 160, 20, EnumChatFormatting.GREEN + I18n.format("container.lightsaber.green") + ": " + color[1], color[1] / 255));
+		this.buttonList.add(new GuiSliderForContainer(this, 2, x + 6, y + 88, 160, 20, EnumChatFormatting.BLUE + I18n.format("container.lightsaber.blue") + ": " + color[2], color[2] / 255));
 		this.buttonList.add(new GuiButton(3, x + 6, y + 117, 78, 20, "Cancel"));
 		this.buttonList.add(nextButton = new GuiButton(4, x + 91, y + 117, 78, 20, editMode ? "Apply" : "Next"));
 		nextButton.enabled = false;
@@ -129,7 +129,7 @@ public class GuiSoundBoxAddSound1 extends FFMTGuiContainerSliderBase
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3)
 	{
 		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		FFMTGuiHelper.bindTexture("nanotechmod", "textures/gui/soundbox.png");
+		GuiHelper.bindTexture("nanotechmod", "textures/gui/soundbox.png");
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 

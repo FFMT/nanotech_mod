@@ -1,8 +1,8 @@
 package fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.packet;
 
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.PacketBuffer;
 import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.UltimateGraviSuiteMod;
 import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
 
@@ -19,13 +19,13 @@ public class PacketKeys extends AbstractPacket
 	}
 
 	@Override
-	public void encodeInto(ChannelHandlerContext ctx, ByteBuf buffer)
+	public void encodeInto(ChannelHandlerContext ctx, PacketBuffer buffer)
 	{
 		buffer.writeInt(this.keyState);
 	}
 
 	@Override
-	public void decodeInto(ChannelHandlerContext ctx, ByteBuf buffer)
+	public void decodeInto(ChannelHandlerContext ctx, PacketBuffer buffer)
 	{
 		this.keyState = buffer.readInt();
 	}

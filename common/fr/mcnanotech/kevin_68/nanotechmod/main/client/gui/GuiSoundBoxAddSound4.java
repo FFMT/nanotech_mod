@@ -11,8 +11,8 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.CategoryEntry;
-import fr.minecraftforgefrance.ffmtlibs.FFMTColor;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiHelper;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiHelper;
+import fr.minecraftforgefrance.ffmtlibs.entity.EggColor;
 
 public class GuiSoundBoxAddSound4 extends GuiContainer
 {
@@ -73,15 +73,15 @@ public class GuiSoundBoxAddSound4 extends GuiContainer
 		fontRendererObj.drawString("Sound box" + " - " + "Add sound resume", 6, 6, 4210752);
 
 		this.drawCenteredString(fontRendererObj, "Sound name: " + name, 85, 30, (color[0] * 65536) + (color[1] * 256) + color[2]);
-		this.drawCenteredString(fontRendererObj, "Directory: " + dir, 85, 45, FFMTColor.WHITE);
-		this.drawCenteredString(fontRendererObj, "Category: " + categ.getName(), 85, 60, FFMTColor.WHITE);
+		this.drawCenteredString(fontRendererObj, "Directory: " + dir, 85, 45, EggColor.WHITE);
+		this.drawCenteredString(fontRendererObj, "Category: " + categ.getName(), 85, 60, EggColor.WHITE);
 	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3)
 	{
 		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		FFMTGuiHelper.bindTexture("nanotechmod", "textures/gui/soundbox.png");
+		GuiHelper.bindTexture("nanotechmod", "textures/gui/soundbox.png");
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 

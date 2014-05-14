@@ -7,9 +7,12 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.city.network.packet;
 
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
+
+import java.io.IOException;
+
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTextSpotLight;
@@ -32,34 +35,21 @@ public class PacketTextSpotLightString extends AbstractPacket
 	}
 
 	@Override
-	public void encodeInto(ChannelHandlerContext ctx, ByteBuf buffer)
+	public void encodeInto(ChannelHandlerContext ctx, PacketBuffer buffer) throws IOException
 	{
 		buffer.writeInt(x);
 		buffer.writeInt(y);
 		buffer.writeInt(z);
-
-		char[] chrs = text.toCharArray();
-		buffer.writeShort(chrs.length - 1);
-		for(char i : chrs)
-		{
-			buffer.writeChar(i);
-		}
+		buffer.writeStringToBuffer(text);
 	}
 
 	@Override
-	public void decodeInto(ChannelHandlerContext ctx, ByteBuf buffer)
+	public void decodeInto(ChannelHandlerContext ctx, PacketBuffer buffer) throws IOException
 	{
 		x = buffer.readInt();
 		y = buffer.readInt();
 		z = buffer.readInt();
-
-		short lenght = buffer.readShort();
-		String str = "";
-		for(short i = 0; i <= lenght; i++)
-		{
-			str += buffer.readChar();
-		}
-		text = str;
+		text = buffer.readStringFromBuffer(32767);
 	}
 
 	@Override
@@ -80,5 +70,4 @@ public class PacketTextSpotLightString extends AbstractPacket
 			te.setText(text);
 		}
 	}
-
 }

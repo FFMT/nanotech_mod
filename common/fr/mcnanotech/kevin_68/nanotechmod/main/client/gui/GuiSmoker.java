@@ -17,11 +17,11 @@ import org.lwjgl.opengl.GL11;
 import fr.mcnanotech.kevin_68.nanotechmod.main.container.ContainerSmoker;
 import fr.mcnanotech.kevin_68.nanotechmod.main.network.NTMPacketHelper;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiContainerSliderBase;
-import fr.minecraftforgefrance.ffmtlibs.client.gui.FFMTGuiSliderForContainer;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiContainerSliderBase;
+import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiSliderForContainer;
 
 @SuppressWarnings({"unchecked"})
-public class GuiSmoker extends FFMTGuiContainerSliderBase
+public class GuiSmoker extends GuiContainerSliderBase
 {
 	private TileEntitySmoker tileSmoker;
 	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/gui/smoker.png");
@@ -38,7 +38,7 @@ public class GuiSmoker extends FFMTGuiContainerSliderBase
 		super.initGui();
 		int x = (width) / 2;
 		int y = (height - ySize) / 2;
-		this.buttonList.add(new FFMTGuiSliderForContainer(this, 0, x - 75, y + 20, I18n.format("container.smoker.power", tileSmoker.getSmokeValue()), (float)(tileSmoker.getSmokeValue()) / 15.0F));
+		this.buttonList.add(new GuiSliderForContainer(this, 0, x - 75, y + 20, I18n.format("container.smoker.power", tileSmoker.getSmokeValue()), (float)(tileSmoker.getSmokeValue()) / 15.0F));
 	}
 
 	@Override

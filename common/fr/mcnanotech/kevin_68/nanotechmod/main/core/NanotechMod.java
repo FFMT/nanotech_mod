@@ -34,7 +34,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechOther;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
 import fr.minecraftforgefrance.ffmtlibs.network.FFMTPacketHandler;
 
-@Mod(modid = NanotechMod.MODID, name = "Nanotech mod", version = "@VERSION@", dependencies = "required-after:FFMTLIBS")
+@Mod(modid = NanotechMod.MODID, name = "Nanotech mod", version = "@VERSION@", dependencies = "required-after:ffmtlibs")
 public class NanotechMod
 {
 	/**
