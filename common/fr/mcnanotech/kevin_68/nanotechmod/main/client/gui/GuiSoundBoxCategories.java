@@ -65,7 +65,10 @@ public class GuiSoundBoxCategories extends GuiSoundBoxListBase
 			}
 			else
 			{
-				this.mc.displayGuiScreen(new GuiSoundBoxSoundByCategory(inv, tile, wrld, selected));
+				if(!UtilSoundBox.getSoundsByCategory(selected).isEmpty())
+				{
+					this.mc.displayGuiScreen(new GuiSoundBoxSoundByCategory(inv, tile, wrld, selected));
+				}
 			}
 			break;
 		}
@@ -110,7 +113,7 @@ public class GuiSoundBoxCategories extends GuiSoundBoxListBase
 		int y = (height - ySize) / 2;
 		fontRendererObj.drawString("Sound box" + " - " + "Categories", 6, 6, 4210752);
 	}
-	
+
 	public void updateButton(boolean edit)
 	{
 		int x = (width - xSize) / 2;
