@@ -11,14 +11,14 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.1-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
     }
 }
 
 apply plugin: 'forge'
 
 ext.buildnumber = 0
-version = "2.3.0"
+version = "2.3.1"
 group= "fr.mcnanotech.kevin_68"
 archivesBaseName = "NanotechMod"
 
@@ -31,7 +31,7 @@ else {
 }
 
 minecraft {
-    version = "1.7.2-10.12.0.1024"
+    version = "1.7.2-10.12.1.1110"
     assetDir = "run/assets"
 	
     replace '@VERSION@', project.version
@@ -54,7 +54,7 @@ dependencies {
         lib.mkdirs()
     }
     
-    def ffmtlibUrl = "http://ci.mcnanotech.fr/job/FFMT-libs/71/artifact/build/libs/FFMT-libs-deobf-dev-1.4.0.71-mc1.7.2.jar"
+    def ffmtlibUrl = "http://ci.mcnanotech.fr/job/FFMT-libs/80/artifact/build/libs/FFMT-libs-deobf-dev-1.4.2.80-mc1.7.2.jar"
     def ffmtlib = new File(rootProject.projectDir, "libs/" + ffmtlibUrl.tokenize("/")[-1])
     if (!ffmtlib.exists()) {
         new URL(ffmtlibUrl).withInputStream{ i -> ffmtlib.withOutputStream{ it << i }}
@@ -78,7 +78,7 @@ processResources
         // replace version and mcversion
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
-        
+
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'

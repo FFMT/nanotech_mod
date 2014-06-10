@@ -1,14 +1,16 @@
 package fr.mcnanotech.kevin_68.nanotechmod.main.network.packet;
 
-import io.netty.channel.ChannelHandlerContext;
+import io.netty.buffer.ByteBuf;
+
+import java.io.IOException;
+
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.network.PacketBuffer;
 import cpw.mods.fml.common.network.ByteBufUtils;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox.CategoryEntry;
-import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
+import fr.minecraftforgefrance.ffmtlibs.network.FFMTPacket;
 
-public class PacketSoundBoxSendCategToServer extends AbstractPacket
+public class PacketSoundBoxSendCategToServer extends FFMTPacket
 {
 	private String name, id, owner;
 	private int color;
@@ -27,7 +29,7 @@ public class PacketSoundBoxSendCategToServer extends AbstractPacket
 	}
 	
 	@Override
-	public void encodeInto(ChannelHandlerContext ctx, PacketBuffer buffer)
+	public void writeData(ByteBuf buffer) throws IOException
 	{
 		ByteBufUtils.writeUTF8String(buffer, name);
 		ByteBufUtils.writeUTF8String(buffer, id);
@@ -36,7 +38,7 @@ public class PacketSoundBoxSendCategToServer extends AbstractPacket
 	}
 
 	@Override
-	public void decodeInto(ChannelHandlerContext ctx, PacketBuffer buffer)
+	public void readData(ByteBuf buffer)
 	{
 		name = ByteBufUtils.readUTF8String(buffer);
 		id = ByteBufUtils.readUTF8String(buffer);

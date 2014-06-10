@@ -7,16 +7,20 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.main.network.packet;
 
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
+
+import java.io.IOException;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
-import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
+import fr.minecraftforgefrance.ffmtlibs.network.FFMTPacket;
 
-public class PacketSaber extends AbstractPacket
+public class PacketSaber extends FFMTPacket
 {
 	private int colorId, colorValue;
 
@@ -28,16 +32,16 @@ public class PacketSaber extends AbstractPacket
 		this.colorId = id;
 		this.colorValue = value;
 	}
-
+	
 	@Override
-	public void encodeInto(ChannelHandlerContext ctx, PacketBuffer buffer)
+	public void writeData(ByteBuf buffer) throws IOException
 	{
 		buffer.writeInt(this.colorId);
 		buffer.writeInt(this.colorValue);
 	}
 
 	@Override
-	public void decodeInto(ChannelHandlerContext ctx, PacketBuffer buffer)
+	public void readData(ByteBuf buffer)
 	{
 		this.colorId = buffer.readInt();
 		this.colorValue = buffer.readInt();

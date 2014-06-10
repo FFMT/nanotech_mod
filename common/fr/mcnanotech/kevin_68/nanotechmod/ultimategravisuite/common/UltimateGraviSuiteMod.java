@@ -32,6 +32,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fr.minecraftforgefrance.ffmtlibs.network.FFMTPacketHandler;
+import fr.minecraftforgefrance.ffmtlibs.network.PacketManager;
 
 @Mod(modid = "UltimateGraviSuite", name = "Ultimate Gravitation Suite", version = "@VERSION@")
 public class UltimateGraviSuiteMod
@@ -50,7 +51,7 @@ public class UltimateGraviSuiteMod
 	public static boolean displayHud;
 	public static String hudPos;
 
-	public static final FFMTPacketHandler packetHandler = new FFMTPacketHandler("fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.packet", "UltimateGraviSuite");
+	public static final PacketManager packetHandler = new PacketManager("fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.packet", "UltimateGraviSuite", "UGS");
 
 	public static Logger ugslogger;
 
@@ -96,16 +97,16 @@ public class UltimateGraviSuiteMod
 		GameRegistry.registerItem(ultimateLeggings, "ultimateLeggings");
 		GameRegistry.registerItem(ultimateBoots, "ultimateBoots");
 		GameRegistry.registerItem(ultimateCircuit, "ultimateCircuit");
+		
 	}
 
 	@EventHandler
 	public void load(FMLInitializationEvent event)
 	{
 		proxy.init();
+		keyboard.registerKey();
 		FMLCommonHandler.instance().bus().register(new UGSCommonEventHandler());
 		MinecraftForge.EVENT_BUS.register(new UGSCommonEventHandler());
-
-		packetHandler.initialise("UGS|Packets");
 
 		ugslogger.info("Start Mods Check");
 		Item gravisuit = GameRegistry.findItem("GraviSuite", "graviChestPlate"); // TODO
@@ -254,6 +255,6 @@ public class UltimateGraviSuiteMod
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		packetHandler.postInitialise();
+
 	}
 }

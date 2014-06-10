@@ -10,6 +10,11 @@ public class UGSKeyboard
 	private final Map<EntityPlayer, Boolean> flyKeyState = new HashMap();
 	private final Map<EntityPlayer, Boolean> invisibleKeyState = new HashMap();
 
+	public void registerKey()
+	{
+
+	}
+	
 	public boolean isFlyKeyDown(EntityPlayer player)
 	{
 		if(this.flyKeyState.containsKey(player))

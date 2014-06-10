@@ -15,7 +15,8 @@ public class UGSKeyboardClient extends UGSKeyboard
 	public static KeyBinding flyKey, invKey;
 	private int lastKeyState = 0;
 
-	public UGSKeyboardClient()
+	@Override
+	public void registerKey()
 	{
 		flyKey = new KeyBinding("Ultimate Gravi Fly Key", Keyboard.KEY_F, "IC2");
 		invKey = new KeyBinding("Invisibility Ultimate Gravi Key", Keyboard.KEY_G, "IC2");

@@ -39,7 +39,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySunShade;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTextSpotLight;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTrail;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTrashCan;
-import fr.minecraftforgefrance.ffmtlibs.network.FFMTPacketHandler;
+import fr.minecraftforgefrance.ffmtlibs.network.PacketManager;
 
 @Mod(modid = NanotechModCity.MODID, name = "Nanotech mod City", version = "@VERSION@", dependencies = "required-after:ffmtlibs")
 public class NanotechModCity
@@ -64,7 +64,7 @@ public class NanotechModCity
 	/**
 	 * NanotechModCity packethandler
 	 */
-	public static final FFMTPacketHandler packetHandler = new FFMTPacketHandler("fr.mcnanotech.kevin_68.nanotechmod.city.network.packet", MODID);
+	public static final PacketManager packetHandler = new PacketManager("fr.mcnanotech.kevin_68.nanotechmod.city.network.packet", MODID, "NTMcity");
 
 	/**
 	 * NanotechModCity logger
@@ -107,8 +107,6 @@ public class NanotechModCity
 		GameRegistry.registerTileEntity(TileEntityModernFence.class, "ModernFence");
 		GameRegistry.registerTileEntity(TileEntityTrashCan.class, "Trashcan");
 		GameRegistry.registerTileEntity(TileEntityTextSpotLight.class, "TextSpotLight");
-
-		packetHandler.initialise("NTMC|Packets");
 	}
 
 	@EventHandler
@@ -125,7 +123,5 @@ public class NanotechModCity
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.modernFence, 4), new Object[] {"I I", "III", "I I", 'I', Items.iron_ingot});
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.trashcan, 1), new Object[] {"I I", "ICI", "III", 'I', Items.iron_ingot, 'C', Blocks.cactus});
 		GameRegistry.addRecipe(new ItemStack(NanotechCityBlock.spotlight), new Object[] {"OAO", "RGB", "OAO", 'O', Blocks.obsidian, 'A', Blocks.glass, 'R', new ItemStack(Items.dye, 1, 1), 'G', new ItemStack(Items.dye, 1, 2), 'B', new ItemStack(Items.dye, 1, 4)});
-
-		packetHandler.postInitialise();
 	}
 }

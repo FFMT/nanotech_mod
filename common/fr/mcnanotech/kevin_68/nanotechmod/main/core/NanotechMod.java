@@ -33,6 +33,7 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechFluid;
 import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechOther;
 import fr.mcnanotech.kevin_68.nanotechmod.main.utils.UtilSoundBox;
 import fr.minecraftforgefrance.ffmtlibs.network.FFMTPacketHandler;
+import fr.minecraftforgefrance.ffmtlibs.network.PacketManager;
 
 @Mod(modid = NanotechMod.MODID, name = "Nanotech mod", version = "@VERSION@", dependencies = "required-after:ffmtlibs")
 public class NanotechMod
@@ -57,7 +58,7 @@ public class NanotechMod
 	/**
 	 * NanotechMod packethandler
 	 */
-	public static final FFMTPacketHandler packetHandler = new FFMTPacketHandler("fr.mcnanotech.kevin_68.nanotechmod.main.network.packet", MODID);
+	public static final PacketManager packetHandler = new PacketManager("fr.mcnanotech.kevin_68.nanotechmod.main.network.packet", MODID, "NanotechMod");
 
 	/**
 	 * NanotechMod logger
@@ -123,7 +124,6 @@ public class NanotechMod
 	@EventHandler
 	public void initNanotechMod(FMLInitializationEvent event)
 	{
-		packetHandler.initialise("NTM|Packets");
 		NanotechMod.nanoLogger.info("Packets initialized");
 
 		NanotechOther.initForgeDictionary();
@@ -135,7 +135,6 @@ public class NanotechMod
 	public void postInitNanotechMod(FMLPostInitializationEvent event)
 	{
 		proxy.register();
-		packetHandler.postInitialise();
 
 		GameRegistry.addRecipe(new INanotechRecipe());
 		NanotechRecipe.InitCommonRecipes();

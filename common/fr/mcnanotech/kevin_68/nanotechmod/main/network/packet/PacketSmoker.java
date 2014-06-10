@@ -7,14 +7,16 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.main.network.packet;
 
-import io.netty.channel.ChannelHandlerContext;
+import io.netty.buffer.ByteBuf;
+
+import java.io.IOException;
+
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
-import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
+import fr.minecraftforgefrance.ffmtlibs.network.FFMTPacket;
 
-public class PacketSmoker extends AbstractPacket
+public class PacketSmoker extends FFMTPacket
 {
 	private int x, y, z, smoke;
 
@@ -28,9 +30,9 @@ public class PacketSmoker extends AbstractPacket
 		this.z = z;
 		this.smoke = smoke;
 	}
-
+	
 	@Override
-	public void encodeInto(ChannelHandlerContext ctx, PacketBuffer buffer)
+	public void writeData(ByteBuf buffer) throws IOException
 	{
 		buffer.writeInt(x);
 		buffer.writeInt(y);
@@ -39,7 +41,7 @@ public class PacketSmoker extends AbstractPacket
 	}
 
 	@Override
-	public void decodeInto(ChannelHandlerContext ctx, PacketBuffer buffer)
+	public void readData(ByteBuf buffer)
 	{
 		x = buffer.readInt();
 		y = buffer.readInt();

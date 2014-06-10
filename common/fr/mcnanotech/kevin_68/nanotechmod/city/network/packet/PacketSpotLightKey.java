@@ -7,15 +7,17 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.city.network.packet;
 
-import io.netty.channel.ChannelHandlerContext;
+import io.netty.buffer.ByteBuf;
+
+import java.io.IOException;
+
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntitySpotLight;
-import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
+import fr.minecraftforgefrance.ffmtlibs.network.FFMTPacket;
 
-public class PacketSpotLightKey extends AbstractPacket
+public class PacketSpotLightKey extends FFMTPacket
 {
 	public int x, y, z, index, value, time;
 
@@ -33,9 +35,9 @@ public class PacketSpotLightKey extends AbstractPacket
 		this.value = value;
 		this.time = time;
 	}
-
+	
 	@Override
-	public void encodeInto(ChannelHandlerContext ctx, PacketBuffer buffer)
+	public void writeData(ByteBuf buffer) throws IOException
 	{
 		buffer.writeInt(x);
 		buffer.writeInt(y);
@@ -46,7 +48,7 @@ public class PacketSpotLightKey extends AbstractPacket
 	}
 
 	@Override
-	public void decodeInto(ChannelHandlerContext ctx, PacketBuffer buffer)
+	public void readData(ByteBuf buffer)
 	{
 		x = buffer.readInt();
 		y = buffer.readInt();
