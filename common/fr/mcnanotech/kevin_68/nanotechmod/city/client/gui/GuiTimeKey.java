@@ -40,7 +40,7 @@ public class GuiTimeKey extends GuiButton
 		return this.enabled && this.visible && par2 >= this.xPosition && par3 >= this.yPosition && par2 < this.xPosition + this.width && par3 < this.yPosition + this.height;
 	}
 
-	protected int getHoverState(boolean par1)
+	public int getHoverState(boolean par1)
 	{
 		byte b0 = 1;
 

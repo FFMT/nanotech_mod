@@ -29,7 +29,7 @@ public class BlockConfusion extends Block
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
 	{
 		float var5 = 0.125F;
-		return AxisAlignedBB.getAABBPool().getAABB((double)x - var5, (double)y - var5, (double)z - var5, (double)(x + 1) - var5, (double)((float)(y + 1) - var5), (double)(z + 1) - var5);
+		return AxisAlignedBB.getBoundingBox((double)x - var5, (double)y - var5, (double)z - var5, (double)(x + 1) - var5, (double)((float)(y + 1) - var5), (double)(z + 1) - var5);
 	}
 
 	@Override

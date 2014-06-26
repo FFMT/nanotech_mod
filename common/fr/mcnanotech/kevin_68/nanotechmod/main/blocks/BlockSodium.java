@@ -36,7 +36,7 @@ public class BlockSodium extends Block
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
 	{
 		float var5 = 0.0625F;
-		return AxisAlignedBB.getAABBPool().getAABB((double)((float)x + var5), (double)y, (double)((float)z + var5), (double)((float)(x + 1) - var5), (double)((float)(y + 1) - var5), (double)((float)(z + 1) - var5));
+		return AxisAlignedBB.getBoundingBox((double)((float)x + var5), (double)y, (double)((float)z + var5), (double)((float)(x + 1) - var5), (double)((float)(y + 1) - var5), (double)((float)(z + 1) - var5));
 	}
 
 	@Override

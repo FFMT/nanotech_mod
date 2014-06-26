@@ -238,7 +238,7 @@ public class GuiSoundBoxList
 			this.entry = entry;
 		}
 
-		protected int getHoverState(boolean p_146114_1_)
+		public int getHoverState(boolean p_146114_1_)
 		{
 			byte b0 = 1;
 

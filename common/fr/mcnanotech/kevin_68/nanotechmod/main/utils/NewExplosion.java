@@ -88,7 +88,7 @@ public class NewExplosion extends Explosion
 
 		this.chunkCache = new ChunkCache(this.worldObj, (int)this.explosionX - maxDistanceInt, (int)this.explosionY - maxDistanceInt, (int)this.explosionZ - maxDistanceInt, (int)this.explosionX + maxDistanceInt, (int)this.explosionY + maxDistanceInt, (int)this.explosionZ + maxDistanceInt, 0);
 
-		List entities = this.worldObj.getEntitiesWithinAABBExcludingEntity(null, AxisAlignedBB.getAABBPool().getAABB(this.explosionX - maxDistance, this.explosionY - maxDistance, this.explosionZ - maxDistance, this.explosionX + maxDistance, this.explosionY + maxDistance, this.explosionZ + maxDistance));
+		List entities = this.worldObj.getEntitiesWithinAABBExcludingEntity(null, AxisAlignedBB.getBoundingBox(this.explosionX - maxDistance, this.explosionY - maxDistance, this.explosionZ - maxDistance, this.explosionX + maxDistance, this.explosionY + maxDistance, this.explosionZ + maxDistance));
 
 		boolean entitiesAreInRange = !this.entitiesInRange.isEmpty();
 

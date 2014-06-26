@@ -60,7 +60,7 @@ public class RenderReinforcedFishingHook extends Render
 		{
 			float f9 = entityFishHook.angler.getSwingProgress(par9);
 			float f10 = MathHelper.sin(MathHelper.sqrt_float(f9) * (float)Math.PI);
-			Vec3 vec3 = entityFishHook.worldObj.getWorldVec3Pool().getVecFromPool(-0.5D, 0.03D, 0.8D);
+			Vec3 vec3 = Vec3.createVectorHelper(-0.5D, 0.03D, 0.8D);
 			vec3.rotateAroundX(-(entityFishHook.angler.prevRotationPitch + (entityFishHook.angler.rotationPitch - entityFishHook.angler.prevRotationPitch) * par9) * (float)Math.PI / 180.0F);
 			vec3.rotateAroundY(-(entityFishHook.angler.prevRotationYaw + (entityFishHook.angler.rotationYaw - entityFishHook.angler.prevRotationYaw) * par9) * (float)Math.PI / 180.0F);
 			vec3.rotateAroundY(f10 * 0.5F);

@@ -133,7 +133,7 @@ public class ItemNanomiteArrowGun extends ItemBow
 								{
 									EntityLivingBase entityLivingTarget = (EntityLivingBase)entityTarget;
 									Vec3 vec3 = player.getLook(1.0F).normalize();
-									Vec3 vec31 = entityLivingTarget.worldObj.getWorldVec3Pool().getVecFromPool(entityLivingTarget.posX - player.posX, entityLivingTarget.boundingBox.minY + (double)(entityLivingTarget.height / 2.0F) - (player.posY + (double)player.getEyeHeight()), entityLivingTarget.posZ - player.posZ);
+									Vec3 vec31 = Vec3.createVectorHelper(entityLivingTarget.posX - player.posX, entityLivingTarget.boundingBox.minY + (double)(entityLivingTarget.height / 2.0F) - (player.posY + (double)player.getEyeHeight()), entityLivingTarget.posZ - player.posZ);
 									double d0 = vec31.lengthVector();
 									vec31 = vec31.normalize();
 									double d1 = vec3.dotProduct(vec31);
