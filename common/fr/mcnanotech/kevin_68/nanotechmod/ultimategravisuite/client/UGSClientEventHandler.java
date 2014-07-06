@@ -78,7 +78,7 @@ public class UGSClientEventHandler
 		ItemStack chestPlate = mc.thePlayer.inventory.armorItemInSlot(2);
 		if(chestPlate != null && chestPlate.getItem().equals(UltimateGraviSuiteMod.ultimateGraviChestPlate))
 		{
-			int charge = ElectricItem.manager.getCharge(chestPlate);
+			double charge = ElectricItem.manager.getCharge(chestPlate);
 			long percentage = (long)(((long)charge * 100.0D) / 1000000000);
 			String graviPercentage = StatCollector.translateToLocalFormatted("ultimate.energy.level", getTextEnergyStatus(percentage));
 			if(UltimateGraviSuiteMod.hudPos.equals("right"))

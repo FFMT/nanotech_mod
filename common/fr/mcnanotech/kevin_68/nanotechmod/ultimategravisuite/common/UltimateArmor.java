@@ -253,7 +253,7 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 	}
 
 	@Override
-	public int getMaxCharge(ItemStack stack)
+	public double getMaxCharge(ItemStack stack)
 	{
 		return 1000000000;
 	}
@@ -265,7 +265,7 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 	}
 
 	@Override
-	public int getTransferLimit(ItemStack stack)
+	public double getTransferLimit(ItemStack stack)
 	{
 		return 120000;
 	}
@@ -281,8 +281,8 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 	{
 		double absorptionRatio = this.getBaseAbsorptionRatio() * this.getDamageAbsorptionRatio();
 		int energyPerDamage = this.getEnergyPerDamage();
-		long l = 25 * ElectricItem.manager.discharge(stack, Integer.MAX_VALUE, Integer.MAX_VALUE, true, true);
-		long damageLimit = Math.abs(l / energyPerDamage);
+		double l = 25 * ElectricItem.manager.discharge(stack, Double.MAX_VALUE, Integer.MAX_VALUE, true, true, true);
+		double damageLimit = Math.abs(l / energyPerDamage);
 		return new ArmorProperties(0, absorptionRatio, (int)damageLimit);
 	}
 
@@ -324,7 +324,7 @@ public class UltimateArmor extends ItemArmor implements IElectricItem, IMetalArm
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot)
 	{
-		ElectricItem.manager.discharge(stack, damage * getEnergyPerDamage(), Integer.MAX_VALUE, true, false);
+		ElectricItem.manager.discharge(stack, damage * getEnergyPerDamage(), Integer.MAX_VALUE, true, true, false);
 	}
 
 	public int getEnergyPerDamage()

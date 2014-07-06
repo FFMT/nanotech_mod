@@ -131,7 +131,7 @@ public class UGSCommonEventHandler
 
 	private boolean canUseChestplate(EntityPlayer player, ItemStack chestPlate, String message, int use)
 	{
-		ElectricItem.manager.discharge(chestPlate, use, 4, true, false);
+		ElectricItem.manager.discharge(chestPlate, use, 4, true, true, false);
 		if(ElectricItem.manager.getCharge(chestPlate) < UltimateGraviSuiteMod.ultimateMinCharge)
 		{
 			player.addChatMessage(new ChatComponentTranslation(message));
@@ -150,7 +150,7 @@ public class UGSCommonEventHandler
 			int energyCost = 10000 * fallDamage;
 			if(energyCost <= ElectricItem.manager.getCharge(armor))
 			{
-				ElectricItem.manager.discharge(armor, energyCost, Integer.MAX_VALUE, true, false);
+				ElectricItem.manager.discharge(armor, energyCost, Integer.MAX_VALUE, true, true, false);
 				event.setCanceled(true);
 			}
 		}
