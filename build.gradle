@@ -31,8 +31,8 @@ else {
 }
 
 minecraft {
-    version = "1.7.2-10.12.1.1110"
-    assetDir = "run/assets"
+    version = "1.7.10-10.13.0.1179"
+    runDir = "run/assets"
 	
     replace '@VERSION@', project.version
 }
@@ -61,7 +61,7 @@ dependencies {
     }
     compile files(ffmtlib.getPath())
 		
-    def ic2Url = "http://ic2api.player.to:8080/job/IC2_experimental/440/artifact/packages/industrialcraft-2-dev-deobf_2.1.440-experimental.jar"
+    def ic2Url = "http://jenkins.ic2.player.to/job/IC2_experimental/506/artifact/build/libs/industrialcraft-2-2.2.506-experimental-dev.jar"
     def ic2 = new File(rootProject.projectDir, "libs/" + ic2Url.tokenize("/")[-1])
     if (!ic2.exists()) {
         new URL(ic2Url).withInputStream{ i -> ic2.withOutputStream{ it << i }}
