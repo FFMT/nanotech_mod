@@ -14,9 +14,13 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.core.blocks.NTMBlocks;
+import fr.mcnanotech.kevin_68.nanotechmod.core.network.GuiHandler;
+import fr.mcnanotech.kevin_68.nanotechmod.core.tileentity.NTMTileEntity;
+import fr.mcnanotech.kevin_68.nanotechmod.core.utils.UtilSpotLight;
 import fr.minecraftforgefrance.ffmtlibs.network.PacketManager;
 
 @Mod(modid = NanotechMod.MODID, name = "Nanotech mod", version = "@VERSION@", dependencies = "required-after:ffmtlibs")
@@ -30,7 +34,7 @@ public class NanotechMod
 	@SidedProxy(clientSide = "fr.mcnanotech.kevin_68.nanotechmod.core.ClientProxy", serverSide = "fr.mcnanotech.kevin_68.nanotechmod.core.CommonProxy")
 	public static CommonProxy proxy;
 
-	//public static final PacketManager packetHandler = new PacketManager("fr.mcnanotech.kevin_68.nanotechmod.core.network.packet", MODID, "NanotechMod");
+	public static final PacketManager packetHandler = new PacketManager("fr.mcnanotech.kevin_68.nanotechmod.core.network.packets", MODID, "NanotechMod");
 
 	public static Logger log;
 
@@ -66,6 +70,10 @@ public class NanotechMod
 	{
 		log = event.getModLog();
 		NTMBlocks.initBlock();
+
+		NTMTileEntity.registerTiles();
+		
+		NetworkRegistry.INSTANCE.registerGuiHandler(this.modInstance, new GuiHandler());
 	}
 
 	@EventHandler
@@ -78,5 +86,9 @@ public class NanotechMod
 	public void postInitNanotechMod(FMLPostInitializationEvent event)
 	{
 		proxy.register();
+		if(event.getSide() == Side.CLIENT)
+		{
+			UtilSpotLight.list();
+		}
 	}
 }
