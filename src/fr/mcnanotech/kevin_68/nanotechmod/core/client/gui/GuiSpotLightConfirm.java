@@ -60,7 +60,7 @@ public class GuiSpotLightConfirm extends GuiContainer
 		{
 			if(guiopen == 0)
 			{
-				SpotLightEntry entry = new SpotLightEntry(false, 0, 0, 0, 0, 0, 0, 0, 0, false, false, 0, true, 0);
+				SpotLightEntry entry = new SpotLightEntry(false, 0, 0, 0, 0, 0, 0, 0, 0, false, false, 0, true, 0, false);
 				PacketSender.sendSpotLightPacket(tileSpotLight, tileSpotLight.getLastKeySelected(), entry);
 				this.tileSpotLight.setKey(tileSpotLight.getLastKeySelected(), entry);
 				this.mc.displayGuiScreen(new GuiSpotLightTimeLine(invPlayer, tileSpotLight, world));
@@ -86,9 +86,10 @@ public class GuiSpotLightConfirm extends GuiContainer
 
 	public void createKey(int time)
 	{
-		SpotLightEntry entry = new SpotLightEntry(true, tileSpotLight.getRed(), tileSpotLight.getGreen(), tileSpotLight.getBlue(), tileSpotLight.getSecRed(), tileSpotLight.getGreen(), tileSpotLight.getBlue(), tileSpotLight.getAngle1(), tileSpotLight.getAngle2(), tileSpotLight.isAutoRotate(), tileSpotLight.isReverseRotation(), tileSpotLight.getRotationSpeed(), tileSpotLight.isSecondaryLaser(), tileSpotLight.getDisplayAxe());
+		SpotLightEntry entry = new SpotLightEntry(true, tileSpotLight.getRed(), tileSpotLight.getGreen(), tileSpotLight.getBlue(), tileSpotLight.getSecRed(), tileSpotLight.getSecGreen(), tileSpotLight.getSecBlue(), tileSpotLight.getAngle1(), tileSpotLight.getAngle2(), tileSpotLight.isAutoRotate(), tileSpotLight.isReverseRotation(), tileSpotLight.getRotationSpeed(), tileSpotLight.isSecondaryLaser(), tileSpotLight.getDisplayAxe(), tileSpotLight.isSideLaser());
 		PacketSender.sendSpotLightPacket(tileSpotLight, time, entry);
 	}
+
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)

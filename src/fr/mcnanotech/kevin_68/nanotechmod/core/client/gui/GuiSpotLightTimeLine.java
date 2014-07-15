@@ -65,7 +65,6 @@ public class GuiSpotLightTimeLine extends GuiContainerSliderBase
 		{
 			if(tileSpotLight.getKey(i) != null && tileSpotLight.getKey(i).isActive())
 			{
-				System.out.println("button " + i + " draw");
 				this.buttonList.add(new GuiTimeKey(10 + i, width / 2 - 149 + (int)(i * 2.5), y + 50 + ((i % 2)) * 4));
 			}
 		}

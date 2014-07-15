@@ -21,8 +21,9 @@ public class SpotLightEntry
 	private int keyRotSpe;
 	private boolean keySecLas;
 	private int displayAxe;
+	private boolean sideLaser;
 	
-	public SpotLightEntry(boolean active, int red, int green, int blue, int secRed, int secGreen, int secBlue, int angle1, int angle2, boolean autoRot, boolean revRot, int rotSpe, boolean secLas, int displayAxe)
+	public SpotLightEntry(boolean active, int red, int green, int blue, int secRed, int secGreen, int secBlue, int angle1, int angle2, boolean autoRot, boolean revRot, int rotSpe, boolean secLas, int displayAxe, boolean sideLaser)
 	{
 		this.active = active;
 		this.keyRed = red;
@@ -38,6 +39,7 @@ public class SpotLightEntry
 		this.keyRotSpe = rotSpe;
 		this.keySecLas = secLas;
 		this.displayAxe = displayAxe;
+		this.sideLaser = sideLaser;
 	}
 	
 	private SpotLightEntry()
@@ -114,6 +116,11 @@ public class SpotLightEntry
 		return displayAxe;
 	}
 	
+	public boolean isSideLaser()
+	{
+		return sideLaser;
+	}
+	
     public static SpotLightEntry loadSpotLightEntryFromNBT(NBTTagCompound nbtTagCompound)
     {
     	SpotLightEntry entry = new SpotLightEntry();
@@ -137,6 +144,7 @@ public class SpotLightEntry
 		nbtTagCompound.setInteger("rotSpe", this.keyRotSpe);
 		nbtTagCompound.setBoolean("secLas", this.keySecLas);
 		nbtTagCompound.setInteger("displayAxe", this.displayAxe);
+		nbtTagCompound.setBoolean("sideLaser", sideLaser);
 
         return nbtTagCompound;
     }
@@ -157,5 +165,6 @@ public class SpotLightEntry
 		this.keyRotSpe = nbtTagCompound.getInteger("rotSpe");
 		this.keySecLas = nbtTagCompound.getBoolean("secLas");
 		this.displayAxe = nbtTagCompound.getInteger("displayAxe");
+		this.sideLaser = nbtTagCompound.getBoolean("sideLaser");
     }
 }
