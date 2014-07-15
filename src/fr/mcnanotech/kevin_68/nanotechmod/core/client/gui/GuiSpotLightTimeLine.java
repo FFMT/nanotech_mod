@@ -63,8 +63,9 @@ public class GuiSpotLightTimeLine extends GuiContainerSliderBase
 
 		for(int i = 0; i < 121; i++)
 		{
-			if(tileSpotLight.getKey(i) != null)
+			if(tileSpotLight.getKey(i) != null && tileSpotLight.getKey(i).isActive())
 			{
+				System.out.println("button " + i + " draw");
 				this.buttonList.add(new GuiTimeKey(10 + i, width / 2 - 149 + (int)(i * 2.5), y + 50 + ((i % 2)) * 4));
 			}
 		}
@@ -90,7 +91,7 @@ public class GuiSpotLightTimeLine extends GuiContainerSliderBase
 		}
 		else if(guibutton.id == 5)
 		{
-			if(tileSpotLight.getKey(tileSpotLight.getLastKeySelected()) != null)
+			if(tileSpotLight.getKey(tileSpotLight.getLastKeySelected()) != null && tileSpotLight.getKey(tileSpotLight.getCreateKeyTime()).isActive())
 			{
 				this.mc.displayGuiScreen(new GuiSpotLightConfirm(tileSpotLight, invPlayer, world, I18n.format("container.spotlight.sure") + " " + I18n.format("container.spotlight.deleteKey"), I18n.format("container.spotlight.deleteKey"), I18n.format("container.spotlight.cancel"), 0));
 			}

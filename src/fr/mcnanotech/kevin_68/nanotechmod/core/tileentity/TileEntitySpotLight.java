@@ -30,10 +30,11 @@ public class TileEntitySpotLight extends TileEntity
 	public int red, green, blue;
 	public int secRed, secGreen, secBlue;
 	public String textureName, secTextureName;
-	public int angle1, angle2, autoRotate, reverseRotation, rotationSpeed, secondaryLaser;
+	public int angle1, angle2, autoRotate, reverseRotation, rotationSpeed, secondaryLaser, displayAxe/*0=y, 1=x, 2=z*/;
 	public int lastKeySelected, timeLineEnabled, time, smoothMode, createKeyTime;
+	public int lastTimeUse;
 
-	private SpotLightEntry[] keyList = new SpotLightEntry[121];
+	private SpotLightEntry[] keyList = new SpotLightEntry[120];
 
 	public void updateEntity()
 	{
@@ -43,13 +44,43 @@ public class TileEntitySpotLight extends TileEntity
 
 			if(isTimeLineEnabled())
 			{
+				System.out.println("time:" + getTime());
 				if(getTime() > 1200)
 				{
-					set(time, 0);
+					set(23, 0);
 				}
 				else
 				{
-					set(time, getTime() + 1);
+					set(23, getTime() + 1);
+				}
+
+				if(!this.worldObj.isRemote)
+				{
+					if(this.isSmoothMode())
+					{
+
+					}
+					else
+					{
+						int curTime = this.getTime() / 10;
+						if(this.getKey(curTime) != null && lastTimeUse != time)
+						{
+							lastTimeUse = time;
+							this.set(0, this.getKey(curTime).getKeyRed());
+							this.set(1, this.getKey(curTime).getKeyGreen());
+							this.set(2, this.getKey(curTime).getKeyBlue());
+							this.set(3, this.getKey(curTime).getKeySecRed());
+							this.set(4, this.getKey(curTime).getKeySecGreen());
+							this.set(5, this.getKey(curTime).getKeySecBlue());
+							this.set(8, this.getKey(curTime).getKeyAngle1());
+							this.set(9, this.getKey(curTime).getKeyAngle2());
+							this.set(10, this.getKey(curTime).isKeyAutRot() ? 1 : 0);
+							this.set(11, this.getKey(curTime).isKeyRevRot() ? 1 : 0);
+							this.set(12, this.getKey(curTime).getKeyRotSpe());
+							this.set(13, this.getKey(curTime).isKeySecLas() ? 1 : 0);
+							this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+						}
+					}
 				}
 			}
 		}
@@ -127,6 +158,7 @@ public class TileEntitySpotLight extends TileEntity
 		nbtTagCompound.setInteger("Time", time);
 		nbtTagCompound.setInteger("SmoothMode", smoothMode);
 		nbtTagCompound.setInteger("CreateKeyTime", createKeyTime);
+		nbtTagCompound.setInteger("DisplayAxe", displayAxe);
 
 		NBTTagList nbttaglist = new NBTTagList();
 		for(int i = 0; i < this.keyList.length; ++i)
@@ -166,6 +198,7 @@ public class TileEntitySpotLight extends TileEntity
 		time = nbtTagCompound.getInteger("Time");
 		smoothMode = nbtTagCompound.getInteger("SmoothMode");
 		createKeyTime = nbtTagCompound.getInteger("CreateKeyTime");
+		displayAxe = nbtTagCompound.getInteger("DisplayAxe");
 
 		NBTTagList nbttaglist = nbtTagCompound.getTagList("SpotLightKeys", Constants.NBT.TAG_COMPOUND);
 		for(int i = 0; i < nbttaglist.tagCount(); ++i)
@@ -268,6 +301,11 @@ public class TileEntitySpotLight extends TileEntity
 		case 13:
 		{
 			this.secondaryLaser = value;
+			break;
+		}
+		case 14:
+		{
+			this.displayAxe = value;
 			break;
 		}
 		case 20:
@@ -394,6 +432,11 @@ public class TileEntitySpotLight extends TileEntity
 	{
 		return secondaryLaser == 1;
 	}
+	
+	public int getDisplayAxe()
+	{
+		return displayAxe;
+	}
 
 	public int getLastKeySelected()
 	{
@@ -422,32 +465,32 @@ public class TileEntitySpotLight extends TileEntity
 
 	public void setKey(int index, SpotLightEntry value)
 	{
-		if(index > 0 && index < this.keyList.length)
+		if(index >= 0 && index < this.keyList.length)
 		{
-			System.out.println("key added !");
+			// System.out.println("key added !");
 			this.keyList[index] = value;
 		}
 		else
 		{
 			System.out.println("fatal error, index invalid !");
 		}
-		for(int i = 0; i < this.keyList.length; i ++)
-		{
-			if(this.keyList[i] != null)
-			{
-				System.out.println("key " + i + " has a value !");
-			}
-			else
-			{
-				System.out.println("key " + i + " is null !");
-			}
-		}
+		// for(int i = 0; i < this.keyList.length; i++)
+		// {
+		// if(this.keyList[i] != null)
+		// {
+		// //System.out.println("key " + i + " has a value !");
+		// }
+		// else
+		// {
+		// //System.out.println("key " + i + " is null !");
+		// }
+		// }
 		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
-	
+
 	public SpotLightEntry getKey(int index)
 	{
-		if(index > 0 && index < this.keyList.length)
+		if(index >= 0 && index < this.keyList.length)
 		{
 			return this.keyList[index];
 		}

@@ -3,7 +3,6 @@ package fr.mcnanotech.kevin_68.nanotechmod.core.network;
 import fr.mcnanotech.kevin_68.nanotechmod.core.NanotechMod;
 import fr.mcnanotech.kevin_68.nanotechmod.core.network.packets.PacketSpotLight;
 import fr.mcnanotech.kevin_68.nanotechmod.core.network.packets.PacketSpotLightKey;
-import fr.mcnanotech.kevin_68.nanotechmod.core.network.packets.PacketSpotLightResetKey;
 import fr.mcnanotech.kevin_68.nanotechmod.core.network.packets.PacketSpotLightString;
 import fr.mcnanotech.kevin_68.nanotechmod.core.tileentity.TileEntitySpotLight;
 import fr.mcnanotech.kevin_68.nanotechmod.core.utils.SpotLightEntry;
@@ -22,7 +21,7 @@ public class PacketSender
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void sendSpotLightPacket(TileEntitySpotLight tile, int index, String value)
 	{
 		try
@@ -35,25 +34,12 @@ public class PacketSender
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void sendSpotLightPacket(TileEntitySpotLight tile, int index, SpotLightEntry entry)
 	{
 		try
 		{
 			NanotechMod.packetHandler.sendToServer(new PacketSpotLightKey(tile.xCoord, tile.yCoord, tile.zCoord, index, entry));
-		}
-		catch(Exception e)
-		{
-			NanotechMod.log.error("Failed to send spotight packet");
-			e.printStackTrace();
-		}
-	}
-
-	public static void sendSpotLightPacket(TileEntitySpotLight tile, int index)
-	{
-		try
-		{
-			NanotechMod.packetHandler.sendToServer(new PacketSpotLightResetKey(tile.xCoord, tile.yCoord, tile.zCoord, index));
 		}
 		catch(Exception e)
 		{

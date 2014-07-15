@@ -58,7 +58,7 @@ public class GuiSpotLightCreateKey extends GuiContainerSliderBase
 		}
 		if(guibutton.id == 2)
 		{
-			if(tileSpotLight.getKey(tileSpotLight.getCreateKeyTime()) != null)
+			if(tileSpotLight.getKey(tileSpotLight.getCreateKeyTime()) != null && tileSpotLight.getKey(tileSpotLight.getCreateKeyTime()).isActive())
 			{
 				this.mc.displayGuiScreen(new GuiSpotLightConfirm(tileSpotLight, invPlayer, world, I18n.format("container.spotlight.sure") + " " + I18n.format("container.spotlight.overwrite"), I18n.format("container.spotlight.overwrite"), I18n.format("container.spotlight.cancel"), 1));
 			}
@@ -74,8 +74,7 @@ public class GuiSpotLightCreateKey extends GuiContainerSliderBase
 	{
 		if(sliderId == 0)
 		{
-			System.out.println("clic !");
-			PacketSender.sendSpotLightPacket(this.tileSpotLight, 37, (int)(sliderValue * 120));
+			PacketSender.sendSpotLightPacket(this.tileSpotLight, 37, (int)(sliderValue * 119));
 		}
 	}
 
@@ -85,14 +84,14 @@ public class GuiSpotLightCreateKey extends GuiContainerSliderBase
 		String name = "";
 		if(sliderId == 0)
 		{
-			name = I18n.format("container.spotlight.time") + ": " + (float)(((int)((float)(sliderValue * 120))) / 2.0F);
+			name = I18n.format("container.spotlight.time") + ": " + (float)(((int)((float)(sliderValue * 119))) / 2.0F);
 		}
 		return name;
 	}
 
 	public void createKey(int time)
 	{
-		SpotLightEntry entry = new SpotLightEntry(tileSpotLight.getRed(), tileSpotLight.getGreen(), tileSpotLight.getBlue(), tileSpotLight.getSecRed(), tileSpotLight.getGreen(), tileSpotLight.getBlue(), tileSpotLight.getAngle1(), tileSpotLight.getAngle2(), tileSpotLight.isAutoRotate(), tileSpotLight.isReverseRotation(), tileSpotLight.getRotationSpeed(), tileSpotLight.isSecondaryLaser());
+		SpotLightEntry entry = new SpotLightEntry(true, tileSpotLight.getRed(), tileSpotLight.getGreen(), tileSpotLight.getBlue(), tileSpotLight.getSecRed(), tileSpotLight.getGreen(), tileSpotLight.getBlue(), tileSpotLight.getAngle1(), tileSpotLight.getAngle2(), tileSpotLight.isAutoRotate(), tileSpotLight.isReverseRotation(), tileSpotLight.getRotationSpeed(), tileSpotLight.isSecondaryLaser(), tileSpotLight.getDisplayAxe());
 		PacketSender.sendSpotLightPacket(tileSpotLight, time, entry);
 	}
 

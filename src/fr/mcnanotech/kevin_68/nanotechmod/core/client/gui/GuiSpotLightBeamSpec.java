@@ -22,6 +22,7 @@ public class GuiSpotLightBeamSpec extends GuiContainerSliderBase
 	public TileEntitySpotLight tileSpotLight;
 	public World world;
 	public GuiBooleanButton rotateButton, revRotaButton, secLaserButton;
+	//public GuiMultipleOptionsButton axeButton
 	
 	public GuiSpotLightBeamSpec(InventoryPlayer playerInventory, TileEntitySpotLight tileEntity, World wrld)
 	{
@@ -43,7 +44,9 @@ public class GuiSpotLightBeamSpec extends GuiContainerSliderBase
 		this.buttonList.add(rotateButton = new GuiBooleanButton(2, x - 40, y + 29, 127, 20, "Auto Rotate On", "Auto Rotate Off", tileSpotLight.isAutoRotate()));
 		this.buttonList.add(revRotaButton = new GuiBooleanButton(3, x + 90, y + 29, 127, 20, "Reverse Rotation On", "Reverse Rotation Off", tileSpotLight.isReverseRotation()));
 		this.buttonList.add(new GuiSliderForContainer(this, 4, x - 40, y + 52, 256, 20, "Rotation Speed : " + tileSpotLight.getRotationSpeed(), (float)(tileSpotLight.getRotationSpeed()) / 20.0F));
-		this.buttonList.add(secLaserButton = new GuiBooleanButton(5, x - 40, y + 74, 256, 20, "Secondary laser On", "Secondary laser Off", tileSpotLight.isSecondaryLaser()));
+		this.buttonList.add(secLaserButton = new GuiBooleanButton(5, x - 40, y + 74, 127, 20, "Secondary laser On", "Secondary laser Off", tileSpotLight.isSecondaryLaser()));
+		//TODO ffmtlibs multiple choice button
+		//this.buttonList.add(axeButton = new GuiMultipleOptionsButton(7, x + 90, y + 74, 127, 20, "Reverse Rotation On", "Reverse Rotation Off", tileSpotLight.isReverseRotation()));
 		this.buttonList.add(new GuiButton(6, x + 38, y + 117, 100, 20, "Back"));
 	}
 
@@ -73,6 +76,12 @@ public class GuiSpotLightBeamSpec extends GuiContainerSliderBase
 		case 6:
 		{
 			this.mc.displayGuiScreen(new GuiSpotLight(invPlayer, tileSpotLight, world));
+			break;
+		}
+		case 7:
+		{
+			//axeButton.next();
+			PacketSender.sendSpotLightPacket(tileSpotLight, 14, 0 /*axeButton.getCurrentOption()*/);
 			break;
 		}
 		}
@@ -119,7 +128,7 @@ public class GuiSpotLightBeamSpec extends GuiContainerSliderBase
 		}
 		case 4:
 		{
-			name = "Rotation Speed : " + (int)(sliderValue * 20);
+			name = "Rotation Speed : " + ((int)(sliderValue * 20));
 			break;
 		}
 		}

@@ -63,7 +63,6 @@ public class PacketSpotLight extends FFMTPacket
 
 		if(tile instanceof TileEntitySpotLight)
 		{
-			System.out.println("packet received " + index + "   " + value);
 			TileEntitySpotLight te = (TileEntitySpotLight)tile;
 			te.set(index, value);
 		}

@@ -6,6 +6,8 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class SpotLightEntry
 {
+	private boolean active;
+	
 	private int keyRed;
 	private int keyGreen;
 	private int keyBlue;
@@ -18,9 +20,11 @@ public class SpotLightEntry
 	private boolean keyRevRot;
 	private int keyRotSpe;
 	private boolean keySecLas;
+	private int displayAxe;
 	
-	public SpotLightEntry(int red, int green, int blue, int secRed, int secGreen, int secBlue, int angle1, int angle2, boolean autoRot, boolean revRot, int rotSpe, boolean secLas)
+	public SpotLightEntry(boolean active, int red, int green, int blue, int secRed, int secGreen, int secBlue, int angle1, int angle2, boolean autoRot, boolean revRot, int rotSpe, boolean secLas, int displayAxe)
 	{
+		this.active = active;
 		this.keyRed = red;
 		this.keyGreen = green;
 		this.keyBlue = blue;
@@ -33,13 +37,18 @@ public class SpotLightEntry
 		this.keyRevRot = revRot;
 		this.keyRotSpe = rotSpe;
 		this.keySecLas = secLas;
+		this.displayAxe = displayAxe;
 	}
 	
 	private SpotLightEntry()
 	{
-		
 	}
 
+	public boolean isActive()
+	{
+		return active;
+	}
+	
 	public int getKeyRed()
 	{
 		return keyRed;
@@ -100,6 +109,11 @@ public class SpotLightEntry
 		return keySecLas;
 	}
 	
+	public int getKeyDisplayAxe()
+	{
+		return displayAxe;
+	}
+	
     public static SpotLightEntry loadSpotLightEntryFromNBT(NBTTagCompound nbtTagCompound)
     {
     	SpotLightEntry entry = new SpotLightEntry();
@@ -109,6 +123,7 @@ public class SpotLightEntry
 	
     public NBTTagCompound writeToNBT(NBTTagCompound nbtTagCompound)
     {
+    	nbtTagCompound.setBoolean("Active", this.active);
 		nbtTagCompound.setInteger("red", this.keyRed);
 		nbtTagCompound.setInteger("green", this.keyGreen);
 		nbtTagCompound.setInteger("blue", this.keyBlue);
@@ -121,12 +136,14 @@ public class SpotLightEntry
 		nbtTagCompound.setBoolean("revRot", this.keyRevRot);
 		nbtTagCompound.setInteger("rotSpe", this.keyRotSpe);
 		nbtTagCompound.setBoolean("secLas", this.keySecLas);
+		nbtTagCompound.setInteger("displayAxe", this.displayAxe);
 
         return nbtTagCompound;
     }
 
     public void readFromNBT(NBTTagCompound nbtTagCompound)
     {
+    	this.active = nbtTagCompound.getBoolean("Active");
 		this.keyRed = nbtTagCompound.getInteger("red");
 		this.keyGreen = nbtTagCompound.getInteger("green");
 		this.keyBlue = nbtTagCompound.getInteger("blue");
@@ -139,5 +156,6 @@ public class SpotLightEntry
 		this.keyRevRot = nbtTagCompound.getBoolean("revRot");
 		this.keyRotSpe = nbtTagCompound.getInteger("rotSpe");
 		this.keySecLas = nbtTagCompound.getBoolean("secLas");
+		this.displayAxe = nbtTagCompound.getInteger("displayAxe");
     }
 }
