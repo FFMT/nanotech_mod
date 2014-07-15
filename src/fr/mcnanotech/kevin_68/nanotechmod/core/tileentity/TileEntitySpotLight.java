@@ -1,15 +1,22 @@
 package fr.mcnanotech.kevin_68.nanotechmod.core.tileentity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraftforge.common.util.Constants;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.core.NanotechMod;
+import fr.mcnanotech.kevin_68.nanotechmod.core.utils.SpotLightEntry;
 
 public class TileEntitySpotLight extends TileEntity
 {
@@ -25,36 +32,24 @@ public class TileEntitySpotLight extends TileEntity
 	public String textureName, secTextureName;
 	public int angle1, angle2, autoRotate, reverseRotation, rotationSpeed, secondaryLaser;
 	public int lastKeySelected, timeLineEnabled, time, smoothMode, createKeyTime;
-	public int[] keyList = new int[121];
-	public int[] keyRed = new int[121];
-	public int[] keyGreen = new int[121];
-	public int[] keyBlue = new int[121];
-	public int[] keySecRed = new int[121];
-	public int[] keySecGreen = new int[121];
-	public int[] keySecBlue = new int[121];
-	public int[] keyAngle1 = new int[121];
-	public int[] keyAngle2 = new int[121];
-	public int[] keyAutRot = new int[121];
-	public int[] keyRevRot = new int[121];
-	public int[] keyRotSpe = new int[121];
-	public int[] keySecLas = new int[121];
-	
+
+	private SpotLightEntry[] keyList = new SpotLightEntry[121];
 
 	public void updateEntity()
 	{
 		if(this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
 		{
 			this.isActive = true;
-			
-			if(get(timeLineEnabled) == 1)
+
+			if(isTimeLineEnabled())
 			{
-				if(get(time) > 1200)
+				if(getTime() > 1200)
 				{
 					set(time, 0);
 				}
 				else
 				{
-					set(time, get(time) + 1);
+					set(time, getTime() + 1);
 				}
 			}
 		}
@@ -113,8 +108,14 @@ public class TileEntitySpotLight extends TileEntity
 		nbtTagCompound.setInteger("SecRed", secRed);
 		nbtTagCompound.setInteger("SecGreen", secGreen);
 		nbtTagCompound.setInteger("SecBlue", secBlue);
-		nbtTagCompound.setString("TextureName", textureName);
-		nbtTagCompound.setString("SecTextureName", secTextureName);
+		if(textureName != null && !textureName.isEmpty())
+		{
+			nbtTagCompound.setString("TextureName", textureName);
+		}
+		if(secTextureName != null && !secTextureName.isEmpty())
+		{
+			nbtTagCompound.setString("SecTextureName", secTextureName);
+		}
 		nbtTagCompound.setInteger("Angle1", angle1);
 		nbtTagCompound.setInteger("Angle2", angle2);
 		nbtTagCompound.setInteger("AutoRotate", autoRotate);
@@ -122,19 +123,24 @@ public class TileEntitySpotLight extends TileEntity
 		nbtTagCompound.setInteger("RotationSpeed", rotationSpeed);
 		nbtTagCompound.setInteger("SecondaryLaser", secondaryLaser);
 		nbtTagCompound.setInteger("LastKeySelected", lastKeySelected);
-		nbtTagCompound.setIntArray("KeyList", keyList);
 		nbtTagCompound.setInteger("TimeLineEnabled", timeLineEnabled);
 		nbtTagCompound.setInteger("Time", time);
 		nbtTagCompound.setInteger("SmoothMode", smoothMode);
-		nbtTagCompound.setIntArray("KeyRed", keyRed);
-		nbtTagCompound.setIntArray("KeySecGreen", keySecGreen);
-        nbtTagCompound.setIntArray("KeySecBlue", keySecBlue);
-        nbtTagCompound.setIntArray("KeyAngle1", keyAngle1);
-        nbtTagCompound.setIntArray("KeyAngle2", keyAngle2);
-        nbtTagCompound.setIntArray("KeyAutRot", keyAutRot);
-        nbtTagCompound.setIntArray("KeyRevRot", keyRevRot);
-        nbtTagCompound.setIntArray("KeyRotSpe", keyRotSpe);
-        nbtTagCompound.setIntArray("KeySecLas", keySecLas);
+		nbtTagCompound.setInteger("CreateKeyTime", createKeyTime);
+
+		NBTTagList nbttaglist = new NBTTagList();
+		for(int i = 0; i < this.keyList.length; ++i)
+		{
+			if(this.keyList[i] != null)
+			{
+				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+				nbttagcompound1.setByte("Key", (byte)i);
+				this.keyList[i].writeToNBT(nbttagcompound1);
+				nbttaglist.appendTag(nbttagcompound1);
+			}
+		}
+		nbtTagCompound.setTag("SpotLightKeys", nbttaglist);
+
 	}
 
 	@Override
@@ -156,22 +162,23 @@ public class TileEntitySpotLight extends TileEntity
 		rotationSpeed = nbtTagCompound.getInteger("RotationSpeed");
 		secondaryLaser = nbtTagCompound.getInteger("SecondaryLaser");
 		lastKeySelected = nbtTagCompound.getInteger("LastKeySelected");
-		keyList = nbtTagCompound.getIntArray("KeyList");
 		timeLineEnabled = nbtTagCompound.getInteger("TimeLineEnabled");
 		time = nbtTagCompound.getInteger("Time");
 		smoothMode = nbtTagCompound.getInteger("SmoothMode");
-		keyRed = nbtTagCompound.getIntArray("KeyRed");
-		keyGreen = nbtTagCompound.getIntArray("KeyGreen");
-		keyBlue = nbtTagCompound.getIntArray("KeyBlue");
-		keySecRed = nbtTagCompound.getIntArray("KeySecRed");
-		keySecGreen = nbtTagCompound.getIntArray("keySecGreen");
-		keySecBlue = nbtTagCompound.getIntArray("keySecBlue");
-		keyAngle1 = nbtTagCompound.getIntArray("KeyAngle1");
-		keyAngle2 = nbtTagCompound.getIntArray("KeyAngle2");
-		keyAutRot = nbtTagCompound.getIntArray("KeyAutRot");
-		keyRevRot = nbtTagCompound.getIntArray("KeyRevRot");
-		keyRotSpe = nbtTagCompound.getIntArray("KeyRotSpe");
-		keySecLas = nbtTagCompound.getIntArray("KeySecLas");
+		createKeyTime = nbtTagCompound.getInteger("CreateKeyTime");
+
+		NBTTagList nbttaglist = nbtTagCompound.getTagList("SpotLightKeys", Constants.NBT.TAG_COMPOUND);
+		for(int i = 0; i < nbttaglist.tagCount(); ++i)
+		{
+			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
+			int j = nbttagcompound1.getByte("Key") & 255;
+
+			if(j >= 0 && j < this.keyList.length)
+			{
+				this.keyList[j] = SpotLightEntry.loadSpotLightEntryFromNBT(nbttagcompound1);
+			}
+		}
+
 	}
 
 	public boolean isUseableByPlayer(EntityPlayer player)
@@ -318,239 +325,132 @@ public class TileEntitySpotLight extends TileEntity
 		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
-	public void set(int index, int value, int time)
+	public int getRed()
 	{
-		switch(index)
-		{
-		case 21:
-		{
-			this.keyList[time] = value;
-			break;
-		}
-		case 25:
-		{
-			this.keyRed[time] = value;
-			break;
-		}
-		case 26:
-		{
-			this.keyGreen[time] = value;
-			break;
-		}
-		case 27:
-		{
-			this.keyBlue[time] = value;
-			break;
-		}
-		case 28:
-		{
-			this.keySecRed[time] = value;
-			break;
-		}
-		case 29:
-		{
-			this.keySecGreen[time] = value;
-			break;
-		}
-		case 30:
-		{
-			this.keySecBlue[time] = value;
-			break;
-		}
-		case 31:
-		{
-			this.keyAngle1[time] = value;
-			break;
-		}
-		case 32:
-		{
-			this.keyAngle2[time] = value;
-			break;
-		}
-		case 33:
-		{
-			this.keyAutRot[time] = value;
-			break;
-		}
-		case 34:
-		{
-			this.keyRevRot[time] = value;
-			break;
-		}
-		case 35:
-		{
-			this.keyRotSpe[time] = value;
-			break;
-		}
-		case 36:
-		{
-			this.keySecLas[time] = value;
-			break;
-		}
-		}
+		return red;
 	}
 
-	public int get(int index)
+	public int getGreen()
 	{
-		switch(index)
-		{
-		case 0:
-		{
-			return this.red;
-		}
-		case 1:
-		{
-			return this.green;
-		}
-		case 2:
-		{
-			return this.blue;
-		}
-		case 3:
-		{
-			return this.secRed;
-		}
-		case 4:
-		{
-			return this.secGreen;
-		}
-		case 5:
-		{
-			return this.secBlue;
-		}
-		case 8:
-		{
-			return this.angle1;
-		}
-		case 9:
-		{
-			return this.angle2;
-		}
-		case 10:
-		{
-			return this.autoRotate;
-		}
-		case 11:
-		{
-			return this.reverseRotation;
-		}
-		case 12:
-		{
-			return this.rotationSpeed;
-		}
-		case 13:
-		{
-			return this.secondaryLaser;
-		}
-		case 20:
-		{
-			return this.lastKeySelected;
-		}
-		case 22:
-		{
-			return this.timeLineEnabled;
-		}
-		case 23:
-		{
-			return this.time;
-		}
-		case 24:
-		{
-			return smoothMode;
-		}
-		case 37:
-		{
-			return createKeyTime;
-		}
-		default:
-		{
-			NanotechMod.log.error("Wrong get index :" + index);
-			return -1;
-		}
-		}
+		return green;
 	}
 
-	public String getS(int index)
+	public int getBlue()
 	{
-		switch(index)
-		{
-		case 6:
-		{
-			return textureName;
-		}
-		case 7:
-		{
-			return secTextureName;
-		}
-		default:
-		{
-			NanotechMod.log.error("Wrong get index :" + index);
-			return "null";
-		}
-		}
+		return blue;
 	}
 
-	public int get(int index, int time)
+	public int getSecRed()
 	{
-		switch(index)
+		return secRed;
+	}
+
+	public int getSecGreen()
+	{
+		return secGreen;
+	}
+
+	public int getSecBlue()
+	{
+		return secBlue;
+	}
+
+	public String getTextureName()
+	{
+		return textureName;
+	}
+
+	public String getSecTextureName()
+	{
+		return secTextureName;
+	}
+
+	public int getAngle1()
+	{
+		return angle1;
+	}
+
+	public int getAngle2()
+	{
+		return angle2;
+	}
+
+	public boolean isAutoRotate()
+	{
+		return autoRotate == 1;
+	}
+
+	public boolean isReverseRotation()
+	{
+		return reverseRotation == 1;
+	}
+
+	public int getRotationSpeed()
+	{
+		return rotationSpeed;
+	}
+
+	public boolean isSecondaryLaser()
+	{
+		return secondaryLaser == 1;
+	}
+
+	public int getLastKeySelected()
+	{
+		return lastKeySelected;
+	}
+
+	public boolean isTimeLineEnabled()
+	{
+		return timeLineEnabled == 1;
+	}
+
+	public int getTime()
+	{
+		return time;
+	}
+
+	public boolean isSmoothMode()
+	{
+		return smoothMode == 1;
+	}
+
+	public int getCreateKeyTime()
+	{
+		return createKeyTime;
+	}
+
+	public void setKey(int index, SpotLightEntry value)
+	{
+		if(index > 0 && index < this.keyList.length)
 		{
-		case 21:
+			System.out.println("key added !");
+			this.keyList[index] = value;
+		}
+		else
 		{
-			return keyList[time];
+			System.out.println("fatal error, index invalid !");
 		}
-		case 25:
+		for(int i = 0; i < this.keyList.length; i ++)
 		{
-			return keyRed[time];
+			if(this.keyList[i] != null)
+			{
+				System.out.println("key " + i + " has a value !");
+			}
+			else
+			{
+				System.out.println("key " + i + " is null !");
+			}
 		}
-		case 26:
+		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+	}
+	
+	public SpotLightEntry getKey(int index)
+	{
+		if(index > 0 && index < this.keyList.length)
 		{
-			return keyGreen[time];
+			return this.keyList[index];
 		}
-		case 27:
-		{
-			return keyBlue[time];
-		}
-		case 28:
-		{
-			return keySecRed[time];
-		}
-		case 29:
-		{
-			return keySecGreen[time];
-		}
-		case 30:
-		{
-			return keySecBlue[time];
-		}
-		case 31:
-		{
-			return keyAngle1[time];
-		}
-		case 32:
-		{
-			return keyAngle2[time];
-		}
-		case 33:
-		{
-			return keyAutRot[time];
-		}
-		case 34:
-		{
-			return keyRevRot[time];
-		}
-		case 35:
-		{
-			return keyRotSpe[time];
-		}
-		case 36:
-		{
-			return keySecLas[time];
-		}
-		default:
-		{
-			NanotechMod.log.error("Wrong get index :" + index);
-			return -1;
-		}
-		}
+		return null;
 	}
 }

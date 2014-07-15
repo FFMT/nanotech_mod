@@ -38,12 +38,12 @@ public class GuiSpotLightBeamSpec extends GuiContainerSliderBase
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 
-		this.buttonList.add(new GuiSliderForContainer(this, 0, x - 40, y - 15, 256, 20, "Angle 1 : " + tileSpotLight.get(8), (float)(tileSpotLight.get(8)) / 360.0F));
-		this.buttonList.add(new GuiSliderForContainer(this, 1, x - 40, y + 7, 256, 20, "Angle 2 : " + tileSpotLight.get(9), (float)(tileSpotLight.get(9)) / 180.0F));
-		this.buttonList.add(rotateButton = new GuiBooleanButton(2, x - 40, y + 29, 127, 20, "Auto Rotate On", "Auto Rotate Off", tileSpotLight.get(10) == 0 ? false : true));
-		this.buttonList.add(revRotaButton = new GuiBooleanButton(3, x + 90, y + 29, 127, 20, "Reverse Rotation On", "Reverse Rotation Off", tileSpotLight.get(11) == 0 ? false : true));
-		this.buttonList.add(new GuiSliderForContainer(this, 4, x - 40, y + 52, 256, 20, "Rotation Speed : " + tileSpotLight.get(12), (float)(tileSpotLight.get(12)) / 20.0F));
-		this.buttonList.add(secLaserButton = new GuiBooleanButton(5, x - 40, y + 74, 256, 20, "Secondary laser On", "Secondary laser Off", tileSpotLight.get(13) == 0 ? false : true));
+		this.buttonList.add(new GuiSliderForContainer(this, 0, x - 40, y - 15, 256, 20, "Angle 1 : " + tileSpotLight.getAngle1(), (float)(tileSpotLight.getAngle1()) / 360.0F));
+		this.buttonList.add(new GuiSliderForContainer(this, 1, x - 40, y + 7, 256, 20, "Angle 2 : " + tileSpotLight.getAngle2(), (float)(tileSpotLight.getAngle2()) / 180.0F));
+		this.buttonList.add(rotateButton = new GuiBooleanButton(2, x - 40, y + 29, 127, 20, "Auto Rotate On", "Auto Rotate Off", tileSpotLight.isAutoRotate()));
+		this.buttonList.add(revRotaButton = new GuiBooleanButton(3, x + 90, y + 29, 127, 20, "Reverse Rotation On", "Reverse Rotation Off", tileSpotLight.isReverseRotation()));
+		this.buttonList.add(new GuiSliderForContainer(this, 4, x - 40, y + 52, 256, 20, "Rotation Speed : " + tileSpotLight.getRotationSpeed(), (float)(tileSpotLight.getRotationSpeed()) / 20.0F));
+		this.buttonList.add(secLaserButton = new GuiBooleanButton(5, x - 40, y + 74, 256, 20, "Secondary laser On", "Secondary laser Off", tileSpotLight.isSecondaryLaser()));
 		this.buttonList.add(new GuiButton(6, x + 38, y + 117, 100, 20, "Back"));
 	}
 

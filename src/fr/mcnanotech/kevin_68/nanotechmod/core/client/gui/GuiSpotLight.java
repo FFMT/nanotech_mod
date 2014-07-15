@@ -41,7 +41,7 @@ public class GuiSpotLight extends GuiContainer
 		this.buttonList.add(new GuiButton(1, x + 90, y + 20, 80, 20, "Texture"));
 		this.buttonList.add(new GuiButton(2, x + 5, y + 45, 80, 20, "Beam Specs"));
 		this.buttonList.add(new GuiButton(3, x + 5, y + 70, 80, 20, "TimeLine config"));
-		this.buttonList.add(timeButton = new GuiBooleanButton(4, x + 90, y + 70, 80, 20, "TimeLine On", "TimeLine Off", tileSpotLight.get(22) == 1 ? true : false));
+		this.buttonList.add(timeButton = new GuiBooleanButton(4, x + 90, y + 70, 80, 20, "TimeLine On", "TimeLine Off", tileSpotLight.isTimeLineEnabled()));
 	}
 	
 	@Override

@@ -34,7 +34,7 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 		if(f1 > 0.0F)
 		{
 			Tessellator tessellator = Tessellator.instance;
-			GuiHelper.bindTexture(UtilSpotLight.getEntryByName(tileentity.getS(6)).getPath());
+			GuiHelper.bindTexture(UtilSpotLight.getEntryByName(tileentity.getTextureName()).getPath());
 			GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, 10497.0F);
 			GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, 10497.0F);
 			GL11.glDisable(GL11.GL_LIGHTING);
@@ -43,17 +43,17 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 			GL11.glDepthMask(true);
 			OpenGlHelper.glBlendFunc(770, 1, 1, 0);
 			tessellator.startDrawingQuads();
-			tessellator.setColorRGBA(tileentity.get(0), tileentity.get(1), tileentity.get(2), 32);
+			tessellator.setColorRGBA(tileentity.getRed(), tileentity.getGreen(), tileentity.getBlue(), 32);
 			float f2 = (float)tileentity.getWorldObj().getTotalWorldTime() + tick;
 			float f3 = -f2 * 0.2F - (float)MathHelper.floor_float(-f2 * 0.1F);
 			byte b0 = 1;
 			double d4 = (double)b0 * 0.2D;// taille
 			double d3 = (double)f2 * 0.025D * (1.0D - (double)(b0 & 1) * 2.5D);
 
-			double angle1Deg = tileentity.get(8);
-			double angle2Deg = tileentity.get(9);
+			double angle1Deg = tileentity.getAngle1();
+			double angle2Deg = tileentity.getAngle2();
 			double a1 = Math.toRadians(angle1Deg);
-			double a2 = tileentity.get(10) == 0 ? ((d3 * (tileentity.get(12) / 10)) * (tileentity.get(11) == 0 ? -1 : 1)) : Math.toRadians(angle2Deg);
+			double a2 = tileentity.isAutoRotate() ? ((d3 * (tileentity.getRotationSpeed())) * (tileentity.isReverseRotation() ? -1 : 1)) : Math.toRadians(angle2Deg);
 
 			double xo = 0.5D;
 			double yo = 0.5D;
@@ -130,7 +130,7 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 			tessellator.addVertexWithUV(x + xd, y + yd, z + zd, t0, t3);
 			tessellator.draw();
 
-			GuiHelper.bindTexture(UtilSpotLight.getEntryByName(tileentity.getS(7)).getPath());
+			GuiHelper.bindTexture(UtilSpotLight.getEntryByName(tileentity.getSecTextureName()).getPath());
 			GL11.glEnable(GL11.GL_BLEND);
 			OpenGlHelper.glBlendFunc(770, 771, 1, 0);
 			GL11.glDepthMask(false);
@@ -167,10 +167,10 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 			double yH = yh + ym - yo;
 			double zH = zh + zm - zo;
 
-			if(tileentity.get(13) == 1)
+			if(tileentity.isSecondaryLaser())
 			{
 				tessellator.startDrawingQuads();
-				tessellator.setColorRGBA(tileentity.get(3), tileentity.get(4), tileentity.get(5), 32);
+				tessellator.setColorRGBA(tileentity.getSecRed(), tileentity.getSecGreen(), tileentity.getSecBlue(), 32);
 
 				tessellator.addVertexWithUV(x + xe, y + ye, z + ze, t1, t3);
 				tessellator.addVertexWithUV(x + xE, y + yE, z + zE, t1, t2);

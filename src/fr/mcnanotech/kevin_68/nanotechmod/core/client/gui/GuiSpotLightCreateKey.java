@@ -18,6 +18,7 @@ import org.lwjgl.opengl.GL11;
 import fr.mcnanotech.kevin_68.nanotechmod.core.container.ContainerSpotLight;
 import fr.mcnanotech.kevin_68.nanotechmod.core.network.PacketSender;
 import fr.mcnanotech.kevin_68.nanotechmod.core.tileentity.TileEntitySpotLight;
+import fr.mcnanotech.kevin_68.nanotechmod.core.utils.SpotLightEntry;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiContainerSliderBase;
 import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiSliderForContainer;
 
@@ -37,7 +38,6 @@ public class GuiSpotLightCreateKey extends GuiContainerSliderBase
 		this.world = world;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void initGui()
 	{
@@ -58,13 +58,13 @@ public class GuiSpotLightCreateKey extends GuiContainerSliderBase
 		}
 		if(guibutton.id == 2)
 		{
-			if(tileSpotLight.get(21, (tileSpotLight.get(37))) == 1)
+			if(tileSpotLight.getKey(tileSpotLight.getCreateKeyTime()) != null)
 			{
 				this.mc.displayGuiScreen(new GuiSpotLightConfirm(tileSpotLight, invPlayer, world, I18n.format("container.spotlight.sure") + " " + I18n.format("container.spotlight.overwrite"), I18n.format("container.spotlight.overwrite"), I18n.format("container.spotlight.cancel"), 1));
 			}
 			else
 			{
-				this.createKey(tileSpotLight.get(37));
+				this.createKey(tileSpotLight.getCreateKeyTime());
 			}
 		}
 	}
@@ -74,6 +74,7 @@ public class GuiSpotLightCreateKey extends GuiContainerSliderBase
 	{
 		if(sliderId == 0)
 		{
+			System.out.println("clic !");
 			PacketSender.sendSpotLightPacket(this.tileSpotLight, 37, (int)(sliderValue * 120));
 		}
 	}
@@ -91,21 +92,9 @@ public class GuiSpotLightCreateKey extends GuiContainerSliderBase
 
 	public void createKey(int time)
 	{
-		PacketSender.sendSpotLightPacket(tileSpotLight, 21, 1, time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 25, tileSpotLight.get(0), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 26, tileSpotLight.get(1), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 27, tileSpotLight.get(2), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 28, tileSpotLight.get(3), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 29, tileSpotLight.get(4), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 30, tileSpotLight.get(5), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 31, tileSpotLight.get(6), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 32, tileSpotLight.get(7), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 33, tileSpotLight.get(8), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 34, tileSpotLight.get(9), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 35, tileSpotLight.get(10), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 36, tileSpotLight.get(11), time);
+		SpotLightEntry entry = new SpotLightEntry(tileSpotLight.getRed(), tileSpotLight.getGreen(), tileSpotLight.getBlue(), tileSpotLight.getSecRed(), tileSpotLight.getGreen(), tileSpotLight.getBlue(), tileSpotLight.getAngle1(), tileSpotLight.getAngle2(), tileSpotLight.isAutoRotate(), tileSpotLight.isReverseRotation(), tileSpotLight.getRotationSpeed(), tileSpotLight.isSecondaryLaser());
+		PacketSender.sendSpotLightPacket(tileSpotLight, time, entry);
 	}
-
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)

@@ -18,6 +18,7 @@ import org.lwjgl.opengl.GL11;
 import fr.mcnanotech.kevin_68.nanotechmod.core.container.ContainerSpotLight;
 import fr.mcnanotech.kevin_68.nanotechmod.core.network.PacketSender;
 import fr.mcnanotech.kevin_68.nanotechmod.core.tileentity.TileEntitySpotLight;
+import fr.mcnanotech.kevin_68.nanotechmod.core.utils.SpotLightEntry;
 
 public class GuiSpotLightConfirm extends GuiContainer
 {
@@ -59,13 +60,13 @@ public class GuiSpotLightConfirm extends GuiContainer
 		{
 			if(guiopen == 0)
 			{
-				PacketSender.sendSpotLightPacket(tileSpotLight, 0, tileSpotLight.get(20), 0);
+				PacketSender.sendSpotLightPacket(tileSpotLight, tileSpotLight.getLastKeySelected());
 				this.mc.displayGuiScreen(new GuiSpotLightTimeLine(invPlayer, tileSpotLight, world));
 			}
 			else
 			{
-				PacketSender.sendSpotLightPacket(tileSpotLight, 0, tileSpotLight.get(20), 0);
-				createKey(tileSpotLight.get(37));
+				PacketSender.sendSpotLightPacket(tileSpotLight, tileSpotLight.getLastKeySelected());
+				createKey(tileSpotLight.getCreateKeyTime());
 				this.mc.displayGuiScreen(new GuiSpotLightCreateKey(invPlayer, tileSpotLight, world));
 			}
 		}
@@ -84,19 +85,8 @@ public class GuiSpotLightConfirm extends GuiContainer
 
 	public void createKey(int time)
 	{
-		PacketSender.sendSpotLightPacket(tileSpotLight, 21, 1, time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 25, tileSpotLight.get(0), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 26, tileSpotLight.get(1), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 27, tileSpotLight.get(2), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 28, tileSpotLight.get(3), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 29, tileSpotLight.get(4), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 30, tileSpotLight.get(5), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 31, tileSpotLight.get(6), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 32, tileSpotLight.get(7), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 33, tileSpotLight.get(8), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 34, tileSpotLight.get(9), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 35, tileSpotLight.get(10), time);
-		PacketSender.sendSpotLightPacket(tileSpotLight, 36, tileSpotLight.get(11), time);
+		SpotLightEntry entry = new SpotLightEntry(tileSpotLight.getRed(), tileSpotLight.getGreen(), tileSpotLight.getBlue(), tileSpotLight.getSecRed(), tileSpotLight.getGreen(), tileSpotLight.getBlue(), tileSpotLight.getAngle1(), tileSpotLight.getAngle2(), tileSpotLight.isAutoRotate(), tileSpotLight.isReverseRotation(), tileSpotLight.getRotationSpeed(), tileSpotLight.isSecondaryLaser());
+		PacketSender.sendSpotLightPacket(tileSpotLight, time, entry);
 	}
 
 	@Override
