@@ -43,17 +43,17 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 			GL11.glDepthMask(true);
 			OpenGlHelper.glBlendFunc(770, 1, 1, 0);
 			tessellator.startDrawingQuads();
-			tessellator.setColorRGBA(tileentity.getRed(), tileentity.getGreen(), tileentity.getBlue(), 32);
+			tessellator.setColorRGBA(tileentity.getRed() & 0xFF, tileentity.getGreen() & 0xFF, tileentity.getBlue() & 0xFF, 32);
 			float f2 = (float)tileentity.getWorldObj().getTotalWorldTime() + tick;
 			float f3 = -f2 * 0.2F - (float)MathHelper.floor_float(-f2 * 0.1F);
 			byte b0 = 1;
-			double d4 = (double)b0 * 0.2D;// taille
+			double d4 = (double)b0 * ((double)(tileentity.getMainLaserSize() & 0xFF) / 200.0D);// taille
 			double d3 = (double)f2 * 0.025D * (1.0D - (double)(b0 & 1) * 2.5D);
 
 			double angle1Deg = tileentity.getAngle1();
-			double angle2Deg = tileentity.getAngle2();
+			double angle2Deg = (tileentity.getAngle2() & 0xFF);
 			double a1 = Math.toRadians(angle1Deg);
-			double a2 = tileentity.isAutoRotate() ? ((d3 * (tileentity.getRotationSpeed() / 4)) * (tileentity.isReverseRotation() ? -1 : 1)) : Math.toRadians(angle2Deg);
+			double a2 = tileentity.isAutoRotate() ? ((d3 * ((double)(tileentity.getRotationSpeed() & 0xFF) / 4.0D)) * (tileentity.isReverseRotation() ? -1.0D : 1.0D)) : Math.toRadians(angle2Deg);
 
 			double xo = 0.5D;
 			double yo = 0.5D;
@@ -62,33 +62,33 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 			double ym = yo + (256 * Math.cos(a1));
 			double zm = zo + (256 * Math.sin(a2) * Math.sin(a1));
 
-			double xa = xo + (0.2D * Math.cos(a2 + (Math.PI / 4D)) * Math.sin(a1 + (Math.PI / 4D)));
-			double ya = xo + (0.2D * Math.cos(a1 + (Math.PI / 4D)));
-			double za = zo + (0.2D * Math.sin(a2 + (Math.PI / 4D)) * Math.sin(a1 + (Math.PI / 4D)));
+			double xa = xo + (d4 * Math.cos(a2 + (Math.PI / 4D)) * Math.sin(a1 + (Math.PI / 4D)));
+			double ya = xo + (d4 * Math.cos(a1 + (Math.PI / 4D)));
+			double za = zo + (d4 * Math.sin(a2 + (Math.PI / 4D)) * Math.sin(a1 + (Math.PI / 4D)));
 
 			double xA = xa + xm - xo;
 			double yA = ya + ym - yo;
 			double zA = za + zm - zo;
 
-			double xb = xo + (0.2D * Math.cos(a2 + (3 * Math.PI / 4D)) * Math.sin(a1 + (3 * Math.PI / 4D)));
-			double yb = xo + (0.2D * Math.cos(a1 + (3 * Math.PI / 4D)));
-			double zb = zo + (0.2D * Math.sin(a2 + (3 * Math.PI / 4D)) * Math.sin(a1 + (3 * Math.PI / 4D)));
+			double xb = xo + (d4 * Math.cos(a2 + (3 * Math.PI / 4D)) * Math.sin(a1 + (3 * Math.PI / 4D)));
+			double yb = xo + (d4 * Math.cos(a1 + (3 * Math.PI / 4D)));
+			double zb = zo + (d4 * Math.sin(a2 + (3 * Math.PI / 4D)) * Math.sin(a1 + (3 * Math.PI / 4D)));
 
 			double xB = xb + xm - xo;
 			double yB = yb + ym - yo;
 			double zB = zb + zm - zo;
 
-			double xc = xo + (0.2D * Math.cos(a2 + (3 * Math.PI / 4D)) * Math.sin(a1 + (5 * Math.PI / 4D)));
-			double yc = xo + (0.2D * Math.cos(a1 + (5 * Math.PI / 4D)));
-			double zc = zo + (0.2D * Math.sin(a2 + (3 * Math.PI / 4D)) * Math.sin(a1 + (5 * Math.PI / 4D)));
+			double xc = xo + (d4 * Math.cos(a2 + (3 * Math.PI / 4D)) * Math.sin(a1 + (5 * Math.PI / 4D)));
+			double yc = xo + (d4 * Math.cos(a1 + (5 * Math.PI / 4D)));
+			double zc = zo + (d4 * Math.sin(a2 + (3 * Math.PI / 4D)) * Math.sin(a1 + (5 * Math.PI / 4D)));
 
 			double xC = xc + xm - xo;
 			double yC = yc + ym - yo;
 			double zC = zc + zm - zo;
 
-			double xd = xo + (0.2D * Math.cos(a2 + (Math.PI / 4D)) * Math.sin(a1 + (7 * Math.PI / 4D)));
-			double yd = xo + (0.2D * Math.cos(a1 + (7 * Math.PI / 4D)));
-			double zd = zo + (0.2D * Math.sin(a2 + (Math.PI / 4D)) * Math.sin(a1 + (7 * Math.PI / 4D)));
+			double xd = xo + (d4 * Math.cos(a2 + (Math.PI / 4D)) * Math.sin(a1 + (7 * Math.PI / 4D)));
+			double yd = xo + (d4 * Math.cos(a1 + (7 * Math.PI / 4D)));
+			double zd = zo + (d4 * Math.sin(a2 + (Math.PI / 4D)) * Math.sin(a1 + (7 * Math.PI / 4D)));
 
 			double xD = xd + xm - xo;
 			double yD = yd + ym - yo;
@@ -98,7 +98,7 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 			double t1 = 1.0D;
 			double t2 = (double)(-1.0F + f3);
 			double t3 = (double)(256.0F * f1) * (0.5D / d4) + t2;
-			
+
 			double angle1Deg2 = angle1Deg + 180;
 			double a12 = Math.toRadians(angle1Deg2);
 
@@ -106,33 +106,33 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 			double ym2 = yo + (256 * Math.cos(a12));
 			double zm2 = zo + (256 * Math.sin(a2) * Math.sin(a12));
 
-			double xa2 = xo + (0.2D * Math.cos(a2 + (Math.PI / 4D)) * Math.sin(a12 + (Math.PI / 4D)));
-			double ya2 = xo + (0.2D * Math.cos(a12 + (Math.PI / 4D)));
-			double za2 = zo + (0.2D * Math.sin(a2 + (Math.PI / 4D)) * Math.sin(a12 + (Math.PI / 4D)));
+			double xa2 = xo + (d4 * Math.cos(a2 + (Math.PI / 4D)) * Math.sin(a12 + (Math.PI / 4D)));
+			double ya2 = xo + (d4 * Math.cos(a12 + (Math.PI / 4D)));
+			double za2 = zo + (d4 * Math.sin(a2 + (Math.PI / 4D)) * Math.sin(a12 + (Math.PI / 4D)));
 
 			double xA2 = xa2 + xm2 - xo;
 			double yA2 = ya2 + ym2 - yo;
 			double zA2 = za2 + zm2 - zo;
 
-			double xb2 = xo + (0.2D * Math.cos(a2 + (3 * Math.PI / 4D)) * Math.sin(a12 + (3 * Math.PI / 4D)));
-			double yb2 = xo + (0.2D * Math.cos(a12 + (3 * Math.PI / 4D)));
-			double zb2 = zo + (0.2D * Math.sin(a2 + (3 * Math.PI / 4D)) * Math.sin(a12 + (3 * Math.PI / 4D)));
+			double xb2 = xo + (d4 * Math.cos(a2 + (3 * Math.PI / 4D)) * Math.sin(a12 + (3 * Math.PI / 4D)));
+			double yb2 = xo + (d4 * Math.cos(a12 + (3 * Math.PI / 4D)));
+			double zb2 = zo + (d4 * Math.sin(a2 + (3 * Math.PI / 4D)) * Math.sin(a12 + (3 * Math.PI / 4D)));
 
 			double xB2 = xb2 + xm2 - xo;
 			double yB2 = yb2 + ym2 - yo;
 			double zB2 = zb2 + zm2 - zo;
 
-			double xc2 = xo + (0.2D * Math.cos(a2 + (3 * Math.PI / 4D)) * Math.sin(a12 + (5 * Math.PI / 4D)));
-			double yc2 = xo + (0.2D * Math.cos(a12 + (5 * Math.PI / 4D)));
-			double zc2 = zo + (0.2D * Math.sin(a2 + (3 * Math.PI / 4D)) * Math.sin(a12 + (5 * Math.PI / 4D)));
+			double xc2 = xo + (d4 * Math.cos(a2 + (3 * Math.PI / 4D)) * Math.sin(a12 + (5 * Math.PI / 4D)));
+			double yc2 = xo + (d4 * Math.cos(a12 + (5 * Math.PI / 4D)));
+			double zc2 = zo + (d4 * Math.sin(a2 + (3 * Math.PI / 4D)) * Math.sin(a12 + (5 * Math.PI / 4D)));
 
 			double xC2 = xc2 + xm2 - xo;
 			double yC2 = yc2 + ym2 - yo;
 			double zC2 = zc2 + zm2 - zo;
 
-			double xd2 = xo + (0.2D * Math.cos(a2 + (Math.PI / 4D)) * Math.sin(a12 + (7 * Math.PI / 4D)));
-			double yd2 = xo + (0.2D * Math.cos(a12 + (7 * Math.PI / 4D)));
-			double zd2 = zo + (0.2D * Math.sin(a2 + (Math.PI / 4D)) * Math.sin(a12 + (7 * Math.PI / 4D)));
+			double xd2 = xo + (d4 * Math.cos(a2 + (Math.PI / 4D)) * Math.sin(a12 + (7 * Math.PI / 4D)));
+			double yd2 = xo + (d4 * Math.cos(a12 + (7 * Math.PI / 4D)));
+			double zd2 = zo + (d4 * Math.sin(a2 + (Math.PI / 4D)) * Math.sin(a12 + (7 * Math.PI / 4D)));
 
 			double xD2 = xd2 + xm2 - xo;
 			double yD2 = yd2 + ym2 - yo;
@@ -235,11 +235,11 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 				tessellator.addVertexWithUV(x + xd, y + zd, z + yd, t0, t3);
 			}
 			tessellator.draw();
-			
+
 			if(tileentity.isSideLaser())
 			{
 				tessellator.startDrawingQuads();
-				tessellator.setColorRGBA(tileentity.getRed(), tileentity.getGreen(), tileentity.getBlue(), 32);
+				tessellator.setColorRGBA(tileentity.getRed() & 0xFF, tileentity.getGreen() & 0xFF, tileentity.getBlue() & 0xFF, 32);
 
 				if(tileentity.getDisplayAxe() == 0)
 				{
@@ -340,39 +340,40 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 				tessellator.draw();
 			}
 
-
 			GuiHelper.bindTexture(UtilSpotLight.getEntryByName(tileentity.getSecTextureName()).getPath());
 			GL11.glEnable(GL11.GL_BLEND);
 			OpenGlHelper.glBlendFunc(770, 771, 1, 0);
 			GL11.glDepthMask(false);
 
-			double xe = xo + (0.5D * Math.cos(a2 + (Math.PI / 4D)) * Math.sin(a1 + (Math.PI / 4D)));
-			double ye = xo + (0.5D * Math.cos(a1 + (Math.PI / 4D)));
-			double ze = zo + (0.5D * Math.sin(a2 + (Math.PI / 4D)) * Math.sin(a1 + (Math.PI / 4D)));
+			double d5 = (double)b0 * ((double)(tileentity.getSecLaserSize() & 0xFF) / 150.0D);
+
+			double xe = xo + (d5 * Math.cos(a2 + (Math.PI / 4D)) * Math.sin(a1 + (Math.PI / 4D)));
+			double ye = xo + (d5 * Math.cos(a1 + (Math.PI / 4D)));
+			double ze = zo + (d5 * Math.sin(a2 + (Math.PI / 4D)) * Math.sin(a1 + (Math.PI / 4D)));
 
 			double xE = xe + xm - xo;
 			double yE = ye + ym - yo;
 			double zE = ze + zm - zo;
 
-			double xf = xo + (0.5D * Math.cos(a2 + (3 * Math.PI / 4D)) * Math.sin(a1 + (3 * Math.PI / 4D)));
-			double yf = xo + (0.5D * Math.cos(a1 + (3 * Math.PI / 4D)));
-			double zf = zo + (0.5D * Math.sin(a2 + (3 * Math.PI / 4D)) * Math.sin(a1 + (3 * Math.PI / 4D)));
+			double xf = xo + (d5 * Math.cos(a2 + (3 * Math.PI / 4D)) * Math.sin(a1 + (3 * Math.PI / 4D)));
+			double yf = xo + (d5 * Math.cos(a1 + (3 * Math.PI / 4D)));
+			double zf = zo + (d5 * Math.sin(a2 + (3 * Math.PI / 4D)) * Math.sin(a1 + (3 * Math.PI / 4D)));
 
 			double xF = xf + xm - xo;
 			double yF = yf + ym - yo;
 			double zF = zf + zm - zo;
 
-			double xg = xo + (0.5D * Math.cos(a2 + (3 * Math.PI / 4D)) * Math.sin(a1 + (5 * Math.PI / 4D)));
-			double yg = xo + (0.5D * Math.cos(a1 + (5 * Math.PI / 4D)));
-			double zg = zo + (0.5D * Math.sin(a2 + (3 * Math.PI / 4D)) * Math.sin(a1 + (5 * Math.PI / 4D)));
+			double xg = xo + (d5 * Math.cos(a2 + (3 * Math.PI / 4D)) * Math.sin(a1 + (5 * Math.PI / 4D)));
+			double yg = xo + (d5 * Math.cos(a1 + (5 * Math.PI / 4D)));
+			double zg = zo + (d5 * Math.sin(a2 + (3 * Math.PI / 4D)) * Math.sin(a1 + (5 * Math.PI / 4D)));
 
 			double xG = xg + xm - xo;
 			double yG = yg + ym - yo;
 			double zG = zg + zm - zo;
 
-			double xh = xo + (0.5D * Math.cos(a2 + (Math.PI / 4D)) * Math.sin(a1 + (7 * Math.PI / 4D)));
-			double yh = xo + (0.5D * Math.cos(a1 + (7 * Math.PI / 4D)));
-			double zh = zo + (0.5D * Math.sin(a2 + (Math.PI / 4D)) * Math.sin(a1 + (7 * Math.PI / 4D)));
+			double xh = xo + (d5 * Math.cos(a2 + (Math.PI / 4D)) * Math.sin(a1 + (7 * Math.PI / 4D)));
+			double yh = xo + (d5 * Math.cos(a1 + (7 * Math.PI / 4D)));
+			double zh = zo + (d5 * Math.sin(a2 + (Math.PI / 4D)) * Math.sin(a1 + (7 * Math.PI / 4D)));
 
 			double xH = xh + xm - xo;
 			double yH = yh + ym - yo;
@@ -381,8 +382,8 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 			if(tileentity.isSecondaryLaser())
 			{
 				tessellator.startDrawingQuads();
-				tessellator.setColorRGBA(tileentity.getSecRed(), tileentity.getSecGreen(), tileentity.getSecBlue(), 32);
-				
+				tessellator.setColorRGBA(tileentity.getSecRed() & 0xFF, tileentity.getSecGreen() & 0xFF, tileentity.getSecBlue() & 0xFF, 32);
+
 				if(tileentity.getDisplayAxe() == 0)
 				{
 					tessellator.addVertexWithUV(x + xe, y + ye, z + ze, t1, t3);
@@ -480,36 +481,36 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 					tessellator.addVertexWithUV(x + xd, y + zd, z + yd, t0, t3);
 				}
 				tessellator.draw();
-				
+
 				if(tileentity.isSideLaser())
 				{
-					double xe2 = xo + (0.5D * Math.cos(a2 + (Math.PI / 4D)) * Math.sin(a12 + (Math.PI / 4D)));
-					double ye2 = xo + (0.5D * Math.cos(a12 + (Math.PI / 4D)));
-					double ze2 = zo + (0.5D * Math.sin(a2 + (Math.PI / 4D)) * Math.sin(a12 + (Math.PI / 4D)));
+					double xe2 = xo + (d5 * Math.cos(a2 + (Math.PI / 4D)) * Math.sin(a12 + (Math.PI / 4D)));
+					double ye2 = xo + (d5 * Math.cos(a12 + (Math.PI / 4D)));
+					double ze2 = zo + (d5 * Math.sin(a2 + (Math.PI / 4D)) * Math.sin(a12 + (Math.PI / 4D)));
 
 					double xE2 = xe2 + xm2 - xo;
 					double yE2 = ye2 + ym2 - yo;
 					double zE2 = ze2 + zm2 - zo;
 
-					double xf2 = xo + (0.5D * Math.cos(a2 + (3 * Math.PI / 4D)) * Math.sin(a12 + (3 * Math.PI / 4D)));
-					double yf2 = xo + (0.5D * Math.cos(a12 + (3 * Math.PI / 4D)));
-					double zf2 = zo + (0.5D * Math.sin(a2 + (3 * Math.PI / 4D)) * Math.sin(a12 + (3 * Math.PI / 4D)));
+					double xf2 = xo + (d5 * Math.cos(a2 + (3 * Math.PI / 4D)) * Math.sin(a12 + (3 * Math.PI / 4D)));
+					double yf2 = xo + (d5 * Math.cos(a12 + (3 * Math.PI / 4D)));
+					double zf2 = zo + (d5 * Math.sin(a2 + (3 * Math.PI / 4D)) * Math.sin(a12 + (3 * Math.PI / 4D)));
 
 					double xF2 = xf2 + xm2 - xo;
 					double yF2 = yf2 + ym2 - yo;
 					double zF2 = zf2 + zm2 - zo;
 
-					double xg2 = xo + (0.5D * Math.cos(a2 + (3 * Math.PI / 4D)) * Math.sin(a12 + (5 * Math.PI / 4D)));
-					double yg2 = xo + (0.5D * Math.cos(a12 + (5 * Math.PI / 4D)));
-					double zg2 = zo + (0.5D * Math.sin(a2 + (3 * Math.PI / 4D)) * Math.sin(a12 + (5 * Math.PI / 4D)));
+					double xg2 = xo + (d5 * Math.cos(a2 + (3 * Math.PI / 4D)) * Math.sin(a12 + (5 * Math.PI / 4D)));
+					double yg2 = xo + (d5 * Math.cos(a12 + (5 * Math.PI / 4D)));
+					double zg2 = zo + (d5 * Math.sin(a2 + (3 * Math.PI / 4D)) * Math.sin(a12 + (5 * Math.PI / 4D)));
 
 					double xG2 = xg2 + xm2 - xo;
 					double yG2 = yg2 + ym2 - yo;
 					double zG2 = zg2 + zm2 - zo;
 
-					double xh2 = xo + (0.5D * Math.cos(a2 + (Math.PI / 4D)) * Math.sin(a12 + (7 * Math.PI / 4D)));
-					double yh2 = xo + (0.5D * Math.cos(a12 + (7 * Math.PI / 4D)));
-					double zh2 = zo + (0.5D * Math.sin(a2 + (Math.PI / 4D)) * Math.sin(a12 + (7 * Math.PI / 4D)));
+					double xh2 = xo + (d5 * Math.cos(a2 + (Math.PI / 4D)) * Math.sin(a12 + (7 * Math.PI / 4D)));
+					double yh2 = xo + (d5 * Math.cos(a12 + (7 * Math.PI / 4D)));
+					double zh2 = zo + (d5 * Math.sin(a2 + (Math.PI / 4D)) * Math.sin(a12 + (7 * Math.PI / 4D)));
 
 					double xH2 = xh2 + xm2 - xo;
 					double yH2 = yh2 + ym2 - yo;
@@ -518,8 +519,8 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 					if(tileentity.isSecondaryLaser())
 					{
 						tessellator.startDrawingQuads();
-						tessellator.setColorRGBA(tileentity.getSecRed(), tileentity.getSecGreen(), tileentity.getSecBlue(), 32);
-						
+						tessellator.setColorRGBA(tileentity.getSecRed() & 0xFF, tileentity.getSecGreen() & 0xFF, tileentity.getSecBlue() & 0xFF, 32);
+
 						if(tileentity.getDisplayAxe() == 0)
 						{
 							tessellator.addVertexWithUV(x + xe2, y + ye2, z + ze2, t1, t3);
@@ -620,7 +621,7 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
 					}
 				}
 			}
-			
+
 			GL11.glEnable(GL11.GL_LIGHTING);
 			GL11.glEnable(GL11.GL_TEXTURE_2D);
 			GL11.glDepthMask(true);

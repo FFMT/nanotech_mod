@@ -60,14 +60,14 @@ public class GuiSpotLightConfirm extends GuiContainer
 		{
 			if(guiopen == 0)
 			{
-				SpotLightEntry entry = new SpotLightEntry(false, 0, 0, 0, 0, 0, 0, 0, 0, false, false, 0, true, 0, false);
-				PacketSender.sendSpotLightPacket(tileSpotLight, tileSpotLight.getLastKeySelected(), entry);
-				this.tileSpotLight.setKey(tileSpotLight.getLastKeySelected(), entry);
+				SpotLightEntry entry = new SpotLightEntry(false, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, 0, (byte)0, false, false, (byte)0, true, (byte)0, false, (byte)0, (byte)0);
+				PacketSender.sendSpotLightPacket(tileSpotLight, tileSpotLight.getLastKeySelected() & 0xFF, entry);
+				this.tileSpotLight.setKey(tileSpotLight.getLastKeySelected() & 0xFF, entry);
 				this.mc.displayGuiScreen(new GuiSpotLightTimeLine(invPlayer, tileSpotLight, world));
 			}
 			else
 			{
-				createKey(tileSpotLight.getCreateKeyTime());
+				createKey(tileSpotLight.getCreateKeyTime()& 0xFF);
 				this.mc.displayGuiScreen(new GuiSpotLightCreateKey(invPlayer, tileSpotLight, world));
 			}
 		}
@@ -86,7 +86,7 @@ public class GuiSpotLightConfirm extends GuiContainer
 
 	public void createKey(int time)
 	{
-		SpotLightEntry entry = new SpotLightEntry(true, tileSpotLight.getRed(), tileSpotLight.getGreen(), tileSpotLight.getBlue(), tileSpotLight.getSecRed(), tileSpotLight.getSecGreen(), tileSpotLight.getSecBlue(), tileSpotLight.getAngle1(), tileSpotLight.getAngle2(), tileSpotLight.isAutoRotate(), tileSpotLight.isReverseRotation(), tileSpotLight.getRotationSpeed(), tileSpotLight.isSecondaryLaser(), tileSpotLight.getDisplayAxe(), tileSpotLight.isSideLaser());
+		SpotLightEntry entry = new SpotLightEntry(true, tileSpotLight.getRed(), tileSpotLight.getGreen(), tileSpotLight.getBlue(), tileSpotLight.getSecRed(), tileSpotLight.getSecGreen(), tileSpotLight.getSecBlue(), tileSpotLight.getAngle1(), tileSpotLight.getAngle2(), tileSpotLight.isAutoRotate(), tileSpotLight.isReverseRotation(), tileSpotLight.getRotationSpeed(), tileSpotLight.isSecondaryLaser(), tileSpotLight.getDisplayAxe(), tileSpotLight.isSideLaser(), tileSpotLight.getMainLaserSize(), tileSpotLight.getSecLaserSize());
 		PacketSender.sendSpotLightPacket(tileSpotLight, time, entry);
 	}
 

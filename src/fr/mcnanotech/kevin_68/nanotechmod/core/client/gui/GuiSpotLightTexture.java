@@ -3,6 +3,7 @@ package fr.mcnanotech.kevin_68.nanotechmod.core.client.gui;
 import java.util.ArrayList;
 
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -43,8 +44,8 @@ public class GuiSpotLightTexture extends GuiListBase
 		super.initGui();
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
-		this.buttonList.add(0, new GuiButton(0, x + 6, y + 117, 78, 20, "Back"));
-		this.buttonList.add(1, booButton = new GuiBooleanButton(1, x + 91, y + 117, 78, 20, "Main Beam", "Sec Beam", true));
+		this.buttonList.add(0, new GuiButton(0, x + 6, y + 117, 78, 20, I18n.format("container.spotlight.back")));
+		this.buttonList.add(1, booButton = new GuiBooleanButton(1, x + 91, y + 117, 78, 20, I18n.format("container.spotlight.main"), I18n.format("container.spotlight.sec"), true));
 		gList = new GuiList(this, list, x + 6, y + 17, x + 169, y + 115);
 		gList.addButton(buttonList);
 	}

@@ -4,6 +4,7 @@ import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -32,16 +33,15 @@ public class GuiSpotLight extends GuiContainer
 	public void initGui()
 	{
 		super.initGui();
-//		this.xSize = 256;
-//		this.ySize = 256;
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;	
 		
-		this.buttonList.add(new GuiButton(0, x + 5, y + 20, 80, 20, "Color"));
-		this.buttonList.add(new GuiButton(1, x + 90, y + 20, 80, 20, "Texture"));
-		this.buttonList.add(new GuiButton(2, x + 5, y + 45, 80, 20, "Beam Specs"));
-		this.buttonList.add(new GuiButton(3, x + 5, y + 70, 80, 20, "TimeLine config"));
-		this.buttonList.add(timeButton = new GuiBooleanButton(4, x + 90, y + 70, 80, 20, "TimeLine On", "TimeLine Off", tileSpotLight.isTimeLineEnabled()));
+		this.buttonList.add(new GuiButton(0, x + 5, y + 20, 80, 20, I18n.format("container.spotlight.color")));
+		this.buttonList.add(new GuiButton(1, x + 90, y + 20, 50, 20, I18n.format("container.spotlight.textures")));
+		this.buttonList.add(new GuiButton(5, x + 142, y + 20, 28, 20, I18n.format("container.spotlight.more")));
+		this.buttonList.add(new GuiButton(2, x + 5, y + 45, 80, 20, I18n.format("container.spotlight.beamspecs")));
+		this.buttonList.add(new GuiButton(3, x + 90, y + 45, 80, 20, I18n.format("container.spotlight.timeline")));
+		this.buttonList.add(timeButton = new GuiBooleanButton(4, x + 5, y + 70, 166, 20, I18n.format("container.spotlight.timeline") + " " + I18n.format("container.spotlight.on"), I18n.format("container.spotlight.timeline") + " " + I18n.format("container.spotlight.off"), tileSpotLight.isTimeLineEnabled()));
 	}
 	
 	@Override
@@ -72,7 +72,12 @@ public class GuiSpotLight extends GuiContainer
 		case 4:
 		{
 			timeButton.toggle();
-			PacketSender.sendSpotLightPacket(this.tileSpotLight, 22, timeButton.getIsActive() ? 1 : 0);
+			PacketSender.sendSpotLightPacketBoolean(this.tileSpotLight, (byte)22, timeButton.getIsActive());
+			break;
+		}
+		case 5:
+		{
+			this.mc.displayGuiScreen(new GuiSpotLightAddTexture(invPlayer, tileSpotLight, world));
 			break;
 		}
 		}

@@ -10,9 +10,12 @@ package fr.mcnanotech.kevin_68.nanotechmod.core.blocks;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -33,6 +36,18 @@ public class BlockSpotLight extends BlockContainer
 	public TileEntity createNewTileEntity(World world, int metadata)
 	{
 		return new TileEntitySpotLight();
+	}
+	
+	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
+	{
+		 TileEntity te = world.getTileEntity(x, y, z);
+		 if(te instanceof TileEntitySpotLight)
+		 {
+			 TileEntitySpotLight tile = (TileEntitySpotLight)te;
+			 tile.setDefaultValue();
+		 }
+		world.markBlockForUpdate(x, y, z);
 	}
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)

@@ -88,7 +88,7 @@ public class NanotechMod
 		proxy.register();
 		if(event.getSide() == Side.CLIENT)
 		{
-			UtilSpotLight.list();
+			UtilSpotLight.init();
 		}
 	}
 }

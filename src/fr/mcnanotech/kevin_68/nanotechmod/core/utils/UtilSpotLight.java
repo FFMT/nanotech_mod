@@ -1,31 +1,106 @@
 package fr.mcnanotech.kevin_68.nanotechmod.core.utils;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.nbt.CompressedStreamTools;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraftforge.common.util.Constants;
 
 public class UtilSpotLight
 {
+	private static File mcDir;
+	private static File mainDir;
+	private static File dataFile;
+
+	public static void init()
+	{
+		mcDir = Minecraft.getMinecraft().mcDataDir;
+		mainDir = new File(new File(mcDir, "nanotechmod"), "spotlight");
+		if(!mainDir.exists())
+		{
+			mainDir.mkdirs();
+		}
+		dataFile = new File(mainDir, "textures.dat");
+	}
+
+	private static NBTTagCompound getData()
+	{
+		try
+		{
+			FileInputStream fileinputstream = new FileInputStream(dataFile);
+			NBTTagCompound compound = CompressedStreamTools.readCompressed(fileinputstream);
+			fileinputstream.close();
+			return compound;
+		}
+		catch(IOException exception)
+		{
+			exception.printStackTrace();
+			NBTTagCompound compound = new NBTTagCompound();
+			saveData(compound);
+			setSound("beacon_beam", "textures/entity/beacon_beam.png");
+			setSound("dirt", "textures/blocks/dirt.png");
+			return compound;
+		}
+	}
+
+	private static void saveData(NBTTagCompound compound)
+	{
+		try
+		{
+			FileOutputStream fileoutputstream = new FileOutputStream(dataFile);
+			CompressedStreamTools.writeCompressed(compound, fileoutputstream);
+			fileoutputstream.close();
+		}
+		catch(IOException exception)
+		{
+			exception.printStackTrace();
+		}
+	}
+
+	public static void setSound(String name, String path)
+	{
+		NBTTagCompound compoundBase = getData();
+		NBTTagList list = compoundBase.hasKey("textures") ? compoundBase.getTagList("textures", Constants.NBT.TAG_COMPOUND) : new NBTTagList();
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setString("name", name);
+		tag.setString("path", path);
+		list.appendTag(tag);
+		compoundBase.setTag("textures", list);
+		saveData(compoundBase);
+	}
+
+	public static void deleteTexure(String name)
+	{
+		NBTTagCompound compoundBase = getData();
+		NBTTagList list = compoundBase.getTagList("textures", Constants.NBT.TAG_COMPOUND);
+		for(int i = 0; i < list.tagCount(); i++)
+		{
+			if(list.getCompoundTagAt(i).getString("name").equals(name))
+			{
+				list.removeTag(i);
+			}
+		}
+		saveData(compoundBase);
+	}
+
 	public static ArrayList<BaseListEntry> list()
 	{
 		ArrayList<BaseListEntry> list = new ArrayList();
-		list.add(new TextureEntry("beacon_beam", 0, "textures/entity/beacon_beam.png"));
-		File dir = new File(new File(new File(Minecraft.getMinecraft().mcDataDir, "assets"),"nanotechmod"), "spotlight");
-		if(!dir.exists())
+		
+		NBTTagCompound compoundBase = getData();
+		NBTTagList tagList = compoundBase.getTagList("textures", Constants.NBT.TAG_COMPOUND);
+		for(int i = 0; i < tagList.tagCount(); i++)
 		{
-			dir.mkdirs();
+			NBTTagCompound tag = tagList.getCompoundTagAt(i);
+			list.add(new TextureEntry(tag.getString("name"), tag.getString("path")));
 		}
-		File[] fileList = dir.listFiles();
-		if(fileList != null && fileList.length != 0)
-		{
-			for(int i = 0; i < fileList.length; i++)
-			{
-				// TODO fix
-				String path = fileList[i].getAbsolutePath().replace(Minecraft.getMinecraft().mcDataDir.getAbsolutePath(), "").replace(File.separator + "assets" + File.separator, "").replace("nanotechmod" + File.separator, "nanotechmod:");
-				list.add(i + 1, new TextureEntry(fileList[i].getName(), /*getColor*/0, path));
-			}
-		}
+
 		return list;
 	}
 
@@ -39,7 +114,7 @@ public class UtilSpotLight
 			}
 		}
 
-		return new TextureEntry("beacon_beam", 0, "textures/entity/beacon_beam.png");
+		return new TextureEntry("beacon_beam", "textures/entity/beacon_beam.png");
 	}
 
 	public static class BaseListEntry
@@ -68,9 +143,9 @@ public class UtilSpotLight
 	{
 		private String path;
 
-		public TextureEntry(String name, int txtColor, String path)
+		public TextureEntry(String name, String path)
 		{
-			super(name, txtColor);
+			super(name, 0xffffff);
 			this.path = path;
 		}
 

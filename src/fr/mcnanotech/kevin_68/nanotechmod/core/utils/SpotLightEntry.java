@@ -8,22 +8,24 @@ public class SpotLightEntry
 {
 	private boolean active;
 	
-	private int keyRed;
-	private int keyGreen;
-	private int keyBlue;
-	private int keySecRed;
-	private int keySecGreen;
-	private int keySecBlue;
+	private byte keyRed;
+	private byte keyGreen;
+	private byte keyBlue;
+	private byte keySecRed;
+	private byte keySecGreen;
+	private byte keySecBlue;
 	private int keyAngle1;
-	private int keyAngle2;
+	private byte keyAngle2;
 	private boolean keyAutRot;
 	private boolean keyRevRot;
-	private int keyRotSpe;
+	private byte keyRotSpe;
 	private boolean keySecLas;
-	private int displayAxe;
+	private byte displayAxe;
 	private boolean sideLaser;
+	private byte mainLaserSize;
+	private byte secLaserSize;
 	
-	public SpotLightEntry(boolean active, int red, int green, int blue, int secRed, int secGreen, int secBlue, int angle1, int angle2, boolean autoRot, boolean revRot, int rotSpe, boolean secLas, int displayAxe, boolean sideLaser)
+	public SpotLightEntry(boolean active, byte red, byte green, byte blue, byte secRed, byte secGreen, byte secBlue, int angle1, byte angle2, boolean autoRot, boolean revRot, byte rotSpe, boolean secLas, byte displayAxe, boolean sideLaser, byte mainLaserSize, byte secLaserSize)
 	{
 		this.active = active;
 		this.keyRed = red;
@@ -40,6 +42,8 @@ public class SpotLightEntry
 		this.keySecLas = secLas;
 		this.displayAxe = displayAxe;
 		this.sideLaser = sideLaser;
+		this.mainLaserSize = mainLaserSize;
+		this.secLaserSize = secLaserSize;
 	}
 	
 	private SpotLightEntry()
@@ -51,32 +55,32 @@ public class SpotLightEntry
 		return active;
 	}
 	
-	public int getKeyRed()
+	public byte getKeyRed()
 	{
 		return keyRed;
 	}
 
-	public int getKeyGreen()
+	public byte getKeyGreen()
 	{
 		return keyGreen;
 	}
 
-	public int getKeyBlue()
+	public byte getKeyBlue()
 	{
 		return keyBlue;
 	}
 
-	public int getKeySecRed()
+	public byte getKeySecRed()
 	{
 		return keySecRed;
 	}
 
-	public int getKeySecGreen()
+	public byte getKeySecGreen()
 	{
 		return keySecGreen;
 	}
 
-	public int getKeySecBlue()
+	public byte getKeySecBlue()
 	{
 		return keySecBlue;
 	}
@@ -86,7 +90,7 @@ public class SpotLightEntry
 		return keyAngle1;
 	}
 
-	public int getKeyAngle2()
+	public byte getKeyAngle2()
 	{
 		return keyAngle2;
 	}
@@ -101,7 +105,7 @@ public class SpotLightEntry
 		return keyRevRot;
 	}
 
-	public int getKeyRotSpe()
+	public byte getKeyRotSpe()
 	{
 		return keyRotSpe;
 	}
@@ -111,7 +115,7 @@ public class SpotLightEntry
 		return keySecLas;
 	}
 	
-	public int getKeyDisplayAxe()
+	public byte getKeyDisplayAxe()
 	{
 		return displayAxe;
 	}
@@ -119,6 +123,16 @@ public class SpotLightEntry
 	public boolean isSideLaser()
 	{
 		return sideLaser;
+	}
+	
+	public byte getKeyMainLaserSize()
+	{
+		return mainLaserSize;
+	}
+	
+	public byte getKeySecLaserSize()
+	{
+		return secLaserSize;
 	}
 	
     public static SpotLightEntry loadSpotLightEntryFromNBT(NBTTagCompound nbtTagCompound)
@@ -131,20 +145,22 @@ public class SpotLightEntry
     public NBTTagCompound writeToNBT(NBTTagCompound nbtTagCompound)
     {
     	nbtTagCompound.setBoolean("Active", this.active);
-		nbtTagCompound.setInteger("red", this.keyRed);
-		nbtTagCompound.setInteger("green", this.keyGreen);
-		nbtTagCompound.setInteger("blue", this.keyBlue);
-		nbtTagCompound.setInteger("secRed", this.keySecRed);
-		nbtTagCompound.setInteger("secGreen", this.keySecGreen);
-		nbtTagCompound.setInteger("secBlue", this.keySecBlue);
+		nbtTagCompound.setByte("red", this.keyRed);
+		nbtTagCompound.setByte("green", this.keyGreen);
+		nbtTagCompound.setByte("blue", this.keyBlue);
+		nbtTagCompound.setByte("secRed", this.keySecRed);
+		nbtTagCompound.setByte("secGreen", this.keySecGreen);
+		nbtTagCompound.setByte("secBlue", this.keySecBlue);
 		nbtTagCompound.setInteger("angle1", this.keyAngle1);
-		nbtTagCompound.setInteger("angle2", this.keyAngle2);
+		nbtTagCompound.setByte("angle2", this.keyAngle2);
 		nbtTagCompound.setBoolean("autoRot", this.keyAutRot);
 		nbtTagCompound.setBoolean("revRot", this.keyRevRot);
-		nbtTagCompound.setInteger("rotSpe", this.keyRotSpe);
+		nbtTagCompound.setByte("rotSpe", this.keyRotSpe);
 		nbtTagCompound.setBoolean("secLas", this.keySecLas);
-		nbtTagCompound.setInteger("displayAxe", this.displayAxe);
+		nbtTagCompound.setByte("displayAxe", this.displayAxe);
 		nbtTagCompound.setBoolean("sideLaser", sideLaser);
+		nbtTagCompound.setByte("mainLaserSize", this.mainLaserSize);
+		nbtTagCompound.setByte("secLaserSize", this.secLaserSize);
 
         return nbtTagCompound;
     }
@@ -152,19 +168,21 @@ public class SpotLightEntry
     public void readFromNBT(NBTTagCompound nbtTagCompound)
     {
     	this.active = nbtTagCompound.getBoolean("Active");
-		this.keyRed = nbtTagCompound.getInteger("red");
-		this.keyGreen = nbtTagCompound.getInteger("green");
-		this.keyBlue = nbtTagCompound.getInteger("blue");
-		this.keySecRed = nbtTagCompound.getInteger("secRed");
-		this.keySecGreen = nbtTagCompound.getInteger("secGreen");
-		this.keySecBlue = nbtTagCompound.getInteger("secBlue");
+		this.keyRed = nbtTagCompound.getByte("red");
+		this.keyGreen = nbtTagCompound.getByte("green");
+		this.keyBlue = nbtTagCompound.getByte("blue");
+		this.keySecRed = nbtTagCompound.getByte("secRed");
+		this.keySecGreen = nbtTagCompound.getByte("secGreen");
+		this.keySecBlue = nbtTagCompound.getByte("secBlue");
 		this.keyAngle1 = nbtTagCompound.getInteger("angle1");
-		this.keyAngle2 = nbtTagCompound.getInteger("angle2");
+		this.keyAngle2 = nbtTagCompound.getByte("angle2");
 		this.keyAutRot = nbtTagCompound.getBoolean("autoRot");
 		this.keyRevRot = nbtTagCompound.getBoolean("revRot");
-		this.keyRotSpe = nbtTagCompound.getInteger("rotSpe");
+		this.keyRotSpe = nbtTagCompound.getByte("rotSpe");
 		this.keySecLas = nbtTagCompound.getBoolean("secLas");
-		this.displayAxe = nbtTagCompound.getInteger("displayAxe");
+		this.displayAxe = nbtTagCompound.getByte("displayAxe");
 		this.sideLaser = nbtTagCompound.getBoolean("sideLaser");
+		this.mainLaserSize = nbtTagCompound.getByte("mainLaserSize");
+		this.secLaserSize = nbtTagCompound.getByte("secLaserSize");
     }
 }

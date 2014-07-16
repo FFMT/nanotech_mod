@@ -3,6 +3,7 @@ package fr.mcnanotech.kevin_68.nanotechmod.core.client.gui;
 import java.util.ArrayList;
 
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -42,19 +43,21 @@ public class GuiSpotLightBeamSpec extends GuiContainerSliderBase
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 
-		this.buttonList.add(new GuiSliderForContainer(this, 0, x - 40, y - 20, 256, 20, "Angle 1 : " + tileSpotLight.getAngle1(), (float)(tileSpotLight.getAngle1()) / 360.0F));
-		this.buttonList.add(new GuiSliderForContainer(this, 1, x - 40, y + 2, 256, 20, "Angle 2 : " + tileSpotLight.getAngle2(), (float)(tileSpotLight.getAngle2()) / 180.0F));
-		this.buttonList.add(rotateButton = new GuiBooleanButton(2, x - 40, y + 24, 127, 20, "Auto Rotate On", "Auto Rotate Off", tileSpotLight.isAutoRotate()));
-		this.buttonList.add(revRotaButton = new GuiBooleanButton(3, x + 90, y + 24, 127, 20, "Reverse Rotation On", "Reverse Rotation Off", tileSpotLight.isReverseRotation()));
-		this.buttonList.add(new GuiSliderForContainer(this, 4, x - 40, y + 48, 256, 20, "Rotation Speed : " + tileSpotLight.getRotationSpeed(), (float)(tileSpotLight.getRotationSpeed()) / 20.0F));
-		this.buttonList.add(secLaserButton = new GuiBooleanButton(5, x - 40, y + 70, 127, 20, "Secondary laser On", "Secondary laser Off", tileSpotLight.isSecondaryLaser()));
+		this.buttonList.add(new GuiSliderForContainer(this, 0, x - 40, y - 20, 256, 20, I18n.format("container.spotlight.angle") + " 1 : " + tileSpotLight.getAngle1(), (float)(tileSpotLight.getAngle1()) / 360.0F));
+		this.buttonList.add(new GuiSliderForContainer(this, 1, x - 40, y + 2, 256, 20, I18n.format("container.spotlight.angle") + " 2 : " + (tileSpotLight.getAngle2() & 0xFF), (float)(tileSpotLight.getAngle2() & 0xFF) / 180.0F));
+		this.buttonList.add(rotateButton = new GuiBooleanButton(2, x - 40, y + 24, 127, 20, I18n.format("container.spotlight.rotate") + " " + I18n.format("container.spotlight.on"), I18n.format("container.spotlight.rotate") + " " + I18n.format("container.spotlight.off"), tileSpotLight.isAutoRotate()));
+		this.buttonList.add(revRotaButton = new GuiBooleanButton(3, x + 90, y + 24, 127, 20, I18n.format("container.spotlight.rotationreverse") + " " + I18n.format("container.spotlight.on"), I18n.format("container.spotlight.rotationreverse") + " " + I18n.format("container.spotlight.off"), tileSpotLight.isReverseRotation()));
+		this.buttonList.add(new GuiSliderForContainer(this, 4, x - 40, y + 48, 127, 20, I18n.format("container.spotlight.rotationspeed") + " : " + (tileSpotLight.getRotationSpeed() & 0xFF), (float)(tileSpotLight.getRotationSpeed()) / 20.0F));
+		this.buttonList.add(secLaserButton = new GuiBooleanButton(5, x + 90, y + 48, 127, 20, I18n.format("container.spotlight.secondlazer") + " " + I18n.format("container.spotlight.on"), I18n.format("container.spotlight.secondlazer") + " " + I18n.format("container.spotlight.off"), tileSpotLight.isSecondaryLaser()));
 		ArrayList<String> txt = new ArrayList();
 		txt.add("y");
 		txt.add("x");
 		txt.add("z");
-		this.buttonList.add(axeButton = new GuiMultipleOptionButton(7, x + 90, y + 70, 127, 20, "Axe : ", txt, 2, tileSpotLight.getDisplayAxe()));
-		this.buttonList.add(sideLaser = new GuiBooleanButton(8, x - 40, y + 92, 127, 20, "Double laser", "Simple laser", tileSpotLight.isSideLaser()));
-		this.buttonList.add(new GuiButton(6, x + 38, y + 117, 100, 20, "Back"));
+		this.buttonList.add(axeButton = new GuiMultipleOptionButton(7, x + 90, y + 70, 127, 20, I18n.format("container.spotlight.axis") + " : ", txt, 2, (tileSpotLight.getDisplayAxe() & 0xFF)));
+		this.buttonList.add(sideLaser = new GuiBooleanButton(8, x - 40, y + 70, 127, 20, I18n.format("container.spotlight.double"), I18n.format("container.spotlight.simple"), tileSpotLight.isSideLaser()));
+		this.buttonList.add(new GuiSliderForContainer(this, 9, x - 40, y + 92, 127, 20, I18n.format("container.spotlight.size") + " : " + (tileSpotLight.getMainLaserSize()& 0xFF), (float)((tileSpotLight.getMainLaserSize()& 0xFF) / 100.0F)));
+		this.buttonList.add(new GuiSliderForContainer(this, 10, x + 90, y + 92, 127, 20, I18n.format("container.spotlight.size") + " : " + (tileSpotLight.getSecLaserSize()& 0xFF), (float)((tileSpotLight.getSecLaserSize()& 0xFF) / 100.0F)));
+		this.buttonList.add(new GuiButton(6, x + 38, y + 117, 100, 20, I18n.format("container.spotlight.back")));
 	}
 
 	@Override
@@ -65,19 +68,19 @@ public class GuiSpotLightBeamSpec extends GuiContainerSliderBase
 		case 2:
 		{
 			rotateButton.toggle();
-			PacketSender.sendSpotLightPacket(tileSpotLight, 10, rotateButton.getIsActive() ? 1 : 0);
+			PacketSender.sendSpotLightPacketBoolean(tileSpotLight, (byte)10, rotateButton.getIsActive());
 			break;
 		}
 		case 3:
 		{
 			revRotaButton.toggle();
-			PacketSender.sendSpotLightPacket(tileSpotLight, 11, revRotaButton.getIsActive() ? 1 : 0);
+			PacketSender.sendSpotLightPacketBoolean(tileSpotLight, (byte)11, revRotaButton.getIsActive());
 			break;
 		}
 		case 5:
 		{
 			secLaserButton.toggle();
-			PacketSender.sendSpotLightPacket(tileSpotLight, 13, secLaserButton.getIsActive() ? 1 : 0);
+			PacketSender.sendSpotLightPacketBoolean(tileSpotLight, (byte)13, secLaserButton.getIsActive());
 			break;
 		}
 		case 6:
@@ -88,13 +91,13 @@ public class GuiSpotLightBeamSpec extends GuiContainerSliderBase
 		case 7:
 		{
 			axeButton.next();
-			PacketSender.sendSpotLightPacket(tileSpotLight, 14, axeButton.getState());
+			PacketSender.sendSpotLightPacketByte(tileSpotLight, (byte)14, (byte)axeButton.getState());
 			break;
 		}
 		case 8:
 		{
 			sideLaser.toggle();
-			PacketSender.sendSpotLightPacket(tileSpotLight, 15, sideLaser.getIsActive() ? 1 : 0);
+			PacketSender.sendSpotLightPacketBoolean(tileSpotLight, (byte)15, sideLaser.getIsActive());
 			break;
 		}
 		}
@@ -112,12 +115,22 @@ public class GuiSpotLightBeamSpec extends GuiContainerSliderBase
 		}
 		case 1:
 		{
-			PacketSender.sendSpotLightPacket(tileSpotLight, 9, (int)(sliderValue * 180));
+			PacketSender.sendSpotLightPacketByte(tileSpotLight, (byte)9, (byte)(sliderValue * 180));
 			break;
 		}
 		case 4:
 		{
-			PacketSender.sendSpotLightPacket(tileSpotLight, 12, (int)(sliderValue * 20));
+			PacketSender.sendSpotLightPacketByte(tileSpotLight, (byte)12, (byte)(sliderValue * 20));
+			break;
+		}
+		case 9:
+		{
+			PacketSender.sendSpotLightPacketByte(tileSpotLight, (byte)16, (byte)(sliderValue * 100));
+			break;
+		}
+		case 10:
+		{
+			PacketSender.sendSpotLightPacketByte(tileSpotLight, (byte)17, (byte)(sliderValue * 100));
 			break;
 		}
 		}
@@ -136,12 +149,22 @@ public class GuiSpotLightBeamSpec extends GuiContainerSliderBase
 		}
 		case 1:
 		{
-			name = "Angle 2 : " + (int)(sliderValue * 180);
+			name = "Angle 2 : " + ((byte)(sliderValue * 180) & 0xFF);
 			break;
 		}
 		case 4:
 		{
-			name = "Rotation Speed : " + ((int)(sliderValue * 20));
+			name = "Rotation Speed : " + ((byte)(sliderValue * 20) & 0xFF);
+			break;
+		}
+		case 9:
+		{
+			name = "Main laser Size : " + ((byte)(sliderValue * 100) & 0xFF);
+			break;
+		}
+		case 10:
+		{
+			name = "Sec laser Size : " + ((byte)(sliderValue * 100) & 0xFF);
 			break;
 		}
 		}

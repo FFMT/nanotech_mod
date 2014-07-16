@@ -47,7 +47,7 @@ public class GuiSpotLightCreateKey extends GuiContainerSliderBase
 		this.buttonList.add(new GuiSliderForContainer(this, 0, x + 3, y + 10, 170, 20, I18n.format("container.spotlight.time") + ": 0.0", 0));
 		this.buttonList.add(new GuiButton(1, x + 13, y + 115, 150, 20, I18n.format("container.spotlight.back")));
 		this.buttonList.add(new GuiButton(2, x + 13, y + 90, 150, 20, I18n.format("container.spotlight.createkey")));
-		PacketSender.sendSpotLightPacket(this.tileSpotLight, 37, 0);
+		PacketSender.sendSpotLightPacketByte(this.tileSpotLight, (byte)37, (byte)0);
 	}
 
 	protected void actionPerformed(GuiButton guibutton)
@@ -58,13 +58,13 @@ public class GuiSpotLightCreateKey extends GuiContainerSliderBase
 		}
 		if(guibutton.id == 2)
 		{
-			if(tileSpotLight.getKey(tileSpotLight.getCreateKeyTime()) != null && tileSpotLight.getKey(tileSpotLight.getCreateKeyTime()).isActive())
+			if(tileSpotLight.getKey(tileSpotLight.getCreateKeyTime()& 0xFF) != null && tileSpotLight.getKey(tileSpotLight.getCreateKeyTime()& 0xFF).isActive())
 			{
 				this.mc.displayGuiScreen(new GuiSpotLightConfirm(tileSpotLight, invPlayer, world, I18n.format("container.spotlight.sure") + " " + I18n.format("container.spotlight.overwrite"), I18n.format("container.spotlight.overwrite"), I18n.format("container.spotlight.cancel"), 1));
 			}
 			else
 			{
-				this.createKey(tileSpotLight.getCreateKeyTime());
+				this.createKey(tileSpotLight.getCreateKeyTime()& 0xFF);
 			}
 		}
 	}
@@ -74,7 +74,7 @@ public class GuiSpotLightCreateKey extends GuiContainerSliderBase
 	{
 		if(sliderId == 0)
 		{
-			PacketSender.sendSpotLightPacket(this.tileSpotLight, 37, (int)(sliderValue * 119));
+			PacketSender.sendSpotLightPacketByte(this.tileSpotLight, (byte)37, (byte)(sliderValue * 119));
 		}
 	}
 
@@ -84,14 +84,14 @@ public class GuiSpotLightCreateKey extends GuiContainerSliderBase
 		String name = "";
 		if(sliderId == 0)
 		{
-			name = I18n.format("container.spotlight.time") + ": " + (float)(((int)((float)(sliderValue * 119))) / 2.0F);
+			name = I18n.format("container.spotlight.time") + ": " + (float)(((byte)((float)(sliderValue * 119)) & 0xFF) / 2.0F);
 		}
 		return name;
 	}
 
 	public void createKey(int time)
 	{
-		SpotLightEntry entry = new SpotLightEntry(true, tileSpotLight.getRed(), tileSpotLight.getGreen(), tileSpotLight.getBlue(), tileSpotLight.getSecRed(), tileSpotLight.getSecGreen(), tileSpotLight.getSecBlue(), tileSpotLight.getAngle1(), tileSpotLight.getAngle2(), tileSpotLight.isAutoRotate(), tileSpotLight.isReverseRotation(), tileSpotLight.getRotationSpeed(), tileSpotLight.isSecondaryLaser(), tileSpotLight.getDisplayAxe(), tileSpotLight.isSideLaser());
+		SpotLightEntry entry = new SpotLightEntry(true, tileSpotLight.getRed(), tileSpotLight.getGreen(), tileSpotLight.getBlue(), tileSpotLight.getSecRed(), tileSpotLight.getSecGreen(), tileSpotLight.getSecBlue(), tileSpotLight.getAngle1(), tileSpotLight.getAngle2(), tileSpotLight.isAutoRotate(), tileSpotLight.isReverseRotation(), tileSpotLight.getRotationSpeed(), tileSpotLight.isSecondaryLaser(), tileSpotLight.getDisplayAxe(), tileSpotLight.isSideLaser(), tileSpotLight.getMainLaserSize(), tileSpotLight.getSecLaserSize());
 		PacketSender.sendSpotLightPacket(tileSpotLight, time, entry);
 	}
 
