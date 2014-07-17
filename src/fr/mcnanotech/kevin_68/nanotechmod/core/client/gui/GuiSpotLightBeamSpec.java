@@ -49,11 +49,7 @@ public class GuiSpotLightBeamSpec extends GuiContainerSliderBase
 		this.buttonList.add(revRotaButton = new GuiBooleanButton(3, x + 90, y + 24, 127, 20, I18n.format("container.spotlight.rotationreverse") + " " + I18n.format("container.spotlight.on"), I18n.format("container.spotlight.rotationreverse") + " " + I18n.format("container.spotlight.off"), tileSpotLight.isReverseRotation()));
 		this.buttonList.add(new GuiSliderForContainer(this, 4, x - 40, y + 48, 127, 20, I18n.format("container.spotlight.rotationspeed") + " : " + (tileSpotLight.getRotationSpeed() & 0xFF), (float)(tileSpotLight.getRotationSpeed()) / 20.0F));
 		this.buttonList.add(secLaserButton = new GuiBooleanButton(5, x + 90, y + 48, 127, 20, I18n.format("container.spotlight.secondlazer") + " " + I18n.format("container.spotlight.on"), I18n.format("container.spotlight.secondlazer") + " " + I18n.format("container.spotlight.off"), tileSpotLight.isSecondaryLaser()));
-		ArrayList<String> txt = new ArrayList();
-		txt.add("y");
-		txt.add("x");
-		txt.add("z");
-		this.buttonList.add(axeButton = new GuiMultipleOptionButton(7, x + 90, y + 70, 127, 20, I18n.format("container.spotlight.axis") + " : ", txt, 2, (tileSpotLight.getDisplayAxe() & 0xFF)));
+		this.buttonList.add(axeButton = new GuiMultipleOptionButton(7, x + 90, y + 70, 127, 20, I18n.format("container.spotlight.axis") + " : ", new String[] {"x", "y", "z"}, (tileSpotLight.getDisplayAxe() & 0xFF)));
 		this.buttonList.add(sideLaser = new GuiBooleanButton(8, x - 40, y + 70, 127, 20, I18n.format("container.spotlight.double"), I18n.format("container.spotlight.simple"), tileSpotLight.isSideLaser()));
 		this.buttonList.add(new GuiSliderForContainer(this, 9, x - 40, y + 92, 127, 20, I18n.format("container.spotlight.size") + " : " + (tileSpotLight.getMainLaserSize()& 0xFF), (float)((tileSpotLight.getMainLaserSize()& 0xFF) / 100.0F)));
 		this.buttonList.add(new GuiSliderForContainer(this, 10, x + 90, y + 92, 127, 20, I18n.format("container.spotlight.size") + " : " + (tileSpotLight.getSecLaserSize()& 0xFF), (float)((tileSpotLight.getSecLaserSize()& 0xFF) / 100.0F)));
