@@ -13,28 +13,28 @@ import net.minecraft.world.gen.layer.GenLayerZoom;
 
 public abstract class NanotechGenLayer extends GenLayer
 {
-	public NanotechGenLayer(long seed)
-	{
-		super(seed);
-	}
+    public NanotechGenLayer(long seed)
+    {
+        super(seed);
+    }
 
-	public static GenLayer[] makeTheWorld(long seed)
-	{
+    public static GenLayer[] makeTheWorld(long seed)
+    {
 
-		GenLayer biomes = new NanotechBiomeGenLayer(1L);
+        GenLayer biomes = new NanotechBiomeGenLayer(1L);
 
-		biomes = new GenLayerZoom(1000L, biomes);
-		biomes = new GenLayerZoom(1001L, biomes);
-		biomes = new GenLayerZoom(1002L, biomes);
-		biomes = new GenLayerZoom(1003L, biomes);
-		biomes = new GenLayerZoom(1004L, biomes);
-		biomes = new GenLayerZoom(1005L, biomes);
+        biomes = new GenLayerZoom(1000L, biomes);
+        biomes = new GenLayerZoom(1001L, biomes);
+        biomes = new GenLayerZoom(1002L, biomes);
+        biomes = new GenLayerZoom(1003L, biomes);
+        biomes = new GenLayerZoom(1004L, biomes);
+        biomes = new GenLayerZoom(1005L, biomes);
 
-		GenLayer genlayervoronoizoom = new GenLayerVoronoiZoom(10L, biomes);
+        GenLayer genlayervoronoizoom = new GenLayerVoronoiZoom(10L, biomes);
 
-		biomes.initWorldGenSeed(seed);
-		genlayervoronoizoom.initWorldGenSeed(seed);
+        biomes.initWorldGenSeed(seed);
+        genlayervoronoizoom.initWorldGenSeed(seed);
 
-		return new GenLayer[] {biomes, genlayervoronoizoom};
-	}
+        return new GenLayer[] {biomes, genlayervoronoizoom};
+    }
 }

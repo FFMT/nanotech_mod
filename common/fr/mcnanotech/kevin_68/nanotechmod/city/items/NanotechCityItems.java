@@ -13,11 +13,11 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.core.NanotechModCity;
 
 public class NanotechCityItems
 {
-	public static Item configCopier;
+    public static Item configCopier;
 
-	public static void initItems()
-	{
-		configCopier = new ItemConfigCopy().setUnlocalizedName("configCopier").setCreativeTab(NanotechModCity.cityTab);
-		GameRegistry.registerItem(configCopier, "configCopier", "NanotechModCity");
-	}
+    public static void initItems()
+    {
+        configCopier = new ItemConfigCopy().setUnlocalizedName("configCopier").setCreativeTab(NanotechModCity.cityTab);
+        GameRegistry.registerItem(configCopier, "configCopier", "NanotechModCity");
+    }
 }

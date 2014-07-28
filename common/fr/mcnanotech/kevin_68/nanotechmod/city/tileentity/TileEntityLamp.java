@@ -14,9 +14,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityLamp extends TileEntity
 {
-	@SideOnly(Side.CLIENT)
-	public AxisAlignedBB getRenderBoundingBox()
-	{
-		return INFINITE_EXTENT_AABB;
-	}
+    @SideOnly(Side.CLIENT)
+    public AxisAlignedBB getRenderBoundingBox()
+    {
+        return INFINITE_EXTENT_AABB;
+    }
 }

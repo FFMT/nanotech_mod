@@ -24,76 +24,76 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockNanoSteps extends BlockSlab
 {
-	public static final String[] StepTypes = new String[] {"nano"};
+    public static final String[] StepTypes = new String[] {"nano"};
 
-	public BlockNanoSteps(boolean isdouble)
-	{
-		super(isdouble, Material.wood);
-		if(!this.field_150004_a)
-		{
-			this.setLightOpacity(0);
-		}
-	}
+    public BlockNanoSteps(boolean isdouble)
+    {
+        super(isdouble, Material.wood);
+        if(!this.field_150004_a)
+        {
+            this.setLightOpacity(0);
+        }
+    }
 
-	@SideOnly(Side.CLIENT)
-	private static boolean isBlockSingleSlab(BlockNanoSteps block)
-	{
-		return block.equals(NanotechBlock.nanoStepSingle);
-	}
+    @SideOnly(Side.CLIENT)
+    private static boolean isBlockSingleSlab(BlockNanoSteps block)
+    {
+        return block.equals(NanotechBlock.nanoStepSingle);
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)
-	{
-		return isBlockSingleSlab(this) ? new ItemStack(this) : new ItemStack(NanotechBlock.nanoStepDouble);
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)
+    {
+        return isBlockSingleSlab(this) ? new ItemStack(this) : new ItemStack(NanotechBlock.nanoStepDouble);
+    }
 
-	@Override
-	public Item getItemDropped(int metadata, Random rand, int fortune)
-	{
-		return Item.getItemFromBlock(NanotechBlock.nanoStepSingle);
-	}
+    @Override
+    public Item getItemDropped(int metadata, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(NanotechBlock.nanoStepSingle);
+    }
 
-	@Override
-	protected ItemStack createStackedBlock(int metadata)
-	{
-		return new ItemStack(NanotechBlock.nanoStepSingle, 2, metadata & 7);
-	}
+    @Override
+    protected ItemStack createStackedBlock(int metadata)
+    {
+        return new ItemStack(NanotechBlock.nanoStepSingle, 2, metadata & 7);
+    }
 
-	@Override
-	public String func_150002_b(int metadata)
-	{
-		if(metadata < 0 || metadata >= StepTypes.length)
-		{
-			metadata = 0;
-		}
+    @Override
+    public String func_150002_b(int metadata)
+    {
+        if(metadata < 0 || metadata >= StepTypes.length)
+        {
+            metadata = 0;
+        }
 
-		return super.getUnlocalizedName() + "." + StepTypes[metadata];
-	}
+        return super.getUnlocalizedName() + "." + StepTypes[metadata];
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		if(!item.equals(Item.getItemFromBlock(NanotechBlock.nanoStepDouble)))
-		{
-			for(int i = 0; i < StepTypes.length; i++)
-			{
-				list.add(new ItemStack(item, 1, i));
-			}
-		}
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        if(!item.equals(Item.getItemFromBlock(NanotechBlock.nanoStepDouble)))
+        {
+            for(int i = 0; i < StepTypes.length; i++)
+            {
+                list.add(new ItemStack(item, 1, i));
+            }
+        }
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public IIcon getIcon(int side, int metadata)
-	{
-		return NanotechBlock.nanoPlank.getBlockTextureFromSide(side);
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public IIcon getIcon(int side, int metadata)
+    {
+        return NanotechBlock.nanoPlank.getBlockTextureFromSide(side);
+    }
 
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister iiconRegister)
-	{
-		// Empty
-	}
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister iiconRegister)
+    {
+        // Empty
+    }
 }

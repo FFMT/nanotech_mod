@@ -31,66 +31,66 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 
 public class GuiHandler implements IGuiHandler
 {
-	@Override
-	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
-	{
-		TileEntity tileentity = world.getTileEntity(x, y, z);
-		if(tileentity instanceof TileEntityJumper)
-		{
-			return new ContainerJumper((TileEntityJumper)tileentity, player.inventory, world);
-		}
-		if(tileentity instanceof TileEntitySmoker)
-		{
-			return new ContainerSmoker((TileEntitySmoker)tileentity, player.inventory, world);
-		}
-		if(tileentity instanceof TileEntityMultiplier)
-		{
-			return new ContainerMultiplier((TileEntityMultiplier)tileentity, player.inventory, world);
-		}
-		if(tileentity instanceof TileEntitySoundBox)
-		{
-			return new ContainerSoundBox((TileEntitySoundBox)tileentity, player.inventory, world);
-		}
-		if(tileentity instanceof TileEntityPortableChest)
-		{
-			return new ContainerPortableChest((TileEntityPortableChest)tileentity, player.inventory, world);
-		}
-		if(id == 10)
-		{
-			return new ContainerLightSaber(player.inventory, player.worldObj);
-		}
-		return null;
-	}
+    @Override
+    public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
+    {
+        TileEntity tileentity = world.getTileEntity(x, y, z);
+        if(tileentity instanceof TileEntityJumper)
+        {
+            return new ContainerJumper((TileEntityJumper)tileentity, player.inventory, world);
+        }
+        if(tileentity instanceof TileEntitySmoker)
+        {
+            return new ContainerSmoker((TileEntitySmoker)tileentity, player.inventory, world);
+        }
+        if(tileentity instanceof TileEntityMultiplier)
+        {
+            return new ContainerMultiplier((TileEntityMultiplier)tileentity, player.inventory, world);
+        }
+        if(tileentity instanceof TileEntitySoundBox)
+        {
+            return new ContainerSoundBox((TileEntitySoundBox)tileentity, player.inventory, world);
+        }
+        if(tileentity instanceof TileEntityPortableChest)
+        {
+            return new ContainerPortableChest((TileEntityPortableChest)tileentity, player.inventory, world);
+        }
+        if(id == 10)
+        {
+            return new ContainerLightSaber(player.inventory, player.worldObj);
+        }
+        return null;
+    }
 
-	@Override
-	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
-	{
-		TileEntity tileentity = world.getTileEntity(x, y, z);
+    @Override
+    public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
+    {
+        TileEntity tileentity = world.getTileEntity(x, y, z);
 
-		if(tileentity instanceof TileEntityJumper)
-		{
-			return new GuiJumper(player.inventory, (TileEntityJumper)tileentity, world);
-		}
-		if(tileentity instanceof TileEntitySmoker)
-		{
-			return new GuiSmoker(player.inventory, (TileEntitySmoker)tileentity, world);
-		}
-		if(tileentity instanceof TileEntityMultiplier)
-		{
-			return new GuiMultiplier(player.inventory, (TileEntityMultiplier)tileentity, world);
-		}
-		if(tileentity instanceof TileEntitySoundBox)
-		{
-			return new GuiSoundBox(player.inventory, (TileEntitySoundBox)tileentity, world);
-		}
-		if(tileentity instanceof TileEntityPortableChest)
-		{
-			return new GuiPortableChest(player.inventory, (TileEntityPortableChest)tileentity, world);
-		}
-		if(id == 10)
-		{
-			return new GuiLightSaber(player);
-		}
-		return null;
-	}
+        if(tileentity instanceof TileEntityJumper)
+        {
+            return new GuiJumper(player.inventory, (TileEntityJumper)tileentity, world);
+        }
+        if(tileentity instanceof TileEntitySmoker)
+        {
+            return new GuiSmoker(player.inventory, (TileEntitySmoker)tileentity, world);
+        }
+        if(tileentity instanceof TileEntityMultiplier)
+        {
+            return new GuiMultiplier(player.inventory, (TileEntityMultiplier)tileentity, world);
+        }
+        if(tileentity instanceof TileEntitySoundBox)
+        {
+            return new GuiSoundBox(player.inventory, (TileEntitySoundBox)tileentity, world);
+        }
+        if(tileentity instanceof TileEntityPortableChest)
+        {
+            return new GuiPortableChest(player.inventory, (TileEntityPortableChest)tileentity, world);
+        }
+        if(id == 10)
+        {
+            return new GuiLightSaber(player);
+        }
+        return null;
+    }
 }

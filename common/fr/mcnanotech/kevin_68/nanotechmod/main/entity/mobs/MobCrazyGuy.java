@@ -26,67 +26,67 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 public class MobCrazyGuy extends EntityMob
 {
 
-	public MobCrazyGuy(World world)
-	{
-		super(world);
-		this.getNavigator().setBreakDoors(true);
-		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.tasks.addTask(1, new EntityAIBreakDoor(this));
-		this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
-		this.tasks.addTask(2, new EntityAIAttackOnCollide(this, MobThedeath.class, 1.0D, false));
-		this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
-		this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 40.0F));
-		this.tasks.addTask(7, new EntityAIWatchClosest(this, MobThedeath.class, 40.0F));
-		this.tasks.addTask(7, new EntityAILookIdle(this));
-		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, MobThedeath.class, 0, true));
+    public MobCrazyGuy(World world)
+    {
+        super(world);
+        this.getNavigator().setBreakDoors(true);
+        this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(1, new EntityAIBreakDoor(this));
+        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
+        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, MobThedeath.class, 1.0D, false));
+        this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 40.0F));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, MobThedeath.class, 40.0F));
+        this.tasks.addTask(7, new EntityAILookIdle(this));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, MobThedeath.class, 0, true));
 
-	}
+    }
 
-	@Override
-	protected void applyEntityAttributes()
-	{
-		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(40.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.80D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(3.0D);
-	}
+    @Override
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(40.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.80D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(3.0D);
+    }
 
-	@Override
-	protected String getLivingSound()
-	{
-		return "nanotechmod:mob.crazyguy.idle";
-	}
+    @Override
+    protected String getLivingSound()
+    {
+        return "nanotechmod:mob.crazyguy.idle";
+    }
 
-	@Override
-	protected String getHurtSound()
-	{
-		return "";
-	}
+    @Override
+    protected String getHurtSound()
+    {
+        return "";
+    }
 
-	@Override
-	protected String getDeathSound()
-	{
-		return "";
-	}
+    @Override
+    protected String getDeathSound()
+    {
+        return "";
+    }
 
-	@Override
-	public EnumCreatureAttribute getCreatureAttribute()
-	{
-		return EnumCreatureAttribute.UNDEAD;
-	}
+    @Override
+    public EnumCreatureAttribute getCreatureAttribute()
+    {
+        return EnumCreatureAttribute.UNDEAD;
+    }
 
-	@Override
-	protected boolean isAIEnabled()
-	{
-		return true;
-	}
+    @Override
+    protected boolean isAIEnabled()
+    {
+        return true;
+    }
 
-	@Override
-	protected Item getDropItem()
-	{
-		return NanotechItem.crazyGlasses;
-	}
+    @Override
+    protected Item getDropItem()
+    {
+        return NanotechItem.crazyGlasses;
+    }
 }

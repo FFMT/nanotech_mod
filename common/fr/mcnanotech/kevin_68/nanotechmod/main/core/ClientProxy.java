@@ -57,40 +57,40 @@ import fr.minecraftforgefrance.ffmtlibs.FFMTClientRegistry;
 
 public class ClientProxy extends CommonProxy
 {
-	public static int renderCerealID;
+    public static int renderCerealID;
 
-	@Override
-	public void register()
-	{
-		renderCerealID = RenderingRegistry.getNextAvailableRenderId();
+    @Override
+    public void register()
+    {
+        renderCerealID = RenderingRegistry.getNextAvailableRenderId();
 
-		RenderingRegistry.registerEntityRenderingHandler(MobThedeath.class, new RenderTheDeath());
-		RenderingRegistry.registerEntityRenderingHandler(MobSuperCreeper.class, new RenderSuperCreeper());
-		RenderingRegistry.registerEntityRenderingHandler(MobSuperSkeleton.class, new RenderMobSuperSkeleton());
-		RenderingRegistry.registerEntityRenderingHandler(MobSuperEnderman.class, new RenderSuperEnderman());
-		RenderingRegistry.registerEntityRenderingHandler(MobSuperZombie.class, new RenderSuperZombie());
-		RenderingRegistry.registerEntityRenderingHandler(MobCreeperDriller.class, new RenderCreeperDriller());
-		RenderingRegistry.registerEntityRenderingHandler(MobFastZombie.class, new RenderFastZombie());
-		RenderingRegistry.registerEntityRenderingHandler(MobFly.class, new RenderMobFly(0.05F));
-		RenderingRegistry.registerEntityRenderingHandler(MobFlyingCreeper.class, new RenderFlyingCreeper());
-		RenderingRegistry.registerEntityRenderingHandler(MobCrazyGuy.class, new RenderCrazyGuy());
-		RenderingRegistry.registerEntityRenderingHandler(MobDancer.class, new RenderDancer());
+        RenderingRegistry.registerEntityRenderingHandler(MobThedeath.class, new RenderTheDeath());
+        RenderingRegistry.registerEntityRenderingHandler(MobSuperCreeper.class, new RenderSuperCreeper());
+        RenderingRegistry.registerEntityRenderingHandler(MobSuperSkeleton.class, new RenderMobSuperSkeleton());
+        RenderingRegistry.registerEntityRenderingHandler(MobSuperEnderman.class, new RenderSuperEnderman());
+        RenderingRegistry.registerEntityRenderingHandler(MobSuperZombie.class, new RenderSuperZombie());
+        RenderingRegistry.registerEntityRenderingHandler(MobCreeperDriller.class, new RenderCreeperDriller());
+        RenderingRegistry.registerEntityRenderingHandler(MobFastZombie.class, new RenderFastZombie());
+        RenderingRegistry.registerEntityRenderingHandler(MobFly.class, new RenderMobFly(0.05F));
+        RenderingRegistry.registerEntityRenderingHandler(MobFlyingCreeper.class, new RenderFlyingCreeper());
+        RenderingRegistry.registerEntityRenderingHandler(MobCrazyGuy.class, new RenderCrazyGuy());
+        RenderingRegistry.registerEntityRenderingHandler(MobDancer.class, new RenderDancer());
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityReinforcedFishingHook.class, new RenderFish());
-		RenderingRegistry.registerEntityRenderingHandler(EntitySuperBottleOfXp.class, new RenderSnowball(NanotechItem.superBottleOfXp));
-		RenderingRegistry.registerEntityRenderingHandler(EntitySatelite.class, new RenderSatelite());
+        RenderingRegistry.registerEntityRenderingHandler(EntityReinforcedFishingHook.class, new RenderFish());
+        RenderingRegistry.registerEntityRenderingHandler(EntitySuperBottleOfXp.class, new RenderSnowball(NanotechItem.superBottleOfXp));
+        RenderingRegistry.registerEntityRenderingHandler(EntitySatelite.class, new RenderSatelite());
 
-		MinecraftForgeClient.registerItemRenderer(NanotechItem.scythe, new ItemScytheRender());
-		MinecraftForgeClient.registerItemRenderer(NanotechItem.debug, new ItemDebugRender());
-		MinecraftForgeClient.registerItemRenderer(NanotechItem.alters, new ItemAltersRender());
-		MinecraftForgeClient.registerItemRenderer(NanotechItem.nanomiteArrowGun, new ItemNanomiteArrowGunRender());
-		MinecraftForgeClient.registerItemRenderer(NanotechItem.crazyGlassesGun, new ItemCrazyGlassesGunRender());
-		MinecraftForgeClient.registerItemRenderer(NanotechItem.lightSaber, new ItemLightSaberRender());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(NanotechBlock.machine), new ItemBlockPortableChestRender());
+        MinecraftForgeClient.registerItemRenderer(NanotechItem.scythe, new ItemScytheRender());
+        MinecraftForgeClient.registerItemRenderer(NanotechItem.debug, new ItemDebugRender());
+        MinecraftForgeClient.registerItemRenderer(NanotechItem.alters, new ItemAltersRender());
+        MinecraftForgeClient.registerItemRenderer(NanotechItem.nanomiteArrowGun, new ItemNanomiteArrowGunRender());
+        MinecraftForgeClient.registerItemRenderer(NanotechItem.crazyGlassesGun, new ItemCrazyGlassesGunRender());
+        MinecraftForgeClient.registerItemRenderer(NanotechItem.lightSaber, new ItemLightSaberRender());
+        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(NanotechBlock.machine), new ItemBlockPortableChestRender());
 
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityButton.class, new TileEntityButtonRender());
-		FFMTClientRegistry.bindTESRWithInventoryRender(NanotechBlock.machine, 0, TileEntityPortableChest.class, new TileEntityPortableChestRender());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityButton.class, new TileEntityButtonRender());
+        FFMTClientRegistry.bindTESRWithInventoryRender(NanotechBlock.machine, 0, TileEntityPortableChest.class, new TileEntityPortableChestRender());
 
-		RenderingRegistry.registerBlockHandler(renderCerealID, new BlockCerealRender());
-	}
+        RenderingRegistry.registerBlockHandler(renderCerealID, new BlockCerealRender());
+    }
 }

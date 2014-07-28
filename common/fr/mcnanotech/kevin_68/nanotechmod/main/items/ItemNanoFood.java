@@ -12,14 +12,14 @@ import net.minecraft.item.ItemFood;
 public class ItemNanoFood extends ItemFood
 {
 
-	public ItemNanoFood(int healAmount, float saturation, boolean wolf)
-	{
-		super(healAmount, saturation, wolf);
-	}
+    public ItemNanoFood(int healAmount, float saturation, boolean wolf)
+    {
+        super(healAmount, saturation, wolf);
+    }
 
-	public ItemNanoFood(int healAmount, float saturation, boolean wolf, int pID, int pDuration, int pAmplifier, float pProb)
-	{
-		super(healAmount, saturation, wolf);
-		this.setPotionEffect(pID, pDuration, pAmplifier, pProb);
-	}
+    public ItemNanoFood(int healAmount, float saturation, boolean wolf, int pID, int pDuration, int pAmplifier, float pProb)
+    {
+        super(healAmount, saturation, wolf);
+        this.setPotionEffect(pID, pDuration, pAmplifier, pProb);
+    }
 }

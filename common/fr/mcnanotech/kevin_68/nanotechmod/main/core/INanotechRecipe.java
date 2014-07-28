@@ -17,62 +17,62 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.items.NanotechItem;
 
 public class INanotechRecipe implements IRecipe
 {
-	public ItemStack newStack;
+    public ItemStack newStack;
 
-	@Override
-	public boolean matches(InventoryCrafting inventorycrafting, World world)
-	{
-		ItemStack stack = null;
-		ItemStack nStack = null;
-		for(int i = 0; i < inventorycrafting.getSizeInventory(); i++)
-		{
-			ItemStack stack1 = inventorycrafting.getStackInSlot(i);
-			if(stack1 != null)
-			{
-				if(stack1.getItem().equals(NanotechItem.itemBase) && stack1.getItemDamage() == 21 && stack == null)
-				{
-					stack = stack1;
-				}
-				else
-				{
-					if(nStack == null)
-					{
-						nStack = stack1;
-					}
-					else
-					{
-						return false;
-					}
-				}
-			}
-		}
+    @Override
+    public boolean matches(InventoryCrafting inventorycrafting, World world)
+    {
+        ItemStack stack = null;
+        ItemStack nStack = null;
+        for(int i = 0; i < inventorycrafting.getSizeInventory(); i++)
+        {
+            ItemStack stack1 = inventorycrafting.getStackInSlot(i);
+            if(stack1 != null)
+            {
+                if(stack1.getItem().equals(NanotechItem.itemBase) && stack1.getItemDamage() == 21 && stack == null)
+                {
+                    stack = stack1;
+                }
+                else
+                {
+                    if(nStack == null)
+                    {
+                        nStack = stack1;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
 
-		if(stack != null && nStack != null)
-		{
-			newStack = new ItemStack(NanotechBlock.present, 1, 0);
-			NBTTagCompound nbtTag = new NBTTagCompound();
-			nStack.writeToNBT(nbtTag);
-			newStack.setTagCompound(nbtTag);
-			return true;
-		}
-		return false;
-	}
+        if(stack != null && nStack != null)
+        {
+            newStack = new ItemStack(NanotechBlock.present, 1, 0);
+            NBTTagCompound nbtTag = new NBTTagCompound();
+            nStack.writeToNBT(nbtTag);
+            newStack.setTagCompound(nbtTag);
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	public ItemStack getCraftingResult(InventoryCrafting inventorycrafting)
-	{
-		return newStack.copy();
-	}
+    @Override
+    public ItemStack getCraftingResult(InventoryCrafting inventorycrafting)
+    {
+        return newStack.copy();
+    }
 
-	@Override
-	public int getRecipeSize()
-	{
-		return 10;
-	}
+    @Override
+    public int getRecipeSize()
+    {
+        return 10;
+    }
 
-	@Override
-	public ItemStack getRecipeOutput()
-	{
-		return newStack;
-	}
+    @Override
+    public ItemStack getRecipeOutput()
+    {
+        return newStack;
+    }
 }

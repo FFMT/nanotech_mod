@@ -16,33 +16,33 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityFountain;
 
 public class ContainerFountain extends Container
 {
-	protected TileEntityFountain tileFountain;
-	private World worldObj;
+    protected TileEntityFountain tileFountain;
+    private World worldObj;
 
-	public ContainerFountain(TileEntityFountain tileEntity, InventoryPlayer inventoryPlayer, World world)
-	{
-		this.worldObj = world;
-		this.tileFountain = tileEntity;
-		bindPlayerInventory(inventoryPlayer);
-	}
+    public ContainerFountain(TileEntityFountain tileEntity, InventoryPlayer inventoryPlayer, World world)
+    {
+        this.worldObj = world;
+        this.tileFountain = tileEntity;
+        bindPlayerInventory(inventoryPlayer);
+    }
 
-	@Override
-	public boolean canInteractWith(EntityPlayer player)
-	{
-		return tileFountain.isUseableByPlayer(player);
-	}
+    @Override
+    public boolean canInteractWith(EntityPlayer player)
+    {
+        return tileFountain.isUseableByPlayer(player);
+    }
 
-	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer)
-	{
+    protected void bindPlayerInventory(InventoryPlayer inventoryPlayer)
+    {
 
-		for(int i = 0; i < 9; i++)
-		{
-			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
-		}
-	}
+        for(int i = 0; i < 9; i++)
+        {
+            addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
+        }
+    }
 
-	public TileEntityFountain getFountain()
-	{
-		return tileFountain;
-	}
+    public TileEntityFountain getFountain()
+    {
+        return tileFountain;
+    }
 }

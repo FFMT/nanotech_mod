@@ -13,26 +13,26 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockJumper extends ItemBlock
 {
-	public ItemBlockJumper(Block block)
-	{
-		super(block);
-		setHasSubtypes(true);
-	}
+    public ItemBlockJumper(Block block)
+    {
+        super(block);
+        setHasSubtypes(true);
+    }
 
-	public int getMetadata(int metadata)
-	{
-		return metadata;
-	}
+    public int getMetadata(int metadata)
+    {
+        return metadata;
+    }
 
-	public String getUnlocalizedName(ItemStack stack)
-	{
-		if(stack.getItemDamage() == 1)
-		{
-			return getUnlocalizedName() + "advanced";
-		}
-		else
-		{
-			return getUnlocalizedName();
-		}
-	}
+    public String getUnlocalizedName(ItemStack stack)
+    {
+        if(stack.getItemDamage() == 1)
+        {
+            return getUnlocalizedName() + "advanced";
+        }
+        else
+        {
+            return getUnlocalizedName();
+        }
+    }
 }

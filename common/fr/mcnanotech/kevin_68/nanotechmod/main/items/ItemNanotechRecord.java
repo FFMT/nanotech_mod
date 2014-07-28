@@ -13,13 +13,13 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod;
 
 public class ItemNanotechRecord extends ItemRecord
 {
-	public ItemNanotechRecord(String name)
-	{
-		super(name);
-	}
+    public ItemNanotechRecord(String name)
+    {
+        super(name);
+    }
 
-	public ResourceLocation getRecordResource(String name)
-	{
-		return new ResourceLocation(NanotechMod.MODID + ":" + name);
-	}
+    public ResourceLocation getRecordResource(String name)
+    {
+        return new ResourceLocation(NanotechMod.MODID + ":" + name);
+    }
 }

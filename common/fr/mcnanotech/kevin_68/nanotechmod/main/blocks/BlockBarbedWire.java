@@ -17,42 +17,42 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechDamageSource;
 
 public class BlockBarbedWire extends Block
 {
-	public BlockBarbedWire()
-	{
-		super(Material.iron);
-	}
+    public BlockBarbedWire()
+    {
+        super(Material.iron);
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
-	{
-		if(entity instanceof EntityLivingBase)
-		{
-			entity.setInWeb();
-			entity.attackEntityFrom(NanotechDamageSource.barbedWireDamage, 2);
-		}
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+    {
+        if(entity instanceof EntityLivingBase)
+        {
+            entity.setInWeb();
+            entity.attackEntityFrom(NanotechDamageSource.barbedWireDamage, 2);
+        }
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
-	{
-		return null;
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+    {
+        return null;
+    }
 
-	@Override
-	public int getRenderType()
-	{
-		return 1;
-	}
+    @Override
+    public int getRenderType()
+    {
+        return 1;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
 }

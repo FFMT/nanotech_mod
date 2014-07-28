@@ -18,52 +18,52 @@ import fr.minecraftforgefrance.ffmtlibs.network.FFMTPacket;
 
 public class PacketSmoker extends FFMTPacket
 {
-	private int x, y, z, smoke;
+    private int x, y, z, smoke;
 
-	public PacketSmoker()
-	{}
+    public PacketSmoker()
+    {}
 
-	public PacketSmoker(int x, int y, int z, int smoke)
-	{
-		this.x = x;
-		this.y = y;
-		this.z = z;
-		this.smoke = smoke;
-	}
-	
-	@Override
-	public void writeData(ByteBuf buffer) throws IOException
-	{
-		buffer.writeInt(x);
-		buffer.writeInt(y);
-		buffer.writeInt(z);
-		buffer.writeInt(smoke);
-	}
+    public PacketSmoker(int x, int y, int z, int smoke)
+    {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.smoke = smoke;
+    }
 
-	@Override
-	public void readData(ByteBuf buffer)
-	{
-		x = buffer.readInt();
-		y = buffer.readInt();
-		z = buffer.readInt();
-		smoke = buffer.readInt();
-	}
+    @Override
+    public void writeData(ByteBuf buffer) throws IOException
+    {
+        buffer.writeInt(x);
+        buffer.writeInt(y);
+        buffer.writeInt(z);
+        buffer.writeInt(smoke);
+    }
 
-	@Override
-	public void handleClientSide(EntityPlayer player)
-	{
+    @Override
+    public void readData(ByteBuf buffer)
+    {
+        x = buffer.readInt();
+        y = buffer.readInt();
+        z = buffer.readInt();
+        smoke = buffer.readInt();
+    }
 
-	}
+    @Override
+    public void handleClientSide(EntityPlayer player)
+    {
 
-	@Override
-	public void handleServerSide(EntityPlayer player)
-	{
-		TileEntity tile = player.worldObj.getTileEntity(x, y, z);
+    }
 
-		if(tile instanceof TileEntitySmoker)
-		{
-			TileEntitySmoker te = (TileEntitySmoker)tile;
-			te.setSmokeInt(smoke);
-		}
-	}
+    @Override
+    public void handleServerSide(EntityPlayer player)
+    {
+        TileEntity tile = player.worldObj.getTileEntity(x, y, z);
+
+        if(tile instanceof TileEntitySmoker)
+        {
+            TileEntitySmoker te = (TileEntitySmoker)tile;
+            te.setSmokeInt(smoke);
+        }
+    }
 }

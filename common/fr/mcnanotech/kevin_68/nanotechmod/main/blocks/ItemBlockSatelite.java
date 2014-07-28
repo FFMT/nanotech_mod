@@ -13,26 +13,26 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockSatelite extends ItemBlock
 {
-	public ItemBlockSatelite(Block block)
-	{
-		super(block);
-		setHasSubtypes(true);
-	}
+    public ItemBlockSatelite(Block block)
+    {
+        super(block);
+        setHasSubtypes(true);
+    }
 
-	public int getMetadata(int metadata)
-	{
-		return metadata;
-	}
+    public int getMetadata(int metadata)
+    {
+        return metadata;
+    }
 
-	public String getUnlocalizedName(ItemStack stack)
-	{
-		if(stack.getItemDamage() < BlockSat.type.length)
-		{
-			return "tile." + BlockSat.type[stack.getItemDamage()];
-		}
-		else
-		{
-			return getUnlocalizedName();
-		}
-	}
+    public String getUnlocalizedName(ItemStack stack)
+    {
+        if(stack.getItemDamage() < BlockSat.type.length)
+        {
+            return "tile." + BlockSat.type[stack.getItemDamage()];
+        }
+        else
+        {
+            return getUnlocalizedName();
+        }
+    }
 }

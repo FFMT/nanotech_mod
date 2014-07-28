@@ -17,51 +17,51 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTextSpotLigh
 
 public class NTMCPacketHelper
 {
-	public static void sendPacket(TileEntitySpotLight tile, int value, int index)
-	{
-		try
-		{
-			NanotechModCity.packetHandler.sendToServer(new PacketSpotLight(tile.xCoord, tile.yCoord, tile.zCoord, index, value));
-		}
-		catch(Exception exception)
-		{
-			NanotechModCity.nanoCityLogger.error("[NTMC]Failed to send a packet from SpotLight");
-		}
-	}
+    public static void sendPacket(TileEntitySpotLight tile, int value, int index)
+    {
+        try
+        {
+            NanotechModCity.packetHandler.sendToServer(new PacketSpotLight(tile.xCoord, tile.yCoord, tile.zCoord, index, value));
+        }
+        catch(Exception exception)
+        {
+            NanotechModCity.nanoCityLogger.error("[NTMC]Failed to send a packet from SpotLight");
+        }
+    }
 
-	public static void sendPacket(TileEntitySpotLight tile, int value, int index, int time)
-	{
-		try
-		{
-			NanotechModCity.packetHandler.sendToServer(new PacketSpotLightKey(tile.xCoord, tile.yCoord, tile.zCoord, index, value, time));
-		}
-		catch(Exception exception)
-		{
-			NanotechModCity.nanoCityLogger.error("[NTMC]Failed to send a packet from SpotLight");
-		}
-	}
+    public static void sendPacket(TileEntitySpotLight tile, int value, int index, int time)
+    {
+        try
+        {
+            NanotechModCity.packetHandler.sendToServer(new PacketSpotLightKey(tile.xCoord, tile.yCoord, tile.zCoord, index, value, time));
+        }
+        catch(Exception exception)
+        {
+            NanotechModCity.nanoCityLogger.error("[NTMC]Failed to send a packet from SpotLight");
+        }
+    }
 
-	public static void sendPacket(TileEntityTextSpotLight tile, int value, int index)
-	{
-		try
-		{
-			NanotechModCity.packetHandler.sendToServer(new PacketTextSpotLight(tile.xCoord, tile.yCoord, tile.zCoord, index, value));
-		}
-		catch(Exception exception)
-		{
-			NanotechModCity.nanoCityLogger.error("[NTMC]Failed to send a packet from SpotLight");
-		}
-	}
+    public static void sendPacket(TileEntityTextSpotLight tile, int value, int index)
+    {
+        try
+        {
+            NanotechModCity.packetHandler.sendToServer(new PacketTextSpotLight(tile.xCoord, tile.yCoord, tile.zCoord, index, value));
+        }
+        catch(Exception exception)
+        {
+            NanotechModCity.nanoCityLogger.error("[NTMC]Failed to send a packet from SpotLight");
+        }
+    }
 
-	public static void sendPacket(TileEntityTextSpotLight tile, String str)
-	{
-		try
-		{
-			NanotechModCity.packetHandler.sendToServer(new PacketTextSpotLightString(tile.xCoord, tile.yCoord, tile.zCoord, str));
-		}
-		catch(Exception exception)
-		{
-			NanotechModCity.nanoCityLogger.error("[NTMC]Failed to send a packet from SpotLight");
-		}
-	}
+    public static void sendPacket(TileEntityTextSpotLight tile, String str)
+    {
+        try
+        {
+            NanotechModCity.packetHandler.sendToServer(new PacketTextSpotLightString(tile.xCoord, tile.yCoord, tile.zCoord, str));
+        }
+        catch(Exception exception)
+        {
+            NanotechModCity.nanoCityLogger.error("[NTMC]Failed to send a packet from SpotLight");
+        }
+    }
 }

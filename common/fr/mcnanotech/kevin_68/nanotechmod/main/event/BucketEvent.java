@@ -16,18 +16,18 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechFluid;
 
 public class BucketEvent
 {
-	@SubscribeEvent
-	public void onBucketFill(FillBucketEvent event)
-	{
-		Block block = event.world.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ);
-		int metadata = event.world.getBlockMetadata(event.target.blockX, event.target.blockY, event.target.blockZ);
+    @SubscribeEvent
+    public void onBucketFill(FillBucketEvent event)
+    {
+        Block block = event.world.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ);
+        int metadata = event.world.getBlockMetadata(event.target.blockX, event.target.blockY, event.target.blockZ);
 
-		if(block.equals(NanotechFluid.blockNitrogen) && metadata == 0)
-		{
-			event.world.setBlockToAir(event.target.blockX, event.target.blockY, event.target.blockZ);
-			event.result = new ItemStack(NanotechFluid.bucketNitrogen);
-			event.setResult(Result.ALLOW);
-		}
+        if(block.equals(NanotechFluid.blockNitrogen) && metadata == 0)
+        {
+            event.world.setBlockToAir(event.target.blockX, event.target.blockY, event.target.blockZ);
+            event.result = new ItemStack(NanotechFluid.bucketNitrogen);
+            event.setResult(Result.ALLOW);
+        }
 
-	}
+    }
 }

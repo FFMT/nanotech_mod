@@ -23,59 +23,59 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityMultiplier;
 
 public class BlockMultiplier extends BlockContainer
 {
-	public IIcon topbottomIcon;
+    public IIcon topbottomIcon;
 
-	public BlockMultiplier()
-	{
-		super(Material.rock);
-	}
+    public BlockMultiplier()
+    {
+        super(Material.rock);
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister iconregister)
-	{
-		topbottomIcon = iconregister.registerIcon(this.getTextureName() + "side");
-		blockIcon = iconregister.registerIcon(this.getTextureName());
-	}
+    @Override
+    public void registerBlockIcons(IIconRegister iconregister)
+    {
+        topbottomIcon = iconregister.registerIcon(this.getTextureName() + "side");
+        blockIcon = iconregister.registerIcon(this.getTextureName());
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public IIcon getIcon(int side, int metadata)
-	{
-		return side == 0 ? blockIcon : (side == 1 ? blockIcon : topbottomIcon);
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public IIcon getIcon(int side, int metadata)
+    {
+        return side == 0 ? blockIcon : (side == 1 ? blockIcon : topbottomIcon);
+    }
 
-	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t)
-	{
-		TileEntity tileentity = world.getTileEntity(x, y, z);
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t)
+    {
+        TileEntity tileentity = world.getTileEntity(x, y, z);
 
-		if(tileentity == null || player.isSneaking())
-		{
-			return false;
-		}
+        if(tileentity == null || player.isSneaking())
+        {
+            return false;
+        }
 
-		if(!world.isRemote)
-		{
-			player.openGui(NanotechMod.modInstance, 0, world, x, y, z);
-		}
+        if(!world.isRemote)
+        {
+            player.openGui(NanotechMod.modInstance, 0, world, x, y, z);
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int metadata)
-	{
-		return new TileEntityMultiplier();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world, int metadata)
+    {
+        return new TileEntityMultiplier();
+    }
 
-	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
-	{
-		TileEntity te = world.getTileEntity(x, y, z);
-		if(te != null && te instanceof TileEntityMultiplier && stack.hasDisplayName())
-		{
-			TileEntityMultiplier multiplier = (TileEntityMultiplier)te;
-			multiplier.setCustomName(stack.getDisplayName());
-		}
-	}
+    @Override
+    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
+    {
+        TileEntity te = world.getTileEntity(x, y, z);
+        if(te != null && te instanceof TileEntityMultiplier && stack.hasDisplayName())
+        {
+            TileEntityMultiplier multiplier = (TileEntityMultiplier)te;
+            multiplier.setCustomName(stack.getDisplayName());
+        }
+    }
 }

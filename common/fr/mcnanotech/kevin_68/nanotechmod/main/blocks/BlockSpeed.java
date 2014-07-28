@@ -24,77 +24,77 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockSpeed extends Block
 {
-	public static String[] type = new String[] {"booster", "retarder"};
-	public IIcon[] iconbuffer;
+    public static String[] type = new String[] {"booster", "retarder"};
+    public IIcon[] iconbuffer;
 
-	public BlockSpeed()
-	{
-		super(Material.rock);
-	}
+    public BlockSpeed()
+    {
+        super(Material.rock);
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister iconregister)
-	{
-		iconbuffer = new IIcon[type.length];
-		for(int i = 0; i < type.length; i++)
-		{
-			iconbuffer[i] = iconregister.registerIcon(this.getTextureName() + type[i]);
-		}
-	}
+    @Override
+    public void registerBlockIcons(IIconRegister iconregister)
+    {
+        iconbuffer = new IIcon[type.length];
+        for(int i = 0; i < type.length; i++)
+        {
+            iconbuffer[i] = iconregister.registerIcon(this.getTextureName() + type[i]);
+        }
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public IIcon getIcon(int side, int metadata)
-	{
-		if(metadata < type.length)
-		{
-			return iconbuffer[metadata];
-		}
-		else
-		{
-			return iconbuffer[0];
-		}
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public IIcon getIcon(int side, int metadata)
+    {
+        if(metadata < type.length)
+        {
+            return iconbuffer[metadata];
+        }
+        else
+        {
+            return iconbuffer[0];
+        }
+    }
 
-	@Override
-	public int damageDropped(int metadata)
-	{
-		return metadata;
-	}
+    @Override
+    public int damageDropped(int metadata)
+    {
+        return metadata;
+    }
 
-	@SuppressWarnings({"unchecked", "rawtypes"})
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for(int metadatanumber = 0; metadatanumber < type.length; metadatanumber++)
-		{
-			list.add(new ItemStack(item, 1, metadatanumber));
-		}
-	}
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for(int metadatanumber = 0; metadatanumber < type.length; metadatanumber++)
+        {
+            list.add(new ItemStack(item, 1, metadatanumber));
+        }
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
-	{
-		float var5 = 0.025F;
-		return AxisAlignedBB.getBoundingBox((double)x, (double)y, (double)z, (double)(x + 1), (double)((float)(y + 1) - var5), (double)(z + 1));
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+    {
+        float var5 = 0.025F;
+        return AxisAlignedBB.getBoundingBox((double)x, (double)y, (double)z, (double)(x + 1), (double)((float)(y + 1) - var5), (double)(z + 1));
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
-	{
-		int metadata = world.getBlockMetadata(x, y, z);
-		if(metadata == 1)
-		{
-			entity.motionX *= 0.01D;
-			entity.motionZ *= 0.01D;
-			entity.setInWeb();
-		}
+    @Override
+    public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+    {
+        int metadata = world.getBlockMetadata(x, y, z);
+        if(metadata == 1)
+        {
+            entity.motionX *= 0.01D;
+            entity.motionZ *= 0.01D;
+            entity.setInWeb();
+        }
 
-		else if(metadata == 0)
-		{
-			entity.motionX *= 1.4D;
-			entity.motionZ *= 1.4D;
-		}
-	}
+        else if(metadata == 0)
+        {
+            entity.motionX *= 1.4D;
+            entity.motionZ *= 1.4D;
+        }
+    }
 }

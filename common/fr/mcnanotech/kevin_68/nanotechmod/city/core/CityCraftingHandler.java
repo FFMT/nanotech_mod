@@ -14,20 +14,20 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.blocks.NanotechCityBlock;
 
 public class CityCraftingHandler
 {
-	@SubscribeEvent
-	public void onItemCrafted(ItemCraftedEvent event)
-	{
-		if(event.crafting.getItem().equals(Item.getItemFromBlock(NanotechCityBlock.spotlight)))
-		{
-			event.player.triggerAchievement(NanotechCityAchievement.blockSpotLight);
-		}
-		if(event.crafting.getItem().equals(Item.getItemFromBlock(NanotechCityBlock.trail)))
-		{
-			event.player.triggerAchievement(NanotechCityAchievement.blockTrail);
-		}
-		if(event.crafting.getItem().equals(Item.getItemFromBlock(NanotechCityBlock.trashcan)))
-		{
-			event.player.triggerAchievement(NanotechCityAchievement.blockTrashCan);
-		}
-	}
+    @SubscribeEvent
+    public void onItemCrafted(ItemCraftedEvent event)
+    {
+        if(event.crafting.getItem().equals(Item.getItemFromBlock(NanotechCityBlock.spotlight)))
+        {
+            event.player.triggerAchievement(NanotechCityAchievement.blockSpotLight);
+        }
+        if(event.crafting.getItem().equals(Item.getItemFromBlock(NanotechCityBlock.trail)))
+        {
+            event.player.triggerAchievement(NanotechCityAchievement.blockTrail);
+        }
+        if(event.crafting.getItem().equals(Item.getItemFromBlock(NanotechCityBlock.trashcan)))
+        {
+            event.player.triggerAchievement(NanotechCityAchievement.blockTrashCan);
+        }
+    }
 }

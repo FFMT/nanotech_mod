@@ -7,15 +7,15 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.core.NanotechMod.BaseNTMEntry;
 public class GuiSoundBoxListBase extends GuiContainer
 {
 
-	public GuiSoundBoxListBase(Container container)
-	{
-		super(container);
-	}
+    public GuiSoundBoxListBase(Container container)
+    {
+        super(container);
+    }
 
-	@Override
-	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3)
-	{}
+    @Override
+    protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3)
+    {}
 
-	public void setSelected(BaseNTMEntry entry)
-	{}
+    public void setSelected(BaseNTMEntry entry)
+    {}
 }

@@ -15,18 +15,18 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class NanotechPotion extends Potion
 {
-	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/gui/potion/freeze.png");
+    protected static final ResourceLocation texture = new ResourceLocation("nanotechmod", "textures/gui/potion/freeze.png");
 
-	public NanotechPotion(int id, boolean isBad, int color)
-	{
-		super(id, isBad, color);
-	}
+    public NanotechPotion(int id, boolean isBad, int color)
+    {
+        super(id, isBad, color);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasStatusIcon()
-	{
-		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
-		return true;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean hasStatusIcon()
+    {
+        Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+        return true;
+    }
 }

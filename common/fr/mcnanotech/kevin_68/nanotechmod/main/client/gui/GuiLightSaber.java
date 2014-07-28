@@ -28,74 +28,74 @@ import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiSliderForContainer;
 @SuppressWarnings({"unchecked"})
 public class GuiLightSaber extends GuiContainerSliderBase
 {
-	private final ItemStack saberStack;
-	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod:textures/gui/lightsaber.png");
+    private final ItemStack saberStack;
+    protected static final ResourceLocation texture = new ResourceLocation("nanotechmod:textures/gui/lightsaber.png");
 
-	public GuiLightSaber(EntityPlayer player)
-	{
-		super(new ContainerLightSaber(player.inventory, player.worldObj));
-		saberStack = player.getCurrentEquippedItem();
-	}
+    public GuiLightSaber(EntityPlayer player)
+    {
+        super(new ContainerLightSaber(player.inventory, player.worldObj));
+        saberStack = player.getCurrentEquippedItem();
+    }
 
-	@Override
-	public void initGui()
-	{
-		super.initGui();
-		int x = (width - xSize) / 2;
-		int y = (height - ySize) / 2;
-		if(!saberStack.hasTagCompound())
-		{
-			saberStack.setTagCompound(new NBTTagCompound());
-		}
-		int red = saberStack.getTagCompound().hasKey("red") ? saberStack.getTagCompound().getInteger("red") : 0;
-		int green = saberStack.getTagCompound().hasKey("green") ? saberStack.getTagCompound().getInteger("green") : 0;
-		int blue = saberStack.getTagCompound().hasKey("blue") ? saberStack.getTagCompound().getInteger("blue") : 0;
-		this.buttonList.add(new GuiSliderForContainer(this, 0, width / 2 - 75, y + 7, EnumChatFormatting.RED + I18n.format("container.lightsaber.red") + " : " + red, (float)(red) / 255.0F));
-		this.buttonList.add(new GuiSliderForContainer(this, 1, width / 2 - 75, y + 29, EnumChatFormatting.GREEN + I18n.format("container.lightsaber.green") + " : " + green, (float)(green) / 255.0F));
-		this.buttonList.add(new GuiSliderForContainer(this, 2, width / 2 - 75, y + 51, EnumChatFormatting.BLUE + I18n.format("container.lightsaber.blue") + " : " + blue, (float)(blue) / 255.0F));
-	}
+    @Override
+    public void initGui()
+    {
+        super.initGui();
+        int x = (width - xSize) / 2;
+        int y = (height - ySize) / 2;
+        if(!saberStack.hasTagCompound())
+        {
+            saberStack.setTagCompound(new NBTTagCompound());
+        }
+        int red = saberStack.getTagCompound().hasKey("red") ? saberStack.getTagCompound().getInteger("red") : 0;
+        int green = saberStack.getTagCompound().hasKey("green") ? saberStack.getTagCompound().getInteger("green") : 0;
+        int blue = saberStack.getTagCompound().hasKey("blue") ? saberStack.getTagCompound().getInteger("blue") : 0;
+        this.buttonList.add(new GuiSliderForContainer(this, 0, width / 2 - 75, y + 7, EnumChatFormatting.RED + I18n.format("container.lightsaber.red") + " : " + red, (float)(red) / 255.0F));
+        this.buttonList.add(new GuiSliderForContainer(this, 1, width / 2 - 75, y + 29, EnumChatFormatting.GREEN + I18n.format("container.lightsaber.green") + " : " + green, (float)(green) / 255.0F));
+        this.buttonList.add(new GuiSliderForContainer(this, 2, width / 2 - 75, y + 51, EnumChatFormatting.BLUE + I18n.format("container.lightsaber.blue") + " : " + blue, (float)(blue) / 255.0F));
+    }
 
-	@Override
-	public void handlerSliderAction(int sliderId, float sliderValue)
-	{
-		NTMPacketHelper.sendPacket(sliderId, (int)(sliderValue * 255));
-	}
+    @Override
+    public void handlerSliderAction(int sliderId, float sliderValue)
+    {
+        NTMPacketHelper.sendPacket(sliderId, (int)(sliderValue * 255));
+    }
 
-	@Override
-	public String getSliderName(int sliderId, float sliderValue)
-	{
-		String name = "";
-		switch(sliderId)
-		{
-		case 0:
-			name = EnumChatFormatting.RED + I18n.format("container.lightsaber.red") + " : ";
-			break;
-		case 1:
-			name = EnumChatFormatting.GREEN + I18n.format("container.lightsaber.green") + " : ";
-			break;
-		case 2:
-			name = EnumChatFormatting.BLUE + I18n.format("container.lightsaber.blue") + " : ";
-			break;
-		}
-		return name + (int)(sliderValue * 255);
-	}
+    @Override
+    public String getSliderName(int sliderId, float sliderValue)
+    {
+        String name = "";
+        switch(sliderId)
+        {
+            case 0:
+                name = EnumChatFormatting.RED + I18n.format("container.lightsaber.red") + " : ";
+                break;
+            case 1:
+                name = EnumChatFormatting.GREEN + I18n.format("container.lightsaber.green") + " : ";
+                break;
+            case 2:
+                name = EnumChatFormatting.BLUE + I18n.format("container.lightsaber.blue") + " : ";
+                break;
+        }
+        return name + (int)(sliderValue * 255);
+    }
 
-	@Override
-	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
-	{
-		int x = (width - xSize) / 2;
-		int y = (height - ySize) / 2;
-		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		this.mc.renderEngine.bindTexture(texture);
-		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-	}
+    @Override
+    protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
+    {
+        int x = (width - xSize) / 2;
+        int y = (height - ySize) / 2;
+        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+        this.mc.renderEngine.bindTexture(texture);
+        this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+    }
 
-	public void updateScreen()
-	{
-		super.updateScreen();
-		if(this.mc.thePlayer.getCurrentEquippedItem() == null || !(this.mc.thePlayer.getCurrentEquippedItem().getItem() instanceof ItemLightSaber))
-		{
-			this.mc.thePlayer.closeScreen();
-		}
-	}
+    public void updateScreen()
+    {
+        super.updateScreen();
+        if(this.mc.thePlayer.getCurrentEquippedItem() == null || !(this.mc.thePlayer.getCurrentEquippedItem().getItem() instanceof ItemLightSaber))
+        {
+            this.mc.thePlayer.closeScreen();
+        }
+    }
 }

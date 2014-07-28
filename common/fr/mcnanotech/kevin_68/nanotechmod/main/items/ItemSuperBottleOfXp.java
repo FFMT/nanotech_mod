@@ -17,35 +17,35 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.entity.others.EntitySuperBottleOf
 
 public class ItemSuperBottleOfXp extends Item
 {
-	public ItemSuperBottleOfXp()
-	{
-		super();
-	}
+    public ItemSuperBottleOfXp()
+    {
+        super();
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public boolean hasEffect(ItemStack stack)
-	{
-		return true;
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public boolean hasEffect(ItemStack stack)
+    {
+        return true;
+    }
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
-	{
-		if(!player.isSneaking())
-		{
-			if(!player.capabilities.isCreativeMode)
-			{
-				--stack.stackSize;
-			}
+    @Override
+    public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
+    {
+        if(!player.isSneaking())
+        {
+            if(!player.capabilities.isCreativeMode)
+            {
+                --stack.stackSize;
+            }
 
-			world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+            world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
-			if(!world.isRemote)
-			{
-				world.spawnEntityInWorld(new EntitySuperBottleOfXp(world, player));
-			}
-		}
-		return stack;
-	}
+            if(!world.isRemote)
+            {
+                world.spawnEntityInWorld(new EntitySuperBottleOfXp(world, player));
+            }
+        }
+        return stack;
+    }
 }

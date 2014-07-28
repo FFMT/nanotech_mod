@@ -13,14 +13,14 @@ import net.minecraft.item.ItemSword;
 public class ItemScythe extends ItemSword
 {
 
-	public ItemScythe(ToolMaterial toolMaterial)
-	{
-		super(toolMaterial);
-	}
+    public ItemScythe(ToolMaterial toolMaterial)
+    {
+        super(toolMaterial);
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack stack, ItemStack stack2)
-	{
-		return false;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack stack, ItemStack stack2)
+    {
+        return false;
+    }
 }

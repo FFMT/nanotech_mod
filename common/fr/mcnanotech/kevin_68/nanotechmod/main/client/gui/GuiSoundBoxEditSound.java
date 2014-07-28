@@ -17,104 +17,104 @@ import fr.minecraftforgefrance.ffmtlibs.client.gui.GuiHelper;
 
 public class GuiSoundBoxEditSound extends GuiContainer implements YesAction
 {
-	private TileEntitySoundBox tile;
-	private InventoryPlayer inv;
-	private World wrld;
-	public SoundEntry entry;
-	public int gui;
+    private TileEntitySoundBox tile;
+    private InventoryPlayer inv;
+    private World wrld;
+    public SoundEntry entry;
+    public int gui;
 
-	public GuiSoundBoxEditSound(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, SoundEntry entry, int gui)
-	{
-		super(new ContainerSoundBox(tileEntity, inventoryPlayer, world));
-		this.tile = tileEntity;
-		this.inv = inventoryPlayer;
-		this.wrld = world;
-		this.entry = entry;
-		this.gui = gui;
-	}
+    public GuiSoundBoxEditSound(InventoryPlayer inventoryPlayer, TileEntitySoundBox tileEntity, World world, SoundEntry entry, int gui)
+    {
+        super(new ContainerSoundBox(tileEntity, inventoryPlayer, world));
+        this.tile = tileEntity;
+        this.inv = inventoryPlayer;
+        this.wrld = world;
+        this.entry = entry;
+        this.gui = gui;
+    }
 
-	@Override
-	public void initGui()
-	{
-		super.initGui();
-		int x = (width - xSize) / 2;
-		int y = (height - ySize) / 2;
-		this.buttonList.add(new GuiButton(0, x + 6, y + 117, 78, 20, "Cancel"));
-		this.buttonList.add(new GuiButton(1, x + 91, y + 117, 78, 20, "Apply"));
-		this.buttonList.add(new GuiButton(2, x + 10, y + 20, 156, 20, "Name: " + entry.getName()));
-		this.buttonList.add(new GuiButton(3, x + 10, y + 44, 156, 20, "Directory: " + entry.getDir()));
-		this.buttonList.add(new GuiButton(4, x + 10, y + 68, 156, 20, "Categories: " + entry.getCategory().getName()));
-		this.buttonList.add(new GuiButton(5, x + 10, y + 92, 156, 20, EnumChatFormatting.RED + "Delete"));
-	}
+    @Override
+    public void initGui()
+    {
+        super.initGui();
+        int x = (width - xSize) / 2;
+        int y = (height - ySize) / 2;
+        this.buttonList.add(new GuiButton(0, x + 6, y + 117, 78, 20, "Cancel"));
+        this.buttonList.add(new GuiButton(1, x + 91, y + 117, 78, 20, "Apply"));
+        this.buttonList.add(new GuiButton(2, x + 10, y + 20, 156, 20, "Name: " + entry.getName()));
+        this.buttonList.add(new GuiButton(3, x + 10, y + 44, 156, 20, "Directory: " + entry.getDir()));
+        this.buttonList.add(new GuiButton(4, x + 10, y + 68, 156, 20, "Categories: " + entry.getCategory().getName()));
+        this.buttonList.add(new GuiButton(5, x + 10, y + 92, 156, 20, EnumChatFormatting.RED + "Delete"));
+    }
 
-	@Override
-	protected void actionPerformed(GuiButton guibutton)
-	{
-		switch(guibutton.id)
-		{
-		case 0:
-		{
-			
-			this.mc.displayGuiScreen(gui == 0 ? new GuiSoundBoxAllSound(inv, tile, wrld) : gui == 1 ? new GuiSoundBoxSoundByCategory(inv, tile, wrld, UtilSoundBox.getCategory(entry.getCategoryId())) : new GuiSoundBox(inv, tile, wrld) );
-			break;
-		}
-		case 1:
-		{
-			UtilSoundBox.editSound(entry, UtilSoundBox.getPlyN(mc));
-			this.mc.displayGuiScreen(gui == 0 ? new GuiSoundBoxAllSound(inv, tile, wrld) : gui == 1 ? new GuiSoundBoxSoundByCategory(inv, tile, wrld, UtilSoundBox.getCategory(entry.getCategoryId())) : new GuiSoundBox(inv, tile, wrld) );
-			break;
-		}
-		case 2:
-		{
-			this.mc.displayGuiScreen(new GuiSoundBoxAddSound1(inv, tile, wrld, true, this));
-			break;
-		}
-		case 3:
-		{
-			this.mc.displayGuiScreen(new GuiSoundBoxAddSound2(inv, tile, wrld, "", new int[] {0, 0, 0}, true, this));
-			break;
-		}
-		case 4:
-		{
-			this.mc.displayGuiScreen(new GuiSoundBoxAddSound3(inv, tile, wrld, "", new int[] {0, 0, 0}, "", true, this));
-			break;
-		}
-		case 5:
-		{
-			this.mc.displayGuiScreen(new GuiSoundBoxConfirm(inv, tile, wrld, this, "Are you sure?"));
-			break;
-		}
-		}
-	}
+    @Override
+    protected void actionPerformed(GuiButton guibutton)
+    {
+        switch(guibutton.id)
+        {
+            case 0:
+            {
 
-	@Override
-	protected void drawGuiContainerForegroundLayer(int i, int j)
-	{
-		fontRendererObj.drawString("Sound box" + " - " + "Edit sound", 6, 6, 4210752);
-	}
+                this.mc.displayGuiScreen(gui == 0 ? new GuiSoundBoxAllSound(inv, tile, wrld) : gui == 1 ? new GuiSoundBoxSoundByCategory(inv, tile, wrld, UtilSoundBox.getCategory(entry.getCategoryId())) : new GuiSoundBox(inv, tile, wrld));
+                break;
+            }
+            case 1:
+            {
+                UtilSoundBox.editSound(entry, UtilSoundBox.getPlyN(mc));
+                this.mc.displayGuiScreen(gui == 0 ? new GuiSoundBoxAllSound(inv, tile, wrld) : gui == 1 ? new GuiSoundBoxSoundByCategory(inv, tile, wrld, UtilSoundBox.getCategory(entry.getCategoryId())) : new GuiSoundBox(inv, tile, wrld));
+                break;
+            }
+            case 2:
+            {
+                this.mc.displayGuiScreen(new GuiSoundBoxAddSound1(inv, tile, wrld, true, this));
+                break;
+            }
+            case 3:
+            {
+                this.mc.displayGuiScreen(new GuiSoundBoxAddSound2(inv, tile, wrld, "", new int[] {0, 0, 0}, true, this));
+                break;
+            }
+            case 4:
+            {
+                this.mc.displayGuiScreen(new GuiSoundBoxAddSound3(inv, tile, wrld, "", new int[] {0, 0, 0}, "", true, this));
+                break;
+            }
+            case 5:
+            {
+                this.mc.displayGuiScreen(new GuiSoundBoxConfirm(inv, tile, wrld, this, "Are you sure?"));
+                break;
+            }
+        }
+    }
 
-	@Override
-	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3)
-	{
-		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		GuiHelper.bindTexture("nanotechmod", "textures/gui/soundbox.png");
-		int x = (width - xSize) / 2;
-		int y = (height - ySize) / 2;
+    @Override
+    protected void drawGuiContainerForegroundLayer(int i, int j)
+    {
+        fontRendererObj.drawString("Sound box" + " - " + "Edit sound", 6, 6, 4210752);
+    }
 
-		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-	}
+    @Override
+    protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3)
+    {
+        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+        GuiHelper.bindTexture("nanotechmod", "textures/gui/soundbox.png");
+        int x = (width - xSize) / 2;
+        int y = (height - ySize) / 2;
 
-	@Override
-	public void handleYesAction()
-	{
-		UtilSoundBox.deleteSound(UtilSoundBox.getPlyN(this.mc), entry.getId());
-		if(UtilSoundBox.getSoundsList(UtilSoundBox.getPlyN(this.mc)).isEmpty())
-		{
-			this.mc.displayGuiScreen(new GuiSoundBox(inv, tile, wrld));
-		}
-		else
-		{
-			this.mc.displayGuiScreen(gui == 0 ? new GuiSoundBoxAllSound(inv, tile, wrld) : gui == 1 ? new GuiSoundBoxSoundByCategory(inv, tile, wrld, UtilSoundBox.getCategory(entry.getCategoryId())) : new GuiSoundBox(inv, tile, wrld) );
-		}
-	}
+        this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+    }
+
+    @Override
+    public void handleYesAction()
+    {
+        UtilSoundBox.deleteSound(UtilSoundBox.getPlyN(this.mc), entry.getId());
+        if(UtilSoundBox.getSoundsList(UtilSoundBox.getPlyN(this.mc)).isEmpty())
+        {
+            this.mc.displayGuiScreen(new GuiSoundBox(inv, tile, wrld));
+        }
+        else
+        {
+            this.mc.displayGuiScreen(gui == 0 ? new GuiSoundBoxAllSound(inv, tile, wrld) : gui == 1 ? new GuiSoundBoxSoundByCategory(inv, tile, wrld, UtilSoundBox.getCategory(entry.getCategoryId())) : new GuiSoundBox(inv, tile, wrld));
+        }
+    }
 }

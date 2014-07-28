@@ -19,43 +19,43 @@ import net.minecraft.world.IBlockAccess;
 
 public class BlockNanoWood extends BlockLog
 {
-	private IIcon topIcon;
+    private IIcon topIcon;
 
-	public BlockNanoWood()
-	{
-		super();
-	}
+    public BlockNanoWood()
+    {
+        super();
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister iconregister)
-	{
-		blockIcon = iconregister.registerIcon(this.getTextureName());
-		topIcon = iconregister.registerIcon(this.getTextureName() + "_top");
-	}
+    @Override
+    public void registerBlockIcons(IIconRegister iconregister)
+    {
+        blockIcon = iconregister.registerIcon(this.getTextureName());
+        topIcon = iconregister.registerIcon(this.getTextureName() + "_top");
+    }
 
-	@Override
-	public IIcon getIcon(int side, int metadata)
-	{
-		int k = metadata & 12;
-		return k == 0 && (side == 1 || side == 0) ? topIcon : (k == 4 && (side == 5 || side == 4) ? topIcon : (k == 8 && (side == 2 || side == 3) ? topIcon : blockIcon));
-	}
+    @Override
+    public IIcon getIcon(int side, int metadata)
+    {
+        int k = metadata & 12;
+        return k == 0 && (side == 1 || side == 0) ? topIcon : (k == 4 && (side == 5 || side == 4) ? topIcon : (k == 8 && (side == 2 || side == 3) ? topIcon : blockIcon));
+    }
 
-	@SuppressWarnings({"unchecked", "rawtypes"})
-	@Override
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		list.add(new ItemStack(item, 1, 0));
-	}
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    @Override
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        list.add(new ItemStack(item, 1, 0));
+    }
 
-	@Override
-	public boolean canSustainLeaves(IBlockAccess world, int x, int y, int z)
-	{
-		return true;
-	}
+    @Override
+    public boolean canSustainLeaves(IBlockAccess world, int x, int y, int z)
+    {
+        return true;
+    }
 
-	@Override
-	public boolean isWood(IBlockAccess world, int x, int y, int z)
-	{
-		return true;
-	}
+    @Override
+    public boolean isWood(IBlockAccess world, int x, int y, int z)
+    {
+        return true;
+    }
 }

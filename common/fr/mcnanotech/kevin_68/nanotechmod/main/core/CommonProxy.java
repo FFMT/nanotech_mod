@@ -9,8 +9,8 @@ package fr.mcnanotech.kevin_68.nanotechmod.main.core;
 
 public class CommonProxy
 {
-	public void register()
-	{
+    public void register()
+    {
 
-	}
+    }
 }

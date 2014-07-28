@@ -23,43 +23,43 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTextSpotLigh
 
 public class GuiHandler implements IGuiHandler
 {
-	@Override
-	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
-	{
-		TileEntity tileentity = world.getTileEntity(x, y, z);
-		if(tileentity instanceof TileEntitySpotLight)
-		{
-			return new ContainerSpotLight((TileEntitySpotLight)tileentity, player.inventory, world);
-		}
-		if(tileentity instanceof TileEntityFountain)
-		{
-			return new ContainerFountain((TileEntityFountain)tileentity, player.inventory, world);
-		}
-		if(tileentity instanceof TileEntityTextSpotLight)
-		{
-			return new ContainerTextSpotLight((TileEntityTextSpotLight)tileentity, player.inventory, world);
-		}
+    @Override
+    public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
+    {
+        TileEntity tileentity = world.getTileEntity(x, y, z);
+        if(tileentity instanceof TileEntitySpotLight)
+        {
+            return new ContainerSpotLight((TileEntitySpotLight)tileentity, player.inventory, world);
+        }
+        if(tileentity instanceof TileEntityFountain)
+        {
+            return new ContainerFountain((TileEntityFountain)tileentity, player.inventory, world);
+        }
+        if(tileentity instanceof TileEntityTextSpotLight)
+        {
+            return new ContainerTextSpotLight((TileEntityTextSpotLight)tileentity, player.inventory, world);
+        }
 
-		return null;
-	}
+        return null;
+    }
 
-	@Override
-	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
-	{
-		TileEntity tileentity = world.getTileEntity(x, y, z);
-		if(tileentity instanceof TileEntitySpotLight)
-		{
-			return new GuiSpotLight(player.inventory, (TileEntitySpotLight)tileentity, world);
-		}
-		if(tileentity instanceof TileEntityFountain)
-		{
-			return new GuiFountain(player.inventory, (TileEntityFountain)tileentity, world);
-		}
-		if(tileentity instanceof TileEntityTextSpotLight)
-		{
-			return new GuiTextSpotLight(player.inventory, (TileEntityTextSpotLight)tileentity, world);
-		}
+    @Override
+    public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
+    {
+        TileEntity tileentity = world.getTileEntity(x, y, z);
+        if(tileentity instanceof TileEntitySpotLight)
+        {
+            return new GuiSpotLight(player.inventory, (TileEntitySpotLight)tileentity, world);
+        }
+        if(tileentity instanceof TileEntityFountain)
+        {
+            return new GuiFountain(player.inventory, (TileEntityFountain)tileentity, world);
+        }
+        if(tileentity instanceof TileEntityTextSpotLight)
+        {
+            return new GuiTextSpotLight(player.inventory, (TileEntityTextSpotLight)tileentity, world);
+        }
 
-		return null;
-	}
+        return null;
+    }
 }

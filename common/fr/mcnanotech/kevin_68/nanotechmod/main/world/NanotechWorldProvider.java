@@ -15,42 +15,42 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechConfiguration;
 
 public class NanotechWorldProvider extends WorldProvider
 {
-	public void registerWorldChunkManager()
-	{
-		this.worldChunkMgr = new NanotechWorldChunkManager(worldObj.getSeed(), terrainType);
-		this.dimensionId = NanotechConfiguration.dimensionID;
-	}
+    public void registerWorldChunkManager()
+    {
+        this.worldChunkMgr = new NanotechWorldChunkManager(worldObj.getSeed(), terrainType);
+        this.dimensionId = NanotechConfiguration.dimensionID;
+    }
 
-	public String getDimensionName()
-	{
-		return "Nanotech";
-	}
+    public String getDimensionName()
+    {
+        return "Nanotech";
+    }
 
-	public boolean canRespawnHere()
-	{
-		return true;
-	}
+    public boolean canRespawnHere()
+    {
+        return true;
+    }
 
-	public String getSaveFolder()
-	{
-		return "DIMNanotech";
-	}
+    public String getSaveFolder()
+    {
+        return "DIMNanotech";
+    }
 
-	@Override
-	public IChunkProvider createChunkGenerator()
-	{
-		return new NanotechChunkProvider(worldObj, worldObj.getSeed(), true);
-	}
+    @Override
+    public IChunkProvider createChunkGenerator()
+    {
+        return new NanotechChunkProvider(worldObj, worldObj.getSeed(), true);
+    }
 
-	@Override
-	public Vec3 getSkyColor(Entity cameraEntity, float partialTicks)
-	{
-		return Vec3.createVectorHelper(0.2, 0.2, 0.2);
-	}
+    @Override
+    public Vec3 getSkyColor(Entity cameraEntity, float partialTicks)
+    {
+        return Vec3.createVectorHelper(0.2, 0.2, 0.2);
+    }
 
-	@Override
-	public boolean isSkyColored()
-	{
-		return true;
-	}
+    @Override
+    public boolean isSkyColored()
+    {
+        return true;
+    }
 }

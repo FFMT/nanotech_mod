@@ -18,35 +18,35 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.blocks.NanotechBlock;
 
 public class NanotechBiome extends BiomeGenBase
 {
-	private WorldGenNanoTree worldGenNanoTree = new WorldGenNanoTree(false);
+    private WorldGenNanoTree worldGenNanoTree = new WorldGenNanoTree(false);
 
-	public NanotechBiome(int id)
-	{
-		super(id);
-		this.spawnableMonsterList.clear();
-		this.spawnableCreatureList.clear();
-		this.spawnableWaterCreatureList.clear();
-		this.spawnableCaveCreatureList.clear();
-		this.topBlock = NanotechBlock.nanoGrass;
-		this.fillerBlock = Blocks.dirt;
-		this.setBiomeName("Nanotech");
-		this.theBiomeDecorator.treesPerChunk = 0;
-		this.theBiomeDecorator.flowersPerChunk = 0;
-		this.theBiomeDecorator.grassPerChunk = 0;
-		this.theBiomeDecorator.deadBushPerChunk = 0;
-		this.theBiomeDecorator.mushroomsPerChunk = 0;
-		this.theBiomeDecorator.reedsPerChunk = 0;
-		this.theBiomeDecorator.generateLakes = false;
-	}
+    public NanotechBiome(int id)
+    {
+        super(id);
+        this.spawnableMonsterList.clear();
+        this.spawnableCreatureList.clear();
+        this.spawnableWaterCreatureList.clear();
+        this.spawnableCaveCreatureList.clear();
+        this.topBlock = NanotechBlock.nanoGrass;
+        this.fillerBlock = Blocks.dirt;
+        this.setBiomeName("Nanotech");
+        this.theBiomeDecorator.treesPerChunk = 0;
+        this.theBiomeDecorator.flowersPerChunk = 0;
+        this.theBiomeDecorator.grassPerChunk = 0;
+        this.theBiomeDecorator.deadBushPerChunk = 0;
+        this.theBiomeDecorator.mushroomsPerChunk = 0;
+        this.theBiomeDecorator.reedsPerChunk = 0;
+        this.theBiomeDecorator.generateLakes = false;
+    }
 
-	@SideOnly(Side.CLIENT)
-	public int getSkyColorByTemp(float color)
-	{
-		return 0;
-	}
+    @SideOnly(Side.CLIENT)
+    public int getSkyColorByTemp(float color)
+    {
+        return 0;
+    }
 
-	public WorldGenerator getRandomWorldGenForTrees(Random rand)
-	{
-		return this.worldGenNanoTree;
-	}
+    public WorldGenerator getRandomWorldGenForTrees(Random rand)
+    {
+        return this.worldGenNanoTree;
+    }
 }

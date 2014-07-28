@@ -13,16 +13,16 @@ import net.minecraft.item.ItemStack;
 public class ItemNanomiteAxe extends ItemAxe
 {
 
-	public ItemNanomiteAxe(ToolMaterial toolMaterial)
-	{
-		super(toolMaterial);
-	}
+    public ItemNanomiteAxe(ToolMaterial toolMaterial)
+    {
+        super(toolMaterial);
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)
-	{
-		if(stack.getItem().equals(this) && repairItem.getItem().equals(NanotechItem.itemBase) && repairItem.getItemDamage() == 14)
-			return true;
-		return false;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)
+    {
+        if(stack.getItem().equals(this) && repairItem.getItem().equals(NanotechItem.itemBase) && repairItem.getItemDamage() == 14)
+            return true;
+        return false;
+    }
 }

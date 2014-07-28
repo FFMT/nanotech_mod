@@ -24,29 +24,29 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.items.ItemNitrogenBucket;
 
 public class NanotechFluid
 {
-	public static Block blockNitrogen;
-	public static Item bucketNitrogen;
-	public static Fluid liquidNitrogen;
+    public static Block blockNitrogen;
+    public static Item bucketNitrogen;
+    public static Fluid liquidNitrogen;
 
-	public static void initFluid(Side side)
-	{
-		liquidNitrogen = new Fluid("liquidnitrogen").setDensity(4000).setViscosity(500).setTemperature(77).setLuminosity(0).setUnlocalizedName("liquidNitrogen");
-		FluidRegistry.registerFluid(liquidNitrogen);
+    public static void initFluid(Side side)
+    {
+        liquidNitrogen = new Fluid("liquidnitrogen").setDensity(4000).setViscosity(500).setTemperature(77).setLuminosity(0).setUnlocalizedName("liquidNitrogen");
+        FluidRegistry.registerFluid(liquidNitrogen);
 
-		blockNitrogen = new BlockLiquidNitrogen(liquidNitrogen, Material.water).setBlockName("liquidNitrogen").setBlockTextureName(NanotechMod.MODID + ":nitrogen");
-		bucketNitrogen = new ItemNitrogenBucket(blockNitrogen).setUnlocalizedName("nitrogenBucket").setTextureName(NanotechMod.MODID + ":nitrogen_bucket").setCreativeTab(NanotechMod.CreaI).setContainerItem(Items.bucket);
-		liquidNitrogen.setBlock(blockNitrogen);
-		if(side.isClient())
-		{
-			liquidNitrogen.setIcons(blockNitrogen.getBlockTextureFromSide(1), blockNitrogen.getBlockTextureFromSide(2));
-		}
+        blockNitrogen = new BlockLiquidNitrogen(liquidNitrogen, Material.water).setBlockName("liquidNitrogen").setBlockTextureName(NanotechMod.MODID + ":nitrogen");
+        bucketNitrogen = new ItemNitrogenBucket(blockNitrogen).setUnlocalizedName("nitrogenBucket").setTextureName(NanotechMod.MODID + ":nitrogen_bucket").setCreativeTab(NanotechMod.CreaI).setContainerItem(Items.bucket);
+        liquidNitrogen.setBlock(blockNitrogen);
+        if(side.isClient())
+        {
+            liquidNitrogen.setIcons(blockNitrogen.getBlockTextureFromSide(1), blockNitrogen.getBlockTextureFromSide(2));
+        }
 
-		GameRegistry.registerBlock(blockNitrogen, ItemBlock.class, "blockLiquidNitrogen", NanotechMod.MODID);
-		GameRegistry.registerItem(bucketNitrogen, "nitrogenBucket", NanotechMod.MODID);
-	}
+        GameRegistry.registerBlock(blockNitrogen, ItemBlock.class, "blockLiquidNitrogen", NanotechMod.MODID);
+        GameRegistry.registerItem(bucketNitrogen, "nitrogenBucket", NanotechMod.MODID);
+    }
 
-	public static void initFluidContainer()
-	{
-		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidnitrogen", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketNitrogen), FluidContainerRegistry.EMPTY_BUCKET);
-	}
+    public static void initFluidContainer()
+    {
+        FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidnitrogen", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketNitrogen), FluidContainerRegistry.EMPTY_BUCKET);
+    }
 }

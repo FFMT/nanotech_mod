@@ -17,30 +17,30 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
 
 public class BlockSmoker extends BlockContainer
 {
-	public BlockSmoker()
-	{
-		super(Material.rock);
-		setTickRandomly(true);
-	}
+    public BlockSmoker()
+    {
+        super(Material.rock);
+        setTickRandomly(true);
+    }
 
-	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t)
-	{
-		TileEntity tileentity = world.getTileEntity(x, y, z);
-		if(tileentity == null || player.isSneaking())
-		{
-			return false;
-		}
-		if(!world.isRemote)
-		{
-			player.openGui(NanotechMod.modInstance, 1, world, x, y, z);
-		}
-		return true;
-	}
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t)
+    {
+        TileEntity tileentity = world.getTileEntity(x, y, z);
+        if(tileentity == null || player.isSneaking())
+        {
+            return false;
+        }
+        if(!world.isRemote)
+        {
+            player.openGui(NanotechMod.modInstance, 1, world, x, y, z);
+        }
+        return true;
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int metadata)
-	{
-		return new TileEntitySmoker();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world, int metadata)
+    {
+        return new TileEntitySmoker();
+    }
 }

@@ -24,84 +24,84 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockGrass extends Block
 {
-	private IIcon iconTop;
-	private IIcon iconSnowSide;
+    private IIcon iconTop;
+    private IIcon iconSnowSide;
 
-	public BlockGrass()
-	{
-		super(Material.grass);
-		this.setTickRandomly(true);
-		this.setHarvestLevel("shovel", 2);
-	}
+    public BlockGrass()
+    {
+        super(Material.grass);
+        this.setTickRandomly(true);
+        this.setHarvestLevel("shovel", 2);
+    }
 
-	@Override
-	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plant)
-	{
-		return true;
-	}
+    @Override
+    public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plant)
+    {
+        return true;
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister iconregister)
-	{
-		blockIcon = iconregister.registerIcon(this.getTextureName() + "_side");
-		iconTop = iconregister.registerIcon(this.getTextureName() + "_top");
-		iconSnowSide = iconregister.registerIcon(this.getTextureName() + "_side_snow");
-	}
+    @Override
+    public void registerBlockIcons(IIconRegister iconregister)
+    {
+        blockIcon = iconregister.registerIcon(this.getTextureName() + "_side");
+        iconTop = iconregister.registerIcon(this.getTextureName() + "_top");
+        iconSnowSide = iconregister.registerIcon(this.getTextureName() + "_side_snow");
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public IIcon getIcon(int side, int metadata)
-	{
-		return side == 1 ? iconTop : (side == 0 ? Blocks.dirt.getBlockTextureFromSide(side) : this.blockIcon);
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public IIcon getIcon(int side, int metadata)
+    {
+        return side == 1 ? iconTop : (side == 0 ? Blocks.dirt.getBlockTextureFromSide(side) : this.blockIcon);
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public IIcon getIcon(IBlockAccess blockaccess, int x, int y, int z, int side)
-	{
-		if(side == 1)
-		{
-			return iconTop;
-		}
-		else if(side == 0)
-		{
-			return Blocks.dirt.getBlockTextureFromSide(side);
-		}
-		else
-		{
-			Material material = blockaccess.getBlock(x, y + 1, z).getMaterial();
-			return material != Material.snow && material != Material.craftedSnow ? blockIcon : iconSnowSide;
-		}
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public IIcon getIcon(IBlockAccess blockaccess, int x, int y, int z, int side)
+    {
+        if(side == 1)
+        {
+            return iconTop;
+        }
+        else if(side == 0)
+        {
+            return Blocks.dirt.getBlockTextureFromSide(side);
+        }
+        else
+        {
+            Material material = blockaccess.getBlock(x, y + 1, z).getMaterial();
+            return material != Material.snow && material != Material.craftedSnow ? blockIcon : iconSnowSide;
+        }
+    }
 
-	public void updateTick(World world, int x, int y, int z, Random par5Random)
-	{
-		if(!world.isRemote)
-		{
-			if(world.getBlockLightValue(x, y + 1, z) < 4 && world.getBlockLightOpacity(x, y + 1, z) > 2)
-			{
-				world.setBlock(x, y, z, Blocks.dirt, 0, 3);
-			}
-			else if(world.getBlockLightValue(x, y + 1, z) >= 9)
-			{
-				for(int var6 = 0; var6 < 4; ++var6)
-				{
-					int var7 = x + par5Random.nextInt(3) - 1;
-					int var8 = y + par5Random.nextInt(5) - 3;
-					int var9 = z + par5Random.nextInt(3) - 1;
+    public void updateTick(World world, int x, int y, int z, Random par5Random)
+    {
+        if(!world.isRemote)
+        {
+            if(world.getBlockLightValue(x, y + 1, z) < 4 && world.getBlockLightOpacity(x, y + 1, z) > 2)
+            {
+                world.setBlock(x, y, z, Blocks.dirt, 0, 3);
+            }
+            else if(world.getBlockLightValue(x, y + 1, z) >= 9)
+            {
+                for(int var6 = 0; var6 < 4; ++var6)
+                {
+                    int var7 = x + par5Random.nextInt(3) - 1;
+                    int var8 = y + par5Random.nextInt(5) - 3;
+                    int var9 = z + par5Random.nextInt(3) - 1;
 
-					if((world.getBlock(var7, var8, var9).equals(Blocks.dirt) && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlock(var7, var8, var9).equals(Blocks.grass) && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlock(var7, var8, var9).equals(Blocks.mycelium) && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlock(var7, var8, var9).equals(Blocks.farmland) && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2))
-					{
-						world.setBlock(var7, var8, var9, this, 0, 3);
-					}
-				}
-			}
-		}
-	}
+                    if((world.getBlock(var7, var8, var9).equals(Blocks.dirt) && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlock(var7, var8, var9).equals(Blocks.grass) && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlock(var7, var8, var9).equals(Blocks.mycelium) && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2) || (world.getBlock(var7, var8, var9).equals(Blocks.farmland) && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && world.getBlockLightOpacity(var7, var8 + 1, var9) <= 2))
+                    {
+                        world.setBlock(var7, var8, var9, this, 0, 3);
+                    }
+                }
+            }
+        }
+    }
 
-	@Override
-	public Item getItemDropped(int metadata, Random random, int par3)
-	{
-		return Blocks.dirt.getItemDropped(0, random, par3);
-	}
+    @Override
+    public Item getItemDropped(int metadata, Random random, int par3)
+    {
+        return Blocks.dirt.getItemDropped(0, random, par3);
+    }
 }

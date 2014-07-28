@@ -20,58 +20,58 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockSunShade extends ItemBlock
 {
-	private IIcon itemBlockIcon;
+    private IIcon itemBlockIcon;
 
-	public ItemBlockSunShade(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockSunShade(Block block)
+    {
+        super(block);
+    }
 
-	@SideOnly(Side.CLIENT)
-	public int getSpriteNumber()
-	{
-		return 1;
-	}
+    @SideOnly(Side.CLIENT)
+    public int getSpriteNumber()
+    {
+        return 1;
+    }
 
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int metadata)
-	{
-		return itemBlockIcon;
-	}
+    @SideOnly(Side.CLIENT)
+    public IIcon getIconFromDamage(int metadata)
+    {
+        return itemBlockIcon;
+    }
 
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister)
-	{
-		this.itemBlockIcon = iconRegister.registerIcon("nanotechmodcity:sunShade");
-	}
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister iconRegister)
+    {
+        this.itemBlockIcon = iconRegister.registerIcon("nanotechmodcity:sunShade");
+    }
 
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float par8, float par9, float par10)
-	{
-		if(player.canPlayerEdit(x, y, z, side, stack) && player.canPlayerEdit(x, y + 1, z, side, stack) && player.canPlayerEdit(x, y + 2, z, side, stack))
-		{
-			Block i1 = world.getBlock(x, y, z);
-			boolean isReplaceable = (i1 == Blocks.vine || i1 == Blocks.tallgrass || i1 == Blocks.deadbush || (i1 != null & i1.isReplaceable(world, x, y, z)));
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float par8, float par9, float par10)
+    {
+        if(player.canPlayerEdit(x, y, z, side, stack) && player.canPlayerEdit(x, y + 1, z, side, stack) && player.canPlayerEdit(x, y + 2, z, side, stack))
+        {
+            Block i1 = world.getBlock(x, y, z);
+            boolean isReplaceable = (i1 == Blocks.vine || i1 == Blocks.tallgrass || i1 == Blocks.deadbush || (i1 != null & i1.isReplaceable(world, x, y, z)));
 
-			if(isReplaceable && world.isAirBlock(x, y + 1, z) && world.isAirBlock(x, y + 2, z))
-			{
-				world.setBlock(x, y, z, NanotechCityBlock.sunShade, 0, 3);
-				world.setBlock(x, y + 1, z, NanotechCityBlock.sunShade, 1, 3);
-				world.setBlock(x, y + 2, z, NanotechCityBlock.sunShade, 1, 3);
-				world.playSoundEffect(x, y, z, NanotechCityBlock.sunShade.stepSound.soundName, NanotechCityBlock.sunShade.stepSound.getVolume(), NanotechCityBlock.sunShade.stepSound.getPitch());
-				--stack.stackSize;
-				return true;
-			}
+            if(isReplaceable && world.isAirBlock(x, y + 1, z) && world.isAirBlock(x, y + 2, z))
+            {
+                world.setBlock(x, y, z, NanotechCityBlock.sunShade, 0, 3);
+                world.setBlock(x, y + 1, z, NanotechCityBlock.sunShade, 1, 3);
+                world.setBlock(x, y + 2, z, NanotechCityBlock.sunShade, 1, 3);
+                world.playSoundEffect(x, y, z, NanotechCityBlock.sunShade.stepSound.soundName, NanotechCityBlock.sunShade.stepSound.getVolume(), NanotechCityBlock.sunShade.stepSound.getPitch());
+                --stack.stackSize;
+                return true;
+            }
 
-			else if(world.isAirBlock(x, y + 1, z) && world.isAirBlock(x, y + 2, z) && world.isAirBlock(x, y + 3, z) && side == 1 && player.canPlayerEdit(x, y + 3, z, side, stack))
-			{
-				world.setBlock(x, y + 1, z, NanotechCityBlock.sunShade, 0, 3);
-				world.setBlock(x, y + 2, z, NanotechCityBlock.sunShade, 1, 3);
-				world.setBlock(x, y + 3, z, NanotechCityBlock.sunShade, 1, 3);
-				world.playSoundEffect(x, y, z, NanotechCityBlock.sunShade.stepSound.soundName, NanotechCityBlock.sunShade.stepSound.getVolume(), NanotechCityBlock.sunShade.stepSound.getPitch());
-				--stack.stackSize;
-				return true;
-			}
-		}
-		return false;
-	}
+            else if(world.isAirBlock(x, y + 1, z) && world.isAirBlock(x, y + 2, z) && world.isAirBlock(x, y + 3, z) && side == 1 && player.canPlayerEdit(x, y + 3, z, side, stack))
+            {
+                world.setBlock(x, y + 1, z, NanotechCityBlock.sunShade, 0, 3);
+                world.setBlock(x, y + 2, z, NanotechCityBlock.sunShade, 1, 3);
+                world.setBlock(x, y + 3, z, NanotechCityBlock.sunShade, 1, 3);
+                world.playSoundEffect(x, y, z, NanotechCityBlock.sunShade.stepSound.soundName, NanotechCityBlock.sunShade.stepSound.getVolume(), NanotechCityBlock.sunShade.stepSound.getPitch());
+                --stack.stackSize;
+                return true;
+            }
+        }
+        return false;
+    }
 }

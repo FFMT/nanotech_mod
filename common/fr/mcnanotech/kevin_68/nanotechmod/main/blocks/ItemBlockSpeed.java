@@ -13,26 +13,26 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockSpeed extends ItemBlock
 {
-	public ItemBlockSpeed(Block block)
-	{
-		super(block);
-		setHasSubtypes(true);
-	}
+    public ItemBlockSpeed(Block block)
+    {
+        super(block);
+        setHasSubtypes(true);
+    }
 
-	public int getMetadata(int metadata)
-	{
-		return metadata;
-	}
+    public int getMetadata(int metadata)
+    {
+        return metadata;
+    }
 
-	public String getUnlocalizedName(ItemStack stack)
-	{
-		if(stack.getItemDamage() < BlockSpeed.type.length)
-		{
-			return "tile." + BlockSpeed.type[stack.getItemDamage()];
-		}
-		else
-		{
-			return getUnlocalizedName();
-		}
-	}
+    public String getUnlocalizedName(ItemStack stack)
+    {
+        if(stack.getItemDamage() < BlockSpeed.type.length)
+        {
+            return "tile." + BlockSpeed.type[stack.getItemDamage()];
+        }
+        else
+        {
+            return getUnlocalizedName();
+        }
+    }
 }

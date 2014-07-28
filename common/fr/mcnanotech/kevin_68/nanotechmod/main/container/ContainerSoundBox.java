@@ -16,33 +16,33 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 
 public class ContainerSoundBox extends Container
 {
-	protected TileEntitySoundBox tileListerJukebox;
-	private World worldObj;
+    protected TileEntitySoundBox tileListerJukebox;
+    private World worldObj;
 
-	public ContainerSoundBox(TileEntitySoundBox tileEntity, InventoryPlayer inventoryPlayer, World world)
-	{
-		this.worldObj = world;
-		this.tileListerJukebox = tileEntity;
-		bindPlayerInventory(inventoryPlayer);
-	}
+    public ContainerSoundBox(TileEntitySoundBox tileEntity, InventoryPlayer inventoryPlayer, World world)
+    {
+        this.worldObj = world;
+        this.tileListerJukebox = tileEntity;
+        bindPlayerInventory(inventoryPlayer);
+    }
 
-	@Override
-	public boolean canInteractWith(EntityPlayer player)
-	{
-		return tileListerJukebox.isUseableByPlayer(player);
-	}
+    @Override
+    public boolean canInteractWith(EntityPlayer player)
+    {
+        return tileListerJukebox.isUseableByPlayer(player);
+    }
 
-	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer)
-	{
+    protected void bindPlayerInventory(InventoryPlayer inventoryPlayer)
+    {
 
-		for(int i = 0; i < 9; i++)
-		{
-			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
-		}
-	}
+        for(int i = 0; i < 9; i++)
+        {
+            addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
+        }
+    }
 
-	public TileEntitySoundBox getFountain()
-	{
-		return tileListerJukebox;
-	}
+    public TileEntitySoundBox getFountain()
+    {
+        return tileListerJukebox;
+    }
 }

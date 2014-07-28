@@ -13,24 +13,24 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockCereal extends ItemBlock
 {
-	public ItemBlockCereal(Block block)
-	{
-		super(block);
-		setHasSubtypes(true);
-	}
+    public ItemBlockCereal(Block block)
+    {
+        super(block);
+        setHasSubtypes(true);
+    }
 
-	public int getMetadata(int metadata)
-	{
-		return metadata;
-	}
+    public int getMetadata(int metadata)
+    {
+        return metadata;
+    }
 
-	public String getUnlocalizedName(ItemStack stack)
-	{
-		int metadata = stack.getItemDamage();
-		if(metadata > BlockCereal.type.length || metadata < 0)
-		{
-			metadata = 0;
-		}
-		return super.getUnlocalizedName() + "." + BlockCereal.type[metadata];
-	}
+    public String getUnlocalizedName(ItemStack stack)
+    {
+        int metadata = stack.getItemDamage();
+        if(metadata > BlockCereal.type.length || metadata < 0)
+        {
+            metadata = 0;
+        }
+        return super.getUnlocalizedName() + "." + BlockCereal.type[metadata];
+    }
 }

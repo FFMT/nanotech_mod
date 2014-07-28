@@ -13,26 +13,26 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockNukeBuildingBlock extends ItemBlock
 {
-	public ItemBlockNukeBuildingBlock(Block block)
-	{
-		super(block);
-		setHasSubtypes(true);
-	}
+    public ItemBlockNukeBuildingBlock(Block block)
+    {
+        super(block);
+        setHasSubtypes(true);
+    }
 
-	public int getMetadata(int metadata)
-	{
-		return metadata;
-	}
+    public int getMetadata(int metadata)
+    {
+        return metadata;
+    }
 
-	public String getUnlocalizedName(ItemStack stack)
-	{
-		if(stack.getItemDamage() < BlockBuildingNuke.type.length)
-		{
-			return "tile." + BlockBuildingNuke.type[stack.getItemDamage()];
-		}
-		else
-		{
-			return getUnlocalizedName();
-		}
-	}
+    public String getUnlocalizedName(ItemStack stack)
+    {
+        if(stack.getItemDamage() < BlockBuildingNuke.type.length)
+        {
+            return "tile." + BlockBuildingNuke.type[stack.getItemDamage()];
+        }
+        else
+        {
+            return getUnlocalizedName();
+        }
+    }
 }

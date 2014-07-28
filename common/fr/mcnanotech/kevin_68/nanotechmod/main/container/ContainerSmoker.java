@@ -16,42 +16,42 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySmoker;
 
 public class ContainerSmoker extends Container
 {
-	protected TileEntitySmoker smoker;
-	private World worldObj;
+    protected TileEntitySmoker smoker;
+    private World worldObj;
 
-	public ContainerSmoker(TileEntitySmoker tileentity, InventoryPlayer playerinventory, World world)
-	{
-		this.worldObj = world;
-		this.smoker = tileentity;
-		bindPlayerInventory(playerinventory);
-	}
+    public ContainerSmoker(TileEntitySmoker tileentity, InventoryPlayer playerinventory, World world)
+    {
+        this.worldObj = world;
+        this.smoker = tileentity;
+        bindPlayerInventory(playerinventory);
+    }
 
-	@Override
-	public boolean canInteractWith(EntityPlayer player)
-	{
-		return smoker.isUseableByPlayer(player);
-	}
+    @Override
+    public boolean canInteractWith(EntityPlayer player)
+    {
+        return smoker.isUseableByPlayer(player);
+    }
 
-	protected void bindPlayerInventory(InventoryPlayer player_inventory)
-	{
-		int var6;
-		int var7;
-		for(var6 = 0; var6 < 3; ++var6)
-		{
-			for(var7 = 0; var7 < 9; ++var7)
-			{
-				this.addSlotToContainer(new Slot(player_inventory, var7 + var6 * 9 + 9, 8 + var7 * 18, 84 + var6 * 18));
-			}
-		}
+    protected void bindPlayerInventory(InventoryPlayer player_inventory)
+    {
+        int var6;
+        int var7;
+        for(var6 = 0; var6 < 3; ++var6)
+        {
+            for(var7 = 0; var7 < 9; ++var7)
+            {
+                this.addSlotToContainer(new Slot(player_inventory, var7 + var6 * 9 + 9, 8 + var7 * 18, 84 + var6 * 18));
+            }
+        }
 
-		for(var6 = 0; var6 < 9; ++var6)
-		{
-			this.addSlotToContainer(new Slot(player_inventory, var6, 8 + var6 * 18, 142));
-		}
-	}
+        for(var6 = 0; var6 < 9; ++var6)
+        {
+            this.addSlotToContainer(new Slot(player_inventory, var6, 8 + var6 * 18, 142));
+        }
+    }
 
-	public TileEntitySmoker getSmoker()
-	{
-		return smoker;
-	}
+    public TileEntitySmoker getSmoker()
+    {
+        return smoker;
+    }
 }

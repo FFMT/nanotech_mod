@@ -17,48 +17,48 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityPresent extends TileEntity
 {
-	private ItemStack present;
+    private ItemStack present;
 
-	@Override
-	public void writeToNBT(NBTTagCompound nbtTagCompound)
-	{
-		super.writeToNBT(nbtTagCompound);
-		NBTTagList nbttaglist = new NBTTagList();
-		if(this.present != null)
-		{
-			this.present.writeToNBT(nbtTagCompound);
-		}
-		nbtTagCompound.setTag("Items", nbttaglist);
-	}
+    @Override
+    public void writeToNBT(NBTTagCompound nbtTagCompound)
+    {
+        super.writeToNBT(nbtTagCompound);
+        NBTTagList nbttaglist = new NBTTagList();
+        if(this.present != null)
+        {
+            this.present.writeToNBT(nbtTagCompound);
+        }
+        nbtTagCompound.setTag("Items", nbttaglist);
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound nbtTagCompound)
-	{
-		super.readFromNBT(nbtTagCompound);
-		this.present = ItemStack.loadItemStackFromNBT(nbtTagCompound);
-	}
+    @Override
+    public void readFromNBT(NBTTagCompound nbtTagCompound)
+    {
+        super.readFromNBT(nbtTagCompound);
+        this.present = ItemStack.loadItemStackFromNBT(nbtTagCompound);
+    }
 
-	@Override
-	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
-	{
-		readFromNBT(pkt.func_148857_g());
-	}
+    @Override
+    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
+    {
+        readFromNBT(pkt.func_148857_g());
+    }
 
-	@Override
-	public Packet getDescriptionPacket()
-	{
-		NBTTagCompound nbt = new NBTTagCompound();
-		this.writeToNBT(nbt);
-		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 3, nbt);
-	}
+    @Override
+    public Packet getDescriptionPacket()
+    {
+        NBTTagCompound nbt = new NBTTagCompound();
+        this.writeToNBT(nbt);
+        return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 3, nbt);
+    }
 
-	public void setPresent(ItemStack stack)
-	{
-		present = stack;
-	}
+    public void setPresent(ItemStack stack)
+    {
+        present = stack;
+    }
 
-	public ItemStack getPresent()
-	{
-		return present;
-	}
+    public ItemStack getPresent()
+    {
+        return present;
+    }
 }

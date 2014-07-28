@@ -12,34 +12,34 @@ import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.packet.Packe
 
 public class UGSKeyboardClient extends UGSKeyboard
 {
-	public static KeyBinding flyKey, invKey;
-	private int lastKeyState = 0;
+    public static KeyBinding flyKey, invKey;
+    private int lastKeyState = 0;
 
-	@Override
-	public void registerKey()
-	{
-		flyKey = new KeyBinding("Ultimate Gravi Fly Key", Keyboard.KEY_F, "IC2");
-		invKey = new KeyBinding("Invisibility Ultimate Gravi Key", Keyboard.KEY_G, "IC2");
+    @Override
+    public void registerKey()
+    {
+        flyKey = new KeyBinding("Ultimate Gravi Fly Key", Keyboard.KEY_F, "IC2");
+        invKey = new KeyBinding("Invisibility Ultimate Gravi Key", Keyboard.KEY_G, "IC2");
 
-		ClientRegistry.registerKeyBinding(flyKey);
-		ClientRegistry.registerKeyBinding(invKey);
-	}
+        ClientRegistry.registerKeyBinding(flyKey);
+        ClientRegistry.registerKeyBinding(invKey);
+    }
 
-	public void sendKeyUpdate()
-	{
-		int currentKeyState = (this.flyKey.isPressed() ? 1 : 0) << 0 | (this.invKey.isPressed() ? 1 : 0) << 1;
-		if(currentKeyState != this.lastKeyState)
-		{
-			this.lastKeyState = currentKeyState;
-			try
-			{
-				UltimateGraviSuiteMod.packetHandler.sendToServer(new PacketKeys(currentKeyState));
-			}
-			catch(Exception exception)
-			{
-				UltimateGraviSuiteMod.ugslogger.error("Failed to send a key packet");
-			}
-			super.processKeyUpdate(FMLClientHandler.instance().getClientPlayerEntity(), currentKeyState);
-		}
-	}
+    public void sendKeyUpdate()
+    {
+        int currentKeyState = (this.flyKey.isPressed() ? 1 : 0) << 0 | (this.invKey.isPressed() ? 1 : 0) << 1;
+        if(currentKeyState != this.lastKeyState)
+        {
+            this.lastKeyState = currentKeyState;
+            try
+            {
+                UltimateGraviSuiteMod.packetHandler.sendToServer(new PacketKeys(currentKeyState));
+            }
+            catch(Exception exception)
+            {
+                UltimateGraviSuiteMod.ugslogger.error("Failed to send a key packet");
+            }
+            super.processKeyUpdate(FMLClientHandler.instance().getClientPlayerEntity(), currentKeyState);
+        }
+    }
 }

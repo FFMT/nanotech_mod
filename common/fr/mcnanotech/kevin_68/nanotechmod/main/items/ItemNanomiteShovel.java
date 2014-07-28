@@ -12,15 +12,15 @@ import net.minecraft.item.ItemStack;
 
 public class ItemNanomiteShovel extends ItemSpade
 {
-	public ItemNanomiteShovel(ToolMaterial toolMaterial)
-	{
-		super(toolMaterial);
-	}
+    public ItemNanomiteShovel(ToolMaterial toolMaterial)
+    {
+        super(toolMaterial);
+    }
 
-	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)
-	{
-		if(stack.getItem().equals(this) && repairItem.getItem() == NanotechItem.itemBase && repairItem.getItemDamage() == 14)
-			return true;
-		return false;
-	}
+    public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)
+    {
+        if(stack.getItem().equals(this) && repairItem.getItem() == NanotechItem.itemBase && repairItem.getItemDamage() == 14)
+            return true;
+        return false;
+    }
 }

@@ -15,16 +15,16 @@ import fr.mcnanotech.kevin_68.nanotechmod.ultimategravisuite.common.CommonProxy;
 
 public class ClientProxy extends CommonProxy
 {
-	@Override
-	public void init()
-	{
-		FMLCommonHandler.instance().bus().register(new UGSClientEventHandler());
-		MinecraftForge.EVENT_BUS.register(new UGSClientEventHandler());
-	}
+    @Override
+    public void init()
+    {
+        FMLCommonHandler.instance().bus().register(new UGSClientEventHandler());
+        MinecraftForge.EVENT_BUS.register(new UGSClientEventHandler());
+    }
 
-	@Override
-	public EntityPlayer getPlayerInstance()
-	{
-		return Minecraft.getMinecraft().thePlayer;
-	}
+    @Override
+    public EntityPlayer getPlayerInstance()
+    {
+        return Minecraft.getMinecraft().thePlayer;
+    }
 }

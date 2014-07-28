@@ -16,29 +16,29 @@ import net.minecraft.item.Item;
 
 public class BlockNanoStairs extends BlockStairs
 {
-	protected BlockNanoStairs(Block block, int meta)
-	{
-		super(block, meta);
-		this.setLightOpacity(0);
-	}
+    protected BlockNanoStairs(Block block, int meta)
+    {
+        super(block, meta);
+        this.setLightOpacity(0);
+    }
 
-	@Override
-	public Item getItemDropped(int metadata, Random rand, int par3)
-	{
-		if(this.equals(NanotechBlock.nukeBuildingStairs))
-		{
-			return Items.iron_ingot;
-		}
-		else
-		{
-			return Item.getItemFromBlock(this);
-		}
-	}
+    @Override
+    public Item getItemDropped(int metadata, Random rand, int par3)
+    {
+        if(this.equals(NanotechBlock.nukeBuildingStairs))
+        {
+            return Items.iron_ingot;
+        }
+        else
+        {
+            return Item.getItemFromBlock(this);
+        }
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return 1;
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 1;
+    }
 
 }

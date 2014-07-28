@@ -25,79 +25,79 @@ import fr.minecraftforgefrance.ffmtlibs.FFMTClientRegistry;
 
 public class BlockTrashcan extends Block
 {
-	public BlockTrashcan()
-	{
-		super(Material.iron);
-	}
+    public BlockTrashcan()
+    {
+        super(Material.iron);
+    }
 
-	public void registerBlockIcons(IIconRegister iconregister)
-	{
-		blockIcon = iconregister.registerIcon("nanotechmodcity:trash_can");
-	}
+    public void registerBlockIcons(IIconRegister iconregister)
+    {
+        blockIcon = iconregister.registerIcon("nanotechmodcity:trash_can");
+    }
 
-	@SuppressWarnings("rawtypes")
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axisalignedBB, List list, Entity entity)
-	{
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.3125F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
-		float var8 = 0.125F;
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, var8, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, var8);
-		super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
-		this.setBlockBounds(1.0F - var8, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
-		this.setBlockBounds(0.0F, 0.0F, 1.0F - var8, 1.0F, 1.0F, 1.0F);
-		super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
-		this.setBlockBoundsForItemRender();
-	}
+    @SuppressWarnings("rawtypes")
+    public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axisalignedBB, List list, Entity entity)
+    {
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.3125F, 1.0F);
+        super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+        float var8 = 0.125F;
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, var8, 1.0F, 1.0F);
+        super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, var8);
+        super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+        this.setBlockBounds(1.0F - var8, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+        super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+        this.setBlockBounds(0.0F, 0.0F, 1.0F - var8, 1.0F, 1.0F, 1.0F);
+        super.addCollisionBoxesToList(world, x, y, z, axisalignedBB, list, entity);
+        this.setBlockBoundsForItemRender();
+    }
 
-	public void setBlockBoundsForItemRender()
-	{
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-	}
+    public void setBlockBoundsForItemRender()
+    {
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+    }
 
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
-	{
-		int prob = world.rand.nextInt(100);
-		if(entity instanceof EntityItem)
-		{
-			if(!world.isRemote)
-			{
-				entity.setDead();
-				if(prob < 15)
-				{
-					world.spawnEntityInWorld(new EntityXPOrb(world, (double)x + 0.5D, (double)y + 1.5D, (double)z + 0.5D, 1));
-				}
-			}
-		}
-	}
+    public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+    {
+        int prob = world.rand.nextInt(100);
+        if(entity instanceof EntityItem)
+        {
+            if(!world.isRemote)
+            {
+                entity.setDead();
+                if(prob < 15)
+                {
+                    world.spawnEntityInWorld(new EntityXPOrb(world, (double)x + 0.5D, (double)y + 1.5D, (double)z + 0.5D, 1));
+                }
+            }
+        }
+    }
 
-	public TileEntity createTileEntity(World world, int metadata)
-	{
-		return new TileEntityTrashCan();
-	}
+    public TileEntity createTileEntity(World world, int metadata)
+    {
+        return new TileEntityTrashCan();
+    }
 
-	public boolean hasTileEntity(int metadata)
-	{
-		return true;
-	}
+    public boolean hasTileEntity(int metadata)
+    {
+        return true;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getRenderType()
-	{
-		return FFMTClientRegistry.tesrRenderId;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getRenderType()
+    {
+        return FFMTClientRegistry.tesrRenderId;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
 }

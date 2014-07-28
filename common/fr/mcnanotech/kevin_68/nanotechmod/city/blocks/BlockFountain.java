@@ -21,65 +21,65 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityFountain;
 
 public class BlockFountain extends BlockContainer
 {
-	private IIcon top;
+    private IIcon top;
 
-	public BlockFountain()
-	{
-		super(Material.iron);
-	}
+    public BlockFountain()
+    {
+        super(Material.iron);
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int metadata)
-	{
-		return new TileEntityFountain();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world, int metadata)
+    {
+        return new TileEntityFountain();
+    }
 
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
-	{
-		TileEntity te = world.getTileEntity(x, y, z);
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
+    {
+        TileEntity te = world.getTileEntity(x, y, z);
 
-		if(te == null || player.isSneaking())
-		{
-			return false;
-		}
+        if(te == null || player.isSneaking())
+        {
+            return false;
+        }
 
-		player.openGui(NanotechModCity.modInstance, 4, world, x, y, z);
-		return true;
-	}
+        player.openGui(NanotechModCity.modInstance, 4, world, x, y, z);
+        return true;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
 
-	@Override
-	public int getRenderType()
-	{
-		return 0;
-	}
+    @Override
+    public int getRenderType()
+    {
+        return 0;
+    }
 
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister iconregister)
-	{
-		this.blockIcon = iconregister.registerIcon("stone_slab_top");
-		this.top = iconregister.registerIcon("nanotechmodcity:fountaintop");
-	}
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister iconregister)
+    {
+        this.blockIcon = iconregister.registerIcon("stone_slab_top");
+        this.top = iconregister.registerIcon("nanotechmodcity:fountaintop");
+    }
 
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int metadata)
-	{
-		if(side == 1)
-		{
-			return this.top;
-		}
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(int side, int metadata)
+    {
+        if(side == 1)
+        {
+            return this.top;
+        }
 
-		return this.blockIcon;
-	}
+        return this.blockIcon;
+    }
 }

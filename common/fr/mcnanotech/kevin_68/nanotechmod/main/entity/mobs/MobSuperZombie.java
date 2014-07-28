@@ -27,102 +27,102 @@ import net.minecraft.world.World;
 
 public class MobSuperZombie extends EntityMob
 {
-	public MobSuperZombie(World world)
-	{
-		super(world);
-		this.getNavigator().setBreakDoors(true);
-		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.tasks.addTask(1, new EntityAIBreakDoor(this));
-		this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
-		this.tasks.addTask(3, new EntityAIAvoidEntity(this, MobThedeath.class, 6.0F, 0.25F, 0.5F));
-		this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, 1.0D));
-		this.tasks.addTask(5, new EntityAIMoveThroughVillage(this, 1.0D, false));
-		this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
-		this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 20.0F));
-		this.tasks.addTask(7, new EntityAILookIdle(this));
-		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-	}
+    public MobSuperZombie(World world)
+    {
+        super(world);
+        this.getNavigator().setBreakDoors(true);
+        this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(1, new EntityAIBreakDoor(this));
+        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
+        this.tasks.addTask(3, new EntityAIAvoidEntity(this, MobThedeath.class, 6.0F, 0.25F, 0.5F));
+        this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, 1.0D));
+        this.tasks.addTask(5, new EntityAIMoveThroughVillage(this, 1.0D, false));
+        this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 20.0F));
+        this.tasks.addTask(7, new EntityAILookIdle(this));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+    }
 
-	@Override
-	protected void applyEntityAttributes()
-	{
-		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(80D);
-		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(40.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.50D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(6.0D);
-	}
+    @Override
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(80D);
+        this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(40.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.50D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(6.0D);
+    }
 
-	@Override
-	protected void fall(float damage)
-	{}
+    @Override
+    protected void fall(float damage)
+    {}
 
-	@Override
-	public int getTotalArmorValue()
-	{
-		return 3;
-	}
+    @Override
+    public int getTotalArmorValue()
+    {
+        return 3;
+    }
 
-	@Override
-	protected boolean isAIEnabled()
-	{
-		return true;
-	}
+    @Override
+    protected boolean isAIEnabled()
+    {
+        return true;
+    }
 
-	@Override
-	public void onLivingUpdate()
-	{
-		for(int k = 0; k < 2; k++)
-		{
-			worldObj.spawnParticle("portal", posX + (rand.nextDouble() - 0.5D) * (double)width, (posY + rand.nextDouble() * (double)height) - 0.25D, posZ + (rand.nextDouble() - 0.5D) * (double)width, (rand.nextDouble() - 0.5D) * 2D, -rand.nextDouble(), (rand.nextDouble() - 0.5D) * 2D);
-		}
+    @Override
+    public void onLivingUpdate()
+    {
+        for(int k = 0; k < 2; k++)
+        {
+            worldObj.spawnParticle("portal", posX + (rand.nextDouble() - 0.5D) * (double)width, (posY + rand.nextDouble() * (double)height) - 0.25D, posZ + (rand.nextDouble() - 0.5D) * (double)width, (rand.nextDouble() - 0.5D) * 2D, -rand.nextDouble(), (rand.nextDouble() - 0.5D) * 2D);
+        }
 
-		super.onLivingUpdate();
-	}
+        super.onLivingUpdate();
+    }
 
-	@Override
-	protected String getLivingSound()
-	{
-		return "mob.zombie.say";
-	}
+    @Override
+    protected String getLivingSound()
+    {
+        return "mob.zombie.say";
+    }
 
-	@Override
-	protected String getHurtSound()
-	{
-		return "mob.zombie.hurt";
-	}
+    @Override
+    protected String getHurtSound()
+    {
+        return "mob.zombie.hurt";
+    }
 
-	@Override
-	protected String getDeathSound()
-	{
-		return "mob.zombie.death";
-	}
+    @Override
+    protected String getDeathSound()
+    {
+        return "mob.zombie.death";
+    }
 
-	@Override
-	public EnumCreatureAttribute getCreatureAttribute()
-	{
-		return EnumCreatureAttribute.UNDEAD;
-	}
+    @Override
+    public EnumCreatureAttribute getCreatureAttribute()
+    {
+        return EnumCreatureAttribute.UNDEAD;
+    }
 
-	@Override
-	protected void dropRareDrop(int par1)
-	{
-		switch(this.rand.nextInt(4))
-		{
-		case 0:
-			this.dropItem(Items.diamond_sword, 1);
-			break;
-		case 1:
-			this.dropItem(Items.diamond_helmet, 1);
-			break;
-		case 2:
-			this.dropItem(Items.diamond, 1);
-			break;
-		case 3:
-			this.dropItem(Items.diamond_shovel, 1);
-			break;
-		}
-	}
+    @Override
+    protected void dropRareDrop(int par1)
+    {
+        switch(this.rand.nextInt(4))
+        {
+            case 0:
+                this.dropItem(Items.diamond_sword, 1);
+                break;
+            case 1:
+                this.dropItem(Items.diamond_helmet, 1);
+                break;
+            case 2:
+                this.dropItem(Items.diamond, 1);
+                break;
+            case 3:
+                this.dropItem(Items.diamond_shovel, 1);
+                break;
+        }
+    }
 
 }

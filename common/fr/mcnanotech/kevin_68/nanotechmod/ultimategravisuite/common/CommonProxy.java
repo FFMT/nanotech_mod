@@ -11,13 +11,13 @@ import net.minecraft.entity.player.EntityPlayer;
 
 public class CommonProxy
 {
-	public void init()
-	{
+    public void init()
+    {
 
-	}
+    }
 
-	public EntityPlayer getPlayerInstance()
-	{
-		return null;
-	}
+    public EntityPlayer getPlayerInstance()
+    {
+        return null;
+    }
 }

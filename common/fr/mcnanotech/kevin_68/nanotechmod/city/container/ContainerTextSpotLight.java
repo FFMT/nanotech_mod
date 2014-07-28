@@ -16,33 +16,33 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTextSpotLigh
 
 public class ContainerTextSpotLight extends Container
 {
-	protected TileEntityTextSpotLight tileTextSpotLight;
-	private World worldObj;
+    protected TileEntityTextSpotLight tileTextSpotLight;
+    private World worldObj;
 
-	public ContainerTextSpotLight(TileEntityTextSpotLight tileEntity, InventoryPlayer inventoryPlayer, World world)
-	{
-		this.worldObj = world;
-		this.tileTextSpotLight = tileEntity;
-		addSlotToContainer(new Slot(tileEntity, 1, 0, 115));
-		bindPlayerInventory(inventoryPlayer);
-	}
+    public ContainerTextSpotLight(TileEntityTextSpotLight tileEntity, InventoryPlayer inventoryPlayer, World world)
+    {
+        this.worldObj = world;
+        this.tileTextSpotLight = tileEntity;
+        addSlotToContainer(new Slot(tileEntity, 1, 0, 115));
+        bindPlayerInventory(inventoryPlayer);
+    }
 
-	@Override
-	public boolean canInteractWith(EntityPlayer player)
-	{
-		return tileTextSpotLight.isUseableByPlayer(player);
-	}
+    @Override
+    public boolean canInteractWith(EntityPlayer player)
+    {
+        return tileTextSpotLight.isUseableByPlayer(player);
+    }
 
-	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer)
-	{
-		for(int i = 0; i < 9; i++)
-		{
-			addSlotToContainer(new Slot(inventoryPlayer, i, 11 + i * 18, 142));
-		}
-	}
+    protected void bindPlayerInventory(InventoryPlayer inventoryPlayer)
+    {
+        for(int i = 0; i < 9; i++)
+        {
+            addSlotToContainer(new Slot(inventoryPlayer, i, 11 + i * 18, 142));
+        }
+    }
 
-	public TileEntityTextSpotLight getSpotLight()
-	{
-		return tileTextSpotLight;
-	}
+    public TileEntityTextSpotLight getSpotLight()
+    {
+        return tileTextSpotLight;
+    }
 }

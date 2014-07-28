@@ -17,40 +17,40 @@ import net.minecraft.util.StatCollector;
 
 public class NanotechDamageSource extends DamageSource
 {
-	public static DamageSource sodiumDamage;
-	public static DamageSource altersDamage;
-	public static DamageSource nitrogenDamage;
-	public static DamageSource barbedWireDamage;
-	public static DamageSource lightSaberDamage;
-	public static DamageSource sateliteDamage;
-	public Random rand = new Random();
+    public static DamageSource sodiumDamage;
+    public static DamageSource altersDamage;
+    public static DamageSource nitrogenDamage;
+    public static DamageSource barbedWireDamage;
+    public static DamageSource lightSaberDamage;
+    public static DamageSource sateliteDamage;
+    public Random rand = new Random();
 
-	protected NanotechDamageSource(String name)
-	{
-		super(name);
-	}
+    protected NanotechDamageSource(String name)
+    {
+        super(name);
+    }
 
-	public static void loadDamageSource()
-	{
-		sodiumDamage = new NanotechDamageSource("sodium").setDamageBypassesArmor();
-		altersDamage = new NanotechDamageSource("alters").setDamageBypassesArmor();
-		nitrogenDamage = new NanotechDamageSource("nitrogen").setDamageBypassesArmor();
-		barbedWireDamage = new NanotechDamageSource("barbedWire");
-		lightSaberDamage = new NanotechDamageSource("lightSaberDamage");
-		sateliteDamage = new NanotechDamageSource("sateliteDamage").setDamageBypassesArmor();
-	}
+    public static void loadDamageSource()
+    {
+        sodiumDamage = new NanotechDamageSource("sodium").setDamageBypassesArmor();
+        altersDamage = new NanotechDamageSource("alters").setDamageBypassesArmor();
+        nitrogenDamage = new NanotechDamageSource("nitrogen").setDamageBypassesArmor();
+        barbedWireDamage = new NanotechDamageSource("barbedWire");
+        lightSaberDamage = new NanotechDamageSource("lightSaberDamage");
+        sateliteDamage = new NanotechDamageSource("sateliteDamage").setDamageBypassesArmor();
+    }
 
-	@Override
-	public IChatComponent func_151519_b(EntityLivingBase livingBase)
-	{
-		EntityLivingBase entitylivingbase1 = livingBase.func_94060_bK();
-		int randInt = 0;
-		if(this.damageType.equals("sodium"))
-		{
-			randInt = rand.nextInt(3);
-		}
-		String s = "death.attack." + this.damageType + "." + randInt;
-		String s1 = s + ".player";
-		return entitylivingbase1 != null && StatCollector.canTranslate(s1) ? new ChatComponentTranslation(s1, new Object[] {livingBase.func_145748_c_(), entitylivingbase1.func_145748_c_()}) : new ChatComponentTranslation(s, new Object[] {livingBase.func_145748_c_()});
-	}
+    @Override
+    public IChatComponent func_151519_b(EntityLivingBase livingBase)
+    {
+        EntityLivingBase entitylivingbase1 = livingBase.func_94060_bK();
+        int randInt = 0;
+        if(this.damageType.equals("sodium"))
+        {
+            randInt = rand.nextInt(3);
+        }
+        String s = "death.attack." + this.damageType + "." + randInt;
+        String s1 = s + ".player";
+        return entitylivingbase1 != null && StatCollector.canTranslate(s1) ? new ChatComponentTranslation(s1, new Object[] {livingBase.func_145748_c_(), entitylivingbase1.func_145748_c_()}) : new ChatComponentTranslation(s, new Object[] {livingBase.func_145748_c_()});
+    }
 }

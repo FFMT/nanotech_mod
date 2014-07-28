@@ -15,21 +15,21 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.MobFastZombie;
 
 public class RenderFastZombie extends RenderLiving
 {
-	protected static final ResourceLocation texture = new ResourceLocation("textures/entity/zombie/zombie.png");
+    protected static final ResourceLocation texture = new ResourceLocation("textures/entity/zombie/zombie.png");
 
-	public RenderFastZombie()
-	{
-		super(new ModelMobFastZombie(), 0.5F);
-	}
+    public RenderFastZombie()
+    {
+        super(new ModelMobFastZombie(), 0.5F);
+    }
 
-	protected ResourceLocation getFastTexture(MobFastZombie entity)
-	{
-		return texture;
-	}
+    protected ResourceLocation getFastTexture(MobFastZombie entity)
+    {
+        return texture;
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.getFastTexture((MobFastZombie)entity);
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.getFastTexture((MobFastZombie)entity);
+    }
 }

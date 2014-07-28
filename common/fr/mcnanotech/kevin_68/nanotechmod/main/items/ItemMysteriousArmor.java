@@ -16,34 +16,34 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemMysteriousArmor extends ItemArmor
 {
-	public ItemMysteriousArmor(ArmorMaterial enumArmorMaterial, int slot, int layer)
-	{
-		super(enumArmorMaterial, slot, layer);
-	}
+    public ItemMysteriousArmor(ArmorMaterial enumArmorMaterial, int slot, int layer)
+    {
+        super(enumArmorMaterial, slot, layer);
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public EnumRarity getRarity(ItemStack stack)
-	{
-		return EnumRarity.epic;
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public EnumRarity getRarity(ItemStack stack)
+    {
+        return EnumRarity.epic;
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if(stack.getItem().equals(NanotechItem.mysteriousLeggings))
-		{
-			return "nanotechmod:textures/armor/Mysteriousarmor2.png";
-		}
-		else
-		{
-			return "nanotechmod:textures/armor/Mysteriousarmor.png";
-		}
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if(stack.getItem().equals(NanotechItem.mysteriousLeggings))
+        {
+            return "nanotechmod:textures/armor/Mysteriousarmor2.png";
+        }
+        else
+        {
+            return "nanotechmod:textures/armor/Mysteriousarmor.png";
+        }
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack stack, ItemStack stack2)
-	{
-		return true;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack stack, ItemStack stack2)
+    {
+        return true;
+    }
 }

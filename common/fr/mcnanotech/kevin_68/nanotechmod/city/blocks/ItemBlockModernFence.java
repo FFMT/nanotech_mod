@@ -16,20 +16,20 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockModernFence extends ItemBlock
 {
-	public ItemBlockModernFence(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockModernFence(Block block)
+    {
+        super(block);
+    }
 
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister)
-	{
-		this.itemIcon = iconRegister.registerIcon("nanotechmodcity:modernFence");
-	}
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister iconRegister)
+    {
+        this.itemIcon = iconRegister.registerIcon("nanotechmodcity:modernFence");
+    }
 
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int par1)
-	{
-		return itemIcon;
-	}
+    @SideOnly(Side.CLIENT)
+    public IIcon getIconFromDamage(int par1)
+    {
+        return itemIcon;
+    }
 }

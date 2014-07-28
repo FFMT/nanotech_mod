@@ -13,26 +13,26 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockFakeOre extends ItemBlock
 {
-	public ItemBlockFakeOre(Block block)
-	{
-		super(block);
-		setHasSubtypes(true);
-	}
+    public ItemBlockFakeOre(Block block)
+    {
+        super(block);
+        setHasSubtypes(true);
+    }
 
-	public int getMetadata(int metadata)
-	{
-		return metadata;
-	}
+    public int getMetadata(int metadata)
+    {
+        return metadata;
+    }
 
-	public String getUnlocalizedName(ItemStack stack)
-	{
-		if(stack.getItemDamage() < BlockFakeOre.type.length)
-		{
-			return "tile." + BlockFakeOre.type[stack.getItemDamage()];
-		}
-		else
-		{
-			return getUnlocalizedName();
-		}
-	}
+    public String getUnlocalizedName(ItemStack stack)
+    {
+        if(stack.getItemDamage() < BlockFakeOre.type.length)
+        {
+            return "tile." + BlockFakeOre.type[stack.getItemDamage()];
+        }
+        else
+        {
+            return getUnlocalizedName();
+        }
+    }
 }

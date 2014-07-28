@@ -22,314 +22,314 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.utils.CTHelper;
 
 public class TileEntityTrailRenderTESR extends TileEntitySpecialRenderer
 {
-	private final ModelBlockTrail model;
-	private final ModelBlockTrailTilted model2;
-	protected static final ResourceLocation texture = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model1.png");
-	protected static final ResourceLocation texture2 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model2.png");
-	protected static final ResourceLocation texture3 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model3.png");
-	protected static final ResourceLocation texture4 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model4.png");
-	protected static final ResourceLocation texture5 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model5.png");
-	protected static final ResourceLocation texture6 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model6.png");
-	protected static final ResourceLocation texture7 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model7.png");
-	protected static final ResourceLocation texture8 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model8.png");
+    private final ModelBlockTrail model;
+    private final ModelBlockTrailTilted model2;
+    protected static final ResourceLocation texture = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model1.png");
+    protected static final ResourceLocation texture2 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model2.png");
+    protected static final ResourceLocation texture3 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model3.png");
+    protected static final ResourceLocation texture4 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model4.png");
+    protected static final ResourceLocation texture5 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model5.png");
+    protected static final ResourceLocation texture6 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model6.png");
+    protected static final ResourceLocation texture7 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model7.png");
+    protected static final ResourceLocation texture8 = new ResourceLocation(NanotechModCity.MODID + ":textures/blocks/trail/model8.png");
 
-	public TileEntityTrailRenderTESR()
-	{
-		this.model = new ModelBlockTrail();
-		this.model2 = new ModelBlockTrailTilted();
-	}
+    public TileEntityTrailRenderTESR()
+    {
+        this.model = new ModelBlockTrail();
+        this.model2 = new ModelBlockTrailTilted();
+    }
 
-	@Override
-	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float scale)
-	{
-		this.renderTileEntityAtBlockTrail((TileEntityTrail)tileentity, x, y, z, scale);
-	}
+    @Override
+    public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float scale)
+    {
+        this.renderTileEntityAtBlockTrail((TileEntityTrail)tileentity, x, y, z, scale);
+    }
 
-	public void renderTileEntityAtBlockTrail(TileEntityTrail tileentity, double x, double y, double z, float scale)
-	{
-		GL11.glPushMatrix();
-		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
+    public void renderTileEntityAtBlockTrail(TileEntityTrail tileentity, double x, double y, double z, float scale)
+    {
+        GL11.glPushMatrix();
+        GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
 
-		boolean[] flag = CTHelper.get(tileentity.getWorldObj(), tileentity.xCoord, tileentity.yCoord, tileentity.zCoord, NanotechCityBlock.trail);
+        boolean[] flag = CTHelper.get(tileentity.getWorldObj(), tileentity.xCoord, tileentity.yCoord, tileentity.zCoord, NanotechCityBlock.trail);
 
-		if((flag[CTHelper.VrN] || flag[CTHelper.SrN] || flag[CTHelper.tErN] || flag[CTHelper.tWrN] || flag[CTHelper.tEWrN] || flag[CTHelper.tSEWrN] || flag[CTHelper.tNSEWrN]) && !flag[CTHelper.SEWrN])
-		{
-			GL11.glScalef(1.0F, 0.99F, 0.999F);
-			GL11.glTranslatef(0.0F, -0.015F, 0.004F);
-			this.bindTexture(texture2);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			this.model2.render(0.0625F, 0);
-		}
-		else if((flag[CTHelper.VrS] || flag[CTHelper.NrS] || flag[CTHelper.tErS] || flag[CTHelper.tWrS] || flag[CTHelper.tEWrS] || flag[CTHelper.tNEWrS] || flag[CTHelper.tNSEWrS]) && !flag[CTHelper.NEWrS])
-		{
-			GL11.glScalef(1.0F, 0.99F, 0.999F);
-			GL11.glTranslatef(0.0F, -0.015F, -0.0048F);
-			this.bindTexture(texture2);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 0);
-		}
+        if((flag[CTHelper.VrN] || flag[CTHelper.SrN] || flag[CTHelper.tErN] || flag[CTHelper.tWrN] || flag[CTHelper.tEWrN] || flag[CTHelper.tSEWrN] || flag[CTHelper.tNSEWrN]) && !flag[CTHelper.SEWrN])
+        {
+            GL11.glScalef(1.0F, 0.99F, 0.999F);
+            GL11.glTranslatef(0.0F, -0.015F, 0.004F);
+            this.bindTexture(texture2);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            this.model2.render(0.0625F, 0);
+        }
+        else if((flag[CTHelper.VrS] || flag[CTHelper.NrS] || flag[CTHelper.tErS] || flag[CTHelper.tWrS] || flag[CTHelper.tEWrS] || flag[CTHelper.tNEWrS] || flag[CTHelper.tNSEWrS]) && !flag[CTHelper.NEWrS])
+        {
+            GL11.glScalef(1.0F, 0.99F, 0.999F);
+            GL11.glTranslatef(0.0F, -0.015F, -0.0048F);
+            this.bindTexture(texture2);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 0);
+        }
 
-		else if((flag[CTHelper.VrE] || flag[CTHelper.WrE] || flag[CTHelper.tNrE] || flag[CTHelper.tSrE] || flag[CTHelper.tNSrE] || flag[CTHelper.tNSWrE] || flag[CTHelper.tNSEWrE]) && !flag[CTHelper.NSWrE])
-		{
-			GL11.glScalef(0.999F, 0.99F, 1.0F);
-			GL11.glTranslatef(-0.004F, -0.015F, 0.0F);
-			this.bindTexture(texture2);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 0);
-		}
+        else if((flag[CTHelper.VrE] || flag[CTHelper.WrE] || flag[CTHelper.tNrE] || flag[CTHelper.tSrE] || flag[CTHelper.tNSrE] || flag[CTHelper.tNSWrE] || flag[CTHelper.tNSEWrE]) && !flag[CTHelper.NSWrE])
+        {
+            GL11.glScalef(0.999F, 0.99F, 1.0F);
+            GL11.glTranslatef(-0.004F, -0.015F, 0.0F);
+            this.bindTexture(texture2);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 0);
+        }
 
-		else if((flag[CTHelper.VrW] || flag[CTHelper.ErW] || flag[CTHelper.tNrW] || flag[CTHelper.tSrW] || flag[CTHelper.tNSrW] || flag[CTHelper.tNSErW] || flag[CTHelper.tNSEWrW]) && !flag[CTHelper.NSErW])
-		{
-			GL11.glScalef(0.999F, 0.99F, 1.0F);
-			GL11.glTranslatef(0.004F, -0.015F, 0.0F);
-			this.bindTexture(texture2);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(270F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 0);
-		}
-		else if(flag[CTHelper.VrNS] || flag[CTHelper.EWrNS])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(0.0F, -0.015F, 0.00F);
-			this.bindTexture(texture3);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			this.model2.render(0.0625F, 1);
-		}
-		else if(flag[CTHelper.VrEW] || flag[CTHelper.NSrEW])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(0.0F, -0.015F, 0.00F);
-			this.bindTexture(texture3);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 1);
-		}
-		else if(flag[CTHelper.VrNE] || flag[CTHelper.tSrNE] || flag[CTHelper.tWrNE] || flag[CTHelper.SWswrNEnenwse])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(-0.0045F, -0.015F, 0.0045F);
-			this.bindTexture(texture5);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			this.model2.render(0.0625F, 4);
-		}
-		else if(flag[CTHelper.VrNW] || flag[CTHelper.tSrNW] || flag[CTHelper.tErNW] || flag[CTHelper.SEserNWnenwsw])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(0.0046F, -0.015F, 0.0046F);
-			this.bindTexture(texture5);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(270F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 4);
-		}
-		else if(flag[CTHelper.VrSE] || flag[CTHelper.tNrSE] || flag[CTHelper.tWrSE] || flag[CTHelper.NWnwrSEnesesw])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(-0.0046F, -0.015F, -0.0046F);
-			this.bindTexture(texture5);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 4);
-		}
-		else if(flag[CTHelper.VrSW] || flag[CTHelper.tNrSW] || flag[CTHelper.tErSW] || flag[CTHelper.NEnerSWnwsesw])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(0.0046F, -0.015F, -0.0046F);
-			this.bindTexture(texture5);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 4);
-		}
-		else if(flag[CTHelper.VrNSE] || flag[CTHelper.WrNSE])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(0.0F, -0.015F, 0.0F);
-			this.bindTexture(texture7);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 6);
-		}
-		else if(flag[CTHelper.VrNSW] || flag[CTHelper.ErNSW])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(0.0F, -0.015F, 0.0F);
-			this.bindTexture(texture7);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			this.model2.render(0.0625F, 6);
-		}
-		else if(flag[CTHelper.VrNEW] || flag[CTHelper.SrNEW])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(0.0F, -0.015F, 0.0F);
-			this.bindTexture(texture7);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 6);
-		}
-		else if(flag[CTHelper.VrSEW] || flag[CTHelper.NrSEW])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(0.0F, -0.015F, 0.0F);
-			this.bindTexture(texture7);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(270F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 6);
-		}
-		else if(flag[CTHelper.VrNSEW])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(0.0F, -0.015F, 0.0F);
-			this.bindTexture(texture6);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			this.model2.render(0.0625F, 5);
-		}
-		else if(flag[CTHelper.tNErne])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(-0.0048F, -0.015F, 0.0048F);
-			this.bindTexture(texture2);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			this.model2.render(0.0625F, 2);
-			this.bindTexture(texture4);
-			this.model2.render(0.0625F, 3);
-		}
-		else if(flag[CTHelper.tNWrnw])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(0.0048F, -0.015F, 0.0048F);
-			this.bindTexture(texture2);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(270F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 2);
-			this.bindTexture(texture4);
-			this.model2.render(0.0625F, 3);
-		}
-		else if(flag[CTHelper.tSErse])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(-0.0048F, -0.015F, -0.0048F);
-			this.bindTexture(texture2);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 2);
-			this.bindTexture(texture4);
-			this.model2.render(0.0625F, 3);
-		}
-		else if(flag[CTHelper.tSWrsw])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(0.0048F, -0.015F, -0.0048F);
-			this.bindTexture(texture2);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 2);
-			this.bindTexture(texture4);
-			this.model2.render(0.0625F, 3);
-		}
-		else if(flag[CTHelper.NErSW])
-		{
-			GL11.glScalef(0.98F, 0.98F, 0.98F);
-			GL11.glTranslatef(0.0F, -0.03F, 0.0011F);
-			this.bindTexture(texture7);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(270F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 6);
-			this.bindTexture(texture6);
-			this.model2.render(0.0625F, 7);
-		}
-		else if(flag[CTHelper.NWrSE])
-		{
-			GL11.glScalef(0.98F, 0.98F, 0.98F);
-			GL11.glTranslatef(0.0011F, -0.03F, 0.0F);
-			this.bindTexture(texture7);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 6);
-			this.bindTexture(texture6);
-			this.model2.render(0.0625F, 7);
-		}
-		else if(flag[CTHelper.SErNW])
-		{
-			GL11.glScalef(0.98F, 0.98F, 0.98F);
-			GL11.glTranslatef(-0.0011F, -0.03F, 0.0F);
-			this.bindTexture(texture7);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			this.model2.render(0.0625F, 6);
-			this.bindTexture(texture6);
-			this.model2.render(0.0625F, 7);
-		}
-		else if(flag[CTHelper.SWrNE])
-		{
-			GL11.glScalef(0.98F, 0.98F, 0.98F);
-			GL11.glTranslatef(0.0F, -0.03F, -0.0011F);
-			this.bindTexture(texture7);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 6);
-			this.bindTexture(texture6);
-			this.model2.render(0.0625F, 7);
-		}
-		else if(flag[CTHelper.NSErW])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(0.0F, -0.015F, 0.00F);
-			this.bindTexture(texture3);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 1);
-			this.bindTexture(texture6);
-			GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 7);
-		}
-		else if(flag[CTHelper.NSWrE])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(0.0F, -0.015F, 0.00F);
-			this.bindTexture(texture3);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 1);
-			this.bindTexture(texture6);
-			this.model2.render(0.0625F, 7);
-		}
-		else if(flag[CTHelper.NEWrS])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(0.0F, -0.015F, 0.00F);
-			this.bindTexture(texture3);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			this.model2.render(0.0625F, 1);
-			this.bindTexture(texture6);
-			GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
-			this.model2.render(0.0625F, 7);
-		}
-		else if(flag[CTHelper.SEWrN])
-		{
-			GL11.glScalef(0.99F, 0.99F, 0.99F);
-			GL11.glTranslatef(0.0F, -0.015F, 0.00F);
-			this.bindTexture(texture3);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			this.model2.render(0.0625F, 1);
-			this.bindTexture(texture6);
-			this.model2.render(0.0625F, 7);
-		}
-		else if(flag[CTHelper.NSEWrnesenwsw])
-		{
-			GL11.glScalef(0.9995F, 0.9995F, 0.9995F);
-			GL11.glTranslatef(0.0F, -0.0046F, 0.0F);
-			this.bindTexture(texture8);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			this.model2.render(0.0625F, 8);
-		}
-		else
-		{
-			GL11.glScalef(0.9995F, 0.9995F, 0.9995F);
-			GL11.glTranslatef(0.0F, -0.0046F, 0.0F);
-			this.bindTexture(texture);
-			GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-			this.model.render(0.0625F);
-		}
-		GL11.glPopMatrix();
-	}
+        else if((flag[CTHelper.VrW] || flag[CTHelper.ErW] || flag[CTHelper.tNrW] || flag[CTHelper.tSrW] || flag[CTHelper.tNSrW] || flag[CTHelper.tNSErW] || flag[CTHelper.tNSEWrW]) && !flag[CTHelper.NSErW])
+        {
+            GL11.glScalef(0.999F, 0.99F, 1.0F);
+            GL11.glTranslatef(0.004F, -0.015F, 0.0F);
+            this.bindTexture(texture2);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(270F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 0);
+        }
+        else if(flag[CTHelper.VrNS] || flag[CTHelper.EWrNS])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(0.0F, -0.015F, 0.00F);
+            this.bindTexture(texture3);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            this.model2.render(0.0625F, 1);
+        }
+        else if(flag[CTHelper.VrEW] || flag[CTHelper.NSrEW])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(0.0F, -0.015F, 0.00F);
+            this.bindTexture(texture3);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 1);
+        }
+        else if(flag[CTHelper.VrNE] || flag[CTHelper.tSrNE] || flag[CTHelper.tWrNE] || flag[CTHelper.SWswrNEnenwse])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(-0.0045F, -0.015F, 0.0045F);
+            this.bindTexture(texture5);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            this.model2.render(0.0625F, 4);
+        }
+        else if(flag[CTHelper.VrNW] || flag[CTHelper.tSrNW] || flag[CTHelper.tErNW] || flag[CTHelper.SEserNWnenwsw])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(0.0046F, -0.015F, 0.0046F);
+            this.bindTexture(texture5);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(270F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 4);
+        }
+        else if(flag[CTHelper.VrSE] || flag[CTHelper.tNrSE] || flag[CTHelper.tWrSE] || flag[CTHelper.NWnwrSEnesesw])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(-0.0046F, -0.015F, -0.0046F);
+            this.bindTexture(texture5);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 4);
+        }
+        else if(flag[CTHelper.VrSW] || flag[CTHelper.tNrSW] || flag[CTHelper.tErSW] || flag[CTHelper.NEnerSWnwsesw])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(0.0046F, -0.015F, -0.0046F);
+            this.bindTexture(texture5);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 4);
+        }
+        else if(flag[CTHelper.VrNSE] || flag[CTHelper.WrNSE])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(0.0F, -0.015F, 0.0F);
+            this.bindTexture(texture7);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 6);
+        }
+        else if(flag[CTHelper.VrNSW] || flag[CTHelper.ErNSW])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(0.0F, -0.015F, 0.0F);
+            this.bindTexture(texture7);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            this.model2.render(0.0625F, 6);
+        }
+        else if(flag[CTHelper.VrNEW] || flag[CTHelper.SrNEW])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(0.0F, -0.015F, 0.0F);
+            this.bindTexture(texture7);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 6);
+        }
+        else if(flag[CTHelper.VrSEW] || flag[CTHelper.NrSEW])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(0.0F, -0.015F, 0.0F);
+            this.bindTexture(texture7);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(270F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 6);
+        }
+        else if(flag[CTHelper.VrNSEW])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(0.0F, -0.015F, 0.0F);
+            this.bindTexture(texture6);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            this.model2.render(0.0625F, 5);
+        }
+        else if(flag[CTHelper.tNErne])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(-0.0048F, -0.015F, 0.0048F);
+            this.bindTexture(texture2);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            this.model2.render(0.0625F, 2);
+            this.bindTexture(texture4);
+            this.model2.render(0.0625F, 3);
+        }
+        else if(flag[CTHelper.tNWrnw])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(0.0048F, -0.015F, 0.0048F);
+            this.bindTexture(texture2);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(270F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 2);
+            this.bindTexture(texture4);
+            this.model2.render(0.0625F, 3);
+        }
+        else if(flag[CTHelper.tSErse])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(-0.0048F, -0.015F, -0.0048F);
+            this.bindTexture(texture2);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 2);
+            this.bindTexture(texture4);
+            this.model2.render(0.0625F, 3);
+        }
+        else if(flag[CTHelper.tSWrsw])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(0.0048F, -0.015F, -0.0048F);
+            this.bindTexture(texture2);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 2);
+            this.bindTexture(texture4);
+            this.model2.render(0.0625F, 3);
+        }
+        else if(flag[CTHelper.NErSW])
+        {
+            GL11.glScalef(0.98F, 0.98F, 0.98F);
+            GL11.glTranslatef(0.0F, -0.03F, 0.0011F);
+            this.bindTexture(texture7);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(270F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 6);
+            this.bindTexture(texture6);
+            this.model2.render(0.0625F, 7);
+        }
+        else if(flag[CTHelper.NWrSE])
+        {
+            GL11.glScalef(0.98F, 0.98F, 0.98F);
+            GL11.glTranslatef(0.0011F, -0.03F, 0.0F);
+            this.bindTexture(texture7);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 6);
+            this.bindTexture(texture6);
+            this.model2.render(0.0625F, 7);
+        }
+        else if(flag[CTHelper.SErNW])
+        {
+            GL11.glScalef(0.98F, 0.98F, 0.98F);
+            GL11.glTranslatef(-0.0011F, -0.03F, 0.0F);
+            this.bindTexture(texture7);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            this.model2.render(0.0625F, 6);
+            this.bindTexture(texture6);
+            this.model2.render(0.0625F, 7);
+        }
+        else if(flag[CTHelper.SWrNE])
+        {
+            GL11.glScalef(0.98F, 0.98F, 0.98F);
+            GL11.glTranslatef(0.0F, -0.03F, -0.0011F);
+            this.bindTexture(texture7);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 6);
+            this.bindTexture(texture6);
+            this.model2.render(0.0625F, 7);
+        }
+        else if(flag[CTHelper.NSErW])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(0.0F, -0.015F, 0.00F);
+            this.bindTexture(texture3);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 1);
+            this.bindTexture(texture6);
+            GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 7);
+        }
+        else if(flag[CTHelper.NSWrE])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(0.0F, -0.015F, 0.00F);
+            this.bindTexture(texture3);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(90F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 1);
+            this.bindTexture(texture6);
+            this.model2.render(0.0625F, 7);
+        }
+        else if(flag[CTHelper.NEWrS])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(0.0F, -0.015F, 0.00F);
+            this.bindTexture(texture3);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            this.model2.render(0.0625F, 1);
+            this.bindTexture(texture6);
+            GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
+            this.model2.render(0.0625F, 7);
+        }
+        else if(flag[CTHelper.SEWrN])
+        {
+            GL11.glScalef(0.99F, 0.99F, 0.99F);
+            GL11.glTranslatef(0.0F, -0.015F, 0.00F);
+            this.bindTexture(texture3);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            this.model2.render(0.0625F, 1);
+            this.bindTexture(texture6);
+            this.model2.render(0.0625F, 7);
+        }
+        else if(flag[CTHelper.NSEWrnesenwsw])
+        {
+            GL11.glScalef(0.9995F, 0.9995F, 0.9995F);
+            GL11.glTranslatef(0.0F, -0.0046F, 0.0F);
+            this.bindTexture(texture8);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            this.model2.render(0.0625F, 8);
+        }
+        else
+        {
+            GL11.glScalef(0.9995F, 0.9995F, 0.9995F);
+            GL11.glTranslatef(0.0F, -0.0046F, 0.0F);
+            this.bindTexture(texture);
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+            this.model.render(0.0625F);
+        }
+        GL11.glPopMatrix();
+    }
 }

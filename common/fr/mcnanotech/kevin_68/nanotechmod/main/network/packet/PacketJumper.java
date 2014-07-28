@@ -7,65 +7,63 @@
  */
 package fr.mcnanotech.kevin_68.nanotechmod.main.network.packet;
 
+import io.netty.buffer.ByteBuf;
+
 import java.io.IOException;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntityJumper;
-import fr.minecraftforgefrance.ffmtlibs.network.AbstractPacket;
 import fr.minecraftforgefrance.ffmtlibs.network.FFMTPacket;
 
 public class PacketJumper extends FFMTPacket
 {
-	private int x, y, z, jump;
+    private int x, y, z, jump;
 
-	public PacketJumper()
-	{}
+    public PacketJumper()
+    {}
 
-	public PacketJumper(int x, int y, int z, int jumpValue)
-	{
-		this.x = x;
-		this.y = y;
-		this.z = z;
-		this.jump = jumpValue;
-	}
-	
-	@Override
-	public void writeData(ByteBuf buffer) throws IOException
-	{
-		buffer.writeInt(x);
-		buffer.writeInt(y);
-		buffer.writeInt(z);
-		buffer.writeInt(jump);
-	}
+    public PacketJumper(int x, int y, int z, int jumpValue)
+    {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.jump = jumpValue;
+    }
 
-	@Override
-	public void readData(ByteBuf buffer)
-	{
-		x = buffer.readInt();
-		y = buffer.readInt();
-		z = buffer.readInt();
-		jump = buffer.readInt();
-	}
+    @Override
+    public void writeData(ByteBuf buffer) throws IOException
+    {
+        buffer.writeInt(x);
+        buffer.writeInt(y);
+        buffer.writeInt(z);
+        buffer.writeInt(jump);
+    }
 
-	@Override
-	public void handleClientSide(EntityPlayer player)
-	{
+    @Override
+    public void readData(ByteBuf buffer)
+    {
+        x = buffer.readInt();
+        y = buffer.readInt();
+        z = buffer.readInt();
+        jump = buffer.readInt();
+    }
 
-	}
+    @Override
+    public void handleClientSide(EntityPlayer player)
+    {
 
-	@Override
-	public void handleServerSide(EntityPlayer player)
-	{
-		TileEntity tile = player.worldObj.getTileEntity(x, y, z);
+    }
 
-		if(tile instanceof TileEntityJumper)
-		{
-			TileEntityJumper te = (TileEntityJumper)tile;
-			te.setJumpHeight(jump);
-		}
-	}
+    @Override
+    public void handleServerSide(EntityPlayer player)
+    {
+        TileEntity tile = player.worldObj.getTileEntity(x, y, z);
+
+        if(tile instanceof TileEntityJumper)
+        {
+            TileEntityJumper te = (TileEntityJumper)tile;
+            te.setJumpHeight(jump);
+        }
+    }
 }

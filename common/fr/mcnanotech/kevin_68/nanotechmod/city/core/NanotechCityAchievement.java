@@ -14,22 +14,22 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.other.NanotechAchievement;
 
 public class NanotechCityAchievement
 {
-	public static Achievement blockSpotLight, blockTrail, blockTrashCan;
+    public static Achievement blockSpotLight, blockTrail, blockTrashCan;
 
-	public static void initAchievement()
-	{
-		blockSpotLight = new Achievement("nanotechmodcityachievement1", "blockSpotLight", 1, -1, NanotechCityBlock.spotlight, Loader.isModLoaded("NanotechMod") ? NanotechAchievement.getInstallModAchievement() : null);
-		blockTrail = new Achievement("nanotechmodcityachievement2", "blockTrail", 1, -2, NanotechCityBlock.trail, Loader.isModLoaded("NanotechMod") ? NanotechAchievement.getInstallModAchievement() : null);
-		blockTrashCan = new Achievement("nanotechmodcityachievement3", "blockTrashCan", 1, -3, NanotechCityBlock.trashcan, Loader.isModLoaded("NanotechMod") ? NanotechAchievement.getInstallModAchievement() : null);
-	}
+    public static void initAchievement()
+    {
+        blockSpotLight = new Achievement("nanotechmodcityachievement1", "blockSpotLight", 1, -1, NanotechCityBlock.spotlight, Loader.isModLoaded("NanotechMod") ? NanotechAchievement.getInstallModAchievement() : null);
+        blockTrail = new Achievement("nanotechmodcityachievement2", "blockTrail", 1, -2, NanotechCityBlock.trail, Loader.isModLoaded("NanotechMod") ? NanotechAchievement.getInstallModAchievement() : null);
+        blockTrashCan = new Achievement("nanotechmodcityachievement3", "blockTrashCan", 1, -3, NanotechCityBlock.trashcan, Loader.isModLoaded("NanotechMod") ? NanotechAchievement.getInstallModAchievement() : null);
+    }
 
-	public static void addAchievementInPage()
-	{
-		if(Loader.isModLoaded("NanotechMod"))
-		{
-			NanotechAchievement.pageNanotech.getAchievements().add(blockSpotLight);
-			NanotechAchievement.pageNanotech.getAchievements().add(blockTrail);
-			NanotechAchievement.pageNanotech.getAchievements().add(blockTrashCan);
-		}
-	}
+    public static void addAchievementInPage()
+    {
+        if(Loader.isModLoaded("NanotechMod"))
+        {
+            NanotechAchievement.pageNanotech.getAchievements().add(blockSpotLight);
+            NanotechAchievement.pageNanotech.getAchievements().add(blockTrail);
+            NanotechAchievement.pageNanotech.getAchievements().add(blockTrashCan);
+        }
+    }
 }

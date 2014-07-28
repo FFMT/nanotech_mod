@@ -12,16 +12,16 @@ import net.minecraft.item.ItemStack;
 
 public class ItemNanomiteHoe extends ItemHoe
 {
-	public ItemNanomiteHoe(ToolMaterial toolMaterial)
-	{
-		super(toolMaterial);
-	}
+    public ItemNanomiteHoe(ToolMaterial toolMaterial)
+    {
+        super(toolMaterial);
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)
-	{
-		if(stack.getItem().equals(this) && repairItem.getItem() == NanotechItem.itemBase && repairItem.getItemDamage() == 14)
-			return true;
-		return false;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack stack, ItemStack repairItem)
+    {
+        if(stack.getItem().equals(this) && repairItem.getItem() == NanotechItem.itemBase && repairItem.getItemDamage() == 14)
+            return true;
+        return false;
+    }
 }

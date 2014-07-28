@@ -15,21 +15,21 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.entity.mobs.MobSuperSkeleton;
 
 public class RenderMobSuperSkeleton extends RenderLiving
 {
-	protected static final ResourceLocation texture = new ResourceLocation("nanotechmod:textures/entity/superskeleton.png");
+    protected static final ResourceLocation texture = new ResourceLocation("nanotechmod:textures/entity/superskeleton.png");
 
-	public RenderMobSuperSkeleton()
-	{
-		super(new ModelSuperSkeleton(), 0.5F);
-	}
+    public RenderMobSuperSkeleton()
+    {
+        super(new ModelSuperSkeleton(), 0.5F);
+    }
 
-	protected ResourceLocation getSkeletonTexture(MobSuperSkeleton entity)
-	{
-		return texture;
-	}
+    protected ResourceLocation getSkeletonTexture(MobSuperSkeleton entity)
+    {
+        return texture;
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.getSkeletonTexture((MobSuperSkeleton)entity);
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.getSkeletonTexture((MobSuperSkeleton)entity);
+    }
 }

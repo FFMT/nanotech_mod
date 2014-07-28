@@ -18,70 +18,70 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.entity.others.EntityReinforcedFis
 
 public class ItemReinforcedFishingRod extends ItemFishingRod
 {
-	private IIcon theIcon;
+    private IIcon theIcon;
 
-	public ItemReinforcedFishingRod()
-	{
-		super();
-		this.setMaxDamage(128);
-	}
+    public ItemReinforcedFishingRod()
+    {
+        super();
+        this.setMaxDamage(128);
+    }
 
-	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
-	{
-		if(player.fishEntity != null)
-		{
-			int i = player.fishEntity.func_146034_e();
-			stack.damageItem(i, player);
-			player.swingItem();
-			if(!stack.hasTagCompound())
-			{
-				stack.setTagCompound(new NBTTagCompound());
-			}
-			NBTTagCompound tag = stack.getTagCompound();
-			tag.setBoolean("using", false);
-		}
-		else
-		{
-			world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+    public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
+    {
+        if(player.fishEntity != null)
+        {
+            int i = player.fishEntity.func_146034_e();
+            stack.damageItem(i, player);
+            player.swingItem();
+            if(!stack.hasTagCompound())
+            {
+                stack.setTagCompound(new NBTTagCompound());
+            }
+            NBTTagCompound tag = stack.getTagCompound();
+            tag.setBoolean("using", false);
+        }
+        else
+        {
+            world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
-			if(!world.isRemote)
-			{
-				world.spawnEntityInWorld(new EntityReinforcedFishingHook(world, player));
-			}
-			if(!stack.hasTagCompound())
-			{
-				stack.setTagCompound(new NBTTagCompound());
-			}
-			NBTTagCompound tag = stack.getTagCompound();
-			tag.setBoolean("using", true);
-			player.swingItem();
-		}
-		return stack;
-	}
+            if(!world.isRemote)
+            {
+                world.spawnEntityInWorld(new EntityReinforcedFishingHook(world, player));
+            }
+            if(!stack.hasTagCompound())
+            {
+                stack.setTagCompound(new NBTTagCompound());
+            }
+            NBTTagCompound tag = stack.getTagCompound();
+            tag.setBoolean("using", true);
+            player.swingItem();
+        }
+        return stack;
+    }
 
-	public void registerIcons(IIconRegister iiconRegister)
-	{
-		this.itemIcon = iiconRegister.registerIcon(this.getIconString() + "_uncast");
-		this.theIcon = iiconRegister.registerIcon(this.getIconString() + "_cast");
-	}
+    public void registerIcons(IIconRegister iiconRegister)
+    {
+        this.itemIcon = iiconRegister.registerIcon(this.getIconString() + "_uncast");
+        this.theIcon = iiconRegister.registerIcon(this.getIconString() + "_cast");
+    }
 
-	@Override
-	public IIcon getIcon(ItemStack stack, int multiPassRender)
-	{
-		if(!stack.hasTagCompound())
-		{
-			stack.setTagCompound(new NBTTagCompound());
-		}
-		NBTTagCompound tag = stack.getTagCompound();
+    @Override
+    public IIcon getIcon(ItemStack stack, int multiPassRender)
+    {
+        if(!stack.hasTagCompound())
+        {
+            stack.setTagCompound(new NBTTagCompound());
+        }
+        NBTTagCompound tag = stack.getTagCompound();
 
-		if(tag.hasKey("using"))
-		{
-			boolean using = tag.getBoolean("using");
-			if(!using)
-			{
-				return itemIcon;
-			}
-		}
-		return theIcon;
-	}
+        if(tag.hasKey("using"))
+        {
+            boolean using = tag.getBoolean("using");
+            if(!using)
+            {
+                return itemIcon;
+            }
+        }
+        return theIcon;
+    }
 }

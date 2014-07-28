@@ -13,20 +13,20 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockMachine extends ItemBlock
 {
-	public ItemBlockMachine(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockMachine(Block block)
+    {
+        super(block);
+    }
 
-	public String getUnlocalizedName(ItemStack stack)
-	{
-		if(stack.getItemDamage() >= 0 && stack.getItemDamage() < BlockNanotechMachine.subName.length)
-		{
-			return getUnlocalizedName() + "." + BlockNanotechMachine.subName[stack.getItemDamage()];
-		}
-		else
-		{
-			return getUnlocalizedName();
-		}
-	}
+    public String getUnlocalizedName(ItemStack stack)
+    {
+        if(stack.getItemDamage() >= 0 && stack.getItemDamage() < BlockNanotechMachine.subName.length)
+        {
+            return getUnlocalizedName() + "." + BlockNanotechMachine.subName[stack.getItemDamage()];
+        }
+        else
+        {
+            return getUnlocalizedName();
+        }
+    }
 }

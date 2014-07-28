@@ -12,30 +12,30 @@ import net.minecraft.client.model.ModelRenderer;
 
 public class ModelBlockTrail extends ModelBase
 {
-	ModelRenderer Block;
+    ModelRenderer Block;
 
-	public ModelBlockTrail()
-	{
-		textureWidth = 64;
-		textureHeight = 32;
+    public ModelBlockTrail()
+    {
+        textureWidth = 64;
+        textureHeight = 32;
 
-		Block = new ModelRenderer(this, 0, 0);
-		Block.addBox(-8F, -7.99F, -8F, 16, 16, 16);
-		Block.setRotationPoint(0F, 16F, 0F);
-		Block.setTextureSize(64, 32);
-		Block.mirror = true;
-		setRotation(Block, 0F, 0F, 0F);
-	}
+        Block = new ModelRenderer(this, 0, 0);
+        Block.addBox(-8F, -7.99F, -8F, 16, 16, 16);
+        Block.setRotationPoint(0F, 16F, 0F);
+        Block.setTextureSize(64, 32);
+        Block.mirror = true;
+        setRotation(Block, 0F, 0F, 0F);
+    }
 
-	public void render(float f)
-	{
-		Block.render(f);
-	}
+    public void render(float f)
+    {
+        Block.render(f);
+    }
 
-	private void setRotation(ModelRenderer model, float x, float y, float z)
-	{
-		model.rotateAngleX = x;
-		model.rotateAngleY = y;
-		model.rotateAngleZ = z;
-	}
+    private void setRotation(ModelRenderer model, float x, float y, float z)
+    {
+        model.rotateAngleX = x;
+        model.rotateAngleY = y;
+        model.rotateAngleZ = z;
+    }
 }

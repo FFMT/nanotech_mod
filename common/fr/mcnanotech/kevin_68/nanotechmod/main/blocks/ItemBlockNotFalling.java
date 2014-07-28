@@ -13,26 +13,26 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockNotFalling extends ItemBlock
 {
-	public ItemBlockNotFalling(Block block)
-	{
-		super(block);
-		setHasSubtypes(true);
-	}
+    public ItemBlockNotFalling(Block block)
+    {
+        super(block);
+        setHasSubtypes(true);
+    }
 
-	public int getMetadata(int metadata)
-	{
-		return metadata;
-	}
+    public int getMetadata(int metadata)
+    {
+        return metadata;
+    }
 
-	public String getUnlocalizedName(ItemStack stack)
-	{
-		if(stack.getItemDamage() < BlockNotFalling.type.length)
-		{
-			return getUnlocalizedName() + BlockNotFalling.type[stack.getItemDamage()];
-		}
-		else
-		{
-			return getUnlocalizedName();
-		}
-	}
+    public String getUnlocalizedName(ItemStack stack)
+    {
+        if(stack.getItemDamage() < BlockNotFalling.type.length)
+        {
+            return getUnlocalizedName() + BlockNotFalling.type[stack.getItemDamage()];
+        }
+        else
+        {
+            return getUnlocalizedName();
+        }
+    }
 }

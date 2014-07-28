@@ -20,52 +20,52 @@ import fr.mcnanotech.kevin_68.nanotechmod.city.tileentity.TileEntityTextSpotLigh
 
 public class BlockTextSpotLight extends BlockContainer
 {
-	protected BlockTextSpotLight()
-	{
-		super(Material.iron);
-		this.setLightLevel(1.0F);
-	}
+    protected BlockTextSpotLight()
+    {
+        super(Material.iron);
+        this.setLightLevel(1.0F);
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int metadata)
-	{
-		return new TileEntityTextSpotLight();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world, int metadata)
+    {
+        return new TileEntityTextSpotLight();
+    }
 
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
 
-	public int getRenderType()
-	{
-		return 0;
-	}
+    public int getRenderType()
+    {
+        return 0;
+    }
 
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister iconregister)
-	{
-		this.blockIcon = iconregister.registerIcon("nanotechmodcity:spotlight");
-	}
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister iconregister)
+    {
+        this.blockIcon = iconregister.registerIcon("nanotechmodcity:spotlight");
+    }
 
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
-	{
-		TileEntity tileentity = world.getTileEntity(x, y, z);
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
+    {
+        TileEntity tileentity = world.getTileEntity(x, y, z);
 
-		if(tileentity == null || player.isSneaking())
-		{
-			return false;
-		}
-		else
-		{
-			player.openGui(NanotechModCity.modInstance, 3, world, x, y, z);
-			return true;
-		}
-	}
+        if(tileentity == null || player.isSneaking())
+        {
+            return false;
+        }
+        else
+        {
+            player.openGui(NanotechModCity.modInstance, 3, world, x, y, z);
+            return true;
+        }
+    }
 
 }

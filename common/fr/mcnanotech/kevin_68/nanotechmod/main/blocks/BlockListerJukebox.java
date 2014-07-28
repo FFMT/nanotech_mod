@@ -19,44 +19,44 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.tileentity.TileEntitySoundBox;
 
 public class BlockListerJukebox extends BlockContainer
 {
-	public BlockListerJukebox()
-	{
-		super(Material.wood);
-	}
+    public BlockListerJukebox()
+    {
+        super(Material.wood);
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int metadata)
-	{
-		return new TileEntitySoundBox();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world, int metadata)
+    {
+        return new TileEntitySoundBox();
+    }
 
-	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t)
-	{
-		TileEntity tileentity = world.getTileEntity(x, y, z);
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t)
+    {
+        TileEntity tileentity = world.getTileEntity(x, y, z);
 
-		if(tileentity == null || player.isSneaking())
-		{
-			return true;
-		}
+        if(tileentity == null || player.isSneaking())
+        {
+            return true;
+        }
 
-		if(!world.isRemote)
-		{
-			player.openGui(NanotechMod.modInstance, 3, world, x, y, z);
-		}
+        if(!world.isRemote)
+        {
+            player.openGui(NanotechMod.modInstance, 3, world, x, y, z);
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	@Override
-	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata)
-	{
-		Minecraft.getMinecraft().getSoundHandler().stopSounds();
-	}
+    @Override
+    public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata)
+    {
+        Minecraft.getMinecraft().getSoundHandler().stopSounds();
+    }
 
-	@Override
-	public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion par5Explosion)
-	{
-		this.onBlockDestroyedByPlayer(world, x, y, z, world.getBlockMetadata(x, y, z));
-	}
+    @Override
+    public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion par5Explosion)
+    {
+        this.onBlockDestroyedByPlayer(world, x, y, z, world.getBlockMetadata(x, y, z));
+    }
 }

@@ -43,73 +43,73 @@ import fr.mcnanotech.kevin_68.nanotechmod.main.world.NitrogenOcean;
 
 public class NanotechOther
 {
-	protected static final BiomeGenBase.Height height_nanotechBiome = new BiomeGenBase.Height(0.0F, 0.1F);
-	protected static final BiomeGenBase.Height height_nitrogenOcean = new BiomeGenBase.Height(-0.5F, 0.0F);
+    protected static final BiomeGenBase.Height height_nanotechBiome = new BiomeGenBase.Height(0.0F, 0.1F);
+    protected static final BiomeGenBase.Height height_nitrogenOcean = new BiomeGenBase.Height(-0.5F, 0.0F);
 
-	public static BiomeGenBase nanotechBiome;
-	public static BiomeGenBase nitrogenOcean;
+    public static BiomeGenBase nanotechBiome;
+    public static BiomeGenBase nitrogenOcean;
 
-	public static Potion freeze;
+    public static Potion freeze;
 
-	public static void initPotion()
-	{
-		freeze = new NanotechPotion(30, true, 3035801).setPotionName("potion.freeze").func_111184_a(SharedMonsterAttributes.movementSpeed, "7107DE5E-7CE8-4030-940E-514C1F160890", -0.50000000596046448D, 2);
-		NanotechMod.nanoLogger.info("Potion initialized");
-	}
+    public static void initPotion()
+    {
+        freeze = new NanotechPotion(30, true, 3035801).setPotionName("potion.freeze").func_111184_a(SharedMonsterAttributes.movementSpeed, "7107DE5E-7CE8-4030-940E-514C1F160890", -0.50000000596046448D, 2);
+        NanotechMod.nanoLogger.info("Potion initialized");
+    }
 
-	public static void initBiomes()
-	{
-		nanotechBiome = new NanotechBiome(NanotechConfiguration.nanotechBiomeID).setBiomeName("Nanotechbiome").setTemperatureRainfall(1.2F, 0.9F).setHeight(height_nanotechBiome);
-		nitrogenOcean = new NitrogenOcean(NanotechConfiguration.nitrogenOceanID).setBiomeName("NitrogenOcean").setTemperatureRainfall(-15.0F, -10.0F).setHeight(height_nitrogenOcean);
-	}
+    public static void initBiomes()
+    {
+        nanotechBiome = new NanotechBiome(NanotechConfiguration.nanotechBiomeID).setBiomeName("Nanotechbiome").setTemperatureRainfall(1.2F, 0.9F).setHeight(height_nanotechBiome);
+        nitrogenOcean = new NitrogenOcean(NanotechConfiguration.nitrogenOceanID).setBiomeName("NitrogenOcean").setTemperatureRainfall(-15.0F, -10.0F).setHeight(height_nitrogenOcean);
+    }
 
-	public static void initGuiHandler()
-	{
-		NetworkRegistry.INSTANCE.registerGuiHandler(NanotechMod.modInstance, new GuiHandler());
-	}
+    public static void initGuiHandler()
+    {
+        NetworkRegistry.INSTANCE.registerGuiHandler(NanotechMod.modInstance, new GuiHandler());
+    }
 
-	public static void initTileEntity()
-	{
-		GameRegistry.registerTileEntity(TileEntityJumper.class, "TileEntityJumper");
-		GameRegistry.registerTileEntity(TileEntitySmoker.class, "TileEntitySmoker");
-		GameRegistry.registerTileEntity(TileEntityMultiplier.class, "TileEntityMultiplier");
-		GameRegistry.registerTileEntity(TileEntitySoundBox.class, "TileEntityListerJukebox");
-		GameRegistry.registerTileEntity(TileEntityButton.class, "TileEntityButton");
-		GameRegistry.registerTileEntity(TileEntityPresent.class, "TileEntityPresent");
-		GameRegistry.registerTileEntity(TileEntityPortableChest.class, "TileEntityPortableChest");
-	}
+    public static void initTileEntity()
+    {
+        GameRegistry.registerTileEntity(TileEntityJumper.class, "TileEntityJumper");
+        GameRegistry.registerTileEntity(TileEntitySmoker.class, "TileEntitySmoker");
+        GameRegistry.registerTileEntity(TileEntityMultiplier.class, "TileEntityMultiplier");
+        GameRegistry.registerTileEntity(TileEntitySoundBox.class, "TileEntityListerJukebox");
+        GameRegistry.registerTileEntity(TileEntityButton.class, "TileEntityButton");
+        GameRegistry.registerTileEntity(TileEntityPresent.class, "TileEntityPresent");
+        GameRegistry.registerTileEntity(TileEntityPortableChest.class, "TileEntityPortableChest");
+    }
 
-	public static void initEvent(Side side)
-	{
-		FMLCommonHandler.instance().bus().register(new PlayerEvent());
-		FMLCommonHandler.instance().bus().register(new EventTick());
-		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
-		MinecraftForge.EVENT_BUS.register(new LivingEvent());
-		MinecraftForge.EVENT_BUS.register(new BucketEvent());
-		if(side.isClient())
-		{
-			MinecraftForge.EVENT_BUS.register(new RenderEvent());
-		}
-	}
+    public static void initEvent(Side side)
+    {
+        FMLCommonHandler.instance().bus().register(new PlayerEvent());
+        FMLCommonHandler.instance().bus().register(new EventTick());
+        MinecraftForge.EVENT_BUS.register(new EventBonemeal());
+        MinecraftForge.EVENT_BUS.register(new LivingEvent());
+        MinecraftForge.EVENT_BUS.register(new BucketEvent());
+        if(side.isClient())
+        {
+            MinecraftForge.EVENT_BUS.register(new RenderEvent());
+        }
+    }
 
-	public static void initForgeDictionary()
-	{
-		OreDictionary.registerOre("logWood", new ItemStack(NanotechBlock.nanoWood));
-		OreDictionary.registerOre("plankWood", new ItemStack(NanotechBlock.nanoPlank));
-		OreDictionary.registerOre("treeSapling", new ItemStack(NanotechBlock.nanoSaplings));
-		OreDictionary.registerOre("treeLeaves", new ItemStack(NanotechBlock.nanoLeaves));
-	}
+    public static void initForgeDictionary()
+    {
+        OreDictionary.registerOre("logWood", new ItemStack(NanotechBlock.nanoWood));
+        OreDictionary.registerOre("plankWood", new ItemStack(NanotechBlock.nanoPlank));
+        OreDictionary.registerOre("treeSapling", new ItemStack(NanotechBlock.nanoSaplings));
+        OreDictionary.registerOre("treeLeaves", new ItemStack(NanotechBlock.nanoLeaves));
+    }
 
-	public static void initWorld()
-	{
-		DimensionManager.registerProviderType(NanotechConfiguration.dimensionID, NanotechWorldProvider.class, false);
-		DimensionManager.registerDimension(NanotechConfiguration.dimensionID, NanotechConfiguration.dimensionID);
-		// TODO fix unable to create new world / very laggy if WorldGenerator is
-		// not commented
-		// GameRegistry.registerWorldGenerator(new WorldGeneration(), 0);
+    public static void initWorld()
+    {
+        DimensionManager.registerProviderType(NanotechConfiguration.dimensionID, NanotechWorldProvider.class, false);
+        DimensionManager.registerDimension(NanotechConfiguration.dimensionID, NanotechConfiguration.dimensionID);
+        // TODO fix unable to create new world / very laggy if WorldGenerator is
+        // not commented
+        // GameRegistry.registerWorldGenerator(new WorldGeneration(), 0);
 
-		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechBlock.sodium), 1, 5, 6));
-		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechItem.nanoDisc), 1, 1, 2));
-		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechItem.alters), 1, 1, 10));
-	}
+        ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechBlock.sodium), 1, 5, 6));
+        ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(NanotechItem.nanoDisc), 1, 1, 2));
+        ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(NanotechItem.alters), 1, 1, 10));
+    }
 }
