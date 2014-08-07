@@ -18,7 +18,7 @@ buildscript {
 apply plugin: 'forge'
 
 ext.buildnumber = 0
-version = "2.3.1"
+version = "3.0.0"
 group= "fr.mcnanotech.kevin_68"
 archivesBaseName = "NanotechMod"
 
@@ -31,7 +31,7 @@ else {
 }
 
 minecraft {
-    version = "1.7.2-10.12.1.1110"
+    version = "1.7.10-10.13.0.1160"
     assetDir = "run/assets"
 	
     replace '@VERSION@', project.version
@@ -54,19 +54,12 @@ dependencies {
         lib.mkdirs()
     }
     
-    def ffmtlibUrl = "http://ci.mcnanotech.fr/job/FFMT-libs/80/artifact/build/libs/FFMT-libs-deobf-dev-1.4.2.80-mc1.7.2.jar"
+    def ffmtlibUrl = "http://ci.mcnanotech.fr/job/FFMT-libs/105/artifact/build/libs/FFMT-libs-universal-1.5.0.105-mc1.7.10.jar"
     def ffmtlib = new File(rootProject.projectDir, "libs/" + ffmtlibUrl.tokenize("/")[-1])
     if (!ffmtlib.exists()) {
         new URL(ffmtlibUrl).withInputStream{ i -> ffmtlib.withOutputStream{ it << i }}
     }
     compile files(ffmtlib.getPath())
-		
-    def ic2Url = "http://ic2api.player.to:8080/job/IC2_experimental/440/artifact/packages/industrialcraft-2-dev-deobf_2.1.440-experimental.jar"
-    def ic2 = new File(rootProject.projectDir, "libs/" + ic2Url.tokenize("/")[-1])
-    if (!ic2.exists()) {
-        new URL(ic2Url).withInputStream{ i -> ic2.withOutputStream{ it << i }}
-    }
-    compile files(ic2.getPath())
 }
 
 processResources
@@ -87,40 +80,9 @@ processResources
 
 jar {
     from project.sourceSets.main.output
-	    include "fr/mcnanotech/kevin_68/nanotechmod/main/**"
+	    include "fr/mcnanotech/kevin_68/nanotechmod/core/**"
         include "assets/nanotechmod/**"
 		include "mcmod.info"
     appendix = 'core-universal'
     version = "${project.version}-mc${project.minecraft.version}"
 }
-
-task cityJar(dependsOn: "jar", type: Jar){
-    from project.sourceSets.main.output
-        appendix = 'city-universal'
-        include "fr/mcnanotech/kevin_68/nanotechmod/city/**"
-        include "assets/nanotechmodcity/**"
-		version = "${project.version}-mc${project.minecraft.version}"
-}
-task ugsJar(dependsOn: "jar", type: Jar){
-    from project.sourceSets.main.output
-        appendix = 'ugs-universal'
-        include "fr/mcnanotech/kevin_68/nanotechmod/ultimategravisuite/**"
-        include "assets/ultimategravisuite/**"
-		version = "${project.version}-mc${project.minecraft.version}"
-}
-
-reobf {
-    reobf(cityJar) {
-	reobfSpec -> reobfSpec.classpath = project.sourceSets.main.compileClasspath
-    }
-	reobf(ugsJar) { 
-	reobfSpec -> reobfSpec.classpath = project.sourceSets.main.compileClasspath
-    }
-}
-
-artifacts {
-    archives cityJar
-    archives ugsJar
-}
-
-build.dependsOn ugsJar, cityJar
