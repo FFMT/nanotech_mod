@@ -665,7 +665,7 @@ public class TileEntitySpotLightRender extends TileEntitySpecialRenderer
                 GL11.glScalef(((int)((tileentity.getTxtScale() & 0xFF) * 3.96F + 10)) / 100.0F, ((int)((tileentity.getTxtScale() & 0xFF) * 3.96F + 10)) / 100.0F, ((int)((tileentity.getTxtScale() & 0xFF) * 3.96F + 10)) / 100.0F);
                 GL11.glScaled(1.0, 1.0, 1.0);
                 String s = tileentity.getDisplayText();
-                fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, -20, (tileentity.getTxtRed() * 65536) + (tileentity.getTxtGreen() * 256) + tileentity.getTxtBlue());
+                fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, -20, ((tileentity.getTxtRed() & 0xFF) * 65536) + ((tileentity.getTxtGreen() & 0xFF) * 256) + (tileentity.getTxtBlue() & 0xFF));
                 GL11.glDepthMask(true);
                 GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                 GL11.glPopMatrix();
