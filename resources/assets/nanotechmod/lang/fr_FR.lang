@@ -47,5 +47,6 @@ container.spotlight.delname=Supression: Nom de la texture
 container.spotlight.textEnabled=Texte
 container.spotlight.laserHeight=Hauteur du laser
 container.spotlight.text=Config du texte
+container.spotlight.text2=Config du texte 2
 container.spotlight.scale=Taille du texte
 container.spotlight.height=Hauteur du texte

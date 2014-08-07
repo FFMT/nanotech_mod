@@ -45,5 +45,6 @@ container.spotlight.delname=Delete: Texture name
 container.spotlight.textEnabled=Text
 container.spotlight.laserHeight=Laser height
 container.spotlight.text=Text config
+container.spotlight.text2=Text config 2
 container.spotlight.scale=Text scale
 container.spotlight.height=Text height
