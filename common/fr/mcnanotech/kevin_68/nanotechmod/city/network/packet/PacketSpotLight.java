@@ -69,4 +69,10 @@ public class PacketSpotLight extends FFMTPacket
             te.set(index, value);
         }
     }
+
+    @Override
+    public int getDiscriminator()
+    {
+        return 0;
+    }
 }

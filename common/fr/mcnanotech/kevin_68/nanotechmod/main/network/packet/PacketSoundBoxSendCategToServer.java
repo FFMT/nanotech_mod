@@ -57,4 +57,10 @@ public class PacketSoundBoxSendCategToServer extends FFMTPacket
     {
         UtilSoundBox.importCategoryToServer(new CategoryEntry(this.name, this.owner, this.color, this.id));
     }
+    
+    @Override
+    public int getDiscriminator()
+    {
+        return 3;
+    }
 }

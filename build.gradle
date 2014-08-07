@@ -18,6 +18,7 @@ buildscript {
 apply plugin: 'forge'
 
 ext.buildnumber = 0
+
 version = "2.3.1"
 group= "fr.mcnanotech.kevin_68"
 archivesBaseName = "NanotechMod"
@@ -31,8 +32,8 @@ else {
 }
 
 minecraft {
-    version = "1.7.10-10.13.0.1179"
-    runDir = "run/assets"
+    version = "1.7.10-10.13.0.1199"
+    runDir = "build"
 	
     replace '@VERSION@', project.version
 }
@@ -48,25 +49,20 @@ sourceSets {
     }
 }
 
+repositories {
+    maven {
+        name = "ic2"
+        url = "http://maven.ic2.player.to/"
+    }
+    maven {
+        name = "mff"
+        url = "http://files.minecraftforgefrance.fr/maven/"
+    }
+}
+
 dependencies {
-    def lib = new File(rootProject.projectDir, 'libs')
-    if(!lib.exists()) {
-        lib.mkdirs()
-    }
-    
-    def ffmtlibUrl = "http://ci.mcnanotech.fr/job/FFMT-libs/80/artifact/build/libs/FFMT-libs-deobf-dev-1.4.2.80-mc1.7.2.jar"
-    def ffmtlib = new File(rootProject.projectDir, "libs/" + ffmtlibUrl.tokenize("/")[-1])
-    if (!ffmtlib.exists()) {
-        new URL(ffmtlibUrl).withInputStream{ i -> ffmtlib.withOutputStream{ it << i }}
-    }
-    compile files(ffmtlib.getPath())
-		
-    def ic2Url = "http://jenkins.ic2.player.to/job/IC2_experimental/506/artifact/build/libs/industrialcraft-2-2.2.506-experimental-dev.jar"
-    def ic2 = new File(rootProject.projectDir, "libs/" + ic2Url.tokenize("/")[-1])
-    if (!ic2.exists()) {
-        new URL(ic2Url).withInputStream{ i -> ic2.withOutputStream{ it << i }}
-    }
-    compile files(ic2.getPath())
+    compile 'fr.minecraftforgefrance:FFMT-libs:1.5.0.105-mc1.7.10:dev'
+    compile 'net.industrial-craft:industrialcraft-2:2.2.508-experimental:dev'	
 }
 
 processResources

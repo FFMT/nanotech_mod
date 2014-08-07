@@ -79,4 +79,10 @@ public class PacketSaber extends FFMTPacket
                 NanotechMod.nanoLogger.error("A saber packet has a bad type, this is a bug");
         }
     }
+    
+    @Override
+    public int getDiscriminator()
+    {
+        return 1;
+    }
 }

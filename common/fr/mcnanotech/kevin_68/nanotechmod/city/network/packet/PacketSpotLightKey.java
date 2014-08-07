@@ -76,4 +76,10 @@ public class PacketSpotLightKey extends FFMTPacket
             te.set(index, value, time);
         }
     }
+
+    @Override
+    public int getDiscriminator()
+    {
+        return 1;
+    }
 }

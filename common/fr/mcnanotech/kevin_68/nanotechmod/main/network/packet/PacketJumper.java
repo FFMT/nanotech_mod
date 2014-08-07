@@ -66,4 +66,10 @@ public class PacketJumper extends FFMTPacket
             te.setJumpHeight(jump);
         }
     }
+
+    @Override
+    public int getDiscriminator()
+    {
+        return 0;
+    }
 }

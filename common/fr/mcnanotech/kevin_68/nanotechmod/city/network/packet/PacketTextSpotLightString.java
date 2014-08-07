@@ -70,4 +70,10 @@ public class PacketTextSpotLightString extends FFMTPacket
             te.setText(text);
         }
     }
+
+    @Override
+    public int getDiscriminator()
+    {
+        return 3;
+    }
 }

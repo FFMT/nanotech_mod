@@ -66,4 +66,10 @@ public class PacketSmoker extends FFMTPacket
             te.setSmokeInt(smoke);
         }
     }
+    
+    @Override
+    public int getDiscriminator()
+    {
+        return 2;
+    }
 }

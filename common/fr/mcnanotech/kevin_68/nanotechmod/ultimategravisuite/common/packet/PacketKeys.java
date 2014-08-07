@@ -43,4 +43,10 @@ public class PacketKeys extends FFMTPacket
     {
         UltimateGraviSuiteMod.keyboard.processKeyUpdate(player, this.keyState);
     }
+    
+    @Override
+    public int getDiscriminator()
+    {
+        return 0;
+    }
 }
