@@ -8,12 +8,9 @@ import fr.mcnanotech.kevin_68.nanotechmod.core.NanotechMod;
 
 public class TileEntityLampLight extends TileEntity
 {
-    public String getLampTexture = NanotechMod.MODID + ":textures/blocks/lamp_on.png";
-
     @Override
     public void updateEntity()
     {
-        getLampTexture = texture();
         if(this.worldObj != null && !this.worldObj.isRemote && this.worldObj.getTotalWorldTime() % 20L == 0L)
         {
             if(this.getBlockMetadata() == 2 && !worldObj.isDaytime())
@@ -34,7 +31,7 @@ public class TileEntityLampLight extends TileEntity
         return INFINITE_EXTENT_AABB;
     }
 
-    public String texture()
+    public String getTexture()
     {
         if(this.getBlockMetadata() == 3)
         {
