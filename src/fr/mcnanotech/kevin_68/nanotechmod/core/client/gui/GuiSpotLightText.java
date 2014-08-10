@@ -44,7 +44,7 @@ public class GuiSpotLightText extends GuiContainerSliderBase
 
         Keyboard.enableRepeatEvents(true);
         this.txtField = new GuiTextField(this.fontRendererObj, x - 40, y - 40, 256, 12);
-        this.txtField.setTextColor((tileSpotLight.getTxtRed() & 0xFF * 65536) + (tileSpotLight.getTxtGreen() & 0xFF * 256) + tileSpotLight.getTxtBlue() & 0xFF);
+        this.txtField.setTextColor((tileSpotLight.getTxtRed() & 0xFF * 65536) + (tileSpotLight.getTxtGreen() & 0xFF * 256) + (tileSpotLight.getTxtBlue() & 0xFF));
         this.txtField.setEnableBackgroundDrawing(true);
         this.txtField.setMaxStringLength(40);
         this.txtField.setEnabled(true);
@@ -92,7 +92,7 @@ public class GuiSpotLightText extends GuiContainerSliderBase
         if(sliderId < 3)
         {
             PacketSender.sendSpotLightPacketByte(tileSpotLight, (byte)(28 + sliderId), (byte)(sliderValue * 255.0F));
-            this.txtField.setTextColor((tileSpotLight.getTxtRed() & 0xFF * 65536) + (tileSpotLight.getTxtGreen() & 0xFF * 256) + tileSpotLight.getTxtBlue() & 0xFF);
+            this.txtField.setTextColor((tileSpotLight.getTxtRed() & 0xFF * 65536) + (tileSpotLight.getTxtGreen() & 0xFF * 256) + (tileSpotLight.getTxtBlue() & 0xFF));
         }
         else if(sliderId == 3)
         {
