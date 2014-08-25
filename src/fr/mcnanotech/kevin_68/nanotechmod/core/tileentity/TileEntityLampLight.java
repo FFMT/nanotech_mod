@@ -2,6 +2,7 @@ package fr.mcnanotech.kevin_68.nanotechmod.core.tileentity;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.EnumSkyBlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.mcnanotech.kevin_68.nanotechmod.core.NanotechMod;
@@ -15,11 +16,13 @@ public class TileEntityLampLight extends TileEntity
         {
             if(this.getBlockMetadata() == 2 && !worldObj.isDaytime())
             {
-                worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 3, 3);
+                this.worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 3, 3);
+                this.worldObj.updateLightByType(EnumSkyBlock.Block, this.xCoord, this.yCoord, this.zCoord);
             }
             else if(this.getBlockMetadata() == 3 && worldObj.isDaytime())
             {
-                worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 2, 3);
+                this.worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 2, 3);
+                this.worldObj.updateLightByType(EnumSkyBlock.Block, this.xCoord, this.yCoord, this.zCoord);
             }
         }
     }
