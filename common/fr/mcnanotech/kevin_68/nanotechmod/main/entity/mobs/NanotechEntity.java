@@ -97,12 +97,8 @@ public class NanotechEntity
             NanotechMod.nanoLogger.info("It's halloween, monster are coming");
         }
 
-        EntityRegistry.registerGlobalEntityID(EntityReinforcedFishingHook.class, "EntityReinforcedFishingHook", 3250);// TODO
-                                                                                                                      // fix
-                                                                                                                      // id
-        EntityRegistry.registerGlobalEntityID(EntitySuperBottleOfXp.class, "EntitySuperBottleOfXp", 3251);// TODO
-                                                                                                          // fix
-                                                                                                          // id
+        EntityRegistry.registerGlobalEntityID(EntityReinforcedFishingHook.class, "EntityReinforcedFishingHook", EntityRegistry.findGlobalUniqueEntityId());
+        EntityRegistry.registerGlobalEntityID(EntitySuperBottleOfXp.class, "EntitySuperBottleOfXp", EntityRegistry.findGlobalUniqueEntityId());
         EntityRegistry.registerModEntity(EntitySatelite.class, "Satelite", 1520, NanotechMod.modInstance, 250, 1, true);
 
     }
